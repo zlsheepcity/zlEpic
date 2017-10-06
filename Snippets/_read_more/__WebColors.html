@@ -1,0 +1,887 @@
+<!DOCTYPE html>
+<!-- saved from url=(0042)http://ainsleywagon.github.io/color-chart/ -->
+<html ng-app="colorApp" class="ng-scope"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><style type="text/css">@charset "UTF-8";[ng\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide:not(.ng-hide-animate){display:none !important;}ng\:form{display:block;}</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width">
+  <title>CSS Color Chart</title>
+  <style>
+    .ng-binding {
+      font-size:1.6em;
+      line-height:2em;
+      text-align:center;
+      display:block;
+    }
+  </style>
+</head>
+<body ng-controller="mainCtrl" class="ng-scope">
+  <div class="container">
+
+
+    <div class="color-charts">
+      <!-- ngRepeat: palette in colors --><div class="palette ng-scope" ng-repeat="palette in colors">
+        <h3 class="ng-binding">Pink &amp; Reds</h3>
+        <div class="row">
+          <!-- ngRepeat: color in palette.colorArray --><div class="box ng-scope" ng-repeat="color in palette.colorArray">
+            <div clip-copy="color[radioModel]" ng-style="{&#39;background-color&#39;: color[1]}" ng-model="black" class="color-box ng-pristine ng-untouched ng-valid ng-isolate-scope" style="background-color: rgb(255, 228, 225);">
+              <span ng-class="{oscurita: changeColor(color[1])}" }="" class="ng-binding oscurita">
+                    MistyRose
+              </span>
+            </div>
+          </div><!-- end ngRepeat: color in palette.colorArray --><div class="box ng-scope" ng-repeat="color in palette.colorArray">
+            <div clip-copy="color[radioModel]" ng-style="{&#39;background-color&#39;: color[1]}" ng-model="black" class="color-box ng-pristine ng-untouched ng-valid ng-isolate-scope" style="background-color: rgb(255, 182, 193);">
+              <span ng-class="{oscurita: changeColor(color[1])}" }="" class="ng-binding">
+                    LightPink
+              </span>
+            </div>
+          </div><!-- end ngRepeat: color in palette.colorArray --><div class="box ng-scope" ng-repeat="color in palette.colorArray">
+            <div clip-copy="color[radioModel]" ng-style="{&#39;background-color&#39;: color[1]}" ng-model="black" class="color-box ng-pristine ng-untouched ng-valid ng-isolate-scope" style="background-color: rgb(255, 192, 203);">
+              <span ng-class="{oscurita: changeColor(color[1])}" }="" class="ng-binding">
+                    Pink
+              </span>
+            </div>
+          </div><!-- end ngRepeat: color in palette.colorArray --><div class="box ng-scope" ng-repeat="color in palette.colorArray">
+            <div clip-copy="color[radioModel]" ng-style="{&#39;background-color&#39;: color[1]}" ng-model="black" class="color-box ng-pristine ng-untouched ng-valid ng-isolate-scope" style="background-color: rgb(255, 105, 180);">
+              <span ng-class="{oscurita: changeColor(color[1])}" }="" class="ng-binding">
+                    Hotpink
+              </span>
+            </div>
+          </div><!-- end ngRepeat: color in palette.colorArray --><div class="box ng-scope" ng-repeat="color in palette.colorArray">
+            <div clip-copy="color[radioModel]" ng-style="{&#39;background-color&#39;: color[1]}" ng-model="black" class="color-box ng-pristine ng-untouched ng-valid ng-isolate-scope" style="background-color: rgb(255, 20, 147);">
+              <span ng-class="{oscurita: changeColor(color[1])}" }="" class="ng-binding">
+                    DeepPink
+              </span>
+            </div>
+          </div><!-- end ngRepeat: color in palette.colorArray --><div class="box ng-scope" ng-repeat="color in palette.colorArray">
+            <div clip-copy="color[radioModel]" ng-style="{&#39;background-color&#39;: color[1]}" ng-model="black" class="color-box ng-pristine ng-untouched ng-valid ng-isolate-scope" style="background-color: rgb(199, 21, 133);">
+              <span ng-class="{oscurita: changeColor(color[1])}" }="" class="ng-binding">
+                    MediumVioletRed
+              </span>
+            </div>
+          </div><!-- end ngRepeat: color in palette.colorArray --><div class="box ng-scope" ng-repeat="color in palette.colorArray">
+            <div clip-copy="color[radioModel]" ng-style="{&#39;background-color&#39;: color[1]}" ng-model="black" class="color-box ng-pristine ng-untouched ng-valid ng-isolate-scope" style="background-color: rgb(219, 112, 147);">
+              <span ng-class="{oscurita: changeColor(color[1])}" }="" class="ng-binding">
+                    PaleVioletRed
+              </span>
+            </div>
+          </div><!-- end ngRepeat: color in palette.colorArray --><div class="box ng-scope" ng-repeat="color in palette.colorArray">
+            <div clip-copy="color[radioModel]" ng-style="{&#39;background-color&#39;: color[1]}" ng-model="black" class="color-box ng-pristine ng-untouched ng-valid ng-isolate-scope" style="background-color: rgb(255, 0, 0);">
+              <span ng-class="{oscurita: changeColor(color[1])}" }="" class="ng-binding">
+                    Red
+              </span>
+            </div>
+          </div><!-- end ngRepeat: color in palette.colorArray --><div class="box ng-scope" ng-repeat="color in palette.colorArray">
+            <div clip-copy="color[radioModel]" ng-style="{&#39;background-color&#39;: color[1]}" ng-model="black" class="color-box ng-pristine ng-untouched ng-valid ng-isolate-scope" style="background-color: rgb(220, 20, 60);">
+              <span ng-class="{oscurita: changeColor(color[1])}" }="" class="ng-binding">
+                    Crimson
+              </span>
+            </div>
+          </div><!-- end ngRepeat: color in palette.colorArray --><div class="box ng-scope" ng-repeat="color in palette.colorArray">
+            <div clip-copy="color[radioModel]" ng-style="{&#39;background-color&#39;: color[1]}" ng-model="black" class="color-box ng-pristine ng-untouched ng-valid ng-isolate-scope" style="background-color: rgb(128, 0, 0);">
+              <span ng-class="{oscurita: changeColor(color[1])}" }="" class="ng-binding">
+                    Maroon
+              </span>
+            </div>
+          </div><!-- end ngRepeat: color in palette.colorArray --><div class="box ng-scope" ng-repeat="color in palette.colorArray">
+            <div clip-copy="color[radioModel]" ng-style="{&#39;background-color&#39;: color[1]}" ng-model="black" class="color-box ng-pristine ng-untouched ng-valid ng-isolate-scope" style="background-color: rgb(139, 0, 0);">
+              <span ng-class="{oscurita: changeColor(color[1])}" }="" class="ng-binding">
+                    DarkRed
+              </span>
+            </div>
+          </div><!-- end ngRepeat: color in palette.colorArray --><div class="box ng-scope" ng-repeat="color in palette.colorArray">
+            <div clip-copy="color[radioModel]" ng-style="{&#39;background-color&#39;: color[1]}" ng-model="black" class="color-box ng-pristine ng-untouched ng-valid ng-isolate-scope" style="background-color: rgb(165, 42, 42);">
+              <span ng-class="{oscurita: changeColor(color[1])}" }="" class="ng-binding">
+                    Brown
+              </span>
+            </div>
+          </div><!-- end ngRepeat: color in palette.colorArray --><div class="box ng-scope" ng-repeat="color in palette.colorArray">
+            <div clip-copy="color[radioModel]" ng-style="{&#39;background-color&#39;: color[1]}" ng-model="black" class="color-box ng-pristine ng-untouched ng-valid ng-isolate-scope" style="background-color: rgb(178, 34, 34);">
+              <span ng-class="{oscurita: changeColor(color[1])}" }="" class="ng-binding">
+                    Firebrick
+              </span>
+            </div>
+          </div><!-- end ngRepeat: color in palette.colorArray --><div class="box ng-scope" ng-repeat="color in palette.colorArray">
+            <div clip-copy="color[radioModel]" ng-style="{&#39;background-color&#39;: color[1]}" ng-model="black" class="color-box ng-pristine ng-untouched ng-valid ng-isolate-scope" style="background-color: rgb(205, 92, 92);">
+              <span ng-class="{oscurita: changeColor(color[1])}" }="" class="ng-binding">
+                    IndianRed
+              </span>
+            </div>
+          </div><!-- end ngRepeat: color in palette.colorArray --><div class="box ng-scope" ng-repeat="color in palette.colorArray">
+            <div clip-copy="color[radioModel]" ng-style="{&#39;background-color&#39;: color[1]}" ng-model="black" class="color-box ng-pristine ng-untouched ng-valid ng-isolate-scope" style="background-color: rgb(240, 128, 128);">
+              <span ng-class="{oscurita: changeColor(color[1])}" }="" class="ng-binding">
+                    LightCoral
+              </span>
+            </div>
+          </div><!-- end ngRepeat: color in palette.colorArray --><div class="box ng-scope" ng-repeat="color in palette.colorArray">
+            <div clip-copy="color[radioModel]" ng-style="{&#39;background-color&#39;: color[1]}" ng-model="black" class="color-box ng-pristine ng-untouched ng-valid ng-isolate-scope" style="background-color: rgb(250, 128, 114);">
+              <span ng-class="{oscurita: changeColor(color[1])}" }="" class="ng-binding">
+                    Salmon
+              </span>
+            </div>
+          </div><!-- end ngRepeat: color in palette.colorArray --><div class="box ng-scope" ng-repeat="color in palette.colorArray">
+            <div clip-copy="color[radioModel]" ng-style="{&#39;background-color&#39;: color[1]}" ng-model="black" class="color-box ng-pristine ng-untouched ng-valid ng-isolate-scope" style="background-color: rgb(255, 99, 71);">
+              <span ng-class="{oscurita: changeColor(color[1])}" }="" class="ng-binding">
+                    Tomato
+              </span>
+            </div>
+          </div><!-- end ngRepeat: color in palette.colorArray --><div class="box ng-scope" ng-repeat="color in palette.colorArray">
+            <div clip-copy="color[radioModel]" ng-style="{&#39;background-color&#39;: color[1]}" ng-model="black" class="color-box ng-pristine ng-untouched ng-valid ng-isolate-scope" style="background-color: rgb(255, 127, 80);">
+              <span ng-class="{oscurita: changeColor(color[1])}" }="" class="ng-binding">
+                    Coral
+              </span>
+            </div>
+          </div><!-- end ngRepeat: color in palette.colorArray --><div class="box ng-scope" ng-repeat="color in palette.colorArray">
+            <div clip-copy="color[radioModel]" ng-style="{&#39;background-color&#39;: color[1]}" ng-model="black" class="color-box ng-pristine ng-untouched ng-valid ng-isolate-scope" style="background-color: rgb(233, 150, 122);">
+              <span ng-class="{oscurita: changeColor(color[1])}" }="" class="ng-binding">
+                    DarkSalmon
+              </span>
+            </div>
+          </div><!-- end ngRepeat: color in palette.colorArray --><div class="box ng-scope" ng-repeat="color in palette.colorArray">
+            <div clip-copy="color[radioModel]" ng-style="{&#39;background-color&#39;: color[1]}" ng-model="black" class="color-box ng-pristine ng-untouched ng-valid ng-isolate-scope" style="background-color: rgb(255, 160, 122);">
+              <span ng-class="{oscurita: changeColor(color[1])}" }="" class="ng-binding">
+                    LightSalmon
+              </span>
+            </div>
+          </div><!-- end ngRepeat: color in palette.colorArray --><div class="box ng-scope" ng-repeat="color in palette.colorArray">
+            <div clip-copy="color[radioModel]" ng-style="{&#39;background-color&#39;: color[1]}" ng-model="black" class="color-box ng-pristine ng-untouched ng-valid ng-isolate-scope" style="background-color: rgb(255, 218, 185);">
+              <span ng-class="{oscurita: changeColor(color[1])}" }="" class="ng-binding">
+                    PeachPuff
+              </span>
+            </div>
+          </div><!-- end ngRepeat: color in palette.colorArray -->
+        </div>
+      </div><!-- end ngRepeat: palette in colors --><div class="palette ng-scope" ng-repeat="palette in colors">
+        <h3 class="ng-binding">Oranges &amp; Yellows</h3>
+        <div class="row">
+          <!-- ngRepeat: color in palette.colorArray --><div class="box ng-scope" ng-repeat="color in palette.colorArray">
+            <div clip-copy="color[radioModel]" ng-style="{&#39;background-color&#39;: color[1]}" ng-model="black" class="color-box ng-pristine ng-untouched ng-valid ng-isolate-scope" style="background-color: rgb(255, 69, 0);">
+              <span ng-class="{oscurita: changeColor(color[1])}" }="" class="ng-binding">
+                    OrangeRed
+              </span>
+            </div>
+          </div><!-- end ngRepeat: color in palette.colorArray --><div class="box ng-scope" ng-repeat="color in palette.colorArray">
+            <div clip-copy="color[radioModel]" ng-style="{&#39;background-color&#39;: color[1]}" ng-model="black" class="color-box ng-pristine ng-untouched ng-valid ng-isolate-scope" style="background-color: DarkOrange;">
+              <span ng-class="{oscurita: changeColor(color[1])}" }="" class="ng-binding">
+                    DarkOrange
+              </span>
+            </div>
+          </div><!-- end ngRepeat: color in palette.colorArray --><div class="box ng-scope" ng-repeat="color in palette.colorArray">
+            <div clip-copy="color[radioModel]" ng-style="{&#39;background-color&#39;: color[1]}" ng-model="black" class="color-box ng-pristine ng-untouched ng-valid ng-isolate-scope" style="background-color: Orange;">
+              <span ng-class="{oscurita: changeColor(color[1])}" }="" class="ng-binding">
+                    Orange
+              </span>
+            </div>
+          </div><!-- end ngRepeat: color in palette.colorArray --><div class="box ng-scope" ng-repeat="color in palette.colorArray">
+            <div clip-copy="color[radioModel]" ng-style="{&#39;background-color&#39;: color[1]}" ng-model="black" class="color-box ng-pristine ng-untouched ng-valid ng-isolate-scope" style="background-color: rgb(184, 134, 11);">
+              <span ng-class="{oscurita: changeColor(color[1])}" }="" class="ng-binding">
+                    DarkGoldenrod
+              </span>
+            </div>
+          </div><!-- end ngRepeat: color in palette.colorArray --><div class="box ng-scope" ng-repeat="color in palette.colorArray">
+            <div clip-copy="color[radioModel]" ng-style="{&#39;background-color&#39;: color[1]}" ng-model="black" class="color-box ng-pristine ng-untouched ng-valid ng-isolate-scope" style="background-color: rgb(218, 165, 32);">
+              <span ng-class="{oscurita: changeColor(color[1])}" }="" class="ng-binding">
+                    Goldenrod
+              </span>
+            </div>
+          </div><!-- end ngRepeat: color in palette.colorArray --><div class="box ng-scope" ng-repeat="color in palette.colorArray">
+            <div clip-copy="color[radioModel]" ng-style="{&#39;background-color&#39;: color[1]}" ng-model="black" class="color-box ng-pristine ng-untouched ng-valid ng-isolate-scope" style="background-color: rgb(240, 230, 140);">
+              <span ng-class="{oscurita: changeColor(color[1])}" }="" class="ng-binding">
+                    Khaki
+              </span>
+            </div>
+          </div><!-- end ngRepeat: color in palette.colorArray --><div class="box ng-scope" ng-repeat="color in palette.colorArray">
+            <div clip-copy="color[radioModel]" ng-style="{&#39;background-color&#39;: color[1]}" ng-model="black" class="color-box ng-pristine ng-untouched ng-valid ng-isolate-scope" style="background-color: rgb(238, 232, 170);">
+              <span ng-class="{oscurita: changeColor(color[1])}" }="" class="ng-binding">
+                    PaleGoldenrod
+              </span>
+            </div>
+          </div><!-- end ngRepeat: color in palette.colorArray --><div class="box ng-scope" ng-repeat="color in palette.colorArray">
+            <div clip-copy="color[radioModel]" ng-style="{&#39;background-color&#39;: color[1]}" ng-model="black" class="color-box ng-pristine ng-untouched ng-valid ng-isolate-scope" style="background-color: rgb(250, 250, 210);">
+              <span ng-class="{oscurita: changeColor(color[1])}" }="" class="ng-binding oscurita">
+                    LightGoldenrodYellow
+              </span>
+            </div>
+          </div><!-- end ngRepeat: color in palette.colorArray --><div class="box ng-scope" ng-repeat="color in palette.colorArray">
+            <div clip-copy="color[radioModel]" ng-style="{&#39;background-color&#39;: color[1]}" ng-model="black" class="color-box ng-pristine ng-untouched ng-valid ng-isolate-scope" style="background-color: rgb(244, 164, 96);">
+              <span ng-class="{oscurita: changeColor(color[1])}" }="" class="ng-binding">
+                    SandyBrown
+              </span>
+            </div>
+          </div><!-- end ngRepeat: color in palette.colorArray --><div class="box ng-scope" ng-repeat="color in palette.colorArray">
+            <div clip-copy="color[radioModel]" ng-style="{&#39;background-color&#39;: color[1]}" ng-model="black" class="color-box ng-pristine ng-untouched ng-valid ng-isolate-scope" style="background-color: rgb(255, 222, 173);">
+              <span ng-class="{oscurita: changeColor(color[1])}" }="" class="ng-binding">
+                    NavajoWhite
+              </span>
+            </div>
+          </div><!-- end ngRepeat: color in palette.colorArray --><div class="box ng-scope" ng-repeat="color in palette.colorArray">
+            <div clip-copy="color[radioModel]" ng-style="{&#39;background-color&#39;: color[1]}" ng-model="black" class="color-box ng-pristine ng-untouched ng-valid ng-isolate-scope" style="background-color: rgb(255, 228, 181);">
+              <span ng-class="{oscurita: changeColor(color[1])}" }="" class="ng-binding">
+                    Moccasin
+              </span>
+            </div>
+          </div><!-- end ngRepeat: color in palette.colorArray --><div class="box ng-scope" ng-repeat="color in palette.colorArray">
+            <div clip-copy="color[radioModel]" ng-style="{&#39;background-color&#39;: color[1]}" ng-model="black" class="color-box ng-pristine ng-untouched ng-valid ng-isolate-scope" style="background-color: rgb(255, 250, 205);">
+              <span ng-class="{oscurita: changeColor(color[1])}" }="" class="ng-binding oscurita">
+                    LemonChiffon
+              </span>
+            </div>
+          </div><!-- end ngRepeat: color in palette.colorArray --><div class="box ng-scope" ng-repeat="color in palette.colorArray">
+            <div clip-copy="color[radioModel]" ng-style="{&#39;background-color&#39;: color[1]}" ng-model="black" class="color-box ng-pristine ng-untouched ng-valid ng-isolate-scope" style="background-color: rgb(255, 255, 224);">
+              <span ng-class="{oscurita: changeColor(color[1])}" }="" class="ng-binding oscurita">
+                    LightYellow
+              </span>
+            </div>
+          </div><!-- end ngRepeat: color in palette.colorArray --><div class="box ng-scope" ng-repeat="color in palette.colorArray">
+            <div clip-copy="color[radioModel]" ng-style="{&#39;background-color&#39;: color[1]}" ng-model="black" class="color-box ng-pristine ng-untouched ng-valid ng-isolate-scope" style="background-color: rgb(255, 255, 0);">
+              <span ng-class="{oscurita: changeColor(color[1])}" }="" class="ng-binding">
+                    Yellow
+              </span>
+            </div>
+          </div><!-- end ngRepeat: color in palette.colorArray --><div class="box ng-scope" ng-repeat="color in palette.colorArray">
+            <div clip-copy="color[radioModel]" ng-style="{&#39;background-color&#39;: color[1]}" ng-model="black" class="color-box ng-pristine ng-untouched ng-valid ng-isolate-scope" style="background-color: rgb(255, 215, 0);">
+              <span ng-class="{oscurita: changeColor(color[1])}" }="" class="ng-binding">
+                    Gold
+              </span>
+            </div>
+          </div><!-- end ngRepeat: color in palette.colorArray -->
+        </div>
+      </div><!-- end ngRepeat: palette in colors --><div class="palette ng-scope" ng-repeat="palette in colors">
+        <h3 class="ng-binding">Greens</h3>
+        <div class="row">
+          <!-- ngRepeat: color in palette.colorArray --><div class="box ng-scope" ng-repeat="color in palette.colorArray">
+            <div clip-copy="color[radioModel]" ng-style="{&#39;background-color&#39;: color[1]}" ng-model="black" class="color-box ng-pristine ng-untouched ng-valid ng-isolate-scope" style="background-color: rgb(173, 255, 47);">
+              <span ng-class="{oscurita: changeColor(color[1])}" }="" class="ng-binding">
+                    GreenYellow
+              </span>
+            </div>
+          </div><!-- end ngRepeat: color in palette.colorArray --><div class="box ng-scope" ng-repeat="color in palette.colorArray">
+            <div clip-copy="color[radioModel]" ng-style="{&#39;background-color&#39;: color[1]}" ng-model="black" class="color-box ng-pristine ng-untouched ng-valid ng-isolate-scope" style="background-color: rgb(127, 255, 0);">
+              <span ng-class="{oscurita: changeColor(color[1])}" }="" class="ng-binding">
+                    Chartreuse
+              </span>
+            </div>
+          </div><!-- end ngRepeat: color in palette.colorArray --><div class="box ng-scope" ng-repeat="color in palette.colorArray">
+            <div clip-copy="color[radioModel]" ng-style="{&#39;background-color&#39;: color[1]}" ng-model="black" class="color-box ng-pristine ng-untouched ng-valid ng-isolate-scope" style="background-color: rgb(124, 252, 0);">
+              <span ng-class="{oscurita: changeColor(color[1])}" }="" class="ng-binding">
+                    LawnGreen
+              </span>
+            </div>
+          </div><!-- end ngRepeat: color in palette.colorArray --><div class="box ng-scope" ng-repeat="color in palette.colorArray">
+            <div clip-copy="color[radioModel]" ng-style="{&#39;background-color&#39;: color[1]}" ng-model="black" class="color-box ng-pristine ng-untouched ng-valid ng-isolate-scope" style="background-color: rgb(0, 255, 0);">
+              <span ng-class="{oscurita: changeColor(color[1])}" }="" class="ng-binding">
+                    Lime
+              </span>
+            </div>
+          </div><!-- end ngRepeat: color in palette.colorArray --><div class="box ng-scope" ng-repeat="color in palette.colorArray">
+            <div clip-copy="color[radioModel]" ng-style="{&#39;background-color&#39;: color[1]}" ng-model="black" class="color-box ng-pristine ng-untouched ng-valid ng-isolate-scope" style="background-color: rgb(50, 205, 50);">
+              <span ng-class="{oscurita: changeColor(color[1])}" }="" class="ng-binding">
+                    LimeGreen
+              </span>
+            </div>
+          </div><!-- end ngRepeat: color in palette.colorArray --><div class="box ng-scope" ng-repeat="color in palette.colorArray">
+            <div clip-copy="color[radioModel]" ng-style="{&#39;background-color&#39;: color[1]}" ng-model="black" class="color-box ng-pristine ng-untouched ng-valid ng-isolate-scope" style="background-color: rgb(60, 179, 113);">
+              <span ng-class="{oscurita: changeColor(color[1])}" }="" class="ng-binding">
+                    MediumSeaGreen
+              </span>
+            </div>
+          </div><!-- end ngRepeat: color in palette.colorArray --><div class="box ng-scope" ng-repeat="color in palette.colorArray">
+            <div clip-copy="color[radioModel]" ng-style="{&#39;background-color&#39;: color[1]}" ng-model="black" class="color-box ng-pristine ng-untouched ng-valid ng-isolate-scope" style="background-color: rgb(46, 139, 87);">
+              <span ng-class="{oscurita: changeColor(color[1])}" }="" class="ng-binding">
+                    SeaGreen
+              </span>
+            </div>
+          </div><!-- end ngRepeat: color in palette.colorArray --><div class="box ng-scope" ng-repeat="color in palette.colorArray">
+            <div clip-copy="color[radioModel]" ng-style="{&#39;background-color&#39;: color[1]}" ng-model="black" class="color-box ng-pristine ng-untouched ng-valid ng-isolate-scope" style="background-color: rgb(0, 100, 0);">
+              <span ng-class="{oscurita: changeColor(color[1])}" }="" class="ng-binding">
+                    DarkGreen
+              </span>
+            </div>
+          </div><!-- end ngRepeat: color in palette.colorArray --><div class="box ng-scope" ng-repeat="color in palette.colorArray">
+            <div clip-copy="color[radioModel]" ng-style="{&#39;background-color&#39;: color[1]}" ng-model="black" class="color-box ng-pristine ng-untouched ng-valid ng-isolate-scope" style="background-color: rgb(0, 128, 0);">
+              <span ng-class="{oscurita: changeColor(color[1])}" }="" class="ng-binding">
+                    Green
+              </span>
+            </div>
+          </div><!-- end ngRepeat: color in palette.colorArray --><div class="box ng-scope" ng-repeat="color in palette.colorArray">
+            <div clip-copy="color[radioModel]" ng-style="{&#39;background-color&#39;: color[1]}" ng-model="black" class="color-box ng-pristine ng-untouched ng-valid ng-isolate-scope" style="background-color: rgb(34, 139, 34);">
+              <span ng-class="{oscurita: changeColor(color[1])}" }="" class="ng-binding">
+                    ForestGreen
+              </span>
+            </div>
+          </div><!-- end ngRepeat: color in palette.colorArray --><div class="box ng-scope" ng-repeat="color in palette.colorArray">
+            <div clip-copy="color[radioModel]" ng-style="{&#39;background-color&#39;: color[1]}" ng-model="black" class="color-box ng-pristine ng-untouched ng-valid ng-isolate-scope" style="background-color: rgb(107, 142, 35);">
+              <span ng-class="{oscurita: changeColor(color[1])}" }="" class="ng-binding">
+                    OliveDrab
+              </span>
+            </div>
+          </div><!-- end ngRepeat: color in palette.colorArray --><div class="box ng-scope" ng-repeat="color in palette.colorArray">
+            <div clip-copy="color[radioModel]" ng-style="{&#39;background-color&#39;: color[1]}" ng-model="black" class="color-box ng-pristine ng-untouched ng-valid ng-isolate-scope" style="background-color: rgb(85, 107, 47);">
+              <span ng-class="{oscurita: changeColor(color[1])}" }="" class="ng-binding">
+                    DarkOliveGreen
+              </span>
+            </div>
+          </div><!-- end ngRepeat: color in palette.colorArray --><div class="box ng-scope" ng-repeat="color in palette.colorArray">
+            <div clip-copy="color[radioModel]" ng-style="{&#39;background-color&#39;: color[1]}" ng-model="black" class="color-box ng-pristine ng-untouched ng-valid ng-isolate-scope" style="background-color: rgb(128, 128, 0);">
+              <span ng-class="{oscurita: changeColor(color[1])}" }="" class="ng-binding">
+                    Olive
+              </span>
+            </div>
+          </div><!-- end ngRepeat: color in palette.colorArray --><div class="box ng-scope" ng-repeat="color in palette.colorArray">
+            <div clip-copy="color[radioModel]" ng-style="{&#39;background-color&#39;: color[1]}" ng-model="black" class="color-box ng-pristine ng-untouched ng-valid ng-isolate-scope" style="background-color: rgb(154, 205, 50);">
+              <span ng-class="{oscurita: changeColor(color[1])}" }="" class="ng-binding">
+                    YellowGreen
+              </span>
+            </div>
+          </div><!-- end ngRepeat: color in palette.colorArray --><div class="box ng-scope" ng-repeat="color in palette.colorArray">
+            <div clip-copy="color[radioModel]" ng-style="{&#39;background-color&#39;: color[1]}" ng-model="black" class="color-box ng-pristine ng-untouched ng-valid ng-isolate-scope" style="background-color: rgb(144, 238, 144);">
+              <span ng-class="{oscurita: changeColor(color[1])}" }="" class="ng-binding">
+                    LightGreen
+              </span>
+            </div>
+          </div><!-- end ngRepeat: color in palette.colorArray --><div class="box ng-scope" ng-repeat="color in palette.colorArray">
+            <div clip-copy="color[radioModel]" ng-style="{&#39;background-color&#39;: color[1]}" ng-model="black" class="color-box ng-pristine ng-untouched ng-valid ng-isolate-scope" style="background-color: rgb(152, 251, 152);">
+              <span ng-class="{oscurita: changeColor(color[1])}" }="" class="ng-binding">
+                    PaleGreen
+              </span>
+            </div>
+          </div><!-- end ngRepeat: color in palette.colorArray --><div class="box ng-scope" ng-repeat="color in palette.colorArray">
+            <div clip-copy="color[radioModel]" ng-style="{&#39;background-color&#39;: color[1]}" ng-model="black" class="color-box ng-pristine ng-untouched ng-valid ng-isolate-scope" style="background-color: rgb(0, 255, 127);">
+              <span ng-class="{oscurita: changeColor(color[1])}" }="" class="ng-binding">
+                    SpringGreen
+              </span>
+            </div>
+          </div><!-- end ngRepeat: color in palette.colorArray --><div class="box ng-scope" ng-repeat="color in palette.colorArray">
+            <div clip-copy="color[radioModel]" ng-style="{&#39;background-color&#39;: color[1]}" ng-model="black" class="color-box ng-pristine ng-untouched ng-valid ng-isolate-scope" style="background-color: rgb(0, 250, 154);">
+              <span ng-class="{oscurita: changeColor(color[1])}" }="" class="ng-binding">
+                    MediumSpringGreen
+              </span>
+            </div>
+          </div><!-- end ngRepeat: color in palette.colorArray --><div class="box ng-scope" ng-repeat="color in palette.colorArray">
+            <div clip-copy="color[radioModel]" ng-style="{&#39;background-color&#39;: color[1]}" ng-model="black" class="color-box ng-pristine ng-untouched ng-valid ng-isolate-scope" style="background-color: rgb(245, 255, 250);">
+              <span ng-class="{oscurita: changeColor(color[1])}" }="" class="ng-binding oscurita">
+                    MintCream
+              </span>
+            </div>
+          </div><!-- end ngRepeat: color in palette.colorArray --><div class="box ng-scope" ng-repeat="color in palette.colorArray">
+            <div clip-copy="color[radioModel]" ng-style="{&#39;background-color&#39;: color[1]}" ng-model="black" class="color-box ng-pristine ng-untouched ng-valid ng-isolate-scope" style="background-color: rgb(127, 255, 212);">
+              <span ng-class="{oscurita: changeColor(color[1])}" }="" class="ng-binding">
+                    Aquamarine
+              </span>
+            </div>
+          </div><!-- end ngRepeat: color in palette.colorArray --><div class="box ng-scope" ng-repeat="color in palette.colorArray">
+            <div clip-copy="color[radioModel]" ng-style="{&#39;background-color&#39;: color[1]}" ng-model="black" class="color-box ng-pristine ng-untouched ng-valid ng-isolate-scope" style="background-color: rgb(102, 205, 170);">
+              <span ng-class="{oscurita: changeColor(color[1])}" }="" class="ng-binding">
+                    MediumAquaMarine
+              </span>
+            </div>
+          </div><!-- end ngRepeat: color in palette.colorArray --><div class="box ng-scope" ng-repeat="color in palette.colorArray">
+            <div clip-copy="color[radioModel]" ng-style="{&#39;background-color&#39;: color[1]}" ng-model="black" class="color-box ng-pristine ng-untouched ng-valid ng-isolate-scope" style="background-color: rgb(143, 188, 143);">
+              <span ng-class="{oscurita: changeColor(color[1])}" }="" class="ng-binding">
+                    DarkSeaGreen
+              </span>
+            </div>
+          </div><!-- end ngRepeat: color in palette.colorArray --><div class="box ng-scope" ng-repeat="color in palette.colorArray">
+            <div clip-copy="color[radioModel]" ng-style="{&#39;background-color&#39;: color[1]}" ng-model="black" class="color-box ng-pristine ng-untouched ng-valid ng-isolate-scope" style="background-color: rgb(240, 255, 240);">
+              <span ng-class="{oscurita: changeColor(color[1])}" }="" class="ng-binding oscurita">
+                    Honeydew
+              </span>
+            </div>
+          </div><!-- end ngRepeat: color in palette.colorArray --><div class="box ng-scope" ng-repeat="color in palette.colorArray">
+            <div clip-copy="color[radioModel]" ng-style="{&#39;background-color&#39;: color[1]}" ng-model="black" class="color-box ng-pristine ng-untouched ng-valid ng-isolate-scope" style="background-color: rgb(0, 139, 139);">
+              <span ng-class="{oscurita: changeColor(color[1])}" }="" class="ng-binding">
+                    DarkCyan
+              </span>
+            </div>
+          </div><!-- end ngRepeat: color in palette.colorArray --><div class="box ng-scope" ng-repeat="color in palette.colorArray">
+            <div clip-copy="color[radioModel]" ng-style="{&#39;background-color&#39;: color[1]}" ng-model="black" class="color-box ng-pristine ng-untouched ng-valid ng-isolate-scope" style="background-color: rgb(0, 128, 128);">
+              <span ng-class="{oscurita: changeColor(color[1])}" }="" class="ng-binding">
+                    Teal
+              </span>
+            </div>
+          </div><!-- end ngRepeat: color in palette.colorArray --><div class="box ng-scope" ng-repeat="color in palette.colorArray">
+            <div clip-copy="color[radioModel]" ng-style="{&#39;background-color&#39;: color[1]}" ng-model="black" class="color-box ng-pristine ng-untouched ng-valid ng-isolate-scope" style="background-color: rgb(32, 178, 170);">
+              <span ng-class="{oscurita: changeColor(color[1])}" }="" class="ng-binding">
+                    LightSeaGreen
+              </span>
+            </div>
+          </div><!-- end ngRepeat: color in palette.colorArray -->
+        </div>
+      </div><!-- end ngRepeat: palette in colors --><div class="palette ng-scope" ng-repeat="palette in colors">
+        <h3 class="ng-binding">Blues</h3>
+        <div class="row">
+          <!-- ngRepeat: color in palette.colorArray --><div class="box ng-scope" ng-repeat="color in palette.colorArray">
+            <div clip-copy="color[radioModel]" ng-style="{&#39;background-color&#39;: color[1]}" ng-model="black" class="color-box ng-pristine ng-untouched ng-valid ng-isolate-scope" style="background-color: rgb(0, 139, 139);">
+              <span ng-class="{oscurita: changeColor(color[1])}" }="" class="ng-binding">
+                    DarkCyan
+              </span>
+            </div>
+          </div><!-- end ngRepeat: color in palette.colorArray --><div class="box ng-scope" ng-repeat="color in palette.colorArray">
+            <div clip-copy="color[radioModel]" ng-style="{&#39;background-color&#39;: color[1]}" ng-model="black" class="color-box ng-pristine ng-untouched ng-valid ng-isolate-scope" style="background-color: rgb(0, 206, 209);">
+              <span ng-class="{oscurita: changeColor(color[1])}" }="" class="ng-binding">
+                    DarkTurquoise
+              </span>
+            </div>
+          </div><!-- end ngRepeat: color in palette.colorArray --><div class="box ng-scope" ng-repeat="color in palette.colorArray">
+            <div clip-copy="color[radioModel]" ng-style="{&#39;background-color&#39;: color[1]}" ng-model="black" class="color-box ng-pristine ng-untouched ng-valid ng-isolate-scope" style="background-color: rgb(72, 209, 204);">
+              <span ng-class="{oscurita: changeColor(color[1])}" }="" class="ng-binding">
+                    MediumTurquoise
+              </span>
+            </div>
+          </div><!-- end ngRepeat: color in palette.colorArray --><div class="box ng-scope" ng-repeat="color in palette.colorArray">
+            <div clip-copy="color[radioModel]" ng-style="{&#39;background-color&#39;: color[1]}" ng-model="black" class="color-box ng-pristine ng-untouched ng-valid ng-isolate-scope" style="background-color: rgb(64, 224, 208);">
+              <span ng-class="{oscurita: changeColor(color[1])}" }="" class="ng-binding">
+                    Turquoise
+              </span>
+            </div>
+          </div><!-- end ngRepeat: color in palette.colorArray --><div class="box ng-scope" ng-repeat="color in palette.colorArray">
+            <div clip-copy="color[radioModel]" ng-style="{&#39;background-color&#39;: color[1]}" ng-model="black" class="color-box ng-pristine ng-untouched ng-valid ng-isolate-scope" style="background-color: rgb(0, 255, 255);">
+              <span ng-class="{oscurita: changeColor(color[1])}" }="" class="ng-binding">
+                    Cyan
+              </span>
+            </div>
+          </div><!-- end ngRepeat: color in palette.colorArray --><div class="box ng-scope" ng-repeat="color in palette.colorArray">
+            <div clip-copy="color[radioModel]" ng-style="{&#39;background-color&#39;: color[1]}" ng-model="black" class="color-box ng-pristine ng-untouched ng-valid ng-isolate-scope" style="background-color: rgb(0, 255, 255);">
+              <span ng-class="{oscurita: changeColor(color[1])}" }="" class="ng-binding">
+                    Aqua
+              </span>
+            </div>
+          </div><!-- end ngRepeat: color in palette.colorArray --><div class="box ng-scope" ng-repeat="color in palette.colorArray">
+            <div clip-copy="color[radioModel]" ng-style="{&#39;background-color&#39;: color[1]}" ng-model="black" class="color-box ng-pristine ng-untouched ng-valid ng-isolate-scope" style="background-color: rgb(224, 255, 255);">
+              <span ng-class="{oscurita: changeColor(color[1])}" }="" class="ng-binding oscurita">
+                    LightCyan
+              </span>
+            </div>
+          </div><!-- end ngRepeat: color in palette.colorArray --><div class="box ng-scope" ng-repeat="color in palette.colorArray">
+            <div clip-copy="color[radioModel]" ng-style="{&#39;background-color&#39;: color[1]}" ng-model="black" class="color-box ng-pristine ng-untouched ng-valid ng-isolate-scope" style="background-color: rgb(240, 255, 255);">
+              <span ng-class="{oscurita: changeColor(color[1])}" }="" class="ng-binding oscurita">
+                    Azure
+              </span>
+            </div>
+          </div><!-- end ngRepeat: color in palette.colorArray --><div class="box ng-scope" ng-repeat="color in palette.colorArray">
+            <div clip-copy="color[radioModel]" ng-style="{&#39;background-color&#39;: color[1]}" ng-model="black" class="color-box ng-pristine ng-untouched ng-valid ng-isolate-scope" style="background-color: rgb(240, 248, 255);">
+              <span ng-class="{oscurita: changeColor(color[1])}" }="" class="ng-binding oscurita">
+                    AliceBlue
+              </span>
+            </div>
+          </div><!-- end ngRepeat: color in palette.colorArray --><div class="box ng-scope" ng-repeat="color in palette.colorArray">
+            <div clip-copy="color[radioModel]" ng-style="{&#39;background-color&#39;: color[1]}" ng-model="black" class="color-box ng-pristine ng-untouched ng-valid ng-isolate-scope" style="background-color: rgb(135, 206, 235);">
+              <span ng-class="{oscurita: changeColor(color[1])}" }="" class="ng-binding">
+                    SkyBlue
+              </span>
+            </div>
+          </div><!-- end ngRepeat: color in palette.colorArray --><div class="box ng-scope" ng-repeat="color in palette.colorArray">
+            <div clip-copy="color[radioModel]" ng-style="{&#39;background-color&#39;: color[1]}" ng-model="black" class="color-box ng-pristine ng-untouched ng-valid ng-isolate-scope" style="background-color: rgb(135, 206, 250);">
+              <span ng-class="{oscurita: changeColor(color[1])}" }="" class="ng-binding">
+                    LightSkyBlue
+              </span>
+            </div>
+          </div><!-- end ngRepeat: color in palette.colorArray --><div class="box ng-scope" ng-repeat="color in palette.colorArray">
+            <div clip-copy="color[radioModel]" ng-style="{&#39;background-color&#39;: color[1]}" ng-model="black" class="color-box ng-pristine ng-untouched ng-valid ng-isolate-scope" style="background-color: rgb(0, 191, 255);">
+              <span ng-class="{oscurita: changeColor(color[1])}" }="" class="ng-binding">
+                    DeepSkyBlue
+              </span>
+            </div>
+          </div><!-- end ngRepeat: color in palette.colorArray --><div class="box ng-scope" ng-repeat="color in palette.colorArray">
+            <div clip-copy="color[radioModel]" ng-style="{&#39;background-color&#39;: color[1]}" ng-model="black" class="color-box ng-pristine ng-untouched ng-valid ng-isolate-scope" style="background-color: rgb(30, 144, 255);">
+              <span ng-class="{oscurita: changeColor(color[1])}" }="" class="ng-binding">
+                    DodgerBlue
+              </span>
+            </div>
+          </div><!-- end ngRepeat: color in palette.colorArray --><div class="box ng-scope" ng-repeat="color in palette.colorArray">
+            <div clip-copy="color[radioModel]" ng-style="{&#39;background-color&#39;: color[1]}" ng-model="black" class="color-box ng-pristine ng-untouched ng-valid ng-isolate-scope" style="background-color: rgb(0, 0, 255);">
+              <span ng-class="{oscurita: changeColor(color[1])}" }="" class="ng-binding">
+                    Blue
+              </span>
+            </div>
+          </div><!-- end ngRepeat: color in palette.colorArray --><div class="box ng-scope" ng-repeat="color in palette.colorArray">
+            <div clip-copy="color[radioModel]" ng-style="{&#39;background-color&#39;: color[1]}" ng-model="black" class="color-box ng-pristine ng-untouched ng-valid ng-isolate-scope" style="background-color: rgb(0, 0, 205);">
+              <span ng-class="{oscurita: changeColor(color[1])}" }="" class="ng-binding">
+                    MediumBlue
+              </span>
+            </div>
+          </div><!-- end ngRepeat: color in palette.colorArray --><div class="box ng-scope" ng-repeat="color in palette.colorArray">
+            <div clip-copy="color[radioModel]" ng-style="{&#39;background-color&#39;: color[1]}" ng-model="black" class="color-box ng-pristine ng-untouched ng-valid ng-isolate-scope" style="background-color: rgb(0, 0, 139);">
+              <span ng-class="{oscurita: changeColor(color[1])}" }="" class="ng-binding">
+                    DarkBlue
+              </span>
+            </div>
+          </div><!-- end ngRepeat: color in palette.colorArray --><div class="box ng-scope" ng-repeat="color in palette.colorArray">
+            <div clip-copy="color[radioModel]" ng-style="{&#39;background-color&#39;: color[1]}" ng-model="black" class="color-box ng-pristine ng-untouched ng-valid ng-isolate-scope" style="background-color: rgb(0, 0, 128);">
+              <span ng-class="{oscurita: changeColor(color[1])}" }="" class="ng-binding">
+                    Navy
+              </span>
+            </div>
+          </div><!-- end ngRepeat: color in palette.colorArray --><div class="box ng-scope" ng-repeat="color in palette.colorArray">
+            <div clip-copy="color[radioModel]" ng-style="{&#39;background-color&#39;: color[1]}" ng-model="black" class="color-box ng-pristine ng-untouched ng-valid ng-isolate-scope" style="background-color: rgb(25, 25, 112);">
+              <span ng-class="{oscurita: changeColor(color[1])}" }="" class="ng-binding">
+                    MidnightBlue
+              </span>
+            </div>
+          </div><!-- end ngRepeat: color in palette.colorArray --><div class="box ng-scope" ng-repeat="color in palette.colorArray">
+            <div clip-copy="color[radioModel]" ng-style="{&#39;background-color&#39;: color[1]}" ng-model="black" class="color-box ng-pristine ng-untouched ng-valid ng-isolate-scope" style="background-color: rgb(65, 105, 225);">
+              <span ng-class="{oscurita: changeColor(color[1])}" }="" class="ng-binding">
+                    RoyalBlue
+              </span>
+            </div>
+          </div><!-- end ngRepeat: color in palette.colorArray --><div class="box ng-scope" ng-repeat="color in palette.colorArray">
+            <div clip-copy="color[radioModel]" ng-style="{&#39;background-color&#39;: color[1]}" ng-model="black" class="color-box ng-pristine ng-untouched ng-valid ng-isolate-scope" style="background-color: rgb(100, 149, 237);">
+              <span ng-class="{oscurita: changeColor(color[1])}" }="" class="ng-binding">
+                    CornflowerBlue
+              </span>
+            </div>
+          </div><!-- end ngRepeat: color in palette.colorArray --><div class="box ng-scope" ng-repeat="color in palette.colorArray">
+            <div clip-copy="color[radioModel]" ng-style="{&#39;background-color&#39;: color[1]}" ng-model="black" class="color-box ng-pristine ng-untouched ng-valid ng-isolate-scope" style="background-color: rgb(70, 130, 180);">
+              <span ng-class="{oscurita: changeColor(color[1])}" }="" class="ng-binding">
+                    SteelBlue
+              </span>
+            </div>
+          </div><!-- end ngRepeat: color in palette.colorArray --><div class="box ng-scope" ng-repeat="color in palette.colorArray">
+            <div clip-copy="color[radioModel]" ng-style="{&#39;background-color&#39;: color[1]}" ng-model="black" class="color-box ng-pristine ng-untouched ng-valid ng-isolate-scope" style="background-color: rgb(47, 79, 79);">
+              <span ng-class="{oscurita: changeColor(color[1])}" }="" class="ng-binding">
+                    DarkSlateGray
+              </span>
+            </div>
+          </div><!-- end ngRepeat: color in palette.colorArray --><div class="box ng-scope" ng-repeat="color in palette.colorArray">
+            <div clip-copy="color[radioModel]" ng-style="{&#39;background-color&#39;: color[1]}" ng-model="black" class="color-box ng-pristine ng-untouched ng-valid ng-isolate-scope" style="background-color: rgb(95, 158, 160);">
+              <span ng-class="{oscurita: changeColor(color[1])}" }="" class="ng-binding">
+                    CadetBlue
+              </span>
+            </div>
+          </div><!-- end ngRepeat: color in palette.colorArray --><div class="box ng-scope" ng-repeat="color in palette.colorArray">
+            <div clip-copy="color[radioModel]" ng-style="{&#39;background-color&#39;: color[1]}" ng-model="black" class="color-box ng-pristine ng-untouched ng-valid ng-isolate-scope" style="background-color: rgb(173, 216, 230);">
+              <span ng-class="{oscurita: changeColor(color[1])}" }="" class="ng-binding">
+                    LightBlue
+              </span>
+            </div>
+          </div><!-- end ngRepeat: color in palette.colorArray --><div class="box ng-scope" ng-repeat="color in palette.colorArray">
+            <div clip-copy="color[radioModel]" ng-style="{&#39;background-color&#39;: color[1]}" ng-model="black" class="color-box ng-pristine ng-untouched ng-valid ng-isolate-scope" style="background-color: rgb(175, 238, 238);">
+              <span ng-class="{oscurita: changeColor(color[1])}" }="" class="ng-binding">
+                    PaleTurquoise
+              </span>
+            </div>
+          </div><!-- end ngRepeat: color in palette.colorArray --><div class="box ng-scope" ng-repeat="color in palette.colorArray">
+            <div clip-copy="color[radioModel]" ng-style="{&#39;background-color&#39;: color[1]}" ng-model="black" class="color-box ng-pristine ng-untouched ng-valid ng-isolate-scope" style="background-color: rgb(176, 224, 230);">
+              <span ng-class="{oscurita: changeColor(color[1])}" }="" class="ng-binding">
+                    PowderBlue
+              </span>
+            </div>
+          </div><!-- end ngRepeat: color in palette.colorArray --><div class="box ng-scope" ng-repeat="color in palette.colorArray">
+            <div clip-copy="color[radioModel]" ng-style="{&#39;background-color&#39;: color[1]}" ng-model="black" class="color-box ng-pristine ng-untouched ng-valid ng-isolate-scope" style="background-color: rgb(176, 196, 222);">
+              <span ng-class="{oscurita: changeColor(color[1])}" }="" class="ng-binding">
+                    LightSteelBlue
+              </span>
+            </div>
+          </div><!-- end ngRepeat: color in palette.colorArray --><div class="box ng-scope" ng-repeat="color in palette.colorArray">
+            <div clip-copy="color[radioModel]" ng-style="{&#39;background-color&#39;: color[1]}" ng-model="black" class="color-box ng-pristine ng-untouched ng-valid ng-isolate-scope" style="background-color: rgb(230, 230, 250);">
+              <span ng-class="{oscurita: changeColor(color[1])}" }="" class="ng-binding">
+                    Lavender
+              </span>
+            </div>
+          </div><!-- end ngRepeat: color in palette.colorArray --><div class="box ng-scope" ng-repeat="color in palette.colorArray">
+            <div clip-copy="color[radioModel]" ng-style="{&#39;background-color&#39;: color[1]}" ng-model="black" class="color-box ng-pristine ng-untouched ng-valid ng-isolate-scope" style="background-color: rgb(123, 104, 238);">
+              <span ng-class="{oscurita: changeColor(color[1])}" }="" class="ng-binding">
+                    MediumSlateBlue
+              </span>
+            </div>
+          </div><!-- end ngRepeat: color in palette.colorArray --><div class="box ng-scope" ng-repeat="color in palette.colorArray">
+            <div clip-copy="color[radioModel]" ng-style="{&#39;background-color&#39;: color[1]}" ng-model="black" class="color-box ng-pristine ng-untouched ng-valid ng-isolate-scope" style="background-color: rgb(106, 90, 205);">
+              <span ng-class="{oscurita: changeColor(color[1])}" }="" class="ng-binding">
+                    SlateBlue
+              </span>
+            </div>
+          </div><!-- end ngRepeat: color in palette.colorArray -->
+        </div>
+      </div><!-- end ngRepeat: palette in colors --><div class="palette ng-scope" ng-repeat="palette in colors">
+        <h3 class="ng-binding">Purples &amp; Violets</h3>
+        <div class="row">
+          <!-- ngRepeat: color in palette.colorArray --><div class="box ng-scope" ng-repeat="color in palette.colorArray">
+            <div clip-copy="color[radioModel]" ng-style="{&#39;background-color&#39;: color[1]}" ng-model="black" class="color-box ng-pristine ng-untouched ng-valid ng-isolate-scope" style="background-color: rgb(138, 43, 226);">
+              <span ng-class="{oscurita: changeColor(color[1])}" }="" class="ng-binding">
+                    BlueViolet
+              </span>
+            </div>
+          </div><!-- end ngRepeat: color in palette.colorArray --><div class="box ng-scope" ng-repeat="color in palette.colorArray">
+            <div clip-copy="color[radioModel]" ng-style="{&#39;background-color&#39;: color[1]}" ng-model="black" class="color-box ng-pristine ng-untouched ng-valid ng-isolate-scope" style="background-color: rgb(148, 0, 211);">
+              <span ng-class="{oscurita: changeColor(color[1])}" }="" class="ng-binding">
+                    DarkViolet
+              </span>
+            </div>
+          </div><!-- end ngRepeat: color in palette.colorArray --><div class="box ng-scope" ng-repeat="color in palette.colorArray">
+            <div clip-copy="color[radioModel]" ng-style="{&#39;background-color&#39;: color[1]}" ng-model="black" class="color-box ng-pristine ng-untouched ng-valid ng-isolate-scope" style="background-color: rgb(153, 50, 204);">
+              <span ng-class="{oscurita: changeColor(color[1])}" }="" class="ng-binding">
+                    DarkOrchid
+              </span>
+            </div>
+          </div><!-- end ngRepeat: color in palette.colorArray --><div class="box ng-scope" ng-repeat="color in palette.colorArray">
+            <div clip-copy="color[radioModel]" ng-style="{&#39;background-color&#39;: color[1]}" ng-model="black" class="color-box ng-pristine ng-untouched ng-valid ng-isolate-scope" style="background-color: rgb(186, 85, 211);">
+              <span ng-class="{oscurita: changeColor(color[1])}" }="" class="ng-binding">
+                    MediumOrchid
+              </span>
+            </div>
+          </div><!-- end ngRepeat: color in palette.colorArray --><div class="box ng-scope" ng-repeat="color in palette.colorArray">
+            <div clip-copy="color[radioModel]" ng-style="{&#39;background-color&#39;: color[1]}" ng-model="black" class="color-box ng-pristine ng-untouched ng-valid ng-isolate-scope" style="background-color: rgb(218, 112, 214);">
+              <span ng-class="{oscurita: changeColor(color[1])}" }="" class="ng-binding">
+                    Orchid
+              </span>
+            </div>
+          </div><!-- end ngRepeat: color in palette.colorArray --><div class="box ng-scope" ng-repeat="color in palette.colorArray">
+            <div clip-copy="color[radioModel]" ng-style="{&#39;background-color&#39;: color[1]}" ng-model="black" class="color-box ng-pristine ng-untouched ng-valid ng-isolate-scope" style="background-color: rgb(238, 130, 238);">
+              <span ng-class="{oscurita: changeColor(color[1])}" }="" class="ng-binding">
+                    Violet
+              </span>
+            </div>
+          </div><!-- end ngRepeat: color in palette.colorArray --><div class="box ng-scope" ng-repeat="color in palette.colorArray">
+            <div clip-copy="color[radioModel]" ng-style="{&#39;background-color&#39;: color[1]}" ng-model="black" class="color-box ng-pristine ng-untouched ng-valid ng-isolate-scope" style="background-color: Fuchsia;">
+              <span ng-class="{oscurita: changeColor(color[1])}" }="" class="ng-binding">
+                    Fuchsia
+              </span>
+            </div>
+          </div><!-- end ngRepeat: color in palette.colorArray --><div class="box ng-scope" ng-repeat="color in palette.colorArray">
+            <div clip-copy="color[radioModel]" ng-style="{&#39;background-color&#39;: color[1]}" ng-model="black" class="color-box ng-pristine ng-untouched ng-valid ng-isolate-scope" style="background-color: Magenta;">
+              <span ng-class="{oscurita: changeColor(color[1])}" }="" class="ng-binding">
+                    Magenta
+              </span>
+            </div>
+          </div><!-- end ngRepeat: color in palette.colorArray --><div class="box ng-scope" ng-repeat="color in palette.colorArray">
+            <div clip-copy="color[radioModel]" ng-style="{&#39;background-color&#39;: color[1]}" ng-model="black" class="color-box ng-pristine ng-untouched ng-valid ng-isolate-scope" style="background-color: rgb(139, 0, 139);">
+              <span ng-class="{oscurita: changeColor(color[1])}" }="" class="ng-binding">
+                    DarkMagenta
+              </span>
+            </div>
+          </div><!-- end ngRepeat: color in palette.colorArray --><div class="box ng-scope" ng-repeat="color in palette.colorArray">
+            <div clip-copy="color[radioModel]" ng-style="{&#39;background-color&#39;: color[1]}" ng-model="black" class="color-box ng-pristine ng-untouched ng-valid ng-isolate-scope" style="background-color: rgb(128, 0, 128);">
+              <span ng-class="{oscurita: changeColor(color[1])}" }="" class="ng-binding">
+                    Purple
+              </span>
+            </div>
+          </div><!-- end ngRepeat: color in palette.colorArray --><div class="box ng-scope" ng-repeat="color in palette.colorArray">
+            <div clip-copy="color[radioModel]" ng-style="{&#39;background-color&#39;: color[1]}" ng-model="black" class="color-box ng-pristine ng-untouched ng-valid ng-isolate-scope" style="background-color: rgb(102, 51, 153);">
+              <span ng-class="{oscurita: changeColor(color[1])}" }="" class="ng-binding">
+                    RebeccaPurple
+              </span>
+            </div>
+          </div><!-- end ngRepeat: color in palette.colorArray --><div class="box ng-scope" ng-repeat="color in palette.colorArray">
+            <div clip-copy="color[radioModel]" ng-style="{&#39;background-color&#39;: color[1]}" ng-model="black" class="color-box ng-pristine ng-untouched ng-valid ng-isolate-scope" style="background-color: rgb(75, 0, 130);">
+              <span ng-class="{oscurita: changeColor(color[1])}" }="" class="ng-binding">
+                    Indigo
+              </span>
+            </div>
+          </div><!-- end ngRepeat: color in palette.colorArray --><div class="box ng-scope" ng-repeat="color in palette.colorArray">
+            <div clip-copy="color[radioModel]" ng-style="{&#39;background-color&#39;: color[1]}" ng-model="black" class="color-box ng-pristine ng-untouched ng-valid ng-isolate-scope" style="background-color: rgb(147, 112, 219);">
+              <span ng-class="{oscurita: changeColor(color[1])}" }="" class="ng-binding">
+                    MediumPurple
+              </span>
+            </div>
+          </div><!-- end ngRepeat: color in palette.colorArray --><div class="box ng-scope" ng-repeat="color in palette.colorArray">
+            <div clip-copy="color[radioModel]" ng-style="{&#39;background-color&#39;: color[1]}" ng-model="black" class="color-box ng-pristine ng-untouched ng-valid ng-isolate-scope" style="background-color: rgb(221, 160, 221);">
+              <span ng-class="{oscurita: changeColor(color[1])}" }="" class="ng-binding">
+                    Plum
+              </span>
+            </div>
+          </div><!-- end ngRepeat: color in palette.colorArray --><div class="box ng-scope" ng-repeat="color in palette.colorArray">
+            <div clip-copy="color[radioModel]" ng-style="{&#39;background-color&#39;: color[1]}" ng-model="black" class="color-box ng-pristine ng-untouched ng-valid ng-isolate-scope" style="background-color: rgb(216, 191, 216);">
+              <span ng-class="{oscurita: changeColor(color[1])}" }="" class="ng-binding">
+                    Thistle
+              </span>
+            </div>
+          </div><!-- end ngRepeat: color in palette.colorArray -->
+        </div>
+      </div><!-- end ngRepeat: palette in colors --><div class="palette ng-scope" ng-repeat="palette in colors">
+        <h3 class="ng-binding">Grays</h3>
+        <div class="row">
+          <!-- ngRepeat: color in palette.colorArray --><div class="box ng-scope" ng-repeat="color in palette.colorArray">
+            <div clip-copy="color[radioModel]" ng-style="{&#39;background-color&#39;: color[1]}" ng-model="black" class="color-box ng-pristine ng-untouched ng-valid ng-isolate-scope" style="background-color: rgb(220, 220, 220);">
+              <span ng-class="{oscurita: changeColor(color[1])}" }="" class="ng-binding">
+                    Gainsboro
+              </span>
+            </div>
+          </div><!-- end ngRepeat: color in palette.colorArray --><div class="box ng-scope" ng-repeat="color in palette.colorArray">
+            <div clip-copy="color[radioModel]" ng-style="{&#39;background-color&#39;: color[1]}" ng-model="black" class="color-box ng-pristine ng-untouched ng-valid ng-isolate-scope" style="background-color: rgb(211, 211, 211);">
+              <span ng-class="{oscurita: changeColor(color[1])}" }="" class="ng-binding">
+                    LightGray
+              </span>
+            </div>
+          </div><!-- end ngRepeat: color in palette.colorArray --><div class="box ng-scope" ng-repeat="color in palette.colorArray">
+            <div clip-copy="color[radioModel]" ng-style="{&#39;background-color&#39;: color[1]}" ng-model="black" class="color-box ng-pristine ng-untouched ng-valid ng-isolate-scope" style="background-color: rgb(192, 192, 192);">
+              <span ng-class="{oscurita: changeColor(color[1])}" }="" class="ng-binding">
+                    Silver
+              </span>
+            </div>
+          </div><!-- end ngRepeat: color in palette.colorArray --><div class="box ng-scope" ng-repeat="color in palette.colorArray">
+            <div clip-copy="color[radioModel]" ng-style="{&#39;background-color&#39;: color[1]}" ng-model="black" class="color-box ng-pristine ng-untouched ng-valid ng-isolate-scope" style="background-color: DarkGray;">
+              <span ng-class="{oscurita: changeColor(color[1])}" }="" class="ng-binding">
+                    DarkGray
+              </span>
+            </div>
+          </div><!-- end ngRepeat: color in palette.colorArray --><div class="box ng-scope" ng-repeat="color in palette.colorArray">
+            <div clip-copy="color[radioModel]" ng-style="{&#39;background-color&#39;: color[1]}" ng-model="black" class="color-box ng-pristine ng-untouched ng-valid ng-isolate-scope" style="background-color: Gray;">
+              <span ng-class="{oscurita: changeColor(color[1])}" }="" class="ng-binding">
+                    Gray
+              </span>
+            </div>
+          </div><!-- end ngRepeat: color in palette.colorArray --><div class="box ng-scope" ng-repeat="color in palette.colorArray">
+            <div clip-copy="color[radioModel]" ng-style="{&#39;background-color&#39;: color[1]}" ng-model="black" class="color-box ng-pristine ng-untouched ng-valid ng-isolate-scope" style="background-color: rgb(105, 105, 105);">
+              <span ng-class="{oscurita: changeColor(color[1])}" }="" class="ng-binding">
+                    DimGray
+              </span>
+            </div>
+          </div><!-- end ngRepeat: color in palette.colorArray --><div class="box ng-scope" ng-repeat="color in palette.colorArray">
+            <div clip-copy="color[radioModel]" ng-style="{&#39;background-color&#39;: color[1]}" ng-model="black" class="color-box ng-pristine ng-untouched ng-valid ng-isolate-scope" style="background-color: rgb(119, 136, 153);">
+              <span ng-class="{oscurita: changeColor(color[1])}" }="" class="ng-binding">
+                    LightSlateGray
+              </span>
+            </div>
+          </div><!-- end ngRepeat: color in palette.colorArray --><div class="box ng-scope" ng-repeat="color in palette.colorArray">
+            <div clip-copy="color[radioModel]" ng-style="{&#39;background-color&#39;: color[1]}" ng-model="black" class="color-box ng-pristine ng-untouched ng-valid ng-isolate-scope" style="background-color: rgb(112, 128, 144);">
+              <span ng-class="{oscurita: changeColor(color[1])}" }="" class="ng-binding">
+                    SlateGray
+              </span>
+            </div>
+          </div><!-- end ngRepeat: color in palette.colorArray --><div class="box ng-scope" ng-repeat="color in palette.colorArray">
+            <div clip-copy="color[radioModel]" ng-style="{&#39;background-color&#39;: color[1]}" ng-model="black" class="color-box ng-pristine ng-untouched ng-valid ng-isolate-scope" style="background-color: rgb(0, 0, 0);">
+              <span ng-class="{oscurita: changeColor(color[1])}" }="" class="ng-binding">
+                    Black
+              </span>
+            </div>
+          </div><!-- end ngRepeat: color in palette.colorArray -->
+        </div>
+      </div><!-- end ngRepeat: palette in colors --><div class="palette ng-scope" ng-repeat="palette in colors">
+        <h3 class="ng-binding">Whites &amp; Beiges</h3>
+        <div class="row">
+          <!-- ngRepeat: color in palette.colorArray --><div class="box ng-scope" ng-repeat="color in palette.colorArray">
+            <div clip-copy="color[radioModel]" ng-style="{&#39;background-color&#39;: color[1]}" ng-model="black" class="color-box ng-pristine ng-untouched ng-valid ng-isolate-scope" style="background-color: rgb(248, 248, 255);">
+              <span ng-class="{oscurita: changeColor(color[1])}" }="" class="ng-binding oscurita">
+                    GhostWhite
+              </span>
+            </div>
+          </div><!-- end ngRepeat: color in palette.colorArray --><div class="box ng-scope" ng-repeat="color in palette.colorArray">
+            <div clip-copy="color[radioModel]" ng-style="{&#39;background-color&#39;: color[1]}" ng-model="black" class="color-box ng-pristine ng-untouched ng-valid ng-isolate-scope" style="background-color: rgb(250, 235, 215);">
+              <span ng-class="{oscurita: changeColor(color[1])}" }="" class="ng-binding">
+                    AntiqueWhite
+              </span>
+            </div>
+          </div><!-- end ngRepeat: color in palette.colorArray --><div class="box ng-scope" ng-repeat="color in palette.colorArray">
+            <div clip-copy="color[radioModel]" ng-style="{&#39;background-color&#39;: color[1]}" ng-model="black" class="color-box ng-pristine ng-untouched ng-valid ng-isolate-scope" style="background-color: rgb(245, 245, 220);">
+              <span ng-class="{oscurita: changeColor(color[1])}" }="" class="ng-binding">
+                    Beige
+              </span>
+            </div>
+          </div><!-- end ngRepeat: color in palette.colorArray --><div class="box ng-scope" ng-repeat="color in palette.colorArray">
+            <div clip-copy="color[radioModel]" ng-style="{&#39;background-color&#39;: color[1]}" ng-model="black" class="color-box ng-pristine ng-untouched ng-valid ng-isolate-scope" style="background-color: rgb(255, 228, 196);">
+              <span ng-class="{oscurita: changeColor(color[1])}" }="" class="ng-binding">
+                    Bisque
+              </span>
+            </div>
+          </div><!-- end ngRepeat: color in palette.colorArray --><div class="box ng-scope" ng-repeat="color in palette.colorArray">
+            <div clip-copy="color[radioModel]" ng-style="{&#39;background-color&#39;: color[1]}" ng-model="black" class="color-box ng-pristine ng-untouched ng-valid ng-isolate-scope" style="background-color: rgb(255, 235, 205);">
+              <span ng-class="{oscurita: changeColor(color[1])}" }="" class="ng-binding">
+                    BlanchedAlmond
+              </span>
+            </div>
+          </div><!-- end ngRepeat: color in palette.colorArray --><div class="box ng-scope" ng-repeat="color in palette.colorArray">
+            <div clip-copy="color[radioModel]" ng-style="{&#39;background-color&#39;: color[1]}" ng-model="black" class="color-box ng-pristine ng-untouched ng-valid ng-isolate-scope" style="background-color: rgb(255, 255, 240);">
+              <span ng-class="{oscurita: changeColor(color[1])}" }="" class="ng-binding oscurita">
+                    Ivory
+              </span>
+            </div>
+          </div><!-- end ngRepeat: color in palette.colorArray --><div class="box ng-scope" ng-repeat="color in palette.colorArray">
+            <div clip-copy="color[radioModel]" ng-style="{&#39;background-color&#39;: color[1]}" ng-model="black" class="color-box ng-pristine ng-untouched ng-valid ng-isolate-scope" style="background-color: rgb(250, 240, 230);">
+              <span ng-class="{oscurita: changeColor(color[1])}" }="" class="ng-binding">
+                    Linen
+              </span>
+            </div>
+          </div><!-- end ngRepeat: color in palette.colorArray --><div class="box ng-scope" ng-repeat="color in palette.colorArray">
+            <div clip-copy="color[radioModel]" ng-style="{&#39;background-color&#39;: color[1]}" ng-model="black" class="color-box ng-pristine ng-untouched ng-valid ng-isolate-scope" style="background-color: rgb(253, 245, 230);">
+              <span ng-class="{oscurita: changeColor(color[1])}" }="" class="ng-binding">
+                    OldLace
+              </span>
+            </div>
+          </div><!-- end ngRepeat: color in palette.colorArray --><div class="box ng-scope" ng-repeat="color in palette.colorArray">
+            <div clip-copy="color[radioModel]" ng-style="{&#39;background-color&#39;: color[1]}" ng-model="black" class="color-box ng-pristine ng-untouched ng-valid ng-isolate-scope" style="background-color: rgb(255, 239, 213);">
+              <span ng-class="{oscurita: changeColor(color[1])}" }="" class="ng-binding">
+                    PapayaWhip
+              </span>
+            </div>
+          </div><!-- end ngRepeat: color in palette.colorArray --><div class="box ng-scope" ng-repeat="color in palette.colorArray">
+            <div clip-copy="color[radioModel]" ng-style="{&#39;background-color&#39;: color[1]}" ng-model="black" class="color-box ng-pristine ng-untouched ng-valid ng-isolate-scope" style="background-color: rgb(255, 245, 238);">
+              <span ng-class="{oscurita: changeColor(color[1])}" }="" class="ng-binding">
+                    Seashell
+              </span>
+            </div>
+          </div><!-- end ngRepeat: color in palette.colorArray --><div class="box ng-scope" ng-repeat="color in palette.colorArray">
+            <div clip-copy="color[radioModel]" ng-style="{&#39;background-color&#39;: color[1]}" ng-model="black" class="color-box ng-pristine ng-untouched ng-valid ng-isolate-scope" style="background-color: rgb(255, 250, 250);">
+              <span ng-class="{oscurita: changeColor(color[1])}" }="" class="ng-binding oscurita">
+                    Snow
+              </span>
+            </div>
+          </div><!-- end ngRepeat: color in palette.colorArray --><div class="box ng-scope" ng-repeat="color in palette.colorArray">
+            <div clip-copy="color[radioModel]" ng-style="{&#39;background-color&#39;: color[1]}" ng-model="black" class="color-box ng-pristine ng-untouched ng-valid ng-isolate-scope" style="background-color: rgb(255, 240, 245);">
+              <span ng-class="{oscurita: changeColor(color[1])}" }="" class="ng-binding">
+                    LavenderBlush
+              </span>
+            </div>
+          </div><!-- end ngRepeat: color in palette.colorArray --><div class="box ng-scope" ng-repeat="color in palette.colorArray">
+            <div clip-copy="color[radioModel]" ng-style="{&#39;background-color&#39;: color[1]}" ng-model="black" class="color-box ng-pristine ng-untouched ng-valid ng-isolate-scope" style="background-color: rgb(255, 255, 255);">
+              <span ng-class="{oscurita: changeColor(color[1])}" }="" class="ng-binding oscurita">
+                    White
+              </span>
+            </div>
+          </div><!-- end ngRepeat: color in palette.colorArray --><div class="box ng-scope" ng-repeat="color in palette.colorArray">
+            <div clip-copy="color[radioModel]" ng-style="{&#39;background-color&#39;: color[1]}" ng-model="black" class="color-box ng-pristine ng-untouched ng-valid ng-isolate-scope" style="background-color: rgb(245, 245, 245);">
+              <span ng-class="{oscurita: changeColor(color[1])}" }="" class="ng-binding">
+                    WhiteSmoke
+              </span>
+            </div>
+          </div><!-- end ngRepeat: color in palette.colorArray -->
+        </div>
+      </div><!-- end ngRepeat: palette in colors --><div class="palette ng-scope" ng-repeat="palette in colors">
+        <h3 class="ng-binding">Browns</h3>
+        <div class="row">
+          <!-- ngRepeat: color in palette.colorArray --><div class="box ng-scope" ng-repeat="color in palette.colorArray">
+            <div clip-copy="color[radioModel]" ng-style="{&#39;background-color&#39;: color[1]}" ng-model="black" class="color-box ng-pristine ng-untouched ng-valid ng-isolate-scope" style="background-color: rgb(165, 42, 42);">
+              <span ng-class="{oscurita: changeColor(color[1])}" }="" class="ng-binding">
+                    Brown
+              </span>
+            </div>
+          </div><!-- end ngRepeat: color in palette.colorArray --><div class="box ng-scope" ng-repeat="color in palette.colorArray">
+            <div clip-copy="color[radioModel]" ng-style="{&#39;background-color&#39;: color[1]}" ng-model="black" class="color-box ng-pristine ng-untouched ng-valid ng-isolate-scope" style="background-color: rgb(210, 105, 30);">
+              <span ng-class="{oscurita: changeColor(color[1])}" }="" class="ng-binding">
+                    Chocolate
+              </span>
+            </div>
+          </div><!-- end ngRepeat: color in palette.colorArray --><div class="box ng-scope" ng-repeat="color in palette.colorArray">
+            <div clip-copy="color[radioModel]" ng-style="{&#39;background-color&#39;: color[1]}" ng-model="black" class="color-box ng-pristine ng-untouched ng-valid ng-isolate-scope" style="background-color: rgb(205, 133, 63);">
+              <span ng-class="{oscurita: changeColor(color[1])}" }="" class="ng-binding">
+                    Peru
+              </span>
+            </div>
+          </div><!-- end ngRepeat: color in palette.colorArray --><div class="box ng-scope" ng-repeat="color in palette.colorArray">
+            <div clip-copy="color[radioModel]" ng-style="{&#39;background-color&#39;: color[1]}" ng-model="black" class="color-box ng-pristine ng-untouched ng-valid ng-isolate-scope" style="background-color: rgb(188, 143, 143);">
+              <span ng-class="{oscurita: changeColor(color[1])}" }="" class="ng-binding">
+                    RosyBrown
+              </span>
+            </div>
+          </div><!-- end ngRepeat: color in palette.colorArray --><div class="box ng-scope" ng-repeat="color in palette.colorArray">
+            <div clip-copy="color[radioModel]" ng-style="{&#39;background-color&#39;: color[1]}" ng-model="black" class="color-box ng-pristine ng-untouched ng-valid ng-isolate-scope" style="background-color: rgb(139, 69, 19);">
+              <span ng-class="{oscurita: changeColor(color[1])}" }="" class="ng-binding">
+                    SaddleBrown
+              </span>
+            </div>
+          </div><!-- end ngRepeat: color in palette.colorArray --><div class="box ng-scope" ng-repeat="color in palette.colorArray">
+            <div clip-copy="color[radioModel]" ng-style="{&#39;background-color&#39;: color[1]}" ng-model="black" class="color-box ng-pristine ng-untouched ng-valid ng-isolate-scope" style="background-color: rgb(184, 134, 11);">
+              <span ng-class="{oscurita: changeColor(color[1])}" }="" class="ng-binding">
+                    DarkGoldenrod
+              </span>
+            </div>
+          </div><!-- end ngRepeat: color in palette.colorArray --><div class="box ng-scope" ng-repeat="color in palette.colorArray">
+            <div clip-copy="color[radioModel]" ng-style="{&#39;background-color&#39;: color[1]}" ng-model="black" class="color-box ng-pristine ng-untouched ng-valid ng-isolate-scope" style="background-color: rgb(245, 222, 179);">
+              <span ng-class="{oscurita: changeColor(color[1])}" }="" class="ng-binding">
+                    Wheat
+              </span>
+            </div>
+          </div><!-- end ngRepeat: color in palette.colorArray -->
+        </div>
+      </div><!-- end ngRepeat: palette in colors -->
+    </div>
+  </div>
+
+</body></html>

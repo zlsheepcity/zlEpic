@@ -1,0 +1,205 @@
+@import url("part.css");
+
+/* =================================================================== Snippets */
+
+/* base64 */
+
+div {
+    background-image: url("data:image/svg+xml;base64,-----");
+}
+
+/* =================================================================== Components */
+
+/* Focused shadow */
+
+body.hasFocusedShadow {
+    pointer-events:  none;
+}
+body.hasFocusedShadow .aFocusedShadow {
+    position: relative;
+    z-index: 9999;
+    pointer-events: auto;
+    box-shadow: 0 0 0 99999px rgba(0, 0, 0, .8);
+}
+
+/* custom scrollbar */
+
+.aCustomScrollbar::-webkit-scrollbar {
+    width: 4px;
+}
+.aCustomScrollbar::-webkit-scrollbar-track {
+    -webkit-box-shadow: none;
+}
+.aCustomScrollbar::-webkit-scrollbar-thumb {
+  background-color: #ca0713;
+  outline: 1px solid #ca0713;
+}
+
+/* each slide snaps into place */
+
+.aSnapSlider {
+  scroll-snap-points-x: repeat(300px);
+  scroll-snap-type: mandatory;
+}
+
+/* */
+
+.aTextContentIsVisuallyHidden {
+  text-indent: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+/* loading spinner */
+
+.aLoadingIcon {
+    display:inline-block;
+    vertical-align:middle;
+    min-width:25px;
+    min-height:25px;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    background-image: url("data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjMDAwMDAwIiBoZWlnaHQ9IjI0IiB2aWV3Qm94PSIwIDAgMjQgMjQiIHdpZHRoPSIyNCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICAgIDxwYXRoIGQ9Ik0xMiA0VjFMOCA1bDQgNFY2YzMuMzEgMCA2IDIuNjkgNiA2IDAgMS4wMS0uMjUgMS45Ny0uNyAyLjhsMS40NiAxLjQ2QzE5LjU0IDE1LjAzIDIwIDEzLjU3IDIwIDEyYzAtNC40Mi0zLjU4LTgtOC04em0wIDE0Yy0zLjMxIDAtNi0yLjY5LTYtNiAwLTEuMDEuMjUtMS45Ny43LTIuOEw1LjI0IDcuNzRDNC40NiA4Ljk3IDQgMTAuNDMgNCAxMmMwIDQuNDIgMy41OCA4IDggOHYzbDQtNC00LTR2M3oiLz4KICAgIDxwYXRoIGQ9Ik0wIDBoMjR2MjRIMHoiIGZpbGw9Im5vbmUiLz4KPC9zdmc+");
+    -webkit-animation: keyframeSimpleRotation 1s infinite linear;
+    animation: keyframeSimpleRotation 1s infinite linear;
+}
+@-webkit-keyframes keyframeSimpleRotation {
+    from {-webkit-transform: rotate(359deg);}
+    to   {-webkit-transform: rotate(0deg);}
+}
+@keyframes keyframeSimpleRotation {
+    from {transform: rotate(359deg);}
+    to   {transform: rotate(0deg);}
+}
+
+/* =================================================================== Forms */
+
+.aFormInput:invalid:not(:placeholder-shown) {
+    color:brown;
+}
+.aFormInput:valid:not(:placeholder-shown) {
+    color:darkgreen;
+}
+
+/* =================================================================== @components */
+
+/* Для устройств 400px и больше: */
+@media only screen and (min-device-width: 400px) {
+
+}
+/* AND statement */
+@media (min-width: 600px) and (max-width: 800px) {
+
+}
+/* OR statement */
+@media (max-width: 600px), (min-width: 800px) {
+
+}
+/* detect retina mobile */
+@media (min-width: 768px) and (min-device-pixel-ratio: 1.5) {
+
+}
+
+/*
+CSS Paged Media Module
+https://drafts.csswg.org/css-page-3/
+*/
+@media print {
+     @page {
+        margin: .5cm;
+    }
+}
+
+@supports (-webkit-background-clip: text) {
+    div {
+    -webkit-background-clip: text;
+    }
+}
+
+@font-face {
+  font-family: 'AppFont';
+  src: url(data:application/x-font-woff;-------) format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* keyframe animation */
+
+@keyframes animationSample {
+    0% {
+        opacity: 0;
+        visibility: hidden;
+    }
+    100% {
+        opacity: 1;
+        visibility: visible;
+    }
+}
+.myElement {
+             animation-name: my-animation;
+  animation-timing-function: cubic-bezier(0.4,0,0.2,1);
+         animation-duration: 1s;
+  animation-iteration-count: 1;
+        animation-fill-mode: forwards;
+        animation-direction: normal;
+            animation-delay: 2s;
+       animation-play-state: initial;
+}
+.myElement:hover {
+       animation-play-state: paused;
+}
+
+
+
+/* ================================================================= Tricks */
+
+
+tr:nth-child(odd of li:not(.BANISHED)) {
+  background: WhiteSmoke;
+}
+ol li:nth-child(n+7):nth-child(-n+14) {
+  background: lightpink;
+}
+
+/* NO SELECTION / ALL SELECTION */
+
+.copy-no {
+    -webkit-user-select: none;  /* Chrome all / Safari all */
+    -moz-user-select: none;     /* Firefox all */
+    -ms-user-select: none;      /* IE 10+ */
+    user-select: none;          /* Likely future */
+}
+.copy-all {
+    -webkit-user-select: all;  /* Chrome all / Safari all */
+    -moz-user-select: all;     /* Firefox all */
+    -ms-user-select: all;      /* IE 10+ */
+    user-select: all;          /* Likely future */
+}
+
+/* CSS COUNTER */
+
+faq {
+    counter-reset: my-badass-counter;
+}
+.faq dt:before {
+    content: counter(my-badass-counter);
+    counter-increment: my-badass-counter;
+}
+
+/* COMPLETE RESET */
+
+html, body, div, span, applet, object, iframe,h1, h2, h3, h4, h5, h6, p, blockquote, pre,a, abbr, acronym, address, big, cite, code,del, dfn, em, img, ins, kbd, q, s, samp,small, strike, strong, sub, sup, tt, var,b, u, i, center,dl, dt, dd, ol, ul, li,fieldset, form, label, legend,table, caption, tbody, tfoot, thead, tr, th, td,article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary,time, mark, audio, video 
+{	margin: 0;	padding: 0;	border: 0;	font-size: 100%;	font: inherit;	vertical-align: baseline; text-align: left;}
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {	display: block;}
+body {	line-height: 1;}
+ol, ul {	list-style: none;}
+blockquote, q {	quotes: none;}
+blockquote:before, blockquote:after,q:before, q:after {	content: '';	content: none;}
+table {	border-collapse: collapse;	border-spacing: 0;}
+/* COMPLETE RESET */
+
+
+/* MODERN RESET https://benfrain.com/a-modern-css-reset-with-caveats/ */
+* { all: unset; }
+base, basefont, datalist, head, meta, script, style, title, noembed, param, template { display: none; }
+/* MODERN RESET */

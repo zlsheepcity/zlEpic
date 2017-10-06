@@ -1,0 +1,198 @@
+html {
+    font-size: 1em;
+    font-size: calc( 1em + (2 - 1) * ( (100vw - 20em) / ( 100 - 10 ) ) );
+    font-size: 2vw;
+}
+body
+{
+    font-family:'PT Sans', 'Roboto', 'Open Sans', sans-serif;
+    font-size: 1em;
+    line-height:1.5;
+    background:rgba( 55,59,68 ,1);
+    color: rgba( 222,225,182 ,1 );
+}
+h1
+{
+    font-size: 2em;
+    font-weight: normal;
+    line-height:1.2;
+}
+h2
+{
+    font-size: 1.6em;
+    font-weight: normal;
+    line-height:1.2;
+}
+
+
+/* o o o o o o o o o o o o o o o o o o */
+
+.cAppVisibleHeader
+{
+  background-color:transparent;
+}
+
+/* o o o o o o o o o o o o o o o o o o */
+
+
+.cAppVisibleBody
+{
+  background-color:transparent;
+}
+
+/* o o o o o o o o o o o o o o o o o o */
+
+.cAppVisibleFooter
+{
+  background-color:transparent;
+  padding-bottom:0;
+}
+
+/* o o o o o o o o o o o o o o o o o o */
+
+.cHomePageLinks {
+    position:absolute;
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+    background:rgba( 55,59,68 ,1);
+    color: rgba( 222,225,182 ,1 );
+    overflow:hidden;
+}
+
+/* ========================================== */
+
+.cHplCollumn {
+    position:absolute;
+    z-index:50;
+}
+.cHplCollumn:hover {
+    z-index:55;
+}
+.cHplCollumn.isFirst {
+    top:0;
+    left:0;
+    width:20vw;
+    height:100vh;
+}
+.c1            {background:rgba( 111,48,77 ,1);}
+.c1dat [dat]   {background:rgba( 121,58,87 ,1);}
+
+.cHplCollumn.isSecond {
+    top:0;
+    left:20vw;
+    width:25vw;
+    height:100vh;
+}
+.c2            {background:rgba( 67,41,47 ,1);}
+.c2dat [dat]   {background:rgba( 77,51,57 ,1);}
+
+.cHplCollumn.isThird {
+    top:0;
+    right:30vw;
+    width:25vw;
+    height:100vh;
+}
+
+.cHplCollumn.isLast {
+    top:0;
+    right:0vw;
+    width:30vw;
+    height:100vh;
+}
+.c3            {background:rgba( 63,102,128 ,1);}
+.c3dat [dat]   {background:rgba( 73,112,138 ,1);}
+
+/* ========================================== */
+
+[dat] {
+    display:block;
+    text-align:left;
+    padding:1vh 1vw 1vh 4vw;
+    transition:background, transform .1s;
+    text-decoration:none;
+    color: rgba( 209,197,165 ,1 );
+}
+[dat] + [dat],
+[dat][group] + div + [dat] {
+    margin-top:.1vh;
+    padding-top:.9vh;
+}
+[dat]:hover {
+    background:rgba( 209,197,165 ,1);
+    color: rgba( 42,44,49 ,1 );
+    transform: scale(1.1,1.3);
+    transition:background, transform .2s;
+}
+[smaller],
+[smaller][dat],
+[smaller] [dat] {
+    font-size:1.2vw;
+    font-weight:400;
+}
+[bigger],
+[bigger][dat],
+[bigger] [dat] {
+    font-size:2vw;
+    font-weight:500;
+}
+[title][dat],
+[title][dat]:hover {
+    transform: none;
+    background:transparent;
+    color: rgba( 24,125,66 ,.5 );
+    cursor:default;
+}
+[icon][dat] {
+    color: rgba( 209,197,165 ,1 );
+}
+[icon][dat] svg {
+    width:2vw;
+    height:2vw;
+}
+[group] + div [icon][dat] svg {
+    width:1.2vw;
+    height:1.2vw;
+}
+[icon][dat]:hover {
+    background-color: transparent;
+    transform: scale(1.3,1.3);
+}
+[dat]:hover + [icon][dat] {
+    border-radius: 50%;
+    background:rgba(0,0,0,.05);
+}
+
+/* Group settings */
+blockquote + blockquote {
+    margin-top: calc( 1.5vw + 1vh );
+}
+[group][dat] {
+    color: rgba( 189,85,50 ,.5 );
+    cursor:s-resize;
+}
+[group] + div [dat] {
+    font-size:1.2vw;
+    padding-left:5vw;
+    margin:0;
+    background-color: rgba( 189,85,50 ,1 );
+}
+[group] + div [dat]:hover {
+    background-color: rgba( 179,75,40 ,1 );
+}
+[group] + div {
+    padding-top: calc( 3vw + 2vh );
+    position:absolute;
+    left:0;
+    right:0;
+    margin-top: calc( 0vw - 3vw - 2vh );
+    background-color: rgba( 179,75,40 ,.4 );
+}
+[group] + div { display:none; }
+[group] + div:hover { display:block; }
+[group]:active + div { display:block; }
+
+.elMamaDat > .elMamaCell:first-child {
+    flex-grow: 2;
+}
