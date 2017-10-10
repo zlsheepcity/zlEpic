@@ -285,12 +285,19 @@ body.hasFocusedShadow .aFocusedShadow__container {
     .elHeaderMobile > .elLogo {
         flex-grow: 1;
         text-align:center;
+        margin-right: 40px;
     }
     .elHeaderMobile > .elLogo img {
         max-height: 24px;
     }
     .elMain > [id] { /* anchor under fixed header */
         padding-top: 40px;
+    }
+}
+
+@media (max-width: 500px) {
+    html {
+        font-size: 13px;
     }
 }
 
