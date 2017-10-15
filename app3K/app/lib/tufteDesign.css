@@ -24,10 +24,9 @@
         box-sizing: content-box;
 }
 
-
-
 .tufteDesign h1 { font-weight: 400;
-     margin-top: 4rem;
+     margin-top: 0rem;
+     padding-top: 4rem;
      margin-bottom: 1.5rem;
      font-size: 3.2rem;
      line-height: 1; }
@@ -85,7 +84,7 @@
 .tufteDesign div.epigraph { margin: 5em 0; }
 
 .tufteDesign div.epigraph > blockquote { margin-top: 3em;
-                            margin-bottom: 3em; }
+                            margin-bottom: 3em; margin-left: 3rem; }
 
 .tufteDesign div.epigraph > blockquote,
 .tufteDesign div.epigraph > blockquote > p { font-style: italic; }
@@ -121,17 +120,16 @@
          -webkit-margin-end: 0;
          margin: 0 0 3em 0; }
 
-.tufteDesign figcaption { float: right;
-             clear: right;
+.tufteDesign figcaption { float: none; margin-left: 20%;
              margin-top: 0;
              margin-bottom: 0;
              font-size: 1.1rem;
              line-height: 1.6;
              vertical-align: baseline;
              position: relative;
-             max-width: 40%; }
+             max-width: 100%; }
 
-.tufteDesign figure.fullwidth figcaption { margin-right: 24%; }
+/*.tufteDesign figure.fullwidth figcaption { margin-right: 24%; }*/
 
 /* Links: replicate underline that clears descenders */
 .tufteDesign a:link,
@@ -278,7 +276,10 @@
                                            width: 95%;
                                            margin: 1rem 2.5%;
                                            vertical-align: baseline;
-                                           position: relative; }
+                                           position: relative;
+                                        padding: 1rem 2.5%;
+                                        margin:0;
+                                        background-color: azure; }
     .tufteDesign label { cursor: pointer; }
     .tufteDesign div.table-wrapper,
     .tufteDesign table { width: 85%; }

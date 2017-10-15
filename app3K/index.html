@@ -75,6 +75,11 @@
     </nav>
     <!-- endblock -->
 
+    <!-- page menu trigger -->
+    <div class="elMenuToolbar elMenuToolbar--placeholder">
+    </div>
+    <!-- endblock -->
+
 </header>
 
 
@@ -307,7 +312,7 @@
     <!-- aside menu trigger -->
     <div class="elItem elMenuTrigger cMenuTrigger jsMenuTrigger">
         <div class="elMenuTrigger__readyToOpen">
-            <span class="aIcon aIcon--hamburger"></span>
+            <span class="aIcon aIcon--home"></span>
         </div>
         <div class="elMenuTrigger__readyToClose">
             <span class="aIcon aIcon--close aIcon__contrast"></span>
@@ -315,10 +320,14 @@
     </div>
     <!-- endblock -->
 
-    <!-- drop overlay on header -->
-    <div class="elView__shadow jsMenuClose" data-action="close"></div>
+    <!-- page menu trigger -->
+    <div class="elMenuToolbar elMenuToolbar--placeholder">
+    </div>
     <!-- endblock -->
 
+<!-- drop overlay on header -->
+<div class="elView__shadow jsMenuClose" data-action="close"></div>
+<!-- endblock -->
 </nav>
 
 
@@ -339,7 +348,31 @@
 
 </aside>
 
+<!-- =================================================== reversed aside panel -->
 
+<!-- page menu trigger -->
+<div class="elMenuToolbar">
+    <span class="elItem elPageMenuTrigger elPageMenuTrigger--isFloat jsPageMenuTrigger cPageMenuTrigger">
+        <span class="elPageMenuTrigger__readyToOpen">
+            <span class="aIcon aIcon--hamburger"></span>
+        </span>
+        <span class="elPageMenuTrigger__readyToClose">
+            <span class="aIcon aIcon--close aIcon__contrast"></span>
+        </span>
+    </span>
+</div>
+<!-- endblock -->
+
+<aside class="elAside elAside--reversed cMenu cMenuAside">
+
+    <!-- aside menu -->
+    <ul>
+        <li class="is-active"><a href="#Home">Home</a></li>
+        <li class=""><a href="#">Page</a></li>
+    </ul>
+    <!-- endblock -->
+
+</aside>
 
 
 

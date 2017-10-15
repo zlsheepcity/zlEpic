@@ -1,4 +1,7 @@
 @import url("icons.css");
+/*
+v2017.10.15 MID OCT
+*/
 
 
 /*
@@ -63,6 +66,7 @@ a:active  { color: #F67280; }
 .elView {
     min-height:100vh;
     position: relative;
+    overflow: hidden;
 }
 .elView__shadow {
     background-color: rgba(0,0,0,.5);
@@ -80,11 +84,22 @@ a:active  { color: #F67280; }
     vertical-align: middle;
     cursor: pointer;
 }
-.elMenuTrigger__readyToOpen {
+.elMenuTrigger__readyToOpen,
+.elPageMenuTrigger__readyToOpen {
     display: block;
 }
-.elMenuTrigger__readyToClose {
+.elMenuTrigger__readyToClose,
+.elPageMenuTrigger__readyToClose {
     display: none;
+}
+.elPageMenuTrigger {
+    cursor: pointer;
+}
+.elPageMenuTrigger--isFloat {
+    position: fixed;
+    top:0;
+    right:0;
+    z-index: 19500;
 }
 /*
 ## Layout action: mobile groundfloor
@@ -111,9 +126,14 @@ a:active  { color: #F67280; }
     bottom: 0;
     right: 100%;
 }
+.elAside.elAside--reversed {
+    right: auto;
+    left: 100%;
+}
 .elView,
 .elAside,
-.elHeaderMobile {
+.elHeaderMobile,
+.elPageMenuTrigger--isFloat {
     -webkit-transition: transform .25s ease-in;
     -o-transition: transform .25s ease-in;
     transition: transform .25s ease-in;
@@ -146,6 +166,33 @@ a:active  { color: #F67280; }
     display: block;
 }
 
+.elBody--pageMenuIsOpen {
+    overflow-y: hidden;
+}
+.elBody--pageMenuIsOpen .elView,
+.elBody--pageMenuIsOpen .elAside--reversed,
+.elBody--pageMenuIsOpen .elHeaderMobile {
+    transform: translateX(-200px);
+}
+.elBody--pageMenuIsOpen .elView__shadow {
+    right: 0;
+    opacity: 1;
+}
+.elBody--pageMenuIsOpen .cPageMenuTrigger {
+    position: relative;
+    z-index: 19500;
+}
+.elBody--pageMenuIsOpen .elPageMenuTrigger__readyToOpen {
+    display: none;
+}
+.elBody--pageMenuIsOpen .elPageMenuTrigger__readyToClose {
+    display: block;
+}
+.elBody--pageMenuIsOpen .elPageMenuTrigger--isFloat {
+    position: fixed;
+    top:0;
+    transform: translateX(-200px);
+}
 /**/
 
 
@@ -225,8 +272,15 @@ body.hasFocusedShadow .aFocusedShadow__container {
     order: 3;
     flex-grow: 1;
 }
+.elHeader > .elMenuToolbar {
+    order: 90;
+}
 .elHeader > .elMenuMobileToolbar {
     order: 100;
+    min-width: 40px;
+    min-height: 40px;
+}
+.elMenuToolbar--placeholder {
     min-width: 40px;
     min-height: 40px;
 }
@@ -285,7 +339,6 @@ body.hasFocusedShadow .aFocusedShadow__container {
     .elHeaderMobile > .elLogo {
         flex-grow: 1;
         text-align:center;
-        margin-right: 40px;
     }
     .elHeaderMobile > .elLogo img {
         max-height: 24px;
