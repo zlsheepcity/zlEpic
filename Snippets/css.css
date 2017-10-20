@@ -110,6 +110,12 @@ https://drafts.csswg.org/css-page-3/
     }
 }
 
+.pageBreak {
+page-break-after  : auto | always | avoid | left | right
+page-break-before : auto | always | avoid | left | right
+page-break-inside : auto | avoid
+}
+
 @supports (-webkit-background-clip: text) {
     div {
     -webkit-background-clip: text;
