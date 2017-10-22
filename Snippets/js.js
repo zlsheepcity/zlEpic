@@ -29,7 +29,7 @@ $(window).load(function() {
 $(function(){
 });
 
-/* ---------------------------------------------- // console functions
+/* ---------------------------------------------- */ // console functions
 
 console.time('zlTimer');
 console.timeEnd('zlTimer');
@@ -41,11 +41,10 @@ console.groupEnd();
 console.log('%c zl', 'background: #222; color: #bada55');
 
 // console commands
-
 $0
 getEventListeners($0)
 document.body.contentEditable=true
-*/
+/**/
 
 
 // ---------------------------------------------- // trick functions
