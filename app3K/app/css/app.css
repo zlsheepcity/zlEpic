@@ -55,6 +55,18 @@ a:active  { color: #F67280; }
 */
 
 /*
+# Base
+*/
+
+html {
+    box-sizing: border-box;
+}
+*, *::before, *::after {
+    box-sizing: inherit;
+}
+
+
+/*
 # Layout groundfloor
 */
 
