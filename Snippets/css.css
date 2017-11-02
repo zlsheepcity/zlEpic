@@ -1,6 +1,30 @@
 @import url("part.css");
 
-/* =================================================================== Snippets */
+/*
+     600px      900px                1200px       1800px
+phone     tablet     landscape tablet      desctop      big
+*/
+
+
+@mixin for-phone-only {
+  @media (max-width: 599px) { @content; }
+}
+@mixin for-tablet-portrait-up {
+  @media (min-width: 600px) { @content; }
+}
+@mixin for-tablet-landscape-up {
+  @media (min-width: 900px) { @content; }
+}
+@mixin for-desktop-up {
+  @media (min-width: 1200px) { @content; }
+}
+@mixin for-big-desktop-up {
+  @media (min-width: 1800px) { @content; }
+}
+
+
+
+/* ======================================================== Snippets */
 
 /* base64 */
 
@@ -8,7 +32,7 @@ div {
     background-image: url("data:image/svg+xml;base64,-----");
 }
 
-/* =================================================================== Components */
+/* ======================================================= Components */
 
 /* Focused shadow */
 
@@ -193,7 +217,6 @@ faq {
 }
 
 /* COMPLETE RESET */
-
 html, body, div, span, applet, object, iframe,h1, h2, h3, h4, h5, h6, p, blockquote, pre,a, abbr, acronym, address, big, cite, code,del, dfn, em, img, ins, kbd, q, s, samp,small, strike, strong, sub, sup, tt, var,b, u, i, center,dl, dt, dd, ol, ul, li,fieldset, form, label, legend,table, caption, tbody, tfoot, thead, tr, th, td,article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary,time, mark, audio, video 
 {	margin: 0;	padding: 0;	border: 0;	font-size: 100%;	font: inherit;	vertical-align: baseline; text-align: left;}
 article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {	display: block;}
@@ -209,3 +232,28 @@ table {	border-collapse: collapse;	border-spacing: 0;}
 * { all: unset; }
 base, basefont, datalist, head, meta, script, style, title, noembed, param, template { display: none; }
 /* MODERN RESET */
+
+
+
+
+
+
+/* ================================================================= Variables */
+
+
+:root {
+    --grid-gutter: 1rem;
+}
+
+@media (min-width: 600px) {
+    :root {
+        --grid-gutter: 1.25rem;
+    }
+}
+
+.grid {
+    display: grid;
+    grid-gap: var(--grid-gutter);
+    margin-left: calc(-1 * var(--grid-gutter));
+    margin-right: calc(-1 * var(--grid-gutter));
+}
