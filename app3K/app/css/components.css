@@ -1,0 +1,119 @@
+/*
+v2017.11.09 cTableData
+*/
+
+
+/*
+------------------------------------------------- table data
+*/
+
+/* table critical css */
+
+.cTableData th,
+.cTableData td {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    vertical-align: top;
+}
+.cTableData th {
+    text-align: left;
+}
+@media all and (min-width:600px) {
+    .cTableData th:first-child,
+    .cTableData td:first-child {
+        padding-left: 0.125rem;
+    }
+    .cTableData th:last-child,
+    .cTableData td:last-child {
+        padding-right: 0.125rem;
+    }
+}
+.cTableData caption {
+    text-align: left;
+}
+
+/* table integration */
+
+.tufteDesign .cTableData th:first-child,
+.tufteDesign .cTableData td:first-child {
+    padding-left: 0;
+}
+.tufteDesign .cTableData th:last-child,
+.tufteDesign .cTableData td:last-child {
+    padding-right: 0;
+}
+@media all and (max-width:899px) {
+    .tufteDesign .cTableData.fullwidth,
+    .tufteDesign .cTableData table.fullwidth {
+        max-width: 100%;
+    }
+}
+
+/* table addon --compactMobile */
+
+@media all and (max-width:599px) {
+    .cTableData.cTableData--compactMobile th,
+    .cTableData.cTableData--compactMobile td {
+        display: block;
+        text-align: left;
+        width: 100%;
+        padding-left: 0;
+        padding-right: 0;
+        border: 0;
+    }
+    .cTableData.cTableData--compactMobile thead th {
+        text-align: right;
+        padding-top: 0;
+        padding-bottom: 0;
+    }
+    .cTableData.cTableData--compactMobile tr + tr *:first-child {
+        border-top: 2px dashed rgba(0,0,0,.15);
+        margin-top: 1rem;
+        padding-top: 1rem
+    }
+    .cTableData.cTableData--compactMobile tr:hover {
+        background-color: transparent;
+    }
+    .cTableData.cTableData--compactMobile[data-table-type] tr > td,
+    .cTableData.cTableData--compactMobile .cTableData[data-table-type] tr > td,
+    .cTableData.cTableData--compactMobile .aNumber {
+        text-align: left;
+    }
+}
+
+
+/* table content */
+
+.cTableData[data-table-type*="1num"] tr > *:nth-child(1),
+.cTableData[data-table-type*="2num"] tr > *:nth-child(2),
+.cTableData[data-table-type*="3num"] tr > *:nth-child(3),
+.cTableData[data-table-type*="4num"] tr > *:nth-child(4),
+.cTableData[data-table-type*="5num"] tr > *:nth-child(5),
+.cTableData .aNumber {
+    text-align: right;
+}
+
+.cTableData[data-table-type*="1num"] tr > *:not(th):nth-child(1),
+.cTableData[data-table-type*="2num"] tr > *:not(th):nth-child(2),
+.cTableData[data-table-type*="3num"] tr > *:not(th):nth-child(3),
+.cTableData[data-table-type*="4num"] tr > *:not(th):nth-child(4),
+.cTableData[data-table-type*="5num"] tr > *:not(th):nth-child(5),
+.cTableData .aNumber:not(th) {
+    font-family: monospace;
+}
+
+@media all and (min-width:500px) {
+.cTableData[data-table-type*="1str"] tr > *:not(th):nth-child(1),
+.cTableData[data-table-type*="2str"] tr > *:not(th):nth-child(2),
+.cTableData[data-table-type*="3str"] tr > *:not(th):nth-child(3),
+.cTableData[data-table-type*="4str"] tr > *:not(th):nth-child(4),
+.cTableData[data-table-type*="5str"] tr > *:not(th):nth-child(5),
+.cTableData .aString:not(th) {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+}
+

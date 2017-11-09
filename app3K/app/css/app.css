@@ -37,6 +37,29 @@ html {
 .radio.button {
     line-height: 1.5;
 }
+.table {
+    background-color: transparent;
+    color: inherit;
+    width: auto;
+    margin-bottom: 0;
+}
+.table thead td,
+.table thead th {
+    color: inherit;
+}
+
+/*
+--------------------------------------------------- import tufte
+*/
+
+.tufteDesign th,
+.tufteDesign td {
+    border: 0;
+}
+.tufteDesign .table tr:hover {
+    background-color: transparent;
+}
+
 
 
 /*
@@ -120,7 +143,7 @@ html {
 .elMenuTrigger { display: none; }
 .elView__mobile { display: none; }
 
-@media screen and (max-width:768px) {
+@media screen and (max-width:899px) {
     .elMenuTrigger { display: inline-block; }
     .elHeaderMenu { display: none; }
     .elView__mobile { display: block; }
@@ -334,7 +357,7 @@ body.hasFocusedShadow .aFocusedShadow__container {
 ## Layout action: mobile header
 */
 
-@media screen and (max-width:768px) {
+@media screen and (max-width:899px) {
     .elHeader { display: none; }
     .elHeader.elHeaderMobile { display:flex; }
     .elHeaderMobile {
@@ -360,9 +383,9 @@ body.hasFocusedShadow .aFocusedShadow__container {
     }
 }
 
-@media (max-width: 500px) {
+@media (max-width: 599px) {
     html {
-        font-size: 13px;
+        font-size: 14px;
     }
 }
 
