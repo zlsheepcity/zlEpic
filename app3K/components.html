@@ -49,52 +49,8 @@
 <!-- =================================================== [NECK] -->
 <body class="elBody cBody">
 <section id="Home" class="elView">
-
-
-
-
-
-
-<!-- =================================================== ʕ⊙ᴥ⊙ʔ  -->
-<!-- =================================================== [view header] -->
-
-<header class="elHeader cHeader">
-
-    <!-- logo -->
-    <div class="elItem elLogo cLogo">
-        <a href="index.html" class="cHomeLink">
-            <h2 class="aDisplayAlias">Alt Title</h2>
-        </a>
-    </div>
-    <!-- endblock -->
-
-    <!-- header menu -->
-    <nav class="elHeaderMenu cMenu">
-        <ul>
-            <li class=""><a href="index.html#Home">Home</a></li>
-            <li class="is-active"><a href="#">Components</a></li>
-        </ul>
-    </nav>
-    <!-- endblock -->
-
-    <!-- page menu trigger -->
-    <div class="elMenuToolbar elMenuToolbar--placeholder">
-    </div>
-    <!-- endblock -->
-
-</header>
-
-
-
-
-
-
-
-
 <!-- =================================================== view main -->
-
 <main class="elMain cMain">
-
 <!-- =================================================== ʕ⊙ᴥ⊙ʔ  -->
 <!-- =================================================== [CONTENT START] -->
 
@@ -106,10 +62,6 @@
     <h2>cTableData sample</h2>
     <figure class="cTableData">
         <table class="table cTableData" data-table-type="1num,2str,3num,4txt">
-            <caption>
-                Imperial to metric conversion factors
-                <p><i>Values are given to three significant figures</i></p>
-            </caption>
             <thead>
                 <tr>
                     <th>
@@ -227,6 +179,61 @@
         </table>
     </figure>
 
+    <h3>cTableData--hasDataTitle</h3>
+    <figure class="cTableData cTableData--compactMobile cTableData--hasDataTitle">
+        <table class="table cTableData" data-table-type="1str,2num,3txt">
+            <thead>
+                <tr>
+                    <th>
+                        Provider
+                    </th>
+                    <th>
+                        Games
+                    </th>
+                    <th>
+                        Description
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th data-title="Provider">
+                        Microgaming
+                    </th>
+                    <td data-title="Games">
+                        590
+                    </td>
+                    <td data-title="Description with long value">
+                        The game is devoted to the Mighty Scandinavian god Thor, which gives out different symbols, such as Scatter Ram, to help a player win prizes. The option of additional gambling game is also available.
+                    </td>
+                </tr>
+                <tr>
+                    <th data-title="Provider">
+                        Evolution Gaming
+                    </th>
+                    <td data-title="Games">
+                        84
+                    </td>
+                    <td data-title="Description">
+                        Evolution Gaming works with top-tier casino operators across Europe. The company is an undisputable leader in live dealer gaming business.
+                    </td>
+                </tr>
+                <tr>
+                    <th data-title="Provider">
+                        Betradar
+                    </th>
+                    <td data-title="Games">
+                        12800
+                    </td>
+                    <td data-title="Description">
+                        A reliable software that allows bookmaker operations, registering an impressive number of bets, monitor ratio changes and live scores, analyse large volumes of sports data. Betradar software has a robust functionality that will enable your casino to operate efficiently and smoothly under the supervision of a minimum number of employees.
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </figure>
+
+
 </section>
 
 <!-- endsection === -->
@@ -234,17 +241,11 @@
 
 <!-- =================================================== cTableData tufte -->
 
-<article class="tufteDesign">
+<div class="tufteDesign">
     <section>
         <h3>cTableData tufte sample</h3>
-        <figure class="fullwidth cTableData cTableData--compactMobile">
-            <table class="table fullwidth cTableData" data-table-type="1num,2str,3num,4txt">
-                <caption>
-                    <blockquote>
-                        Imperial to metric conversion factors<br>
-                        <i>Values are given to three significant figures</i>
-                    </blockquote>
-                </caption>
+        <figure class="fullwidth cTableData cTableData--compactMobile  cTableData--hasDataTitle" data-table-type="1num,2str,3num,4txt">
+            <table class="table fullwidth">
                 <thead>
                     <tr>
                         <th>
@@ -263,44 +264,44 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td>
+                        <th data-title="Number #">
                             1
-                        </td>
-                        <td>
+                        </th>
+                        <td data-title="Provider">
                             Microgaming
                         </td>
-                        <td>
-                            511
+                        <td data-title="Games">
+                            590
                         </td>
-                        <td>
+                        <td data-title="Description with long value">
                             The game is devoted to the Mighty Scandinavian god Thor, which gives out different symbols, such as Scatter Ram, to help a player win prizes. The option of additional gambling game is also available.
                         </td>
                     </tr>
                     <tr>
-                        <td>
+                        <th data-title="Number #">
                             2
-                        </td>
-                        <td>
+                        </th>
+                        <td data-title="Provider">
                             Evolution Gaming
                         </td>
-                        <td>
+                        <td data-title="Games">
                             84
                         </td>
-                        <td>
+                        <td data-title="Description">
                             Evolution Gaming works with top-tier casino operators across Europe. The company is an undisputable leader in live dealer gaming business.
                         </td>
                     </tr>
                     <tr>
-                        <td>
+                        <th data-title="Number #">
                             3
-                        </td>
-                        <td>
+                        </th>
+                        <td data-title="Provider">
                             Betradar
                         </td>
-                        <td>
+                        <td data-title="Games">
                             12800
                         </td>
-                        <td>
+                        <td data-title="Description">
                             A reliable software that allows bookmaker operations, registering an impressive number of bets, monitor ratio changes and live scores, analyse large volumes of sports data. Betradar software has a robust functionality that will enable your casino to operate efficiently and smoothly under the supervision of a minimum number of employees.
                         </td>
                     </tr>
@@ -308,7 +309,7 @@
             </table>
         </figure>
     </section>
-</article>
+</div>
 
 <!-- endsection === -->
 
@@ -323,85 +324,6 @@
 <!-- drop overlay om main -->
 <div class="elView__shadow jsMenuClose" data-action="close"></div>
 </section>
-
-
-<!-- =================================================== ʕ⊙ᴥ⊙ʔ  -->
-<!-- =================================================== [mobile header] -->
-
-<nav class="elHeader elHeaderMobile cHeader">
-
-    <!-- logo -->
-    <div class="elItem elLogo cLogo">
-        <a href="#" class="cHomeLink">
-            <h2 class="aDisplayAlias">Alt Title</h2>
-        </a>
-    </div>
-    <!-- endblock -->
-
-    <!-- aside menu trigger -->
-    <div class="elItem elMenuTrigger cMenuTrigger jsMenuTrigger">
-        <div class="elMenuTrigger__readyToOpen">
-            <span class="aIcon aIcon--home"></span>
-        </div>
-        <div class="elMenuTrigger__readyToClose">
-            <span class="aIcon aIcon--close aIcon__contrast"></span>
-        </div>
-    </div>
-    <!-- endblock -->
-
-    <!-- page menu trigger -->
-    <div class="elMenuToolbar elMenuToolbar--placeholder">
-    </div>
-    <!-- endblock -->
-
-<!-- drop overlay on header -->
-<div class="elView__shadow jsMenuClose" data-action="close"></div>
-<!-- endblock -->
-</nav>
-
-
-
-
-
-<!-- =================================================== ʕ⊙ᴥ⊙ʔ  -->
-<!-- =================================================== [aside panel] -->
-
-<aside class="elAside cMenu cMenuAside">
-
-    <!-- aside menu -->
-    <ul>
-        <li class="is-active"><a href="#Home">Home</a></li>
-        <li class=""><a href="#">Page</a></li>
-    </ul>
-    <!-- endblock -->
-
-</aside>
-
-<!-- =================================================== reversed aside panel -->
-
-<!-- page menu trigger -->
-<div class="elMenuToolbar">
-    <span class="elItem elPageMenuTrigger elPageMenuTrigger--isFloat jsPageMenuTrigger cPageMenuTrigger">
-        <span class="elPageMenuTrigger__readyToOpen">
-            <span class="aIcon aIcon--hamburger"></span>
-        </span>
-        <span class="elPageMenuTrigger__readyToClose">
-            <span class="aIcon aIcon--close aIcon__contrast"></span>
-        </span>
-    </span>
-</div>
-<!-- endblock -->
-
-<aside class="elAside elAside--reversed cMenu cMenuAside">
-
-    <!-- aside menu -->
-    <ul>
-        <li class="is-active"><a href="#Home">Home</a></li>
-        <li class=""><a href="#">Page</a></li>
-    </ul>
-    <!-- endblock -->
-
-</aside>
 
 
 
