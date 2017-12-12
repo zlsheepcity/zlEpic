@@ -13,6 +13,16 @@
     -webkit-background-size: contain;
     background-size: contain;
 }
+button.aIcon {
+    background-color: transparent;
+    color: inherit;
+    border: 0;
+    padding: 0;
+    margin: 0;
+    font-size: inherit;
+    line-height: 1;
+    cursor: pointer;
+}
 
 
 .aIcon--hamburger

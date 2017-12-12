@@ -391,3 +391,99 @@ body.hasFocusedShadow .aFocusedShadow__container {
 }
 
 /**/
+
+/*
+------------------------------------------------- magic header
+*/
+
+/* layout */
+
+.elMagicHeader
+{
+    position: fixed;
+    z-index: 18000;
+    top: 0;
+    right: 0;
+    left: 0;
+
+    will-change: transform;
+    -webkit-transform: translateY(-100%);
+    -ms-transform: translateY(-100%);
+    -o-transform: translateY(-100%);
+    transform: translateY(-100%);
+    -webkit-transition: transform .2s ease-in;
+    -o-transition: transform .2s ease-in;
+    transition: transform .2s ease-in;
+}
+.elBody--timeForMagicHeader .elMagicHeader {
+    -webkit-transform: translateY(0);
+    -ms-transform: translateY(0);
+    -o-transform: translateY(0);
+    transform: translateY(0);
+}
+
+/* design */
+
+.cMagicHeader {
+    background-color: yellow;
+}
+.cMagicHeader__grid {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+}
+
+
+/*
+------------------------------------------------- page panel
+*/
+
+/* float trigger */
+
+.elPagePanel__FloatTrigger {
+    position: fixed;
+    z-index: 19500;
+    top: 0;
+    right: 0;
+}
+.elPagePanel__FloatTrigger .isWhenInactive { display:block; }
+.elPagePanel__FloatTrigger .isWhenActive   { display:none; }
+
+/* layout */
+
+.elPagePanel
+{
+    position: fixed;
+    z-index: 19000;
+    top: 0;
+    right: 0;
+    bottom: 0;
+
+    will-change: transform;
+    -webkit-transform: translateX(100%);
+    -ms-transform: translateX(100%);
+    -o-transform: translateX(100%);
+    transform: translateX(100%);
+    -webkit-transition: transform .2s ease-in;
+    -o-transition: transform .2s ease-in;
+    transition: transform .2s ease-in;
+}
+.elBody--pagePanelIsOpen .elPagePanel
+{
+    -webkit-transform: translateX(0);
+    -ms-transform: translateX(0);
+    -o-transform: translateX(0);
+    transform: translateX(0);
+}
+
+/* design */
+
+.cPagePanel {
+    background-color: red;
+    width: 300px;
+}
+
+/**/

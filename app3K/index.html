@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-<!-- frontent settings 12з.3xxx app3K -->
+<!-- frontent settings 12з.3002 app3K -->
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <meta http-equiv="x-ua-compatible" content="ie=edge" />
@@ -57,7 +57,7 @@
 <!-- =================================================== ʕ⊙ᴥ⊙ʔ  -->
 <!-- =================================================== [view header] -->
 
-<header class="elHeader cHeader">
+<header class="elHeader cHeader" style="display:none">
 
     <!-- logo -->
     <div class="elItem elLogo cLogo">
@@ -293,6 +293,19 @@
 
 
 <!-- =================================================== ʕ⊙ᴥ⊙ʔ  -->
+<!-- =================================================== [magic header] -->
+
+<div class="elMagicHeader cMagicHeader">
+    <nav class="cMagicHeader__grid">
+        <div class="cMagicHeader__links">
+            <a href="#" class="is-active">Home</a>
+            <a href="#">Contacts</a>
+        </div>
+    </nav>
+</div>
+
+
+<!-- =================================================== ʕ⊙ᴥ⊙ʔ  -->
 <!-- =================================================== [mobile header] -->
 
 <nav class="elHeader elHeaderMobile cHeader">
@@ -328,7 +341,32 @@
 </nav>
 
 
+<!-- =================================================== ʕ⊙ᴥ⊙ʔ  -->
+<!-- =================================================== [page panel] -->
 
+<!-- trigger -->
+<div class="elPagePanel__FloatTrigger">
+    <div class="elItem jsPagePanelTrigger">
+        <div class="isWhenInactive">
+            <button class="aIcon aIcon--hamburger"></button>
+        </div>
+        <div class="isWhenActive">
+            <button class="aIcon aIcon--close aIcon__contrast"></button>
+        </div>
+    </div>
+</div>
+<!-- endblock -->
+
+<aside class="elPagePanel cPagePanel">
+    <nav class="cMenu cMenuAside">
+        <!-- aside menu -->
+        <ul>
+            <li class="is-active"><a href="#Home">Home</a></li>
+            <li class=""><a href="#">Page</a></li>
+        </ul>
+        <!-- endblock -->
+    </nav>
+</aside>
 
 
 <!-- =================================================== ʕ⊙ᴥ⊙ʔ  -->
@@ -347,18 +385,20 @@
 
 <!-- =================================================== reversed aside panel -->
 
-<!-- page menu trigger -->
-<div class="elMenuToolbar">
-    <span class="elItem elPageMenuTrigger elPageMenuTrigger--isFloat jsPageMenuTrigger cPageMenuTrigger">
-        <span class="elPageMenuTrigger__readyToOpen">
-            <span class="aIcon aIcon--hamburger"></span>
-        </span>
-        <span class="elPageMenuTrigger__readyToClose">
-            <span class="aIcon aIcon--close aIcon__contrast"></span>
-        </span>
-    </span>
-</div>
-<!-- endblock -->
+            <!-- page menu trigger -->
+            <div style="display:none">
+            <div class="elMenuToolbar">
+                <span class="elItem elPageMenuTrigger elPageMenuTrigger--isFloat jsPageMenuTrigger cPageMenuTrigger">
+                    <span class="elPageMenuTrigger__readyToOpen">
+                        <span class="aIcon aIcon--hamburger"></span>
+                    </span>
+                    <span class="elPageMenuTrigger__readyToClose">
+                        <span class="aIcon aIcon--close aIcon__contrast"></span>
+                    </span>
+                </span>
+            </div>
+            </div>
+            <!-- endblock -->
 
 <aside class="elAside elAside--reversed cMenu cMenuAside">
 

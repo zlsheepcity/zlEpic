@@ -16,6 +16,22 @@ $(function(){
     }
     $('.jsPageMenuClose').on('click', jsCloseAllMenus);
 
+    /* aside menu */
+    $('.jsPagePanelTrigger').on('click', jsPagePanelTrigger);
+    function jsPagePanelTrigger(e) {
+        $('.elBody').toggleClass('elBody--pagePanelIsOpen');
+    }
+
+    /* magic header on scroll */
+    var scrollOffsetForMagicHeader = 200;
+    $(window).scroll(function () {
+        if ($(this).scrollTop() > scrollOffsetForMagicHeader) {
+            $('.elBody').addClass("elBody--timeForMagicHeader");
+        } else {
+            $('.elBody').removeClass("elBody--timeForMagicHeader");
+        }
+    });
+
     /* close all */
     function jsCloseAllMenus(e) {
         $('.elBody')
