@@ -29,6 +29,30 @@
 <!-- ## critical CSS -->
 
 <style>
+    img {
+        max-width: 100%;
+    }
+</style>
+
+<!-- ## libs -->
+
+<!-- bulma --><link
+     href="app/lib/bulmaParts.css"
+     rel="stylesheet"  media="all" /><!-- / -->
+<!-- tufte --><link
+     href="app/lib/tufteDesign.css"
+     rel="stylesheet"  media="all" /><!-- / -->
+<!-- social likes --><link
+     href="app/lib/social-likes_flat.css"
+     rel="stylesheet"  media="all" /><!-- / -->
+<!-- app layout --><link
+     href="app/app4k/main.css"
+     rel="stylesheet"  media="all" /><!-- / -->
+
+<!-- ## Theme CSS -->
+
+<style>
+    /* appTheme */
     html {
         font-size: 15px;
     }
@@ -37,37 +61,40 @@
          font-size: 13px;
         }
     }
-    img {
-        max-width: 100%;
+    body {
+        background-color: #fffff8;
+        color: #111;
+        font-family: "Vollkorn", et-book, Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, serif;
+        line-height: 1.4;
+    }
+    h4 {
+        font-family: sans-serif;
+        font-weight: 400;
+        font-size: 2rem;
+        line-height: 1;
+    }
+    /* appTufte */
+    .tufteDesign__mama {
+        background-color: #fffff8;
+        color: #111;
+    }
+    .tufteDesign {
+        font-size: 1rem;
+    }
+    @media (max-width: 900px) {
+        .tufteDesign label.margin-toggle {
+            color: #0ABFBC;
+        }
+        .tufteDesign .margin-toggle:checked + .sidenote,
+        .tufteDesign .margin-toggle:checked + .marginnote {
+            background-color: azure;
+        }
+    }
+    .tufteDesign--layer article {
+        padding-top: 0;
+        padding-bottom: 0;
     }
 </style>
-
-<!-- ## libs -->
-
-<!-- tufte --><link
-     href="app/lib/tufteDesign.css"
-     rel="stylesheet"  media="all" />
-     <style>
-        .tufteDesign__mama {
-            background-color: #fffff8;
-            color: #111;
-        }
-        .tufteDesign {
-            font-size: 1rem;
-        }
-        @media (max-width: 900px) {
-            .tufteDesign label.margin-toggle {
-                color: #0ABFBC;
-            }
-            .tufteDesign .margin-toggle:checked + .sidenote,
-            .tufteDesign .margin-toggle:checked + .marginnote {
-                background-color: azure;
-            }
-        }
-     </style><!-- / -->
-<!-- app layout --><link
-     href="app/app4k/main.css"
-     rel="stylesheet"  media="all" /><!-- / -->
 
 <!-- ## custom settings below-->
 
@@ -233,14 +260,253 @@
         <figure><img src="data/demo/imagequilt-animal-sounds.png" alt="Image of animal sounds" class="zzz"/></figure>
       </section>
 
-      <section>
-        <h2 id="epilogue">Epilogue</h2>
-        <p>Many thanks go to Edward Tufte for leading the way with his work. It is only through his kind and careful editing that this project accomplishes what it does. All errors of implementation are of course mine.</p>
-      </section>
     </article>
 </div>
 </div>
 <!-- end tufte -->
+
+<!-- =================================================== form sample -->
+<div class="elLayer">
+    <div class="tufteDesign tufteDesign--layer">
+        <article>
+            <section>
+                <h2>Subscribe form</h2>
+                <p>Get notified when v1 is ready!</p>
+                <form class="cForm">
+                    <div class="field">
+                        <label class="label">Email</label>
+                        <div class="control">
+                            <input class="input" type="email" placeholder="e.g. alexsmith@gmail.com">
+                        </div>
+                    </div>
+                    <div class="control">
+                        <button class="button is-primary">Submit</button>
+                    </div>
+                </form>
+            </section>
+        </article>
+    </div>
+</div>
+<div class="elLayer">
+    <div class="tufteDesign tufteDesign--layer">
+        <article>
+            <section>
+                <h3>Form elements</h3>
+                <p>Get notified when v1 is ready!</p>
+                <form class="cForm">
+
+                    <div class="field">
+                      <label class="label">Name</label>
+                      <div class="control">
+                        <input class="input" type="text" placeholder="e.g Alex Smith">
+                      </div>
+                    </div>
+
+                    <div class="field">
+                      <label class="label">Email</label>
+                      <div class="control">
+                        <input class="input" type="email" placeholder="e.g. alexsmith@gmail.com">
+                      </div>
+                    </div>
+
+                    <div class="field">
+                        <label class="label">Select</label>
+                        <div class="control">
+                          <div class="select">
+                            <select>
+                              <option>Select dropdown</option>
+                              <option>With options</option>
+                            </select>
+                          </div>
+                        </div>
+                    </div>
+
+                    <div class="field">
+                      <label class="label">Message</label>
+                      <div class="control">
+                        <textarea class="textarea" placeholder="Textarea"></textarea>
+                      </div>
+                    </div>
+                </form>
+            </section>
+        </article>
+    </div>
+</div>
+<div class="elLayer cForm--asideWrap">
+    <div class="tufteDesign tufteDesign--layer">
+        <article>
+            <section>
+                <h3>Form elements</h3>
+                <p>Get notified when v1 is ready!</p>
+            </section>
+        </article>
+    </div>
+    <form class="cForm">
+
+        <div class="field is-horizontal">
+          <div class="field-label is-normal">
+            <label class="label">From</label>
+          </div>
+          <div class="field-body">
+            <div class="field">
+              <div class="control">
+                <input class="input" type="text" placeholder="Name">
+              </div>
+            </div>
+            <div class="field">
+              <div class="control">
+                <input class="input" type="email" placeholder="Email" value="alex@smith.com">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="field is-horizontal">
+          <div class="field-label"></div>
+          <div class="field-body">
+            <div class="field is-expanded">
+              <div class="field has-addons">
+                <div class="control">
+                  <a class="button is-static">
+                    +44
+                  </a>
+                </div>
+                <div class="control is-expanded">
+                  <input class="input" type="tel" placeholder="Your phone number">
+                </div>
+              </div>
+              <div class="help">Do not enter the first zero</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="field is-horizontal">
+          <div class="field-label is-normal">
+            <label class="label">Department</label>
+          </div>
+          <div class="field-body">
+            <div class="field is-narrow">
+              <div class="control">
+                <div class="select is-fullwidth">
+                  <select>
+                    <option>Business development</option>
+                    <option>Marketing</option>
+                    <option>Sales</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="field is-horizontal">
+          <div class="field-label">
+            <label class="label">Already a member?</label>
+          </div>
+          <div class="field-body">
+            <div class="field is-narrow">
+              <div class="control">
+                <label class="radio">
+                  <input type="radio" name="member">
+                  Yes
+                </label>
+                <label class="radio">
+                  <input type="radio" name="member">
+                  No
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="field is-horizontal">
+          <div class="field-label is-normal">
+            <label class="label">Subject</label>
+          </div>
+          <div class="field-body">
+            <div class="field">
+              <div class="control">
+                <input class="input is-danger" type="text" placeholder="e.g. Partnership opportunity">
+              </div>
+              <div class="help is-danger">
+                This field is required
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="field is-horizontal">
+          <div class="field-label is-normal">
+            <label class="label">Question</label>
+          </div>
+          <div class="field-body">
+            <div class="field">
+              <div class="control">
+                <textarea class="textarea" placeholder="Explain how we can help you"></textarea>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="field is-horizontal">
+          <div class="field-label">
+            <!-- Left empty for spacing -->
+          </div>
+          <div class="field-body">
+            <div class="field">
+              <div class="control">
+                <button class="button is-primary">
+                  Send message
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+    </form>
+</div>
+<!-- end forms -->
+
+<!-- =================================================== content layer sample -->
+
+<div class="elLayer cLayerContrast">
+    <div class="tufteDesign">
+        <article>
+            <section>
+                <h2 class="dCaption">Epilogue</h2>
+                <p>Many thanks go to Edward Tufte for leading the way with his work. It is only through his kind and careful editing that this project accomplishes what it does. All errors of implementation are of course mine.</p>
+            </section>
+        </article>
+    </div>
+</div>
+
+
+
+<!-- =================================================== social likes sample -->
+<div class="elLayer cLayerContrast cLayerContrast--opposition">
+    <div class="tufteDesign">
+        <article>
+            <section>
+                <h2>Лайкни всё это</h2>
+                <div class="social-likes">
+                    <div data-service="facebook" title="Share link on Facebook">Facebook</div>
+                    <div data-service="twitter" title="Share link on Twitter">Twitter</div>
+                    <div data-service="pinterest" title="Share link on Pinterest" data-media="image link, required">Pinterest</div>
+                    <div data-service="vkontakte" title="Share link on Vkontakte">Vkontakte</div>
+                </div>
+            </section>
+        </article>
+    </div>
+</div>
+<!-- end social likes sample -->
+
+
+<!-- =================================================== elSection sample -->
+<section class="elSection">
+    © 2018
+</section>
+<!-- end elSection -->
+
 
 </main>
 
@@ -256,8 +522,9 @@
 <!-- =================================================== magic header -->
 
 <aside class="elMagicHeader cMagicHeader">
-    <nav class="cMagicHeader__links">
+    <nav class="cMagicHeader__links elAntiItem">
         <a href="#" class="elItem is-active">Home</a>
+        <a href="#" class="elItem">Products</a>
         <a href="#" class="elItem">Contacts</a>
     </nav>
 </aside>
