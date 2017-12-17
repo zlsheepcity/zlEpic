@@ -68,10 +68,25 @@
         line-height: 1.4;
     }
     h4 {
-        font-family: sans-serif;
         font-weight: 400;
-        font-size: 2rem;
+        font-size: 1.4em;
         line-height: 1;
+        margin-top: 0;
+        margin-bottom: .5em;
+    }
+    h5 {
+        font-weight: 400;
+        font-size: 1.2em;
+        line-height: 1.2;
+        margin-top: 0;
+        margin-bottom: .5em;
+    }
+    p {
+        margin-top: 0;
+        margin-bottom: 1em;
+    }
+    p:last-child {
+        margin-bottom: 0;
     }
     /* appTufte */
     .tufteDesign__mama {
@@ -98,6 +113,37 @@
 
 <!-- ## custom settings below-->
 
+<style>
+    .cLandingDefault .cLanding__view {
+        padding-left: 4vw;
+    }
+    .cLandingDefault .cLanding__content {
+        padding-left: 8.5vw;
+        min-height: 50vh;
+
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        justify-content: flex-end;
+        align-items: flex-start;
+        align-content: center;
+
+        background-image: url(data/demo/writing.svg);
+        background-repeat: no-repeat;
+        -webkit-background-size: contain;
+        background-size: contain;
+        background-position: left center;
+    }
+    @media all and (max-width:900px){
+        .cLandingDefault .cLanding__content {
+            padding-left: 4vw;
+        }
+    }
+    .cLandingDefault .aCard {
+        font-size: 2rem;
+    }
+</style>
+
 
 </head>
 <!-- =================================================== ʕ⊙ᴥ⊙ʔ  -->
@@ -105,9 +151,228 @@
 <body class="elBody cBody">
 <div  class="elView cView">
 <!-- =================================================== ʕ⊙ᴥ⊙ʔ  -->
-<!-- =================================================== [CONTENT START] -->
+<!-- =================================================== [landing screen] -->
+
+
+<section id="Home" class="cLanding cLandingDefault">
+    <header class="cLanding__header">
+        <h2 class="aTitle">Title</h2>
+    </header>
+    <nav class="cLanding__menu">
+        <div class="cMainNav">
+            <a href="#Home" class="is-active">Home</a>
+            <a href="#" class="">Products</a>
+            <a href="#Contacts" class="">Contacts</a>
+        </div>
+    </nav>
+    <div class="cLanding__view">
+
+        <!-- =================================================== landing content -->
+        <div class="cLanding__content">
+            <div class="aCard">
+                <h4>Landing message</h4>
+                <p>Is a message at landing</p>
+            </div>
+        </div>
+        <!-- end landing content -->
+
+    </div>
+</section>
+
 
 <main class="elMain cMain">
+<!-- =================================================== ʕ⊙ᴥ⊙ʔ  -->
+<!-- =================================================== [CONTENT START] -->
+
+<header class="cStageHeader cStageHeader--noAnchor">
+    <div class="aDecor"></div>
+    <h2 class="aCaption">Актуальное <span class="aSymbol">/</span> Current</h2>
+    <div class="aDecor"></div>
+</header>
+
+
+<div class="cCardeQuatBox">
+    <!-- ======================================================= Card ༼°▽°༽ -->
+    <section class="cCardeQuatCard">
+        <div class="cCardeQuatCard__image">
+            <figure class="image is-4by3">
+                <a
+                    href="#"
+                ><img class="image"
+                    src="data/demo/writing.svg"
+                    alt=""
+                ></a>
+            </figure>
+        </div>
+        <footer class="cCardeQuatCard__footer">
+            <h4 class="aTitle">
+                <span class="aLinkDecoration"><a class="aLink"
+                    href="#"
+                >
+                    Web gallery «Sheep City»
+                </a></span>
+            </h4>
+            <h5 class="aSubtitle">
+                <a class="aLink"
+                    href="#"
+                >
+                    Картинки и рассказы об овечках
+                </a>
+            </h5>
+        </footer>
+    </section>
+    <!-- ======================================================= Card ༼°▽°༽ -->
+    <section class="cCardeQuatCard">
+        <div class="cCardeQuatCard__image">
+            <figure class="image is-4by3">
+                <a
+                    href="#"
+                ><img class="image"
+                    src="data/demo/writing.svg"
+                    alt=""
+                ></a>
+            </figure>
+        </div>
+        <footer class="cCardeQuatCard__footer">
+            <h4 class="aTitle">
+                <span class="aLinkDecoration"><a class="aLink"
+                    href="#"
+                >
+                    Сувениры / Gifts
+                </a></span>
+            </h4>
+            <h5 class="aSubtitle">
+                <a class="aLink"
+                    href="#"
+                >
+                    New product: Calendar-2018
+                </a>
+            </h5>
+        </footer>
+    </section>
+    <!-- ======================================================= Card ༼°▽°༽ -->
+    <section class="cCardeQuatCard">
+        <div class="cCardeQuatCard__image">
+            <figure class="image is-4by3">
+                <a
+                    href="#"
+                ><img class="image"
+                    src="data/demo/writing.svg"
+                    alt=""
+                ></a>
+            </figure>
+        </div>
+        <footer class="cCardeQuatCard__footer">
+            <h4 class="aTitle">
+                <span class="aLinkDecoration"><a class="aLink"
+                    href="#"
+                >
+                    Telegram sticker set
+                </a></span>
+            </h4>
+            <h5 class="aSubtitle">
+                <a class="aLink"
+                    href="#"
+                >
+                    Vector icons
+                </a>
+            </h5>
+        </footer>
+    </section>
+    <!-- =================================== End Collumn ༼°▽°༽༼°▽°༽༼°▽°༽ -->
+</div>
+
+<!-- =================================================== Content -->
+
+<header class="cStageHeader">
+    <div class="aDecor"></div>
+    <h2 class="aCaption">Содержание <span class="aSymbol">/</span> Content</h2>
+    <div class="aDecor"></div>
+</header>
+<div class="cSaturs">
+    <section class="cBlog cBlog__images">
+        <header>
+            <h3 class="aCaption">New images</h3>
+        </header>
+        <!-- ------------------------------- Card -->
+        <article class="cBlogCard">
+            <figure class="image">
+                <img src="data/demo/napoleons-march.png" class="zzz">
+                <figcaption>
+                    Some description with <a href="#">the link</a>
+                </figcaption>
+            </figure>
+        </article>
+        <!-- ------------------------------- Card -->
+        <article class="cBlogCard">
+            <figure class="image">
+                <img src="data/demo/exports-imports.png" class="zzz">
+            </figure>
+        </article>
+
+        <footer class="cBlogCard">
+            <h4>More images</h4>
+            <ul>
+                <li>facebook</li>
+                <li>facebook</li>
+            </ul>
+        </footer>
+    </section>
+    <section class="cBlog cBlog__topics">
+        <header>
+            <h3 class="aCaption">Topics</h3>
+        </header>
+        <!-- ------------------------------- Card -->
+        <article class="cBlogCard">
+            <h4 class="aTitle"><a href="#">Рассказы, 2014</a></h4>
+            <h5 class="aSubtitle">
+                <a href="#">Сборник добрых рассказов про зверей и людей, 2014</a>
+            </h5>
+        </article>
+        <!-- ------------------------------- Card -->
+        <article class="cBlogCard">
+            <h4 class="aTitle"><a href="#">HTML лекции</a></h4>
+            <h5 class="aSubtitle">
+                <a href="#">Вспомогательные материалы к лекциям</a>
+            </h5>
+        </article>
+
+        <div>
+            <h3 class="aCaption">Topics</h3>
+        </div>
+    </section>
+</div>
+
+<!-- =================================================== Contacts -->
+
+<header id="Contacts" class="cStageHeader">
+    <div class="aDecor"></div>
+    <h2 class="aCaption">Контакты <span class="aSymbol">/</span> Contacts</h2>
+    <div class="aDecor"></div>
+</header>
+<div class="elLayer">
+    <div class="tufteDesign tufteDesign--layer">
+        <article>
+            <section>
+                <h2>Subscribe form</h2>
+                <p>Get notified when v1 is ready!</p>
+                <form class="cForm">
+                    <div class="field">
+                        <label class="label">Email</label>
+                        <div class="control">
+                            <input class="input" type="email" placeholder="e.g. alexsmith@gmail.com">
+                        </div>
+                    </div>
+                    <div class="control">
+                        <button class="button is-primary">Submit</button>
+                    </div>
+                </form>
+            </section>
+        </article>
+    </div>
+</div>
+
+
 
 <!-- =================================================== tufte -->
 <div class="tufteDesign__mama">
@@ -468,7 +733,6 @@
 <!-- end forms -->
 
 <!-- =================================================== content layer sample -->
-
 <div class="elLayer cLayerContrast">
     <div class="tufteDesign">
         <article>
@@ -508,10 +772,9 @@
 <!-- end elSection -->
 
 
-</main>
-
 <!-- =================================================== [CONTENT END] -->
 <!-- =================================================== ʕ⊙ᴥ⊙ʔ  -->
+</main>
 <!-- drop overlay om main -->
 <div class="elView__shadow jsAppTrigger" data-todo="close"></div>
 </div>
@@ -522,11 +785,11 @@
 <!-- =================================================== magic header -->
 
 <aside class="elMagicHeader cMagicHeader">
-    <nav class="cMagicHeader__links elAntiItem">
-        <a href="#" class="elItem is-active">Home</a>
-        <a href="#" class="elItem">Products</a>
-        <a href="#" class="elItem">Contacts</a>
-    </nav>
+        <nav class="cMainNav">
+            <a href="#" class="is-active">Home</a>
+            <a href="#" class="">Products</a>
+            <a href="#Contacts" class="">Contacts</a>
+        </nav>
 </aside>
 
 
