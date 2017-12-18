@@ -283,14 +283,45 @@ $(function(){
     }
 
     // magic header on scroll down
-    var scrollOffsetForMagicHeader = 200;
+    var scrollOffsetForMagicHeader = 900;
+    var qBody = $('.elBody');
+    var qSitePanelTrigger = $('.cSitePanel__floatTrigger');
     $(window).scroll(function () {
-        if ($(this).scrollTop() > scrollOffsetForMagicHeader) {
-            $('.elBody').addClass("itsTimeForMagicHeader");
+        var s = $(this).scrollTop();
+
+        if ( s > 0 ) {
+            qSitePanelTrigger.removeClass("isOnTop");
         } else {
-            $('.elBody').removeClass("itsTimeForMagicHeader");
+            qSitePanelTrigger.addClass("isOnTop");
+            jsHashtagMenuAction('#Home');
         }
+        
+        if ( s > scrollOffsetForMagicHeader) {
+            qBody.addClass("itsTimeForMagicHeader");
+        } else {
+            qBody.removeClass("itsTimeForMagicHeader");
+        }
+        
+        
     });
+    
+    // hashtag menu
+    $('a[href="#Home"]').on('click', jsHashtagMenuEvent);
+    $('a[href="#Contacts"]').on('click', jsHashtagMenuEvent);
+    function jsHashtagMenuEvent(e) {
+        var kliker = $(e.currentTarget);
+        var href = kliker.attr('href');
+        jsHashtagMenuAction(href);
+    }
+    function jsHashtagMenuAction(href) {
+        var c_home = $('a[href="#Home"]');
+        var c_contacts = $('a[href="#Contacts"]');
+        c_home.removeClass('is-active');
+        c_contacts.removeClass('is-active');
+        if ( href == '#Contacts' ) c_contacts.addClass('is-active');
+        if ( href == '#Home' ) c_home.addClass('is-active');
+    }
+    
 
 
 });

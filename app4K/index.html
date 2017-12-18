@@ -45,8 +45,14 @@
 <!-- social likes --><link
      href="app/lib/social-likes_flat.css"
      rel="stylesheet"  media="all" /><!-- / -->
-<!-- app layout --><link
+<!-- app --><link
+     href="app/app4k/icons.css"
+     rel="stylesheet"  media="all" /><!-- / -->
+<!-- app --><link
      href="app/app4k/main.css"
+     rel="stylesheet"  media="all" /><!-- / -->
+<!-- app --><link
+     href="app/app4k/components.css"
      rel="stylesheet"  media="all" /><!-- / -->
 
 <!-- ## Theme CSS -->
@@ -114,34 +120,7 @@
 <!-- ## custom settings below-->
 
 <style>
-    .cLandingDefault .cLanding__view {
-        padding-left: 4vw;
-    }
-    .cLandingDefault .cLanding__content {
-        padding-left: 8.5vw;
-        min-height: 50vh;
 
-        display: flex;
-        flex-direction: row;
-        flex-wrap: nowrap;
-        justify-content: flex-end;
-        align-items: flex-start;
-        align-content: center;
-
-        background-image: url(data/demo/writing.svg);
-        background-repeat: no-repeat;
-        -webkit-background-size: contain;
-        background-size: contain;
-        background-position: left center;
-    }
-    @media all and (max-width:900px){
-        .cLandingDefault .cLanding__content {
-            padding-left: 4vw;
-        }
-    }
-    .cLandingDefault .aCard {
-        font-size: 2rem;
-    }
 </style>
 
 
@@ -156,11 +135,12 @@
 
 <section id="Home" class="cLanding cLandingDefault">
     <header class="cLanding__header">
-        <h2 class="aTitle">Title</h2>
+        <h2 class="aTitle">www.sheep.today</h2>
     </header>
     <nav class="cLanding__menu">
         <div class="cMainNav">
             <a href="#Home" class="is-active">Home</a>
+            <a href="#" class="">Gallery</a>
             <a href="#" class="">Products</a>
             <a href="#Contacts" class="">Contacts</a>
         </div>
@@ -168,10 +148,15 @@
     <div class="cLanding__view">
 
         <!-- =================================================== landing content -->
+        <div class="cLanding__image">
+            <figure class="image">
+                <img src="data/demo/writing.svg" alt=""/>
+            </figure>
+        </div>
         <div class="cLanding__content">
             <div class="aCard">
                 <h4>Landing message</h4>
-                <p>Is a message at landing</p>
+                <p>Овечки всё делают для людей</p>
             </div>
         </div>
         <!-- end landing content -->
@@ -199,7 +184,7 @@
                 <a
                     href="#"
                 ><img class="image"
-                    src="data/demo/writing.svg"
+                    src="data/landing/cardequate-SheepCity.jpg"
                     alt=""
                 ></a>
             </figure>
@@ -228,7 +213,7 @@
                 <a
                     href="#"
                 ><img class="image"
-                    src="data/demo/writing.svg"
+                    src="data/landing/cardequate-Prints.jpg"
                     alt=""
                 ></a>
             </figure>
@@ -289,7 +274,7 @@
     <h2 class="aCaption">Содержание <span class="aSymbol">/</span> Content</h2>
     <div class="aDecor"></div>
 </header>
-<div class="cSaturs">
+<div class="cSaturs textDesign">
     <section class="cBlog cBlog__images">
         <header>
             <h3 class="aCaption">New images</h3>
@@ -326,18 +311,18 @@
         <article class="cBlogCard">
             <h4 class="aTitle"><a href="#">Рассказы, 2014</a></h4>
             <h5 class="aSubtitle">
-                <a href="#">Сборник добрых рассказов про зверей и людей, 2014</a>
+                Сборник добрых рассказов про зверей и людей
             </h5>
         </article>
         <!-- ------------------------------- Card -->
         <article class="cBlogCard">
             <h4 class="aTitle"><a href="#">HTML лекции</a></h4>
             <h5 class="aSubtitle">
-                <a href="#">Вспомогательные материалы к лекциям</a>
+                Вспомогательные материалы к лекциям
             </h5>
         </article>
 
-        <div>
+        <div class="cBlog__subsection">
             <h3 class="aCaption">Topics</h3>
         </div>
     </section>
@@ -786,7 +771,8 @@
 
 <aside class="elMagicHeader cMagicHeader">
         <nav class="cMainNav">
-            <a href="#" class="is-active">Home</a>
+            <a href="#Home" class="is-active">Home</a>
+            <a href="#" class="">Gallery</a>
             <a href="#" class="">Products</a>
             <a href="#Contacts" class="">Contacts</a>
         </nav>
@@ -797,10 +783,10 @@
 
 <aside class="elSidePanel cSitePanel">
     <!-- trigger -->
-    <div class="elSitePanel__floatTrigger cSitePanel__floatTrigger cDcFloatButton">
+    <div class="elSitePanel__floatTrigger cSitePanel__floatTrigger cDcFloatButton isOnTop">
         <div class="jsAppTrigger" data-trigga="hasOpenSitePanel">
             <div class="isWhenInactive">
-                <button class="aIcon aIcon--home"></button>
+                <button class="aIcon aIcon--primarysheep"></button>
             </div>
             <div class="isWhenActive">
                 <button class="aIcon aIcon--close aIcon__contrast"></button>
@@ -808,8 +794,15 @@
         </div>
     </div>
     <!-- endblock -->
-    <div class="elSitePanel__layout cSitePanel__layout">
-        
+    <div class="elSitePanel__layout cSitePanel__layout cLayerContrast cSecretChamber">
+        <div>
+            Вы нашли секретную комнату!
+            <br><br>
+            You found secret place!
+        </div>
+        <figure class="image">
+            <img src="app/img/LuiSheep.svg" alt="sheep"/>
+        </figure>
     </div>
 </aside>
 
