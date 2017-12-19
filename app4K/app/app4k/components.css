@@ -6,6 +6,82 @@ v2017.12.17 app4K.4001
 --------------------------------------------------- 
 */
 
+.cTitleAsSub {
+    
+}
+.cTitleAsTip {
+    margin: 0;
+    padding: 0;
+    padding-bottom: 1rem;
+    font-weight: normal;
+    font-size: 1.2rem;
+    font-family: sans-serif;
+    opacity: .5;
+}
+.cTitleAsBlock {
+    
+}
+.cTitleAsTextline {
+    
+}
+
+/*
+--------------------------------------------------- 
+*/
+
+.cDcFloatButton .aIcon {
+    font-size: 4rem;
+}
+@media all and (max-width:900px){
+    .cDcFloatButton .aIcon {
+        font-size: 8vw;
+    }
+}
+
+/*
+--------------------------------------------------- 
+*/
+
+.cLayerContrast {
+    background-color: #033649;
+    color: #E8DDCB;
+}
+.cLayerContrast .dCaption {
+    color: #CDB380;
+}
+.cLayerContrast--opposition {
+    background-color: #031634;
+}
+
+/*
+--------------------------------------------------- 
+*/
+
+.cMainNav {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: center;
+    align-content: center;
+    margin-left: -8px;
+    font-size: 1.4rem;
+}
+.cMainNav > * {
+    display: inline-block;
+    padding: 8px;
+}
+.cMainNav a {
+    color: #033649;
+}
+.cMainNav a.is-active {
+    text-decoration: none;
+}
+
+/*
+--------------------------------------------------- 
+*/
+
 .cSecretChamber {
     padding: 4px 12px;
     display: flex;
@@ -25,7 +101,94 @@ v2017.12.17 app4K.4001
 }
 
 /*
---------------------------------------------------- 
+Stage header
+*/
+
+.cStageHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+    padding-top: 4rem;
+    padding-bottom: 1rem;
+}
+.cStageHeader--noAnchor {
+    padding-top: 1rem;
+}
+.cStageHeader .aCaption {
+    display: inline-block;
+    flex-grow: 0;
+    margin: 0;
+    padding: 0;
+    padding-left: 4vw;
+    padding-right: 4vw;
+    font-size: 3.2rem;
+    line-height: 1.2;
+    font-weight: 700;
+    color: rgba( 68, 42, 55, 1);
+}
+.cStageHeader::before,
+.cStageHeader::after {
+    content:'';
+    display: block;
+    flex-grow: 1;
+    height: 1rem;
+    background-color: rgba( 68, 42, 55, .1);
+}
+.cStageHeader .aSymbol {
+    color: rgba( 68, 42, 55, .15);
+}
+@media all and (max-width:900px) {
+    .cStageHeader:not(.cStageHeader--noAnchor) {
+        padding-top: 10vw;
+    }
+    .cStageHeader .aCaption {
+        font-size: 2.1rem;
+    }
+}
+
+/*
+---------------------------------------------------
+*/
+
+.cSiteHeader {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-items: flex-start;
+    align-content: center;
+
+    padding-left: 12.5%;
+    padding-right: 12.5%;
+}
+.cSiteHeader .aTitle {
+    margin: 0;
+    padding: 0;
+    padding-top: 1rem;
+    font-weight: normal;
+    font-size: 3rem;
+    line-height: 1;
+}
+
+/*
+Landing intro section
+*/
+
+.cLanding {
+    background-color: #E8DDCB;
+}
+.cLanding__view {
+    padding-top: 2rem;
+    padding-bottom: 4rem;
+    padding-left: 12.5%;
+    padding-right: 12.5%;
+}
+
+
+
+/*
+Default landing
 */
 
 .cLandingDefault .cLanding__view {
@@ -48,6 +211,186 @@ v2017.12.17 app4K.4001
 
 .cLandingDefault .aCard {
     font-size: 2rem;
+}
+
+
+
+/*
+Card design cCardeQuat
+*/
+
+.cCardeQuatBox {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: stretch;
+    align-content: stretch;
+}
+.cCardeQuatCard {
+    padding: 1rem 2rem;
+    width: 33%;
+}
+@media screen and (min-width:1200px) {
+    .cCardeQuatCard {
+        padding: 2rem 4rem;
+        max-width: calc( 600px + 8rem );
+    }
+}
+
+.cCardeQuatCard .aLinkDecoration {
+    display: inline-block;
+    color:black;
+    padding: .1em;
+}
+.cCardeQuatCard .aLink {
+    color:black;
+    text-decoration: none;
+}
+.cCardeQuatCard .aTitle {
+    padding: 0;
+    margin: 0;
+    margin-top: 1rem;
+    margin-bottom: .5rem;
+    line-height: 1.2;
+    font-size:2.1vw;
+}
+.cCardeQuatCard .aSubtitle {
+    padding: 0;
+    margin: 0;
+    font-size:1.7vw;
+}
+@media screen and (min-width:1200px) {
+    .cCardeQuatCard .aTitle {
+        font-size:1.7rem;
+    }
+    .cCardeQuatCard .aSubtitle {
+        font-size:1.4rem;
+    }
+}
+.cCardeQuatCard .aLinkDecoration {
+    border: 0px solid rgba(255,0,0,.5);
+    border-bottom-width: 2px;
+    -webkit-transition: background .2s;
+    -o-transition: background .2s;
+    transition: background .2s;
+}
+.cCardeQuatCard .aTitle .aLinkDecoration:hover,
+.cCardeQuatCard .cCardeQuatCard__image:hover+.cCardeQuatCard__footer  .aLinkDecoration {
+    background-color: rgba(255,0,0,.5);
+    border-bottom-color: transparent;
+}
+
+@media screen and (min-width:1600px) {
+    .cCardeQuatCard .cCardeQuatCard__image {
+        will-change: transform;
+        -webkit-transition: transform .4s ease-out;
+        -o-transition: transform .4s ease-out;
+        transition: transform .4s ease-out;
+    }
+    .cCardeQuatCard .cCardeQuatCard__image:hover {
+        -webkit-transform: translateY(0.5rem);
+        -ms-transform: translateY(0.5rem);
+        -o-transform: translateY(0.5rem);
+        transform: translateY(0.5rem);
+    }
+}
+
+/* modile card */
+@media (max-width:900px) and (min-width:601px) {
+    .cCardeQuatCard {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+    .cCardeQuatCard__footer {
+        text-align: center;
+    }
+    .cCardeQuatCard .aTitle {
+        font-size:1.2rem;
+    }
+    .cCardeQuatCard .aSubtitle {
+        font-size:1rem;
+    }
+}
+@media all and (max-width:600px) {
+    .cCardeQuatBox {
+        flex-direction: column;
+        flex-wrap: wrap;
+    }
+    .cCardeQuatCard {
+        width: 100%;
+        padding-left: 8vw;
+        padding-right: 2vw;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        justify-content: space-between;
+        align-items: center;
+        align-content: stretch;
+    }
+    .cCardeQuatCard__footer {
+        order: 1;
+    }
+    .cCardeQuatCard__image {
+        width: 24vw;
+        max-width: 160px;
+        order: 2;
+        flex-grow: 0;
+        flex-shrink: 0;
+    }
+    .cCardeQuatCard .aTitle {
+        font-size:1.5rem;
+    }
+    .cCardeQuatCard .aSubtitle {
+        font-size:1.2rem;
+    }
+}
+
+/*
+Saturs block
+*/
+
+.cSaturs {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: flex-start;
+    align-content: flex-start;
+}
+.cSaturs > .cBlog__images {
+    width: 58%;
+    max-width: calc( 600px + 2rem );
+}
+.cSaturs > .cBlog__topics {
+    /*width: 42%;*/
+    flex-grow: 2;
+}
+
+
+/*
+Blog style data
+*/
+
+.cBlog {
+    padding-left: 2rem;
+    padding-right: 2rem;
+}
+@media all and (min-width:1200px) {
+    .cBlog {
+        padding-left: 4rem;
+        padding-right: 4rem;
+    }
+}
+.cBlog + .cBlog {
+    padding-left: 0;
+}
+.cBlogCard + .cBlogCard {
+    margin-top: 2rem;
+}
+.cBlog__subsection {
+    margin-top: 2rem;
+    padding-top: 2rem;
 }
 
 
