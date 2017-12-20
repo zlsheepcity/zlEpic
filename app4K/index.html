@@ -260,7 +260,7 @@
         </article>
         <!-- ------------------------------- end -->
         <footer class="cBlogCard">
-            <h4>More images</h4>
+            <h4 class="cTitleAsTip">More images</h4>
             Регулярные картинки в социальных сетях
             <ul>
                 <li><a href="https://www.facebook.com/jozef.dobric">facebook.com/jozef.dobric</a></li>
@@ -275,6 +275,20 @@
         <header>
             <h3 class="cTitleAsTip">Topics</h3>
         </header>
+        <!-- ------------------------------- Card -->
+        <article class="cBlogCard">
+            <h4 class="aTitle"><a href="#">Image gallery</a></h4>
+            <h5 class="aSubtitle">
+                Тематические веб-выставки
+            </h5>
+        </article>
+        <!-- ------------------------------- Card -->
+        <article class="cBlogCard">
+            <h4 class="aTitle"><a href="#">Products</a></h4>
+            <h5 class="aSubtitle">
+                Книги, календари, сувениры и другие продукты
+            </h5>
+        </article>        
         <!-- ------------------------------- Card -->
         <article class="cBlogCard">
             <h4 class="aTitle"><a href="#">Рассказы 2014</a></h4>
@@ -310,17 +324,18 @@
 
 <!-- =================================================== Contacts -->
 
+<section class="elLayer">
 <header id="Contacts" class="cStageHeader">
     <h2 class="aCaption">Контакты <span class="aSymbol">/</span> Contacts</h2>
 </header>
-<div>
-    <div>
-        <h3 class="cTitleAsTip">to sheep</h3>
+<div class="cContactArea elSection">
+    <div class="cContactArea__to">
+        <h3 class="cTitleAsTip">To sheep</h3>
         E-mail is the best way to communicate<br>
         <a href="mailto:sheep.today@gmail.com">sheep.today@gmail.com</a>
     </div>
-    <div>
-        <h3 class="cTitleAsTip">from sheep</h3>
+    <div  class="cContactArea__from">
+        <h3 class="cTitleAsTip">From sheep</h3>
 
         <h4 class="cTitleAsBlock">Sheep.Today News</h4>
         <div class="cTitleAsSub">Newsletter in russian</div>
@@ -335,13 +350,13 @@
                      <label for="mce-EMAIL">Email</label>
                       <div class="control">
                         <input type="email" value="" name="EMAIL" class="input required email" id="mce-EMAIL" placeholder="example@email.address">
+                        <div id="mce-responses" class="clear">
+                                <div class="response" id="mce-error-response" style="display:none"></div>
+                                <div class="response" id="mce-success-response" style="display:none"></div>
+                        </div>
                       </div>
                     </div>
                 </div>
-            <div id="mce-responses" class="clear">
-                    <div class="response" id="mce-error-response" style="display:none"></div>
-                    <div class="response" id="mce-success-response" style="display:none"></div>
-            </div>
             <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_f2f56449d7526a6a993997587_122683d921" tabindex="-1" value=""></div>
             <div class="field">
                 <div class="control">
@@ -355,6 +370,7 @@
 
     </div>
 </div>
+</section>
 
 <!-- =================================================== About the Artist -->
 
@@ -374,7 +390,7 @@
         На рисунках Зиновия — овечки с огромными глазами, толстые лисы, коты на крышах и крабы под пальмами. Все вместе, они участвуют в детализированных сюжетах, которые с восторгом рассматривают дети и взрослые дети.
         </p>
         <p>
-        Для самого автора, нарисованные персонажи — участники математической игры. Линии переходят в формы, формы превращаются в символы, в сюжет и смысл. Почти все рисунки Зиновия несут прикладную пользу — это карты, шпаргалки, чертежи или навигационные маркеры.
+        Для самого автора, нарисованные персонажи — участники математической игры. Линии переходят в формы, формы превращаются в символы, в сюжет и смысл. Почти все рисунки Зиновия несут прикладную пользу — это карты, шпаргалки, чертежи или навигационные знаки.
         </p>
         <h4 class="cTitleAsTextline">Интересные факты</h4>
         <p>
@@ -483,7 +499,7 @@
 
 <aside class="elSidePanel cSitePanel">
     <!-- trigger -->
-    <div class="elSitePanel__floatTrigger cSitePanel__floatTrigger isOnTop">
+    <div class="elSitePanel__floatTrigger cSitePanel__floatTrigger">
         <div class="jsAppTrigger" data-trigga="hasOpenSitePanel">
             <div class="isWhenInactive">
                 <button class="aIcon aIcon--primarysheep"></button>

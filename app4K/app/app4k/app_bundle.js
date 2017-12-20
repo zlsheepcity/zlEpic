@@ -304,6 +304,9 @@ $(function(){
         
         
     });
+    // initial scroll
+    var initialWindowScroll = $(window).scrollTop();
+    if ( initialWindowScroll < 10 ) qSitePanelTrigger.addClass("isOnTop");
     
     // hashtag menu
     $('a[href="#Home"]').on('click', jsHashtagMenuEvent);
@@ -321,6 +324,8 @@ $(function(){
         if ( href == '#Contacts' ) c_contacts.addClass('is-active');
         if ( href == '#Home' ) c_home.addClass('is-active');
     }
+    
+    
     
 
 
