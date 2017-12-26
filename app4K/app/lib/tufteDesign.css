@@ -412,7 +412,7 @@
     .tufteDesign .margin-toggle:checked + .marginnote {
         display: block;
         float: left;
-        left: 1rem;
+        left: 0rem;
         clear: both;
         width: 95%;
         margin: 1rem 2.5%;

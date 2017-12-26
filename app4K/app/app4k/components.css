@@ -7,22 +7,108 @@ v2017.12.17 app4K.4001
 */
 
 .cTitleAsSub {
-    
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+}
+.cTitleAsSub + * {
+    margin-top: 1rem;
 }
 .cTitleAsTip {
     margin: 0;
     padding: 0;
-    padding-bottom: 1rem;
     font-weight: normal;
     font-size: 1rem;
     opacity: .5;
 }
+* + .cTitleAsTip {
+    margin-top: 1rem;
+}
+.cTitleAsTip + *:not(.cTitleAsSub) {
+    margin-top: 1rem;
+}
 .cTitleAsBlock {
-    
+    margin: 0;
+    padding: 0;
+    font-weight: normal;
+    font-size: 2rem;
+}
+.cTitleAsBlock + *:not(.cTitleAsSub) {
+    margin-top: 2rem;
 }
 .cTitleAsTextline {
     
 }
+.cTextAsNotice {
+    border-left: 4px solid #FC9D9A;
+    padding-left: 1rem;
+    
+}
+
+.button {
+    background-color: #FC9D9A;
+    font-weight: bold;
+}
+
+
+/*
+--------------------------------------------------- text design
+*/
+
+/*
+.textDesign p {
+    margin: 0;
+    padding-bottom: 1em;
+}
+.textDesign p:last-child {
+    padding-bottom: 0;
+}
+*/
+
+/* links */
+
+.textDesign a:link,
+.textDesign a:visited {
+    color: inherit;
+}
+.textDesign a:link {
+    text-decoration: none;
+    background: -webkit-linear-gradient(#fffff8, #fffff8), -webkit-linear-gradient(#fffff8, #fffff8), -webkit-linear-gradient(#333, #333);
+    background: linear-gradient(#fffff8, #fffff8), linear-gradient(#fffff8, #fffff8), linear-gradient(#333, #333);
+    -webkit-background-size: 0.05em 1px, 0.05em 1px, 1px 1px;
+    -moz-background-size: 0.05em 1px, 0.05em 1px, 1px 1px;
+    background-size: 0.05em 1px, 0.05em 1px, 1px 1px;
+    background-repeat: no-repeat, no-repeat, repeat-x;
+    text-shadow: 0.03em 0 #fffff8, -0.03em 0 #fffff8, 0 0.03em #fffff8, 0 -0.03em #fffff8, 0.06em 0 #fffff8, -0.06em 0 #fffff8, 0.09em 0 #fffff8, -0.09em 0 #fffff8, 0.12em 0 #fffff8, -0.12em 0 #fffff8, 0.15em 0 #fffff8, -0.15em 0 #fffff8;
+    background-position: 0% 93%, 100% 93%, 0% 93%;
+}
+@media screen and (-webkit-min-device-pixel-ratio: 0) {
+    .textDesign a:link {
+        background-position-y: 87%, 87%, 87%;
+    }
+}
+.textDesign a:link::selection {
+    text-shadow: 0.03em 0 #b4d5fe, -0.03em 0 #b4d5fe, 0 0.03em #b4d5fe, 0 -0.03em #b4d5fe, 0.06em 0 #b4d5fe, -0.06em 0 #b4d5fe, 0.09em 0 #b4d5fe, -0.09em 0 #b4d5fe, 0.12em 0 #b4d5fe, -0.12em 0 #b4d5fe, 0.15em 0 #b4d5fe, -0.15em 0 #b4d5fe;
+    background: #b4d5fe;
+}
+.textDesign a:link::-moz-selection {
+    text-shadow: 0.03em 0 #b4d5fe, -0.03em 0 #b4d5fe, 0 0.03em #b4d5fe, 0 -0.03em #b4d5fe, 0.06em 0 #b4d5fe, -0.06em 0 #b4d5fe, 0.09em 0 #b4d5fe, -0.09em 0 #b4d5fe, 0.12em 0 #b4d5fe, -0.12em 0 #b4d5fe, 0.15em 0 #b4d5fe, -0.15em 0 #b4d5fe;
+    background: #b4d5fe;
+}
+.textDesign .aTextHighlight {
+    display: inline-block;
+    background-color: #FC9D9A;
+}
+
+.textLayout {
+    font-size: 1.25rem;
+    line-height: 1.4;
+}
+.textLayout .aList {
+    margin-bottom: 0;
+}
+
 
 /*
 --------------------------------------------------- 
@@ -45,9 +131,20 @@ v2017.12.17 app4K.4001
     background-color: #033649;
     color: #E8DDCB;
 }
-.cLayerContrast .dCaption {
+.cLayerContrast a {
+    color: #E8DDCB;
+}
+.cLayerContrast .dCaption,
+.cLayerContrast .cTitleAsTip,
+.cLayerContrast .cTitleAsBlock,
+.cLayerContrast .cStageHeader .aCaption {
     color: #CDB380;
 }
+.cLayerContrast .cStageHeader::before,
+.cLayerContrast .cStageHeader::after {
+    background-color: rgba(205, 179, 128, 0.25);
+}
+
 .cLayerContrast--opposition {
     background-color: #031634;
 }
@@ -124,7 +221,7 @@ Stage header
     font-size: 3.2rem;
     line-height: 1.2;
     font-weight: 700;
-    color: rgba( 68, 42, 55, 1);
+    color: #442a37;
 }
 .cStageHeader::before,
 .cStageHeader::after {
@@ -132,10 +229,10 @@ Stage header
     display: block;
     flex-grow: 1;
     height: 1rem;
-    background-color: rgba( 68, 42, 55, .1);
+    background-color: #E8DDCB;
 }
 .cStageHeader .aSymbol {
-    color: rgba( 68, 42, 55, .15);
+    color: #E8DDCB;
 }
 @media all and (max-width:900px) {
     .cStageHeader:not(.cStageHeader--noAnchor) {
@@ -168,9 +265,6 @@ Stage header
 Landing intro section
 */
 
-.cLanding {
-    background-color: #E8DDCB;
-}
 .cLanding__view {
     padding-top: 2rem;
     padding-bottom: 4rem;
@@ -183,6 +277,10 @@ Landing intro section
 /*
 Default landing
 */
+
+.cLandingDefault {
+    background-color: #E8DDCB;
+}
 
 .cLandingDefault .cLanding__view {
     padding-left: 4vw;
@@ -355,10 +453,10 @@ Saturs block
 }
 .cSaturs > .cBlog__images {
     width: 58%;
-    max-width: calc( 600px + 2rem );
+    /*max-width: calc( 600px + 2rem );*/
 }
 .cSaturs > .cBlog__topics {
-    /*width: 42%;*/
+    width: 42%;
     flex-grow: 2;
 }
 
@@ -413,6 +511,74 @@ Contacts
     justify-content: space-between;
     align-items: flex-start;
     align-content: flex-start;
+}
+.cContactArea__from {
+    padding-left: 4rem;
+}
+@media all and (max-width:600px) {
+    .cContactArea {
+        flex-direction: column;
+    }
+    .cContactArea__from {
+        padding-left: 0rem;
+        padding-top: 2rem;
+    }
+}
+
+/**/
+
+.cSomethingCompletelyDifferent {
+    padding-top: 2rem;
+    padding-bottom: 8rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-content: flex-start;
+    align-items: flex-start;
+}
+.cSomethingCompletelyDifferent .aBlock + .aBlock {
+    padding-left: 4rem;
+    padding-top: 0;
+}
+@media all and (max-width:600px) {
+    .cSomethingCompletelyDifferent {
+        flex-direction: column;
+    }
+    .cSomethingCompletelyDifferent .aBlock + .aBlock {
+        padding-left: 0rem;
+        padding-top: 2rem;
+    }
+}
+
+/**/
+
+.cBottomGoodbye {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-content: flex-start;
+    align-items: flex-start;
+}
+.cBottomGoodbye__aside {
+    order: 2;
+    padding-left: 4rem;
+    width: 42%;
+}
+@media all and (max-width:600px) {
+    .cBottomGoodbye {
+        flex-direction: column;
+    }
+    .cBottomGoodbye__aside {
+        order: 1;
+        padding-left: 0rem;
+        padding-bottom: 2rem;
+        width: 100%;
+    }
+    .cBottomGoodbye__content {
+        order: 2;
+    }
 }
 
 /**/
