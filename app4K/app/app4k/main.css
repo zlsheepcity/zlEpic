@@ -222,28 +222,26 @@ Site Panel
 }
 
 /* design */
+.cSitePanel__floatTrigger {
+    will-change: transform;
+    -webkit-transition: transform .2s ease-out;
+    -o-transition: transform .2s ease-out;
+    transition: transform .2s ease-out;
+}
 .cSitePanel__floatTrigger .aIcon {
     border: 4px solid transparent;
     background-position: center top;
 }
 .cSitePanel__floatTrigger .isWhenInactive .aIcon {
-    will-change: transform;
-    transform-origin: 0 0;
-    -webkit-transition: transform .2s ease-out;
-    -o-transition: transform .2s ease-out;
-    transition: transform .2s ease-out;
 }
-.cSitePanel__floatTrigger.isOnTop .isWhenInactive .aIcon {
-    transform: scale(1.5);
+.cSitePanel__floatTrigger.isOnTop {
+    transform: translateY(-100%);
 }
 @media all and (min-width:1200px){
     .cSitePanel__floatTrigger .isWhenInactive .aIcon {
         -webkit-transition: all .2s ease-out;
         -o-transition: all .2s ease-out;
         transition: all .2s ease-out;
-    }
-    .cSitePanel__floatTrigger.isOnTop .isWhenInactive .aIcon {
-        margin-left: calc( 12vw - 9rem );
     }
 }
 .cSitePanel__floatTrigger .aIcon {

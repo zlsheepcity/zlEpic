@@ -289,7 +289,7 @@ $(function(){
     $(window).scroll(function () {
         var s = $(this).scrollTop();
 
-        if ( s > 0 ) {
+        if ( s > scrollOffsetForMagicHeader - 100 ) {
             qSitePanelTrigger.removeClass("isOnTop");
         } else {
             qSitePanelTrigger.addClass("isOnTop");
@@ -306,7 +306,10 @@ $(function(){
 
     // initial scroll
     var initialWindowScroll = $(window).scrollTop();
-    if ( initialWindowScroll < 10 ) qSitePanelTrigger.addClass("isOnTop");
+    if ( initialWindowScroll < scrollOffsetForMagicHeader - 100 )
+        qSitePanelTrigger.addClass("isOnTop");
+    else
+        qSitePanelTrigger.removeClass("isOnTop");
 
     // hashtag menu
     var qHomeAnchor = $('a[href="#Home"]');
