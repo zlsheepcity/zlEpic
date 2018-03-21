@@ -39,6 +39,18 @@ http://goodui.org/
 
 --------------------------------------------------------------------------
 
+```
+
+<?php if ($insert_lead): ?>
+<?php echo $insert_lead; ?>
+<?php endif; ?>
+
+<?php if ( is_active_sidebar( 'sg2_header_menu_bar' ) ) : ?>
+<?php dynamic_sidebar( 'sg2_header_menu_bar' ); ?>
+<?php endif; ?>
+
+```
+
 
 
 --------------------------------------------------------------------------
