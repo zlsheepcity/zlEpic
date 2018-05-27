@@ -5,6 +5,21 @@
 phone     tablet     landscape tablet      desktop      big
 */
 
+/*
+--------------------------------------------------- basics
+*/
+
+html {
+    margin: 0;
+    padding: 0;
+}
+body {
+    margin: 0;
+    padding: 0;
+}
+html { box-sizing: border-box; }
+*, *::before, *::after { box-sizing: inherit; }
+
 
 @mixin for-phone-only {
   @media (max-width: 599px) { @content; }
