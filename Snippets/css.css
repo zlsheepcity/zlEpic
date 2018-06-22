@@ -158,6 +158,10 @@ a:focus {
 
 }
 
+@media screen and (min-aspect-ratio: 16/10) {
+  /* something for wide screens */
+}
+
 /*
 CSS Paged Media Module
 https://drafts.csswg.org/css-page-3/

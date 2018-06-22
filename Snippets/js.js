@@ -5,6 +5,9 @@ $(document).ready(function(){
 });
 
 $(function(){
+});
+
+$(function(){
 
     // eventClick
     $('.element').on( 'click', klikerAction );
@@ -26,10 +29,30 @@ $(window).load(function() {
     $('.bg-image').addClass('hd');
 });
 
-$(function(){
-});
+/* ---------------------------------------------- */ // performance
+
+function makeChange( time ) {
+  // Animation logic here
+
+  // Call requestAnimationFrame recursively inside the callback function
+  requestAnimationFrame( makeChange ):
+}
+
+// Call requestAnimationFrame again outside the callback function
+requestAnimationFrame( makeChange );
+
+
+var latestKnownScrollY = 0;
+
+function onScroll() {
+	latestKnownScrollY = window.scrollY;
+}
 
 /* ---------------------------------------------- */ // console functions
+
+console.table(data, ['collumn','collumn'])
+console.table(data)
+
 
 console.time('zlTimer');
 console.timeEnd('zlTimer');
@@ -88,3 +111,25 @@ function zl__clearAnyTextSelection()
     } else if (document.selection) { document.selection.empty(); } // IE?
   }
 }
+
+// ---------------------------------------------- // ARRAYS
+
+// true or false
+const array2 = array.filter(char => char.length < 2);
+// update elements
+const array2 = array.map(elem =>elem ** 2);
+
+const array = ['Olga', 't', 'e', 'x', 't'];
+const [name, ...restElement] = array;
+const array2 = restElement;
+//array без изменения, name = 'Olga', array2 = ['t', 'e', 'x', 't']
+
+
+const array = [1, 2, 3];
+const array2 = array.concat() 
+//array2 [1, 2, 3]
+
+Array.from(arrayLike[, mapFn[, thisArg]])
+
+
+
