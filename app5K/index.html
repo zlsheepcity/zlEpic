@@ -14,46 +14,225 @@
     <!-- =================================================== [HEAD CONTENT] -->
 
 
-    <title>xoxoxTITLExoxox</title>
-    <meta name="description" content="xoxoxTEMPLATExoxox" />
+    <title>xoxox_TITLE_xoxox</title>
+    <meta name="description" content="xoxox_descriptionTEMPLATE_xoxox" />
     <meta name="author" content="zl-12з, v2018.6.22" />
 
     <!-- ## LINK NAV -->
-
-    <link rel="first" href="xoxoxURLxoxox">
-    <link rel="last" href="xoxoxURLxoxox">
-    <link rel="prev" href="xoxoxURLxoxox">
-    <link rel="next" href="xoxoxURLxoxox">
+    <link rel="index" href="xoxox_indexLINK_xoxox">
+    <link rel="archives" href="xoxox_archivesLINK_xoxox">
+    <link rel="first" href="xoxox_firstLINK_xoxox">
+    <link rel="last" href="xoxox_lastLINK_xoxox">
+    <link rel="prev" href="xoxox_prevLINK_xoxox">
+    <link rel="next" href="xoxox_nextLINK_xoxox">
+    <!-- / -->
 
     <!-- =================================================== ʕ⊙ᴥ⊙ʔ  -->
     <!-- =================================================== [HEAD ENGINE] -->
 
-    <link rel="dns-prefetch" href="//xoxoxURLxoxox">
+    <!-- ## Critical Bootstrap CSS -->
 
     <style id="CriticalBootstrapCSS">
-        img {
-            max-width: 100%;
-        }
+        html { margin:0; padding:0; }
+        body { margin:0; padding:1rem; }
+        img, svg { max-width:100%; }
     </style>
+
+    <!-- ## PREFETCH -->
+
+    <link rel="dns-prefetch" href="//xoxoxURLxoxox">
 
     <!-- ## CSS -->
 
-    <!-- app --><link href="app/css/main.css" rel="stylesheet"  media="all" /><!-- / -->
+    <!-- app --><link href="app/style/main.css" rel="stylesheet"  media="all" /><!-- / -->
 
     <!-- ## JS -->
 
-    <!-- app --><script src="app/js/main.js"></script><!-- / -->
+    <!-- app --><script src="app/script/main.js"></script><!-- / -->
+
+    <!-- ## Loading process -->
+
+    <style id="LoadingCSS">
+        #Loading {
+            position:fixed; z-index:1;
+            margin:0; top:0; left:0; right:0; bottom:0;
+            background-color:hsla(39, 77%, 83%, 0.95);
+            display: none;
+        }
+    </style>
+    <script id="LoadingJS">
+        document.write('<style>#Loading { display:block }<\/style>');
+    </script>
 
     <!-- ## custom settings below-->
 
-
     <!-- =================================================== ʕ⊙ᴥ⊙ʔ  -->
+    <!-- =================================================== [HEAD OTHERS] -->
 
     <meta http-equiv="x-ua-compatible" content="ie=edge" />
 
-    <!-- Control the behavior of search engine crawling and indexing -->
-    <meta name="robots" content="index,follow"><!-- All Search Engines -->
-    <meta name="googlebot" content="index,follow"><!-- Google Specific -->
+    <!-- Control the behavior of search engine crawling and indexing
+         All Search Engines + Google Specific -->
+    <meta name="robots" content="index,follow">
+    <meta name="googlebot" content="index,follow">
+    <!-- / -->
 
 </head>
+<body>
+
+    <figure id="Loading"></figure>
+
+<div class="collumn collumn6">
+
+    <div class="a2 center">
+        <a href="http://www.w3schools.com/cssref/default.asp"><i>CSS</i></a>
+        <a href="https://www.w3schools.com/tags/default.asp"><i>HTML</i></a>
+    </div>
+    <div class="a2 center">
+        <a href="http://www.w3schools.com/jquery/jquery_ref_events.asp"><i>jQ</i></a>
+        <a href="https://www.w3schools.com/jsref/default.asp"><i>JS</i></a>
+    </div>
+
+    <div class="a2">
+    <a href="http://caniuse.com/" class="bold"><i>caniuse</i></a>
+    <a href="https://www.w3counter.com/globalstats.php"><i>Global stats</i></a>
+    </div>
+
+    <div class="a2">
+        <a href="http://apps.pixlr.com/editor/"><i>Pixlr</i></a>
+        <a href="https://www.photopea.com/"><i>Photopea</i></a>
+    </div>
+    <a href="https://jakearchibald.github.io/svgomg/"><i>SVG optimizer</i></a>
+    
+    <div class="a3 center">
+    <a href="https://cloudconvert.com/website-to-pdf"><i>url·pdf</i></a>
+    <a href="https://cloudconvert.com/ai-to-svg"><i>ai·svg</i></a>
+    <a href="https://cloudconvert.com/formats"><i>...</i></a>
+    </div>
+    <a href="http://b64.io/" class="red"><i>base64 enc</i></a>
+
+    <div class="a0"><i>▲▼◄►✓✗&nbsp;«» &nbsp;</i></div>
+    <div class="a0"><i>·€♥★←→ &nbsp;</i></div>
+    <div class="a0"><i>ʕ⊙ᴥ⊙ʔ ༼°▽°༽</i></div>
+    <div class="a0" class="red"><i>╭∩╮ʕ•ᴥ•ʔ╭∩╮</i></div>
+    <div class="a0"><i>(●ᴥ●)</i></div>
+    <div class="a0"><i>Māčūļī</i></div>
+
+    <a href="http://kirillbelyaev.com/all/spaces/"><i>Spaces</i></a>
+
+    <div class="a23">
+        <a href="https://fonts.google.com/?subset=cyrillic"><i>GFonts</i></a>
+        <a href="https://google-webfonts-helper.herokuapp.com/fonts/" class="center"><i>▼</i></a>
+    </div>
+    <div class="a2">
+        <a href="http://fontawesome.io/icons/"><i>F Awesome</i></a>
+        <a href="https://fontawesome.com/v4.7.0/icons/" class="bold"><i>v4.7</i></a>
+    </div>
+
+    <div class="a2">
+        <a href="http://fontello.com/"><i>fontello</i></a>
+        <a href="http://icomoon.io/app/#/select"><i>icomoon</i></a>
+    </div>
+
+    <div class="a0"></div>
+
+    <div class="a2">
+        <a href="https://www.zoho.eu/docs/"><i>filestorage</i></a>
+        <a href="https://cloudinary.com/"><i>cloudinary</i></a>
+    </div>
+
+</div>
+
+<div class="collumn collumn5">
+
+    <a href="eg.html" class="red bold center"><i>[ EG ]</i></a>
+    <a href="chrome://bookmarks/#1" target="_blank" class="center"><i>cntrl O shft</i></a>
+    <div class="a2">
+        <a href="file:///D:/zldev/_HQ_/__WebColors.html" class="center"><i>:colors</i></a>
+        <a href="http://www.colourlovers.com/palettes/most-loved/all-time/meta" class="red center"><i>Colour♥</i></a>
+    </div>
+    <div class="a0"></div>
+
+    <a href="http://telegra.ph/" class="red bold"><i>telegra.ph</i></a>
+    <a href="https://whimsical.co/N5mPdNPKnDFELwEaCS4Wj" class="bold"><i>whimsical</i></a>
+    <a href="https://www.draw.io/"><i>draw.io</i></a>
+
+    <div class="a0"></div>
+
+    <a href="https://gomockingbird.com/"><i>mockingbird</i></a>
+
+    <div class="a2">
+        <a href="http://jsfiddle.net/q5frq7ds/"><i>jsfiddle</i></a>
+        <a href="http://jsbin.com/?html,output" class="red bold"><i>jsBin</i></a>
+    </div>
+    <a href="https://www.10bestdesign.com/dirtymarkup/"><i>Beautify</i></a>
+    <a href="https://www.diffchecker.com/"><i>Diff checker</i></a>
+
+    <div class="a0"></div>
+
+    
+
+    <a href="https://gethead.info/"><i>◄Head►</i></a>
+
+    <div class="a0"></div>
+
+    <div class="a2">
+        <a href="http://html-ipsum.com/"><i>html ipsum</i></a>
+        <a href="http://www.niemanlab.org/journo-ipsum/"><i>journo</i></a>
+    </div>
+    <a href="https://next.json-generator.com/"><i>json generator</i></a>
+
+    <div class="a0"></div>
+
+    <a href="http://medialabamsterdam.com/toolkit/"><i>Design methods</i></a>
+
+
+</div>
+<div class="collumn collumn5">
+
+    <a href="eg.html" class="red bold center"><i>[ EG ]</i></a>
+    <a href="chrome://bookmarks/#1" target="_blank" class="center"><i>cntrl O shft</i></a>
+    <div class="a2">
+        <a href="file:///D:/zldev/_HQ_/__WebColors.html" class="center"><i>:colors</i></a>
+        <a href="http://www.colourlovers.com/palettes/most-loved/all-time/meta" class="red center"><i>Colour♥</i></a>
+    </div>
+    <div class="a0"></div>
+
+    <a href="http://telegra.ph/" class="red bold"><i>telegra.ph</i></a>
+    <a href="https://whimsical.co/N5mPdNPKnDFELwEaCS4Wj" class="bold"><i>whimsical</i></a>
+    <a href="https://www.draw.io/"><i>draw.io</i></a>
+
+    <div class="a0"></div>
+
+    <a href="https://gomockingbird.com/"><i>mockingbird</i></a>
+
+    <div class="a2">
+        <a href="http://jsfiddle.net/q5frq7ds/"><i>jsfiddle</i></a>
+        <a href="http://jsbin.com/?html,output" class="red bold"><i>jsBin</i></a>
+    </div>
+    <a href="https://www.10bestdesign.com/dirtymarkup/"><i>Beautify</i></a>
+    <a href="https://www.diffchecker.com/"><i>Diff checker</i></a>
+
+    <div class="a0"></div>
+
+    
+
+    <a href="https://gethead.info/"><i>◄Head►</i></a>
+
+    <div class="a0"></div>
+
+    <div class="a2">
+        <a href="http://html-ipsum.com/"><i>html ipsum</i></a>
+        <a href="http://www.niemanlab.org/journo-ipsum/"><i>journo</i></a>
+    </div>
+    <a href="https://next.json-generator.com/"><i>json generator</i></a>
+
+    <div class="a0"></div>
+
+    <a href="http://medialabamsterdam.com/toolkit/"><i>Design methods</i></a>
+
+
+</div>
+
+</body>
 </html>
