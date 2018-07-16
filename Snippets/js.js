@@ -72,6 +72,19 @@ document.body.contentEditable=true
 
 // ---------------------------------------------- // trick functions
 
+
+// named while
+
+charloop:while(c=getc()){
+    for (i=0; i<quitchars.length; i++){
+        if (c==quitchars[i]) break charloop
+    }
+}
+
+
+
+
+
 /* auto slideshow
 http://mediatemple.net/blog/tips/carousels-dont-have-to-be-complicated/ 
 */

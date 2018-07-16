@@ -16,7 +16,7 @@
 
     <title>xoxox_TITLE_xoxox</title>
     <meta name="description" content="xoxox_descriptionTEMPLATE_xoxox" />
-    <meta name="author" content="zl-12з, v2018.6.22" />
+    <meta name="author" content="zl-12з, v18.7.5" />
 
     <!-- ## LINK NAV -->
     <link rel="index" href="xoxox_indexLINK_xoxox">
@@ -27,12 +27,31 @@
     <link rel="next" href="xoxox_nextLINK_xoxox">
     <!-- / -->
 
+    <!-- ## SOCIAL -->
+    <meta property="og:title" content="xoxox" />
+    <meta property="og:description" content="xoxox" />
+    <meta property="og:url" content="xoxox" />
+    <meta property="og:image" content="xoxox" />
+    <meta property="og:image:width" content="xoxox" />
+    <meta property="og:image:height" content="xoxox" />
+    <meta property="og:type" content="article" />
+    <meta property="og:locale" content="en_US" />
+    <!-- / -->
+
+    <!-- FAVICON -->
+    <link rel="apple-touch-icon" sizes="180x180" href="app/favicons/180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192"  href="app/favicons/192x192.png">
+    <link rel="manifest" href="app/favicons/manifest.json">
+    <meta name="theme-color" content="#E08E79">
+    <meta name="msapplication-TileColor" content="#E08E79">
+    <meta name="msapplication-TileImage" content="app/favicons/144x144.png">
+
     <!-- =================================================== ʕ⊙ᴥ⊙ʔ  -->
     <!-- =================================================== [HEAD ENGINE] -->
 
     <!-- ## Critical Bootstrap CSS -->
 
-    <style id="CriticalBootstrapCSS">
+    <style>
         html { margin:0; padding:0; }
         body { margin:0; padding:1rem; }
         img, svg { max-width:100%; }
@@ -44,25 +63,15 @@
 
     <!-- ## CSS -->
 
+    <!-- lib --><link rel="stylesheet" href="https://unpkg.com/sakura.css/css/sakura.css" type="text/css"><!-- SAKURA -->
     <!-- app --><link href="app/style/main.css" rel="stylesheet"  media="all" /><!-- / -->
 
     <!-- ## JS -->
 
+    <!-- lib --><script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script><!-- BABEL -->
+    <!-- lib --><script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script><!-- VUE -->
+    <!-- lib --><script src="https://cdn.jsdelivr.net/npm/lodash@4.17.10/lodash.min.js"></script><!-- LODASH -->
     <!-- app --><script src="app/script/main.js"></script><!-- / -->
-
-    <!-- ## Loading process -->
-
-    <style id="LoadingCSS">
-        #Loading {
-            position:fixed; z-index:1;
-            margin:0; top:0; left:0; right:0; bottom:0;
-            background-color:hsla(39, 77%, 83%, 0.95);
-            display: none;
-        }
-    </style>
-    <script id="LoadingJS">
-        document.write('<style>#Loading { display:block }<\/style>');
-    </script>
 
     <!-- ## custom settings below-->
 
@@ -80,159 +89,62 @@
 </head>
 <body>
 
-    <figure id="Loading"></figure>
-
-<div class="collumn collumn6">
-
-    <div class="a2 center">
-        <a href="http://www.w3schools.com/cssref/default.asp"><i>CSS</i></a>
-        <a href="https://www.w3schools.com/tags/default.asp"><i>HTML</i></a>
-    </div>
-    <div class="a2 center">
-        <a href="http://www.w3schools.com/jquery/jquery_ref_events.asp"><i>jQ</i></a>
-        <a href="https://www.w3schools.com/jsref/default.asp"><i>JS</i></a>
-    </div>
-
-    <div class="a2">
-    <a href="http://caniuse.com/" class="bold"><i>caniuse</i></a>
-    <a href="https://www.w3counter.com/globalstats.php"><i>Global stats</i></a>
-    </div>
-
-    <div class="a2">
-        <a href="http://apps.pixlr.com/editor/"><i>Pixlr</i></a>
-        <a href="https://www.photopea.com/"><i>Photopea</i></a>
-    </div>
-    <a href="https://jakearchibald.github.io/svgomg/"><i>SVG optimizer</i></a>
-    
-    <div class="a3 center">
-    <a href="https://cloudconvert.com/website-to-pdf"><i>url·pdf</i></a>
-    <a href="https://cloudconvert.com/ai-to-svg"><i>ai·svg</i></a>
-    <a href="https://cloudconvert.com/formats"><i>...</i></a>
-    </div>
-    <a href="http://b64.io/" class="red"><i>base64 enc</i></a>
-
-    <div class="a0"><i>▲▼◄►✓✗&nbsp;«» &nbsp;</i></div>
-    <div class="a0"><i>·€♥★←→ &nbsp;</i></div>
-    <div class="a0"><i>ʕ⊙ᴥ⊙ʔ ༼°▽°༽</i></div>
-    <div class="a0" class="red"><i>╭∩╮ʕ•ᴥ•ʔ╭∩╮</i></div>
-    <div class="a0"><i>(●ᴥ●)</i></div>
-    <div class="a0"><i>Māčūļī</i></div>
-
-    <a href="http://kirillbelyaev.com/all/spaces/"><i>Spaces</i></a>
-
-    <div class="a23">
-        <a href="https://fonts.google.com/?subset=cyrillic"><i>GFonts</i></a>
-        <a href="https://google-webfonts-helper.herokuapp.com/fonts/" class="center"><i>▼</i></a>
-    </div>
-    <div class="a2">
-        <a href="http://fontawesome.io/icons/"><i>F Awesome</i></a>
-        <a href="https://fontawesome.com/v4.7.0/icons/" class="bold"><i>v4.7</i></a>
-    </div>
-
-    <div class="a2">
-        <a href="http://fontello.com/"><i>fontello</i></a>
-        <a href="http://icomoon.io/app/#/select"><i>icomoon</i></a>
-    </div>
-
-    <div class="a0"></div>
-
-    <div class="a2">
-        <a href="https://www.zoho.eu/docs/"><i>filestorage</i></a>
-        <a href="https://cloudinary.com/"><i>cloudinary</i></a>
-    </div>
-
-</div>
-
-<div class="collumn collumn5">
-
-    <a href="eg.html" class="red bold center"><i>[ EG ]</i></a>
-    <a href="chrome://bookmarks/#1" target="_blank" class="center"><i>cntrl O shft</i></a>
-    <div class="a2">
-        <a href="file:///D:/zldev/_HQ_/__WebColors.html" class="center"><i>:colors</i></a>
-        <a href="http://www.colourlovers.com/palettes/most-loved/all-time/meta" class="red center"><i>Colour♥</i></a>
-    </div>
-    <div class="a0"></div>
-
-    <a href="http://telegra.ph/" class="red bold"><i>telegra.ph</i></a>
-    <a href="https://whimsical.co/N5mPdNPKnDFELwEaCS4Wj" class="bold"><i>whimsical</i></a>
-    <a href="https://www.draw.io/"><i>draw.io</i></a>
-
-    <div class="a0"></div>
-
-    <a href="https://gomockingbird.com/"><i>mockingbird</i></a>
-
-    <div class="a2">
-        <a href="http://jsfiddle.net/q5frq7ds/"><i>jsfiddle</i></a>
-        <a href="http://jsbin.com/?html,output" class="red bold"><i>jsBin</i></a>
-    </div>
-    <a href="https://www.10bestdesign.com/dirtymarkup/"><i>Beautify</i></a>
-    <a href="https://www.diffchecker.com/"><i>Diff checker</i></a>
-
-    <div class="a0"></div>
-
-    
-
-    <a href="https://gethead.info/"><i>◄Head►</i></a>
-
-    <div class="a0"></div>
-
-    <div class="a2">
-        <a href="http://html-ipsum.com/"><i>html ipsum</i></a>
-        <a href="http://www.niemanlab.org/journo-ipsum/"><i>journo</i></a>
-    </div>
-    <a href="https://next.json-generator.com/"><i>json generator</i></a>
-
-    <div class="a0"></div>
-
-    <a href="http://medialabamsterdam.com/toolkit/"><i>Design methods</i></a>
-
-
-</div>
-<div class="collumn collumn5">
-
-    <a href="eg.html" class="red bold center"><i>[ EG ]</i></a>
-    <a href="chrome://bookmarks/#1" target="_blank" class="center"><i>cntrl O shft</i></a>
-    <div class="a2">
-        <a href="file:///D:/zldev/_HQ_/__WebColors.html" class="center"><i>:colors</i></a>
-        <a href="http://www.colourlovers.com/palettes/most-loved/all-time/meta" class="red center"><i>Colour♥</i></a>
-    </div>
-    <div class="a0"></div>
-
-    <a href="http://telegra.ph/" class="red bold"><i>telegra.ph</i></a>
-    <a href="https://whimsical.co/N5mPdNPKnDFELwEaCS4Wj" class="bold"><i>whimsical</i></a>
-    <a href="https://www.draw.io/"><i>draw.io</i></a>
-
-    <div class="a0"></div>
-
-    <a href="https://gomockingbird.com/"><i>mockingbird</i></a>
-
-    <div class="a2">
-        <a href="http://jsfiddle.net/q5frq7ds/"><i>jsfiddle</i></a>
-        <a href="http://jsbin.com/?html,output" class="red bold"><i>jsBin</i></a>
-    </div>
-    <a href="https://www.10bestdesign.com/dirtymarkup/"><i>Beautify</i></a>
-    <a href="https://www.diffchecker.com/"><i>Diff checker</i></a>
-
-    <div class="a0"></div>
-
-    
-
-    <a href="https://gethead.info/"><i>◄Head►</i></a>
-
-    <div class="a0"></div>
-
-    <div class="a2">
-        <a href="http://html-ipsum.com/"><i>html ipsum</i></a>
-        <a href="http://www.niemanlab.org/journo-ipsum/"><i>journo</i></a>
-    </div>
-    <a href="https://next.json-generator.com/"><i>json generator</i></a>
-
-    <div class="a0"></div>
-
-    <a href="http://medialabamsterdam.com/toolkit/"><i>Design methods</i></a>
-
-
-</div>
+<h1>Test, <span class="gwrtsch">gwrtsch</span></h1>
+<style>
+    .gwrtsch {
+        display: inline-block;
+        white-space: nowrap;
+        vertical-align: baseline;
+        position: relative;
+        z-index: 0;
+    }
+    .gwrtsch:after {
+        content: '';
+        display: block;
+        position: absolute;
+        z-index: -1;
+        top:100%;
+        left:0;
+        right:0;
+        border-top: 0.1em dotted rgba(255,0,0,0.25);
+    }
+</style>
+<pre class="colors">
+    'black',
+    'grey-darker',
+    'grey-dark',
+    'red-dark',
+    'red',
+    'blue-dark',
+    'blue',
+</pre>
+<p>
+    To get a better idea, take a look at a sample file written in JavaScript Standard Style. Or, check out one of the <span class="gwrtsch">gwrtsch</span> thousands of projects that use standard!
+</p>
+<script type="text/babel">
+    let vColorMap = new Vue({el:'.colors'});
+</script>
+<article>
+<p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p>
+<p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. Donec non enim in turpis pulvinar facilisis. Ut felis. Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus</p>
+<ul>
+   <li>Morbi in sem quis dui placerat ornare. Pellentesque odio nisi, euismod in, pharetra a, ultricies in, diam. Sed arcu. Cras consequat.</li>
+   <li>Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus.</li>
+   <li>Phasellus ultrices nulla quis nibh. Quisque a lectus. Donec consectetuer ligula vulputate sem tristique cursus. Nam nulla quam, gravida non, commodo a, sodales sit amet, nisi.</li>
+   <li>Pellentesque fermentum dolor. Aliquam quam lectus, facilisis auctor, ultrices ut, elementum vulputate, nunc.</li>
+</ul>
+<p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p>
+<dl>
+   <dt>Definition list</dt>
+   <dd>Consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
+aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+commodo consequat.</dd>
+   <dt>Lorem ipsum dolor sit amet</dt>
+   <dd>Consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
+aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+commodo consequat.</dd>
+</dl>
+</article>
 
 </body>
 </html>
