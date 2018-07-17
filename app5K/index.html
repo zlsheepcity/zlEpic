@@ -89,6 +89,8 @@
 </head>
 <body>
 
+<!-- ================================================================= INTRO-->
+
 <h1>Test, <span class="gwrtsch">gwrtsch</span></h1>
 <style>
     .gwrtsch {
@@ -97,6 +99,10 @@
         vertical-align: baseline;
         position: relative;
         z-index: 0;
+    }
+    .gwrtsch:hover {
+        cursor: default;
+        color:rgba(140,60,60,1);
     }
     .gwrtsch:after {
         content: '';
@@ -124,8 +130,18 @@
 <script type="text/babel">
     let vColorMap = new Vue({el:'.colors'});
 </script>
+
+<!-- ================================================================= TEST ARTICLE-->
+
 <article>
 <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p>
+
+<div class="layer100 block-note">
+
+    <p>Gardening & War section WSJ Ushahidi circulation explainer Article Skimmer privacy Free Darko layoffs Romenesko, writing learnings I love the Weather & Opera section linking the audience knows more than I do discuss mthomps WSJ, CNN leaves it there crowdsourcing Foursquare Jeff Jarvis prostate serendipity #twittermakesyoustupid mathewi API.</p>
+
+</div>
+
 <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. Donec non enim in turpis pulvinar facilisis. Ut felis. Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus</p>
 <ul>
    <li>Morbi in sem quis dui placerat ornare. Pellentesque odio nisi, euismod in, pharetra a, ultricies in, diam. Sed arcu. Cras consequat.</li>
@@ -144,7 +160,40 @@ commodo consequat.</dd>
 aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
 commodo consequat.</dd>
 </dl>
+<style>
+    .layer100 {
+        margin-left: calc(50% - 50vw);
+        margin-right: calc(50% - 50vw);
+        background-color: rgba(0,0,0,.2);
+    }
+    .sakura-body,
+    .layer100>* {
+        max-width:38em;
+        margin:auto;
+    }
+    .block-note {
+        padding-top: 1em;
+        padding-bottom: 1em;
+        background-color: #C5E0DC;
+        font-family: Verdana, Geneva, sans-serif;
+    }
+</style>
 </article>
+
+<!-- ================================================================= ON LOAD-->
+
+<div class="welcome-drop"></div>
+<style>
+    .welcome-drop {
+        display: block;
+        width: 4rem;
+        height: 4rem;
+        background-color: rgba(255,0,0,.25);
+    }
+</style>
+<script type="text/babel">
+    let vWelcomeDrop = new Vue({el:'.welcome-drop'});
+</script>
 
 </body>
 </html>
