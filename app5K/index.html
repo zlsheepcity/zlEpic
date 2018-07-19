@@ -75,6 +75,31 @@
 
     <!-- ## custom settings below-->
 
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            max-width: 100%;
+        }
+        .sakura-body {
+            display: grid;
+            grid-template-columns:
+                [full-start] minmax(1rem, 1fr)
+                [main-start] minmax(0, 38em)
+                [main-end]   minmax(1em, 1fr)
+                [full-end];
+        }
+        .sakura-body > * {
+            grid-column: main;
+        }
+        .sakura-body > .layer100 {
+            grid-column: full;
+        }
+        .sakura-body > .layer100 > * {
+            grid-column: main;
+        }
+    </style>
+
     <!-- =================================================== ʕ⊙ᴥ⊙ʔ  -->
     <!-- =================================================== [HEAD OTHERS] -->
 
@@ -91,6 +116,7 @@
 
 <!-- ================================================================= INTRO-->
 
+<article class="sakura-body">
 <h1>Test, <span class="gwrtsch">gwrtsch</span></h1>
 <style>
     .gwrtsch {
@@ -130,13 +156,14 @@
 <script type="text/babel">
     let vColorMap = new Vue({el:'.colors'});
 </script>
+</article>
 
 <!-- ================================================================= TEST ARTICLE-->
 
-<article>
+<article class="sakura-body">
 <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p>
 
-<div class="layer100 block-note">
+<div class="layer100 sakura-body block-note">
 
     <p>Gardening & War section WSJ Ushahidi circulation explainer Article Skimmer privacy Free Darko layoffs Romenesko, writing learnings I love the Weather & Opera section linking the audience knows more than I do discuss mthomps WSJ, CNN leaves it there crowdsourcing Foursquare Jeff Jarvis prostate serendipity #twittermakesyoustupid mathewi API.</p>
 
@@ -161,16 +188,6 @@ aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi 
 commodo consequat.</dd>
 </dl>
 <style>
-    .layer100 {
-        margin-left: calc(50% - 50vw);
-        margin-right: calc(50% - 50vw);
-        background-color: rgba(0,0,0,.2);
-    }
-    .sakura-body,
-    .layer100>* {
-        max-width:38em;
-        margin:auto;
-    }
     .block-note {
         padding-top: 1em;
         padding-bottom: 1em;
@@ -182,17 +199,61 @@ commodo consequat.</dd>
 
 <!-- ================================================================= ON LOAD-->
 
-<div class="welcome-drop"></div>
+<div class="welcome-drop" v-bind:class="[state]" v-on:click="toggleState"></div>
 <style>
     .welcome-drop {
         display: block;
-        width: 4rem;
-        height: 4rem;
-        background-color: rgba(255,0,0,.25);
+        width: 14rem;
+        height: 14rem;
+        background-color: rgba(0,0,0,.25);
+        position: fixed;
+        z-index: 2;
+        bottom:100%;
+        left:0;
+        transition: all 400ms ease-in;
+        transform: translateY(0);
+    }
+    .welcome-drop.is-ready {
+        background-color: rgba(255,0,0,.33);
+        transform: translateY(7rem);
+    }
+    .welcome-drop.is-showtime {
+        background-color: rgba(155,255,0,.33);
+        transform: translateY(100vh);
     }
 </style>
 <script type="text/babel">
-    let vWelcomeDrop = new Vue({el:'.welcome-drop'});
+    let vWelcomeDrop__params = {
+        el:'.welcome-drop',
+        data: {
+            state: 'is-not-ready'
+        },
+        methods: {
+            areYouReady: function() {
+                console.log(this.state);
+                this.changeState();
+                return this;
+            },
+            resetState: function() {
+                this.state = 'is-ready';
+                return this;
+            },
+            changeState: function() {
+                this.state = 'is-showtime';
+                return this;
+            },
+            toggleState: function() {
+                if (this.state=='is-ready') this.changeState()
+                else this.resetState();
+            }
+        },
+        mounted: function() { console.log('mounted'); },
+        updated: function() { console.log('updated') }
+    };
+    let vWelcomeDrop = new Vue(vWelcomeDrop__params);
+    window.onload = function(e){
+        vWelcomeDrop.changeState();
+    }
 </script>
 
 </body>
