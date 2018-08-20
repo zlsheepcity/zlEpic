@@ -1,6 +1,10 @@
 "use strict"
 // appName 123.0002
 
+window.onload = function(e){
+    
+}
+
 $(document).ready(function(){
 });
 
@@ -81,7 +85,18 @@ charloop:while(c=getc()){
     }
 }
 
+// easy append css
 
+Element.prototype.styles = function(attrs) {
+  Object.keys(attrs).forEach(attr => {
+    this.style[attr] = attrs[attr];
+  });
+}
+node.styles({
+  'color': 'red',
+  'backgroundColor': 'black',
+  'padding': '1rem'
+});
 
 
 

@@ -2,3 +2,18 @@ body {
     background-color: #ECE5CE;
     color: #774F38;
 }
+body.design {
+    background-color: #ECE5CE;
+    color: #774F38;
+}
+.design .block-note {
+    padding-top: 1em;
+    padding-bottom: 1em;
+    background-color: #C5E0DC;
+    font-family: Verdana, Geneva, sans-serif;
+}
+.design .illustration figcaption {
+    font-size: smaller;
+    font-family: Verdana, Geneva, sans-serif;
+    margin-top: 0.5em;
+}
