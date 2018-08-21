@@ -46,6 +46,20 @@ myElement.matches('div.bar') === true
 const newElement = document.createElement('div')
 document.body.appendChild(newElement)
 
+myElement.classList.add('foo')
+myElement.classList.remove('bar')
+myElement.classList.toggle('baz')
+
+// Using Array.from()
+Array.from(myElements).forEach(doSomethingWithEachElement)
+
+// Or prior to ES6
+Array.prototype.forEach.call(myElements, doSomethingWithEachElement)
+
+
+
+
+
 
 /* ---------------------------------------------- */ // performance
 

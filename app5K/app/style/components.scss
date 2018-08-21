@@ -1,4 +1,7 @@
-.layout-document {
+$screenwidth--singlecolumn: 900px;
+//todo .y-article grid
+
+.y-layout {
     position: relative;
     z-index: -1;
     &:before {
@@ -10,6 +13,8 @@
         right: 0;
         bottom: 0;
         pointer-events: none;
+        opacity: 1;
+        transition: opacity 800ms ease-in;
     }
     &, &:before {
         background-attachment: fixed;
@@ -17,13 +22,43 @@
         background-position: top center;
         background-repeat: no-repeat;
     }
-    /* default settings *
-    .theme.layout-document {
-        background-color: wheat;
+    &.inactive:before {
+        opacity: 0.2;
     }
-    .theme.layout-document:before {
-        background-image: url();
-        opacity: 1;
+}
+.y-article {
+    &,
+    & .y-layer,
+    & .y-illustration {
+        display: grid;
+        grid-template-columns:
+            unquote(" [full-start] minmax(0, 1fr) ")
+            unquote(" [over-start] minmax(1rem, 10rem) ")
+            unquote(" [main-start] minmax(0, 38em) ")
+            unquote(" [main-end]   minmax(1rem, 10rem) ")
+            unquote(" [over-end]   minmax(0, 1fr) ")
+            unquote(" [full-end]; ");
+        @media all and (max-width:$screenwidth--singlecolumn) {
+            grid-template-columns:
+            unquote(" [full-start] minmax(0, 1fr) ")
+            unquote(" [over-start] minmax(1rem, 2rem) ")
+            unquote(" [main-start] minmax(0, 38em) ")
+            unquote(" [main-end]   minmax(1rem, 2rem) ")
+            unquote(" [over-end]   minmax(0, 1fr) ")
+            unquote(" [full-end]; ");
+        }
     }
-    /**/
+    & > *,
+    & .y-layer > *,
+    & .y-illustration .y-textcontent {
+        grid-column: main;
+    }
+    & .y-layer,
+    & .y-illustration > * {
+        grid-column: full;
+    }
+    & .y-illustration {
+        grid-column: over;
+        margin: 0;
+    }
 }

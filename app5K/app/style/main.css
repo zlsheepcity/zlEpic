@@ -24,12 +24,17 @@ body.design {
 
 /* -------------------------------------- demo-data */
 
-.design-demoData.layout-document {
+.design-demoData.y-layout {
     background-color: #b25c99;
 }
-.design-demoData.layout-document:before {
+.design-demoData.y-layout:before {
     background-image: url(../../art/It_Is_Time.jpg);
-    opacity: 0.4;
+    opacity: 1;
+}
+
+.design-demoData .y-article {
+    background-color: #ECE5CE;
+    color: #774F38;
 }
 
 
@@ -39,5 +44,9 @@ body.design {
 
 .document-intro {
     background-color: rgba(0,0,0,0.2);
-    height: 42vh;
+    height: 62vh;
+}
+
+.watcher.active {
+    background-color: pink;
 }
