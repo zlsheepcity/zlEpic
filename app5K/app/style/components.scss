@@ -1,0 +1,29 @@
+.layout-document {
+    position: relative;
+    z-index: -1;
+    &:before {
+        content: '';
+        position: absolute;
+        z-index: -1;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        pointer-events: none;
+    }
+    &, &:before {
+        background-attachment: fixed;
+        background-size: cover;
+        background-position: top center;
+        background-repeat: no-repeat;
+    }
+    /* default settings *
+    .theme.layout-document {
+        background-color: wheat;
+    }
+    .theme.layout-document:before {
+        background-image: url();
+        opacity: 1;
+    }
+    /**/
+}

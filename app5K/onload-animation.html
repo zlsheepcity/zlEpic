@@ -76,21 +76,17 @@
     <!-- ## custom settings below-->
 
     <style>
-
-        /* override sakura */
         body {
             margin: 0;
             padding: 0;
             max-width: 100%;
         }
-
-        /* article-content component #1 */
         .sakura-body {
             display: grid;
             grid-template-columns:
                 [full-start] minmax(1rem, 1fr)
                 [main-start] minmax(0, 38em)
-                [main-end]   minmax(1rem, 1fr)
+                [main-end]   minmax(1em, 1fr)
                 [full-end];
         }
         .sakura-body > * {
@@ -101,55 +97,6 @@
         }
         .sakura-body > .layer100 > * {
             grid-column: main;
-        }
-
-        /* article-content component #2 */
-        .article,
-        .article > .layer,
-        .article > .illustration {
-            display: grid;
-            grid-template-columns:
-                [full-start] minmax(0, 1fr)
-                [over-start] minmax(1rem, 10rem)
-                [main-start] minmax(0, 38em)
-                [main-end]   minmax(1rem, 10rem)
-                [over-end]   minmax(0, 1fr)
-                [full-end];
-        }
-        @media all and (max-width:800px) {
-            .article,
-            .article .layer,
-            .article .illustration {
-                display: grid;
-                grid-template-columns:
-                    [full-start] minmax(0, 1fr)
-                    [over-start] minmax(1rem, 2rem)
-                    [main-start] minmax(0, 38em)
-                    [main-end]   minmax(1rem, 2rem)
-                    [over-end]   minmax(0, 1fr)
-                    [full-end];
-            }
-        }
-        .article > *,
-        .article .layer > * {
-            grid-column: main;
-        }
-        .article .layer {
-            grid-column: full;
-        }
-        .article .illustration {
-            grid-column: over;
-            margin: 0;
-        }
-        .article .illustration > * {
-            grid-column: full;
-        }
-        .article .illustration .textcontent {
-            grid-column: main;
-        }
-        .article-intro {
-            background-color: rgba(0,0,0,0.2);
-            height: 40vh;
         }
     </style>
 
@@ -165,67 +112,9 @@
     <!-- / -->
 
 </head>
-<body class="design">
+<body>
 
 <!-- ================================================================= INTRO-->
-
-    <header class="layer article-intro">
-    </header>
-
-<article class="article">
-
-    <h1>Test layout, <span class="gwrtsch">gwrtsch</span></h1>
-
-    <section class="layer block-note">
-        <p>
-            Main goals. Gardening & War section WSJ Ushahidi circulation explainer Article Skimmer privacy Free Darko layoffs Romenesko, writing learnings I love the Weather & Opera section linking the audience knows more than I do discuss mthomps WSJ, CNN leaves it there crowdsourcing Foursquare Jeff Jarvis prostate serendipity #twittermakesyoustupid mathewi API.
-        </p>
-    </section>
-
-</article>
-
-<article class="article">
-    <h1>Article layout, <span class="gwrtsch">gwrtsch</span></h1>
-    <p>
-        To get a better idea, take a look at a sample file written in JavaScript Standard Style. Or, check out one of the <span class="gwrtsch">gwrtsch</span> thousands of projects that use standard!
-    </p>
-    <section class="layer block-note">
-        <p>
-            Gardening & War section WSJ Ushahidi circulation explainer Article Skimmer privacy Free Darko layoffs Romenesko, writing learnings I love the Weather & Opera section linking the audience knows more than I do discuss mthomps WSJ, CNN leaves it there crowdsourcing Foursquare Jeff Jarvis prostate serendipity #twittermakesyoustupid mathewi API.
-        </p>
-    </section>
-    <p>
-        Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. Donec non enim in turpis pulvinar facilisis. Ut felis. Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus
-    </p>
-    <figure class="illustration">
-        <div class="image_placeholder">image</div>
-        <figcaption class="textcontent">
-            Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante.
-        </figcaption>
-    </figure>
-    <style>
-        .image_placeholder {
-            background-color:darkseagreen;
-            color: forestgreen;
-            display: flex;
-            justify-content: center;
-            align-content: center;
-            align-items: center;
-            min-height: 18rem;
-            font-size: 4rem;
-        }
-    </style>
-</article>
-<style>
-    .article {
-        transition: transform 400ms ease-in;
-        transform-origin: top left;
-    }
-    .article:hover {
-        /*width: 50%;*/
-        /*transform: scale(0.5);*/
-    }
-</style>
 
 <article class="sakura-body">
 <h1>Test, <span class="gwrtsch">gwrtsch</span></h1>
@@ -274,11 +163,11 @@
 <article class="sakura-body">
 <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p>
 
-<section class="layer100 sakura-body block-note">
+<div class="layer100 sakura-body block-note">
 
     <p>Gardening & War section WSJ Ushahidi circulation explainer Article Skimmer privacy Free Darko layoffs Romenesko, writing learnings I love the Weather & Opera section linking the audience knows more than I do discuss mthomps WSJ, CNN leaves it there crowdsourcing Foursquare Jeff Jarvis prostate serendipity #twittermakesyoustupid mathewi API.</p>
 
-</section>
+</div>
 
 <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. Donec non enim in turpis pulvinar facilisis. Ut felis. Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus</p>
 <ul>
@@ -298,8 +187,97 @@ commodo consequat.</dd>
 aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
 commodo consequat.</dd>
 </dl>
+<style>
+    .block-note {
+        padding-top: 1em;
+        padding-bottom: 1em;
+        background-color: #C5E0DC;
+        font-family: Verdana, Geneva, sans-serif;
+    }
+</style>
 </article>
 
+<!-- ================================================================= ON LOAD-->
+
+<div class="welcome-drop" v-bind:class="[state]" v-on:click="toggleState"></div>
+<style>
+    .welcome-drop {
+        display: block;
+        width: 14rem;
+        height: 14rem;
+        background-color: rgba(0,0,0,.25);
+        position: fixed;
+        z-index: 2;
+        bottom:100%;
+        left:0;
+        transition: all 400ms ease-in;
+        transition-timing-function: cubic-bezier(0.33333, 0, 0.66667, 0.33333);
+        transform: translateY(0);
+    }
+    .welcome-drop.is-ready {
+        background-color: rgba(255,0,0,.33);
+        transform: translateY(7rem);
+    }
+    .welcome-drop.is-showtime {
+        background-color: rgba(155,255,0,.33);
+        transform: translateY(100vh);
+    }
+</style>
+<div class="welcome-bounce" v-bind:class="[state]" v-on:click="toggleState"></div>
+<style>
+    .welcome-bounce {
+        display: block;
+        width: 14rem;
+        height: 14rem;
+        background-color: rgba(0,0,0,.25);
+        position: fixed;
+        z-index: 2;
+        bottom:400px;
+        right:0;
+        animation: bounce 1s cubic-bezier(0.30, 2.40, 0.85, 2.50) infinite;
+    }
+    @keyframes bounce {
+        from, to {
+            bottom: 14rem;
+        }
+        80% {
+            bottom: 400px;
+        }
+    }
+</style>
+<script type="text/babel">
+    let vWelcomeDrop__params = {
+        el:'.welcome-drop',
+        data: {
+            state: 'is-not-ready'
+        },
+        methods: {
+            areYouReady: function() {
+                console.log(this.state);
+                this.changeState();
+                return this;
+            },
+            resetState: function() {
+                this.state = 'is-ready';
+                return this;
+            },
+            changeState: function() {
+                this.state = 'is-showtime';
+                return this;
+            },
+            toggleState: function() {
+                if (this.state=='is-ready') this.changeState()
+                else this.resetState();
+            }
+        },
+        mounted: function() { console.log('mounted'); },
+        updated: function() { console.log('updated') }
+    };
+    let vWelcomeDrop = new Vue(vWelcomeDrop__params);
+    window.onload = function(e){
+        vWelcomeDrop.changeState();
+    }
+</script>
 
 </body>
 </html>

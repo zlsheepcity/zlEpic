@@ -6,6 +6,10 @@ body.design {
     background-color: #ECE5CE;
     color: #774F38;
 }
+.design .article {
+    background-color: #ECE5CE;
+    color: #774F38;
+}
 .design .block-note {
     padding-top: 1em;
     padding-bottom: 1em;
@@ -16,4 +20,24 @@ body.design {
     font-size: smaller;
     font-family: Verdana, Geneva, sans-serif;
     margin-top: 0.5em;
+}
+
+/* -------------------------------------- demo-data */
+
+.design-demoData.layout-document {
+    background-color: #b25c99;
+}
+.design-demoData.layout-document:before {
+    background-image: url(../../art/It_Is_Time.jpg);
+    opacity: 0.4;
+}
+
+
+/* -------------------------------------- components */
+
+
+
+.document-intro {
+    background-color: rgba(0,0,0,0.2);
+    height: 42vh;
 }
