@@ -1,6 +1,8 @@
 "use strict"
 // appName 123.0002
 
+/* ---------------------------------------------- */ // onload
+
 window.onload = function(e){
     
 }
@@ -32,6 +34,18 @@ $(function(){
 $(window).load(function() {
     $('.bg-image').addClass('hd');
 });
+
+/* ---------------------------------------------- */ // vanilla dom
+
+const myElement = document.querySelector('#foo > div.bar')
+const myElements = document.querySelectorAll('.bar')
+const elements2 = document.getElementsByTagName('div')
+const myChildElemet = myElement.querySelector('input[type="submit"]')
+myElement.matches('div.bar') === true
+
+const newElement = document.createElement('div')
+document.body.appendChild(newElement)
+
 
 /* ---------------------------------------------- */ // performance
 
