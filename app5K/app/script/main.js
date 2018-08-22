@@ -1,5 +1,7 @@
 window.onload = function(e){
     define_scrollevolution();
+    Pathdance.RegisterDancers(pathdance_dancers);
+    //PathdancePrepare();
     console.log('window.onload: ready');
 }
 
