@@ -47,6 +47,12 @@ body.design {
     height: 62vh;
 }
 
+.watcher {
+    position:fixed;
+    top:50%;
+    left:0;
+    background-color: red;
+}
 .watcher.active {
     background-color: pink;
 }

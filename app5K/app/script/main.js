@@ -17,12 +17,12 @@ function define_scrollevolution() {
 
     scrollevolution.use__watcher = document.getElementById('scroll_watcher');
     scrollevolution.scroll_watcher = new Waypoint({
-        element: scrollevolution.use__watcher,
+        element: document.getElementById('scroll_watcher__trigger'),
         handler: function(scroll_direction) {
             if(scroll_direction==='down'){
-            scrollevolution.use__watcher.firstElementChild.classList.add('active');
+            scrollevolution.use__watcher.classList.add('active');
             }else{
-            scrollevolution.use__watcher.firstElementChild.classList.remove('active');
+            scrollevolution.use__watcher.classList.remove('active');
             }
         },
         offset:'50%'
