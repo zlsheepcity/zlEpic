@@ -39,12 +39,11 @@
     <!-- / -->
 
     <!-- FAVICON -->
-    <link rel="apple-touch-icon" sizes="180x180" href="app/favicons/180x180.png">
-    <link rel="icon" type="image/png" sizes="192x192"  href="app/favicons/192x192.png">
-    <link rel="manifest" href="app/favicons/manifest.json">
     <meta name="theme-color" content="#E08E79">
     <meta name="msapplication-TileColor" content="#E08E79">
     <meta name="msapplication-TileImage" content="app/favicons/144x144.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="app/favicons/180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192"  href="app/favicons/192x192.png">
 
     <!-- =================================================== ʕ⊙ᴥ⊙ʔ  -->
     <!-- =================================================== [HEAD ENGINE] -->
@@ -59,23 +58,31 @@
 
     <!-- ## PREFETCH -->
 
-    <link rel="dns-prefetch" href="//xoxoxURLxoxox">
+    <link rel="dns-prefetch" href="//unpkg.com/babel-standalone@6/babel.min.js">
+    <link rel="dns-prefetch" href="//cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js">
 
     <!-- ## CSS -->
 
-    <!-- lib --><link rel="stylesheet" href="app/vendor/sakura/css/normalize.css" type="text/css"><!-- NORMALIZE -->
-    <!-- lib --><link rel="stylesheet" href="app/vendor/sakura/css/sakura.css" type="text/css"><!-- SAKURA -->
-    <!-- app --><link href="app/style/main.css" rel="stylesheet"  media="all" /><!-- / -->
-    <!-- app --><link href="app/style/components.css" rel="stylesheet"  media="all" /><!-- / -->
+    <!-- lib --><link href="app/vendor/sakura/css/normalize.css" rel="stylesheet" type="text/css"><!-- NORMALIZE -->
+    <!-- lib --><link href="app/vendor/sakura/css/sakura.css" rel="stylesheet" type="text/css"><!-- SAKURA -->
+    <!-- app --><link href="app/style/main.css" rel="stylesheet" type="text/css" media="all" /><!-- / -->
+    <!-- app --><link href="app/style/components.css" rel="stylesheet" type="text/css" media="all" /><!-- / -->
 
     <!-- ## JS -->
 
-    <!-- lib --><script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script><!-- BABEL -->
-    <!-- lib --><script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script><!-- DOM FRAMEWORK -->
-    <!-- lib --><script src="https://cdn.jsdelivr.net/npm/lodash@4.17.10/lodash.min.js"></script><!-- LODASH -->
-    <!-- lib --><script src="app/vendor/waypoints/lib/noframework.waypoints.min.js"></script><script src="app/vendor/waypoints/lib/shortcuts/inview.min.js"></script><!-- SCROLL EVENTS -->
-    <!-- lib --><script src="app/vendor/flubber/build/flubber.min.js"></script><!-- SVG TRANSFORMS -->
-    <!-- app --><script src="app/script/svg.js"></script><!-- SVG TRANSFORMS -->
+    <!-- lib / BABEL -->
+        <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script><!-- / -->
+    <!-- lib / DOM FRAMEWORK -->
+        <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script><!-- / -->
+    <!-- lib / ALGORITHMS, https://lodash.com/docs/ -->
+        <script src="app/vendor/lodash/lodash.min.js"></script><!-- / -->
+    <!-- lib / SCROLL EVENTS, http://imakewebthings.com/waypoints/ -->
+        <script src="app/vendor/waypoints/lib/noframework.waypoints.min.js"></script>
+        <script src="app/vendor/waypoints/lib/shortcuts/inview.min.js"></script><!-- / -->
+    <!-- lib / SVG TRANSFORMS -->
+        <script src="app/vendor/flubber/build/flubber.min.js"></script><!-- / -->
+    <!-- app / SVG TRANSFORMS-->
+        <script src="app/script/svg.js"></script><!-- / -->
     <!-- app --><script src="app/script/main.js"></script><!-- / -->
 
     <!-- ## custom settings below-->
@@ -177,15 +184,31 @@
 
     <h1>Test layout, <span class="gwrtsch">gwrtsch</span></h1>
 
-    <section class="y-layer block-note">
+    <section class="y-layer block-note" id="block-to-lock">
         <p>
             Main goals. Gardening & War section WSJ Ushahidi circulation explainer Article Skimmer privacy Free Darko layoffs Romenesko, writing learnings I love the Weather & Opera section linking the audience knows more than I do discuss mthomps WSJ, CNN leaves it there crowdsourcing Foursquare Jeff Jarvis prostate serendipity #twittermakesyoustupid mathewi API.
         </p>
     </section>
+    <script>
+        function olala(direction) {
+            console.log('olala');
+        }
+        zlScroll.do('#block-to-lock', olala, {offset:'-50%'});
+    </script>
 
     <p>
         Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. Donec non enim in turpis pulvinar facilisis. Ut felis. Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus
     </p>
+
+    <div class="mod1">Ogogo!</div>
+    <style>.mod1{ padding-top:100px; } .mod2 { color:red; font-weight:bolder; }</style>
+    <script>
+        zlScroll.mod('', {
+            el:el('mod1'),
+            direction:'down',
+            add:'mod2'
+        });
+    </script>
 
     <div id="scroll_watcher__trigger">xx</div>
     <figure class="watcher" id="scroll_watcher">

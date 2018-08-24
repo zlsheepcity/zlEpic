@@ -35,7 +35,8 @@ $(window).load(function() {
     $('.bg-image').addClass('hd');
 });
 
-/* ---------------------------------------------- */ // vanilla dom
+/* ---------------------------------------------- */ // vanilla DOM
+// https://www.sitepoint.com/dom-manipulation-vanilla-javascript-no-jquery/
 
 const myElement = document.querySelector('#foo > div.bar')
 const myElements = document.querySelectorAll('.bar')
@@ -45,6 +46,19 @@ myElement.matches('div.bar') === true
 
 const newElement = document.createElement('div')
 document.body.appendChild(newElement)
+// Append element1 as the last child of element2
+element1.appendChild(element2)
+// Insert element2 as child of element 1, right before element3
+element1.insertBefore(element2, element3)
+
+const link = document.createElement('a')
+const text = document.createTextNode('continue reading...')
+const hr = document.createElement('hr')
+
+link.href = 'foo.html'
+link.appendChild(text)
+myElement.appendChild(link)
+myElement.appendChild(hr)
 
 myElement.classList.add('foo')
 myElement.classList.remove('bar')
@@ -52,17 +66,48 @@ myElement.classList.toggle('baz')
 
 // Using Array.from()
 Array.from(myElements).forEach(doSomethingWithEachElement)
-
 // Or prior to ES6
 Array.prototype.forEach.call(myElements, doSomethingWithEachElement)
 
+// Create a clone
+const myElementClone = myElement.cloneNode()
+myParentElement.appendChild(myElementClone)
+
+// Remove element
+myParentElement.removeChild(myElement)
+// or
+myElement.parentNode.removeChild(myElement)
 
 
+function attachCssClass(selector, myClass) {
+    elements = document.querySelectorAll(selector);
+    for (var i=0; i<elements.length; i++) {
+        elements[i].classList.add(myClass);
+    }
+}
+function removeCssClass(selector, myClass) {
+    elements = document.querySelectorAll(selector);
+    for (var i=0; i<elements.length; i++) {
+        elements[i].classList.remove(myClass);
+    }
+}
+
+
+event.preventDefault()
+event.stopPropagation()
+addEventListener
+removeEventListener
+myElement.addEventListener('change', function listener (event) {
+  console.log(event.type + ' got triggered on ' + this)
+  this.removeEventListener('change', listener)
+})
 
 
 
 /* ---------------------------------------------- */ // performance
 
+// Call requestAnimationFrame again outside the callback function
+requestAnimationFrame( makeChange );
 function makeChange( time ) {
   // Animation logic here
 
@@ -70,14 +115,23 @@ function makeChange( time ) {
   requestAnimationFrame( makeChange ):
 }
 
-// Call requestAnimationFrame again outside the callback function
-requestAnimationFrame( makeChange );
-
-
 var latestKnownScrollY = 0;
 
 function onScroll() {
 	latestKnownScrollY = window.scrollY;
+}
+
+
+const start = window.performance.now()
+const duration = 2000
+
+window.requestAnimationFrame(function fadeIn (now)) {
+  const progress = now - start
+  myElement.style.opacity = progress / duration
+
+  if (progress < duration) {
+    window.requestAnimationFrame(fadeIn)
+  }
 }
 
 /* ---------------------------------------------- */ // console functions
