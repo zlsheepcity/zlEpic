@@ -2,10 +2,6 @@ body {
     background-color: #ECE5CE;
     color: #774F38;
 }
-body.design {
-    background-color: #ECE5CE;
-    color: #774F38;
-}
 .design .article {
     background-color: #ECE5CE;
     color: #774F38;
@@ -24,15 +20,7 @@ body.design {
 
 /* -------------------------------------- demo-data */
 
-.design-demoData.y-layout {
-    background-color: #b25c99;
-}
-.design-demoData.y-layout:before {
-    background-image: url(../../art/It_Is_Time.jpg);
-    opacity: 1;
-}
-
-.design-demoData .y-article {
+.design-article {
     background-color: #ECE5CE;
     color: #774F38;
 }

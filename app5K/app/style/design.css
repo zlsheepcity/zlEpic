@@ -1,0 +1,19 @@
+/* BODY.design */
+.design {
+  background-color: #b25c99;
+  color: white; }
+  .design:not(.yiWallpaper), .design.yiWallpaper:before {
+    background-image: url(../../art/It_Is_Time.jpg); }
+  .design .design-intro {
+    min-height: 58vh; }
+
+.design--demo .design-intro {
+  display: grid;
+  grid-template-columns:  [full-start] minmax(1rem, 1fr)   [main-start] minmax(0, 38em)   [main-end]   minmax(1rem, 1fr)   [full-end]; ; }
+  .design--demo .design-intro > * {
+    grid-column: main; }
+.design--demo .y-article {
+  background-color: #ECE5CE;
+  color: #774F38; }
+
+/*# sourceMappingURL=design.css.map */

@@ -34,4 +34,45 @@
   grid-column: over;
   margin: 0; }
 
+.y-article, .y-article .y-layer, .y-article .y-illustration {
+  display: grid;
+  grid-template-columns:  [full-start] minmax(0, 1fr)   [over-start] minmax(1rem, 10rem)   [main-start] minmax(0, 38em)   [main-end]   minmax(1rem, 10rem)   [over-end]   minmax(0, 1fr)   [full-end]; ; }
+  @media all and (max-width: 900px) {
+    .y-article, .y-article .y-layer, .y-article .y-illustration {
+      grid-template-columns:  [full-start] minmax(0, 1fr)   [over-start] minmax(1rem, 2rem)   [main-start] minmax(0, 38em)   [main-end]   minmax(1rem, 2rem)   [over-end]   minmax(0, 1fr)   [full-end]; ; } }
+.y-article > *, .y-article .y-layer > *, .y-article .y-illustration .y-textcontent {
+  grid-column: main; }
+.y-article .y-layer, .y-article .y-illustration > * {
+  grid-column: full; }
+.y-article .y-illustration {
+  grid-column: over;
+  margin: 0; }
+
+/* ==================================================== yi Components */
+.layer:before {
+  content: '';
+  display: table; }
+
+.yiWallpaper {
+  position: relative;
+  z-index: -1; }
+  .yiWallpaper:before {
+    content: '';
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    pointer-events: none;
+    opacity: 1;
+    transition: opacity 800ms ease-in; }
+  .yiWallpaper, .yiWallpaper:before {
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: top center;
+    background-repeat: no-repeat; }
+  .yiWallpaper.inactive:before {
+    opacity: 0.2; }
+
 /*# sourceMappingURL=components.css.map */

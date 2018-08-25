@@ -62,3 +62,80 @@ $screenwidth--singlecolumn: 900px;
         margin: 0;
     }
 }
+
+
+
+.y-article {
+    &,
+    & .y-layer,
+    & .y-illustration {
+        display: grid;
+        grid-template-columns:
+            unquote(" [full-start] minmax(0, 1fr) ")
+            unquote(" [over-start] minmax(1rem, 10rem) ")
+            unquote(" [main-start] minmax(0, 38em) ")
+            unquote(" [main-end]   minmax(1rem, 10rem) ")
+            unquote(" [over-end]   minmax(0, 1fr) ")
+            unquote(" [full-end]; ");
+        @media all and (max-width:$screenwidth--singlecolumn) {
+            grid-template-columns:
+            unquote(" [full-start] minmax(0, 1fr) ")
+            unquote(" [over-start] minmax(1rem, 2rem) ")
+            unquote(" [main-start] minmax(0, 38em) ")
+            unquote(" [main-end]   minmax(1rem, 2rem) ")
+            unquote(" [over-end]   minmax(0, 1fr) ")
+            unquote(" [full-end]; ");
+        }
+    }
+    & > *,
+    & .y-layer > *,
+    & .y-illustration .y-textcontent {
+        grid-column: main;
+    }
+    & .y-layer,
+    & .y-illustration > * {
+        grid-column: full;
+    }
+    & .y-illustration {
+        grid-column: over;
+        margin: 0;
+    }
+}
+
+
+/* ==================================================== yi Components */
+
+.layer {
+    &:before {
+        content:'';
+        display: table;
+    }
+}
+
+$yiWallpaper-o-defaultInnactiveOpacity: 0.2;
+$yiWallpaper-o-defaultOpacityDuration: 800ms;
+.yiWallpaper {
+    position: relative;
+    z-index: -1;
+    &:before {
+        content: '';
+        position: absolute;
+        z-index: -1;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        pointer-events: none;
+        opacity: 1;
+        transition: opacity $yiWallpaper-o-defaultOpacityDuration ease-in;
+    }
+    &, &:before {
+        background-attachment: fixed;
+        background-size: cover;
+        background-position: top center;
+        background-repeat: no-repeat;
+    }
+    &.inactive:before {
+        opacity: $yiWallpaper-o-defaultInnactiveOpacity;
+    }
+}

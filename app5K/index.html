@@ -67,6 +67,7 @@
     <!-- lib --><link href="app/vendor/sakura/css/sakura.css" rel="stylesheet" type="text/css"><!-- SAKURA -->
     <!-- app --><link href="app/style/main.css" rel="stylesheet" type="text/css" media="all" /><!-- / -->
     <!-- app --><link href="app/style/components.css" rel="stylesheet" type="text/css" media="all" /><!-- / -->
+    <!-- app --><link href="app/style/design.css" rel="stylesheet" type="text/css" media="all" /><!-- / -->
 
     <!-- ## JS -->
 
@@ -173,14 +174,26 @@
     <!-- / -->
 
 </head>
-<body class="y-layout design design-demoData">
+<body class="yiWallpaper design design--demo">
 
-<!-- ================================================================= INTRO-->
+    <!-- ========================================================= INTRO-->
 
-<header class="document-intro" id="document_intro">
-</header>
+    <header class="layer design-intro yiWallpaper--trigger">
+        <h1>Intro</h1>
+    </header>
+    <script>
+        zlScroll
+            .AddAction({
+                name:   'yiWallpaper',
+                trigga: '.yiWallpaper--trigger',
+                target: '.yiWallpaper',
+                symbol: 'inactive',
+                direction: 'down',
+                offset: '-21%'
+            });
+    </script>
 
-<article class="y-article" id="demo_waypoint">
+<article class="y-article design-article" id="demo_waypoint">
 
     <h1>Test layout, <span class="gwrtsch">gwrtsch</span></h1>
 
@@ -204,7 +217,7 @@
     <style>.mod1{ padding-top:100px; } .mod2 { color:red; font-weight:bolder; }</style>
     <script>
         zlScroll.mod('', {
-            el:el('mod1'),
+            el:elf('mod1'),
             direction:'down',
             add:'mod2'
         });
