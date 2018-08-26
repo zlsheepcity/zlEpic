@@ -106,15 +106,6 @@ myElement.addEventListener('change', function listener (event) {
 
 /* ---------------------------------------------- */ // performance
 
-// Call requestAnimationFrame again outside the callback function
-requestAnimationFrame( makeChange );
-function makeChange( time ) {
-  // Animation logic here
-
-  // Call requestAnimationFrame recursively inside the callback function
-  requestAnimationFrame( makeChange ):
-}
-
 var latestKnownScrollY = 0;
 
 function onScroll() {

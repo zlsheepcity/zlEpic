@@ -1,0 +1,204 @@
+/* app interface components, 5001
+
+    # List
+    [basic elements]
+    [helpers]
+    yiWallpaper
+    yiSidemenu
+
+    # Updated 2018.8.26
+*/
+
+/* ==============================================================
+    block model
+    properties for basic elements
+============================================================== */
+html { margin:0;padding:0;box-sizing:border-box;width:100%;overflow-x:hidden; }
+*, *::before, *::after { box-sizing: inherit; }
+body { margin:0; padding:0; min-height: 100vh; }
+img, svg { max-width:100%; }
+/* */
+
+
+/* ==============================================================
+    helpers
+============================================================== */
+.layer {
+    margin: 0;
+    &:before {
+        content:'';
+        display: table;
+    }
+}
+.grid {
+    &,
+    & .illustration {
+        display: grid;
+        grid-template-columns:
+            unquote(" [full-start] minmax(0, 1fr) ")
+            unquote(" [over-start] minmax(1rem, 2rem) ")
+            unquote(" [main-start] minmax(0, 38em) ")
+            unquote(" [main-end]   minmax(1rem, 2rem) ")
+            unquote(" [over-end]   minmax(0, 1fr) ")
+            unquote(" [full-end]; ");
+    }
+    & > *,
+    & .illustration .textcontent {
+        grid-column: main;
+    }
+    & .layer,
+    & .illustration > * {
+        grid-column: full;
+    }
+    & .illustration {
+        grid-column: over;
+        margin: 0;
+    }
+}
+.illustration-wide {
+    object-fit: cover;
+}
+/* */
+
+
+/* ==============================================================
+    body.yiWallpaper
+    fixed background, fade when inactive
+============================================================== */
+$yiWallpaper-o-defaultInnactiveOpacity: 0.2;
+$yiWallpaper-o-defaultOpacityDuration: 640ms;
+$yiWallpaper-o-defaultRestoreDuration: 200ms;
+.yiWallpaper {
+    position: relative;
+    z-index: -1;
+    &:before {
+        content: '';
+        position: absolute;
+        z-index: -1;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        pointer-events: none;
+        opacity: 1;
+        transition: opacity $yiWallpaper-o-defaultRestoreDuration ease-in;
+    }
+    &, &:before {
+        background-attachment: fixed;
+        background-size: cover;
+        background-position: top center;
+        background-repeat: no-repeat;
+    }
+    &.inactive:before {
+        transition-duration: $yiWallpaper-o-defaultOpacityDuration;
+        opacity: $yiWallpaper-o-defaultInnactiveOpacity;
+    }
+}
+/* */
+
+
+/* ==============================================================
+    .yiSidemenu
+    hidden panel
+============================================================== */
+.yiSidemenu {
+    position: fixed;
+    z-index: 13;
+    top: 0;
+    bottom: 0;
+    left: 100%;
+
+    background-color: rgba(200,0,0,.2);
+    width: 100%;
+    max-width: 38rem;
+
+    transform: translateX(0);
+    transition: transform 200ms ease-in;
+
+    .has-open-sidemenu & {
+        transform: translateX(-100%);
+    }
+
+}
+/* */
+
+
+/*
+## Layout action: aside-panel
+*/
+.elAside {
+    width:200px;
+
+
+    right: 100%;
+}
+.elAside.elAside--reversed {
+    right: auto;
+    
+}
+.elView,
+.elAside,
+.elHeaderMobile,
+.elPageMenuTrigger--isFloat {
+    -webkit-transition: transform .25s ease-in;
+    -o-transition: transform .25s ease-in;
+    transition: transform .25s ease-in;
+}
+.elView__shadow {
+    -webkit-transition: opacity .25s ease-in;
+    -o-transition: opacity .25s ease-in;
+    transition: opacity .25s ease-in;
+}
+.elBody--asideIsOpen {
+    overflow-y: hidden;
+}
+.elBody--asideIsOpen .elView,
+.elBody--asideIsOpen .elAside,
+.elBody--asideIsOpen .elHeaderMobile {
+    transform: translateX(200px);
+}
+.elBody--asideIsOpen .elView__shadow {
+    right: 0;
+    opacity: 1;
+}
+.elBody--asideIsOpen .cMenuTrigger {
+    position: relative;
+    z-index: 11010;
+}
+.elBody--asideIsOpen .elMenuTrigger__readyToOpen {
+    display: none;
+}
+.elBody--asideIsOpen .elMenuTrigger__readyToClose {
+    display: block;
+}
+
+.elBody--pageMenuIsOpen {
+    overflow-y: hidden;
+}
+.elBody--pageMenuIsOpen .elView,
+.elBody--pageMenuIsOpen .elAside--reversed,
+.elBody--pageMenuIsOpen .elHeaderMobile {
+    transform: translateX(-200px);
+}
+.elBody--pageMenuIsOpen .elView__shadow {
+    right: 0;
+    opacity: 1;
+}
+.elBody--pageMenuIsOpen .cPageMenuTrigger {
+    position: relative;
+    z-index: 19500;
+}
+.elBody--pageMenuIsOpen .elPageMenuTrigger__readyToOpen {
+    display: none;
+}
+.elBody--pageMenuIsOpen .elPageMenuTrigger__readyToClose {
+    display: block;
+}
+.elBody--pageMenuIsOpen .elPageMenuTrigger--isFloat {
+    position: fixed;
+    top:0;
+    transform: translateX(-200px);
+}
+/**/
+
+

@@ -1,0 +1,25 @@
+/* BODY.design */
+
+$design-o-coverBackground: url(../../art/background_cover.png);
+
+.design {
+
+    background-color: black;
+    color: white;
+
+    &:not(.yiWallpaper),
+    &.yiWallpaper:before {
+        background-image: $design-o-coverBackground;
+    }
+
+    .design-intro {
+        min-height: 58vh;
+    }
+
+    .design-document {
+        min-height: 100vh;
+        background-color: #ECE5CE;
+        color: #774F38;
+    }
+
+}

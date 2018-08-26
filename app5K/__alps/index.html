@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <!--
+        The following 2 meta tags *must* come first in the <head>
+        to consistently ensure proper document rendering.
+        Any other head element should come *after* these tags.
+        ==================================================== -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- =================================================== ʕ⊙ᴥ⊙ʔ  -->
+    <!-- =================================================== [HEAD CONTENT] -->
+
+    <title>Alps</title>
+
+    <!-- =================================================== ʕ⊙ᴥ⊙ʔ  -->
+    <!-- =================================================== [HEAD ENGINE] -->
+
+    <!-- ## Critical Bootstrap CSS -->
+    <style>
+        html { margin:0; padding:0; }
+        body { margin:0; padding:1rem; }
+        img, svg { max-width:100%; }
+    </style>
+    <!-- ## Custom settings below-->
+    <!-- ### libs -->
+    <!-- lib -->
+        <script src="app/vendor/lodash/lodash.min.js"></script>
+        <!-- x -->
+    <!-- lib / SCROLL EVENTS, http://imakewebthings.com/waypoints/ -->
+        <script src="app/vendor/waypoints/lib/noframework.waypoints.min.js"></script>
+        <script src="app/vendor/waypoints/lib/shortcuts/inview.min.js"></script><!-- / -->
+    <!-- lib --><link href="app/vendor/sakura/css/zl_sakura.css" rel="stylesheet" type="text/css"><!-- x -->
+    <!-- ### app interface -->
+    <!-- o --><link href="app/style/app_interface.css" rel="stylesheet" type="text/css" media="all" /><!-- x -->
+    <!-- o --><script src="app/script/app_interface.js"></script><!-- x -->
+    <!-- ### app design -->
+    <!-- o --><link href="app/style/design.css" rel="stylesheet" type="text/css" media="all" /><!-- x -->
+    <!-- ### app ordnung -->
+    <!-- o --><link href="app/style/ordnung.css" rel="stylesheet" type="text/css" media="all" /><!-- x -->
+    <!-- o --><script src="app/script/ordnung.js"></script><!-- x -->
+
+    <!-- =================================================== ʕ⊙ᴥ⊙ʔ  -->
+    <!-- =================================================== [HEAD OTHERS] -->
+
+</head>
+<body class="yiWallpaper design">
+
+<!-- =================================================== ʕ⊙ᴥ⊙ʔ  -->
+<!-- =================================================== [HEADER] -->
+
+<header class="layer design-intro yiWallpaper--trigger">
+    <h1>Intro</h1>
+</header>
+<script>
+    zlScroll
+        .AddAction({
+            name:   'yiWallpaper',
+            trigga: '.yiWallpaper--trigger',
+            target: '.yiWallpaper',
+            symbol: 'inactive',
+            direction: 'down',
+            offset: '-21%'
+        });
+</script>
+
+<nav class="layer design-sidemenu yiSidemenu yiSidemenu--trigger">
+    <h2>Sidemenu II</h2>
+</nav>
+<script>
+    zlScroll
+        .AddAction({
+            name:   'yiSidemenu',
+            trigga: '.yiWallpaper--trigger',
+            target: '.yiWallpaper',
+            symbol: 'has-open-sidemenu',
+            direction: 'down',
+            offset: '-1rem'
+        });
+</script>
+
+<!-- =================================================== ʕ⊙ᴥ⊙ʔ  -->
+<!-- =================================================== [MAIN] -->
+
+<main class="layer grid design-document sakura-body">
+
+<figure class="layer">
+    <!-- o --<img src="art/alps.jpg" alt="Alps"><!-- / -->
+    <img class="illustration-wide" src="art/placeholder.jpg" alt="Alps">
+</figure>
+
+<h3>Эдгар Аллан По</h3>
+
+<p>
+По северу Италии течёт река По. Такая же фамилия у американского писателя и поэта. Эдгар Аллан По придумал схему детектива, ставшую традиционной для жанра:
+</p>
+
+<ol type="a">
+    <li>совершается преступление;
+    <li>проходит расследование с осмотром места и улик;
+    <li>разоблачение преступника.
+</ol>
+
+<h3>Ганнибал Барка и слоны</h3>
+
+<p>
+Когда Рим воевал с Карфагеном, в Испании находилась армия со слонами. Полководец Ганнибал повёл войска через Альпы. Это был тяжёлый путь. Римляне не ожидали, что кто-то сможет пересечь горы. Воины со слонами справились и прогулялись по Италии.
+</p>
+
+
+<h3>Гора Монте-Визо</h3>
+
+<p>
+На пути слонов стоит гора Монте-Визо. Итальянский поэт Данте рассказывал о реке, которая начинается с этой горы:
+</p>
+
+<pre>
+Как та река, которая свой ход
+От Монте-Везо в сторону рассвета
+По Апеннинам первая ведет
+</pre>
+
+<h3>Дикий кабан с Везула</h3>
+
+<p>
+В тех же местах живёт дикий кабан, о котором рассказывал древнеримский поэт Вергилий:
+</p>
+
+<pre>
+Вепрь, которого бор на склонах Везула диких
+Долгие годы скрывал иль который средь топей Лаврентских
+</pre>
+
+<h3>Монблан</h3>
+
+<p>
+К северу возвышается белая гора Mont Blanc — самая высокая вершина Альп. Князь Вяземский написал о своих впечатлениях в 1855 году:
+</p>
+
+<pre>
+Не видал, хоть из окна,
+Живописного Монблана —
+Гор царя и великана.
+Скрылся он вовнутрь тумана:
+У царя приёма нет.
+И не знает ваш поэт,
+Как, подъемлясь горделиво
+На престоле из сребра,
+Богом созданное диво,
+Блещет Белая Гора.
+</pre>
+
+</main>
+
+<!-- =================================================== ʕ⊙ᴥ⊙ʔ  -->
+<!-- =================================================== [BOTTOM] -->
+
+
+</body>
+</html>
