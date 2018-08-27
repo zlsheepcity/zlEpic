@@ -8,7 +8,10 @@
     min-height: 58vh; }
   .design .design-document {
     min-height: 100vh;
-    background-color: #ECE5CE;
-    color: #774F38; }
+    background-color: #ece6cf;
+    color: #764e37; }
+  .design .design-sidemenu {
+    background-color: #00a2ff;
+    color: #cfecfc; }
 
 /*# sourceMappingURL=design.css.map */

@@ -18,8 +18,13 @@ $design-o-coverBackground: url(../../art/background_cover.png);
 
     .design-document {
         min-height: 100vh;
-        background-color: #ECE5CE;
-        color: #774F38;
+        background-color: hsl(46, 44%, 87%);
+        color: hsl(22, 36%, 34%);
+    }
+
+    .design-sidemenu {
+        background-color: hsl(202, 100%, 50%);
+        color: hsl(202, 90%, 90%);
     }
 
 }

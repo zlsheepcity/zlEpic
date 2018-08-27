@@ -89,90 +89,29 @@ img, svg {
 ============================================================== */
 .yiSidemenu {
   position: fixed;
+  z-index: 13;
   top: 0;
   bottom: 0;
   left: 100%;
-  background-color: rgba(200, 0, 0, 0.2);
   width: 100%;
   max-width: 38rem;
   transform: translateX(0);
   transition: transform 200ms ease-in; }
+
+.has-open-sidemenu {
+  overflow-y: hidden; }
+  .has-open-sidemenu:after {
+    content: '';
+    background-color: rgba(0, 0, 0, 0.5);
+    position: absolute;
+    z-index: 12;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0; }
   .has-open-sidemenu .yiSidemenu {
     transform: translateX(-100%); }
 
 /* */
-/*
-## Layout action: aside-panel
-*/
-.elAside {
-  width: 200px;
-  right: 100%; }
-
-.elAside.elAside--reversed {
-  right: auto; }
-
-.elView,
-.elAside,
-.elHeaderMobile,
-.elPageMenuTrigger--isFloat {
-  -webkit-transition: transform .25s ease-in;
-  -o-transition: transform .25s ease-in;
-  transition: transform .25s ease-in; }
-
-.elView__shadow {
-  -webkit-transition: opacity .25s ease-in;
-  -o-transition: opacity .25s ease-in;
-  transition: opacity .25s ease-in; }
-
-.elBody--asideIsOpen {
-  overflow-y: hidden; }
-
-.elBody--asideIsOpen .elView,
-.elBody--asideIsOpen .elAside,
-.elBody--asideIsOpen .elHeaderMobile {
-  transform: translateX(200px); }
-
-.elBody--asideIsOpen .elView__shadow {
-  right: 0;
-  opacity: 1; }
-
-.elBody--asideIsOpen .cMenuTrigger {
-  position: relative;
-  z-index: 11010; }
-
-.elBody--asideIsOpen .elMenuTrigger__readyToOpen {
-  display: none; }
-
-.elBody--asideIsOpen .elMenuTrigger__readyToClose {
-  display: block; }
-
-.elBody--pageMenuIsOpen {
-  overflow-y: hidden; }
-
-.elBody--pageMenuIsOpen .elView,
-.elBody--pageMenuIsOpen .elAside--reversed,
-.elBody--pageMenuIsOpen .elHeaderMobile {
-  transform: translateX(-200px); }
-
-.elBody--pageMenuIsOpen .elView__shadow {
-  right: 0;
-  opacity: 1; }
-
-.elBody--pageMenuIsOpen .cPageMenuTrigger {
-  position: relative;
-  z-index: 19500; }
-
-.elBody--pageMenuIsOpen .elPageMenuTrigger__readyToOpen {
-  display: none; }
-
-.elBody--pageMenuIsOpen .elPageMenuTrigger__readyToClose {
-  display: block; }
-
-.elBody--pageMenuIsOpen .elPageMenuTrigger--isFloat {
-  position: fixed;
-  top: 0;
-  transform: translateX(-200px); }
-
-/**/
 
 /*# sourceMappingURL=app_interface.css.map */
