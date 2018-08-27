@@ -89,8 +89,9 @@ $yiWallpaper-o-defaultRestoreDuration: 200ms;
         background-position: top center;
         background-repeat: no-repeat;
     }
-    &.inactive:before {
+    &.has-inactive-wallpaper:before {
         transition-duration: $yiWallpaper-o-defaultOpacityDuration;
+        transition-timing-function: ease-out;
         opacity: $yiWallpaper-o-defaultInnactiveOpacity;
     }
 }
@@ -114,7 +115,8 @@ $yiWallpaper-o-defaultRestoreDuration: 200ms;
     transform: translateX(0);
     transition: transform 200ms ease-in;
 
-    .has-open-sidemenu {
+    .has-open-sidemenu & {
+        transition-timing-function: ease-out;
         transform: translateX(-100%);
     }
 }
@@ -126,7 +128,7 @@ $yiWallpaper-o-defaultRestoreDuration: 200ms;
     top: 0;
     bottom: 0;
     right: 0;
-    .has-open-sidemenu {
+    .has-open-sidemenu & {
         left: 0;
     }
 }

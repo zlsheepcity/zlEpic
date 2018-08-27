@@ -78,8 +78,9 @@ img, svg {
     background-size: cover;
     background-position: top center;
     background-repeat: no-repeat; }
-  .yiWallpaper.inactive:before {
+  .yiWallpaper.has-inactive-wallpaper:before {
     transition-duration: 640ms;
+    transition-timing-function: ease-out;
     opacity: 0.2; }
 
 /* */
@@ -97,20 +98,20 @@ img, svg {
   max-width: 38rem;
   transform: translateX(0);
   transition: transform 200ms ease-in; }
-
-.has-open-sidemenu {
-  overflow-y: hidden; }
-  .has-open-sidemenu:after {
-    content: '';
-    background-color: rgba(0, 0, 0, 0.5);
-    position: absolute;
-    z-index: 12;
-    left: 0;
-    top: 0;
-    bottom: 0;
-    right: 0; }
   .has-open-sidemenu .yiSidemenu {
+    transition-timing-function: ease-out;
     transform: translateX(-100%); }
+
+.yiSidemenu__shadowOverlay {
+  background-color: rgba(0, 0, 0, 0.5);
+  position: absolute;
+  z-index: 12;
+  left: 100%;
+  top: 0;
+  bottom: 0;
+  right: 0; }
+  .has-open-sidemenu .yiSidemenu__shadowOverlay {
+    left: 0; }
 
 /* */
 

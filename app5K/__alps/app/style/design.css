@@ -3,7 +3,7 @@
   background-color: black;
   color: white; }
   .design:not(.yiWallpaper), .design.yiWallpaper:before {
-    background-image: url(../../art/background_cover.png); }
+    background-image: url(../../art/placeholder_bg.jpg); }
   .design .design-intro {
     min-height: 58vh; }
   .design .design-document {

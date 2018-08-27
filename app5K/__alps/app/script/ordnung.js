@@ -2,6 +2,7 @@
 // v2018.8.26
 
 window.onload = function(e){
+    app.Run();
     zlScroll.Run();
 }
 

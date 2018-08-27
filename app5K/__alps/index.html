@@ -58,8 +58,8 @@
         .AddAction({
             name:   'yiWallpaper',
             trigga: '.yiWallpaper--trigger',
-            target: '.yiWallpaper',
-            symbol: 'inactive',
+            target: 'body',
+            symbol: 'has-inactive-wallpaper',
             direction: 'down',
             offset: '-21%'
         });
@@ -67,18 +67,35 @@
 
 <div class="yiSidemenu__shadowOverlay"></div>
 <nav class="layer design-sidemenu yiSidemenu yiSidemenu--trigger">
-    <h2>Sidemenu II</h2>
+    <h2 id="Sidemenu">Sidemenu II</h2>
+    <script>
+        app.do({
+            name: 'Sidemenu',
+            when: '#Sidemenu',
+            has: 'click',
+            removeClass: 'has-open-sidemenu',
+            for: 'body'
+        });
+    </script>
 </nav>
 <script>
     zlScroll
         .AddAction({
             name:   'yiSidemenu',
             trigga: '.yiWallpaper--trigger',
-            target: '.yiWallpaper',
+            target: 'body',
             symbol: 'has-open-sidemenu',
             direction: 'down',
             offset: '-1rem'
         });
+    app.do({
+        name: 'ClickOnShadowClosesSidemenu',
+        when: '.yiSidemenu__shadowOverlay',
+        has: 'click',
+        removeClass: 'has-open-sidemenu',
+        for: 'body'
+    });
+    app.do({trigger:'body'});
 </script>
 
 <!-- =================================================== ʕ⊙ᴥ⊙ʔ  -->
@@ -90,8 +107,17 @@
     <!-- o --<img src="art/alps.jpg" alt="Alps"><!-- / -->
     <img class="illustration-wide" src="art/placeholder.jpg" alt="Alps">
 </figure>
+<script>
+    app.do({
+        name: 'DemoClick',
+        when: '.illustration-wide',
+        has: 'click',
+        addClass: 'has-open-sidemenu',
+        for: 'body'
+    });
+</script>
 
-<h3>Эдгар Аллан По</h3>
+<h3 id="Poe">Эдгар Аллан По</h3>
 
 <p>
 По северу Италии течёт река По. Такая же фамилия у американского писателя и поэта. Эдгар Аллан По придумал схему детектива, ставшую традиционной для жанра:
@@ -110,7 +136,16 @@
 </p>
 
 
-<h3>Гора Монте-Визо</h3>
+<h3 id="Kanban">Гора Монте-Визо</h3>
+<script>
+    app.do({
+        name: 'Kanban',
+        when: '#Kanban',
+        has: 'scrollTop',
+        addClass: 'has-open-sidemenu',
+        for: 'body'
+    });
+</script>
 
 <p>
 На пути слонов стоит гора Монте-Визо. Итальянский поэт Данте рассказывал о реке, которая начинается с этой горы:
