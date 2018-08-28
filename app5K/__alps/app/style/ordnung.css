@@ -1,1 +1,8 @@
 /* Ordnung am Styles */
+
+.svg svg {
+    width: 400px;
+}
+.svg svg path {
+    fill:white;
+}

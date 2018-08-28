@@ -1,10 +1,11 @@
 /* # Interface js functions, v5001
     app.do(event_details);
+    app.el(css_path);
     app.Mutate(css_mutation);
 */
 
 /* ==============================================================
-    app master v1002--2018.8.27
+    app master v1002, 2018.8.28
     Sample:
         app.do({
             name:       'ClickToToggleClass',
