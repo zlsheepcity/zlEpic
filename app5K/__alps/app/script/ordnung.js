@@ -3,7 +3,6 @@
 
 window.onload = function(e){
     app.Run();
-    zlScroll.Run();
 }
 
 /* // helpers

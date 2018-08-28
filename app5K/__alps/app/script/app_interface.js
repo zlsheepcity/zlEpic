@@ -1,38 +1,65 @@
 /* # Interface js functions, v5001
-    zlAppMaster
-    zlScroll
+    app.do(event_details);
+    app.Mutate(css_mutation);
 */
 
 /* ==============================================================
     app master v1002--2018.8.27
     Sample:
         app.do({
-            name:       'UniquePointer',
+            name:       'ClickToToggleClass',
             when:       '.myElement__Trigger',
             has:        'click',
-            removeClass:'cssClassName',
+            toggleClass:   'cssClassName',
             for:        '.myElement__targetToChange'
         });
         app.do({
-            name:       'UniquePointer',
+            name:       'ScrollToToggleClass',
             when:       '.myElement__Trigger',
             has:        'scrollTop',
             hasOptions: { offset:'-21%' },
             addClass:   'cssClassName',
             for:        '.myElement__targetToChange'
         });
+        app.do({
+            name:       'ScrollToGetInViewEvents',
+            when:       '.myElement__Trigger',
+            has:        'inview',
+            hasOptions: {
+              enter: function(direction) {
+                console.log('Enter triggered with direction ' + direction)
+              },
+              entered: function(direction) {
+                console.log('Entered triggered with direction ' + direction)
+              },
+              exit: function(direction) {
+                console.log('Exit triggered with direction ' + direction)
+              },
+              exited: function(direction) {
+                console.log('Exited triggered with direction ' + direction)
+              }
+            }
+        });
 */
 function zlAppMaster() {
-    // SETTINGS
-    this.supportedEvents = { // event_name: event_type
+    // # SETTINGS
+    this.supportedEvents = {
+        // event_name: event_type
         click: 'click',
-        scrollTop: 'scroll'
+        scrollTop: 'scroll',
+        scrollIn: 'scroll',
+        scrollInview: 'scroll',
+        scrollAway: 'scroll',
+        inview: 'scroll'
     };
     this.hasSilentReports = false;
-    // PUB
+    // # PUB
     this.do = function(dna) {
         this.InsertIntoNucleus(dna);
         return this;
+    }
+    this.el = function(query) {
+        return document.querySelector(query);
     }
     this.Run = function() {
         this.report('start', 'AppMaster.Run');
@@ -46,17 +73,26 @@ function zlAppMaster() {
             .report('end');
         return this;
     }
-    // HQ
+    this.Mutate = function(mutation){
+        if (!mutation) return false;
+        if (!mutation.el) mutation.el = mutation.tel; // alias
+        var $el = $(mutation.el);
+        if ( mutation.addClass )    $el.addClass(mutation.addClass);
+        if ( mutation.removeClass ) $el.removeClass(mutation.removeClass);
+        if ( mutation.toggleClass ) $el.toggleClass(mutation.toggleClass);
+        return true;
+    }
+    // # HQ
     this.nucleus = [];
     this.proteins = {};
     this.Ribosome = function(dna) {
         if (!dna || !dna.name) return false;
         var name = dna.name;
         var protein = { name:name, dna:{} };
+        _.assign( protein.dna, dna );
         _.assign( protein, this.RibosomeGetsEvent(dna) );
         _.assign( protein, this.RibosomeGetsElements(dna) );
         _.assign( protein, this.RibosomeGetsAction(dna) );
-        _.assign( protein.dna, dna );
         this.proteins[name] = protein;
         if ( protein.event_type && this.Delegator[protein.event_type] ) {
             this.Delegator[protein.event_type](this.proteins[name]);
@@ -70,7 +106,7 @@ function zlAppMaster() {
             app.Delegator.scroll = app.DelegateScroll;
         }
     }
-    // INTERFACE
+    // # INTERFACE
     this.report =function (msg,data) {
         if ( this.hasSilentReports ) return this;
         if (msg==='start') console.group(data);
@@ -112,178 +148,133 @@ function zlAppMaster() {
         }
     }
     this.RibosomeGetsAction = function(dna) {
-        var action = dna.do ? dna.do : false;
-        var action_operand;
-        if (!action) {
-            if (dna.removeClass) action = 'removeClass';
-            if (dna.toggleClass) action = 'toggleClass';
-            if (dna.addClass) action = 'addClass';
-            if (dna.func) action = 'func';
-        }
-        if ( action && action !== 'func') action_operand = dna[action];
-        var func = dna.func ? dna.func : false;
-        return {
-            action: action,
-            action_operand: action_operand,
-            func: func
-        };
-    }
-    this.CreateClickFunction = function(protein) {
-        if ( protein.func ) return protein.func;
-        var supportedActions = [
-                'addClass',
-                'removeClass',
-                'toggleClass'
-        ];
-        if ( protein.action && supportedActions.indexOf(protein.action) > -1)
-            protein.func = function(e){
-                $(protein.tel)[protein.action](protein.dna[protein.action]);
-                return true;
+        if ( dna.do && typeof(dna.do)==='function' )
+            return {
+                action: 'func',
+                func: dna.do
             }
-        return protein.func;
+        else return {
+                action: 'mutate',
+                func: false
+            }
     }
     // EXPORT
     this.DelegateClick = function(protein) {
-        app.CreateClickFunction(protein);
-        return zlClick.do(protein);
+        if ( !protein.el ) return false;
+        if ( !protein.func )
+            // Default action: css class mutation
+            protein.func = function(e){
+                app.Mutate({
+                    el:protein.tel,
+                    addClass:protein.dna.addClass,
+                    removeClass:protein.dna.removeClass,
+                    toggleClass:protein.dna.toggleClass
+                });
+                return true;
+            }
+        protein.el.addEventListener(protein.event_name, protein.func);
+        return true;
     }
     this.DelegateScroll = function(protein) {
-        var scroll_dna = {
-            name: protein.name,
-            el: protein.el,
-            tel: protein.tel,
-            event_type: protein.event_type,
-            event_name: protein.event_name,
-            hasOptions: protein.dna.hasOptions,
-            action: protein.action,
-            symbol: protein.action_operand,
-            func: protein.func
-        };
-        if ( protein.dna.hasOptions ) _.assign(scroll_dna,protein.dna.hasOptions);
-        switch ( protein.action ) {
-            case 'addClass':
-                scroll_dna.symbol = protein.dna.addClass;
-                break;
-        }
-        switch ( protein.event_name ) {
-            case 'scrollTop':
-                scroll_dna.direction = 'down';
-                break;
-        }
-        zlScroll.AddAction(scroll_dna);
+        if ( !protein.el ) return false;
+        if ( !protein.dna.hasOptions ) protein.dna.hasOptions = {};
+        var wp_dna = {};
+        if ( protein.event_name )
+            switch ( protein.event_name ) {
+                case 'inview':
+                    protein.launcher = 'inview';
+                    break;
+                case 'scrollInview':
+                    protein.launcher = 'inview';
+                    if ( protein.func ) {
+                        wp_dna.entered = protein.func;
+                    } else {
+                        wp_dna.entered = function(direction){
+                            mutation = {
+                                el:protein.tel,
+                                addClass:protein.dna.addClass,
+                                removeClass:protein.dna.removeClass,
+                                toggleClass:protein.dna.toggleClass
+                            };
+                            app.Mutate(mutation);
+                        }
+                        wp_dna.exited = function(direction){
+                            mutation = {
+                                el:protein.tel,
+                                addClass:protein.dna.removeClass,
+                                removeClass:protein.dna.addClass,
+                                toggleClass:protein.dna.toggleClass
+                            };
+                            app.Mutate(mutation);
+                        }
+                        protein.func = true;
+                    }
+                    break;
+                case 'scrollAway':
+                    protein.launcher = 'inview';
+                    if ( protein.func ) {
+                        wp_dna.exited = protein.func;
+                    } else {
+                        wp_dna.exited = function(direction){
+                            mutation = {
+                                el:protein.tel,
+                                addClass:protein.dna.addClass,
+                                removeClass:protein.dna.removeClass,
+                                toggleClass:protein.dna.toggleClass
+                            };
+                            app.Mutate(mutation);
+                        }
+                        wp_dna.entered = function(direction){
+                            mutation = {
+                                el:protein.tel,
+                                addClass:protein.dna.removeClass,
+                                removeClass:protein.dna.addClass,
+                                toggleClass:protein.dna.toggleClass
+                            };
+                            app.Mutate(mutation);
+                        }
+                        protein.func = true;
+                    }
+                    break;
+                case 'scrollIn':
+                    protein.dna.hasOptions.direction = 'down';
+                    protein.dna.hasOptions.offset = "100%";
+                    break;
+                case 'scrollTop':
+                default:
+                    protein.dna.hasOptions.direction = 'down';
+                    break;
+            }
+        if ( !protein.func )
+            protein.func = function(direction){
+                var d = protein.dna.hasOptions.direction;
+                var mutation;
+                if ( d && d !== direction && !protein.dna.hasOptions.once ) mutation = {
+                    el:protein.tel,
+                    // reversed mutation
+                    addClass:protein.dna.removeClass,
+                    removeClass:protein.dna.addClass,
+                    toggleClass:protein.dna.toggleClass
+                };
+                else mutation = {
+                    el:protein.tel,
+                    addClass:protein.dna.addClass,
+                    removeClass:protein.dna.removeClass,
+                    toggleClass:protein.dna.toggleClass
+                };
+                app.Mutate(mutation);
+                return true;
+            }
+        // Use Waypoint lib
+        _.assign( wp_dna, {
+            element: protein.el,
+            handler: protein.func
+        });
+        _.assign( wp_dna, protein.dna.hasOptions );
+        if (protein.launcher==='inview') protein.Waypoint = new Waypoint.Inview(wp_dna);
+        else                             protein.Waypoint = new Waypoint(wp_dna);
+        protein.status = "ready";
     }
 }
 var app = new zlAppMaster();
-/* ============================================================== */
-
-/* ==============================================================
-    Click agent, v1001--2018.8.27
-*/
-function zlClickMaster() {
-    this.do = function(dna) {
-        this.ActivateEvent(dna);
-        return true;
-    }
-    this.ActivateEvent = function(dna) {
-        if ( !dna.el || !dna.func ) return false;
-        dna.el.addEventListener('click', dna.func);
-        return true;
-    }
-}
-var zlClick = new zlClickMaster();
-/* ============================================================== */
-
-/* ==============================================================
-    Scroll agent, v1002--2018.8.27
-    Uses:
-        - Waypoint, http://imakewebthings.com/waypoints/
-    Sample:
-        zlScroll.AddAction({
-            name:   'UniquePointer',
-            trigga: '.myElement--trigger',
-            target: '.myElement--target-to-change',
-            symbol: 'cssClassName',
-            direction: 'down',
-            offset: '-50%'
-        });
-*/
-function zlScrollMaster() {
-    // PUB
-    this.AddAction = function(dna) {
-        this.nucleus[dna.name] = {};
-        _.assign(this.nucleus[dna.name], dna);
-        return this;
-    }
-    this.Run = function(){
-        this.DoAllActions();
-        return this;
-    }
-    // HQ
-    this.nucleus = {}; // stored dna for future actions
-    this.actions = {}; // active actions
-    this.Ribosome = function(dna) {
-        var name = dna.name;
-        this.actions[name] = { name:name, dna:dna };
-        _.assign(this.actions[name], this.RibosomeGetsElements(dna));
-        if (!this.actions[name].el)
-            return this.report('Warning, there are no el!', dna);
-        _.assign(this.actions[name], {
-            symbol:dna.symbol,
-            direction:dna.direction
-        });
-        _.assign(this.actions[name], this.RibosomeGetsFunction(dna));
-        this.DelegateAction(this.actions[name]);
-        return this;
-    }
-    // INTERFACE
-    this.report = function(msg,data) {
-        console.log('zlScrollMaster: '+msg);
-        console.log(data);
-        return this
-    }
-    this.DoAllActions = function() {
-        for ( var name in this.nucleus )
-            this.Ribosome(this.nucleus[name]);
-        return this;
-    }
-    this.RibosomeGetsElements = function(dna) {
-        var el_trigger, el_target;
-        if (dna.el) el_trigger = dna.el;
-            else if (dna.when) el_trigger = document.querySelector(dna.when);
-        if (dna.tel) el_target = dna.tel;
-            else if (dna.for)  el_target = document.querySelector(dna.for);
-            else el_target = el_trigger;
-        return {
-            el:  el_trigger,
-            tel: el_target
-        }
-    }
-    this.RibosomeGetsFunction = function(dna) {
-        var func = dna.func;
-        if (!func) func = function(direction) {
-            var o = zlScroll.actions[dna.name];
-            if ( o.direction && o.direction !== direction ) {
-                 o.tel.classList.remove(o.symbol);
-            } else {
-                o.tel.classList.add(o.symbol);
-            }
-        }
-        return { func:func };
-    }
-    // EXPORT
-    this.DelegateAction = function(action) {
-        var wp = {
-            element: action.el,
-            handler: action.func,
-            offset: action.dna.offset
-        };
-        this.actions[action.name].Waypoint = new Waypoint(wp);
-        this.actions[action.name].status = "ready";
-        return this;
-    }
-
-
-
-}
-var zlScroll = new zlScrollMaster();
 /* ============================================================== */
