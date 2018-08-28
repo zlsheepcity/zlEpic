@@ -28,6 +28,9 @@
     <!-- lib -->
         <script src="app/vendor/lodash/lodash.min.js"></script>
         <!-- x -->
+    <!-- lib -->
+        <script src="app/vendor/domtastic/domtastic.min.js"></script>
+        <!-- x -->
     <!-- lib / SCROLL EVENTS, http://imakewebthings.com/waypoints/ -->
         <script src="app/vendor/waypoints/lib/noframework.waypoints.min.js"></script>
         <script src="app/vendor/waypoints/lib/shortcuts/inview.min.js"></script><!-- / -->
@@ -51,18 +54,25 @@
 <!-- =================================================== [HEADER] -->
 
 <header class="layer design-intro yiWallpaper--trigger">
-    <h1>Intro</h1>
+    <h1>Sports Betting Solution</h1>
+    <script>
+        app.do({
+            name: 'H1',
+            when: 'h1',
+            has: 'click',
+            addClass: 'klas1',
+        });
+    </script>
 </header>
 <script>
-    zlScroll
-        .AddAction({
-            name:   'yiWallpaper',
-            trigga: '.yiWallpaper--trigger',
-            target: 'body',
-            symbol: 'has-inactive-wallpaper',
-            direction: 'down',
-            offset: '-21%'
-        });
+    app.do({
+        name: 'yiWallpaper',
+        when: '.yiWallpaper--trigger',
+        has: 'scrollTop',
+        hasOptions: { offset:'-21%' },
+        addClass: 'has-inactive-wallpaper',
+        for: 'body'
+    });
 </script>
 
 <div class="yiSidemenu__shadowOverlay"></div>
@@ -79,15 +89,14 @@
     </script>
 </nav>
 <script>
-    zlScroll
-        .AddAction({
-            name:   'yiSidemenu',
-            trigga: '.yiWallpaper--trigger',
-            target: 'body',
-            symbol: 'has-open-sidemenu',
-            direction: 'down',
-            offset: '-1rem'
-        });
+    app.do({
+        name: 'yiSidemenu',
+        when: '.yiWallpaper--trigger',
+        has: 'scrollTop',
+        hasOptions: { offset: '-1rem' },
+        addClass: 'has-open-sidemenu',
+        for: 'body'
+    });
     app.do({
         name: 'ClickOnShadowClosesSidemenu',
         when: '.yiSidemenu__shadowOverlay',
