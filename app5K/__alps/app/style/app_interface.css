@@ -114,5 +114,13 @@ img, svg {
     left: 0; }
 
 /* */
+/* ==============================================================
+    .pathdance-svg
+    svg path animation support
+============================================================== */
+.pathdance-svg .pathdance-step:not(.step1) {
+  display: none; }
+
+/* */
 
 /*# sourceMappingURL=app_interface.css.map */

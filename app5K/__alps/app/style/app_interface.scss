@@ -134,4 +134,13 @@ $yiWallpaper-o-defaultRestoreDuration: 200ms;
 }
 /* */
 
-
+/* ==============================================================
+    .pathdance-svg
+    svg path animation support
+============================================================== */
+.pathdance-svg {
+    .pathdance-step:not(.step0) {
+        display: none;
+    }
+}
+/* */

@@ -6,3 +6,6 @@
 .svg svg path {
     fill:white;
 }
+.block-screen {
+    min-height:60vh;
+}

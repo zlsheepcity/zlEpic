@@ -63,6 +63,8 @@ function zlAppMaster() {
         return document.querySelector(query);
     }
     this.Run = function() {
+
+        // events
         this.report('start', 'AppMaster.Run');
         this.Delegator.Prepare(this);
         for ( var i in this.nucleus ) this.Ribosome(this.nucleus[i]);
@@ -72,6 +74,10 @@ function zlAppMaster() {
             .report('app.proteins.ACTION_NAME')
             .report('divider')
             .report('end');
+
+        // svg paths
+        zlPathdance.Welcome();
+
         return this;
     }
     this.Mutate = function(mutation){
@@ -97,7 +103,7 @@ function zlAppMaster() {
         this.proteins[name] = protein;
         if ( protein.event_type && this.Delegator[protein.event_type] ) {
             this.Delegator[protein.event_type](this.proteins[name]);
-            this.report('Interface was updated for action: '+name);
+            this.report('Interface action was born: '+name);
         }
         return true;
     }
@@ -112,7 +118,7 @@ function zlAppMaster() {
         if ( this.hasSilentReports ) return this;
         if (msg==='start') console.group(data);
         else if (msg==='end') console.groupEnd();
-        else if (msg==='data') console.table(data, ['Value']);
+        else if (msg==='data') console.table(data);
         else if (msg==='divider')
             console.log('------------------------------------');
         else {
@@ -278,4 +284,71 @@ function zlAppMaster() {
     }
 }
 var app = new zlAppMaster();
+/* ============================================================== */
+
+/* ==============================================================
+    path dance animation 1002, 2018.8.29
+*/
+function zlPathdanceMaster() {
+    // # PUB
+    this.path = function(dna) {
+        this.InsertIntoNucleus(dna);
+        return this;
+    }
+    this.Welcome = function () {
+        this.WelcomeTest();
+        for ( var i in this.nucleus ) this.Ribosome(this.nucleus[i]);
+        return this;
+    }
+    // # HQ
+    this.nucleus = [];
+    this.dancers = {};
+    this.Ribosome = function(dna) {
+        this.svgDigest(app.el(dna.svg));
+    }
+    // # INTERFACE
+    this.InsertIntoNucleus = function(dna) {
+        if (!dna) return false;
+        var rna = {};
+        _.assign(rna,dna);
+        if ( !rna.name ) rna.name = 'Ogodei_'+this.nucleus.length;
+        this.nucleus.push(rna);
+        return true;
+    }
+    this.WelcomeTest = function() {
+        var test = true;
+        if (!app) {
+            test = false;
+            console.log('Critical! ༼°▽°༽: zlPathdanceMaster can`t dance without app/zlAppMaster')
+        }
+        return test;
+    }
+    this.svgDigest = function(el) {
+        app.report('start', 'SVG.Digest')
+
+        var $steps = $('.pathdance-step',el);
+        var  steps = [];
+        var  step;
+
+        for (var s=0; s<$steps.length; s++ ) {
+            step = $steps[s];
+            app.report(step);
+        }
+
+
+        /*app.report(el);
+        app.report($('.pathdance-step',el));
+        $('.pathdance-step',el).each(function(el,i){
+            app.report('divider');
+            app.report(el);
+            app.report($('path',el));
+            app.report(i);
+        })*/
+
+
+        app.report('end')
+    }
+}
+var zlPathdance = new zlPathdanceMaster();
+
 /* ============================================================== */

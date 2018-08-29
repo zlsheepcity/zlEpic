@@ -4,7 +4,7 @@
 window.onload = function(e){
     app.Run();
     Pathdance.RegisterDancers(pathdance_dancers);
-    Pathdance.dancers["arrow"].dance.Start();
+    //Pathdance.dancers["arrow"].dance.Start();
 }
 
 
