@@ -118,7 +118,7 @@ img, svg {
     .pathdance-svg
     svg path animation support
 ============================================================== */
-.pathdance-svg .pathdance-step:not(.step1) {
+.pathdance-svg .pathdance-step:not(.step0) {
   display: none; }
 
 /* */

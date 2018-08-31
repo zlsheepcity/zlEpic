@@ -2,9 +2,11 @@
 // v2018.8.26
 
 window.onload = function(e){
-    app.Run();
-    Pathdance.RegisterDancers(pathdance_dancers);
-    //Pathdance.dancers["arrow"].dance.Start();
+    setTimeout(LaunchInterfaceFunctions,200);
+}
+function LaunchInterfaceFunctions(){
+    app.Welcome();
+    //Pathdance.RegisterDancers(pathdance_dancers);
 }
 
 

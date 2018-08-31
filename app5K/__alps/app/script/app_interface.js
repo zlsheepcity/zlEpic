@@ -62,22 +62,25 @@ function zlAppMaster() {
     this.el = function(query) {
         return document.querySelector(query);
     }
+    this.Welcome = function() {
+        this.Run(); // interface events
+        zlPathdance.Welcome(); // svg paths
+        return this;
+    }
     this.Run = function() {
-
-        // events
-        this.report('start', 'AppMaster.Run');
-        this.Delegator.Prepare(this);
-        for ( var i in this.nucleus ) this.Ribosome(this.nucleus[i]);
         this
+            .report('start', 'AppMaster.Run')
+            .report('timer-start', 'AppMasterTimer');
+        this.Delegator.Prepare(this);
+        for ( var i in this.nucleus )
+            this.Ribosome(this.nucleus[i]);
+        this
+            .report('timer-stop', 'AppMasterTimer')
             .report('divider')
             .report('Interface update completed. Console command:')
             .report('app.proteins.ACTION_NAME')
             .report('divider')
             .report('end');
-
-        // svg paths
-        zlPathdance.Welcome();
-
         return this;
     }
     this.Mutate = function(mutation){
@@ -118,6 +121,8 @@ function zlAppMaster() {
         if ( this.hasSilentReports ) return this;
         if (msg==='start') console.group(data);
         else if (msg==='end') console.groupEnd();
+        else if (msg==='timer-start') console.time(data);
+        else if (msg==='timer-stop') console.timeEnd(data);
         else if (msg==='data') console.table(data);
         else if (msg==='divider')
             console.log('------------------------------------');
@@ -296,15 +301,63 @@ function zlPathdanceMaster() {
         return this;
     }
     this.Welcome = function () {
-        this.WelcomeTest();
+        if (!this.WelcomeTest()) return false;
+        app
+            .report('start','zlPathdanceMaster.Welcome')
+            .report('timer-start', 'zlPathdanceMasterTimer');
         for ( var i in this.nucleus ) this.Ribosome(this.nucleus[i]);
+        app
+            .report('timer-stop', 'zlPathdanceMasterTimer')
+            .report('divider')
+            .report('SVG Dancing Paths are activated. Console command:')
+            .report("zlPathdance.Profile('PathdanceName')")
+            .report('divider')
+            .report('end');
+        requestAnimationFrame(zlPathdance.FrameEvent);
         return this;
+    }
+    this.FrameEvent = function(requestTime) {
+        console.log('=== framemaser');
+        console.log(this);
     }
     // # HQ
     this.nucleus = [];
-    this.dancers = {};
+    this.dance = {};
     this.Ribosome = function(dna) {
-        this.svgDigest(app.el(dna.svg));
+        this.dance[dna.name] = { name:dna.name, dna:dna };
+        var ThisDance = this.dance[dna.name];
+        _.assign(ThisDance, this.svgDigest(app.el(dna.svg)));
+        this.RibosomeUpdatesTiming(ThisDance);
+        this.RibosomeUpdatesLogic(ThisDance);
+        ThisDance.isReady = true;
+        app.report('Svg.path animation was born: '+ThisDance.name);
+    }
+    // # DANCE LORDS
+    this.DoReset = function(name) {
+        this.dance[name].i = 0;
+        this.DoDraw(name);
+        return this;
+    }
+    this.DoDraw = function(name,step_index){
+        var j, i = step_index ? step_index : 0;
+        var dance = this.dance[name];
+        var step = dance.step[i];
+        var dx = function(x){ return step.path[x].d; }
+        for (j=0;j<dance.size;j++)
+            this.PathPainter({
+                el: dance.dancelPels[j],
+                d: dx(j)
+            });
+        return dance.dancel;
+    }
+    this.DoStep = function(name,step_index){
+        
+    }
+    this.PathPainter = function(order) {
+        var $el = $(order.el)
+        if ($el && order.d)
+            $el.attr('d',order.d);
+        return true;
     }
     // # INTERFACE
     this.InsertIntoNucleus = function(dna) {
@@ -324,29 +377,81 @@ function zlPathdanceMaster() {
         return test;
     }
     this.svgDigest = function(el) {
-        app.report('start', 'SVG.Digest')
-
-        var $steps = $('.pathdance-step',el);
-        var  steps = [];
-        var  step;
-
-        for (var s=0; s<$steps.length; s++ ) {
-            step = $steps[s];
-            app.report(step);
+        // parse svg node to pathdance model
+        var svgNode = {
+            el:el,
+            episodes:$('.pathdance-step',el).length,
+            step: [],
+            dancel: false, // DANCe inside ELement - output <g> tag
+            dancelPels: []
+        };
+        var nodeStep, i;
+        for (i=0;i<svgNode.episodes;i++) {
+            nodeStep = {
+                el:$('.pathdance-step.step'+i,svgNode.el)[0],
+                path:[]
+            };
+            _.forEach($('path',nodeStep.el),function(pel){
+                nodeStep.path.push({
+                    el:pel,
+                    d:$(pel).attr('d')
+                });
+                svgNode.dancelPels.push(pel);
+            });
+            svgNode.step.push(nodeStep);
         }
+        svgNode.dancel = svgNode.step[0].el;
+        svgNode.size = $('path',svgNode.dancel).length;
+        return svgNode;
+    }
+    this.RibosomeUpdatesTiming = function(dance){
+        var timingDefault = dance.dna.timingDefault ? dance.dna.timingDefault : 250;
+        var tx = function(si){
+            if ( dance.dna.timing && dance.dna.timing[si] && dance.dna.timing[si].t )
+            return dance.dna.timing[si].t;
+            else return timingDefault;
+        }
+        for (var i=0;i<dance.episodes;i++) {
+            dance.step[i].t = tx(i);
+        }
+        return this;
+    }
+    this.RibosomeUpdatesLogic = function(dance){
+        _.assign(dance, {
+            comeback: dance.dna.comeback ? dance.dna.comeback : false,
+            loop: dance.dna.loop ? dance.dna.loop : false,
+            isActive: false
+        });
+        return dance;
+    }
+    this.Profile = function(name){
+        var dance = this.dance[name];
+        var cd, i;
+        app.report('start', 'PathDanceReport for '+name)
+        app.report(
+            (dance.isReady ? '.isReady ' : 'NOT READY ') +
+            (dance.comeback ? '.comeback ' : '') +
+            (dance.loop ? '.loop ' : '')
+        );
+        app.report(
+            'step episodes: ' + dance.episodes +
+            ' / initial paths: ' + dance.size
+        );
+        for (i=0;i<dance.episodes;i++) {
+            cd = dance.step[i];
+            app.report('-- step['+i+'] -- paths:'+cd.path.length+' -- t:'+cd.t);
+        }
+        var el_report = {
+            svg: {el:dance.el},
+            dancel: {el:dance.dancel}
+        };
+        for (i=0;i<dance.size;i++) el_report['path'+i] = {el:dance.dancelPels[i]};
+        app
+            .report('DOM elements:')
+            .report('data',el_report);
 
-
-        /*app.report(el);
-        app.report($('.pathdance-step',el));
-        $('.pathdance-step',el).each(function(el,i){
-            app.report('divider');
-            app.report(el);
-            app.report($('path',el));
-            app.report(i);
-        })*/
-
-
-        app.report('end')
+        app.report('end');
+        return dance;
     }
 }
 var zlPathdance = new zlPathdanceMaster();
