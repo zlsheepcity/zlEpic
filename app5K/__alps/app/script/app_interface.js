@@ -65,6 +65,7 @@ function zlAppMaster() {
     this.Welcome = function() {
         this.Run(); // interface events
         zlPathdance.Welcome(); // svg paths
+        app.report('ʕ⊙ᴥ⊙ʔ app.Welcome');
         return this;
     }
     this.Run = function() {
@@ -317,8 +318,61 @@ function zlPathdanceMaster() {
         return this;
     }
     this.FrameEvent = function(requestTime) {
-        console.log('=== framemaser');
-        console.log(this);
+        var PD = zlPathdance,
+            weStillHaveActiveDance = false,
+            name;
+        for (name in PD.dance)
+            if (PD.dance[name].isActive)
+                weStillHaveActiveDance =
+                    PD.DoFrameDance(PD.dance[name], requestTime)
+                    ? true
+                    : weStillHaveActiveDance;
+        //app.report('weStillHaveActiveDance:'+weStillHaveActiveDance);
+        if (weStillHaveActiveDance) requestAnimationFrame(zlPathdance.FrameEvent);
+    }
+    this.DoFrameDance = function(dance, requestTime) {
+        if (!dance.startTime) dance.startTime = requestTime;
+        var i = dance.i;
+        var passTime = requestTime - dance.startTime;
+        var fullTime = dance.step[i].t;
+        var dx = fullTime > 0 ? passTime/fullTime : 0;
+        this.PaintStepMovement(dance, dx);
+        return this.CheckMovementAndConfirm(dance, dx);
+        /*app.report(dance);
+        app.report(requestTime);
+        app.report(passTime);
+        app.report(fullTime);*/
+        //app.report(this);
+        //return passTime<fullTime;
+    }
+    this.PaintStepMovement = function(dance, dx) {
+        var j, dUpdated;
+        for (j=0;j<dance.size;j++) {
+            dUpdated = dance.step[dance.i].path[j].dx(dx);
+            if (dUpdated) $(dance.dancelPels[j]).attr('d',dUpdated);
+        }
+            
+    }
+    this.CheckMovementAndConfirm = function(dance, dx) {
+
+        // continue this step?
+        if (dx<1) return true;
+
+        // finish it
+        this.FinishStep(dance);
+        dance.i++;
+        app.report('currenti:'+dance.i);
+
+        // continue next step by order?
+        if ( dance.i < dance.episodes ) return true;
+
+        // continue next step by rules?
+        var nextStepIsFound = false;
+
+        return nextStepIsFound;
+    }
+    this.FinishStep = function(dance) {
+        dance.startTime = false;
     }
     // # HQ
     this.nucleus = [];
@@ -327,38 +381,109 @@ function zlPathdanceMaster() {
         this.dance[dna.name] = { name:dna.name, dna:dna };
         var ThisDance = this.dance[dna.name];
         _.assign(ThisDance, this.svgDigest(app.el(dna.svg)));
-        this.RibosomeUpdatesTiming(ThisDance);
-        this.RibosomeUpdatesLogic(ThisDance);
+        this
+            .RibosomeUpdatesLogic(ThisDance)
+            .RibosomeUpdatesTiming(ThisDance)
+            .Actiosome(ThisDance);
         ThisDance.isReady = true;
         app.report('Svg.path animation was born: '+ThisDance.name);
     }
-    // # DANCE LORDS
+    this.Actiosome = function(dance) {
+        if ( dance.episodes < 2 ) return false;
+        var i,j,targeti;
+        var lastStep = dance.episodes*1 - 1;
+        app.report('laststep'+lastStep);
+        var stepAfterLastStep = dance.comeback || dance.loop ? 0 : false;
+        for (i=0;i<=lastStep;i++)
+            for (j=0;j<dance.size;j++) {
+                targeti = i===lastStep ? stepAfterLastStep : i*1+1 ;
+                app.report(i+'--'+targeti);
+                //app.report(dance.step[i].path[j].d);
+                //app.report(dance.step[targeti].path[j].d);
+                var d1 = dance.step[i].path[j].d;
+                var d2 = dance.step[targeti].path[j].d;
+                dance.step[i].path[j].dx =
+                    (
+                        targeti===false
+                        ?   function(x){return false;}
+                        :   flubber.interpolate(
+                                d1,
+                                d2
+                            )
+                    );
+                //app.report(dance.step[i].path[j].dx(1));
+                //if(i>0) app.report(zlPathdance.dance["PathdanceName"].step[1].path[0].dx(1));
+            }
+        app.report('divider');
+        app.report(zlPathdance.dance["PathdanceName"].step[1].path[0].dx(1));
+        app.report(zlPathdance.dance["PathdanceName"].step[3].path[0].dx(1));
+        app.report('divider');
+        return this;
+    }
+    // # DANCE INTERFACE
     this.DoReset = function(name) {
         this.dance[name].i = 0;
         this.DoDraw(name);
         return this;
     }
-    this.DoDraw = function(name,step_index){
+    this.DoDraw = function(name, step_index){
         var j, i = step_index ? step_index : 0;
         var dance = this.dance[name];
         var step = dance.step[i];
         var dx = function(x){ return step.path[x].d; }
         for (j=0;j<dance.size;j++)
-            this.PathPainter({
-                el: dance.dancelPels[j],
-                d: dx(j)
-            });
+            $(dance.dancelPels[j]).attr('d',dx(j));
         return dance.dancel;
     }
-    this.DoStep = function(name,step_index){
+    this.DoStep = function(name, step_index){
         
     }
+    /*
     this.PathPainter = function(order) {
-        var $el = $(order.el)
-        if ($el && order.d)
-            $el.attr('d',order.d);
+        app.report(order.el.attributes.d.value);
+        app.report(app.el('#DemoArrow .step0 path'));
+        //order.el.d = 'zzz';order.d;
+        var n = order.el.attributes.d.value;
+        app.report('divider');
+        app.report(n);
+        app.report(order.d);
+        app.report('divider');
+        app.report('timer-start','zlAttr1');
+        order.el.attributes.d.value = order.d;
+        app.report('timer-stop','zlAttr1');
+        app.report('timer-start','zlAttr3');
+        order.el.attributes.d.value = n;
+        order.el.attributes.d.value = order.d;
+        app.report('timer-stop','zlAttr3');
+        app.report(order.el.attributes.d.value);
+        app.report('timer-start','zlAttr2');
+        for ( var m = 1; m<1000; m++) {
+            order.el.attributes.d.value = n;
+            order.el.attributes.d.value = order.d;
+        }
+        app.report('timer-stop','zlAttr2');
+        var display = zlPathdance.dance["d1"].dancel.style.display;
+        zlPathdance.dance["d1"].dancel.style.display = "none";
+        app.report('timer-start','zlAttr4');
+        for ( var m = 1; m<1000; m++) {
+            order.el.attributes.d.value = n;
+            order.el.attributes.d.value = order.d;
+        }
+        zlPathdance.dance["d1"].dancel.style.display = display;
+        app.report('timer-stop','zlAttr4');
+        //for (var m=1;m<10;)
+        
+        //var $el = $(order.el)
+        //if ($el && order.d)
+            //var el = order.el;
+            //el.d = 'zzz';
+            //app.report('divider');
+            //console.log(el.d);
+            //app.report('divider');
+            //$el.attr('d',order.d);
         return true;
     }
+    */
     // # INTERFACE
     this.InsertIntoNucleus = function(dna) {
         if (!dna) return false;
@@ -418,37 +543,54 @@ function zlPathdanceMaster() {
     }
     this.RibosomeUpdatesLogic = function(dance){
         _.assign(dance, {
-            comeback: dance.dna.comeback ? dance.dna.comeback : false,
-            loop: dance.dna.loop ? dance.dna.loop : false,
-            isActive: false
+            autostart:  dance.dna.autostart ? dance.dna.autostart : false,
+            autoloop:   dance.dna.autoloop ? dance.dna.autoloop : false,
+            comeback:   dance.dna.comeback ? dance.dna.comeback : false,
+            loop:       dance.dna.loop ? dance.dna.loop : false,
+            isActive:   dance.dna.autostart ? true : false,
+            i: 0
         });
-        return dance;
+        if (dance.comeback && dance.episodes>2) {
+            var i,j,nodeStep;
+            var ii = dance.episodes;
+            for (i=dance.episodes*1-2;i>0;i--) {
+                nodeStep = {
+                    el: dance.step[i].el,
+                    path: _.union([],dance.step[i].path),
+                    t: dance.step[i].t*1+0
+                }
+                dance.step[ii] = nodeStep;
+                ii++;
+                console.log(ii+'ii');
+            }
+            dance.episodes = dance.step.length;
+        }
+        return this;
     }
     this.Profile = function(name){
         var dance = this.dance[name];
-        var cd, i;
+        var cd, i,j, data;
         app.report('start', 'PathDanceReport for '+name)
         app.report(
             (dance.isReady ? '.isReady ' : 'NOT READY ') +
             (dance.comeback ? '.comeback ' : '') +
             (dance.loop ? '.loop ' : '')
         );
-        app.report(
-            'step episodes: ' + dance.episodes +
-            ' / initial paths: ' + dance.size
-        );
-        for (i=0;i<dance.episodes;i++) {
-            cd = dance.step[i];
-            app.report('-- step['+i+'] -- paths:'+cd.path.length+' -- t:'+cd.t);
-        }
-        var el_report = {
+        data = {};
+        for (i=0;i<dance.episodes;i++)
+            data['step'+i] = {
+                'paths':dance.step[i].path.length,
+                't':dance.step[i].t
+            };
+        app
+            .report('step episodes: '+dance.episodes+' / initial paths: '+dance.size)
+            .report('data',data);
+        data = {
             svg: {el:dance.el},
             dancel: {el:dance.dancel}
         };
-        for (i=0;i<dance.size;i++) el_report['path'+i] = {el:dance.dancelPels[i]};
-        app
-            .report('DOM elements:')
-            .report('data',el_report);
+        for (j=0;j<dance.size;j++) data['path'+j] = {el:dance.dancelPels[j]};
+        app.report('data',data);
 
         app.report('end');
         return dance;
