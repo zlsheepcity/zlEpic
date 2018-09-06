@@ -327,7 +327,6 @@ function zlPathdanceMaster() {
                     PD.DoFrameDance(PD.dance[name], requestTime)
                     ? true
                     : weStillHaveActiveDance;
-        //app.report('weStillHaveActiveDance:'+weStillHaveActiveDance);
         if (weStillHaveActiveDance) requestAnimationFrame(zlPathdance.FrameEvent);
     }
     this.DoFrameDance = function(dance, requestTime) {
@@ -338,12 +337,6 @@ function zlPathdanceMaster() {
         var dx = fullTime > 0 ? passTime/fullTime : 0;
         this.PaintStepMovement(dance, dx);
         return this.CheckMovementAndConfirm(dance, dx);
-        /*app.report(dance);
-        app.report(requestTime);
-        app.report(passTime);
-        app.report(fullTime);*/
-        //app.report(this);
-        //return passTime<fullTime;
     }
     this.PaintStepMovement = function(dance, dx) {
         var j, dUpdated;
@@ -361,7 +354,6 @@ function zlPathdanceMaster() {
         // finish it
         this.FinishStep(dance);
         dance.i++;
-        app.report('currenti:'+dance.i);
 
         // continue next step by order?
         if ( dance.i < dance.episodes ) return true;
@@ -392,14 +384,10 @@ function zlPathdanceMaster() {
         if ( dance.episodes < 2 ) return false;
         var i,j,targeti;
         var lastStep = dance.episodes*1 - 1;
-        app.report('laststep'+lastStep);
         var stepAfterLastStep = dance.comeback || dance.loop ? 0 : false;
         for (i=0;i<=lastStep;i++)
             for (j=0;j<dance.size;j++) {
                 targeti = i===lastStep ? stepAfterLastStep : i*1+1 ;
-                app.report(i+'--'+targeti);
-                //app.report(dance.step[i].path[j].d);
-                //app.report(dance.step[targeti].path[j].d);
                 var d1 = dance.step[i].path[j].d;
                 var d2 = dance.step[targeti].path[j].d;
                 dance.step[i].path[j].dx =
@@ -411,13 +399,7 @@ function zlPathdanceMaster() {
                                 d2
                             )
                     );
-                //app.report(dance.step[i].path[j].dx(1));
-                //if(i>0) app.report(zlPathdance.dance["PathdanceName"].step[1].path[0].dx(1));
             }
-        app.report('divider');
-        app.report(zlPathdance.dance["PathdanceName"].step[1].path[0].dx(1));
-        app.report(zlPathdance.dance["PathdanceName"].step[3].path[0].dx(1));
-        app.report('divider');
         return this;
     }
     // # DANCE INTERFACE
