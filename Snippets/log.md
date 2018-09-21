@@ -2,9 +2,7 @@ Commands
 -----------------------------------------------------------------------------
 
 
-## php errors log
 
-tail -n 100 -f ../php_errors.log
 
 
 ## user rights
