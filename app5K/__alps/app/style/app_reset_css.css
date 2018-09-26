@@ -115,3 +115,18 @@ display: none;
 .disabled {
 cursor: not-allowed;
 }
+
+/*
+    ADDED FROM
+    https://github.com/csstools/sanitize.css
+    2018.9.24
+*/
+
+*, ::before, ::after {
+  background-repeat: no-repeat;
+}
+::selection {
+  background-color: #b3d4fc;
+  color: #000;
+  text-shadow: none;
+}
