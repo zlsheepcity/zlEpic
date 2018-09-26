@@ -68,9 +68,10 @@
         });
 
 */
-zlAppMaster__DnaConfig = {
+var zlAppMaster__DnaConfig = {
     hasSilentReports: false, // turns off console.log
-    usePathdance: true
+    usePathdance: true,
+    usePathdanceQueen: true
 }
 function zlAppMaster(dna) {
     this.dna = _.assign( {}, dna );
@@ -105,6 +106,13 @@ function zlAppMaster(dna) {
     }
     this.Mutate = function(mutation) {
         return this.ElMutate(mutation);
+    }
+    this.Chromosoming = function(substance, fresh_dna) {
+        var chromosome;
+        chromosome = substance.chromosome || { a__genType:'wild' };
+        substance.dna = _.assign( chromosome, fresh_dna );
+        // register chromosome here
+        return substance.dna;
     }
     this.report =function (msg,data) {
         if ( this.hasSilentReports ) return this;
@@ -225,6 +233,7 @@ function zlAppMaster(dna) {
     // # ======================================== EXPORT
     this.WelcomePlugins = function() {
         if (this.dna.usePathdance) zlPathdance.Welcome();
+        if (this.dna.usePathdanceQueen) PathdanceQueen.Welcome();
         return this;
     }
     this.Pathdance = {
@@ -369,6 +378,100 @@ function zlAppMaster(dna) {
 }
 var app = new zlAppMaster(zlAppMaster__DnaConfig);
 /* ============================================================== */
+
+/* ==============================================================
+    path dance animation 1003, 2018.9.26
+*/
+function zlPathGMO(dna) {
+    this.chromosome = {
+        a__genType:      'resource',
+        a__genFamily:    'pathdance',
+        wasRibosomed: false,
+        isDancing: false
+    };
+    this.dna = app.Chromosoming(this,dna);
+}
+function zlPathdanceQueen(dna) {
+    this.chromosome = {
+        a__genType:         'queen',
+        a__genFamily:       'pathdance',
+        name:               'Alexa_the_PathdanceQueen'
+    };
+    this.dna = app.Chromosoming(this,dna);
+    this.Welcome = function() {
+        // HEADER
+        this
+            .report('start','zlPathdanceQueen.Welcome')
+            .report('timer-start', 'zlPathdanceQueenTimer');
+        // WELCOME PROTOCOL
+        this.Popper();
+        // FOOTER
+        this
+            .report('timer-stop', 'zlPathdanceQueenTimer')
+            .report('divider')
+            .report('SVG Pathdance active. Console command:')
+            .report("zlPathdance.Profile('PathdanceName')")
+            .report('divider')
+            .report('end');
+    }
+    // PUB
+    this.pop = function(dna) {
+        this.InsertIntoNucleus(dna);
+        return this;
+    }
+    this.virus = function(name,dna){
+        if (this.proteins[name]) this.proteins[name].virus(dna);
+        return this;
+    }
+    // LORDS
+    this.Popper = function(){
+        for (var i in this.nucleus) this.Ribosome(this.nucleus[i]);
+        return this;
+    }
+    // STORAGE
+    this.nucleus = [];
+    this.proteins = {};
+    // SERVICES
+    this.InsertIntoNucleus = function(dna){
+        var rna;
+        rna = _.assign({
+            name: 'AlexaPop'+this.nucleus.length
+        },dna);
+        this.nucleus.push(rna);
+        return this;
+    }
+    this.Ribosome = function(pop){
+        if ( this.proteins[pop.name] && this.proteins[pop.name].wasRibosomed ) return false;
+        var protein;
+        protein = new zlPathGMO(pop);
+        // UPDATE PROTEIN HERE
+        _.assign( protein, {
+            name: pop.name,
+            isReady: true
+        });
+        this.proteins[pop.name] = protein;
+        this.report('Pathdance: PathdanceQueen.Profile("'+protein.name+'")');
+        return this;
+    }
+    this.Profile = function(name){
+        var protein = this.proteins[name];
+        var cd, i,j, data;
+        this // ==>
+            .report('start', 'PathDanceReport for '+name)
+            .report( protein.isReady ? ' isReady ' : ' NOT READY ' )
+            ;
+        this.report('end');
+        return protein;
+    }
+    // MARKET
+    this.report = function(msg,data){app.report(msg,data);return this};
+    this.report('ʕ⊙ᴥ⊙ʔ New zlPathdanceQueen '+this.dna.name,this);
+}
+var PathdanceQueen = new zlPathdanceQueen();
+/* ============================================================== */
+PathdanceQueen.pop();
+PathdanceQueen.pop();
+PathdanceQueen.pop({name:'te'});
 
 /* ==============================================================
     path dance animation 1002, 2018.8.29
