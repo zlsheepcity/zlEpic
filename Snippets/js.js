@@ -104,6 +104,15 @@ myElement.addEventListener('change', function listener (event) {
 
 
 
+
+// this will kill all intervals and timeouts too in 3 seconds. 
+// Change 3000 to anything larger than 10
+var killId = setTimeout(function() {
+  for (var i = killId; i > 0; i--) clearInterval(i)
+}, 3000);
+
+
+
 /* ---------------------------------------------- */ // performance
 
 var latestKnownScrollY = 0;

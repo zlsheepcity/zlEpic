@@ -16,7 +16,6 @@
 
 */
 /* ==============================================================
-    app master v1002, 2018.8.28
     Samples:
 
         app.do({
@@ -58,24 +57,34 @@
 
         myDOM_Element = app.el('.myElement__CSSquery');
 
-        app.Mutate({
+        app.mutate({
             el:         '.myElement',
             addClass:   'className'
         });
-        app.Mutate({
+        app.mutate({
             el:            myJS_Element,
             toggleClass:   'className'
         });
 
+        app.forload(function(){
+            console.log('afterload');
+        });
+
 */
-var zlAppMaster__DnaConfig = {
-    hasSilentReports: false, // turns off console.log
+var zlAppKing__DnaConfig = {
+    name:'app',
+    hasSilentReports: false, // enable/disable console reports
+    // libraries:
     usePathdance: true,
     usePathdanceQueen: true
 }
-function zlAppMaster(dna) {
-    this.dna = _.assign( {}, dna );
+function zlAppKing(dna) {
     // # ======================================== SETTINGS
+    this.chromosome = {
+        a__genType:         'core',
+        name:               'AppKing'
+    };
+    this.dna = dna;
     this.isHere = false; // not here after initialization
     this.supportedEvents = {
     //  event_name:     event_type
@@ -87,12 +96,25 @@ function zlAppMaster(dna) {
         inview:         'scroll'
     };
     this.Welcome = function(inject_dna) {
-        _.assign( this.dna, inject_dna );
+        this.Chromosoming(this, inject_dna, {mix:true});
+        this
+            .WelcomeMorning()
+            .WelcomeDinner()
+            .WelcomeParty();
+        return this;
+    }
+    this.WelcomeMorning = function(){
         this.Ribosome();
         this.WelcomePlugins();
-        // finish
+        return this;
+    }
+    this.WelcomeDinner = function(){
         this.isHere = true;
-        this.report('ʕ⊙ᴥ⊙ʔ app.Welcome');
+        return this;
+    }
+    this.WelcomeParty = function(){
+        this.report('ʕ⊙ᴥ⊙ʔ '+this.dna.name+'.Welcome party!');
+        this.EggEclosion();
         return this;
     }
     // # ======================================== PUB
@@ -104,15 +126,22 @@ function zlAppMaster(dna) {
     this.el = function(query) {
         return this.El(query);
     }
-    this.Mutate = function(mutation) {
-        return this.ElMutate(mutation);
+    this.forload = function(f) {
+        if ( typeof(f) === "function" )
+            this.eggs.push(f);
+        return this;
     }
-    this.Chromosoming = function(substance, fresh_dna) {
-        var chromosome;
-        chromosome = substance.chromosome || { a__genType:'wild' };
-        substance.dna = _.assign( chromosome, fresh_dna );
-        // register chromosome here
-        return substance.dna;
+    this.mutate = function(mutation) {
+        /*
+            mutation.v1.0 {
+                el: element,
+                addClass: classname,
+                removeClass: classname,
+                toggleClass: classname,
+            }
+        */
+        if ( !mutation || !mutation.el ) return false;
+        return this.ElMutate(mutation);
     }
     this.report =function (msg,data) {
         if ( this.hasSilentReports ) return this;
@@ -121,12 +150,13 @@ function zlAppMaster(dna) {
     // # ======================================== STORAGE
     this.nucleus = []; // scheduled interface actions
     this.proteins = {}; // active interface actions
+    this.eggs = []; // custom functions «on load»
     // # ======================================== LORDS
     this.Ribosome = function() {
         this // --------------------------------------
-            .report('start', 'AppMaster.Ribosome')
+            .report('start', this.dna.name+'.Ribosome')
             .report('timer-start', 'NucleusSynthesisTimer')
-            .report('nucleus size: '+this.nucleus.length, _.assign([],this.nucleus))
+            .report('nucleus size: '+this.nucleus.length)
             .report('divider');
         this
             .Preparator('delegator',{app:this});
@@ -148,6 +178,24 @@ function zlAppMaster(dna) {
             .report('end');
         return this;
     }
+    this.EggEclosion = function() {
+        for ( var i in this.eggs ) this.eggs[i]();
+        return this;
+    }
+    // # ======================================== SERVICES
+    this.InsertIntoNucleus = function(dna) {
+        if (!dna) return false;
+        if (!dna.name) dna.name = 'Ogodei_'+this.nucleus.length;
+        this.nucleus.push(dna);
+        return true;
+    }
+    this.Chromosoming = function(substance, fresh_dna, params) {
+        var chromosome, old_dna;
+        chromosome = substance.chromosome || { a__genType:'wild' };
+        old_dna = params && params.mix && substance.dna ? substance.dna : {};
+        substance.dna = _.assign( chromosome, old_dna, fresh_dna );
+        return substance.dna;
+    }
     this.Preparator = function(target, data) { // Preparator prepares targets
         var do_prepare = {
             'delegator': function({app}) {
@@ -160,13 +208,6 @@ function zlAppMaster(dna) {
         return this;
     }
     this.Delegator = {};
-    // # ======================================== SERVICES
-    this.InsertIntoNucleus = function(dna) {
-        if (!dna) return false;
-        if (!dna.name) dna.name = 'Ogodei_'+this.nucleus.length;
-        this.nucleus.push(dna);
-        return true;
-    }
     this.RibosomeSynthesis = function(dna, delegator) {
         var name, protein;
         name = dna.name;
@@ -178,7 +219,7 @@ function zlAppMaster(dna) {
         this.proteins[name] = protein;
         if ( protein.event_type && delegator && delegator[protein.event_type] ) {
             delegator[protein.event_type](this.proteins[name]);
-            this.report('Interface action was born: '+name);
+            this.report('Action: app.proteins.'+name);
         }
         return true;
     }
@@ -214,14 +255,9 @@ function zlAppMaster(dna) {
                 func: false
             }
     }
-    // # ======================================== PLUGINS
-
     // # ======================================== DOM EXPORT
     this.ElMutate = function(mutation){
-        var $el;
-        if (!mutation) return false;
-        if (!mutation.el) mutation.el = mutation.tel; // alias
-        $el = $(mutation.el);
+        var $el = $(mutation.el);
         if ( mutation.addClass )    $el.addClass(mutation.addClass);
         if ( mutation.removeClass ) $el.removeClass(mutation.removeClass);
         if ( mutation.toggleClass ) $el.toggleClass(mutation.toggleClass);
@@ -237,6 +273,10 @@ function zlAppMaster(dna) {
         return this;
     }
     this.Pathdance = {
+        registration:
+            this.dna.usePathdanceQueen
+            ? function(dna){PathdanceQueen.pop(dna)}
+            : function(){return false},
         describe:
             this.dna.usePathdance
             ? function(dna){zlPathdance.path(dna)}
@@ -264,7 +304,7 @@ function zlAppMaster(dna) {
         if ( !protein.el ) return false;
         if ( !protein.func ) // Default: Mutate css class
             protein.func = function(e){
-                app.Mutate({
+                app.mutate({
                     el:             protein.tel,
                     addClass:       protein.dna.addClass,
                     removeClass:    protein.dna.removeClass,
@@ -296,7 +336,7 @@ function zlAppMaster(dna) {
                                 removeClass:protein.dna.removeClass,
                                 toggleClass:protein.dna.toggleClass
                             };
-                            app.Mutate(mutation);
+                            app.mutate(mutation);
                         }
                         wp_dna.exited = function(direction){
                             mutation = {
@@ -305,7 +345,7 @@ function zlAppMaster(dna) {
                                 removeClass:protein.dna.addClass,
                                 toggleClass:protein.dna.toggleClass
                             };
-                            app.Mutate(mutation);
+                            app.mutate(mutation);
                         }
                         protein.func = true;
                     }
@@ -322,7 +362,7 @@ function zlAppMaster(dna) {
                                 removeClass:protein.dna.removeClass,
                                 toggleClass:protein.dna.toggleClass
                             };
-                            app.Mutate(mutation);
+                            app.mutate(mutation);
                         }
                         wp_dna.entered = function(direction){
                             mutation = {
@@ -331,7 +371,7 @@ function zlAppMaster(dna) {
                                 removeClass:protein.dna.addClass,
                                 toggleClass:protein.dna.toggleClass
                             };
-                            app.Mutate(mutation);
+                            app.mutate(mutation);
                         }
                         protein.func = true;
                     }
@@ -362,7 +402,7 @@ function zlAppMaster(dna) {
                     removeClass:protein.dna.removeClass,
                     toggleClass:protein.dna.toggleClass
                 };
-                app.Mutate(mutation);
+                app.mutate(mutation);
                 return true;
             }
         // Use Waypoint lib
@@ -375,8 +415,9 @@ function zlAppMaster(dna) {
         else                             protein.Waypoint = new Waypoint(wp_dna);
         protein.status = "ready";
     }
+    this.report('ʕ⊙ᴥ⊙ʔ New AppKing: '+this.dna.name);
 }
-var app = new zlAppMaster(zlAppMaster__DnaConfig);
+var app = new zlAppKing(zlAppKing__DnaConfig);
 /* ============================================================== */
 
 /* ==============================================================
@@ -389,7 +430,11 @@ function zlPathGMO(dna) {
         wasRibosomed: false,
         isDancing: false
     };
-    this.dna = app.Chromosoming(this,dna);
+    this.dna = app.Chromosoming(this, dna);
+    this.virus = function(rules){
+        console.log('Play dance');
+        return this;
+    };
 }
 function zlPathdanceQueen(dna) {
     this.chromosome = {
@@ -399,22 +444,32 @@ function zlPathdanceQueen(dna) {
     };
     this.dna = app.Chromosoming(this,dna);
     this.Welcome = function() {
-        // HEADER
         this
-            .report('start','zlPathdanceQueen.Welcome')
+            .WelcomeMorning()
+            .WelcomeDinner()
+            .WelcomeParty();
+        return this;
+    }
+    this.WelcomeMorning = function() {
+        this
+            .report('start', this.dna.name+'.Welcome')
             .report('timer-start', 'zlPathdanceQueenTimer');
-        // WELCOME PROTOCOL
+        return this;
+    }
+    this.WelcomeDinner = function() {
         this.Popper();
-        // FOOTER
+        return this;
+    }
+    this.WelcomeParty = function() {
         this
-            .report('timer-stop', 'zlPathdanceQueenTimer')
             .report('divider')
-            .report('SVG Pathdance active. Console command:')
-            .report("zlPathdance.Profile('PathdanceName')")
+            .report('timer-stop', 'zlPathdanceQueenTimer')
+            .report('SVG Pathdances are activated.')
             .report('divider')
             .report('end');
+        return this;
     }
-    // PUB
+    // # ======================================== PUB
     this.pop = function(dna) {
         this.InsertIntoNucleus(dna);
         return this;
@@ -423,15 +478,15 @@ function zlPathdanceQueen(dna) {
         if (this.proteins[name]) this.proteins[name].virus(dna);
         return this;
     }
-    // LORDS
+    // # ======================================== STORAGE
+    this.nucleus = [];
+    this.proteins = {};
+    // # ======================================== LORDS
     this.Popper = function(){
         for (var i in this.nucleus) this.Ribosome(this.nucleus[i]);
         return this;
     }
-    // STORAGE
-    this.nucleus = [];
-    this.proteins = {};
-    // SERVICES
+    // # ======================================== SERVICES
     this.InsertIntoNucleus = function(dna){
         var rna;
         rna = _.assign({
@@ -447,7 +502,8 @@ function zlPathdanceQueen(dna) {
         // UPDATE PROTEIN HERE
         _.assign( protein, {
             name: pop.name,
-            isReady: true
+            isReady: false,
+            isMoving: false
         });
         this.proteins[pop.name] = protein;
         this.report('Pathdance: PathdanceQueen.Profile("'+protein.name+'")');
@@ -463,15 +519,13 @@ function zlPathdanceQueen(dna) {
         this.report('end');
         return protein;
     }
-    // MARKET
+    // # ======================================== MARKET
     this.report = function(msg,data){app.report(msg,data);return this};
-    this.report('ʕ⊙ᴥ⊙ʔ New zlPathdanceQueen '+this.dna.name,this);
+    this.report('ʕ⊙ᴥ⊙ʔ New PathdanceQueen: '+this.dna.name);
 }
-var PathdanceQueen = new zlPathdanceQueen();
+var PathdanceQueen = new zlPathdanceQueen({name:'PathdanceQueen'});
 /* ============================================================== */
-PathdanceQueen.pop();
-PathdanceQueen.pop();
-PathdanceQueen.pop({name:'te'});
+
 
 /* ==============================================================
     path dance animation 1002, 2018.8.29
@@ -709,7 +763,7 @@ function zlPathdanceMaster() {
     this.UpdateSVGstatus = function(reason, data) {
         var update_action = {
             ready: function({svg}){
-                app.Mutate({
+                app.mutate({
                     el: svg,
                     addClass: 'pathdance-svg'
                 })
@@ -726,7 +780,7 @@ function zlPathdanceMaster() {
         var test = true;
         if (!app) {
             test = false;
-            this.report('Critical! ༼°▽°༽: zlPathdanceMaster can`t dance without app/zlAppMaster')
+            this.report('Critical! ༼°▽°༽: zlPathdanceMaster can`t dance without app')
         }
         return test;
     }

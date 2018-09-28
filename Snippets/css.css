@@ -207,6 +207,20 @@ page-break-inside : auto | avoid
   font-style: normal;
 }
 
+
+/* SCROLL SNAP */
+
+#carousel {
+    scroll-snap-type: x mandatory;
+    scroll-padding-top: 40px;
+}
+#carousel > div {
+    scroll-snap-align: center;
+}
+#carousel > div.unskippable {
+  scroll-snap-stop: always;
+}
+
 /* keyframe animation */
 
 @keyframes animationSample {

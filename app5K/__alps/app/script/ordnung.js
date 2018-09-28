@@ -1,12 +1,12 @@
 // Ordnung am Script
-// v2018.8.26
+// v2018.9.28
 
 window.onload = function(e){
     setTimeout(LaunchInterfaceFunctions,200);
 }
 function LaunchInterfaceFunctions(){
     app.Welcome();
-    //Pathdance.RegisterDancers(pathdance_dancers);
+    return true;
 }
 
 
