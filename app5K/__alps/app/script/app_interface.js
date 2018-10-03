@@ -5,6 +5,7 @@
     ## Globals:
 
         app
+        zlChromosome
         zlPathdance
 
     ## Required
@@ -72,19 +73,70 @@
 
 */
 var zlAppKing__DnaConfig = {
+
     name:'app',
-    hasSilentReports: false, // enable/disable console reports
-    // libraries:
+
+    // Enable/Disable console reports
+    hasSilentReports: false,
+
+    // Libraries (Queens):
+    useEventQueen: true,
     usePathdance: true,
     usePathdanceQueen: true
+
+}
+function zlChromosome (organism, initial_chromosome = {}) {
+    // # ======================================== SETTINGS
+    this.organism = organism;
+    this.initial_chromosome = initial_chromosome;
+    this.base_dna = {
+        a__gen0CH: false,
+        a__genType:'wild',
+        name:'wild'
+    };
+    this.Welcome = function (dna) {
+        this.SummonDnaComposer(dna);
+        this.organism.dna.a__gen0CH = 'zlChromosome';
+    };
+    // # ======================================== LORDS
+    this.SummonDnaComposer = function(synthesis_dna) {
+        this.Inject(synthesis_dna);
+        return this;
+    }
+    // # ======================================== SERVICES
+    this.Inject = function (fresh_dna) {
+        this.organism.dna = _.assign( {},
+            this.base_dna,
+            this.organism.dna,
+            fresh_dna
+        );
+        return this;
+    }
+    this.Infect = function (fresh_dna) {
+        this.organism.dna = _.assign( {},
+            this.base_dna,
+            fresh_dna,
+            this.organism.dna
+        );
+        return this;
+    }
+    this.Rebuild = function (fresh_dna) {
+        this.organism.dna = _.assign( {},
+            this.base_dna,
+            fresh_dna
+        );
+        return this;
+    }
+    // # ======================================== AUTO BORN PROCESS
+    this.Welcome(this.initial_chromosome);
 }
 function zlAppKing(dna) {
     // # ======================================== SETTINGS
-    this.chromosome = {
+    this.Chromosome = new zlChromosome(this, _.assign({
         a__genType:         'core',
         name:               'AppKing'
-    };
-    this.dna = dna;
+        }, dna
+    ));
     this.isHere = false; // not here after initialization
     this.supportedEvents = {
     //  event_name:     event_type
@@ -96,25 +148,10 @@ function zlAppKing(dna) {
         inview:         'scroll'
     };
     this.Welcome = function(inject_dna) {
-        this.Chromosoming(this, inject_dna, {mix:true});
-        this
-            .WelcomeMorning()
-            .WelcomeDinner()
-            .WelcomeParty();
-        return this;
-    }
-    this.WelcomeMorning = function(){
         this.Ribosome();
         this.WelcomePlugins();
-        return this;
-    }
-    this.WelcomeDinner = function(){
         this.isHere = true;
-        return this;
-    }
-    this.WelcomeParty = function(){
-        this.report('ʕ⊙ᴥ⊙ʔ '+this.dna.name+'.Welcome party!');
-        this.EggEclosion();
+        this.WelcomeParty();
         return this;
     }
     // # ======================================== PUB
@@ -270,6 +307,12 @@ function zlAppKing(dna) {
     this.WelcomePlugins = function() {
         if (this.dna.usePathdance) zlPathdance.Welcome();
         if (this.dna.usePathdanceQueen) PathdanceQueen.Welcome();
+        return this;
+    }
+    this.WelcomeParty = function(){
+        this.report('— That moment, then app is ready.');
+        this.report('ʕ⊙ᴥ⊙ʔ '+this.dna.name+'.Welcome party!');
+        this.EggEclosion();
         return this;
     }
     this.Pathdance = {
