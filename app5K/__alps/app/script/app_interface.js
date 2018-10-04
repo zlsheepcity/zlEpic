@@ -1,14 +1,9 @@
 /*
-    # Interface js functions, v5001
-    Last code revision: 2018.9.26
+    # Interface functions, v5001
 
-    ## Globals:
+        Last code revision: 2018.10.4
 
-        app
-        zlChromosome
-        zlPathdance
-
-    ## Required
+    ## Required libs
 
         lodash
         domtastic ($)
@@ -74,107 +69,106 @@
 */
 var zlAppKing__DnaConfig = {
 
-    name:'app', // King
-    isSilentKing: false, // console reports
-    queens: { // native libraries (Queens)
-        list: {
-            interface: 'appInterfaceQueen'
-        }
-    },
+    name:                   'app', // King
+    isSilentKing:           false, // Console reports
 
-    useEventQueen: true,
-    usePathdance: true,
-    usePathdanceQueen: true
+    //                      Native libraries (Queens)
+    queens: {
+        list: {
+            interface:      'appInterfaceQueen',
+            pathdance:      'appPathdanceQueen',
+            dev:            'zlPathdance'
+        }
+    }
 
 }
-function zlChromosome (organism, initial_chromosome = {}) {
+function zlChromosome(organism, dna) {
     // # ======================================== SETTINGS
-    this.organism = organism;
-    this.initial_chromosome = initial_chromosome;
-    this.base_dna = {
-        a__gen0CH: false,
-        a__genType:'wild',
-        name:'wild'
-    };
-    this.Welcome = function (dna) {
-        this.SummonDnaComposer(dna);
-        this.organism.dna.a__gen0CH = 'zlChromosome';
-    };
-    // # ======================================== LORDS
-    this.SummonDnaComposer = function(synthesis_dna) {
-        this.Inject(synthesis_dna);
-        return this;
+    this.chromosome = {
+        base_dna: { a__genType:'wild', name:'wild' },
+        born_dna: dna
     }
     // # ======================================== SERVICES
-    this.Inject = function (fresh_dna) {
-        this.organism.dna = _.assign( {},
-            this.base_dna,
-            this.organism.dna,
-            fresh_dna
+    this.Inject = function(dna) {
+        this.chromosome.fresh_dna = dna;
+        _.assign(
+            this,
+            this.chromosome.base_dna,
+            this.chromosome.fresh_dna
         );
         return this;
     }
-    this.Infect = function (fresh_dna) {
-        this.organism.dna = _.assign( {},
-            this.base_dna,
-            fresh_dna,
-            this.organism.dna
+    this.Infect = function(dna) {
+        var current_dna = _.assign({}, this);
+        this.chromosome.fresh_dna = dna;
+        _.assign(
+            this,
+            this.chromosome.base_dna,
+            this.chromosome.fresh_dna,
+            current_dna
         );
         return this;
     }
-    this.Rebuild = function (fresh_dna) {
-        this.organism.dna = _.assign( {},
-            this.base_dna,
-            fresh_dna
-        );
-        return this;
+    this.Report = function() {
+        var report = {};
+        _.assign(report, this);
+        _.unset(report, 'chromosome');
+        _.unset(report, 'Inject');
+        _.unset(report, 'Infect');
+        _.unset(report, 'Report');
+        return report;
     }
     // # ======================================== AUTO BORN PROCESS
-    this.Welcome(this.initial_chromosome);
+    this.Inject(dna);
+}
+function zlProtein(dna) {
+    this.dna = new zlChromosome(this, _.assign({
+        a__genType:         'resource',
+        name:               'BosettiProtein'
+        }, dna ));
 }
 function zlAppKing(dna) {
     // # ======================================== SETTINGS
-    this.Chromosome = new zlChromosome(this, _.assign({
-        a__genType:         'king',
-        name:               'AppKing'
-        }, dna
-    ));
+    this.dna = new zlChromosome(
+        this,
+        _.assign({
+            a__genType:         'king',
+            name:               'AppKing'
+            }, dna )
+    );
     this.Welcome = function() {
         this.report('ʕ⊙ᴥ⊙ʔ Please, Welcome King '+this.dna.name);
-        this.report('data',_.assign({},this.dna));
         this.Preparator('Delegator',{app:this});
         this.WelcomePlugins();
         this.WelcomeParty();
         return this;
     }
     this.Profile = function( update = false ) {
-        if ( update !== false ) {
-            
-        } else {
-            this // -->
-            .report('start', 'King '+this.dna.name+'.Status')
-            .report('data', this.dna)
-            .report('divider')
-            .report(this.dna.name + '.eggs // ' + this.eggs.length)
-            .report('divider');
 
-            var role, queens = this.dna.queens.list;
-            for ( role in queens )
-                this.report(
-                    queens[role] + '.Profile() // '
-                    + window[queens[role]].king
-                    + '→' + window[queens[role]].dna.a__genRole
-                    );
+        this // -->
+        .report('start', 'King '+this.dna.name+'.Status')
+        .report('dna', this.dna)
+        .report('divider')
+        .report(this.dna.name + '.eggs // ' + this.eggs.length)
+        .report('divider');
 
-            this // -->
-            .report('divider')
-            .report('end');
-        }
+        var role, queens = this.dna.queens.list;
+        for ( role in queens )
+            this.report(
+                queens[role] + '.Profile() // '
+                + window[queens[role]].king
+                + ' → ' + role
+                );
+
+        this // -->
+        .report('divider')
+        .report('end');
+
         return this;
     }
     // # ======================================== PUB
     this.do = function(dna) {
-        this.ScheduleInterfaceAction(dna);
+        this.ScheduleAction('Interface', dna);
         return this;
     }
     this.el = function(query) {
@@ -202,25 +196,12 @@ function zlAppKing(dna) {
         return this.Reporter(msg,data);
     }
     // # ======================================== STORAGE
-    this.queens = {}; // plugins
     this.eggs = []; // custom functions «on load»
     // # ======================================== LORDS
-    this.WelcomeParty = function(){
-        this.report('— That moment, then app is ready.');
-        this.report('ʕ⊙ᴥ⊙ʔ '+this.dna.name+'.Welcome party!');
-        this.EggEclosion();
-        return this;
-    }
-    this.EggEclosion = function() {
-        for ( var i in this.eggs )
-            if ( typeof(this.eggs[i]) === 'function') {
-                this.eggs[i]();
-                this.eggs[i] = {status:'eclosed',f:this.eggs[i]};
-            }
-        return this;
-    }
-    this.KingPower = function(queen) {
-        var king = this.dna.name;
+    this.KingPower = function(queen, king = false) {
+        king = king ? king : this.dna.name ;
+        queen.king = king;
+        queen.Delegator = this.Delegator;
         queen.el = function(query){return window[king].el(query)};
         queen.report =function(msg,data){return window[king].report(msg,data)};
         return this;
@@ -243,19 +224,38 @@ function zlAppKing(dna) {
         do_prepare[target](data);
         return this;
     }
-    this.Delegator = {};
+    this.Delegator = {
+        Interface: function(king){ return window[king.dna.queens.list.interface]}
+    };
+    this.WelcomeParty = function(){
+        this.report(
+            'ʕ⊙ᴥ⊙ʔ '
+            + this.dna.name
+            + '.Welcome party! — That moment, then app is ready.'
+        );
+        this.EggEclosion();
+        return this;
+    }
+    this.EggEclosion = function() {
+        for ( var i in this.eggs )
+            if ( typeof(this.eggs[i]) === 'function') {
+                this.eggs[i]();
+                this.eggs[i] = {status:'eclosed',f:this.eggs[i]};
+            }
+        return this;
+    }
     // # ======================================== SERVICES
     this.WelcomePlugins = function() {
         var role, queen, queens = this.dna.queens.list;
-        //this.dna.queens.roles = {};
         for ( role in queens ) {
                 queen = window[queens[role]];
                 this.KingPower(queen);
-                this.queens[role] = queen.dna.name;
                 queen.Welcome(this);
             }
-        if (this.dna.usePathdance) zlPathdance.Welcome();
-        if (this.dna.usePathdanceQueen) PathdanceQueen.Welcome();
+        return this;
+    }
+    this.ScheduleAction = function(role, dna) {
+        this.Delegator[role](this).take(dna)
         return this;
     }
     // # ======================================== DOM
@@ -270,25 +270,17 @@ function zlAppKing(dna) {
         return document.querySelector(query);
     }
     // # ======================================== UNPURE
-    this.ScheduleInterfaceAction = function(dna) {
-        var responsible = this.dna.queens.list.interface;
-        if (responsible)
-            window[responsible].take(dna);
-        //if (this.queens.interface)
-        //    window[this.queens.interface].take(dna);
-        return this;
-    }
     this.Pathdance = {
         registration:
-            this.dna.usePathdanceQueen
-            ? function(dna){PathdanceQueen.pop(dna)}
+            this.dna.queens.list.pathdance
+            ? function(dna){appPathdanceQueen.pop(dna)}
             : function(){return false},
         describe:
-            this.dna.usePathdance
+            this.dna.queens.list.dev
             ? function(dna){zlPathdance.path(dna)}
             : function(){return false},
         run:
-            this.dna.usePathdance
+            this.dna.queens.list.dev
             ? function(name, movement){zlPathdance.fire(name)}
             : function(){return false}
     }
@@ -298,6 +290,7 @@ function zlAppKing(dna) {
         else if (msg==='timer-start') console.time(data);
         else if (msg==='timer-stop') console.timeEnd(data);
         else if (msg==='data') console.table(data);
+        else if (msg==='dna') console.table(data.Report());
         else if (msg==='divider')
             console.log('------------------------------------');
         else {
@@ -421,6 +414,7 @@ function zlAppKing(dna) {
         else                             protein.Waypoint = new Waypoint(wp_dna);
         protein.status = "ready";
     }
+    // # ======================================== BORN PROCESS
     this.report('ʕ⊙ᴥ⊙ʔ New AppKing: '+this.dna.name);
 }
 var app = new zlAppKing(zlAppKing__DnaConfig);
@@ -428,17 +422,15 @@ var app = new zlAppKing(zlAppKing__DnaConfig);
 
 /* ==============================================================
     Interface Queen 1002, 2018.10.4
-    - ux events
-    - components library
+    - ux events → scheduled actions
 */
 function zlInterfaceQueen(dna) {
     // # ======================================== SETTINGS
-    this.Chromosome = new zlChromosome(this, _.assign({
+    this.dna = new zlChromosome(this, _.assign({
         a__genType:         'queen',
         a__genRole:         'interface',
         name:               'Janja_the_InterfaceQueen'
-        }, dna
-    ));
+        }, dna ));
     this.supportedEvents = {
     //  event_name:     event_type
         click:          'click',
@@ -449,25 +441,40 @@ function zlInterfaceQueen(dna) {
         inview:         'scroll'
     };
     this.Welcome = function(king) {
-        this.king = king.dna.name;
-        this.Delegator = king.Delegator;
+        //this.king = king.dna.name;
+        //this.Delegator = king.Delegator;
+
+        this // -->
+        .report('start', this.dna.name+'.Welcome')
+        .report('timer-start', this.dna.name+'WelcomeTimer');
+
         this.Ribosome();
+
+        this // -->
+        .report('timer-stop', this.dna.name+'WelcomeTimer')
+        .report(this.dna.name+'.Profile()')
+        .report('ʕ⊙ᴥ⊙ʔ Interface ready!')
+        .report('divider')
+        .report('end');
+
         return this;
     }
     this.Profile = function( update = false ) {
-        if ( update !== false ) {
-            
-        } else {
-            this // -->
-            .report('start', 'Queen ' + this.dna.name+'.Status')
-            .report('king: ' + this.king)
-            .report('data', this.dna)
-            .report('data', this.nucleus)
-            .report('data', this.proteins)
-            .report('divider');
-            this // -->
-            .report('end');
-        }
+
+        this // -->
+        .report('name: ' + this.dna.name)
+        .report('king: ' + this.king)
+        .report('divider');
+
+        this // -->
+        .report('DNA: ' + this.dna.name + '.dna')
+        .report('data', this.dna)
+        .report('divider')
+        .report('PROTEINS: ' + this.dna.name + '.proteins')
+        .report('data', this.proteins)
+        .report('divider');
+
+        return this;
     }
     // # ======================================== PUB
     this.take = function(dna) {
@@ -480,28 +487,20 @@ function zlInterfaceQueen(dna) {
     this.proteins = {}; // active interface actions
     // # ======================================== LORDS
     this.Ribosome = function() {
+
         this // -->
-        .report('start', this.dna.name+'.Ribosome')
-        .report('timer-start', 'NucleusSynthesisTimer')
-        .report('nucleus size: '+this.nucleus.length)
+        .report('# nucleus('+this.nucleus.length+') → ribosoming...');
+
+        for ( var i in this.nucleus )
+            if(!this.nucleus[i].wasRibosomed) {
+                this.RibosomeSynthesis( this.nucleus[i] );
+                this.nucleus[i].wasRibosomed = true;
+            }
+
+        this // -->
         .report('divider');
-        if (this.nucleus.length)
-            for ( var i in this.nucleus )
-                if(!this.nucleus[i].wasRibosomed) {
-                    this.RibosomeSynthesis(
-                        this.nucleus[i],
-                        this.Delegator
-                    );
-                    this.nucleus[i].wasRibosomed = true;
-                }
-        this // --------------------------------------
-            .report('divider')
-            .report('timer-stop', 'NucleusSynthesisTimer')
-            .report('Interface ready.')
-            .report(this.dna.name+'.Status()')
-            .report('divider')
-            .report('end');
         return this;
+
     }
     // # ======================================== SERVICES
     this.InsertIntoNucleus = function(dna) {
@@ -510,22 +509,26 @@ function zlInterfaceQueen(dna) {
         this.nucleus.push(dna);
         return true;
     }
-    this.RibosomeSynthesis = function(dna, delegator) {
-        var name, protein;
+    this.RibosomeSynthesis = function(dna) {
+        var name, protein, delegator;
         name = dna.name;
-        protein = { name:name, dna:{} };
-        _.assign( protein.dna, dna );
-        _.assign( protein, this.RibosomeGetsEvent(dna) );
-        _.assign( protein, this.RibosomeGetsElements(dna) );
-        _.assign( protein, this.RibosomeGetsAction(dna) );
-        this.proteins[name] = protein;
+        delegator = this.Delegator;
+
+        protein = new zlProtein(dna);
+        this.proteins[name] = _.assign(
+            protein,
+            this.InterfaceEventDescription(dna),
+            this.InterfaceActionDescription(dna),
+            this.FindHome(dna)
+        );
+
         if ( protein.event_type && delegator && delegator[protein.event_type] ) {
             delegator[protein.event_type](this.proteins[name]);
-            this.report('- '+this.dna.name+'.proteins.'+name);
+            this.report(this.dna.name+'.proteins.'+name);
         }
         return true;
     }
-    this.RibosomeGetsEvent = function(dna) {
+    this.InterfaceEventDescription = function(dna) {
         var event_name, event_type;
         event_name = dna.has ? dna.has : 'click'; // click is default
         event_type =
@@ -537,7 +540,18 @@ function zlInterfaceQueen(dna) {
             event_name: event_name
         }
     }
-    this.RibosomeGetsElements = function(dna) {
+    this.InterfaceActionDescription = function(dna) {
+        if ( dna.do && typeof(dna.do)==='function' )
+            return {
+                action: 'func',
+                func: dna.do
+            }
+        else return {
+                action: 'mutate', // default action
+                func: false
+            }
+    }
+    this.FindHome = function(dna) {
         var el_trigger, el_target;
         el_trigger = this.el(dna.when);
         el_target = dna.for ? this.el(dna.for) : el_trigger ;
@@ -546,18 +560,6 @@ function zlInterfaceQueen(dna) {
             tel: el_target
         }
     }
-    this.RibosomeGetsAction = function(dna) {
-        if ( dna.do && typeof(dna.do)==='function' )
-            return {
-                action: 'func',
-                func: dna.do
-            }
-        else return {
-                action: 'mutate',
-                func: false
-            }
-    }
-    // # ======================================== UNPURE
 }
 var appInterfaceQueen = new zlInterfaceQueen({name:'appInterfaceQueen'});
 /* ============================================================== */
@@ -579,17 +581,28 @@ function zlPathGMO(dna) {
     };
 }
 function zlPathdanceQueen(dna) {
-    this.chromosome = {
+    // # ======================================== SETTINGS
+    this.dna = new zlChromosome(this, _.assign({
+        a__genType:         'queen',
+        a__genRole:         'pathdance',
+        name:               'Alexa_the_PathdanceQueen'
+        }, dna
+    ));
+    /*this.chromosome = {
         a__genType:         'queen',
         a__genFamily:       'pathdance',
         name:               'Alexa_the_PathdanceQueen'
     };
-    this.dna = app.Chromosoming(this,dna);
-    this.Welcome = function() {
+    this.dna = app.Chromosoming(this,dna);*/
+    this.Welcome = function(king) {
+        this.king = king.dna.name;
+        this.Delegator = king.Delegator;
+
         this
             .WelcomeMorning()
             .WelcomeDinner()
             .WelcomeParty();
+
         return this;
     }
     this.WelcomeMorning = function() {
@@ -662,10 +675,10 @@ function zlPathdanceQueen(dna) {
         return protein;
     }
     // # ======================================== MARKET
-    this.report = function(msg,data){app.report(msg,data);return this};
-    this.report('ʕ⊙ᴥ⊙ʔ New PathdanceQueen: '+this.dna.name);
+    //this.report = function(msg,data){app.report(msg,data);return this};
+    //this.report('ʕ⊙ᴥ⊙ʔ New PathdanceQueen: '+this.dna.name);
 }
-var PathdanceQueen = new zlPathdanceQueen({name:'PathdanceQueen'});
+var appPathdanceQueen = new zlPathdanceQueen({name:'appPathdanceQueen'});
 /* ============================================================== */
 
 
