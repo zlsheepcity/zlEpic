@@ -74,12 +74,14 @@
 */
 var zlAppKing__DnaConfig = {
 
-    name:'app',
+    name:'app', // King
+    isSilentKing: false, // console reports
+    queens: { // native libraries (Queens)
+        list: {
+            interface: 'appInterfaceQueen'
+        }
+    },
 
-    // Enable/Disable console reports
-    hasSilentReports: false,
-
-    // Libraries (Queens):
     useEventQueen: true,
     usePathdance: true,
     usePathdanceQueen: true
@@ -133,31 +135,46 @@ function zlChromosome (organism, initial_chromosome = {}) {
 function zlAppKing(dna) {
     // # ======================================== SETTINGS
     this.Chromosome = new zlChromosome(this, _.assign({
-        a__genType:         'core',
+        a__genType:         'king',
         name:               'AppKing'
         }, dna
     ));
-    this.isHere = false; // not here after initialization
-    this.supportedEvents = {
-    //  event_name:     event_type
-        click:          'click',
-        scrollTop:      'scroll',
-        scrollIn:       'scroll',
-        scrollInview:   'scroll',
-        scrollAway:     'scroll',
-        inview:         'scroll'
-    };
-    this.Welcome = function(inject_dna) {
-        this.Ribosome();
+    this.Welcome = function() {
+        this.report('ʕ⊙ᴥ⊙ʔ Please, Welcome King '+this.dna.name);
+        this.report('data',_.assign({},this.dna));
+        this.Preparator('Delegator',{app:this});
         this.WelcomePlugins();
-        this.isHere = true;
         this.WelcomeParty();
+        return this;
+    }
+    this.Profile = function( update = false ) {
+        if ( update !== false ) {
+            
+        } else {
+            this // -->
+            .report('start', 'King '+this.dna.name+'.Status')
+            .report('data', this.dna)
+            .report('divider')
+            .report(this.dna.name + '.eggs // ' + this.eggs.length)
+            .report('divider');
+
+            var role, queens = this.dna.queens.list;
+            for ( role in queens )
+                this.report(
+                    queens[role] + '.Profile() // '
+                    + window[queens[role]].king
+                    + '→' + window[queens[role]].dna.a__genRole
+                    );
+
+            this // -->
+            .report('divider')
+            .report('end');
+        }
         return this;
     }
     // # ======================================== PUB
     this.do = function(dna) {
-        this.InsertIntoNucleus(dna);
-        if ( this.isHere ) this.Ribosome();
+        this.ScheduleInterfaceAction(dna);
         return this;
     }
     this.el = function(query) {
@@ -181,51 +198,33 @@ function zlAppKing(dna) {
         return this.ElMutate(mutation);
     }
     this.report =function (msg,data) {
-        if ( this.hasSilentReports ) return this;
+        if ( this.isSilentKing ) return this; // tsss
         return this.Reporter(msg,data);
     }
     // # ======================================== STORAGE
-    this.nucleus = []; // scheduled interface actions
-    this.proteins = {}; // active interface actions
+    this.queens = {}; // plugins
     this.eggs = []; // custom functions «on load»
     // # ======================================== LORDS
-    this.Ribosome = function() {
-        this // --------------------------------------
-            .report('start', this.dna.name+'.Ribosome')
-            .report('timer-start', 'NucleusSynthesisTimer')
-            .report('nucleus size: '+this.nucleus.length)
-            .report('divider');
-        this
-            .Preparator('delegator',{app:this});
-        if (this.nucleus.length)
-            for ( var i in this.nucleus )
-                if(!this.nucleus[i].wasRibosomed) {
-                    this.RibosomeSynthesis(
-                        this.nucleus[i],
-                        this.Delegator
-                    );
-                    this.nucleus[i].wasRibosomed = true;
-                }
-        this // --------------------------------------
-            .report('divider')
-            .report('timer-stop', 'NucleusSynthesisTimer')
-            .report('Interface update completed. Console command:')
-            .report('app.proteins.ACTION_NAME')
-            .report('divider')
-            .report('end');
+    this.WelcomeParty = function(){
+        this.report('— That moment, then app is ready.');
+        this.report('ʕ⊙ᴥ⊙ʔ '+this.dna.name+'.Welcome party!');
+        this.EggEclosion();
         return this;
     }
     this.EggEclosion = function() {
-        for ( var i in this.eggs ) this.eggs[i]();
+        for ( var i in this.eggs )
+            if ( typeof(this.eggs[i]) === 'function') {
+                this.eggs[i]();
+                this.eggs[i] = {status:'eclosed',f:this.eggs[i]};
+            }
         return this;
     }
-    // # ======================================== SERVICES
-    this.InsertIntoNucleus = function(dna) {
-        if (!dna) return false;
-        if (!dna.name) dna.name = 'Ogodei_'+this.nucleus.length;
-        this.nucleus.push(dna);
-        return true;
-    }
+    this.KingPower = function(queen) {
+        var king = this.dna.name;
+        queen.el = function(query){return window[king].el(query)};
+        queen.report =function(msg,data){return window[king].report(msg,data)};
+        return this;
+    };
     this.Chromosoming = function(substance, fresh_dna, params) {
         var chromosome, old_dna;
         chromosome = substance.chromosome || { a__genType:'wild' };
@@ -235,7 +234,7 @@ function zlAppKing(dna) {
     }
     this.Preparator = function(target, data) { // Preparator prepares targets
         var do_prepare = {
-            'delegator': function({app}) {
+            'Delegator': function({app}) {
                 if (!app.Delegator) app.Delegator = {};
                 app.Delegator.click = app.DelegateClick;
                 app.Delegator.scroll = app.DelegateScroll;
@@ -245,54 +244,21 @@ function zlAppKing(dna) {
         return this;
     }
     this.Delegator = {};
-    this.RibosomeSynthesis = function(dna, delegator) {
-        var name, protein;
-        name = dna.name;
-        protein = { name:name, dna:{} };
-        _.assign( protein.dna, dna );
-        _.assign( protein, this.RibosomeGetsEvent(dna) );
-        _.assign( protein, this.RibosomeGetsElements(dna) );
-        _.assign( protein, this.RibosomeGetsAction(dna) );
-        this.proteins[name] = protein;
-        if ( protein.event_type && delegator && delegator[protein.event_type] ) {
-            delegator[protein.event_type](this.proteins[name]);
-            this.report('Action: app.proteins.'+name);
-        }
-        return true;
-    }
-    this.RibosomeGetsEvent = function(dna) {
-        var event_name, event_type;
-        event_name = dna.has ? dna.has : 'click'; // click is default
-        event_type =
-            this.supportedEvents[event_name]
-            ? this.supportedEvents[event_name]
-            : 'click';
-        return {
-            event_type: event_type,
-            event_name: event_name
-        }
-    }
-    this.RibosomeGetsElements = function(dna) {
-        var el_trigger, el_target;
-        el_trigger = this.el(dna.when);
-        el_target = dna.for ? this.el(dna.for) : el_trigger ;
-        return {
-            el:  el_trigger,
-            tel: el_target
-        }
-    }
-    this.RibosomeGetsAction = function(dna) {
-        if ( dna.do && typeof(dna.do)==='function' )
-            return {
-                action: 'func',
-                func: dna.do
+    // # ======================================== SERVICES
+    this.WelcomePlugins = function() {
+        var role, queen, queens = this.dna.queens.list;
+        //this.dna.queens.roles = {};
+        for ( role in queens ) {
+                queen = window[queens[role]];
+                this.KingPower(queen);
+                this.queens[role] = queen.dna.name;
+                queen.Welcome(this);
             }
-        else return {
-                action: 'mutate',
-                func: false
-            }
+        if (this.dna.usePathdance) zlPathdance.Welcome();
+        if (this.dna.usePathdanceQueen) PathdanceQueen.Welcome();
+        return this;
     }
-    // # ======================================== DOM EXPORT
+    // # ======================================== DOM
     this.ElMutate = function(mutation){
         var $el = $(mutation.el);
         if ( mutation.addClass )    $el.addClass(mutation.addClass);
@@ -303,16 +269,13 @@ function zlAppKing(dna) {
     this.El = function(query) {
         return document.querySelector(query);
     }
-    // # ======================================== EXPORT
-    this.WelcomePlugins = function() {
-        if (this.dna.usePathdance) zlPathdance.Welcome();
-        if (this.dna.usePathdanceQueen) PathdanceQueen.Welcome();
-        return this;
-    }
-    this.WelcomeParty = function(){
-        this.report('— That moment, then app is ready.');
-        this.report('ʕ⊙ᴥ⊙ʔ '+this.dna.name+'.Welcome party!');
-        this.EggEclosion();
+    // # ======================================== UNPURE
+    this.ScheduleInterfaceAction = function(dna) {
+        var responsible = this.dna.queens.list.interface;
+        if (responsible)
+            window[responsible].take(dna);
+        //if (this.queens.interface)
+        //    window[this.queens.interface].take(dna);
         return this;
     }
     this.Pathdance = {
@@ -461,6 +424,142 @@ function zlAppKing(dna) {
     this.report('ʕ⊙ᴥ⊙ʔ New AppKing: '+this.dna.name);
 }
 var app = new zlAppKing(zlAppKing__DnaConfig);
+/* ============================================================== */
+
+/* ==============================================================
+    Interface Queen 1002, 2018.10.4
+    - ux events
+    - components library
+*/
+function zlInterfaceQueen(dna) {
+    // # ======================================== SETTINGS
+    this.Chromosome = new zlChromosome(this, _.assign({
+        a__genType:         'queen',
+        a__genRole:         'interface',
+        name:               'Janja_the_InterfaceQueen'
+        }, dna
+    ));
+    this.supportedEvents = {
+    //  event_name:     event_type
+        click:          'click',
+        scrollTop:      'scroll',
+        scrollIn:       'scroll',
+        scrollInview:   'scroll',
+        scrollAway:     'scroll',
+        inview:         'scroll'
+    };
+    this.Welcome = function(king) {
+        this.king = king.dna.name;
+        this.Delegator = king.Delegator;
+        this.Ribosome();
+        return this;
+    }
+    this.Profile = function( update = false ) {
+        if ( update !== false ) {
+            
+        } else {
+            this // -->
+            .report('start', 'Queen ' + this.dna.name+'.Status')
+            .report('king: ' + this.king)
+            .report('data', this.dna)
+            .report('data', this.nucleus)
+            .report('data', this.proteins)
+            .report('divider');
+            this // -->
+            .report('end');
+        }
+    }
+    // # ======================================== PUB
+    this.take = function(dna) {
+        this.InsertIntoNucleus(dna);
+        if ( this.king ) this.Ribosome();
+        return this;
+    }
+    // # ======================================== STORAGE
+    this.nucleus = []; // scheduled interface actions
+    this.proteins = {}; // active interface actions
+    // # ======================================== LORDS
+    this.Ribosome = function() {
+        this // -->
+        .report('start', this.dna.name+'.Ribosome')
+        .report('timer-start', 'NucleusSynthesisTimer')
+        .report('nucleus size: '+this.nucleus.length)
+        .report('divider');
+        if (this.nucleus.length)
+            for ( var i in this.nucleus )
+                if(!this.nucleus[i].wasRibosomed) {
+                    this.RibosomeSynthesis(
+                        this.nucleus[i],
+                        this.Delegator
+                    );
+                    this.nucleus[i].wasRibosomed = true;
+                }
+        this // --------------------------------------
+            .report('divider')
+            .report('timer-stop', 'NucleusSynthesisTimer')
+            .report('Interface ready.')
+            .report(this.dna.name+'.Status()')
+            .report('divider')
+            .report('end');
+        return this;
+    }
+    // # ======================================== SERVICES
+    this.InsertIntoNucleus = function(dna) {
+        if (!dna) return false;
+        if (!dna.name) dna.name = 'Ogodei_'+this.nucleus.length;
+        this.nucleus.push(dna);
+        return true;
+    }
+    this.RibosomeSynthesis = function(dna, delegator) {
+        var name, protein;
+        name = dna.name;
+        protein = { name:name, dna:{} };
+        _.assign( protein.dna, dna );
+        _.assign( protein, this.RibosomeGetsEvent(dna) );
+        _.assign( protein, this.RibosomeGetsElements(dna) );
+        _.assign( protein, this.RibosomeGetsAction(dna) );
+        this.proteins[name] = protein;
+        if ( protein.event_type && delegator && delegator[protein.event_type] ) {
+            delegator[protein.event_type](this.proteins[name]);
+            this.report('- '+this.dna.name+'.proteins.'+name);
+        }
+        return true;
+    }
+    this.RibosomeGetsEvent = function(dna) {
+        var event_name, event_type;
+        event_name = dna.has ? dna.has : 'click'; // click is default
+        event_type =
+            this.supportedEvents[event_name]
+            ? this.supportedEvents[event_name]
+            : 'click';
+        return {
+            event_type: event_type,
+            event_name: event_name
+        }
+    }
+    this.RibosomeGetsElements = function(dna) {
+        var el_trigger, el_target;
+        el_trigger = this.el(dna.when);
+        el_target = dna.for ? this.el(dna.for) : el_trigger ;
+        return {
+            el:  el_trigger,
+            tel: el_target
+        }
+    }
+    this.RibosomeGetsAction = function(dna) {
+        if ( dna.do && typeof(dna.do)==='function' )
+            return {
+                action: 'func',
+                func: dna.do
+            }
+        else return {
+                action: 'mutate',
+                func: false
+            }
+    }
+    // # ======================================== UNPURE
+}
+var appInterfaceQueen = new zlInterfaceQueen({name:'appInterfaceQueen'});
 /* ============================================================== */
 
 /* ==============================================================
