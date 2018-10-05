@@ -1,42 +1,12 @@
 // Ordnung am Script
-// v2018.9.28
+// v2018.10.5
 
 window.onload = function(e){
     setTimeout(LaunchInterfaceFunctions,200);
+    return true;
 }
 function LaunchInterfaceFunctions(){
-    app.Welcome();
+    if (app&&typeof(app.Welcome)==='function') app.Welcome();
     return true;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-/* // helpers
-
-var myElement = document.querySelector('head');
-
-console.time('zlTimer');
-console.timeEnd('zlTimer');
-
-console.group('myGroup');
-console.log('xoxox_Consola_xoxox');
-console.groupEnd();
-
-console.table(myElement, ['Value'])
-
-/* browser console helpers
-
-$0
-getEventListeners($0)
-document.body.contentEditable=true
-
-*/
