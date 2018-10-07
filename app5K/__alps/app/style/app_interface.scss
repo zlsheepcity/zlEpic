@@ -1,146 +1,141 @@
-/* app interface components, 5001
-
-    # List
-    [basic elements]
-    [helpers]
-    yiWallpaper
-    yiSidemenu
-
-    # Updated 2018.8.26
+/*
+    app interface components, 5002
+    v2018.10.7
 */
 
-/* ==============================================================
-    block model
-    properties for basic elements
-============================================================== */
-html { margin:0;padding:0;box-sizing:border-box;width:100%;overflow-x:hidden; }
-*, *::before, *::after { box-sizing: inherit; }
-body { margin:0; padding:0; min-height: 100vh; }
-img, svg { max-width:100%; }
-/* */
+/* ------------------------------------------------------ screen sizes */
+
+$screenMaxSizeForMobile: 600px;
+$screenMaxSizeForTablet: 900px;
+$screenMaxSizeForXS: 1100px;
+$screenMaxSizeForS: 1300px;
+$screenMaxSizeForM: 1400px;
+$screenMaxSizeForL: 1800px;
+
+$screenForAll: "min-width: 0px";
+$screenForXL: "min-width: #{$screenMaxSizeForL + 1}";
+$screenForL: "max-width: #{$screenMaxSizeForL}";
+$screenNotL: "min-width: #{$screenMaxSizeForL + 1}";
+$screenForM: "max-width: #{$screenMaxSizeForM}";
+$screenNotM: "min-width: #{$screenMaxSizeForM + 1}";
+$screenForS: "max-width: #{$screenMaxSizeForS}";
+$screenNotS: "min-width: #{$screenMaxSizeForS + 1}";
+$screenForXS: "max-width: #{$screenMaxSizeForXS}";
+$screenNotXS: "min-width: #{$screenMaxSizeForXS + 1}";
+$screenForTablet: "max-width: #{$screenMaxSizeForTablet}";
+$screenNotTablet: "min-width: #{$screenMaxSizeForTablet + 1}";
+$screenForMobile: "max-width: #{$screenMaxSizeForMobile}";
+$screenNotMobile: "min-width: #{$screenMaxSizeForMobile + 1}";
+
+$margin-def: 2.4rem;
+
+$grid_for_content--columns:
+    unquote(" [full-start] ")
+        minmax( 0, 1fr )
+    unquote(" [overmain-start] ")
+        $margin-def
+    unquote(" [main-start] ")
+        minmax( 0, 36em )
+    unquote(" [main-end] ")
+        $margin-def
+    unquote(" [overmain-end] ")
+        minmax( 0, 1fr )
+    unquote(" [full-end] ")
+        ;
+
+$grid_layout_for_article--columns:
+    unquote(" [full-start] ")
+        minmax( 0, 1fr )
+    unquote(" [overmain-start] ")
+        $margin-def
+    unquote(" [main-start] ")
+        minmax( 0, 36em )
+    unquote(" [main-end] ")
+        $margin-def
+    unquote(" [overmain-end] ")
+        $margin-def
+    unquote(" [aside-start] ")
+        minmax( 0, 18em )
+    unquote(" [aside-end] ")
+        minmax( 0, 1fr )
+    unquote(" [full-end] ")
+        ;
 
 
-/* ==============================================================
-    helpers
-============================================================== */
-.layer {
-    margin: 0;
-    &:before {
-        content:'';
-        display: table;
-    }
-}
-.grid {
-    &,
-    & .illustration {
-        display: grid;
-        grid-template-columns:
-            unquote(" [full-start] minmax(0, 1fr) ")
-            unquote(" [over-start] minmax(1rem, 2rem) ")
-            unquote(" [main-start] minmax(0, 38em) ")
-            unquote(" [main-end]   minmax(1rem, 2rem) ")
-            unquote(" [over-end]   minmax(0, 1fr) ")
-            unquote(" [full-end]; ");
-    }
-    & > *,
-    & .illustration .textcontent {
+/* ------------------------------------ grid */
+
+%grid_for_content {
+    display: grid;
+    grid-gap: $margin-def 0;
+    grid-auto-rows: min-content;
+    grid-template-columns: $grid_for_content--columns;
+    &>* {
+        @supports (grid-gap:1rem) {
+            margin-top: 0;
+            margin-bottom: 0;
+        }
         grid-column: main;
     }
-    & .layer,
-    & .illustration > * {
+    &>[block], &>.block,
+    &>[illustration], &>.illustration {
+        grid-column: overmain;
+    }
+    &>[layer], &>.layer {
         grid-column: full;
     }
-    & .illustration {
-        grid-column: over;
-        margin: 0;
+
+}
+%grid_layout_for_article {
+    @extend %grid_for_content;
+    grid-template-columns: $grid_layout_for_article--columns;
+    &>[role-content], &>.role-content {
+        grid-column: overmain;
+    }
+    &>aside, &>[aside], &>.aside {
+        grid-column: aside;
+        @extend %grid_for_content;
+    }
+    @media ($screenForTablet) {
+        grid-template-columns: $grid_for_content--columns;
+        &>aside {
+            grid-column: full;
+        }
+    }
+
+}
+[role-content], .role-content {
+    @extend %grid_for_content;
+    &>[role-content], &>.role-content {
+        //grid-column: full;
     }
 }
-.illustration-wide {
-    object-fit: cover;
+[article-layout], .article-layout {
+    @extend %grid_layout_for_article;
+    &>aside {
+        &>*{
+            font-size:0.8em;
+        }
+        @media ($screenForTablet) {
+            background-color: pink;
+        }
+    }
+
 }
-/* */
 
-
-/* ==============================================================
-    body.yiWallpaper
-    fixed background, fade when inactive
-============================================================== */
-$yiWallpaper-o-defaultInnactiveOpacity: 0.2;
-$yiWallpaper-o-defaultOpacityDuration: 640ms;
-$yiWallpaper-o-defaultRestoreDuration: 200ms;
-.yiWallpaper {
-    position: relative;
-    z-index: -1;
-    &:before {
-        content: '';
-        position: absolute;
-        z-index: -1;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        pointer-events: none;
-        opacity: 1;
-        transition: opacity $yiWallpaper-o-defaultRestoreDuration ease-in;
-    }
-    &, &:before {
-        background-attachment: fixed;
-        background-size: cover;
-        background-position: top center;
-        background-repeat: no-repeat;
-    }
-    &.has-inactive-wallpaper:before {
-        transition-duration: $yiWallpaper-o-defaultOpacityDuration;
-        transition-timing-function: ease-out;
-        opacity: $yiWallpaper-o-defaultInnactiveOpacity;
-    }
+[block], .block {
+    @extend %grid_for_content;
 }
-/* */
+    /* illustration */
 
-
-/* ==============================================================
-    .yiSidemenu
-    hidden panel
-============================================================== */
-.yiSidemenu {
-    position: fixed;
-    z-index: 13;
-    top: 0;
-    bottom: 0;
-    left: 100%;
-
-    width: 100%;
-    max-width: 38rem;
-
-    transform: translateX(0);
-    transition: transform 200ms ease-in;
-
-    .has-open-sidemenu & {
-        transition-timing-function: ease-out;
-        transform: translateX(-100%);
+    [illustration], .illustration {
+        //margin-top: $margin-def;
+        //margin-bottom: $margin-def;
+        figcaption {
+            padding-left: $margin-def;
+            padding-right: $margin-def;
+        }
+        &[is-different], .is-different {
+            background-color: rgba(0,0,0,0.1);
+        }
     }
-}
-.yiSidemenu__shadowOverlay {
-    background-color: rgba(0,0,0,.9);
-    position: absolute;
-    z-index: 12;
-    left: 100%;
-    top: 0;
-    bottom: 0;
-    right: 0;
-    .has-open-sidemenu & {
-        left: 0;
-    }
-}
-/* */
 
-/* ==============================================================
-    .pathdance-svg
-    svg path animation support
-============================================================== */
-.pathdance-svg {
-    .pathdance-step:not(.step0) {
-        display: none;
-    }
-}
-/* */

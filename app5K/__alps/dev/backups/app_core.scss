@@ -29,7 +29,6 @@ body {
 
 /* ------------------------------------ markup defaults */
 
-*, ::before, ::after { background-repeat: no-repeat; }
 nav ul, nav ol { padding: 0; margin: 0; list-style-type: none; }
 details, article, aside, footer, header, nav, section, main { display: block; }
 figure, figcaption, fieldset, legend {
@@ -48,16 +47,10 @@ canvas { display: inline-block; }
 html {
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
-    cursor: default;
 }
 body {
   text-rendering: optimizeLegibility; // best quality
   -webkit-font-smoothing: antialiased;
-}
-a, area, button, input, label, select, summary, textarea, [tabindex] {
-  // Single taps are dispatched immediately on clickable elements
-  -ms-touch-action: manipulation;
-  touch-action: manipulation;
 }
 a {
   background-color: transparent;
@@ -69,13 +62,10 @@ img, svg {
   border: none;
   max-width: 100%;
 }
-audio, canvas, iframe, img, svg, video {
-  vertical-align: middle;
-}
 hr {
-  box-sizing: content-box;
-  height: 0;
-  overflow: visible;
+  box-sizing: content-box; /* 1 */
+  height: 0; /* 1 */
+  overflow: visible; /* 2 */
 }
 abbr[title] {
   border-bottom: none;

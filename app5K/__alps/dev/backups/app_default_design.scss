@@ -31,15 +31,13 @@ $font-family-serif: serif;
 
 html {
     font-size: 62.5%; // So that root size becomes 10px
-    @media ($screenForTablet) { font-size: 53.125%; }
-    @media (max-width: 382px) { font-size: 46.875%; }
     line-height: 1.15;
     font-family: $font-family-serif;
 }
 body {
     font-size: $font-size-base;
-    // @media (max-width: 684px) { body { font-size: $font-size-base * 0.85; } }
-    // @media (max-width: 382px) { body { font-size: $font-size-base * 0.75; } }
+    @media (max-width: 684px) { body { font-size: $font-size-base * 0.85; } }
+    @media (max-width: 382px) { body { font-size: $font-size-base * 0.75; } }
     line-height: 1.618;
     color: $color-text;
     background-color: $color-bg;
@@ -51,7 +49,7 @@ body {
 
 /* content design */
 
-[role-content-design], .role-content-design {
+[role-content], .role-content {
 
     h1, h2, h3, h4, h5, h6 {
         line-height: 1.1;
@@ -98,13 +96,6 @@ body {
         padding: 1em;
         overflow-x: auto;
     }
-    @media ($screenForTablet) {
-        pre {
-            grid-column: overmain;
-            padding-left: $margin-def;
-            padding-right: $margin-def;
-        }
-    }
 
     code {
         font-size: 0.9em;
@@ -119,18 +110,6 @@ body {
         white-space: pre;
     }
 
-    code, kbd, pre, samp {
-      font-family:
-        /* macOS 10.10+ */ Menlo,
-        /* Windows 6+ */ Consolas,
-        /* Android 4+ */ Roboto Mono,
-        /* Ubuntu 10.10+ */ Ubuntu Monospace,
-        /* KDE Plasma 5+ */ Noto Mono,
-        /* KDE Plasma 4+ */ Oxygen Mono,
-        /* Linux/OpenOffice fallback */ Liberation Mono,
-        /* fallback */ monospace;
-    }
-
     /* Tables */
 
     table {
@@ -142,6 +121,79 @@ body {
     td, th {
         padding: 0.5em;
         border-bottom: 1px solid $color-bg-alt;
+    }
+
+}
+
+/* form design */
+
+[role-content], .role-content {
+
+    /* Buttons, forms and input */
+
+    input, textarea {
+        border: 1px solid $color-text;
+
+        &:focus {
+            border: 1px solid $color-blossom;
+        }
+    }
+
+    textarea {
+        width: 100%;
+    }
+
+    .button, button, input[type="submit"], input[type="reset"], input[type="button"] {
+        display: inline-block;
+        padding: 5px 10px;
+        text-align: center;
+        text-decoration: none;
+        white-space: nowrap;
+
+        background-color: $color-blossom;
+        color: $color-bg;
+        border-radius: 1px;
+        border: 1px solid $color-blossom;
+        cursor: pointer;
+        box-sizing: border-box;
+
+        &[disabled] {
+            cursor: default;
+            opacity: .5;
+        }
+
+        &:focus, &:hover {
+            background-color: $color-fade;
+            border-color: $color-fade;
+            color: $color-bg;
+            outline: 0;
+        }
+    }
+
+    textarea, select, input[type] {
+        color: $color-text;
+        padding: 6px 10px; /* The 6px vertically centers text on FF, ignored by Webkit */
+        margin-bottom: 10px;
+        background-color: $color-bg-alt;
+        border: 1px solid $color-bg-alt;
+        border-radius: 4px;
+        box-shadow: none;
+        box-sizing: border-box;
+
+        &:focus {
+            border: 1px solid $color-blossom;
+            outline: 0;
+        }
+    }
+
+    input[type="checkbox"]:focus {
+        outline: 1px dotted $color-blossom;
+    }
+
+    label, legend, fieldset {
+        display: block;
+        margin-bottom: .5rem;
+        font-weight: 600; 
     }
 
 }
