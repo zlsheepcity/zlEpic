@@ -1,0 +1,215 @@
+/*
+    base css 1002 Monica De Gennaro
+    v2018.10.5
+*/
+
+/* ------------------------------------ box model */
+
+*, *:before, *:after     { box-sizing: inherit; }
+html                     { box-sizing: border-box; }
+
+/* footer mod */
+
+html {
+    height: 100%;
+    @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+        display: flex;
+        flex-direction: column;
+    }
+}
+body {
+    min-height: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    [role-footer], .role-footer {
+        margin-top: auto;
+    }
+}
+
+/* ------------------------------------ markup defaults */
+
+nav {
+    ul,
+    ol {
+      padding: 0;
+      margin: 0;
+      list-style-type: none;
+    }
+}
+figure,
+figcaption,
+fieldset,
+legend {
+    display: block;
+    margin: 0;
+    padding: 0;
+    border: none;
+    white-space: normal;
+}
+details,
+article,
+aside,
+footer,
+header,
+nav,
+section,
+main {
+  display: block;
+}
+summary { display: list-item; }
+canvas { display: inline-block; }
+[hidden] { display: none; }
+
+/* ------------------------------------ content defaults */
+
+html {
+  font-family: sans-serif;
+  line-height: 1.15;
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+}
+body {
+  text-rendering: optimizeLegibility; // best quality
+  -webkit-font-smoothing: antialiased;
+}
+a {
+  background-color: transparent;
+  text-decoration: none;
+  color: inherit;
+}
+img, svg {
+  display: block;
+  border: none;
+  max-width: 100%;
+}
+hr {
+  box-sizing: content-box; /* 1 */
+  height: 0; /* 1 */
+  overflow: visible; /* 2 */
+}
+abbr[title] {
+  border-bottom: none;
+  text-decoration: underline;
+  text-decoration: underline dotted;
+}
+
+/* ------------------------------------ base theme */
+
+/* Body */
+html {
+  font-size: 62.5%;
+  font-family: serif; }
+
+body {
+  font-size: 1.8rem;
+  line-height: 1.618;
+  color: #4a4a4a;
+  background-color: #f9f9f9;
+  }
+
+@media (max-width: 684px) {
+  body {
+    font-size: 1.53rem; } }
+
+@media (max-width: 382px) {
+  body {
+    font-size: 1.35rem; } }
+
+[role-content], .role-content {
+    /* Sakura.css v1.0.0
+     * ================
+     * Minimal css theme.
+     * Project: https://github.com/oxalorg/sakura
+     */
+
+    h1, h2, h3, h4, h5, h6 {
+      line-height: 1.1;
+      font-family: Verdana, Geneva, sans-serif;
+      font-weight: 700;
+      overflow-wrap: break-word;
+      word-wrap: break-word;
+      -ms-word-break: break-all;
+      word-break: break-word;
+      -ms-hyphens: auto;
+      -moz-hyphens: auto;
+      -webkit-hyphens: auto;
+      hyphens: auto; }
+
+    h1 {
+      font-size: 2.35em; }
+
+    h2 {
+      font-size: 2.00em; }
+
+    h3 {
+      font-size: 1.75em; }
+
+    h4 {
+      font-size: 1.5em; }
+
+    h5 {
+      font-size: 1.25em; }
+
+    h6 {
+      font-size: 1em; }
+
+    small, sub, sup {
+      font-size: 75%; }
+
+    hr {
+      border-color: #2c8898; }
+
+    a {
+      text-decoration: none;
+      color: #2c8898; }
+      a:hover {
+        color: #982c61;
+        border-bottom: 2px solid #4a4a4a; }
+
+    ul {
+      padding-left: 1.4em; }
+
+    li {
+      margin-bottom: 0.4em; }
+
+    blockquote {
+      font-style: italic;
+      margin-left: 1.5em;
+      padding-left: 1em;
+      border-left: 3px solid #2c8898; }
+
+    img {
+      max-width: 100%; }
+
+    /* Pre and Code */
+    pre {
+      background-color: #f1f1f1;
+      display: block;
+      padding: 1em;
+      overflow-x: auto; }
+
+    code {
+      font-size: 0.9em;
+      padding: 0 0.5em;
+      background-color: #f1f1f1;
+      white-space: pre-wrap; }
+
+    pre > code {
+      padding: 0;
+      background-color: transparent;
+      white-space: pre; }
+
+    /* Tables */
+    table {
+      text-align: justify;
+      width: 100%;
+      border-collapse: collapse; }
+
+    td, th {
+      padding: 0.5em;
+      border-bottom: 1px solid #f1f1f1; }
+
+}
+
+
