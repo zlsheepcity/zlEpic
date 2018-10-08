@@ -121,31 +121,31 @@ abbr[title] {
 /* ------------------------------------ font */
 /* ------------------------------------ other settings */
 /* ------------------------------------ grid */
-[article-layout] [role-note], [article-layout] .role-note, .article-layout [role-note], .article-layout .role-note, [block], .block, [content-layout], .content-layout, [role-merge], .role-merge, [layer], .layer, [page-layout], .page-layout, [article-layout], .article-layout {
+[role-sidenote], .role-sidenote, [block], .block, [content-layout], .content-layout, [role-merge], .role-merge, [layer], .layer, [page-layout], .page-layout, [article-layout], .article-layout {
   display: grid;
   grid-auto-rows: min-content;
   grid-template-columns:  [overmain-start]  2.4rem  [main-start]  minmax(0, 64rem)  [main-end]  2.4rem  [overmain-end] ;
   grid-gap: 2.4rem 0;
 }
 @supports (grid-gap: 1rem) {
-  [article-layout] [role-note] > *:not([layer]):not(.layer), [article-layout] .role-note > *:not([layer]):not(.layer), .article-layout [role-note] > *:not([layer]):not(.layer), .article-layout .role-note > *:not([layer]):not(.layer), [block] > *:not([layer]):not(.layer), .block > *:not([layer]):not(.layer), [content-layout] > *:not([layer]):not(.layer), .content-layout > *:not([layer]):not(.layer), [role-merge] > *:not([layer]):not(.layer), .role-merge > *:not([layer]):not(.layer), [layer] > *:not([layer]):not(.layer), .layer > *:not([layer]):not(.layer), [page-layout] > *:not([layer]):not(.layer), .page-layout > *:not([layer]):not(.layer), [article-layout] > *:not([layer]):not(.layer), .article-layout > *:not([layer]):not(.layer) {
+  [role-sidenote] > *:not([layer]):not(.layer), .role-sidenote > *:not([layer]):not(.layer), [block] > *:not([layer]):not(.layer), .block > *:not([layer]):not(.layer), [content-layout] > *:not([layer]):not(.layer), .content-layout > *:not([layer]):not(.layer), [role-merge] > *:not([layer]):not(.layer), .role-merge > *:not([layer]):not(.layer), [layer] > *:not([layer]):not(.layer), .layer > *:not([layer]):not(.layer), [page-layout] > *:not([layer]):not(.layer), .page-layout > *:not([layer]):not(.layer), [article-layout] > *:not([layer]):not(.layer), .article-layout > *:not([layer]):not(.layer) {
     margin-top: 0;
     margin-bottom: 0;
   }
 }
-[article-layout] [role-note] > *, [article-layout] .role-note > *, .article-layout [role-note] > *, .article-layout .role-note > *, [block] > *, .block > *, [content-layout] > *, .content-layout > *, [role-merge] > *, .role-merge > *, [layer] > *, .layer > *, [page-layout] > *, .page-layout > *, [article-layout] > *, .article-layout > * {
+[role-sidenote] > *, .role-sidenote > *, [block] > *, .block > *, [content-layout] > *, .content-layout > *, [role-merge] > *, .role-merge > *, [layer] > *, .layer > *, [page-layout] > *, .page-layout > *, [article-layout] > *, .article-layout > * {
   grid-column: main;
 }
-[article-layout] [role-note] > [layout], [article-layout] .role-note > [layout], .article-layout [role-note] > [layout], .article-layout .role-note > [layout], [block] > [layout], .block > [layout], [content-layout] > [layout], .content-layout > [layout], [role-merge] > [layout], .role-merge > [layout], [layer] > [layout], .layer > [layout], [page-layout] > [layout], .page-layout > [layout], [article-layout] > [layout], .article-layout > [layout], [article-layout] [role-note] > .layout, [article-layout] .role-note > .layout, .article-layout [role-note] > .layout, .article-layout .role-note > .layout, [block] > .layout, .block > .layout, [content-layout] > .layout, .content-layout > .layout, [role-merge] > .layout, .role-merge > .layout, [layer] > .layout, .layer > .layout, [page-layout] > .layout, .page-layout > .layout, [article-layout] > .layout, .article-layout > .layout {
+[role-sidenote] > [layout], .role-sidenote > [layout], [block] > [layout], .block > [layout], [content-layout] > [layout], .content-layout > [layout], [role-merge] > [layout], .role-merge > [layout], [layer] > [layout], .layer > [layout], [page-layout] > [layout], .page-layout > [layout], [article-layout] > [layout], .article-layout > [layout], [role-sidenote] > .layout, .role-sidenote > .layout, [block] > .layout, .block > .layout, [content-layout] > .layout, .content-layout > .layout, [role-merge] > .layout, .role-merge > .layout, [layer] > .layout, .layer > .layout, [page-layout] > .layout, .page-layout > .layout, [article-layout] > .layout, .article-layout > .layout {
   grid-column: full;
 }
-[article-layout] [role-note] > [layer], [article-layout] .role-note > [layer], .article-layout [role-note] > [layer], .article-layout .role-note > [layer], [block] > [layer], .block > [layer], [content-layout] > [layer], .content-layout > [layer], [role-merge] > [layer], .role-merge > [layer], [layer] > [layer], .layer > [layer], [page-layout] > [layer], .page-layout > [layer], [article-layout] > [layer], .article-layout > [layer], [article-layout] [role-note] > .layer, [article-layout] .role-note > .layer, .article-layout [role-note] > .layer, .article-layout .role-note > .layer, [block] > .layer, .block > .layer, [content-layout] > .layer, .content-layout > .layer, [role-merge] > .layer, .role-merge > .layer, [layer] > .layer, .layer > .layer, [page-layout] > .layer, .page-layout > .layer, [article-layout] > .layer, .article-layout > .layer {
+[role-sidenote] > [layer], .role-sidenote > [layer], [block] > [layer], .block > [layer], [content-layout] > [layer], .content-layout > [layer], [role-merge] > [layer], .role-merge > [layer], [layer] > [layer], .layer > [layer], [page-layout] > [layer], .page-layout > [layer], [article-layout] > [layer], .article-layout > [layer], [role-sidenote] > .layer, .role-sidenote > .layer, [block] > .layer, .block > .layer, [content-layout] > .layer, .content-layout > .layer, [role-merge] > .layer, .role-merge > .layer, [layer] > .layer, .layer > .layer, [page-layout] > .layer, .page-layout > .layer, [article-layout] > .layer, .article-layout > .layer {
   grid-column: full;
 }
-[article-layout] [role-note] > [block], [article-layout] .role-note > [block], .article-layout [role-note] > [block], .article-layout .role-note > [block], [block] > [block], .block > [block], [content-layout] > [block], .content-layout > [block], [role-merge] > [block], .role-merge > [block], [layer] > [block], .layer > [block], [page-layout] > [block], .page-layout > [block], [article-layout] > [block], .article-layout > [block], [article-layout] [role-note] > .block, [article-layout] .role-note > .block, .article-layout [role-note] > .block, .article-layout .role-note > .block, [block] > .block, .block > .block, [content-layout] > .block, .content-layout > .block, [role-merge] > .block, .role-merge > .block, [layer] > .block, .layer > .block, [page-layout] > .block, .page-layout > .block, [article-layout] > .block, .article-layout > .block {
+[role-sidenote] > [block], .role-sidenote > [block], [block] > [block], .block > [block], [content-layout] > [block], .content-layout > [block], [role-merge] > [block], .role-merge > [block], [layer] > [block], .layer > [block], [page-layout] > [block], .page-layout > [block], [article-layout] > [block], .article-layout > [block], [role-sidenote] > .block, .role-sidenote > .block, [block] > .block, .block > .block, [content-layout] > .block, .content-layout > .block, [role-merge] > .block, .role-merge > .block, [layer] > .block, .layer > .block, [page-layout] > .block, .page-layout > .block, [article-layout] > .block, .article-layout > .block {
   grid-column: overmain;
 }
-[article-layout] [role-note] > [role-merge], [article-layout] .role-note > [role-merge], .article-layout [role-note] > [role-merge], .article-layout .role-note > [role-merge], [block] > [role-merge], .block > [role-merge], [content-layout] > [role-merge], .content-layout > [role-merge], [role-merge] > [role-merge], .role-merge > [role-merge], [layer] > [role-merge], .layer > [role-merge], [page-layout] > [role-merge], .page-layout > [role-merge], [article-layout] > [role-merge], .article-layout > [role-merge], [article-layout] [role-note] > .role-merge, [article-layout] .role-note > .role-merge, .article-layout [role-note] > .role-merge, .article-layout .role-note > .role-merge, [block] > .role-merge, .block > .role-merge, [content-layout] > .role-merge, .content-layout > .role-merge, [role-merge] > .role-merge, .role-merge > .role-merge, [layer] > .role-merge, .layer > .role-merge, [page-layout] > .role-merge, .page-layout > .role-merge, [article-layout] > .role-merge, .article-layout > .role-merge {
+[role-sidenote] > [role-merge], .role-sidenote > [role-merge], [block] > [role-merge], .block > [role-merge], [content-layout] > [role-merge], .content-layout > [role-merge], [role-merge] > [role-merge], .role-merge > [role-merge], [layer] > [role-merge], .layer > [role-merge], [page-layout] > [role-merge], .page-layout > [role-merge], [article-layout] > [role-merge], .article-layout > [role-merge], [role-sidenote] > .role-merge, .role-sidenote > .role-merge, [block] > .role-merge, .block > .role-merge, [content-layout] > .role-merge, .content-layout > .role-merge, [role-merge] > .role-merge, .role-merge > .role-merge, [layer] > .role-merge, .layer > .role-merge, [page-layout] > .role-merge, .page-layout > .role-merge, [article-layout] > .role-merge, .article-layout > .role-merge {
   grid-column: overmain;
 }
 
@@ -153,16 +153,16 @@ abbr[title] {
   grid-template-columns:  [full-start]  minmax(0, 1fr)  [overmain-start]  2.4rem  [main-start]  minmax(0, 64rem)  [main-end]  2.4rem  [overmain-end]  minmax(0, 1fr)  [full-end] ;
 }
 
-[page-layout], .page-layout, [article-layout], .article-layout {
-  grid-template-columns:  [full-start]  minmax(0, 1fr)  [overmain-start]  2.4rem  [main-start]  minmax(0, 64rem)  [main-end]  2.4rem  [overmain-end]  2.4rem  [aside-start]  minmax(0, 32rem)  [aside-end]  minmax(0, 1fr)  [full-end] ;
-}
-@media (max-width: 900px) {
+@media (min-width: 901px) {
   [page-layout], .page-layout, [article-layout], .article-layout {
-    grid-template-columns:  [full-start]  minmax(0, 1fr)  [overmain-start]  2.4rem  [main-start]  minmax(0, 64rem)  [main-end]  2.4rem  [overmain-end]  minmax(0, 1fr)  [full-end] ;
+    grid-template-columns:  [full-start]  minmax(0, 1fr)  [overmain-start]  2.4rem  [main-start]  minmax(0, 64rem)  [main-end]  2.4rem  [overmain-end]  2.4rem  [aside-start]  minmax(0, 32rem)  [aside-end]  minmax(0, 1fr)  [full-end] ;
   }
-}
-[page-layout] > [role-merge], .page-layout > [role-merge], [article-layout] > [role-merge], .article-layout > [role-merge], [page-layout] > .role-merge, .page-layout > .role-merge, [article-layout] > .role-merge, .article-layout > .role-merge {
-  grid-column: overmain/span 5;
+  [page-layout] > [role-merge], .page-layout > [role-merge], [article-layout] > [role-merge], .article-layout > [role-merge], [page-layout] > .role-merge, .page-layout > .role-merge, [article-layout] > .role-merge, .article-layout > .role-merge {
+    grid-column: overmain/span 5;
+  }
+  [page-layout] > [role-sidenote], .page-layout > [role-sidenote], [article-layout] > [role-sidenote], .article-layout > [role-sidenote], [page-layout] > .role-sidenote, .page-layout > .role-sidenote, [article-layout] > .role-sidenote, .article-layout > .role-sidenote {
+    grid-column: aside;
+  }
 }
 
 [layer], .layer {
@@ -170,7 +170,28 @@ abbr[title] {
 }
 
 [role-merge], .role-merge {
+  grid-column: full;
   grid-template-columns: inherit;
+}
+
+@media (min-width: 901px) {
+  [role-sidenote], .role-sidenote {
+    grid-column: aside;
+    position: relative;
+    overflow: visible;
+  }
+  [role-sidenote] [note], [role-sidenote] .note, .role-sidenote [note], .role-sidenote .note {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+  }
+}
+@media (max-width: 900px) {
+  [role-sidenote], .role-sidenote {
+    grid-column: full;
+    grid-template-columns:  [full-start]  minmax(0, 1fr)  [overmain-start]  2.4rem  [main-start]  minmax(0, 64rem)  [main-end]  2.4rem  [overmain-end]  minmax(0, 1fr)  [full-end] ;
+  }
 }
 
 /* ------------------------------------ modifiers */
@@ -202,26 +223,6 @@ abbr[title] {
 }
 
 /* page part templates */
-@media (min-width: 901px) {
-  [article-layout] [role-note], [article-layout] .role-note, .article-layout [role-note], .article-layout .role-note {
-    grid-column: aside;
-    position: relative;
-    overflow: visible;
-  }
-  [article-layout] [role-note] [note], [article-layout] [role-note] .note, [article-layout] .role-note [note], [article-layout] .role-note .note, .article-layout [role-note] [note], .article-layout [role-note] .note, .article-layout .role-note [note], .article-layout .role-note .note {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-  }
-}
-@media (max-width: 900px) {
-  [article-layout] [role-note], [article-layout] .role-note, .article-layout [role-note], .article-layout .role-note {
-    grid-column: full;
-    grid-template-columns:  [full-start]  minmax(0, 1fr)  [overmain-start]  2.4rem  [main-start]  minmax(0, 64rem)  [main-end]  2.4rem  [overmain-end]  minmax(0, 1fr)  [full-end] ;
-  }
-}
-
 [page-layout], .page-layout {
   grid-template-columns:  [full-start]  minmax(0, 1fr)  [menu-start]  minmax(0, 32rem)  [menu-end]  2.4rem  [overmain-start]  2.4rem  [main-start]  minmax(0, 64rem)  [main-end]  2.4rem  [overmain-end]  2.4rem  [aside-start]  minmax(0, 32rem)  [aside-end]  minmax(0, 1fr)  [full-end] ;
 }

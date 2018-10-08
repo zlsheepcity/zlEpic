@@ -111,11 +111,11 @@ $grid_formula--full__page:
 }
 %grid_layout--article {
     @extend %grid_layout--content;
-    grid-template-columns: $grid_formula--full__article;
-    @media ($screenForTablet) {
-        grid-template-columns: $grid_formula--full__content;
+    @media ($screenNotTablet) {
+        grid-template-columns: $grid_formula--full__article;
+        &>[role-merge], &>.role-merge { grid-column: overmain / span 5; }
+        &>[role-sidenote], &>.role-sidenote { grid-column: aside; }
     }
-    &>[role-merge], &>.role-merge { grid-column: overmain / span 5; }
 }
 [layer], .layer {
     @extend %grid_layout--content;
@@ -125,8 +125,27 @@ $grid_formula--full__page:
     @extend %grid_layout--base;
 }
 [role-merge], .role-merge {
+    grid-column: full;
     @extend %grid_layout--content;
     grid-template-columns: inherit;
+}
+[role-sidenote], .role-sidenote {
+    @extend %grid_layout--base;
+    @media ($screenNotTablet) {
+        grid-column: aside;
+        position: relative;
+        overflow: visible;
+        [note], .note {
+            position: absolute;
+            top:0;
+            left:0;
+            right:0;
+        }
+    }
+    @media ($screenForTablet) {
+        grid-column: full;
+        grid-template-columns: $grid_formula--full__content;
+    }
 }
 
 /* ------------------------------------ modifiers */
@@ -150,6 +169,8 @@ $grid_formula--full__page:
     }
 }
 
+
+
 [note], .note {
     grid-column: overmain;
     @media ($screenNotMobile) {
@@ -165,24 +186,6 @@ $grid_formula--full__page:
 
 [article-layout], .article-layout {
     @extend %grid_layout--article;
-    [role-note], .role-note {
-        @extend %grid_layout--base;
-        @media ($screenNotTablet) {
-            grid-column: aside;
-            position: relative;
-            overflow: visible;
-            [note], .note {
-                position: absolute;
-                top:0;
-                left:0;
-                right:0;
-            }
-        }
-        @media ($screenForTablet) {
-            grid-column: full;
-            grid-template-columns: $grid_formula--full__content;
-        }
-    }
 
 }
 [page-layout], .page-layout {
