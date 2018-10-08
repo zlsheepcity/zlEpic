@@ -2,6 +2,18 @@ Commands
 -----------------------------------------------------------------------------
 
 
+composer up && rm -rf node_modules && rm package-lock.json && npm install
+
+cd
+npm config set registry https://binrepo.egamings.com/repository/npm-public/
+npm config set always-auth true
+npm adduser
+
+Вот это надо выполнить в консоли на сервере
+Имя пользователя и пароль - твои от redmine
+
+
+npm run gulp messages
 
 
 

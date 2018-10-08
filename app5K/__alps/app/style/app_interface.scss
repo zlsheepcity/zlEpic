@@ -91,6 +91,7 @@ $grid_formula--full__page:
 %grid_layout--base {
     display: grid;
     grid-auto-rows: min-content;
+    grid-auto-flow: row;
     grid-template-columns: $grid_formula--overmain;
     grid-gap: $margin-def 0;
     @supports (grid-gap:1rem) {
@@ -114,7 +115,15 @@ $grid_formula--full__page:
     @media ($screenNotTablet) {
         grid-template-columns: $grid_formula--full__article;
         &>[role-merge], &>.role-merge { grid-column: overmain / span 5; }
-        &>[role-sidenote], &>.role-sidenote { grid-column: aside; }
+        &>[role-menu], &>.role-sidenote { grid-column: aside; }
+    }
+}
+%grid_layout--page {
+    @extend %grid_layout--content;
+    @media ($screenNotTablet) {
+        grid-template-columns: $grid_formula--full__page;
+        &>[role-merge], &>.role-merge { grid-column: 2 / span 6; }
+        &>[role-menu], &>.role-menu { grid-column: menu; }
     }
 }
 [layer], .layer {
@@ -133,6 +142,15 @@ $grid_formula--full__page:
     @extend %grid_layout--base;
     @media ($screenNotTablet) {
         grid-column: aside;
+    }
+    @media ($screenForTablet) {
+        grid-column: full;
+        grid-template-columns: $grid_formula--full__content;
+    }
+
+    /* sidenote`s height absolute solution */
+
+    @media ($screenNotTablet) {
         position: relative;
         overflow: visible;
         [note], .note {
@@ -142,6 +160,16 @@ $grid_formula--full__page:
             right:0;
         }
     }
+    @media ($screenForTablet) {
+        [note], .note {
+            grid-template-columns: $grid_formula--full__content;
+            grid-column: full;
+        }
+    }
+}
+[role-menu], .role-menu {
+    @extend %grid_layout--base;
+    @media ($screenNotTablet) { grid-column: menu; }
     @media ($screenForTablet) {
         grid-column: full;
         grid-template-columns: $grid_formula--full__content;
@@ -168,9 +196,6 @@ $grid_formula--full__page:
         padding-right: $margin-def;
     }
 }
-
-
-
 [note], .note {
     grid-column: overmain;
     @media ($screenNotMobile) {
@@ -178,19 +203,17 @@ $grid_formula--full__page:
     }
 }
 
-/* page part templates */
+/* ------------------------------------ layer templates */
 
 [content-layout], .content-layout {
     @extend %grid_layout--content;
 }
-
 [article-layout], .article-layout {
     @extend %grid_layout--article;
 
 }
 [page-layout], .page-layout {
-    @extend %grid_layout--article;
-    grid-template-columns: $grid_formula--full__page;
+    @extend %grid_layout--page;
 }
 
 
