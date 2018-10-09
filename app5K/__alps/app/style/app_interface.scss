@@ -88,6 +88,8 @@ $grid_formula--full__page:
         minmax( 0, 1fr )
     unquote(" [full-end] ");
 
+$grid_cell--merge__article: overmain / span 5;
+
 %grid_layout--base {
     display: grid;
     grid-auto-rows: min-content;
@@ -114,7 +116,7 @@ $grid_formula--full__page:
     @extend %grid_layout--content;
     @media ($screenNotTablet) {
         grid-template-columns: $grid_formula--full__article;
-        &>[role-merge], &>.role-merge { grid-column: overmain / span 5; }
+        &>[role-merge], &>.role-merge { grid-column: $grid_cell--merge__article; }
         &>[role-menu], &>.role-sidenote { grid-column: aside; }
     }
 }
@@ -218,10 +220,41 @@ $grid_formula--full__page:
 
 /* ------------------------------------ pending */
 
-/* todo */
-// boxmodel--xy/y--centered
+@mixin contentbox--xy-centered {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+}
+@mixin contentbox--y-centered {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    align-content: center;
+}
 
+[is-centered], .is-centered {
+    justify-content: center;
+    text-align: center;
+}
+[role-columns], .role-columns {
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-gap: 0 $margin-def;
+    &>*{ grid-column: auto; }
+    &[format-ab],  &.format-ab, { grid-template-columns: 1fr 1fr; }
+    &[format-abc], &.format-abc { grid-template-columns: 1fr 1fr 1fr; }
+    &[format-aab], &.format-abc { grid-template-columns: 2fr 1fr 1fr; }
+}
+[wrap-two-columns], .wrap-two-columns {
+    display: grid;
+    grid-template-columns: auto auto;
+    &[are-equal],  &.are-equal, { grid-template-columns: 1fr 1fr; }
+    grid-gap: 0 $margin-def;
+    &>*{ grid-column: auto; }
+}
 
 
 
 /* ------------------------------------ eof interface */
+

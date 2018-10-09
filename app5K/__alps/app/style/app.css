@@ -127,7 +127,7 @@ abbr[title] {
   [article-layout], .article-layout {
     grid-template-columns:  [full-start]  minmax(0, 1fr)  [overmain-start]  2.4rem  [main-start]  minmax(0, 64rem)  [main-end]  2.4rem  [overmain-end]  2.4rem  [aside-start]  minmax(0, 32rem)  [aside-end]  minmax(0, 1fr)  [full-end] ; }
     [article-layout] > [role-merge], .article-layout > [role-merge], [article-layout] > .role-merge, .article-layout > .role-merge {
-      grid-column: overmain / span 5; }
+      grid-column: overmain/span 5; }
     [article-layout] > [role-menu], .article-layout > [role-menu], [article-layout] > .role-sidenote, .article-layout > .role-sidenote {
       grid-column: aside; } }
 
@@ -199,6 +199,34 @@ abbr[title] {
       font-size: 0.8em; } }
 
 /* ------------------------------------ layer templates */
+/* ------------------------------------ pending */
+[is-centered], .is-centered {
+  justify-content: center;
+  text-align: center; }
+
+[role-columns], .role-columns {
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-gap: 0 2.4rem; }
+  [role-columns] > *, .role-columns > * {
+    grid-column: auto; }
+  [role-columns][format-ab], [role-columns].format-ab, .role-columns[format-ab], .role-columns.format-ab {
+    grid-template-columns: 1fr 1fr; }
+  [role-columns][format-abc], [role-columns].format-abc, .role-columns[format-abc], .role-columns.format-abc {
+    grid-template-columns: 1fr 1fr 1fr; }
+  [role-columns][format-aab], [role-columns].format-abc, .role-columns[format-aab], .role-columns.format-abc {
+    grid-template-columns: 2fr 1fr 1fr; }
+
+[wrap-two-columns], .wrap-two-columns {
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-gap: 0 2.4rem; }
+  [wrap-two-columns][are-equal], [wrap-two-columns].are-equal, .wrap-two-columns[are-equal], .wrap-two-columns.are-equal {
+    grid-template-columns: 1fr 1fr; }
+  [wrap-two-columns] > *, .wrap-two-columns > * {
+    grid-column: auto; }
+
+/* ------------------------------------ eof interface */
 /*  # Default design theme
     v2018.10.7
 
