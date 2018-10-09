@@ -1,0 +1,17 @@
+/* BODY.design */
+.design {
+  background-color: black;
+  color: white; }
+  .design:not(.yiWallpaper), .design.yiWallpaper:before {
+    background-image: url(../../art/placeholder_bg.jpg); }
+  .design .design-intro {
+    min-height: 58vh; }
+  .design .design-document {
+    min-height: 100vh;
+    background-color: #ece6cf;
+    color: #764e37; }
+  .design .design-sidemenu {
+    background-color: #00a2ff;
+    color: #cfecfc; }
+
+/*# sourceMappingURL=design.css.map */

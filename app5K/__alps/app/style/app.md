@@ -5,6 +5,15 @@ scss -C --sourcemap=none app.scss app.css
 sass --no-source-map app.scss app.css
 ```
 
+# todo
+
+boxmodel-centered
+like .h3
+
+
+# done
+
+
 ## components
 
 ### footer to screen/page bottom
@@ -17,3 +26,5 @@ sass --no-source-map app.scss app.css
 ```
 [role-content], .role-content
 ```
+
+
