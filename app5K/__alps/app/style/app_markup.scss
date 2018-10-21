@@ -20,8 +20,5 @@
 // components
 
 [illustration]          { @extend .illustration; }
-[note] {
-    @extend .block;
-    @extend .note;
-}
+[note]                  { @extend .note; }
 [textnote]              { @extend .textnote; }

@@ -34,6 +34,7 @@ $fontSizeSmaller: 0.8em; // deprecated
 /* ------------------------------------ other settings */
 
 $margin-def: 2.4rem;
+$margin-overmain: 2.4rem;
 $width--text-column:  64rem;
 $width--aside-column: 32rem;
 
@@ -57,10 +58,31 @@ $width--aside-column: 32rem;
     background-position: center center;
 }
 
+/* ------------------------------------ layout base */
+
+
+
+    * {
+        grid-column: main;
+        &:not(.layer) {
+            @supports (grid-gap:$margin-def) {
+                margin-top: 0;
+                margin-bottom: 0;
+            }
+        }
+    }
+
+
+
 
 /* ------------------------------------ grid */
 
 $grid_formula--main:
+    unquote(" [main-start] ")
+        minmax( 0, $width--text-column )
+    unquote(" [main-end] ");
+
+$grid_formula--text:
     unquote(" [main-start] ")
         minmax( 0, $width--text-column )
     unquote(" [main-end] ");
@@ -77,9 +99,24 @@ $grid_formula--menu:
 
 $grid_formula--overmain:
     unquote(" [overmain-start] ")
+        minmax($margin-def, $margin-overmain)
+            $grid_formula--main
+        minmax($margin-def, $margin-overmain)
+    unquote(" [overmain-end] ");
+
+$grid_formula--overmain--narrow:
+    unquote(" [overmain-start] ")
         $margin-def
             $grid_formula--main
         $margin-def
+    unquote(" [overmain-end] ");
+
+
+$grid_formula--overtext:
+    unquote(" [overmain-start] ")
+        $margin-overmain
+            $grid_formula--text
+        $margin-overmain
     unquote(" [overmain-end] ");
 
 $grid_formula--full__content:
@@ -89,12 +126,20 @@ $grid_formula--full__content:
         minmax( 0, 1fr )
     unquote(" [full-end] ");
 
+$grid_formula--full__content--narrow:
+    unquote(" [full-start] ")
+        minmax( 0, 1fr )
+            $grid_formula--overmain--narrow
+        minmax( 0, 1fr )
+    unquote(" [full-end] ");
+
 $grid_formula--full__article:
     unquote(" [full-start] ")
         minmax( 0, 1fr )
-            $grid_formula--overmain
-                $margin-def
-            $grid_formula--aside
+            $grid_formula--overtext
+            $margin-def
+                $grid_formula--aside
+            $margin-overmain
         minmax( 0, 1fr )
     unquote(" [full-end] ");
 
@@ -109,23 +154,14 @@ $grid_formula--full__page:
         minmax( 0, 1fr )
     unquote(" [full-end] ");
 
-$grid_cell--merge__article: overmain / span 5;
+$grid_cell--merge__article: overmain / span 6;
 
 %grid_layout--base {
     display: grid;
     grid-auto-rows: min-content;
     grid-auto-flow: row;
-    grid-template-columns: $grid_formula--overmain;
-    @supports (grid-gap:$margin-def) {
-        grid-gap: $margin-def 0;
-        &>*:not([layer]):not(.layer) {
-            margin-top: 0;
-            margin-bottom: 0;
-        }
-    }
-    &>* { grid-column: main; }
-    &>[layer], &>.layer { grid-column: full; }
-    &>[block], &>.block { grid-column: overmain; }
+    grid-template-columns: auto;
+    grid-gap: $margin-def 0;
 }
 %grid_layout--content {
     @extend %grid_layout--base;
@@ -135,33 +171,37 @@ $grid_cell--merge__article: overmain / span 5;
     @extend %grid_layout--content;
     @media ($screenNotTablet) {
         grid-template-columns: $grid_formula--full__article;
-        &>[wrap-row], &>.wrap-row { grid-column: $grid_cell--merge__article; }
-        &>[wrap-sidenote], &>.wrap-sidenote { grid-column: aside; }
+        &>.wrap-row { grid-column: $grid_cell--merge__article; }
+        &>.wrap-sidenote { grid-column: aside; }
     }
 }
 %grid_layout--page {
     @extend %grid_layout--content;
     @media ($screenNotTablet) {
         grid-template-columns: $grid_formula--full__page;
-        &>[wrap-row], &>.wrap-row  { grid-column: 2 / span 6; }
-        &>[role-menu], &>.role-menu { grid-column: menu; }
+        &>.wrap-row  { grid-column: 2 / span 6; }
+        &>.role-menu { grid-column: menu; }
     }
 }
+
+
+
+
 .layer {
-    @extend %grid_layout--content;
+    @extend %grid_layout--base;
     grid-template-columns: inherit;
+    grid-column: full;
 }
 .block {
-    @extend %grid_layout--base;
+    @extend %grid_layout--content;
+    grid-column: overmain;
 }
 .wrap-sidenote {
-    @extend %grid_layout--base;
     @media ($screenNotTablet) {
         grid-column: aside;
     }
     @media ($screenForTablet) {
         grid-column: full;
-        grid-template-columns: $grid_formula--full__content;
     }
 
     /* sidenote`s height absolute solution */
@@ -169,19 +209,13 @@ $grid_cell--merge__article: overmain / span 5;
     @media ($screenNotTablet) {
         position: relative;
         overflow: visible;
-        [note], .note {
+        .note {
             position: absolute;
             top:0;
             left:0;
             right:0;
         }
     }
-    /*@media ($screenForTablet) {
-        [note], .note {
-            grid-template-columns: $grid_formula--full__content;
-            grid-column: full;
-        }
-    }*/
 }
 .wrap-row {
     //@extend %grid_layout--content;
@@ -226,17 +260,17 @@ $grid_cell--merge__article: overmain / span 5;
     figcaption { grid-column: main; }
 }
 .note {
+    @extend %grid_layout--base;
     grid-column: overmain;
     @media ($screenForTablet) {
-        grid-template-columns: $grid_formula--full__content;
         grid-column: full;
+        grid-template-columns: $grid_formula--full__content;
     }
     @media ($screenNotMobile) {
         font-size: 0.8em;
     }
 }
 .textnote {
-    @extend .block;
     @extend .note;
     @media ($screenNotMobile) {
         padding-top: 0.25em; // horizontal baseline
