@@ -1,0 +1,27 @@
+/*
+    app markup components and shortcuts, 5002
+    v2018.10.21
+*/
+
+// layout
+
+[layer]                 { @extend .layer; }
+[block]                 { @extend .block; }
+[wrap-sidenote]         { @extend .wrap-sidenote; }
+[wrap-row]              { @extend .wrap-row; }
+[wrap-two-columns]      { @extend .wrap-two-columns; }
+[wrap-two-columns][they-are-equal] { grid-template-columns: 1fr 1fr; }
+
+// modifyers
+
+[bg]                    { @extend .bg; }
+[is-centered]           { @extend .is-centered; }
+
+// components
+
+[illustration]          { @extend .illustration; }
+[note] {
+    @extend .block;
+    @extend .note;
+}
+[textnote]              { @extend .textnote; }

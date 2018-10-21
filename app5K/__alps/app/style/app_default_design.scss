@@ -44,14 +44,10 @@ body {
     color: $color-text;
     background-color: $color-bg;
 }
-::selection {
-  color: #fff;
-  background-color: #004fe4;
-}
 
 /* content design */
 
-[role-content-design], .role-content-design {
+.design-for-markup {
 
     h1, h2, h3, h4, h5, h6 {
         line-height: 1.1;
@@ -81,7 +77,7 @@ body {
     }
 
     ul { padding-left: 1.4em; }
-    li { margin-bottom: 0.4em; }
+    li+li { margin-top: 0.4em; }
 
     blockquote {
         font-style: italic;
