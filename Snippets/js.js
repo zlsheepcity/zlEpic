@@ -3,8 +3,22 @@
 
 /* ---------------------------------------------- */ // onload
 
+
 window.onload = function(e){
     
+}
+
+// alternative to load event
+document.onreadystatechange = function () {
+  if (document.readyState === "complete") {
+    initApplication();
+  }
+}
+// alternative to DOMContentLoaded event
+document.onreadystatechange = function () {
+  if (document.readyState === "interactive") {
+    initApplication();
+  }
 }
 
 $(document).ready(function(){
@@ -135,6 +149,8 @@ window.requestAnimationFrame(function fadeIn (now)) {
 }
 
 /* ---------------------------------------------- */ // console functions
+
+console.assert(a > b, {"message":"a is not greater than b","a":a,"b":b});
 
 console.table(data, ['collumn','collumn'])
 console.table(data)

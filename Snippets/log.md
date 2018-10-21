@@ -1,21 +1,5 @@
-Commands
+# BASH
 -----------------------------------------------------------------------------
-
-
-composer up && rm -rf node_modules && rm package-lock.json && npm install
-
-cd
-npm config set registry https://binrepo.egamings.com/repository/npm-public/
-npm config set always-auth true
-npm adduser
-
-Вот это надо выполнить в консоли на сервере
-Имя пользователя и пароль - твои от redmine
-
-
-npm run gulp messages
-
-
 
 ## user rights
 
@@ -27,9 +11,8 @@ sudo service ssh restart
 
 
 
+# LINKS
 --------------------------------------------------------------------------
-
-# links
 
 This is a web page — Just words
 https://justinjackson.ca/words.html
@@ -46,23 +29,7 @@ http://goodui.org/
 
 
 
-
---------------------------------------------------------------------------
-
-```
-
-<?php if ($insert_lead): ?>
-<?php echo $insert_lead; ?>
-<?php endif; ?>
-
-<?php if ( is_active_sidebar( 'sg2_header_menu_bar' ) ) : ?>
-<?php dynamic_sidebar( 'sg2_header_menu_bar' ); ?>
-<?php endif; ?>
-
-```
-
-
-
+# CONTENT
 --------------------------------------------------------------------------
 
 ʕ⊙ᴥ⊙ʔ
@@ -80,7 +47,7 @@ http://goodui.org/
 ԅ༼･〜･༽╯
 
 
-GIT
+# GIT
 --------------------------------------------------------------------------
 
 ## NEW PRJ
