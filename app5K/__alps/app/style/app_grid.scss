@@ -1,0 +1,251 @@
+/*
+    app grid system
+    v2018.10.22
+*/
+
+//* ------------------------------------ layout base
+
+    * {
+        grid-column: main;
+        &:not(.layer) {
+            @supports (grid-gap:$margin-def) {
+                margin-top: 0;
+                margin-bottom: 0;
+            }
+        }
+    }
+
+
+//* ------------------------------------ constructor formulas
+
+$grid_formula--main:
+    unquote(" [main-start] ")
+        auto
+    unquote(" [main-end] ");
+
+$grid_formula--overmain:
+    unquote(" [overmain-start] ")
+        $margin-overmain
+            $grid_formula--main
+        $margin-def
+    unquote(" [overmain-end] ");
+
+$grid_formula--text:
+    unquote(" [main-start] ")
+        minmax( 0, $width--text-column )
+    unquote(" [main-end] ");
+
+$grid_formula--aside:
+    unquote(" [aside-start] ")
+        minmax( 0, $width--aside-column )
+    unquote(" [aside-end] ");
+
+$grid_formula--menu:
+    unquote(" [menu-start] ")
+        minmax( 0, $width--aside-column )
+    unquote(" [menu-end] ");
+
+
+
+$grid_formula--overmain--narrow:
+    unquote(" [overmain-start] ")
+        $margin-def
+            $grid_formula--main
+        $margin-def
+    unquote(" [overmain-end] ");
+
+
+$grid_formula--overtext:
+    unquote(" [overmain-start] ")
+        $margin-overmain
+            $grid_formula--text
+        $margin-overmain
+    unquote(" [overmain-end] ");
+
+$grid_formula--full__content:
+    unquote(" [full-start] ")
+        minmax( 0, 1fr )
+            $grid_formula--overmain
+        minmax( 0, 1fr )
+    unquote(" [full-end] ");
+
+$grid_formula--full__content--narrow:
+    unquote(" [full-start] ")
+        minmax( 0, 1fr )
+            $grid_formula--overmain--narrow
+        minmax( 0, 1fr )
+    unquote(" [full-end] ");
+
+$grid_formula--full__article:
+    unquote(" [full-start] ")
+        minmax( 0, 1fr )
+            $grid_formula--overtext
+            $margin-def
+                $grid_formula--aside
+            $margin-overmain
+        minmax( 0, 1fr )
+    unquote(" [full-end] ");
+
+$grid_formula--full__page:
+    unquote(" [full-start] ")
+        minmax( 0, 1fr )
+            $grid_formula--menu
+                $margin-def
+            $grid_formula--overmain
+                $margin-def
+            $grid_formula--aside
+        minmax( 0, 1fr )
+    unquote(" [full-end] ");
+
+//* ------------------------------------ merge formulas
+
+$grid_cell--merge__article: overmain / span 6;
+
+
+
+/* ------------------------------------ code templates */
+
+
+%grid_layout--base {
+    display: grid;
+    grid-auto-rows: min-content;
+    grid-auto-flow: row;
+    grid-template-columns: auto;
+    align-items: start;
+    grid-gap: $margin-def 0;
+}
+%grid_layout--content {
+    @extend %grid_layout--base;
+    grid-template-columns: $grid_formula--full__content;
+}
+%grid_layout--article {
+    @extend %grid_layout--content;
+    @media ($screenNotTablet) {
+        grid-template-columns: $grid_formula--full__article;
+        &>.wrap-row { grid-column: $grid_cell--merge__article; }
+        &>.wrap-sidenote { grid-column: aside; }
+    }
+}
+%grid_layout--page {
+    @extend %grid_layout--content;
+    @media ($screenNotTablet) {
+        grid-template-columns: $grid_formula--full__page;
+        &>.wrap-row  { grid-column: 2 / span 6; }
+        &>.role-menu { grid-column: menu; }
+    }
+}
+
+/* ------------------------------------ css templates */
+
+$grid_formula--base:
+    unquote(" [full-start merge-start overmain-start main-start aside-start] ")
+        auto
+    unquote(" [full-end merge-end overmain-end main-end aside-end] ");
+
+$grid_formula--markup:
+    unquote(" [full-start merge-start overmain-start] ")
+        $margin-def
+            unquote(" [main-start aside-start] ")
+                auto
+            unquote(" [main-end aside-end] ")
+        $margin-def
+    unquote(" [full-end merge-end overmain-end] ");
+
+$grid_formula--article:
+    unquote(" [full-start] ")
+        minmax(0,1fr)
+            unquote(" [merge-start overmain-start] ")
+                $margin-def
+                    unquote(" [main-start] ")
+                        minmax( 0, $width--text-column )
+                    unquote(" [main-end] ")
+                $margin-def
+            unquote(" [overmain-end] ")
+                $margin-def
+                    unquote(" [aside-start] ")
+                        $width--aside-column
+                    unquote(" [aside-end] ")
+                $margin-def
+            unquote(" [merge-end] ")
+        minmax(0,1fr)
+    unquote(" [full-end] ");
+
+$grid_formula--markup-extended:
+    unquote(" [full-start merge-start overmain-start] ")
+        $margin-overmain
+            unquote(" [main-start aside-start] ")
+                auto
+            unquote(" [main-end aside-end] ")
+        $margin-overmain
+    unquote(" [full-end merge-end overmain-end] ");
+
+$grid_formula--article-extended:
+    unquote(" [full-start] ")
+        minmax(0,1fr)
+            unquote(" [merge-start overmain-start] ")
+                $margin-overmain
+                    unquote(" [main-start] ")
+                        minmax( 0, $width--text-column )
+                    unquote(" [main-end] ")
+                $margin-overmain
+            unquote(" [overmain-end] ")
+                $margin-def
+                    unquote(" [aside-start] ")
+                        $width--aside-column-extended
+                    unquote(" [aside-end] ")
+                $margin-overmain
+            unquote(" [merge-end] ")
+        minmax(0,1fr)
+    unquote(" [full-end] ");
+
+$grid_formula_max_width:
+    $width--text-column
+    + $width--aside-column
+    + 3*$margin-def
+    + $margin-def;
+
+$grid_formula_max_width: $screenMaxSizeForXS;
+
+$screenForExtendedGrid: "min-width: #{$grid_formula_max_width}";
+
+%grid-layout-base {
+    @extend %grid_layout--base;
+    grid-template-columns: $grid_formula--base;
+}
+%grid-layout-for-markup {
+    @extend %grid-layout-base;
+    grid-template-columns: $grid_formula--markup;
+    @media ($screenForExtendedGrid) {
+        grid-template-columns: $grid_formula--markup-extended;
+    }
+}
+
+
+.layout-for-markup {  @extend %grid_layout--base;
+    grid-template-columns: $grid_formula--markup;
+    @media ($screenNotTablet) { grid-template-columns: $grid_formula--article; }
+    @media ($screenForExtendedGrid) {grid-template-columns: $grid_formula--article-extended; }
+}
+.layout-for-article { @extend %grid_layout--article; }
+.layout-for-page {    @extend %grid_layout--page; }
+
+.bb-merge {
+    @extend %grid-layout-for-markup;
+    grid-column: merge;
+}
+
+.bb-aside {
+    @extend %grid-layout-for-markup;
+    grid-column: overmain;
+    @media ($screenNotTablet) {
+        grid-template-columns: $grid_formula--base;
+        grid-column: aside;
+    }
+}
+
+.bb-block {
+    @extend %grid-layout-for-markup;
+    grid-column: overmain;
+}
+
+

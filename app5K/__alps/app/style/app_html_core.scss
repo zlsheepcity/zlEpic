@@ -1,0 +1,86 @@
+/*
+    base css 1002 Monica De Gennaro
+    v2018.10.5
+*/
+
+/* ------------------------------------ box model */
+
+*, *:before, *:after     { box-sizing: inherit; }
+html                     { box-sizing: border-box; }
+
+/* footer mod */
+
+html {
+    height: 100%;
+    @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+        display: flex;
+        flex-direction: column;
+    }
+}
+body {
+    min-height: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    [role-footer], .role-footer {
+        margin-top: auto;
+    }
+}
+
+/* ------------------------------------ markup defaults */
+
+*, ::before, ::after { background-repeat: no-repeat; }
+nav ul, nav ol { padding: 0; margin: 0; list-style-type: none; }
+details, article, aside, footer, header, nav, section, main { display: block; }
+figure, figcaption, fieldset, legend {
+    display: block;
+    margin: 0;
+    padding: 0;
+    border: none;
+    white-space: normal;
+}
+summary { display: list-item; }
+canvas { display: inline-block; }
+[hidden], template { display: none; }
+
+/* ------------------------------------ content defaults */
+
+html {
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+    cursor: default;
+}
+body {
+  text-rendering: optimizeLegibility; // best quality
+  -webkit-font-smoothing: antialiased;
+}
+a, area, button, input, label, select, summary, textarea, [tabindex] {
+  // Single taps are dispatched immediately on clickable elements
+  -ms-touch-action: manipulation;
+  touch-action: manipulation;
+}
+a {
+  background-color: transparent;
+  text-decoration: none;
+  color: inherit;
+}
+img, svg {
+  display: block;
+  border: none;
+  max-width: 100%;
+}
+audio, canvas, iframe, img, svg, video {
+  vertical-align: middle;
+}
+hr {
+  box-sizing: content-box;
+  height: 0;
+  overflow: visible;
+}
+abbr[title] {
+  border-bottom: none;
+  text-decoration: underline;
+  text-decoration: underline dotted;
+}
+
+/* ------------------------------------ end of core */
