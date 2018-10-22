@@ -1,10 +1,20 @@
-/* app v2018.10.21
-*/
+/* app v2018.10.22 */
+
+// core
+
 @import "app_core";
-@import "app_html_core";
+@import "app_html_base";
 @import "app_grid";
+
+// components
+
 @import "app_interface";
 @import "app_markup";
-@import "app_default_design";
-@import "app_default_form_design";
-@import "design";
+
+// design
+
+@import "design_app_default";
+@import "design_app_default_form";
+
+// custom
+// ...

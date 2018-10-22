@@ -1,3 +1,7 @@
+/*
+    app settings
+    v2018.10.22
+*/
 
 /* ------------------------------------ screen sizes */
 
@@ -23,7 +27,17 @@ $screenNotTablet:   "min-width: #{$screenMaxSizeForTablet + 1}";
 $screenForMobile:   "max-width: #{$screenMaxSizeForMobile}";
 $screenNotMobile:   "min-width: #{$screenMaxSizeForMobile + 1}";
 
-/* ------------------------------------ font */
+$screenForArticleLayout: $screenNotTablet;
+$screenNotArticleLayout: $screenForTablet;
+
+/* ------------------------------------ system colors */
+
+$color_bgRed:    hsla(  1, 66%, 84%,   1);
+$color_bgGreen:  hsla( 78, 49%, 83%,   1);
+$color_bgBlue:   hsla(177, 42%, 76%,   1);
+$color_shadow:   rgba(0,0,0,0.1);
+
+/* ------------------------------------ fonts */
 
 $fontSizeSmaller: 0.8em; // deprecated
 
@@ -55,3 +69,7 @@ $width--aside-column-extended: 32rem;
     background-repeat: no-repeat;
     background-position: center center;
 }
+
+
+
+/* ------------------------------------ eof core */

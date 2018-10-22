@@ -1,24 +1,113 @@
 /*
     app markup components and shortcuts, 5002
-    v2018.10.21
+    v2018.10.22
 */
+
+
+/* ------------------------------------ modifiers */
+
+.bg {
+    @include has-illustrated-background;
+    background-color: $color_shadow;
+    padding-top:     $margin-def;
+    padding-bottom:  $margin-def;
+    &>.illustration:first-child {
+        margin-top: -$margin-def;
+    }
+}
+.bg-r { background-color: $color_bgRed; }
+.bg-g { background-color: $color_bgGreen; }
+.bg-b { background-color: $color_bgBlue; }
+
+.is-centered {
+    justify-content: center;
+    text-align: center;
+}
+.is-xy-centered {
+    @include contentbox--xy-centered;
+    text-align: center;
+}
+
+/* ------------------------------------ components */
+
+.wrap-two-columns {
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-gap: 0 $margin-def;
+    &>*{
+        grid-column: auto;
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+}
+.note {
+    @extend .block;
+    @extend .bg;
+    grid-column: overmain;
+    @media ($screenForArticleLayout) {
+        font-size: $fontSizeSmaller;
+    }
+}
+.textnote {
+    grid-column: aside;
+    @media ($screenForArticleLayout) {
+        font-size: $fontSizeSmaller;
+    }
+}
+.sidenote {
+    grid-column: overmain;
+    @media ($screenForArticleLayout) {
+        grid-column: aside;
+        height: 0;
+        overflow: visible;
+    }
+}
+.illustration {
+    @extend .block;
+    padding-top: 0;
+    &>*{ grid-column: overmain; }
+    figcaption {
+        grid-column: main;
+        @media ($screenForArticleLayout) {
+            font-size: $fontSizeSmaller;
+        }
+    }
+}
+
+/* ------------------------------------ shortcuts */
 
 // layout
 
 [layer]                 { @extend .layer; }
+[layer-row]             { @extend .layer-row; }
+[layer-block]           { @extend .layer-block; }
+
 [block]                 { @extend .block; }
-[wrap-sidenote]         { @extend .wrap-sidenote; }
-[wrap-row]              { @extend .wrap-row; }
+[block-row]             { @extend .block-row; }
+[block-left]            { @extend .block-left; }
+[block-right]           { @extend .block-right; }
+
 [wrap-two-columns]      { @extend .wrap-two-columns; }
-[wrap-two-columns][they-are-equal] { grid-template-columns: 1fr 1fr; }
+[wrap-two-columns][always-equal] { grid-template-columns: 1fr 1fr; }
 
 // modifyers
 
 [bg]                    { @extend .bg; }
+[bg-r]                  { @extend .bg-r; }
+[bg-g]                  { @extend .bg-g; }
+[bg-b]                  { @extend .bg-b; }
 [is-centered]           { @extend .is-centered; }
+[is-xy-centered]        { @extend .is-xy-centered; }
 
 // components
 
 [illustration]          { @extend .illustration; }
-[note]                  { @extend .note; }
+[sidenote]              { @extend .sidenote; }
 [textnote]              { @extend .textnote; }
+[note]                  { @extend .note; }
+
+
+
+
+
+/* ------------------------------------ eof markup */

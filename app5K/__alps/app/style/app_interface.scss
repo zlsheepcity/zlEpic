@@ -1,139 +1,84 @@
 /*
     app interface components, 5002
-    v2018.10.21
+    v2018.10.22
 */
 
 
-.layer {
-    @extend %grid_layout--base;
-    grid-template-columns: inherit;
-    grid-column: full;
-}
-.block {
-    @extend %grid_layout--content;
-    grid-column: overmain;
-}
-.wrap-sidenote {
-    @media ($screenNotTablet) {
-        grid-column: aside;
-    }
-    @media ($screenForTablet) {
-        grid-column: full;
-    }
 
-    /* sidenote`s height absolute solution */
+// DEAD ZONE =============================================
 
-    @media ($screenNotTablet) {
-        position: relative;
-        overflow: visible;
-        .note {
-            position: absolute;
-            top:0;
-            left:0;
-            right:0;
-        }
+/* ==============================================================
+    body.yiWallpaper
+    fixed background, fade when inactive
+============================================================== */
+$yiWallpaper-o-defaultInnactiveOpacity: 0.2;
+$yiWallpaper-o-defaultOpacityDuration: 640ms;
+$yiWallpaper-o-defaultRestoreDuration: 200ms;
+.yiWallpaper {
+    position: relative;
+    z-index: -1;
+    &:before {
+        content: '';
+        position: absolute;
+        z-index: -1;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        pointer-events: none;
+        opacity: 1;
+        transition: opacity $yiWallpaper-o-defaultRestoreDuration ease-in;
     }
-}
-.wrap-row {
-    //@extend %grid_layout--content;
-    grid-column: overmain;
-    grid-template-columns: inherit;
-    background-color: pink;
-}
-.wrap-two-columns {
-    display: grid;
-    grid-template-columns: auto auto;
-    grid-gap: 0 $margin-def;
-    &>*{
-        grid-column: auto;
-        margin-top: 0;
-        margin-bottom: 0;
+    &, &:before {
+        background-attachment: fixed;
+        background-size: cover;
+        background-position: top center;
+        background-repeat: no-repeat;
+    }
+    &.has-inactive-wallpaper:before {
+        transition-duration: $yiWallpaper-o-defaultOpacityDuration;
+        transition-timing-function: ease-out;
+        opacity: $yiWallpaper-o-defaultInnactiveOpacity;
     }
 }
-/* ------------------------------------ modifiers */
+/* */
 
-.bg {
-    @include has-illustrated-background;
-    background-color: rgba(0,0,0,0.1);
-    padding-bottom: $margin-def;
 
-    padding-top: $margin-def;
-    &>[illustration]:first-child,
-    &>.illustration:first-child {
-        margin-top: -$margin-def;
+/* ==============================================================
+    .yiSidemenu
+    hidden panel
+============================================================== */
+.yiSidemenu {
+    position: fixed;
+    z-index: 13;
+    top: 0;
+    bottom: 0;
+    left: 100%;
+
+    width: 100%;
+    max-width: 38rem;
+
+    transform: translateX(0);
+    transition: transform 200ms ease-in;
+
+    .has-open-sidemenu & {
+        transition-timing-function: ease-out;
+        transform: translateX(-100%);
     }
 }
-.is-centered {
-    justify-content: center;
-    text-align: center;
-}
-
-/* ------------------------------------ components */
-
-.illustration {
-    @extend .block;
-    padding-top: 0;
-    &>*{ grid-column: overmain; }
-    figcaption { grid-column: main; }
-}
-.note {
-    @extend %grid_layout--base;
-    grid-column: overmain;
-    @media ($screenForTablet) {
-        grid-column: full;
-        grid-template-columns: $grid_formula--full__content;
-    }
-    @media ($screenNotMobile) {
-        font-size: 0.8em;
+.yiSidemenu__shadowOverlay {
+    background-color: rgba(0,0,0,.9);
+    position: absolute;
+    z-index: 12;
+    left: 100%;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    .has-open-sidemenu & {
+        left: 0;
     }
 }
-.textnote {
-    @extend .note;
-    @media ($screenNotMobile) {
-        padding-top: 0.25em; // horizontal baseline
-    }
-}
+/* */
 
-/* ------------------------------------ pending */
-
-
-[role-columns], .role-columns {
-    display: grid;
-    grid-template-columns: auto auto;
-    grid-gap: 0 $margin-def;
-    &>*{ grid-column: auto; }
-    &[format-ab],  &.format-ab, { grid-template-columns: 1fr 1fr; }
-    &[format-abc], &.format-abc { grid-template-columns: 1fr 1fr 1fr; }
-    &[format-aab], &.format-abc { grid-template-columns: 2fr 1fr 1fr; }
-}
-
-
-[role-menu], .role-menu {
-    @extend %grid_layout--base;
-    @media ($screenNotTablet) { grid-column: menu; }
-    @media ($screenForTablet) {
-        grid-column: full;
-        grid-template-columns: $grid_formula--full__content;
-    }
-}
-
-
-
-
-
-/* ------------------------------------ REMOVED */
-
-
-.content-layout {
-    @extend .layout-for-markup;
-}
-.article-layout {
-    @extend .layout-for-article;
-
-}
-.page-layout {
-    @extend .layout-for-page;
-}
 
 /* ------------------------------------ eof interface */
-
