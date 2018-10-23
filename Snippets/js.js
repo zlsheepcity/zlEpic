@@ -129,6 +129,7 @@ var killId = setTimeout(function() {
 
 /* ---------------------------------------------- */ // performance
 
+
 var latestKnownScrollY = 0;
 
 function onScroll() {
@@ -147,6 +148,21 @@ window.requestAnimationFrame(function fadeIn (now)) {
     window.requestAnimationFrame(fadeIn)
   }
 }
+
+
+```
+// example5.js
+setTimeout(
+  () => console.log('Hello after 0.5 seconds. MAYBE!'),
+  500,
+);
+for (let i = 0; i < 1e10; i++) {
+  // Синхронно блокируем операции
+}
+```
+Значение 1e10 равно 1 с 10 нулями, поэтому цикл длится 10 миллиардов процессорных тактов (в принципе, так имитируется перегруженный процессор).
+
+
 
 /* ---------------------------------------------- */ // console functions
 

@@ -6,3 +6,6 @@ sass --no-source-map app.scss app.css
 ```
 
 # todo
+
+- vertical rythm
+- tufte design

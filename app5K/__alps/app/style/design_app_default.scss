@@ -49,6 +49,10 @@ body {
 
 .design-for-markup {
 
+    * {
+        hanging-punctuation: first;
+    }
+
     h1, h2, h3, h4, h5, h6 {
         line-height: 1.1;
         font-family: $font-family-sans-serif;
@@ -76,7 +80,10 @@ body {
 
     }
 
-    ul { padding-left: 1.4em; }
+    ul {
+        list-style-position: outside;
+        padding-left: 0;
+    }
     li+li { margin-top: 0.4em; }
 
     blockquote {

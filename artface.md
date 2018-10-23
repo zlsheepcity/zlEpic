@@ -1,10 +1,10 @@
 ------------------------------------------------------
-# artface
+# interart / ex. artface
 ------------------------------------------------------
 
 Like `interface` but the goal is —
 
-    bring visualisation closer to illustration
+    bring interactive visualisation closer to illustration
 
 ------------------------------------------------------
 # Приёмы

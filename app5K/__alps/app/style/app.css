@@ -105,6 +105,8 @@ abbr[title] {
 /*
     app grid system
     v2018.10.22
+
+    article - main text collumn with sidenotes
 */
 * {
   grid-column: main; }
@@ -334,6 +336,8 @@ body {
 .design-for-markup {
   /* Pre and Code */
   /* Tables */ }
+  .design-for-markup * {
+    hanging-punctuation: first; }
   .design-for-markup h1, .design-for-markup h2, .design-for-markup h3, .design-for-markup h4, .design-for-markup h5, .design-for-markup h6 {
     line-height: 1.1;
     font-family: Verdana, Geneva, sans-serif;
@@ -368,7 +372,7 @@ body {
       color: #982c61;
       border-bottom: 2px solid #4a4a4a; }
   .design-for-markup ul {
-    padding-left: 1.4em; }
+    list-style-position: outside; }
   .design-for-markup li + li {
     margin-top: 0.4em; }
   .design-for-markup blockquote {
