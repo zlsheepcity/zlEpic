@@ -1,11 +1,91 @@
 /*
     app interface components, 5002
-    v2018.10.22
+    v2018.10.24
 */
 
 
+/* ==============================================================
+ # Sidebars
+============================================================== */
 
-// DEAD ZONE =============================================
+// settings
+
+$z-index-sidebar:                    3;
+$z-index-shadowOverlay:              2;
+$sidebar__max-width:                 38rem;
+$sidebar__maxWidthForFullScreen:     6rem + $sidebar__max-width;
+
+// formulas
+
+$screenNotFullScreenSidebar: 'min-width: #{$sidebar__maxWidthForFullScreen}';
+
+//* ------------------------------------ universal shadow overlay
+%screen-has-shadow-overlay {
+    overflow: hidden;
+    .screen-shadow-overlay {
+        opacity:0.8;
+        pointer-events: auto;
+    }
+}
+html.has-shadow-overlay { @extend %screen-has-shadow-overlay; }
+.screen-shadow-overlay {
+    background-color: black;
+    position: fixed;
+    z-index: $z-index-shadowOverlay;
+    top:    0;
+    bottom: 0;
+    right:  0;
+    left:   0;
+    pointer-events: none;
+    opacity: 0;
+}
+/**/
+
+//* ------------------------------------ sidebar component
+.sidebar {
+    position: fixed;
+    z-index: $z-index-sidebar;
+    top:    0;
+    bottom: 0;
+    left:   100%;
+    width:  100%;
+    @media ($screenNotFullScreenSidebar) {
+        max-width: $sidebar__max-width;
+    };
+
+    transform: translateX(0);
+    transition: transform 200ms ease-in;
+    &.is-active, .has-active-sidebar & {
+        transition-timing-function: ease-out;
+        transform: translateX(-100%);
+    }
+}
+html.has-active-sidebar { @extend %screen-has-shadow-overlay; }
+/**/
+
+
+
+
+
+
+
+
+
+// ============================================= PENDING
+
+// default kliker
+
+$hover-item-outline-design: 1rem solid hsla(177, 42%, 76%, 0.25);
+.kliker {
+    @include disable-text-selection;
+    &:hover, &:focus {
+        cursor: pointer;
+        outline: $hover-item-outline-design;
+    }
+}
+[kliker] { @extend .kliker; }
+
+
 
 /* ==============================================================
     body.yiWallpaper
@@ -42,50 +122,5 @@ $yiWallpaper-o-defaultRestoreDuration: 200ms;
     }
 }
 /* */
-
-
-/* ==============================================================
-    .yiSidemenu
-    hidden panel
-============================================================== */
-html.has-active-sidebar {
-  overflow: hidden;
-}
-.sidebar {
-    position: fixed;
-    z-index: 3;
-    top: 0;
-    bottom: 0;
-    left: 100%;
-
-    width: 100%;
-    max-width: 38rem;
-
-    transform: translateX(0);
-    transition: transform 200ms ease-in;
-
-    .has-active-sidebar & {
-        transition-timing-function: ease-out;
-        transform: translateX(-100%);
-    }
-}
-.screen-shadow-overlay {
-    background-color: black;
-    position: fixed;
-    z-index: 2;
-    left: 100%;
-    top: 0;
-    bottom: 0;
-    right: 0;
-    left: 0;
-    pointer-events: none;
-    opacity:0;
-    .has-active-sidebar & {
-        opacity:0.8;
-        pointer-events: auto;
-    }
-}
-/* */
-
 
 /* ------------------------------------ eof interface */

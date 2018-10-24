@@ -5,3 +5,7 @@ textarea {
     grid-column: overmain;
     padding: 2.4rem;
 }
+
+textarea, pre, code {
+    cursor: auto;
+}
