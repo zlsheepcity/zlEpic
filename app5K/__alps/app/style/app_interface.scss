@@ -48,9 +48,12 @@ $yiWallpaper-o-defaultRestoreDuration: 200ms;
     .yiSidemenu
     hidden panel
 ============================================================== */
-.yiSidemenu {
+html.has-active-sidebar {
+  overflow: hidden;
+}
+.sidebar {
     position: fixed;
-    z-index: 13;
+    z-index: 3;
     top: 0;
     bottom: 0;
     left: 100%;
@@ -61,21 +64,25 @@ $yiWallpaper-o-defaultRestoreDuration: 200ms;
     transform: translateX(0);
     transition: transform 200ms ease-in;
 
-    .has-open-sidemenu & {
+    .has-active-sidebar & {
         transition-timing-function: ease-out;
         transform: translateX(-100%);
     }
 }
-.yiSidemenu__shadowOverlay {
-    background-color: rgba(0,0,0,.9);
-    position: absolute;
-    z-index: 12;
+.screen-shadow-overlay {
+    background-color: black;
+    position: fixed;
+    z-index: 2;
     left: 100%;
     top: 0;
     bottom: 0;
     right: 0;
-    .has-open-sidemenu & {
-        left: 0;
+    left: 0;
+    pointer-events: none;
+    opacity:0;
+    .has-active-sidebar & {
+        opacity:0.8;
+        pointer-events: auto;
     }
 }
 /* */

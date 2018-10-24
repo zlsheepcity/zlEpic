@@ -1,0 +1,211 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <!--
+        The following 2 meta tags *must* come first in the <head>
+        to consistently ensure proper document rendering.
+        Any other head element should come *after* these tags.
+        ==================================================== -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- =================================================== ʕ⊙ᴥ⊙ʔ  -->
+    <!-- =================================================== [HEAD CONTENT] -->
+
+    <title>Documentation</title>
+
+    <!-- FAVICON -->
+    <meta name="theme-color" content="#E08E79">
+    <meta name="msapplication-TileColor" content="#E08E79">
+    <meta name="msapplication-TileImage" content="app/favicons/144x144.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="app/favicons/180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192"  href="app/favicons/192x192.png">
+
+    <!-- =================================================== ʕ⊙ᴥ⊙ʔ  -->
+    <!-- =================================================== [HEAD ENGINE] -->
+
+    <!-- ## Critical Bootstrap CSS -->
+    <style>
+        img, svg { max-width:100%; }
+    </style>
+
+    <!-- ## app libs v5002 -->
+    <!-- / core style -->
+    <link href="app/style/app.css" rel="stylesheet" type="text/css">
+    <!-- / core script libs -->
+    <script src="app/vendor/lodash/lodash.min.js"></script>
+    <script src="app/vendor/domtastic/domtastic.min.js"></script>
+    <script src="app/vendor/waypoints/lib/noframework.waypoints.min.js"></script>
+    <script src="app/vendor/waypoints/lib/shortcuts/inview.min.js"></script>
+    <script src="app/vendor/flubber/build/flubber.min.js"></script>
+    <!-- / core script -->
+    <script src="app/script/app_core.js"></script>
+    <script src="app/script/app_libs.js"></script>
+    <!-- / -->
+
+    <!-- ## Custom settings below-->
+    <link href="app/style/ordnung.css" rel="stylesheet" type="text/css" media="all" />
+    <script src="app/script/ordnung.js"></script>
+    <!-- / -->
+
+    <!-- =================================================== ʕ⊙ᴥ⊙ʔ  -->
+    <!-- =================================================== [HEAD OTHERS] -->
+
+</head>
+<body>
+
+<!-- =================================================== ʕ⊙ᴥ⊙ʔ  -->
+<!-- =================================================== [TOP] -->
+<article class="layout-for-article design-for-markup">
+
+<header layer-row bg>
+    <h1>App Documentation</h1>
+</header>
+
+<ul>
+    <li><a href="#js">js components</a></li>
+    <li><a href="#css">pure css components</a></li>
+    <li><a href="#app">js helpers</a></li>
+</ul>
+
+<p textnote>
+    last update<br>
+    2018.10.23
+</p>
+
+
+<header id="app" class="layer-row" bg>
+    <h2>JS components</h2>
+</header>
+
+<h3>sidebar</h3>
+
+<code>
+.sidebar
+.screen-shadow-overlay
+html.has-active-sidebar
+
+</code>
+
+<aside sidenote>
+    <div show-sidebar note bg-b is-centered>
+        <h4>Trigger</h4>
+    </div>
+</aside>
+
+<textarea rows=5>
+<div showme>Trigger</div>
+<aside class="sidebar">
+    <h2>Sidebar</h2>
+</aside>
+<div class="screen-shadow-overlay" hideme></div>
+</textarea>
+
+<textarea rows=12>
+app.do({
+    when: '[showme]',
+    has: 'click',
+    addClass: 'has-active-sidebar',
+    for: 'html'
+});
+app.do({
+    when: '[hideme]',
+    has: 'click',
+    removeClass: 'has-active-sidebar',
+    for: 'html'
+});
+</textarea>
+
+<aside class="sidebar" block bg bg-b>
+    <h2>Sidebar</h2>
+    <p></p>
+</aside>
+<div class="screen-shadow-overlay" hide-sidebar></div>
+<script>
+    app.do({
+        when: '[show-sidebar]',
+        has: 'click',
+        addClass: 'has-active-sidebar',
+        for: 'html'
+    });
+    app.do({
+        when: '[hide-sidebar]',
+        has: 'click',
+        removeClass: 'has-active-sidebar',
+        for: 'html'
+    });
+</script>
+
+<!-- =================================================== ʕ⊙ᴥ⊙ʔ  -->
+<!-- =================================================== ʕ⊙ᴥ⊙ʔ  -->
+<!-- =================================================== ʕ⊙ᴥ⊙ʔ  -->
+
+
+<header id="css" class="layer-row" bg>
+    <h2>Pure CSS components</h2>
+</header>
+
+<h3>content layout</h3>
+
+<section class="wrap-two-columns">
+    <div bg-r is-centered>css classname</div>
+    <div bg-r is-centered>comments</div>
+    <code>layer</code>
+    <p>full screen width</p>
+    <code>layer-row</code>
+    <p>keep grid</p>
+    <code>layer-block</code>
+    <p>change grid</p>
+
+    <div><br></div><div><br></div> <!-- ʕ⊙ᴥ⊙ʔ -->
+
+    <code>block</code>
+    <p>default wrap</p>
+    <code>block-row</code>
+    <p>full content row</p>
+    <code>block-left</code>
+    <p>extend to screen border</p>
+    <code>block-right</code>
+    <p>extend to screen border</p>
+
+    <div><br></div><div><br></div> <!-- ʕ⊙ᴥ⊙ʔ -->
+
+    <code>textnote</code>
+    <p>text-content goes aside</p>
+    <code>sidenote>div</code>
+    <p>absolute block goes aside</p>
+</section>
+
+<!-- =================================================== ʕ⊙ᴥ⊙ʔ  -->
+<!-- =================================================== ʕ⊙ᴥ⊙ʔ  -->
+<!-- =================================================== ʕ⊙ᴥ⊙ʔ  -->
+
+<header id="js" class="layer-row" bg>
+    <h2>JS helpers</h2>
+</header>
+
+<p>
+    add/remove/toggle class
+</p>
+
+<code>
+app.do({
+    when:       '.myElement__Trigger',
+    has:        'click',
+    addClass:   'cssClassName',
+    for:        '.myElement__targetToChange'
+});
+</code>
+
+<header layer-row bg>
+    <p>eof</p>
+</header>
+
+
+</article>
+<!-- =================================================== ʕ⊙ᴥ⊙ʔ  -->
+<!-- =================================================== [BOTTOM] -->
+
+
+</body>
+</html>

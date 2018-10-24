@@ -25,6 +25,7 @@ body {
     [role-footer], .role-footer {
         margin-top: auto;
     }
+    overflow-y: scroll; // this is scrollbar solution
 }
 
 /* ------------------------------------ markup defaults */

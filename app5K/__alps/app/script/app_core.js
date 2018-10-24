@@ -262,7 +262,9 @@ function zlAppKing(dna) {
         var $el = $(mutation.el);
         if ( mutation.addClass )    $el.addClass(mutation.addClass);
         if ( mutation.removeClass ) $el.removeClass(mutation.removeClass);
-        if ( mutation.toggleClass ) $el.toggleClass(mutation.toggleClass);
+        if ( mutation.toggleClass ) {$el.toggleClass(mutation.toggleClass);
+                                    this.report($el);
+                                    }
         return true;
     }
     this.El = function(query) {

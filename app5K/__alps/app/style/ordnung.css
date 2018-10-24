@@ -1,2 +1,7 @@
 /* # Ordnung am Styles */
 /* custom css */
+
+textarea {
+    grid-column: overmain;
+    padding: 2.4rem;
+}
