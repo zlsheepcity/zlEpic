@@ -63,14 +63,15 @@
 </header>
 
 <ul>
-    <li><a href="#js">js components</a></li>
-    <li><a href="#css">pure css components</a></li>
-    <li><a href="#app">js helpers</a></li>
+    <li><a href="#app">js components</a></li>
+    <li><a href="#markup">html content markup</a></li>
+    <li><a href="#js">js helpers</a></li>
+    <li><a href="#rules">rules</a></li>
 </ul>
 
 <p textnote>
     last update<br>
-    2018.10.23
+    2018.10.27
 </p>
 
 
@@ -80,39 +81,35 @@
 
 <h3>sidebar</h3>
 
-<code>
-.sidebar
-.screen-shadow-overlay
-html.has-active-sidebar
-
-</code>
+<ul>
+    <li>.sidebar
+    <li>.screen-shadow-overlay
+    <li>html.has-active-sidebar
+</ul>
 
 <aside sidenote>
-    <section note bg-b is-centered     show-sidebar kliker>
-        <h4>Trigger</h4>
-    </section>
+    <button note bg-b is-centered     to-show-sidebar kliker>
+        <h4>► Trigger</h4>
+    </button>
 </aside>
 
-<textarea rows=5>
-<div showme>Trigger</div>
+<textarea role-code rows=6>
+<div to-show-sidebar>Trigger</div>
 <aside class="sidebar">
     <h2>Sidebar</h2>
-    <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. Donec non enim in turpis pulvinar facilisis. Ut felis. Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus</p>
-    <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. Donec non enim in turpis pulvinar facilisis. Ut felis. Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus</p>
-    <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. Donec non enim in turpis pulvinar facilisis. Ut felis. Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus</p>
 </aside>
-<div class="screen-shadow-overlay" hideme></div>
+<div class="screen-shadow-overlay" to-hide-sidebar></div>
 </textarea>
 
-<textarea rows=12>
+<textarea role-code rows=13>
 app.do({
-    when: '[showme]',
+    when: '[to-show-sidebar]',
     has: 'click',
     addClass: 'has-active-sidebar',
     for: 'html'
 });
 app.do({
-    when: '[hideme]',
+    when: '[to-hide-sidebar]',
     has: 'click',
     removeClass: 'has-active-sidebar',
     for: 'html'
@@ -121,63 +118,78 @@ app.do({
 
 <aside class="sidebar" block bg bg-b>
     <h2>Sidebar</h2>
-    
+    <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. Donec non enim in turpis pulvinar facilisis. Ut felis. Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus</p>
+    <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. Donec non enim in turpis pulvinar facilisis. Ut felis. Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus</p>
+    <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. Donec non enim in turpis pulvinar facilisis. Ut felis. Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus</p>
 </aside>
-<div class="screen-shadow-overlay" hide-sidebar></div>
+<div class="screen-shadow-overlay" to-hide-sidebar></div>
 <script>
     app.do({
-        when: '[show-sidebar]',
+        when: '[to-show-sidebar]',
         has: 'click',
         addClass: 'has-active-sidebar',
-        for: 'html'
+        for: 'html',
+        name: ''
     });
     app.do({
-        when: '[hide-sidebar]',
+        when: '[to-hide-sidebar]',
         has: 'click',
         removeClass: 'has-active-sidebar',
-        for: 'html'
+        for: 'html',
+        name: ''
     });
 </script>
 
+<hr divider>
+
 <!-- =================================================== ʕ⊙ᴥ⊙ʔ  -->
 <!-- =================================================== ʕ⊙ᴥ⊙ʔ  -->
 <!-- =================================================== ʕ⊙ᴥ⊙ʔ  -->
 
 
-<header id="css" class="layer-row" bg>
-    <h2>Pure CSS components</h2>
+<header id="markup" class="layer-row" bg>
+    <h2>HTML content markup</h2>
 </header>
 
-<h3>content layout</h3>
+<h3>layouts</h3>
+
+<section wrap-two-columns>
+    <h4>css classname</h4>
+    <h4>comments/mods</h4>
+    <hr divider>
+    <code>layer</code>             <span>full screen width</span>
+    <code>layer-row</code>         <span>keep grid</span>
+    <code>layer-block</code>       <span>change grid</span>
+    <hr divider>
+    <code>block</code>             <span>default wrap</span>
+    <code>block-row</code>         <span>full content row</span>
+    <code>block-left</code>        <span>extend to screen border</span>
+    <code>block-right</code>       <span>extend to screen border</span>
+    <hr divider>
+    <code>wrap-two-columns</code>  <span>+ <code>always-equal</code></span>
+    <code>wrap-two-sections<em>»block</em></code> <span>keep grid for each</span>
+    <code>wrap-columns</code>      <span>auto</span>
+    <hr divider>
+    <code>textnote</code>          <span>text-content goes aside</span>
+    <code>sidenote<em>»block</em></code> <span>absolute block goes aside</span>
+</section>
+
+<h3>Modifyers</h3>
 
 <section class="wrap-two-columns">
-    <div bg-r is-centered>css classname</div>
-    <div bg-r is-centered>comments</div>
-    <code>layer</code>
-    <p>full screen width</p>
-    <code>layer-row</code>
-    <p>keep grid</p>
-    <code>layer-block</code>
-    <p>change grid</p>
-
-    <div><br></div><div><br></div> <!-- ʕ⊙ᴥ⊙ʔ -->
-
-    <code>block</code>
-    <p>default wrap</p>
-    <code>block-row</code>
-    <p>full content row</p>
-    <code>block-left</code>
-    <p>extend to screen border</p>
-    <code>block-right</code>
-    <p>extend to screen border</p>
-
-    <div><br></div><div><br></div> <!-- ʕ⊙ᴥ⊙ʔ -->
-
-    <code>textnote</code>
-    <p>text-content goes aside</p>
-    <code>sidenote>div</code>
-    <p>absolute block goes aside</p>
+    <code>bg</code>
+    <span>show background color</span>
+    <code>bg-x</code>
+    <span>-r, -g, -b, -t</span>
+    <code>is-centered</code>
+    <span></span>
+    <code>is-xy-centered</code>
+    <span></span>
+    <code>is-merged-row</code>    <span></span>
 </section>
+
+
+<hr divider>
 
 <!-- =================================================== ʕ⊙ᴥ⊙ʔ  -->
 <!-- =================================================== ʕ⊙ᴥ⊙ʔ  -->
@@ -187,18 +199,82 @@ app.do({
     <h2>JS helpers</h2>
 </header>
 
-<p>
-    add/remove/toggle class
-</p>
+<h3>add/remove/toggle class</h3>
 
-<code>
+<textarea role-code rows="10">
 app.do({
-    when:       '.myElement__Trigger',
-    has:        'click',
-    addClass:   'cssClassName',
-    for:        '.myElement__targetToChange'
+    when:        '.myElement__Trigger',
+    has:          'click',
+    addClass:     'cssClassName', // or
+    removeClass:  'cssClassName', // or
+    toggleClass:  'cssClassName',
+    for:         '.myElement__targetToChange', // unset = self
+    name:         '' // unset = auto generated
 });
-</code>
+</textarea>
+
+<hr divider>
+
+<!-- =================================================== ʕ⊙ᴥ⊙ʔ  -->
+<!-- =================================================== ʕ⊙ᴥ⊙ʔ  -->
+<!-- =================================================== ʕ⊙ᴥ⊙ʔ  -->
+
+
+<header id="rules" class="layer-row" bg>
+    <h2>Rules</h2>
+</header>
+
+<h3>CSS groups</h3>
+
+
+<ol is-merged-row wrap-columns>
+    <li>
+        <h4>layout</h4>
+        <ul>
+            <li>screen-</li>
+            <li>block-, layer-, layout-</li>
+            <li>wrap-</li>
+        </ul>
+    </li>
+    <li>
+        <h4>content</h4>
+        <ul>
+            <li>role-</li>
+            <li>…named components</li>
+            <li>…default html markup</li>
+        </ul>
+    </li>
+    <li>
+        <h4>labours</h4>
+        <ul>
+            <li>is-, has-</li>
+            <li>with-</li>
+            <li>…named modifyers</li>
+        </ul>
+    </li>
+    <li>
+        <h4>non-css</h4>
+        <ul>
+            <li>.js-</li>
+        </ul>
+    </li>
+</ol>
+
+
+
+
+<h3>Labours</h3>
+
+<p><code>is-</code> mutation for self</p>
+<p><code>has-</code> for kids</p>
+<p><code>with-</code> mode for named component</p>
+
+
+<hr divider>
+
+<!-- =================================================== ʕ⊙ᴥ⊙ʔ  -->
+<!-- =================================================== ʕ⊙ᴥ⊙ʔ  -->
+<!-- =================================================== ʕ⊙ᴥ⊙ʔ  -->
 
 <header layer-row bg>
     <p>eof</p>

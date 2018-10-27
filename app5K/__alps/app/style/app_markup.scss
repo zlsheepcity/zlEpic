@@ -18,6 +18,7 @@
 .bg-r { background-color: $color_bgRed; }
 .bg-g { background-color: $color_bgGreen; }
 .bg-b { background-color: $color_bgBlue; }
+.bg-t { background-color: transparent; }
 
 .is-centered {
     justify-content: center;
@@ -27,19 +28,46 @@
     @include contentbox--xy-centered;
     text-align: center;
 }
+.is-merged-row {
+    grid-column: main / aside;
+}
 
-/* ------------------------------------ components */
+/* ------------------------------------ wraps */
 
-.wrap-two-columns {
-    display: grid;
-    grid-template-columns: auto auto;
-    grid-gap: 0 $margin-def;
-    &>*{
-        grid-column: auto;
+
+.wrap-columns {
+    @extend %grid_layout--type-ab;
+    grid-auto-flow: column;
+    .design-for-markup &>li+li {
         margin-top: 0;
         margin-bottom: 0;
     }
 }
+.wrap-two-columns {
+    @extend %grid_layout--type-ab;
+    grid-gap: 0 $margin-def;
+}
+.wrap-two-sections {
+    @extend %grid_layout--type-ab;
+    grid-column: overmain;
+    grid-gap: $margin-def $dim;
+    &>* {
+        @extend %grid_layout-for-markup;
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+    .design-for-markup &>li+li {
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+    .design-for-markup &ul>li+li {
+        list-style: none;
+    }
+}
+
+
+/* ------------------------------------ named components */
+
 .note {
     @extend .block;
     @extend .bg;
@@ -73,10 +101,22 @@
         }
     }
 }
+.divider {
+    @include contentbox--xy-centered;
+    height:  10*$dim;
+    opacity: 0.2;
+    &:before {
+        content: '* * *';
+        font-size: 2em;
+    }
+}
 
 /* ------------------------------------ shortcuts */
 
 // layout
+
+[layout-for-markup]     { @extend .layout-for-markup; }
+[layout-for-article]     { @extend .layout-for-article; }
 
 [layer]                 { @extend .layer; }
 [layer-row]             { @extend .layer-row; }
@@ -87,8 +127,18 @@
 [block-left]            { @extend .block-left; }
 [block-right]           { @extend .block-right; }
 
+[is-merged-row]         { @extend .is-merged-row; }
+
+[wrap-columns]          { @extend .wrap-columns; }
 [wrap-two-columns]      { @extend .wrap-two-columns; }
-[wrap-two-columns][always-equal] { grid-template-columns: 1fr 1fr; }
+[wrap-two-sections]     { @extend .wrap-two-sections; }
+
+[wrap-two-columns],
+[wrap-two-sections] {
+    &[always-equal] {
+        grid-template-columns: 1fr 1fr;
+    }
+}
 
 // modifyers
 
@@ -96,6 +146,7 @@
 [bg-r]                  { @extend .bg-r; }
 [bg-g]                  { @extend .bg-g; }
 [bg-b]                  { @extend .bg-b; }
+[bg-t]                  { @extend .bg-t; }
 [is-centered]           { @extend .is-centered; }
 [is-xy-centered]        { @extend .is-xy-centered; }
 
@@ -105,8 +156,12 @@
 [sidenote]              { @extend .sidenote; }
 [textnote]              { @extend .textnote; }
 [note]                  { @extend .note; }
+[divider]               { @extend .divider; }
 
 
+
+
+//--------------------------------------- pending
 
 
 

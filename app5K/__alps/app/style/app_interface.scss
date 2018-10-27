@@ -49,6 +49,7 @@ html.has-shadow-overlay { @extend %screen-has-shadow-overlay; }
     bottom: 0;
     left:   100%;
     width:  100%;
+    overflow: auto;
     @media ($screenNotFullScreenSidebar) {
         max-width: $sidebar__max-width;
     };
@@ -62,7 +63,6 @@ html.has-shadow-overlay { @extend %screen-has-shadow-overlay; }
 }
 html.has-active-sidebar { @extend %screen-has-shadow-overlay; }
 /**/
-
 
 
 

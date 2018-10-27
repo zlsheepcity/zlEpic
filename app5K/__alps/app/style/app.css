@@ -93,9 +93,10 @@ audio, canvas, iframe, img, svg, video {
   vertical-align: middle; }
 
 hr {
-  box-sizing: content-box;
-  height: 0;
-  overflow: visible; }
+  min-height: 3rem;
+  border: 0;
+  background: transparent;
+  box-shadow: none; }
 
 abbr[title] {
   border-bottom: none;
@@ -116,7 +117,7 @@ abbr[title] {
       margin-top: 0;
       margin-bottom: 0; } }
 
-.layout-for-markup, .layer-block, [layer-block], .block, .note, [note], .illustration, [illustration], [block], .block-row, [block-row], .block-left, [block-left], .block-right, [block-right], .layout-for-article, .layer-row, [layer-row] {
+.layout-for-markup, [layout-for-markup], .layer-block, [layer-block], .block, .note, [note], .illustration, [illustration], [block], .block-row, [block-row], .block-left, [block-left], .block-right, [block-right], .wrap-two-sections > *, [wrap-two-sections] > *, .layout-for-article, [layout-for-article], .layer-row, [layer-row] {
   display: grid;
   grid-auto-rows: min-content;
   grid-auto-flow: row;
@@ -124,13 +125,27 @@ abbr[title] {
   align-items: start;
   grid-gap: 2.4rem 0; }
 
-.layout-for-markup, .layer-block, [layer-block], .block, .note, [note], .illustration, [illustration], [block], .block-row, [block-row], .block-left, [block-left], .block-right, [block-right] {
+.wrap-columns, [wrap-columns], .wrap-two-columns, [wrap-two-columns], .wrap-two-sections, [wrap-two-sections], .design-for-markup dl, [design-for-markup] dl {
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-gap: 2.4rem; }
+  .wrap-columns > *, [wrap-columns] > *, .wrap-two-columns > *, [wrap-two-columns] > *, .wrap-two-sections > *, [wrap-two-sections] > *, .design-for-markup dl > *, [design-for-markup] dl > * {
+    grid-column: auto; }
+  .wrap-columns > .is-merged-row, [wrap-columns] > .is-merged-row, .wrap-two-columns > .is-merged-row, [wrap-two-columns] > .is-merged-row, .wrap-two-sections > .is-merged-row, [wrap-two-sections] > .is-merged-row, .design-for-markup dl > .is-merged-row, [design-for-markup] dl > .is-merged-row, .wrap-columns > [is-merged-row], [wrap-columns] > [is-merged-row], .wrap-two-columns > [is-merged-row], [wrap-two-columns] > [is-merged-row], .wrap-two-sections > [is-merged-row], [wrap-two-sections] > [is-merged-row], .design-for-markup dl > [is-merged-row], [design-for-markup] dl > [is-merged-row] {
+    grid-column: 1 / span 2; }
+  .wrap-columns > .divider, [wrap-columns] > .divider, .wrap-two-columns > .divider, [wrap-two-columns] > .divider, .wrap-two-sections > .divider, [wrap-two-sections] > .divider, .design-for-markup dl > .divider, [design-for-markup] dl > .divider, .wrap-columns > [divider], [wrap-columns] > [divider], .wrap-two-columns > [divider], [wrap-two-columns] > [divider], .wrap-two-sections > [divider], [wrap-two-sections] > [divider], .design-for-markup dl > [divider], [design-for-markup] dl > [divider] {
+    grid-column: 1 / span 2;
+    height: 1.6em; }
+    .wrap-columns > .divider:before, [wrap-columns] > .divider:before, .wrap-two-columns > .divider:before, [wrap-two-columns] > .divider:before, .wrap-two-sections > .divider:before, [wrap-two-sections] > .divider:before, .design-for-markup dl > .divider:before, [design-for-markup] dl > .divider:before, .wrap-columns > [divider]:before, [wrap-columns] > [divider]:before, .wrap-two-columns > [divider]:before, [wrap-two-columns] > [divider]:before, .wrap-two-sections > [divider]:before, [wrap-two-sections] > [divider]:before, .design-for-markup dl > [divider]:before, [design-for-markup] dl > [divider]:before {
+      display: none; }
+
+.layout-for-markup, [layout-for-markup], .layer-block, [layer-block], .block, .note, [note], .illustration, [illustration], [block], .block-row, [block-row], .block-left, [block-left], .block-right, [block-right], .wrap-two-sections > *, [wrap-two-sections] > * {
   grid-template-columns:  [full-start merge-start overmain-start]  2.4rem  [main-start aside-start]  auto  [main-end aside-end]  2.4rem  [full-end merge-end overmain-end] ; }
 
-.layout-for-article {
+.layout-for-article, [layout-for-article] {
   grid-template-columns:  [full-start merge-start overmain-start]  2.4rem  [main-start aside-start]  auto  [main-end aside-end]  2.4rem  [full-end merge-end overmain-end] ; }
   @media (min-width: 901px) {
-    .layout-for-article {
+    .layout-for-article, [layout-for-article] {
       grid-template-columns:  [full-start]  minmax(0, 1fr)  [merge-start overmain-start]  2.4rem  [main-start]  minmax(0, 64rem)  [main-end]  2.4rem  [overmain-end]  2.4rem  [aside-start]  26rem  [aside-end]  2.4rem  [merge-end]  minmax(0, 1fr)  [full-end] ; } }
 
 .layer, [layer] {
@@ -194,6 +209,7 @@ html.has-shadow-overlay, html.has-active-sidebar {
   bottom: 0;
   left: 100%;
   width: 100%;
+  overflow: auto;
   transform: translateX(0);
   transition: transform 200ms ease-in; }
   @media (min-width: 44rem) {
@@ -271,6 +287,9 @@ html.has-shadow-overlay, html.has-active-sidebar {
 .bg-b, [bg-b] {
   background-color: #a8dcd9; }
 
+.bg-t, [bg-t] {
+  background-color: transparent; }
+
 .is-centered, [is-centered] {
   justify-content: center;
   text-align: center; }
@@ -282,16 +301,32 @@ html.has-shadow-overlay, html.has-active-sidebar {
   align-content: center;
   text-align: center; }
 
-/* ------------------------------------ components */
-.wrap-two-columns, [wrap-two-columns] {
-  display: grid;
-  grid-template-columns: auto auto;
-  grid-gap: 0 2.4rem; }
-  .wrap-two-columns > *, [wrap-two-columns] > * {
-    grid-column: auto;
+.is-merged-row, [is-merged-row] {
+  grid-column: main / aside; }
+
+/* ------------------------------------ wraps */
+.wrap-columns, [wrap-columns] {
+  grid-auto-flow: column; }
+  .design-for-markup .wrap-columns > li + li, [design-for-markup] .wrap-columns > li + li, .design-for-markup [wrap-columns] > li + li, [design-for-markup] [wrap-columns] > li + li {
     margin-top: 0;
     margin-bottom: 0; }
 
+.wrap-two-columns, [wrap-two-columns] {
+  grid-gap: 0 2.4rem; }
+
+.wrap-two-sections, [wrap-two-sections] {
+  grid-column: overmain;
+  grid-gap: 2.4rem 0.8rem; }
+  .wrap-two-sections > *, [wrap-two-sections] > * {
+    margin-top: 0;
+    margin-bottom: 0; }
+  .design-for-markup .wrap-two-sections > li + li, [design-for-markup] .wrap-two-sections > li + li, .design-for-markup [wrap-two-sections] > li + li, [design-for-markup] [wrap-two-sections] > li + li {
+    margin-top: 0;
+    margin-bottom: 0; }
+  .design-for-markup .wrap-two-sectionsul > li + li, [design-for-markup] .wrap-two-sectionsul > li + li {
+    list-style: none; }
+
+/* ------------------------------------ named components */
 .note, [note] {
   grid-column: overmain; }
   @media (min-width: 901px) {
@@ -322,8 +357,20 @@ html.has-shadow-overlay, html.has-active-sidebar {
       .illustration figcaption, [illustration] figcaption {
         font-size: 0.8em; } }
 
+.divider, [divider] {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  height: 8rem;
+  opacity: 0.2; }
+  .divider:before, [divider]:before {
+    content: '* * *';
+    font-size: 2em; }
+
 /* ------------------------------------ shortcuts */
-[wrap-two-columns][always-equal] {
+[wrap-two-columns][always-equal],
+[wrap-two-sections][always-equal] {
   grid-template-columns: 1fr 1fr; }
 
 /* ------------------------------------ eof markup */
@@ -355,16 +402,17 @@ body {
   background-color: #f9f9f9; }
 
 /* content design */
-.design-for-markup {
+.design-for-markup, [design-for-markup] {
   /* Pre and Code */
-  /* Tables */ }
+  /* Tables */
+  /* Form elements as content */ }
   @supports (hanging-punctuation: first) {
-    .design-for-markup * {
+    .design-for-markup *, [design-for-markup] * {
       hanging-punctuation: first; } }
-  .design-for-markup h1, .design-for-markup h2, .design-for-markup h3, .design-for-markup h4, .design-for-markup h5, .design-for-markup h6 {
+  .design-for-markup h1, [design-for-markup] h1, .design-for-markup h2, [design-for-markup] h2, .design-for-markup h3, [design-for-markup] h3, .design-for-markup h4, [design-for-markup] h4, .design-for-markup h5, [design-for-markup] h5, .design-for-markup h6, [design-for-markup] h6 {
     line-height: 1.1;
     font-family: Verdana, Geneva, sans-serif;
-    font-weight: 700;
+    font-weight: bolder;
     overflow-wrap: break-word;
     word-wrap: break-word;
     -ms-word-break: break-all;
@@ -373,65 +421,96 @@ body {
     -moz-hyphens: auto;
     -webkit-hyphens: auto;
     hyphens: auto; }
-  .design-for-markup h1 {
-    font-size: 2.35em; }
-  .design-for-markup h2 {
-    font-size: 1.75em; }
-  .design-for-markup h3 {
-    font-size: 1.5em; }
-  .design-for-markup h4 {
-    font-size: 1.25em; }
-  .design-for-markup h5 {
+  .design-for-markup h1, [design-for-markup] h1 {
+    font-size: 2.35em;
+    font-weight: 700; }
+  .design-for-markup h2, [design-for-markup] h2 {
+    font-size: 1.75em;
+    font-weight: 700; }
+  .design-for-markup h3, [design-for-markup] h3 {
+    font-size: 1.25em;
+    font-weight: inherit; }
+  .design-for-markup h4, [design-for-markup] h4 {
     font-size: 1em; }
-  .design-for-markup h6 {
-    font-size: 1em; }
-  .design-for-markup small, .design-for-markup sub, .design-for-markup sup {
+  .design-for-markup h5, [design-for-markup] h5 {
+    font-size: inherit; }
+  .design-for-markup h6, [design-for-markup] h6 {
+    line-height: inherit;
+    font-size: inherit;
+    font-weight: inherit;
+    font-family: inherit; }
+  .design-for-markup small, [design-for-markup] small, .design-for-markup sub, [design-for-markup] sub, .design-for-markup sup, [design-for-markup] sup {
     font-size: 75%; }
-  .design-for-markup hr {
-    border-color: #2c8898; }
-  .design-for-markup a {
+  .design-for-markup em, [design-for-markup] em {
+    opacity: 0.66; }
+  .design-for-markup a, [design-for-markup] a {
     color: #2c8898; }
-    .design-for-markup a:hover {
+    .design-for-markup a:hover, [design-for-markup] a:hover {
       color: #982c61;
       border-bottom: 2px solid #4a4a4a; }
-  .design-for-markup ul {
+  .design-for-markup ul, [design-for-markup] ul, .design-for-markup ol, [design-for-markup] ol {
     list-style-position: outside;
     padding-left: 0; }
-  .design-for-markup li + li {
+  .design-for-markup li + li, [design-for-markup] li + li {
     margin-top: 0.4em; }
-  .design-for-markup blockquote {
+  .design-for-markup li li, [design-for-markup] li li {
+    list-style: square; }
+  .design-for-markup dl, [design-for-markup] dl {
+    grid-gap: 0 0.8rem; }
+    .design-for-markup dl dt, [design-for-markup] dl dt, .design-for-markup dl dd, [design-for-markup] dl dd {
+      margin: 0; }
+  .design-for-markup blockquote, [design-for-markup] blockquote {
     font-style: italic;
     margin-left: 1.5em;
     padding-left: 1em;
     border-left: 3px solid #2c8898; }
-  .design-for-markup pre {
+  .design-for-markup hr, [design-for-markup] hr {
+    min-height: 3.2rem; }
+  .design-for-markup pre, [design-for-markup] pre {
     background-color: #f1f1f1;
     display: block;
     padding: 1.2rem 2.4rem;
     overflow-x: auto; }
   @media (max-width: 900px) {
-    .design-for-markup pre {
+    .design-for-markup pre, [design-for-markup] pre {
       grid-column: overmain;
       padding-left: 2.4rem;
       padding-right: 2.4rem; } }
-  .design-for-markup code {
+  .design-for-markup code, [design-for-markup] code {
     font-size: 0.9em;
-    padding: 0 0.5em;
+    padding: 0 0.8rem;
     background-color: #f1f1f1;
     white-space: pre-wrap; }
-  .design-for-markup pre > code {
+  .design-for-markup pre > code, [design-for-markup] pre > code {
     padding: 0;
     background-color: transparent;
     white-space: pre; }
-  .design-for-markup code, .design-for-markup kbd, .design-for-markup pre, .design-for-markup samp {
+  .design-for-markup code, [design-for-markup] code, .design-for-markup kbd, [design-for-markup] kbd, .design-for-markup pre, [design-for-markup] pre, .design-for-markup samp, [design-for-markup] samp {
     font-family: Menlo, Consolas, Roboto Mono, Ubuntu Monospace, Noto Mono, Oxygen Mono, Liberation Mono, monospace; }
-  .design-for-markup table {
+  .design-for-markup table, [design-for-markup] table {
     text-align: justify;
     width: 100%;
     border-collapse: collapse; }
-  .design-for-markup td, .design-for-markup th {
+  .design-for-markup td, [design-for-markup] td, .design-for-markup th, [design-for-markup] th {
     padding: 0.5em;
     border-bottom: 1px solid #f1f1f1; }
+  .design-for-markup button, [design-for-markup] button {
+    border: 0;
+    box-shadow: none;
+    width: 100%; }
+
+/* named components */
+.role-code, [role-code] {
+  background-color: #f1f1f1;
+  padding: 2.4rem;
+  grid-column: overmain;
+  border: 0;
+  cursor: auto; }
+
+code.role-code, code[role-code] {
+  padding-left: 2.4rem;
+  padding-right: 2.4rem;
+  padding-bottom: 1.618em; }
 
 /* ------------------------------------ end of default_design */
 /*

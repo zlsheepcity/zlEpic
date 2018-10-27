@@ -93,6 +93,22 @@ $grid_formula--article-right-wrapped:
     align-items: start;
     grid-gap: $margin-def 0;
 }
+%grid_layout--type-ab { // simple 50x50 multirow
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-gap: $margin-def;
+    &>*{
+        grid-column: auto;
+    }
+    &>.is-merged-row {
+        grid-column: 1 / span 2;
+    }
+    &>.divider {
+        grid-column: 1 / span 2;
+        height: 1.6em;
+        &:before { display: none; }
+    }
+}
 %grid_layout-for-markup {
     @extend %grid_layout--base;
     grid-template-columns: $grid_formula--markup;
@@ -147,7 +163,6 @@ $grid_formula--article-right-wrapped:
     }
     grid-column: overmain-start / full-end;
 }
-
 
 
 /* ------------------------------------ eof grid */
