@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="en">
+<!-- published 2018.10.27 - cookie 1.5/2 -->
 <head>
     <!--
         The following 2 meta tags *must* come first in the <head>
@@ -12,7 +13,14 @@
     <!-- =================================================== ʕ⊙ᴥ⊙ʔ  -->
     <!-- =================================================== [HEAD CONTENT] -->
 
-    <title>Vane Alps</title>
+    <title>Кандава Вана</title>
+    
+    <!-- FAVICON -->
+    <meta name="theme-color" content="#E08E79">
+    <meta name="msapplication-TileColor" content="#E08E79">
+    <meta name="msapplication-TileImage" content="app/favicons/144x144.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="app/favicons/180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192"  href="app/favicons/192x192.png">
 
     <!-- =================================================== ʕ⊙ᴥ⊙ʔ  -->
     <!-- =================================================== [HEAD ENGINE] -->
@@ -58,35 +66,6 @@
 
 <p>Шел я ночью из Кандавы в Вану. Вот ведь парадокс — городки маленькие, а дорога между ними совсем нет. Умные люди и при солнечном свете не любят таких долгих прогулок, да только я дурак дураком. А что делать? Времена нынче такие, что никто к себе на сеновал переночевать не пустит, а скорее кинет в тебя коробкой из под сони-эриксона. И закричит: «Проваливай, чертов черт, в свою Вану!». Я и проваливаю, мне же не страшно!</p>
 
-
-<aside sidenote>
-    <div id="ShowTheMenu" show-sidebar note bg-b is-centered>
-        <h4>ShowTheMenu</h4>
-    </div>
-</aside>
-<aside class="sidebar" block bg bg-b>
-    <div hide-sidebar-error>no close</div>
-    <h2>Sidemenu II</h2>
-    <ul>
-        <li>Item</li>
-    </ul>
-</aside>
-<div class="screen-shadow-overlay" hide-sidebar></div>
-<script>
-    app.do({
-        when: '[show-sidebar]',
-        has: 'click',
-        addClass: 'has-active-sidebar',
-        for: 'html'
-    });
-    app.do({
-        when: '[hide-sidebar]',
-        has: 'click',
-        removeClass: 'has-active-sidebar',
-        for: 'html'
-    });
-</script>
-
 <header layer-row bg>
     <h2>Глава 1</h2>
 </header>
@@ -125,7 +104,7 @@
 
 <p>Так и быть, говорю. Теперь всегда буду говорить: здравствуйте, я Зиновий, у меня в рюкзаке есть тельняшка.  И как только я решил быть вежливым, сразу грусть ушла. А тут и рыбный обоз меня нагнал.</p>
 
-<aside textnote>
+<aside sidenote>
     <figure>
         <img src="../art/ready.svg" height="150" alt="">
     </figure>
@@ -454,6 +433,8 @@
 <p>Вот скрипучая калитка.</p>
 
 <p>Эй! Встречайте меня! Я дома!</p>
+
+<hr divider>
 
 <footer layer-row bg>
     <p><small>feb.2010</small></p>

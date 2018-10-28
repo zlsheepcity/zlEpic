@@ -1,20 +1,27 @@
 /* app v2018.10.22 */
 
+@charset "UTF-8";
+
 // core
 
-@import "app_core";
-@import "app_html_base";
-@import "app_grid";
+@import "app_core"; // init
+@import "app_core_grid";
+@import "app_core_html";
 
 // components
 
 @import "app_interface";
 @import "app_markup";
 
-// design
+// design theming
 
 @import "design_app_default";
 @import "design_app_default_form";
+@import "design_tufte";
+
+// summary
+
+@import "app_shortcuts";
 
 // custom
 // ...

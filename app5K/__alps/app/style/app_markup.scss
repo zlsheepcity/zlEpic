@@ -106,57 +106,12 @@
     height:  10*$dim;
     opacity: 0.2;
     &:before {
-        content: '* * *';
+        content: '※ ※ ※';
         font-size: 2em;
     }
 }
 
-/* ------------------------------------ shortcuts */
 
-// layout
-
-[layout-for-markup]     { @extend .layout-for-markup; }
-[layout-for-article]     { @extend .layout-for-article; }
-
-[layer]                 { @extend .layer; }
-[layer-row]             { @extend .layer-row; }
-[layer-block]           { @extend .layer-block; }
-
-[block]                 { @extend .block; }
-[block-row]             { @extend .block-row; }
-[block-left]            { @extend .block-left; }
-[block-right]           { @extend .block-right; }
-
-[is-merged-row]         { @extend .is-merged-row; }
-
-[wrap-columns]          { @extend .wrap-columns; }
-[wrap-two-columns]      { @extend .wrap-two-columns; }
-[wrap-two-sections]     { @extend .wrap-two-sections; }
-
-[wrap-two-columns],
-[wrap-two-sections] {
-    &[always-equal] {
-        grid-template-columns: 1fr 1fr;
-    }
-}
-
-// modifyers
-
-[bg]                    { @extend .bg; }
-[bg-r]                  { @extend .bg-r; }
-[bg-g]                  { @extend .bg-g; }
-[bg-b]                  { @extend .bg-b; }
-[bg-t]                  { @extend .bg-t; }
-[is-centered]           { @extend .is-centered; }
-[is-xy-centered]        { @extend .is-xy-centered; }
-
-// components
-
-[illustration]          { @extend .illustration; }
-[sidenote]              { @extend .sidenote; }
-[textnote]              { @extend .textnote; }
-[note]                  { @extend .note; }
-[divider]               { @extend .divider; }
 
 
 

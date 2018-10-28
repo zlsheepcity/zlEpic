@@ -65,16 +65,7 @@ html.has-active-sidebar { @extend %screen-has-shadow-overlay; }
 /**/
 
 
-
-
-
-
-
-
-// ============================================= PENDING
-
-// default kliker
-
+//* ------------------------------------ default kliker
 $hover-item-outline-design: 1rem solid hsla(177, 42%, 76%, 0.25);
 .kliker {
     @include disable-text-selection;
@@ -83,7 +74,15 @@ $hover-item-outline-design: 1rem solid hsla(177, 42%, 76%, 0.25);
         outline: $hover-item-outline-design;
     }
 }
-[kliker] { @extend .kliker; }
+/**/
+
+
+
+
+// ============================================= PENDING
+
+
+
 
 
 

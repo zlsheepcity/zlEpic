@@ -51,11 +51,67 @@
 
 <article class="layout-for-article design-for-markup">
 
-<p>v2018.10.21</p>
+<header layer-row bg>
+    <h1>Markup sample</h1>
+</header>
+
+<header id="tufte" is-centered>
+    <h2>Tufte design theme</h2>
+    <date subtitle>2018.10.27</date>
+    <hr divider>
+</header>
+
+<aside sidenote>
+    <section block>
+        <h2>Header lvl. 2</h2>
+        <h3>Header lvl. 3</h3>
+        <h3>Header lvl. 3</h3>
+    </section>
+</aside>
+
+<p>Шел я ночью из Кандавы в Вану. Вот ведь парадокс — городки маленькие, а дорога между ними совсем нет. Умные люди и при солнечном свете не любят таких долгих прогулок, да только я дурак дураком. А что делать? Времена нынче такие, что никто к себе на сеновал переночевать не пустит, а скорее кинет в тебя коробкой из под сони-эриксона. И закричит: «Проваливай, чертов черт, в свою Вану!». Я и проваливаю, мне же не страшно!</p>
+
+<header>
+    <h3>Header lvl. 3 ˂theme˃</h3>
+    <p subtitle>Subitle</p>
+</header>
+
+<p>Шел я ночью из Кандавы в Вану & Bahu. Вот ведь парадокс — городки маленькие, а дорога между ними совсем нет. Умные люди и при солнечном свете не любят таких долгих прогулок, да только я дурак дураком. А что делать? Времена нынче такие, что никто к себе на сеновал переночевать не пустит, а скорее кинет в тебя коробкой из под сони-эриксона. И закричит: «Проваливай, чертов черт, в свою Вану!». Я и проваливаю, мне же не страшно!</p>
+
+
+<aside sidenote>
+    <div id="ShowTheMenu" show-sidebar note bg-b is-centered kliker>
+        <h4>ShowTheMenu</h4>
+    </div>
+</aside>
+<aside class="sidebar" block bg bg-b>
+    <div hide-sidebar-error>no close</div>
+    <h2>Sidemenu II</h2>
+    <ul>
+        <li>Item</li>
+    </ul>
+</aside>
+<div class="screen-shadow-overlay" hide-sidebar></div>
+<script>
+    app.do({
+        when: '[show-sidebar]',
+        has: 'click',
+        addClass: 'has-active-sidebar',
+        for: 'html'
+    });
+    app.do({
+        when: '[hide-sidebar]',
+        has: 'click',
+        removeClass: 'has-active-sidebar',
+        for: 'html'
+    });
+</script>
 
 <header layer-row bg>
     <h2>Глава 1</h2>
 </header>
+
+<date>2018.10.21</date>
 
 <p>Шел я ночью из Кандавы в Вану. А ночь была такая темная, что если выпустить на дорогу черную кошку и черную крысу — то по черным сугробам крыса всю ночь будет гоняться за кошкой. Потому что в такой темноте они сами запутаются кто из них кто.</p>
 
