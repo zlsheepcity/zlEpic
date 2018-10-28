@@ -73,13 +73,13 @@
     @extend .bg;
     grid-column: overmain;
     @media ($screenForArticleLayout) {
-        font-size: $fontSizeSmaller;
+        font-size: 0.8em;
     }
 }
 .textnote {
     grid-column: aside;
     @media ($screenForArticleLayout) {
-        font-size: $fontSizeSmaller;
+        font-size: 0.8em;
     }
 }
 .sidenote {
@@ -97,7 +97,7 @@
     figcaption {
         grid-column: main;
         @media ($screenForArticleLayout) {
-            font-size: $fontSizeSmaller;
+            font-size: 0.8em;
         }
     }
 }

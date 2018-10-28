@@ -1,9 +1,11 @@
 /*
-    app settings
-    v2018.10.22
+    initial settings + app settings
+    v2018.10.28
 */
 
 /* ------------------------------------ screen sizes */
+
+// last update: spring 2018
 
 $screenMaxSizeForMobile:    600px;
 $screenMaxSizeForTablet:    900px;
@@ -27,8 +29,8 @@ $screenNotTablet:   "min-width: #{$screenMaxSizeForTablet + 1}";
 $screenForMobile:   "max-width: #{$screenMaxSizeForMobile}";
 $screenNotMobile:   "min-width: #{$screenMaxSizeForMobile + 1}";
 
-$screenForArticleLayout: $screenNotTablet;
-$screenNotArticleLayout: $screenForTablet;
+/**/
+
 
 /* ------------------------------------ system colors */
 
@@ -37,20 +39,12 @@ $color_bgGreen:  hsla( 78, 49%, 83%,   1);
 $color_bgBlue:   hsla(177, 42%, 76%,   1);
 $color_shadow:   rgba(0,0,0,0.1);
 
-/* ------------------------------------ fonts */
+/* ------------------------------------ units */
 
-$fontSizeSmaller: 0.8em; // deprecated
+$dim:               0.8rem;
+$margin-def:        2.4rem;
 
-/* ------------------------------------ other settings */
-
-$dim: 0.8rem; // dimension unit
-$margin-def: 2.4rem;
-$margin-overmain: 4.8rem;
-$width--text-column:  64rem;
-$width--aside-column: 26rem;
-$width--aside-column-extended: 32rem;
-
-/* ------------------------------------ tools */
+/* ------------------------------------ constructor */
 
 @mixin contentbox--xy-centered {
     display: flex;
@@ -69,6 +63,9 @@ $width--aside-column-extended: 32rem;
     background-repeat: no-repeat;
     background-position: center center;
 }
+
+/* ------------------------------------ rare tools */
+
 @mixin disable-text-selection {
     -webkit-user-select: none;  /* Chrome all / Safari all */
     -moz-user-select: none;     /* Firefox all */
@@ -77,5 +74,20 @@ $width--aside-column-extended: 32rem;
 }
 
 
+
+
+/* --------------------------------------------------- ʕ⊙ᴥ⊙ʔ  */
+/* ------------------------------------ specific app settings */
+
+// app screens
+
+$screenForArticleLayout: $screenNotTablet;
+$screenNotArticleLayout: $screenForTablet;
+
+$width--text-column:  64rem;
+$width--aside-column: 26rem;
+$width--aside-column-extended: 32rem;
+
+/**/
 
 /* ------------------------------------ eof core */

@@ -22,9 +22,7 @@ body {
     margin: 0;
     display: flex;
     flex-direction: column;
-    [role-footer], .role-footer {
-        margin-top: auto;
-    }
+    .screen-footer { margin-top: auto; }
     overflow-y: scroll; // this is scrollbar solution
 }
 
