@@ -273,5 +273,17 @@ const array2 = array.concat()
 
 Array.from(arrayLike[, mapFn[, thisArg]])
 
+// ---------------------------------------------- // VARIOUS
 
+function whoCalledMe() {
+  console.log('Caller is', this);
+}
+multiply(1)(2)(3)
 
+function volume(h) {
+    return (w) => {
+        return (l) => {
+            return l * w * h
+        }
+    }
+}
