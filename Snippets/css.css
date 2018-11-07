@@ -150,6 +150,16 @@ a:focus {
 
 grid-column: span 8 / -1; // this item will always align to the end
 
+.grid {
+  display: grid;
+  grid-gap: 1rem;
+  grid-template-columns:
+     200px  1fr  1fr;
+  grid-template-areas:
+    "pro    a    b"
+    "pro    c    d";
+}
+
 /* =================================================================== Forms */
 
 .aFormInput:invalid:not(:placeholder-shown) {
