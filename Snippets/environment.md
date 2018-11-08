@@ -16,6 +16,11 @@ git merge --no-commit --squash develop
     чтобы git видел пустую директорию
 
 
+## Один файл вернуть как был
+
+git checkout HEAD -- package-lock.json
+
+
 ## THE SAVEPOINT PATTERN
 
 git branch savepoint
