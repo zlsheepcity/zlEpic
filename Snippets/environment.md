@@ -1,8 +1,41 @@
 ------------------------------------------------------
+# CHROME DEBUGGER
+------------------------------------------------------
+
+```js
+$0
+getEventListeners($0)
+setTimeout(function(){debugger;}, 3000)
+document.body.contentEditable=true
+```
+
+## api
+
+```js
+console.assert(a > b, {"message":"a is not greater than b","a":a,"b":b});
+
+console.table(data, ['collumn','collumn'])
+console.table(data)
+
+console.time('zlTimer');
+console.timeEnd('zlTimer');
+
+console.group();
+console.log( 'xoxox' );
+console.groupEnd();
+
+console.log('%c zl', 'background: #222; color: #bada55');
+```
+
+```js // чтобы выводить в лог элементы, на которые в данный момент перешёл фокус:
+window.focusedelement; setInterval(function(){ if(window.focusedElement != document.activeElement){window.focusedElement = document.activeElement; console.log(document.activeElement)}})
+```
+
+------------------------------------------------------
 # GIT
 ------------------------------------------------------
 
-```
+```bash
 git config --global user.name "King Kong"
 git config --global user.email "king-kong@gmail.com"
 git config --list
@@ -13,7 +46,7 @@ git merge --no-commit --squash develop
 ```
 
 .gitkeep
-    чтобы git видел пустую директорию
+    пустой файл, чтобы git видел пустую директорию
 
 
 ## Один файл вернуть как был
@@ -49,9 +82,11 @@ git branch -d savepoint
 
 ## NEW PRJ
 
+```bash
 git fetch origin master
 git branch new_task origin/master
 git checkout new_task
+```
 
 Первая команда загружает в ваш локальный репозиторий возможные изменения ветки master удалённого репозитория origin.
 Вторая - создаёт локальную ветку new_task, указывающую на верхний коммит ветки origin/master.
@@ -59,11 +94,12 @@ git checkout new_task
 
 ## REBASE
 
+```bash
 git fetch origin
 git rebase origin/master
 [...conflicts...solve...]
 git rebase --continue OR git rebase --abort
-
+```
 
 ------------------------------------------------------
 ------------------------------------------------------

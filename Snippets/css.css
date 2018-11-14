@@ -192,6 +192,16 @@ grid-column: span 8 / -1; // this item will always align to the end
   /* something for wide screens */
 }
 
+
+@media (any-pointer: fine) {
+  /* not-touchscreen devices */
+}
+
+@media (any-pointer: coarse) {
+  /* touchscreen devices only */
+}
+
+
 /*
 CSS Paged Media Module
 https://drafts.csswg.org/css-page-3/

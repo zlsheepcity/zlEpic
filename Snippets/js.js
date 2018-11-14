@@ -119,16 +119,9 @@ myElement.addEventListener('change', function listener (event) {
 
 
 
-// this will kill all intervals and timeouts too in 3 seconds. 
-// Change 3000 to anything larger than 10
-var killId = setTimeout(function() {
-  for (var i = killId; i > 0; i--) clearInterval(i)
-}, 3000);
-
-
-
 /* ---------------------------------------------- */ // performance
 
+// some scroll
 
 var latestKnownScrollY = 0;
 
@@ -136,6 +129,9 @@ function onScroll() {
 	latestKnownScrollY = window.scrollY;
 }
 
+
+
+// requestAnimationFrame
 
 const start = window.performance.now()
 const duration = 2000
@@ -150,8 +146,9 @@ window.requestAnimationFrame(function fadeIn (now)) {
 }
 
 
-```
-// example5.js
+
+/* Значение 1e10 равно 1 с 10 нулями, поэтому цикл длится 10 миллиардов процессорных тактов (в принципе, так имитируется перегруженный процессор). */
+
 setTimeout(
   () => console.log('Hello after 0.5 seconds. MAYBE!'),
   500,
@@ -159,33 +156,7 @@ setTimeout(
 for (let i = 0; i < 1e10; i++) {
   // Синхронно блокируем операции
 }
-```
-Значение 1e10 равно 1 с 10 нулями, поэтому цикл длится 10 миллиардов процессорных тактов (в принципе, так имитируется перегруженный процессор).
 
-
-
-/* ---------------------------------------------- */ // console functions
-
-console.assert(a > b, {"message":"a is not greater than b","a":a,"b":b});
-
-console.table(data, ['collumn','collumn'])
-console.table(data)
-
-
-console.time('zlTimer');
-console.timeEnd('zlTimer');
-
-console.group();
-console.log( 'ooo', ooo );
-console.groupEnd();
-
-console.log('%c zl', 'background: #222; color: #bada55');
-
-// console commands
-$0
-getEventListeners($0)
-document.body.contentEditable=true
-/**/
 
 
 // ---------------------------------------------- // trick functions
@@ -211,6 +182,13 @@ node.styles({
   'backgroundColor': 'black',
   'padding': '1rem'
 });
+
+
+// this will kill all intervals and timeouts too in 3 seconds.
+// Change 3000 to anything larger than 10
+var killId = setTimeout(function() {
+  for (var i = killId; i > 0; i--) clearInterval(i)
+}, 3000);
 
 
 
@@ -275,10 +253,12 @@ Array.from(arrayLike[, mapFn[, thisArg]])
 
 // ---------------------------------------------- // VARIOUS
 
+
 function whoCalledMe() {
   console.log('Caller is', this);
 }
-multiply(1)(2)(3)
+
+
 
 function volume(h) {
     return (w) => {
@@ -287,3 +267,4 @@ function volume(h) {
         }
     }
 }
+volume(1)(2)(3)
