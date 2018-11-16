@@ -1,0 +1,20 @@
+@charset "UTF-8";
+
+// core
+
+@import "app_core/settings.scss";
+@import "app_core/constructor.scss";
+
+// interface components
+
+@import "app_components/_workers.scss";
+@import "app_components/layout-screen.scss";
+@import "app_components/sidebar.scss";
+
+// design
+
+// ...
+
+// ordnung
+
+@import "app-custom-addon.scss";

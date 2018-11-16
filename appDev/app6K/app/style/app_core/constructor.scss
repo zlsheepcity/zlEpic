@@ -1,0 +1,28 @@
+/* ------------------------------------ app constructor */
+
+@mixin contentbox--xy-centered {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+}
+@mixin contentbox--y-centered {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    align-content: center;
+}
+@mixin has-illustrated-background {
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+@mixin disable-text-selection {
+    -webkit-user-select: none;  /* Chrome all / Safari all */
+    -moz-user-select: none;     /* Firefox all */
+    -ms-user-select: none;      /* IE 10+ */
+    user-select: none;          /* Likely future */
+}
+
+/* EOF: app constructor */

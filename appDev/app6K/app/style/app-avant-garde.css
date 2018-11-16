@@ -1,0 +1,22 @@
+/* APP AVANT GARDE the leading part of an app */
+
+/*
+    base css 1002 Monica De Gennaro
+    v2018.11.16
+*/
+
+/* ------------------------------------ app defaults */
+
+*, *:before, *:after {
+    box-sizing: inherit;
+    background-repeat: no-repeat;
+}
+html {
+    box-sizing: border-box;
+    height: 100%;
+}
+body {
+    overflow-y: scroll;
+}
+
+/* EOF: avant garde */

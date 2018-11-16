@@ -1,0 +1,91 @@
+/* ------------------------------------ app constructor */
+/* EOF: app constructor */
+/* ==============================================================
+ # Workers are used with other components
+============================================================== */
+.kliker {
+  -webkit-user-select: none;
+  /* Chrome all / Safari all */
+  -moz-user-select: none;
+  /* Firefox all */
+  -ms-user-select: none;
+  /* IE 10+ */
+  user-select: none;
+  /* Likely future */ }
+  .kliker:hover, .kliker:focus {
+    cursor: pointer;
+    outline: 1rem solid rgba(168, 220, 217, 0.25); }
+
+/**/
+.has-shadow-overlay, .has-active-sidebar {
+  overflow: hidden; }
+  .has-shadow-overlay .screen-shadow-overlay, .has-active-sidebar .screen-shadow-overlay {
+    opacity: 0.8;
+    pointer-events: auto; }
+
+.screen-shadow-overlay {
+  position: fixed;
+  z-index: 2;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  pointer-events: none;
+  background-color: black;
+  opacity: 0; }
+
+/**/
+[content-action] {
+  display: none; }
+
+/**/
+/* EOF: workers */
+/* ==============================================================
+ # Describe HTML & BODY
+============================================================== */
+/* ------------------------------------ body box model */
+.screen {
+  min-height: 100%;
+  margin-top: 0;
+  margin-bottom: 0;
+  display: flex;
+  flex-direction: column; }
+
+.screen-header {
+  position: sticky;
+  top: 0;
+  background-color: white; }
+
+.screen-footer {
+  margin-top: auto; }
+
+@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+  html {
+    display: flex;
+    flex-direction: column; } }
+
+/* */
+/* EOF: layout-screen */
+/* ==============================================================
+ # Sidebars & Friends
+============================================================== */
+.sidebar {
+  position: fixed;
+  z-index: 3;
+  top: 0;
+  bottom: 0;
+  left: 100%;
+  width: 100%;
+  overflow: auto;
+  transform: translateX(0);
+  transition: transform 200ms ease-in;
+  background-color: white; }
+  @media screen and (min-width: 44rem) {
+    .sidebar {
+      max-width: 38rem; } }
+  .sidebar.is-active {
+    transition-timing-function: ease-out;
+    transform: translateX(-100%); }
+
+/**/
+/* EOF: Sidebars */

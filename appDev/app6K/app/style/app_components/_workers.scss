@@ -1,0 +1,49 @@
+/* ==============================================================
+ # Workers are used with other components
+============================================================== */
+
+// settings
+
+$hover-item-outline-design:          1rem solid hsla(177, 42%, 76%, 0.25);
+
+
+//* ------------------------------------ default kliker
+.kliker {
+    @include disable-text-selection;
+    &:hover, &:focus {
+        cursor: pointer;
+        outline: $hover-item-outline-design;
+    }
+}
+/**/
+
+//* ------------------------------------ universal shadow overlay
+.has-shadow-overlay {
+    overflow: hidden;
+    .screen-shadow-overlay {
+        opacity:0.8;
+        pointer-events: auto;
+    }
+}
+.screen-shadow-overlay {
+    position: fixed;
+    z-index: $z-index-shadowOverlay;
+    top:    0;
+    bottom: 0;
+    right:  0;
+    left:   0;
+    pointer-events: none;
+
+    background-color: black;
+    opacity: 0;
+}
+/**/
+
+//* ------------------------------------ support features
+
+// explain js actions with html
+[content-action] { display: none; }
+
+/**/
+
+/* EOF: workers */

@@ -1,0 +1,43 @@
+/* ==============================================================
+ # Sidebars & Friends
+============================================================== */
+
+// settings
+
+$sidebar__width-limit:               38rem;
+$sidebar__remaining-space-limit:     6rem;
+
+// formulas
+
+$a: $sidebar__width-limit;
+$b: $sidebar__remaining-space-limit;
+$screenNotFullscreenSidebar: 'min-width: #{ $a + $b }';
+
+//* ------------------------------------ sidebar component
+.sidebar {
+    position: fixed;
+    z-index: $z-index-sidebar;
+    top:    0;
+    bottom: 0;
+    left:   100%;
+    width:  100%;
+    overflow: auto;
+    @media screen and ($screenNotFullscreenSidebar) {
+        max-width: $sidebar__width-limit;
+    };
+
+    transform: translateX(0);
+    transition: transform 200ms ease-in;
+    background-color: $color_main_back;
+
+    // open state
+
+    &.is-active {
+        transition-timing-function: ease-out;
+        transform: translateX(-100%);
+    }
+}
+.has-active-sidebar { @extend .has-shadow-overlay; }
+/**/
+
+/* EOF: Sidebars */

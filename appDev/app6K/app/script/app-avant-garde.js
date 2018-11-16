@@ -1,0 +1,1 @@
+/* APP AVANT GARDE the leading part of an app */
