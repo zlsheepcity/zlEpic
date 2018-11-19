@@ -2,9 +2,9 @@
 /*
     Noble objects
     - are objects
-    - has name
-    - this.is.something
-    - this.do({something})
+    - has name and role
+    - has is.something
+    - has do({something})
     - code blastula ʕ⊙ᴥ⊙ʔ
 
     List of noble objects
@@ -15,39 +15,32 @@
 
 */ // last review: 2018.11.19
 
-/*
-    History
-    
-
-
-*/
-
 
 // ------------------------ Initialization
 
 
-// ʕ⊙ᴥ⊙ʔ Noble Blastula - app avant garde
-var FNA = (rna) => false;
-var DNA = { name:'noble', is:{}, do:(rna)=>false };
+//*/// ʕ⊙ᴥ⊙ʔ Noble Blastula - app avant garde
+var DNA = { name:'wild', role:false, do:(rna)=>false, is:{} };
 var app = DNA;
 app.do  = function StoreRequest (rna) {
-    this.nucleus = this.nucleus || [];
-    if (rna) this.nucleus.push (rna);
+    this.seed = this.seed || [];
+    if (rna) this.seed.push (rna);
     return this
-};//end
+};
+//*///
 
 
-// ʕ⊙ᴥ⊙ʔ Noble Blastula - app launcher
-app = new AppKing (app); // coronation
-app//setup              //  2018.11.19
+//*/// ʕ⊙ᴥ⊙ʔ Noble Blastula - app launcher
+app = new AppKing (app,{name:'app'}); // 'coronation'
+app//setup                            //  2018.11.19
     .Delegator( new lordReport() )
     .Delegator( new lordStatus() )
     .Delegator( new lordMutate() )
     .Welcome()
 ;// .End(setup)
+//*///
 
-
-app//demo
+app//dev
     .do(77)
     .report('ʕ⊙ᴥ⊙ʔ Welcome King')
     .report()
@@ -60,20 +53,22 @@ app//demo
 // ------------------------ Core functions
 
 
-function AppKing (dna) {     // ʕ⊙ᴥ⊙ʔ
-                           dna = dna||DNA;
-                          for(favor in dna)
-                      this[favor] = dna[favor];
+function AppKing (dna,rna) {
+
+            // ʕ⊙ᴥ⊙ʔ
+         dna = dna||DNA;
+        for(favor in dna)
+    this[favor] = dna[favor];
 
 //..tion Description (codex)
 
-    this.name         = this.name;
-    this.about        ='King of noble objects and functions';
-    this.is.king      = false; // not yet
-    this.el           = FNA;
-    this.report       = FNA;
-    this.nucleus      = dna.nucleus || [];
+    this.is.your      ='king'
+    this.role         ="King of noble objects and functions";
+    this.name         = rna.name || dna.name || this.is.your ;
+    this.seed         = this.seed || [];
     this.team         = {};
+    this.el           = this.do;
+    this.report       = this.do;
 
 //..tion PUB API
 
@@ -84,7 +79,7 @@ function AppKing (dna) {     // ʕ⊙ᴥ⊙ʔ
         if (lord.is.overlord) this[lord.name] = this.team[lord.name].do;
         return this;
     }
-    this.Welcome = function Init () {
+    this.Welcome   = function RestartProcedure (rna) {
         app.WelcomeTeam();
         app.Ribosome();
         return this;
@@ -92,26 +87,27 @@ function AppKing (dna) {     // ʕ⊙ᴥ⊙ʔ
 
 //..tion Service workers
 
-    this.WelcomeTeam = function ActivationProcedure (rule) {
+    this.WelcomeTeam = function ActivationProcedure (codex) {
         for(let anyone in this.team) {
             let lord = this.team[anyone];
             if (lord.is.lord) this.WelcomeLord(lord)
         }
+        this.king.report('-x- queen welcome');
         return this;
     }
     this.WelcomeLord = function ActivationProcedure (lord) {
-        this[lord.name] = FNA;
-        this.Delegator(lord).report('- app.'+lord.name+'()');
+        this[lord.name] = this.do;
+        this.Delegator(lord).report({hi:lord.name});
         return this;
     }
-    this.Ribosome = function ReadRequest (rule) {
+    this.Ribosome    = function DecodeRequest (codex) {
         this.king.report('-x- some ribosome');
         return this;
     }
 
 //..tion Pending
 
-    this.SilentMeeting = function ActivateDelegators (rules) {
+    this.SilentMeeting = function ActivateDelegators (codex) {
         const meet = this.lords;
         let   count_them = 0;
         for (let name in meet) if (meet[name].is.lord) {
@@ -129,26 +125,24 @@ function AppKing (dna) {     // ʕ⊙ᴥ⊙ʔ
 
 //..tion Summary (codex)
 
-    this.is.king      = true;
-    this.do           = this.do; // belive in avant garde
-    this.king         = this;
+    this.do   = this.do; // belive in avant garde
+    this.king = this;
+    let ready = this.is.your ; this.is[ready] = true ;
 
-//..tion end
+//..tion End
 }
+function LordTemplate (dna,rna) {
 
-
-// lords
-
-function lordTemplate (dna) {    // ʕ⊙ᴥ⊙ʔ
-                               dna = dna||DNA;
-                              for(favor in dna)
-                          this[favor] = dna[favor];
+            // ʕ⊙ᴥ⊙ʔ
+         dna = dna||DNA;
+        for(favor in dna)
+    this[favor] = dna[favor];
 
 //..tion Description (codex)
 
-    this.name         ='xoxox_template';
-    this.about        ='xoxox_description';
-    this.is.lord      = false; // not yet
+    this.is.your      ='lord'
+    this.role         ="task delegator";
+    this.name         = rna.name || dna.name || this.is.your;
 
 //..tion Service workers
 
@@ -160,9 +154,9 @@ function lordTemplate (dna) {    // ʕ⊙ᴥ⊙ʔ
 
 //..tion Summary (codex)
 
-    this.is.lord      = true;
-    this.do           = this.do;
-    this.king         = this.king || this;
+    this.do   = this.do;
+    this.king = this.king || false;
+    let ready = this.is.your ; this.is[ready] = true ;
 
 //..tion end
 }
@@ -170,7 +164,7 @@ function lordTemplate (dna) {    // ʕ⊙ᴥ⊙ʔ
 
 
 
-function lordStatus(dna) {
+function lordStatus(dna,rna) {
     //*/ noble blastula ʕ⊙ᴥ⊙ʔ
     for ( nucleod in dna ) this[nucleod] = dna[nucleod];
     this.name = 'status';
@@ -317,39 +311,6 @@ function lordMutate(dna) {
 
 //*/// ======================================================
 // pending
-
-testing = {};
-testing.checklist = [];
-testing.checklist.push( false || 'chosen one' );
-
-//*/// t
-testing.checklist.push(
-    app
-    && typeof(app.is) === 'object'
-    && typeof(app.do) === 'function'
-    || 'broken life'
-);
-//*///
-
-//*/// t
-//app.do(3);app.do('bs');app.do(false);
-testing.checklist.push(
-    app.nucleus.join('') === '3bs' || 'broken nucleus'
-);
-//*///
-
-//*///
-
-testing.report = function () {
-    let report = this.checklist.filter( x=> x !== true )
-    console.group('ʕ⊙ᴥ⊙ʔ testing report')
-        console.table(report)
-        console.table(app, ["Value","name","length"])
-    console.groupEnd();
-}
-
-// console.log('- testing.report()');
-
 
 
 //*/// EOF
