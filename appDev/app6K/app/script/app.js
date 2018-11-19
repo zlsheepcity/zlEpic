@@ -124,7 +124,7 @@ function lordStatus(dna) {
 
 //# service workers
 
-    this.status = function TestResult (target) {
+    this.status = function GetCurrentState (target) {
 
         const status = target || this;
 
@@ -200,7 +200,7 @@ function lordReport(dna) {
         if (message) { console.log(message); return this; }
 
         //*/// Group reportage
-        console.group('ʕ⊙ᴥ⊙ʔ Status report');
+        console.group('Status report');
         console.log(this);
         console.log( '- checking status ...');
         let fine = this.king.status(this);
@@ -224,10 +224,7 @@ function lordReport(dna) {
 }
 
 
-
 function lordMutate(dna) {
-//# initialization
-
     //*/ noble blastula ʕ⊙ᴥ⊙ʔ
     for ( nucleod in dna ) this[nucleod] = dna[nucleod];
     this.name = 'mutate';
@@ -235,15 +232,54 @@ function lordMutate(dna) {
     this.do   =  this.do   || function(dna){return this};
     //*/
 
+    //*/// I'm the lord
+    this.is.lord = false; // not yet
+    this.description = "modify element class";
+    //*///
+
+//# service workers
+
+    this.mutate = function ChangeClass (dna) {
+        
+    };
+
 //# summary
 
     //*/// --- ʕ⊙ᴥ⊙ʔ
+    this.do      = this.mutate;
+    this.king    = this;
     this.is.lord = true;
     //*///
 }
 
 
-//*/ initial testing
+function lordTemplate(dna) {
+    //*/ noble blastula ʕ⊙ᴥ⊙ʔ
+    for ( nucleod in dna ) this[nucleod] = dna[nucleod];
+    this.name = 'xoxox_name';
+    this.is   =  this.is   || {};
+    this.do   =  this.do   || function(dna){return this};
+    //*/
+
+    //*/// I'm the lord
+    this.is.lord = false; // not yet
+    this.description = "xoxox_explain_meaning";
+    //*///
+
+//# service workers
+
+//# summary
+
+    //*/// --- ʕ⊙ᴥ⊙ʔ
+    this.do      = this.do;
+    this.king    = this;
+    this.is.lord = true;
+    //*///
+}
+
+
+//*/// ======================================================
+// pending
 
 testing = {};
 testing.checklist = [];
@@ -275,7 +311,8 @@ testing.report = function () {
     console.groupEnd();
 }
 
-console.log('- testing.report()');
+// console.log('- testing.report()');
 
 
-//*/ EOF
+
+//*/// EOF
