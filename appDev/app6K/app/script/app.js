@@ -55,7 +55,7 @@ app//dev
 
 function AppKing (dna,rna) {
 
-            // ʕ⊙ᴥ⊙ʔ
+           // ʕ⊙ᴥ⊙ʔ
          dna = dna||DNA;
         for(favor in dna)
     this[favor] = dna[favor];
@@ -97,7 +97,9 @@ function AppKing (dna,rna) {
     }
     this.WelcomeLord = function ActivationProcedure (lord) {
         this[lord.name] = this.do;
-        this.Delegator(lord).report({hi:lord.name});
+        this
+            .Delegator(lord)
+            .report({hi:lord.name,the:'lord'});
         return this;
     }
     this.Ribosome    = function DecodeRequest (codex) {
@@ -133,7 +135,7 @@ function AppKing (dna,rna) {
 }
 function LordTemplate (dna,rna) {
 
-            // ʕ⊙ᴥ⊙ʔ
+           // ʕ⊙ᴥ⊙ʔ
          dna = dna||DNA;
         for(favor in dna)
     this[favor] = dna[favor];
