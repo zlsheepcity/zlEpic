@@ -41,9 +41,7 @@ app//setup                            //  2018.11.19
 //*///
 
 app//dev
-    .do(77)
     .report('ʕ⊙ᴥ⊙ʔ Welcome King')
-    .report()
 ;// .end
 
 
