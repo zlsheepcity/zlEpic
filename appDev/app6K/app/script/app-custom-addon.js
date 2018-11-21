@@ -1,5 +1,40 @@
-const q  = console.log
-const qt = console.table
+function QueenDev (dna,rna = {name:'queenDev'}) {
+
+           // ʕ⊙ᴥ⊙ʔ
+         dna = dna||DNA;
+        for(favor in dna)
+    this[favor] = dna[favor];
+
+//..tion Description (codex)
+
+    this.is.your      ='queen'
+    this.role         ="js dev helpers";
+    this.name         = rna.name || dna.name || this.is.your ;
+
+
+//..tion Connection
+
+    this.Welcome = function JoinConnect () {
+        //this.is.happy = true;
+        return this.WakeUp();
+    };
+    this.WakeUp = function InitialValues (codex) {
+        window.q    = console.log;
+        window.qt   = console.table;
+        return this;
+    }
+
+//..tion Summary (codex)
+
+    this.do   = this.do;
+    //let ready = this.is.your ; this.is[ready] = true ;
+
+//..tion end
+}
+
+//const q  = console.log
+//const qt = console.table
+app.Queen( new QueenDev(DNA,{name:'queenDev'}) );
 q(' ※ ※ ※ ');
 
 function WorldLand (dna,rna) {

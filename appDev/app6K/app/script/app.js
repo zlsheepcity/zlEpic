@@ -65,6 +65,7 @@ function AppKing (dna,rna) {
     this.name         = rna.name || dna.name || this.is.your ;
     this.seed         = this.seed || [];
     this.team         = {};
+    this.chamber      = {};
     this.el           = this.do;
     this.report       = this.do;
 
@@ -78,9 +79,18 @@ function AppKing (dna,rna) {
         return this;
     }
     this.Welcome   = function RestartProcedure (rna) {
-        app.WelcomeTeam();
-        app.Ribosome();
+        this//WelcomeProcess
+            .WelcomeTeam()
+            .Ribosome()
+        ;
         return this;
+    }
+    this.Queen     = function TouchQueen (Queen) {
+        //if (Queen.is.king) return this.report('- touch queen ').report(Queen);
+        if ( typeof(Queen)==='string' ) return this.report('- touch queen ' + Queen);
+        Queen.king = this;
+        this.chamber[Queen.name] = Queen;
+        return Queen.Welcome(Queen.king);
     }
 
 //..tion Service workers
