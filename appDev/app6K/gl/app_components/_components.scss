@@ -1,0 +1,78 @@
+/*
+    app grid system
+    v2018.11.21
+
+    .grid - main text collumn with sidenotes
+*/
+
+$dim:               0.8rem;
+$margin-def:        2.4rem;
+$screenForArticleLayout: $screenNotTablet;
+$screenNotArticleLayout: $screenForTablet;
+
+$grid_formula--base:
+    unquote(" [full-start merge-start overmain-start main-start aside-start] ")
+        auto
+    unquote(" [full-end merge-end overmain-end main-end aside-end] ");
+
+%grid_layout--base {
+    display: grid;
+    grid-auto-rows: min-content;
+    grid-auto-flow: row;
+    grid-template-columns: $grid_formula--base;
+    align-items: start;
+    grid-gap: $margin-def 0;
+}
+
+$grid_formula--markup:
+    unquote(" [full-start merge-start overmain-start] ")
+        $margin-def
+            unquote(" [main-start aside-start] ")
+                auto
+            unquote(" [main-end aside-end] ")
+        $margin-def
+    unquote(" [full-end merge-end overmain-end] ");
+
+%grid_layout-for-markup {
+    @extend %grid_layout--base;
+    grid-template-columns: $grid_formula--markup;
+}
+
+$grid_formula--article:
+    unquote(" [full-start] ")
+        minmax(0,1fr)
+            unquote(" [merge-start overmain-start] ")
+                $margin-def
+                    unquote(" [main-start] ")
+                        minmax( 0, 64rem )
+                    unquote(" [main-end] ")
+                $margin-def
+            unquote(" [overmain-end] ")
+                $margin-def
+                    unquote(" [aside-start] ")
+                        26rem
+                    unquote(" [aside-end] ")
+                $margin-def
+            unquote(" [merge-end] ")
+        minmax(0,1fr)
+    unquote(" [full-end] ");
+
+%grid_layout-for-article {
+    @extend %grid_layout--base;
+    grid-template-columns: $grid_formula--markup;
+    @media ($screenForArticleLayout) {
+        grid-template-columns: $grid_formula--article;
+    }
+}
+
+.layout-for-article {
+    @extend %grid_layout-for-article;
+    * {
+        grid-column: main;
+        align-self: stretch;
+        @supports (grid-gap:$margin-def) {
+            margin-top: 0;
+            margin-bottom: 0;
+        }
+    }
+}

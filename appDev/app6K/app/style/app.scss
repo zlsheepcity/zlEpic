@@ -4,16 +4,24 @@
 
 @import "app_core/settings.scss";
 @import "app_core/constructor.scss";
+@import "app_core/html-reset.scss";
 
 // interface components
 
 @import "app_components/_workers.scss";
-@import "app_components/layout-screen.scss";
+@import "app_components/_workers-dev.scss";
+
+@import "app_components/layout-body-wrap.scss";
+@import "app_components/layout-grid.scss";
+@import "app_components/layout-fullscreen.scss";
 @import "app_components/sidebar.scss";
 
-// design
 
-// ...
+
+
+// removed
+
+@import "app_components/layout-screen.scss";
 
 // ordnung
 

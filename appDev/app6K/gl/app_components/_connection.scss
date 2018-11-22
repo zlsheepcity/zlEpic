@@ -1,19 +1,15 @@
-// colors
+/* ------------------------------------ overwrite old design */
 
-$color_main_back:  white;
-$color_main_front: black;
+body.screen:before {display:none}
 
-// slices
 
-$z-index-sidebar:                    3;
-$z-index-shadowOverlay:              2;
 
-// paddings
 
-$dim:         0.8rem;
-$margin-def:  2.4rem;
-$margin-less: 0.75*$margin-def;
-$margin-half: 0.50*$margin-def;
+
+
+
+
+
 
 /* ------------------------------------ screen sizes */
 
@@ -40,15 +36,5 @@ $screenForTablet:   "max-width: #{$screenMaxSizeForTablet}";
 $screenNotTablet:   "min-width: #{$screenMaxSizeForTablet + 1}";
 $screenForMobile:   "max-width: #{$screenMaxSizeForMobile}";
 $screenNotMobile:   "min-width: #{$screenMaxSizeForMobile + 1}";
-
-/**/
-
-
-/* ------------------------------------ system colors */
-
-$color_bgRed:    hsla(  1, 66%, 84%,   1);
-$color_bgGreen:  hsla( 78, 49%, 83%,   1);
-$color_bgBlue:   hsla(177, 42%, 76%,   1);
-$color_shadow:   rgba(0,0,0,0.1);
 
 /**/

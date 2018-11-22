@@ -1,32 +1,24 @@
-/* ==============================================================
- # Describe HTML & BODY
-============================================================== */
-
-// 2018.11.22
-// changet → .body-wrap
-
-
 /* ------------------------------------ body box model */
 
-.screen {
+.body-wrap {
     min-height: 100%;
     margin-top: 0;
     margin-bottom: 0;
     display: flex;
     flex-direction: column;
 }
-.screen-header {
+.body-wrap-header {
     position: sticky;
     top: 0;
     background-color: $color_main_back;
 }
-.screen-footer {
+.body-wrap-footer {
     margin-top: auto;
 }
 
 // browser tribute
 
-html {
+html.has-body-wrap {
     @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
         display: flex;
         flex-direction: column;
@@ -34,6 +26,3 @@ html {
 }
 
 /* */
-
-
-/* EOF: layout-screen */

@@ -1,0 +1,180 @@
+/*
+    app grid system
+    v2018.11.23
+*/
+
+//* ------------------------------------ code constructor
+
+//$margin-def: 2.4rem;
+//$margin-less: 0.75*$margin-def;
+$grid-settings--main-maximum: 64rem;
+$grid-settings--aside:        26rem;
+
+$screenForArticleLayout: $screenNotTablet;
+$screenNotArticleLayout: $screenForTablet;
+
+
+$grid_formula--base:
+    unquote(" [full-start merge-start overmain-start main-start aside-start] ")
+        auto
+    unquote(" [full-end merge-end overmain-end main-end aside-end] ");
+
+$grid_formula--markup:
+    unquote(" [full-start merge-start overmain-start] ")
+        $margin-def
+            unquote(" [main-start aside-start] ")
+                auto
+            unquote(" [main-end aside-end] ")
+        $margin-def
+    unquote(" [full-end merge-end overmain-end] ");
+
+$grid_formula--article:
+    unquote(" [full-start] ")
+        minmax(0,1fr)
+            unquote(" [merge-start overmain-start] ")
+                $margin-def
+                    unquote(" [main-start] ")
+                        minmax( 0, $grid-settings--main-maximum )
+                    unquote(" [main-end] ")
+                $margin-def
+            unquote(" [overmain-end] ")
+                $margin-def
+                    unquote(" [aside-start] ")
+                        $grid-settings--aside
+                    unquote(" [aside-end] ")
+                $margin-def
+            unquote(" [merge-end] ")
+        minmax(0,1fr)
+    unquote(" [full-end] ");
+
+$grid_formula--article-left-wrapped:
+    unquote(" [full-start] ")
+        minmax(0,1fr)
+            unquote(" [merge-start overmain-start aside-start] ")
+                $margin-def
+                    unquote(" [main-start] ")
+                        minmax( 0, $grid-settings--main-maximum )
+                    unquote(" [main-end] ")
+                $margin-def
+            unquote(" [full-end merge-end overmain-end aside-end] ");
+
+$grid_formula--article-right-wrapped:
+    unquote(" [full-start merge-start overmain-start] ")
+                $margin-def
+                    unquote(" [main-start] ")
+                        minmax( 0, $grid-settings--main-maximum )
+                    unquote(" [main-end] ")
+                $margin-def
+            unquote(" [overmain-end] ")
+                $margin-def
+                    unquote(" [aside-start] ")
+                        $grid-settings--aside
+                    unquote(" [aside-end] ")
+                $margin-def
+            unquote(" [merge-end] ")
+        minmax(0,1fr)
+    unquote(" [full-end] ");
+
+%grid_layout--base {
+    display: grid;
+    grid-auto-rows: min-content;
+    grid-auto-flow: row;
+    grid-template-columns: $grid_formula--base;
+    align-items: start;
+    grid-gap: $margin-less 0;
+    * { grid-column: main; }
+    * { @supports (grid-gap:$margin-def) { margin-top:0; margin-bottom:0; } }
+}
+%grid_layout-for-markup {
+    @extend %grid_layout--base;
+    grid-template-columns: $grid_formula--markup;
+}
+%grid_layout-for-article {
+    @extend %grid_layout--base;
+    grid-template-columns: $grid_formula--markup;
+    @media ($screenForArticleLayout) {
+        grid-template-columns: $grid_formula--article;
+    }
+}
+
+//* ------------------------------------ grid templates
+
+.layout-for-markup {   @extend %grid_layout-for-markup; }
+.layout-for-article {  @extend %grid_layout-for-article; }
+
+//* ------------------------------------ grid components
+
+.use-grid {
+    grid-column: full;
+    @extend %grid_layout-for-article;
+}
+.grid-leftside {
+    grid-column: full-start / overmain-end;
+    @extend %grid_layout-for-markup;
+    @media ($screenForArticleLayout) {
+        grid-template-columns: $grid_formula--article-left-wrapped;
+    }
+}
+.grid-rightside {
+    grid-column: overmain-start / full-end;
+    @extend %grid_layout-for-markup;
+    @media ($screenForArticleLayout) {
+        grid-template-columns: $grid_formula--article-right-wrapped;
+    }
+}
+.layer {
+    grid-column: full;
+}
+.block {
+    grid-column: overmain;
+    @extend .layout-for-markup;
+}
+.block-box {
+    @extend .block;
+    padding-top:    $margin-less;
+    padding-bottom: $margin-less;
+}
+
+
+
+//* ------------------------------------ grid components
+
+/*
+.layer {
+    grid-column: full;
+}
+.layer-row {
+    @extend %grid_layout--base;
+    grid-template-columns: inherit;
+    grid-column: full;
+}
+.layer-block {
+    @extend %grid_layout-for-markup;
+    grid-column: full;
+}
+
+.block {
+    @extend %grid_layout-for-markup;
+    grid-column: overmain;
+}
+.block-row {
+    @extend %grid_layout-for-markup;
+    grid-column: merge;
+}
+.block-left {
+    @extend %grid_layout-for-markup;
+    @media ($screenForArticleLayout) {
+        grid-template-columns: $grid_formula--article-left-wrapped;
+    }
+    grid-column: full-start / overmain-end;
+}
+.block-right {
+    @extend %grid_layout-for-markup;
+    @media ($screenForArticleLayout) {
+        grid-template-columns: $grid_formula--article-right-wrapped;
+    }
+    grid-column: overmain-start / full-end;
+}
+*/
+
+/* ------------------------------------ eof grid */

@@ -1,0 +1,55 @@
+/* ------------------------------------ layout screen */
+/*
+```html
+    <section class="fullscreen">
+        <header class="fullscreen-top"></header>
+        <section class="fullscreen-body"></section>
+        <footer class="fullscreen-bottom"></footer>
+    </section>
+```
+*/
+.fullscreen {
+
+    // is fullscreen box;
+    display:    block;
+    width:      100%;
+    min-height: 100vh;
+
+    // has illustrated background
+    background-size:     cover;
+    background-repeat:   no-repeat;
+    background-position: center center;
+
+    // has fixed background
+    &.has-fixed-background:before {
+        position: fixed;
+        z-index:  -1;
+        top: 0; right: 0; bottom: 0; left: 0;
+        pointer-events: none;
+        background-size:     cover;
+        background-repeat:   no-repeat;
+        background-position: center center;
+    }
+
+    // has rows
+    display:         flex;
+    flex-direction:  column;
+    justify-content: space-between;
+    align-content:   stretch;
+    align-items:     stretch;
+    .fullscreen-top    { order: 1; flex-grow: 0; }
+    .fullscreen-body   { order: 2; flex-grow: 2; }
+    .fullscreen-bottom { order: 3; flex-grow: 0; }
+
+    // contentbox--xy-centered
+    .fullscreen-body,
+    .fullscreen-bottom {
+        display:         flex;
+        justify-content: center;
+        align-items:     center;
+        align-content:   center;
+    }
+
+}
+
+/* */

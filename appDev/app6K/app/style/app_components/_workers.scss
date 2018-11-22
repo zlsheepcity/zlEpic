@@ -1,5 +1,5 @@
 /* ==============================================================
- # Workers are used with other components
+ # used by components
 ============================================================== */
 
 // settings
@@ -37,13 +37,6 @@ $hover-item-outline-design:          1rem solid hsla(177, 42%, 76%, 0.25);
     background-color: black;
     opacity: 0;
 }
-/**/
-
-//* ------------------------------------ support features
-
-// explain js actions with html
-[content-action] { display: none; }
-
 /**/
 
 /* EOF: workers */

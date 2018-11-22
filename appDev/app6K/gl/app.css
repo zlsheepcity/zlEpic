@@ -1,0 +1,181 @@
+/* ------------------------------------ overwrite old design */
+body.screen:before {
+  display: none; }
+
+/* ------------------------------------ screen sizes */
+/**/
+/*
+    app grid system
+    v2018.11.21
+
+    .grid - main text collumn with sidenotes
+*/
+.layout-for-article {
+  display: grid;
+  grid-auto-rows: min-content;
+  grid-auto-flow: row;
+  grid-template-columns:  [full-start merge-start overmain-start main-start aside-start]  auto  [full-end merge-end overmain-end main-end aside-end] ;
+  align-items: start;
+  grid-gap: 2.4rem 0; }
+
+.layout-for-article {
+  grid-template-columns:  [full-start merge-start overmain-start]  2.4rem  [main-start aside-start]  auto  [main-end aside-end]  2.4rem  [full-end merge-end overmain-end] ; }
+  @media (min-width: 901px) {
+    .layout-for-article {
+      grid-template-columns:  [full-start]  minmax(0, 1fr)  [merge-start overmain-start]  2.4rem  [main-start]  minmax(0, 64rem)  [main-end]  2.4rem  [overmain-end]  2.4rem  [aside-start]  26rem  [aside-end]  2.4rem  [merge-end]  minmax(0, 1fr)  [full-end] ; } }
+
+.layout-for-article * {
+  grid-column: main;
+  align-self: stretch; }
+  @supports (grid-gap: 2.4rem) {
+    .layout-for-article * {
+      margin-top: 0;
+      margin-bottom: 0; } }
+
+.fullscreen {
+  display: block;
+  width: 100%;
+  min-height: 100vh;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-content: stretch;
+  align-items: stretch; }
+  .fullscreen .fullscreen-top,
+  .fullscreen .fullscreen-bottom {
+    flex-grow: 0; }
+  .fullscreen .fullscreen-body {
+    flex-grow: 2; }
+  .fullscreen .fullscreen-body,
+  .fullscreen .fullscreen-bottom {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center; }
+
+.dev-panel {
+  background-color: rgba(14, 20, 47, 0.7);
+  color: white;
+  font-size: 2em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center; }
+
+.dev-item {
+  background-color: rgba(14, 20, 47, 0.7);
+  color: white;
+  font-size: 2em;
+  padding: 0 0.4em;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center; }
+
+.dev-box {
+  background-color: rgba(14, 20, 47, 0.7);
+  color: white;
+  font-size: 2em;
+  max-width: 36rem;
+  min-height: 18rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center; }
+
+html {
+  font-size: 10px; }
+
+.text-as-label {
+  font-size: 1.3333rem;
+  line-height: 1.6rem; }
+  .text-as-label.block {
+    margin-bottom: 1.6rem; }
+
+.block {
+  margin-bottom: 3.2rem; }
+
+.GL-welcome-screen {
+  background-color: black;
+  color: white;
+  background-image: url(https://test.gaminglicensing.com/images/main-bg.jpg); }
+  .GL-welcome-screen .fullscreen-top {
+    min-height: 120px; }
+
+.GL-welcome-content {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: stretch;
+  align-content: center; }
+  .GL-welcome-content, .GL-welcome-content > * {
+    margin: 1.6rem; }
+  .GL-welcome-content h1, .GL-welcome-content h2 {
+    margin: 0;
+    margin-bottom: 0.25em;
+    font-size: 1.5em; }
+  .GL-welcome-content p {
+    margin: 0; }
+  .GL-welcome-content a {
+    color: #00b0f0;
+    text-decoration: underline; }
+
+.GL-welcome-links {
+  max-width: 42rem;
+  background-color: rgba(14, 20, 47, 0.7);
+  padding: 3.2rem;
+  padding-top: 2.4rem;
+  font-size: 1.6rem; }
+
+.GL-welcome-form {
+  max-width: 38rem;
+  background-color: rgba(14, 20, 47, 0.7);
+  padding: 3.2rem; }
+
+.GL-form .block.text-as-label {
+  padding: 0 0.8rem; }
+.GL-form .form-line-f + .form-line-f {
+  border-top: 1px solid rgba(0, 0, 0, 0.2); }
+.GL-form .form-fieldset {
+  display: block;
+  border: 0;
+  padding: 0;
+  margin: 0;
+  background-color: white;
+  border-radius: 4px; }
+.GL-form .form-css-textarea,
+.GL-form .form-css-email,
+.GL-form .form-css-text {
+  display: block;
+  background-color: transparent;
+  border: 0;
+  margin: 0;
+  border-radius: 0;
+  padding: 0 1rem;
+  color: #232c56;
+  font-family: inherit;
+  font-weight: 500; }
+.GL-form .form-css-email,
+.GL-form .form-css-text {
+  vertical-align: middle;
+  width: 100%;
+  height: 3.2rem;
+  font-size: 1.3333rem;
+  line-height: 1.6rem; }
+.GL-form .form-css-textarea {
+  padding: 1rem;
+  height: 8rem;
+  font-size: 1.3333rem;
+  line-height: 1.6rem; }
+.GL-form .form-line-submit {
+  margin-top: 1.6rem; }
+.GL-form .form-css-submit {
+  width: 100%;
+  height: auto; }
+
+.headerMain {
+  background-color: rgba(255, 255, 255, 0.75); }
