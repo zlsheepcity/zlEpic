@@ -53,7 +53,7 @@ $margin-half: $margin-half;
     // column layout
     display: flex;
     flex-direction: row;
-    flex-wrap: nowrap;
+    flex-wrap: wrap;
     justify-content: center;
     align-items: stretch;
     align-content: center;
@@ -67,7 +67,7 @@ $margin-half: $margin-half;// $margin-def / 2
     // column layout
     display: flex;
     flex-direction: row;
-    flex-wrap: nowrap;
+    flex-wrap: wrap;
     justify-content: center;
     align-items: stretch;
     align-content: center;
@@ -96,6 +96,188 @@ $margin-half: $margin-half;// $margin-def / 2
     font-size: 0.8em;
     line-height: 1.2;
 }
+
+
+$margin-def:  $margin-def; // 2.4rem
+$margin-less: $margin-less;// 1.6rem
+.logo-matrix-demo-try {
+
+    // has grid-system
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-auto-rows: min-content;
+    grid-gap: 1px;
+    padding:  $margin-def;
+
+    // card structure
+    .card {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: stretch;
+    }
+    .card-picture {
+        background-size:     cover;
+        background-repeat:   no-repeat;
+        background-position: center center;
+    }
+    .card-text {
+    }
+
+    // special menu card
+    .card.menu {
+        grid-column: -2;
+        grid-row:    -1;
+    }
+
+    // card design
+    .card {
+        background-color: white;
+        color:black;
+    }
+    .card-picture {
+        padding: $margin-def 25% $margin-less 25%;
+        background-color: white;
+        color:            black;
+    }
+    .card-text {
+        padding: $margin-def;
+        padding-top: 0;
+        font-size: 0.8em;
+        line-height: 1.33333;
+    }
+
+}
+
+
+$margin-def:  $margin-def; // 2.4rem
+$margin-less: $margin-less;// 1.6rem
+$color--LogoMatrix-active: hsla(0, 0%, 66%, 1);
+.logo-matrix {
+
+    // grid-system
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+    grid-template-columns: min-content;
+    grid-auto-flow: column;
+    grid-gap: 1px;
+    overflow: auto;
+    padding:  $margin-def;
+
+    // card
+    .card {
+
+        // default size settings
+        width: 80vw;
+        max-width: 42em;
+
+        font-size: 1rem;
+        line-height: 1.6rem;
+
+        // box model
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: stretch;
+        align-content: stretch;
+
+    }
+    .card-picture {
+        order: 2;
+        flex-shrink: 0;
+
+        // size settings
+        width: 10rem;
+        padding: 1rem;
+
+        // box--xy-centered
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        align-content: center;
+    }
+    .card-text {
+        order: 1;
+        flex-grow: 2;
+
+        // box--y-centered
+        align-self: stretch;
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: center;
+        align-content: center;
+
+        // background decoration
+        transition: background 200ms ease-out;
+        background-color: transparent;
+        padding: 1rem 2.4rem 1rem 1.6rem;
+        clip-path: polygon(
+            0 -1px,
+            calc( 100% - 2.4rem ) -1px,
+            100% 50%,
+            calc( 100% - 2.4rem ) 100%,
+            0 100%
+        );
+    }
+    .link {
+        display: inline-block;
+        border-bottom: 1px solid $color--LogoMatrix-active;
+        padding-right: 0.2em;
+
+        font-weight: 600;
+        font-size: 1.4em;
+        line-height: 1.6rem;
+    }
+
+    // hover card
+    .card:hover {
+        .card-text {
+            background-color: $color--LogoMatrix-active;
+            transition-timing-function: ease-in;
+        }
+    }
+
+    // scrollbar design
+    &::-webkit-scrollbar {
+        height: 2.4rem;
+    }
+    &::-webkit-scrollbar-track {
+        -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+    }
+    &::-webkit-scrollbar-thumb {
+      background-color: $color--LogoMatrix-active;
+      outline: 1px solid $color--LogoMatrix-active;
+    }
+
+}
+// design template
+.logo-matrix {
+    .card {
+        background-color: white;
+        color: black;
+    }
+    .card:hover .card-text {
+        background-color:    hsla(171, 55%, 71%, 1);
+    }
+    .link {
+        border-bottom-color: hsla(171, 55%, 71%, 1);
+    }
+
+    // scrollbar design
+    &::-webkit-scrollbar {
+        height: 2.4rem;
+    }
+    &::-webkit-scrollbar-track {
+        -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+    }
+    &::-webkit-scrollbar-thumb {
+      background-color:  hsla(171, 55%, 71%, 1);
+      outline: 1px solid hsla(171, 55%, 71%, 1);
+    }
+}
+
 
 
 

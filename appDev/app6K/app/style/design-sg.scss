@@ -1,0 +1,19 @@
+.design-sg {
+
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+
+    .logo-matrix {
+        background-color:      hsla(201, 22%, 46%, 1);
+        color:                 white;
+        .card.menu {
+            background-color: transparent;
+            .card-text {
+                font-size: inherit;
+                color: inherit;
+            }
+        }
+    }
+
+}
+

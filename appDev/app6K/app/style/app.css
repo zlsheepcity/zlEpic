@@ -203,7 +203,7 @@ h4 {
 .welcome-boxes-template {
   display: flex;
   flex-direction: row;
-  flex-wrap: nowrap;
+  flex-wrap: wrap;
   justify-content: center;
   align-items: stretch;
   align-content: center; }
@@ -213,7 +213,7 @@ h4 {
 .welcome-boxes-layout {
   display: flex;
   flex-direction: row;
-  flex-wrap: nowrap;
+  flex-wrap: wrap;
   justify-content: center;
   align-items: stretch;
   align-content: center; }
@@ -234,6 +234,111 @@ h4 {
   max-width: 28em;
   font-size: 0.8em;
   line-height: 1.2; }
+
+.logo-matrix-demo-try {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-auto-rows: min-content;
+  grid-gap: 1px;
+  padding: 2.4rem; }
+  .logo-matrix-demo-try .card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: stretch; }
+  .logo-matrix-demo-try .card-picture {
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center; }
+  .logo-matrix-demo-try .card.menu {
+    grid-column: -2;
+    grid-row: -1; }
+  .logo-matrix-demo-try .card {
+    background-color: white;
+    color: black; }
+  .logo-matrix-demo-try .card-picture {
+    padding: 2.4rem 25% 1.6rem 25%;
+    background-color: white;
+    color: black; }
+  .logo-matrix-demo-try .card-text {
+    padding: 2.4rem;
+    padding-top: 0;
+    font-size: 0.8em;
+    line-height: 1.33333; }
+
+.logo-matrix {
+  display: grid;
+  grid-template-rows: 1fr 1fr 1fr 1fr;
+  grid-template-columns: min-content;
+  grid-auto-flow: column;
+  grid-gap: 1px;
+  overflow: auto;
+  padding: 2.4rem; }
+  .logo-matrix .card {
+    width: 80vw;
+    max-width: 42em;
+    font-size: 1rem;
+    line-height: 1.6rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: stretch;
+    align-content: stretch; }
+  .logo-matrix .card-picture {
+    order: 2;
+    flex-shrink: 0;
+    width: 10rem;
+    padding: 1rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    align-content: center; }
+  .logo-matrix .card-text {
+    order: 1;
+    flex-grow: 2;
+    align-self: stretch;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    align-content: center;
+    transition: background 200ms ease-out;
+    background-color: transparent;
+    padding: 1rem 2.4rem 1rem 1.6rem;
+    clip-path: polygon(0 -1px, calc( 100% - 2.4rem ) -1px, 100% 50%, calc( 100% - 2.4rem ) 100%, 0 100%); }
+  .logo-matrix .link {
+    display: inline-block;
+    border-bottom: 1px solid #a8a8a8;
+    padding-right: 0.2em;
+    font-weight: 600;
+    font-size: 1.4em;
+    line-height: 1.6rem; }
+  .logo-matrix .card:hover .card-text {
+    background-color: #a8a8a8;
+    transition-timing-function: ease-in; }
+  .logo-matrix::-webkit-scrollbar {
+    height: 2.4rem; }
+  .logo-matrix::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3); }
+  .logo-matrix::-webkit-scrollbar-thumb {
+    background-color: #a8a8a8;
+    outline: 1px solid #a8a8a8; }
+
+.logo-matrix .card {
+  background-color: white;
+  color: black; }
+.logo-matrix .card:hover .card-text {
+  background-color: #8cded2; }
+.logo-matrix .link {
+  border-bottom-color: #8cded2; }
+.logo-matrix::-webkit-scrollbar {
+  height: 2.4rem; }
+.logo-matrix::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3); }
+.logo-matrix::-webkit-scrollbar-thumb {
+  background-color: #8cded2;
+  outline: 1px solid #8cded2; }
 
 .form-design--plains .form-item {
   flex-direction: row;
@@ -378,6 +483,8 @@ h4 {
 
 .break-grid {
   grid-column: full; }
+  .break-grid * {
+    grid-column: auto; }
 
 .grid-leftside {
   grid-column: full-start / overmain-end; }
@@ -542,6 +649,18 @@ h4 {
 .design-gl input:focus + label,
 .design-gl textarea:focus + label {
   color: #00658a; }
+
+.design-sg {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 500; }
+  .design-sg .logo-matrix {
+    background-color: #5b7d8f;
+    color: white; }
+    .design-sg .logo-matrix .card.menu {
+      background-color: transparent; }
+      .design-sg .logo-matrix .card.menu .card-text {
+        font-size: inherit;
+        color: inherit; }
 
 /* ==============================================================
  # Describe HTML & BODY

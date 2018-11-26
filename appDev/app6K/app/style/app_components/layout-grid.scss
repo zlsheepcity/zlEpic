@@ -116,6 +116,9 @@ $grid_formula--article-right-wrapped:
 }
 .break-grid {
     grid-column: full;
+    * {
+        grid-column: auto;
+    }
 }
 .grid-leftside {
     grid-column: full-start / overmain-end;
