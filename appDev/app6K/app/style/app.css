@@ -1,57 +1,45 @@
+/* app scss constructor - mixins and templates*/
+/* 2018.11.27 */
+/* EOF: app scss constructor */
+/* Required settings   */
+/* app6002, 2018.11.23 */
 /* ------------------------------------ screen sizes */
-/**/
-/* ------------------------------------ system colors */
-/**/
-/* ------------------------------------ app constructor */
-/* EOF: app constructor */
-/*
-    base css 1003 Monica De Gennaro
-    v2018.11.23
-*/
-/* ------------------------------------ box model */
+/* EOF: Required settings */
+/* html base css 1004 */
+/* 2018.11.27 */
+/* ------------------------------------ required box model */
 *, *:before, *:after {
   box-sizing: inherit; }
 
 html {
-  box-sizing: border-box; }
+  box-sizing: border-box;
+  height: 100%; }
 
 html, body {
   margin: 0;
   padding: 0; }
 
-/* ------------------------------------ markup defaults */
-*, ::before, ::after {
-  background-repeat: no-repeat; }
+/* ------------------------------------ unit & font sizes */
+html {
+  font-size: 10px; }
 
-nav ul, nav ol {
-  padding: 0;
-  margin: 0;
-  list-style-type: none; }
+body {
+  font-size: 1.6rem;
+  line-height: 1.5; }
 
-details, article, aside, footer, header, nav, section, main {
-  display: block; }
+/* ------------------------------------ improve design & UX */
+html {
+  cursor: default; }
 
-figure, figcaption, fieldset, legend {
-  display: block;
-  margin: 0;
-  padding: 0;
-  border: 0;
-  white-space: normal; }
-
-summary {
-  display: list-item; }
+body {
+  overflow-y: scroll; }
 
 canvas {
   display: inline-block; }
 
-[hidden], template {
-  display: none; }
-
-/* ------------------------------------ content defaults */
 html {
   -ms-text-size-adjust: 100%;
-  -webkit-text-size-adjust: 100%;
-  cursor: default; }
+  -webkit-text-size-adjust: 100%; }
 
 body {
   text-rendering: optimizeLegibility;
@@ -61,99 +49,29 @@ a, area, button, input, label, select, summary, textarea, [tabindex] {
   -ms-touch-action: manipulation;
   touch-action: manipulation; }
 
-a {
-  background-color: transparent;
-  text-decoration: none;
-  color: inherit; }
-
-img, svg {
-  display: block;
-  border: none;
-  max-width: 100%; }
-
-audio, canvas, iframe, img, svg, video {
-  vertical-align: middle; }
-
-hr {
-  min-height: 3.2rem;
-  border: 0;
-  background: transparent;
-  box-shadow: none; }
-
-abbr[title] {
-  border-bottom: none;
-  text-decoration: underline;
-  text-decoration: underline dotted; }
-
-/* ------------------------------------ end of html base */
-/* ==============================================================
- # used by components
-============================================================== */
-.kliker {
-  -webkit-user-select: none;
-  /* Chrome all / Safari all */
-  -moz-user-select: none;
-  /* Firefox all */
-  -ms-user-select: none;
-  /* IE 10+ */
-  user-select: none;
-  /* Likely future */ }
-  .kliker:hover, .kliker:focus {
-    cursor: pointer;
-    outline: 1rem solid rgba(168, 220, 217, 0.25); }
-
-/**/
-.form-item, .form-textarea, .form-submit {
-  display: flex;
-  flex-direction: column;
-  flex-wrap: nowrap;
-  justify-content: flex-start;
-  align-items: stretch;
-  align-content: center; }
-  .form-item > *, .form-textarea > *, .form-submit > * {
-    order: 3; }
-  .form-item > label, .form-textarea > label, .form-submit > label {
-    order: 1; }
-  .form-item > input, .form-textarea > input, .form-submit > input {
-    order: 2; }
-
-label {
+/* ----------------- use semantic markup without standart design */
+article, section, header, footer, main, aside, nav, details {
   display: block; }
 
-input {
+template, [hidden] {
+  display: none; }
+
+summary {
+  display: list-item; }
+
+nav ul, nav ol {
+  padding: 0;
+  margin: 0;
+  list-style-type: none; }
+
+figure, figcaption, fieldset, legend {
   display: block;
-  width: 100%;
-  padding: 0.25em 1em; }
+  margin: 0;
+  padding: 0;
+  border: 0;
+  white-space: normal; }
 
-textarea {
-  display: block;
-  width: 100%;
-  padding: 1em;
-  resize: vertical; }
-
-button {
-  padding: 0.25em 1em; }
-
-/**/
-.has-shadow-overlay, .has-active-sidebar {
-  overflow: hidden; }
-  .has-shadow-overlay .screen-shadow-overlay, .has-active-sidebar .screen-shadow-overlay {
-    opacity: 0.8;
-    pointer-events: auto; }
-
-.screen-shadow-overlay {
-  position: fixed;
-  z-index: 2;
-  top: 0;
-  bottom: 0;
-  right: 0;
-  left: 0;
-  pointer-events: none;
-  background-color: black;
-  opacity: 0; }
-
-/**/
-/* EOF: workers */
+/* ------------------------------------ EOF: html base */
 html {
   font-size: 10px;
   line-height: 1; }
@@ -188,6 +106,34 @@ h4 {
     position: sticky;
     top: 0; }
 
+/* ------------------------------------ content defaults */
+a {
+  background-color: transparent;
+  text-decoration: none;
+  color: inherit; }
+
+img, svg {
+  display: block;
+  border: none;
+  max-width: 100%; }
+
+audio, canvas, iframe, img, svg, video {
+  vertical-align: middle; }
+
+hr {
+  min-height: 3.2rem;
+  border: 0;
+  background: transparent;
+  box-shadow: none; }
+
+abbr[title] {
+  border-bottom: none;
+  text-decoration: underline;
+  text-decoration: underline dotted; }
+
+/* ------------------------------------ end of html base */
+/* ------------------------------------ system colors */
+/**/
 .title {
   margin-top: -0.8rem;
   margin-bottom: -0.8rem; }
@@ -266,7 +212,7 @@ h4 {
     font-size: 0.8em;
     line-height: 1.33333; }
 
-.logo-matrix {
+.logo-matrix-exp2 {
   display: grid;
   grid-template-rows: 1fr 1fr 1fr 1fr;
   grid-template-columns: min-content;
@@ -274,7 +220,7 @@ h4 {
   grid-gap: 1px;
   overflow: auto;
   padding: 2.4rem; }
-  .logo-matrix .card {
+  .logo-matrix-exp2 .card {
     width: 80vw;
     max-width: 42em;
     font-size: 1rem;
@@ -284,7 +230,7 @@ h4 {
     justify-content: flex-start;
     align-items: stretch;
     align-content: stretch; }
-  .logo-matrix .card-picture {
+  .logo-matrix-exp2 .card-picture {
     order: 2;
     flex-shrink: 0;
     width: 10rem;
@@ -294,7 +240,7 @@ h4 {
     justify-content: center;
     align-items: center;
     align-content: center; }
-  .logo-matrix .card-text {
+  .logo-matrix-exp2 .card-text {
     order: 1;
     flex-grow: 2;
     align-self: stretch;
@@ -307,36 +253,36 @@ h4 {
     background-color: transparent;
     padding: 1rem 2.4rem 1rem 1.6rem;
     clip-path: polygon(0 -1px, calc( 100% - 2.4rem ) -1px, 100% 50%, calc( 100% - 2.4rem ) 100%, 0 100%); }
-  .logo-matrix .link {
+  .logo-matrix-exp2 .link {
     display: inline-block;
     border-bottom: 1px solid #a8a8a8;
     padding-right: 0.2em;
     font-weight: 600;
     font-size: 1.4em;
     line-height: 1.6rem; }
-  .logo-matrix .card:hover .card-text {
+  .logo-matrix-exp2 .card:hover .card-text {
     background-color: #a8a8a8;
     transition-timing-function: ease-in; }
-  .logo-matrix::-webkit-scrollbar {
+  .logo-matrix-exp2::-webkit-scrollbar {
     height: 2.4rem; }
-  .logo-matrix::-webkit-scrollbar-track {
+  .logo-matrix-exp2::-webkit-scrollbar-track {
     -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3); }
-  .logo-matrix::-webkit-scrollbar-thumb {
+  .logo-matrix-exp2::-webkit-scrollbar-thumb {
     background-color: #a8a8a8;
     outline: 1px solid #a8a8a8; }
 
-.logo-matrix .card {
+.logo-matrix-exp2 .card {
   background-color: white;
   color: black; }
-.logo-matrix .card:hover .card-text {
+.logo-matrix-exp2 .card:hover .card-text {
   background-color: #8cded2; }
-.logo-matrix .link {
+.logo-matrix-exp2 .link {
   border-bottom-color: #8cded2; }
-.logo-matrix::-webkit-scrollbar {
+.logo-matrix-exp2::-webkit-scrollbar {
   height: 2.4rem; }
-.logo-matrix::-webkit-scrollbar-track {
+.logo-matrix-exp2::-webkit-scrollbar-track {
   -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3); }
-.logo-matrix::-webkit-scrollbar-thumb {
+.logo-matrix-exp2::-webkit-scrollbar-thumb {
   background-color: #8cded2;
   outline: 1px solid #8cded2; }
 
@@ -432,6 +378,74 @@ h4 {
   align-content: center; }
 
 /**/
+/* ==============================================================
+ # used by components
+============================================================== */
+.kliker {
+  -webkit-user-select: none;
+  /* Chrome all / Safari all */
+  -moz-user-select: none;
+  /* Firefox all */
+  -ms-user-select: none;
+  /* IE 10+ */
+  user-select: none;
+  /* Likely future */ }
+  .kliker:hover, .kliker:focus {
+    cursor: pointer;
+    outline: 1rem solid rgba(168, 220, 217, 0.25); }
+
+/**/
+.form-item, .form-textarea, .form-submit {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-items: stretch;
+  align-content: center; }
+  .form-item > *, .form-textarea > *, .form-submit > * {
+    order: 3; }
+  .form-item > label, .form-textarea > label, .form-submit > label {
+    order: 1; }
+  .form-item > input, .form-textarea > input, .form-submit > input {
+    order: 2; }
+
+label {
+  display: block; }
+
+input {
+  display: block;
+  width: 100%;
+  padding: 0.25em 1em; }
+
+textarea {
+  display: block;
+  width: 100%;
+  padding: 1em;
+  resize: vertical; }
+
+button {
+  padding: 0.25em 1em; }
+
+/**/
+.has-shadow-overlay, .has-active-sidebar {
+  overflow: hidden; }
+  .has-shadow-overlay .screen-shadow-overlay, .has-active-sidebar .screen-shadow-overlay {
+    opacity: 0.8;
+    pointer-events: auto; }
+
+.screen-shadow-overlay {
+  position: fixed;
+  z-index: 2;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  pointer-events: none;
+  background-color: black;
+  opacity: 0; }
+
+/**/
+/* EOF: workers */
 /* ------------------------------------ body box model */
 .body-wrap {
   min-height: 100%;
@@ -661,6 +675,127 @@ h4 {
       .design-sg .logo-matrix .card.menu .card-text {
         font-size: inherit;
         color: inherit; }
+
+/* grid with cards */
+/* 2018.11.27 */
+/*
+
+# Use 1/2
+Horizontals cards in grid
+
+```css
+    div.logo-matrix
+        div
+        ...
+```
+
+# Use 2/2
+Fixed rows and side scroll
+
+```css
+    div.logo-matrix.has-scroll
+        div
+        ...
+```
+
+*/
+.logo-matrix {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: min-content;
+  grid-auto-flow: row;
+  grid-gap: 1rem;
+  padding: 2.4rem;
+  font-size: 1rem;
+  line-height: 1.6; }
+  .logo-matrix .card {
+    width: 100%;
+    max-width: 100%; }
+  .logo-matrix.has-scroll {
+    display: grid;
+    grid-template-columns: min-content;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+    grid-auto-flow: column;
+    overflow: auto; }
+    .logo-matrix.has-scroll .card {
+      width: 80vw;
+      max-width: 42em; }
+  .logo-matrix .card {
+    grid-column: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: stretch;
+    align-content: stretch; }
+  .logo-matrix .card-picture {
+    order: 2;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    align-content: center; }
+  .logo-matrix .card-text {
+    order: 1;
+    flex-grow: 2;
+    align-self: stretch;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    align-content: center; }
+  .logo-matrix .card-picture {
+    width: 10rem;
+    padding: 1rem 1.6rem; }
+  .logo-matrix .card-text {
+    padding: 1rem 1.6rem; }
+  .logo-matrix .card-text {
+    transition: background 200ms ease-out;
+    background-color: transparent;
+    padding-right: 2.4rem;
+    clip-path: polygon(0 -1px, calc( 100% - 2.4rem ) -1px, 100% 50%, calc( 100% - 2.4rem ) 100%, 0 100%); }
+  .logo-matrix .card:focus .card-text,
+  .logo-matrix .card:active .card-text,
+  .logo-matrix .card:hover .card-text {
+    background-color: rgba(0, 0, 0, 0.1);
+    transition-timing-function: ease-in; }
+  @media all and (max-width: 40rem) {
+    .logo-matrix .card-text > * {
+      max-height: 6rem;
+      overflow: hidden; } }
+
+/* eof */
+/* design template */
+.design-template {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 500;
+  /* logo-matrix */
+  /**/ }
+  .design-template .logo-matrix {
+    grid-gap: 1px;
+    background-color: #5b7d8f;
+    font-size: 1rem;
+    line-height: 1.6; }
+    .design-template .logo-matrix .card {
+      background-color: white;
+      color: black; }
+    .design-template .logo-matrix .card:hover .card-text {
+      background-color: #8cded2;
+      color: black; }
+    .design-template .logo-matrix .link {
+      display: inline-block;
+      border-bottom: 1px solid #8cded2;
+      padding-right: 0.2em;
+      font-weight: 600;
+      font-size: 1.4em;
+      line-height: 1.6rem; }
+    .design-template .logo-matrix::-webkit-scrollbar {
+      height: 2.4rem; }
+    .design-template .logo-matrix::-webkit-scrollbar-track {
+      -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3); }
+    .design-template .logo-matrix::-webkit-scrollbar-thumb {
+      background-color: #8cded2;
+      outline: 1px solid #8cded2; }
 
 /* ==============================================================
  # Describe HTML & BODY

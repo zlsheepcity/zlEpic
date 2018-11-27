@@ -1,15 +1,15 @@
 @charset "UTF-8";
 
-// core
+// required core
 
-@import "app_core/settings.scss";
-@import "app_core/constructor.scss";
-@import "app_core/html-reset.scss";
+@import "app_core/00-construct";
+@import "app_core/01-setup";
+@import "app_core/02-reset-html";
 
 // interface components
 
-@import "app_components/_workers.scss";
 @import "app_components/_workers-dev.scss";
+@import "app_components/_workers.scss";
 
 @import "app_components/layout-body-wrap.scss";
 @import "app_components/layout-grid.scss";
@@ -22,6 +22,11 @@
 @import "design-template.scss";
 @import "../../gl/design-gl.scss";
 @import "design-sg.scss";
+
+// design SG
+
+@import "app_components/logo-matrix.scss";
+@import "design/design-template.scss";
 
 
 // removed

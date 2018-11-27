@@ -1,0 +1,132 @@
+/* grid with cards */
+/* 2018.11.27 */
+
+/*
+
+# Use 1/2
+Horizontals cards in grid
+
+```css
+    div.logo-matrix
+        div
+        ...
+```
+
+# Use 2/2
+Fixed rows and side scroll
+
+```css
+    div.logo-matrix.has-scroll
+        div
+        ...
+```
+
+*/
+
+$margin-def:  $margin-def; // 2.4rem
+$color--LogoMatrix-active: $color-main-shadow; // gray
+
+.logo-matrix {
+
+    // grid-system A
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: min-content;
+    grid-auto-flow: row;
+    .card {
+        width:       100%;
+        max-width:   100%;
+    }
+
+    // grid-system B - horizontal scroll
+    &.has-scroll {
+
+        display: grid;
+        grid-template-columns: min-content;
+        grid-template-rows: 1fr 1fr 1fr 1fr;
+        grid-auto-flow: column;
+        overflow: auto;
+
+        .card {
+            width:       80vw;
+            max-width:   42em;
+        }
+    }
+
+    // describe card layout
+    .card {
+        grid-column: auto;
+
+        // box model
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: stretch;
+        align-content: stretch;
+    }
+    .card-picture {
+        order: 2;
+        flex-shrink: 0;
+
+        // box--xy-centered
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        align-content: center;
+    }
+    .card-text {
+        order: 1;
+        flex-grow: 2;
+
+        // box--y-centered
+        align-self: stretch;
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: center;
+        align-content: center;
+    }
+
+    // grid design
+    grid-gap:    1rem;
+    padding:     $margin-def;
+    font-size:   1rem;
+    line-height: 1.6;
+
+    // card design
+    .card-picture {
+        width:       10rem;
+        padding:     1rem 1.6rem;
+    }
+    .card-text {
+        padding:     1rem 1.6rem;
+    }
+
+    // use hover background as arrow decoration
+    .card-text {
+        transition: background 200ms ease-out;
+        background-color: transparent;
+        padding-right: $margin-def;
+        clip-path: polygon( 0 -1px, calc( 100% - #{$margin-def} ) -1px, 100% 50%, calc( 100% - #{$margin-def} ) 100%, 0 100% );
+    }
+    .card:focus,
+    .card:active,
+    .card:hover  {
+        .card-text {
+            background-color: $color--LogoMatrix-active;
+            transition-timing-function: ease-in;
+        }
+    }
+
+    @media all and (max-width:40rem) {
+        .card-text>* {
+            max-height: 6rem;
+            overflow: hidden;
+        }
+    }
+
+}
+
+
+/* eof */

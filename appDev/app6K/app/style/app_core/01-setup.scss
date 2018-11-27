@@ -1,19 +1,23 @@
-// colors
+/* Required settings   */
+/* app6002, 2018.11.23 */
 
-$color_main_back:  white;
-$color_main_front: black;
+// ------------------------------------ padding system
 
-// slices
+$dim:         0.8rem; // design unit
+$margin-min:  1*$dim;
+$margin-def:  3*$dim;
+$margin-less: 2*$dim;
+$margin-half: $margin-def / 2;
 
-$z-index-sidebar:                    3;
-$z-index-shadowOverlay:              2;
 
-// paddings
+// ------------------------------------ colors
 
-$dim:         0.8rem;
-$margin-def:  2.4rem;
-$margin-less: 1.6rem;
-$margin-half: 0.50*$margin-def;
+$color_main_back:      white;
+$color_main_front:     black;
+$color_main_shadow:    rgba(0,0,0,0.1);
+$color_use_red:        hsla(  1, 66%, 84%, 1);
+$color_use_green:      hsla( 78, 49%, 83%, 1);
+$color_use_blue:       hsla(177, 42%, 76%, 1);
 
 /* ------------------------------------ screen sizes */
 
@@ -41,14 +45,4 @@ $screenNotTablet:   "min-width: #{$screenMaxSizeForTablet + 1}";
 $screenForMobile:   "max-width: #{$screenMaxSizeForMobile}";
 $screenNotMobile:   "min-width: #{$screenMaxSizeForMobile + 1}";
 
-/**/
-
-
-/* ------------------------------------ system colors */
-
-$color_bgRed:    hsla(  1, 66%, 84%,   1);
-$color_bgGreen:  hsla( 78, 49%, 83%,   1);
-$color_bgBlue:   hsla(177, 42%, 76%,   1);
-$color_shadow:   rgba(0,0,0,0.1);
-
-/**/
+/* EOF: Required settings */

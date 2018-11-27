@@ -1,0 +1,54 @@
+/* design template */
+
+.design-template {
+
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+
+    /* logo-matrix */
+    $color--LogoMatrix-active: hsla(171, 55%, 71%, 1);
+    .logo-matrix {
+
+        grid-gap:    1px;
+        background-color: hsla(201, 22%, 46%, 1);
+        font-size:   1rem;
+        line-height: 1.6;
+
+        .card {
+            background-color: white;
+            color: black;
+        }
+
+        .card:hover .card-text {
+            background-color: $color--LogoMatrix-active;
+            color: black;
+        }
+
+        // decorate title in description as link
+        .link {
+            display: inline-block;
+            border-bottom: 1px solid $color--LogoMatrix-active;
+            padding-right: 0.2em;
+
+            font-weight: 600;
+            font-size:   1.4em;
+            line-height: 1.6rem;
+        }
+
+        // scrollbar design
+        &::-webkit-scrollbar {
+            height: 2.4rem;
+        }
+        &::-webkit-scrollbar-track {
+            -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+        }
+        &::-webkit-scrollbar-thumb {
+          background-color:  $color--LogoMatrix-active;
+          outline: 1px solid $color--LogoMatrix-active;
+        }
+
+    }
+    /**/
+
+
+}

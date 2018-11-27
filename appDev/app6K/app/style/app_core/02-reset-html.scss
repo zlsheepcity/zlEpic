@@ -1,0 +1,68 @@
+/* html base css 1004 */
+/* 2018.11.27 */
+
+
+/* ------------------------------------ required box model */
+
+
+*, *:before, *:after     { box-sizing: inherit;    }
+html                     { box-sizing: border-box; height: 100%; }
+html, body               { margin: 0; padding: 0;  }
+
+
+/* ------------------------------------ unit & font sizes */
+
+
+html { font-size: 10px; }
+body { font-size: 1.6rem; line-height: 1.5; }
+
+
+/* ------------------------------------ improve design & UX */
+
+
+html    { cursor: default; }
+body    { overflow-y: scroll; }
+canvas  { display: inline-block; }
+
+
+// fonts rendering
+html {
+    -ms-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+}
+body {
+    text-rendering: optimizeLegibility; // best quality
+    -webkit-font-smoothing: antialiased;
+}
+
+// UX: Single taps are dispatched immediately on clickable elements
+a, area, button, input, label, select, summary, textarea, [tabindex] {
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+}
+
+
+/* ----------------- use semantic markup without standart design */
+
+
+article, section, header, footer, main, aside, nav, details
+    { display: block; }
+template, [hidden]
+    { display: none; }
+summary
+    { display: list-item; }
+nav ul, nav ol {
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+}
+figure, figcaption, fieldset, legend {
+    display: block;
+    margin:  0;
+    padding: 0;
+    border:  0;
+    white-space: normal;
+}
+
+
+/* ------------------------------------ EOF: html base */

@@ -1,4 +1,6 @@
-/* ------------------------------------ app constructor */
+/* app scss constructor - mixins and templates*/
+/* 2018.11.27 */
+
 
 @mixin contentbox--xy-centered {
     display: flex;
@@ -25,4 +27,4 @@
     user-select: none;          /* Likely future */
 }
 
-/* EOF: app constructor */
+/* EOF: app scss constructor */
