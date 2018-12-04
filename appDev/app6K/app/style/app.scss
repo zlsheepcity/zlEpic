@@ -20,14 +20,16 @@
 // design
 
 @import "design-template.scss";
-@import "../../gl/design-gl.scss";
-@import "design-sg.scss";
 
 // design SG
 
+@import "design-sg.scss";
 @import "app_components/logo-matrix.scss";
 @import "design/design-template.scss";
 
+// design GL
+
+@import "../../gl/design-gl.scss";
 
 // removed
 
