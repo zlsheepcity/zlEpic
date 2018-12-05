@@ -2,12 +2,16 @@
  # used by components
 ============================================================== */
 
-// settings
-
-$hover-item-outline-design:          1rem solid hsla(177, 42%, 76%, 0.25);
+//* ------------------------------------ content box with background
+.box {
+    padding-top:    $margin-def;
+    padding-bottom: $margin-def;
+}
+/**/
 
 
 //* ------------------------------------ default kliker
+$hover-item-outline-design:          1rem solid hsla(177, 42%, 76%, 0.25);
 .kliker {
     @include disable-text-selection;
     &:hover, &:focus {

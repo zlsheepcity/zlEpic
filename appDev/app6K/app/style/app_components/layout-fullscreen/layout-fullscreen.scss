@@ -1,11 +1,13 @@
-/* ------------------------------------ layout screen */
-/*
-```html
+/* split fullscreen into parts header/body/footer */
+/* 2018.12.5
+```html template
+
     <section class="fullscreen">
-        <header class="fullscreen-top"></header>
-        <section class="fullscreen-body"></section>
-        <footer class="fullscreen-bottom"></footer>
+        <header class="fullscreen-header"></header>
+        <div    class="fullscreen-body"  ></div>
+        <footer class="fullscreen-footer"></footer>
     </section>
+
 ```
 */
 .fullscreen {
@@ -37,13 +39,13 @@
     justify-content: space-between;
     align-content:   stretch;
     align-items:     stretch;
-    .fullscreen-top    { order: 1; flex-grow: 0; }
+    .fullscreen-header { order: 1; flex-grow: 0; }
     .fullscreen-body   { order: 2; flex-grow: 2; }
-    .fullscreen-bottom { order: 3; flex-grow: 0; }
+    .fullscreen-footer { order: 3; flex-grow: 0; }
 
     // contentbox--xy-centered
     .fullscreen-body,
-    .fullscreen-bottom {
+    .fullscreen-footer {
         display:         flex;
         justify-content: center;
         align-items:     center;
@@ -52,4 +54,4 @@
 
 }
 
-/* */
+/*  */

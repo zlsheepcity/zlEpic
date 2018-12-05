@@ -1,5 +1,5 @@
 /* app scss constructor - mixins and templates*/
-/* 2018.11.27 */
+/* 2018.12.5 */
 
 
 @mixin contentbox--xy-centered {
@@ -25,6 +25,12 @@
     -moz-user-select: none;     /* Firefox all */
     -ms-user-select: none;      /* IE 10+ */
     user-select: none;          /* Likely future */
+}
+@mixin text-design-inherit {
+    font-family: inherit;
+    font-size:   inherit;
+    line-height: inherit;
+    font-weight: inherit;
 }
 
 /* EOF: app scss constructor */

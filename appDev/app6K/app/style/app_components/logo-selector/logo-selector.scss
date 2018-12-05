@@ -1,0 +1,143 @@
+/* grid with logos */
+/* 2018.11.30 */
+
+$margin-def:  $margin-def; // 2.4rem
+$color--logo-selector--border: $color-use-red;
+$color--logo-selector--labels: $color-use-blue;
+
+@mixin text-is-visually-hidden {
+    display: block;
+    text-indent: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+
+.logo-selector {
+
+    // grid-system
+    display: grid;
+    grid-template-rows: min-content;
+    grid-auto-flow: row;
+    grid-gap: 1px;
+    padding: 1px;
+    margin:  2.4rem;
+    grid-template-columns: repeat(7, 1fr);
+
+    background-color: $color--logo-selector--border;
+
+    .cProviderLogo {
+        background-color: #fff;
+    }
+
+
+    // describe card
+    .card {
+        background-color: white;
+        border-radius: 0;
+        border: 0px solid transparent;
+        font-size: 10px;
+        grid-column: auto;
+
+        // box model
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        align-items: stretch;
+        align-content: stretch;
+    }
+    .card-picture {
+        padding: 0.8em 2.4em;
+        padding-top: 1.6em;
+        flex-grow: 2;
+
+        * {
+            font-size: 1.6em;
+            line-height: 1;
+        }
+
+        img {
+            max-height: 42px;
+        }
+
+        // contentbox--xy-centered
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        align-content: center;
+    }
+    .card-label {
+        padding: 0.8em;
+        flex-grow: 0;
+
+        * {
+            font-size: 1.2em;
+            line-height: 1;
+        }
+
+        color: $color--logo-selector--labels;
+
+        // contentbox--xy-centered
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        align-content: center;
+    }
+
+    // has active state
+    .card.is-active {
+        z-index: 1;
+        transform: scale(1.1);
+        outline: 1px solid $color--logo-selector--border;
+        box-shadow: 0.5rem 0.5rem 0 rgba(0, 0, 0, 0.15);
+        .card-label {
+            background-color: $color--logo-selector--border;
+            color: black;
+            &:before {
+                content:'';
+                display: block;
+                width: 0.8em;
+                height: 0.8em;
+                border: 2px solid white;
+                border-radius: 50%;
+                margin-right: 0.4em;
+                background-color: firebrick;
+            }
+        }
+    }
+
+    // hover transformation
+    .card {
+        transition: none;
+        transform-origin: center center;
+    }
+    .card:hover {
+        z-index: 2;
+        transform: scale(1.1);
+        transition: transform 200ms ease-out;
+        outline: 1px solid $color--logo-selector--border;
+        box-shadow: 0.5rem 0.5rem 0 rgba(0, 0, 0, 0.15);
+        .card-label {
+            color: black;
+        }
+    }
+
+
+    // has clickable area
+    .card {
+        position: relative;
+        z-index: 0;
+    }
+    .card-clickable {
+        a {
+            position: absolute;
+            z-index: 1;
+            top:    0;
+            right:  0;
+            bottom: 0;
+            left:   0;
+            span { @include text-is-visually-hidden; }
+        }
+    }
+
+}

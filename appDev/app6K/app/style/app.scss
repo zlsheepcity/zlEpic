@@ -1,4 +1,5 @@
 @charset "UTF-8";
+// ordnung: 2018.12.5
 
 // required core
 
@@ -6,34 +7,55 @@
 @import "app_core/01-setup";
 @import "app_core/02-reset-html";
 
-// interface components
+// default components
 
 @import "app_components/_workers-dev.scss";
 @import "app_components/_workers.scss";
 
-@import "app_components/layout-body-wrap.scss";
-@import "app_components/layout-grid.scss";
-@import "app_components/layout-fullscreen.scss";
-@import "app_components/sidebar.scss";
+@import "app_components/layout-body-wrap/layout-body-wrap.scss";
+@import "app_components/grid-for-article/grid-for-article.scss";
+
+// ----------------------------------------------- other components
+
+// screen interface
+
+@import "app_components/layout-fullscreen/layout-fullscreen.scss";
+
+@import "app_components/sidebar/sidebar.scss";
 
 
-// design
+
+
+// ----------------------------------------------- pending
+
+// grid cases
+
+@import "app_components/logo-matrix/logo-matrix";
+@import "app_components/logo-matrix/design-template";
+
+@import "app_components/logo-selector/logo-selector";
+
+
+
+
+// ----------------------------------------------- dev
+
 
 @import "design-template.scss";
 
 // design SG
 
-@import "design-sg.scss";
-@import "app_components/logo-matrix.scss";
-@import "design/design-template.scss";
+//@import "design-sg.scss";
+//@import "app_components/logo-matrix.scss";
+//@import "design/design-template.scss";
 
 // design GL
 
-@import "../../gl/design-gl.scss";
+//@import "../../gl/design-gl.scss";
 
 // removed
 
-@import "app_components/layout-screen.scss";
+//@import "app_components/layout-screen.scss";
 
 // ordnung
 

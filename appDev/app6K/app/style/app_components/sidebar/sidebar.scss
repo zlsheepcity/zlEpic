@@ -1,8 +1,13 @@
 /* ==============================================================
  # Sidebars & Friends
 ============================================================== */
+/* 2018.5.12 */
 
-// settings
+//* ------------------------------------ required
+
+$z-index-sidebar: $z-index-sidebar; // 2
+
+//* ------------------------------------ settings
 
 $sidebar__width-limit:               38rem;
 $sidebar__remaining-space-limit:     6rem;
@@ -37,7 +42,6 @@ $screenNotFullscreenSidebar: 'min-width: #{ $a + $b }';
         transform: translateX(-100%);
     }
 }
-.has-active-sidebar { @extend .has-shadow-overlay; }
 /**/
 
 /* EOF: Sidebars */

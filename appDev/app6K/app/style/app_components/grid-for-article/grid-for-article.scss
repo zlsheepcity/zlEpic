@@ -1,36 +1,25 @@
-
-// two columns
-
-$margin-def:  $margin-def;  // 2.4rem
-%grid_layout--type-ab {
-    display: grid;
-    grid-template-columns: auto auto;
-    grid-gap: $margin-def;
-    &>*{ grid-column: auto; }
-}
-.has-two-columns {
-    @extend %grid_layout--type-ab;
-    grid-column: overmain;
-}
-
-
-
+/* grid for article layout (main+aside+extra) */
+/* 2018.12.5 */
 
 
 //* ------------------------------------ dependencies
+
 
 $margin-def:  $margin-def;  // 2.4rem
 $margin-less: $margin-less; // 1.6rem
 $screenNotTablet: $screenNotTablet;
 $screenForTablet: $screenForTablet;
 
+
 //* ------------------------------------ setup
+
 
 $grid-settings--main-maximum: 64rem;
 $grid-settings--aside:        26rem;
 
 $screenForArticleLayout: $screenNotTablet;
 $screenNotArticleLayout: $screenForTablet;
+
 
 //* ------------------------------------ code constructor
 
@@ -95,6 +84,10 @@ $grid_formula--article-right-wrapped:
         minmax(0,1fr)
     unquote(" [full-end] ");
 
+
+//* ------------------------------------ grid templates
+
+
 %grid_layout--base {
     display: grid;
     grid-auto-rows: min-content;
@@ -109,104 +102,77 @@ $grid_formula--article-right-wrapped:
 }
 %grid_layout-for-article {
     @extend %grid_layout--base;
-    grid-template-columns: $grid_formula--markup;
+    @media ($screenNotArticleLayout) {
+        grid-template-columns: $grid_formula--markup;
+    }
     @media ($screenForArticleLayout) {
         grid-template-columns: $grid_formula--article;
     }
 }
-%grid_layout-components {
+@mixin grid_layout--components {
     &>* {
         grid-column: main;
-    }
-    &>.break-grid {
-        grid-column: full;
-    }
-    &>.block {
-        grid-column: overmain;
-        @extend %grid_layout-for-markup;
-    }
-}
-
-//* ------------------------------------ grid templates
-
-.layout-for-markup {   @extend %grid_layout-for-markup; }
-.layout-for-article {  @extend %grid_layout-for-article; }
-
-//* ------------------------------------ story
-
-.story {
-    /* grid system */
-    @extend %grid_layout-for-article;
-    @extend %grid_layout-components;
-    grid-column: full;
-
-    /* has paddings */
-    padding-top:    $margin-def;
-    padding-bottom: $margin-def;
-}
-
-//* ------------------------------------ story design
-
-.story {
-    // has text design
-    font-family: Myriadpro, sans-serif;
-    font-size:   1em;
-    line-height: 1.5;
-    font-weight: normal;
-
-    .intro {
-    }
-    .title {
-        text-align: left;
-    }
-    .block {
+        margin-top: 0;
         margin-bottom: 0;
     }
-    p { @include text-design-inherit; }
+    &>.layer         { grid-column: full; }
+    &>.block         { grid-column: overmain; }
+    &>.aside         { grid-column: aside; }
+    &>.merge         { grid-column: merge; }
+}
+.grid-for-markup  {
+    @extend %grid_layout-for-markup;
+    @include grid_layout--components;
+}
+.grid-for-article {
+    @extend %grid_layout-for-article;
+    @include grid_layout--components;
 }
 
 
+//* ------------------------------------ grid components
 
 
-// welcome screen
-
-$margin-def:  $margin-def; // 2.4rem
-.design-gl {
-    .fullscreen {
-        background-image: url(https://test.gaminglicensing.com/images/main-bg.jpg);
-        font-family: Myriadpro, sans-serif;
-
-        h1 {
-            font-size: 1.5em;
-            margin: -0.4rem 0;
-        }
-        h2 {
-            font-size: 1.5em;
-            margin: -0.4rem 0;
-        }
-        a {
-            color: hsla(196, 100%, 47%, 1);
-            text-decoration: underline;
-        }
-        em {
-            color: hsla(196, 60%, 67%, 1);
-            font-style: normal;
-        }
-    }
-    .welcome-item {
-        background-color: hsla(229, 55%, 12%, 0.7);
-        color: white;
-    }
-    .welcome-links {
-        padding: 2*$margin-def 1.5*$margin-def;
-    }
-    .button {
-        background-color: hsla(196, 100%, 47%, 1);
-        color: white;
-    }
-    input:focus+label,
-    textarea:focus+label {
-        color: hsla(196, 100%, 27%, 1);
-    }
-
+.grid {
+    @extend %grid_layout-for-article;
+    @include grid_layout--components;
 }
+.block {
+    @extend %grid_layout-for-markup;
+    @include grid_layout--components;
+}
+
+
+//* --- wrap cells
+.left-wrap-in-grid {
+    @extend %grid_layout-for-markup;
+    @include grid_layout--components;
+    grid-column: full-start / overmain-end;
+}
+.right-wrap-in-grid {
+    @extend %grid_layout-for-markup;
+    @include grid_layout--components;
+    grid-column: overmain-start / full-end;
+}
+/**/
+
+
+//* ------------------------------------ pending
+
+
+//* --- two columns
+%grid_layout--type-ab {
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-gap: $margin-def;
+    &>*{ grid-column: auto; }
+}
+.has-two-columns {
+    @extend %grid_layout--type-ab;
+    &>.block { grid-column: auto; }
+}
+/**/
+
+
+
+/* eof grid for article */
