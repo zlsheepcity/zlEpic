@@ -119,6 +119,7 @@ $grid_formula--article-right-wrapped:
     &>.block         { grid-column: overmain; }
     &>.aside         { grid-column: aside; }
     &>.merge         { grid-column: merge; }
+    &>.illustration  { grid-column: overmain; }
 }
 .grid-for-markup  {
     @extend %grid_layout-for-markup;
@@ -140,6 +141,14 @@ $grid_formula--article-right-wrapped:
 .block {
     @extend %grid_layout-for-markup;
     @include grid_layout--components;
+}
+.aside {
+    @media ($screenForArticleLayout) {
+        &.has-block {
+            height: 0;
+            overflow: visible;
+        }
+    }
 }
 
 

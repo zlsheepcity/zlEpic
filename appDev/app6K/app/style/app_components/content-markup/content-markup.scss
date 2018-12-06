@@ -1,0 +1,148 @@
+/* styles for content */
+/* 2018.12.5 */
+
+//* ------------------------------------ required
+
+
+$color_main_shadow:    $color_main_shadow; //rgba(0,0,0,0.1);
+
+
+//* ------------------------------------ html standarts
+
+
+h1 {
+    font-size:   2.8rem;
+    line-height: 3.2rem;
+    margin: 0;
+}
+h2 {
+    font-size:   2.4rem;
+    line-height: 3.2rem;
+    margin: 0;
+}
+h3 {
+    font-size:   1.8rem;
+    line-height: 2.4rem;
+    margin: 0;
+}
+h4 {
+    font-size: inherit;
+    line-height: inherit;
+    margin: 0;
+}
+h5 {
+    font-size: inherit;
+    line-height: inherit;
+    margin: 0;
+}
+h6 {
+    font-size: inherit;
+    line-height: inherit;
+    margin: 0;
+}
+.subtitle {
+    font-style:  italic;
+    font-size:   1.8rem;
+    line-height: 2.4rem;
+    margin-top: 0;
+}
+p {
+    margin: 0;
+}
+a {
+    background-color: transparent;
+    color: inherit;
+    text-decoration: underline;
+}
+ul {
+    padding-left: 0;
+    margin-left: 2rem;
+}
+ol {
+    padding-left: 0;
+    margin-left: 2rem;
+}
+hr {
+    display: block;
+    min-height: 3.2rem;
+    border: 0;
+    background: transparent;
+    box-shadow: none;
+}
+img {
+  display: block;
+  border:  none;
+  max-width: 100%;
+}
+svg {
+  display: block;
+  border:  none;
+  max-width: 100%;
+}
+
+
+
+//* ------------------------------------ minimal form-item
+
+
+%form-item {
+    // has row layout
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-items: stretch;
+    align-content: center;
+    &>*     { order: 3 }
+    &>label { order: 1 }
+    &>input { order: 2 }
+}
+.form-item     { @extend %form-item; }
+.form-textarea { @extend %form-item; }
+.form-submit   { @extend %form-item; }
+label {
+    display: block;
+}
+input {
+    display: block;
+    width: 100%;
+    padding: 0.25em 1em;
+}
+textarea {
+    display: block;
+    width: 100%;
+    padding: 1em;
+    resize: vertical;
+}
+button {
+    padding: 0.25em 1em;
+}
+/**/
+
+
+//* ------------------------------------ app standarts
+
+
+// content box used with background
+.box {
+    /* has paddings */
+    padding-top:    $margin-def;
+    padding-bottom: $margin-def;
+
+    /* has illustrated background */
+    background-size:     cover;
+    background-repeat:   no-repeat;
+    background-position: center center;
+}
+
+.bg { background-color: $color_main_shadow; }
+
+
+//* ------------------------------------ extra features
+
+[bg] { @extend .bg; }
+
+
+
+
+/* eof styles for content */
