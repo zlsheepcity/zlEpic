@@ -2,7 +2,7 @@
 /* 2018.12.5 */
 
 
-/* ------------------------------------ required box model */
+/* ------------------------------------ minimal box model */
 
 
 *, *:before, *:after     { box-sizing: inherit;    }
@@ -47,8 +47,8 @@ a, area, button, input, label, select, summary, textarea, [tabindex] {
 
 article, section, header, footer, main, aside, nav, details
     { display: block; }
-template, [hidden]
-    { display: none; }
+[hidden]
+    { display: none!important; }
 summary
     { display: list-item; }
 nav ul, nav ol {

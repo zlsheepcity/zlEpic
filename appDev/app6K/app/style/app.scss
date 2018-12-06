@@ -31,42 +31,18 @@
 @import "app_components/sidebar/sidebar.scss";
 
 
-
-
 // ----------------------------------------------- pending
 
-//@import "app_components/_workers-dev.scss";
-//@import "app_components/_workers.scss";
 
 // grid cases
 
-@import "app_components/logo-matrix/logo-matrix";
-@import "app_components/logo-matrix/design-template";
+//@import "app_pending/logo-matrix/logo-matrix";
+//@import "app_pending/logo-matrix/design-template";
 
-@import "app_components/logo-selector/logo-selector";
-
-
+//@import "app_pending/logo-selector/logo-selector";
 
 
-// ----------------------------------------------- dev
+// ----------------------------------------------- custom
 
 
-@import "design-template.scss";
-
-// design SG
-
-//@import "design-sg.scss";
-//@import "app_components/logo-matrix.scss";
-//@import "design/design-template.scss";
-
-// design GL
-
-//@import "../../gl/design-gl.scss";
-
-// removed
-
-//@import "app_components/layout-screen.scss";
-
-// ordnung
-
-@import "app-custom-addon.scss";
+@import "app-custom.scss";

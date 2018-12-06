@@ -10,40 +10,40 @@ $color_main_shadow:    $color_main_shadow; //rgba(0,0,0,0.1);
 //* ------------------------------------ html standarts
 
 
-h1 {
-    font-size:   2.8rem;
-    line-height: 3.2rem;
+h1, .big-title {
+    font-size:   2.5em;
+    line-height: 1.2;
     margin: 0;
 }
-h2 {
-    font-size:   2.4rem;
-    line-height: 3.2rem;
+h2, .title {
+    font-size:   2em;
+    line-height: 1.25;
     margin: 0;
 }
-h3 {
-    font-size:   1.8rem;
-    line-height: 2.4rem;
+h3, .min-title {
+    font-size:   1.5em;
+    line-height: 1;
     margin: 0;
 }
 h4 {
-    font-size: inherit;
+    font-size:   inherit;
     line-height: inherit;
     margin: 0;
 }
 h5 {
-    font-size: inherit;
+    font-size:   inherit;
     line-height: inherit;
     margin: 0;
 }
 h6 {
-    font-size: inherit;
+    font-size:   inherit;
     line-height: inherit;
     margin: 0;
 }
 .subtitle {
     font-style:  italic;
-    font-size:   1.8rem;
-    line-height: 2.4rem;
+    font-size:   1.125em;
+    line-height: 1.33333;
     margin-top: 0;
 }
 p {
@@ -79,7 +79,41 @@ svg {
   border:  none;
   max-width: 100%;
 }
+table {
+    th {
+        text-align: left;
+    }
+    td {
+        padding-top:    1*$dim;
+        padding-bottom: 1*$dim;
 
+        font-family: sans-serif;
+        font-size: 0.8em;
+    }
+}
+
+
+//* ------------------------------------ app standarts
+
+
+.is-centered {
+    text-align: center;
+    justify-content: center;
+}
+
+// content box used with background
+.box {
+    /* has paddings */
+    padding-top:    $margin-def;
+    padding-bottom: $margin-def;
+
+    /* has illustrated background */
+    background-size:     cover;
+    background-repeat:   no-repeat;
+    background-position: center center;
+}
+
+.bg { background-color: $color_main_shadow; }
 
 
 //* ------------------------------------ minimal form-item
@@ -120,25 +154,8 @@ button {
 /**/
 
 
-//* ------------------------------------ app standarts
-
-
-// content box used with background
-.box {
-    /* has paddings */
-    padding-top:    $margin-def;
-    padding-bottom: $margin-def;
-
-    /* has illustrated background */
-    background-size:     cover;
-    background-repeat:   no-repeat;
-    background-position: center center;
-}
-
-.bg { background-color: $color_main_shadow; }
-
-
 //* ------------------------------------ extra features
+
 
 [bg] { @extend .bg; }
 

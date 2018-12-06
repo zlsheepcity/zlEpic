@@ -1,4 +1,4 @@
-<!doctype html><!-- apptype v6001 -->
+<!doctype html><!-- app6011 -->
 <html lang="en">
 <head>
     <meta charset="utf-8">
@@ -13,25 +13,162 @@
     <!-- ========================================= APP MAIN -->
 
 
+    <!-- design font -->
+    <link href="https://fonts.googleapis.com/css?family=Vollkorn:400,400i,700&subset=cyrillic" rel="stylesheet">
+
+
     <link  href="app/style/app.css" rel="stylesheet" type="text/css">
     <script src="app/script/app.js"></script>
 
 
     <!-- ========================================= APP CUSTOM -->
 
-    <!-- design font -->
-    <link href="https://fonts.googleapis.com/css?family=Vollkorn:400,400i,700&subset=cyrillic" rel="stylesheet">
 
     <!-- demo templates -->
     <style>
         .demo-curacao {
-            padding-top:    2.4rem;
-            padding-bottom: 2.4rem;
+            overflow: hidden;
+            padding-top:    4.8rem;
+            padding-bottom: 4.8rem;
             background-color: #A7DBD8;
             color: black;
         }
         .demo-curacao--reasons {
             max-width: 38em;
+        }
+        .gl-reasons-wrap {
+            background-position: 94% 60%;
+            background-size: auto 80%;
+            background-repeat: no-repeat;
+            background-image: url(art/demo/logo-icon.svg);
+        }
+        .gl-reasons-wrap.box {
+            padding-bottom: 4.8rem;
+        }
+        .gl-islands-wrap {
+            padding-top:    4.8rem;
+            padding-bottom: 4.8rem;
+        }
+        .gl-islands {
+            max-width: 48em;
+            margin-left:  auto;
+            margin-right: auto;
+
+            position: relative;
+            z-index: 0;
+        }
+        .gl-islands th,
+        .gl-islands td {
+            padding-left:  2.4rem;
+            padding-right: 2.4rem;
+            width: 50%;
+            vertical-align: top;
+        }
+        @media all and (max-width:900px) {
+            .gl-islands { max-width: 100%; }
+            .gl-islands th:first-child,
+            .gl-islands td:first-child {
+                padding-left:  0;
+                padding-right: 1.2rem;
+            }
+            .gl-islands th:last-child,
+            .gl-islands td:last-child {
+                padding-right: 0;
+                padding-left:  1.2rem;
+            }
+        }
+        .gl-islands--curacao:before {
+            /* is decoration block */
+            content: '';
+            display: block;
+            position: absolute;
+            z-index: -1;
+
+            /* decoration rule */
+            bottom: 0;
+            width: 60%;
+            padding-top: 50%;
+            opacity: 0.1;
+            transform: translateX(-40%);
+
+            /* has illustrated background */
+            background-size:     contain;
+            background-repeat:   no-repeat;
+            background-position: center center;
+            background-image: url(art/demo/curacao-island-plain.svg);
+
+        }
+        .gl-islands--malta:before {
+            /* is decoration block */
+            content: '';
+            display: block;
+            position: absolute;
+            z-index: -1;
+
+            /* decoration rule */
+            width: 60%;
+            padding-top: 50%;
+            opacity: 0.1;
+            transform: translateX(30%);
+
+            /* has illustrated background */
+            background-size:     contain;
+            background-repeat:   no-repeat;
+            background-position: center center;
+            background-image: url(art/demo/malta-islands-plain.svg);
+        }
+
+        /* pros&cons aside decoration */
+        @media all and (max-width:900px) {
+            .gl-proscons-aside.aside {
+                grid-column: overmain;
+            }
+            .gl-proscons-placement { display: none; }
+
+            /* has two columns *
+            .gl-proscons-block {
+                grid-template-columns: auto auto;
+                grid-gap: 0;
+            }
+            .gl-proscons-block>.block {
+                grid-column: auto;
+            }
+            /**/
+
+        }
+        @media all and (min-width:901px) {
+            .gl-proscons-placement {
+                height: 20px;
+            }
+            .gl-proscons-block {
+                transform: translateY(-33%);
+                position: relative;
+            }
+            .gl-proscons-block.box {
+                padding-top:    2.4rem;
+                padding-bottom: 2.4rem;
+            }
+            .gl-proscons-block:before {
+                /* is decoration block */
+                content: '';
+                position: absolute;
+                z-index: -1;
+
+                /* is left pseudo-border */
+                top: 0;
+                bottom: 0;
+                right: 100%;
+                width: 2.4rem;
+
+                /* has design */
+                background-color: inherit;
+                clip-path: polygon(
+                    0                     calc( 33% + 0rem ),
+                    calc( 100% + 1px )    -1px,
+                    calc( 100% + 1px )    calc( 100% + 1px ),
+                    0                     calc( 33% + 20px )
+                );
+            }
         }
     </style>
     <style>
@@ -62,7 +199,28 @@
         <header>
             <p>Вашему онлайн-казино нужна <a href="/rus/what-is-a-gambling-licence/">лицензия</a>, но вы не знаете, с чего начать? Порядок действий таков: пишете письмо (на английском языке) владельцу мастер-лицензии Кюрасао или в Управление по азартным играм Мальты. Вам дадут список необходимых документов, которые следует собрать. Вам расскажут по уставный капитал, бизнес-план, налог на прибыль, засыплют цифрами, списками, юридическими тонкостями и требованиями. Заметьте, все на английском языке. Вы нанимаете переводчика, юрисконсульта и бухгалтера. Через несколько месяцев, если повезет и вы все сделаете правильно, вы становитесь обладателем долгожданной лицензии.</p>
         </header>
-        <section bg class="block box has-two-columns">
+        <div class="gl-proscons-placement bg"></div>
+        <aside class="aside has-block gl-proscons-aside">
+            <div class="block box bg gl-proscons-block">
+                <section class="block">
+                    <h3 class="min-title">Плюсы</h3>
+                    <ul class="block">
+                        <li>Экономите деньги, потому что все делаете сами</li>
+                    </ul>
+                </section>
+                <section class="block">
+                    <h3 class="min-title">Минусы</h3>
+                    <ul class="block">
+                        <li>Тратите много времени</li>
+                        <li>Большая вероятность совершить ошибку, собрать не все документы, что только продлит волокиту</li>
+                        <li>Интегрировать в казино не все или, наоборот, лишние платежные системы</li>
+                        <li>Вероятность нарушить закон, не блокируя казино в странах, где онлайн-гэмблинг запрещен</li>
+                        <li>Риск связаться с нечестным сублицензиатом и потерять деньги</li>
+                    </ul>
+                </section>
+            </div>
+        </aside>
+        <section bg class="block box has-two-columns" hidden>
             <section class="block">
                 <h2 class="title">Плюсы</h2>
                 <ul class="block">
@@ -93,7 +251,7 @@
             <li>получение лицензии и передача её клиенту.</li>
         </ul>
         <hr>
-        <section class="right-wrap-in-grid box" bg>
+        <section class="right-wrap-in-grid box gl-reasons-wrap" bg>
             <h2 class="title">5 причин, почему вам нужно обратиться в GamingLicensing</h2>
             <ol class="block demo-curacao--reasons">
                 <li>Работая на рынке с 2015 года, мы внимательно отслеживаем требования игровых юрисдикций, чтобы всегда быть в курсе законодательных новшеств. Мы располагаем самой свежей, актуальной информацией в сфере гэмблинга.</li>
@@ -106,28 +264,30 @@
         <hr>
         <h2 class="title">Какая лицензия лучше: Кюрасао или Мальты?</h2>
         <p>У наших клиентов разные запросы, планы и возможности, а у gambling-юрисдикций разные особенности, поэтому однозначного ответа быть не может. Мы изучим ваши потребности и посоветуем оптимальную юрисдикцию для вашего бизнеса.</p>
-        <section bg class="block merge box">
-            <h2 class="title">Особенности игорных лицензий Кюрасао и Мальты</h2>
-            <section class="block has-two-columns">
-                <section class="block">
-                    <h2 class="title">Кюрасао</h2>
-                    <ul class="block">
-                        <li>Ежегодная финансовая отчетность</li>
-                        <li>Единый подоходный налог - всего 2% от прибыли</li>
-                        <li>Регистрация компании в специальной экономической зоне (E-Zone) и Торговой палате Кюрасао, при этом один директор (номинальный) должен быть резидентом.</li>
-                        <li>Срок регистрации лицензии: 2-3 недели</li>
-                    </ul>
-                </section>
-                <section class="block">
-                    <h2 class="title">Мальта</h2>
-                    <ul class="block">
-                        <li>Ежегодные и ежемесячные отчеты</li>
-                        <li>Фиксированный годовой лицензионный сбор - 25.000 евро; налог на прибыль - по гибкой ставке от 0,40 до 1,25%</li>
-                        <li>Регистрация юрлица на Мальте, при этом директорами и акционерами могут быть нерезиденты.</li>
-                        <li>Срок регистрации: временная лицензия (provisional license) выдается через 2-3 недели, постоянная (full license) - через полгода.</li>
-                    </ul>
-                </section>
-            </section>
+        <section class="block merge gl-islands-wrap">
+            <h2 class="big-title is-centered">Особенности игорных лицензий Кюрасао и Мальты</h2>
+            <table class="content-table gl-islands">
+                <tr>
+                    <th class="gl-islands--curacao">Кюрасао</th>
+                    <th class="gl-islands--malta"  >Мальта</th>
+                </tr>
+                <tr>
+                    <td>Ежегодная финансовая отчетность</td>
+                    <td>Ежегодные и ежемесячные отчеты</td>
+                </tr>
+                <tr>
+                    <td>Единый подоходный налог - всего 2% от прибыли</td>
+                    <td>Фиксированный годовой лицензионный сбор - 25.000 евро; налог на прибыль - по гибкой ставке от 0,40 до 1,25%</td>
+                </tr>
+                <tr>
+                    <td>Регистрация компании в специальной экономической зоне (E-Zone) и Торговой палате Кюрасао, при этом один директор (номинальный) должен быть резидентом.</td>
+                    <td>Регистрация юрлица на Мальте, при этом директорами и акционерами могут быть нерезиденты.</td>
+                </tr>
+                <tr>
+                    <td>Срок регистрации лицензии: 2-3 недели</td>
+                    <td>Срок регистрации: временная лицензия (provisional license) выдается через 2-3 недели, постоянная (full license) - через полгода.</td>
+                </tr>
+            </table>
         </section>
         <footer class="text-accent">
             <p>Доверяя нам оформление лицензии для онлайн-казино, вы гарантированно получаете полное консультативное сопровождение экспертов, грамотные рекомендации и, главное, законный бизнес, подкрепленный престижной лицензией Кюрасао или Мальты. Мы разбираемся в правовых нюансах, связанных с гэмблингом, поэтому ваше онлайн-казино будет 100% легальным, а значит привлекательным для игроков.</p>

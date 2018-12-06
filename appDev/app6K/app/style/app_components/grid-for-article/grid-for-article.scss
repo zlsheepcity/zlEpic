@@ -147,6 +147,8 @@ $grid_formula--article-right-wrapped:
         &.has-block {
             height: 0;
             overflow: visible;
+            margin-left:  -$margin-def;
+            margin-right: -$margin-def;
         }
     }
 }
