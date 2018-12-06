@@ -14,8 +14,8 @@ $screenForTablet: $screenForTablet;
 //* ------------------------------------ setup
 
 
-$grid-settings--main-maximum: 64rem;
-$grid-settings--aside:        26rem;
+$grid-settings--main-maximum: 40em;
+$grid-settings--aside:        16em;
 
 $screenForArticleLayout: $screenNotTablet;
 $screenNotArticleLayout: $screenForTablet;
