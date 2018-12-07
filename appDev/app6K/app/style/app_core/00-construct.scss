@@ -1,8 +1,11 @@
-/* app scss constructor - mixins and templates*/
-/* 2018.12.5 */
+/* ==============================================================
+    app scss constructor - mixins and templates
+    2018.12.7
+============================================================== */
 
 
 @mixin contentbox--xy-centered {
+    /* contentbox--xy-centered */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -34,4 +37,69 @@
     font-weight: inherit;
 }
 
-/* EOF: app scss constructor */
+
+//* ------------------------------------ dev markup
+
+
+.dev, [dev] {
+    background: repeating-linear-gradient(
+      -55deg,
+      rgba(0,0,0,0.1),
+      rgba(0,0,0,0.1) 0.5rem,
+      rgba(0,0,0,0.2) 0.5rem,
+      rgba(0,0,0,0.2) 1.0rem
+    );
+}
+
+.dev-box, [dev-box] {
+    @extend .dev;
+    padding: 1.6rem;
+    /* contentbox--xy-centered */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+}
+.dev-img, [dev-img] {
+    @extend .dev;
+    width: 100%;
+    height: auto;
+    padding-top: 42%;
+    position: relative;
+    /* contentbox--xy-centered */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    &:before {
+        content:  'picture';
+        font-size: 4em;
+        line-height: 1;
+        opacity:   0.32;
+        /* is xy-centered by absolute */
+        position: absolute;
+        bottom: 50%;
+        right:  50%;
+        transform: translate(50%,50%)
+    }
+}
+.dev-pic, [dev-pic] {
+    @extend .dev;
+    display: inline-block;
+    vertical-align: middle;
+    font-size: 1rem;
+    line-height: 1;
+    min-width:  2em;
+    min-height: 2em;
+    /* Note the RADIAL */
+    background: repeating-radial-gradient(
+      circle,
+      rgba(0,0,0,0.2),
+      rgba(0,0,0,0.2) 0.2rem,
+      rgba(0,0,0,0.1) 0.2rem,
+      rgba(0,0,0,0.1) 0.4rem
+    );
+}
+
+
+/* eof app scss constructor */

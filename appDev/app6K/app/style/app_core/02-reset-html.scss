@@ -1,5 +1,7 @@
-/* html base css 1004 */
-/* 2018.12.5 */
+/* ==============================================================
+    html base css 1004
+    2018.12.7
+============================================================== */
 
 
 /* ------------------------------------ minimal box model */
@@ -10,7 +12,7 @@ html                     { box-sizing: border-box; height: 100%; }
 html, body               { margin: 0; padding: 0;  }
 
 
-/* ------------------------------------ unit & font sizes */
+/* ------------------------------------ basic unit & font sizes */
 
 
 html { font-size: 10px; }
@@ -24,17 +26,6 @@ html    { cursor: default; }
 body    { overflow-y: scroll; }
 canvas  { display: inline-block; }
 
-
-// fonts rendering
-html {
-    -ms-text-size-adjust: 100%;
-    -webkit-text-size-adjust: 100%;
-}
-body {
-    text-rendering: optimizeLegibility; // best quality
-    -webkit-font-smoothing: antialiased;
-}
-
 // UX: Single taps are dispatched immediately on clickable elements
 a, area, button, input, label, select, summary, textarea, [tabindex] {
     -ms-touch-action: manipulation;
@@ -47,15 +38,15 @@ a, area, button, input, label, select, summary, textarea, [tabindex] {
 
 article, section, header, footer, main, aside, nav, details
     { display: block; }
-[hidden]
-    { display: none!important; }
 summary
     { display: list-item; }
+
 nav ul, nav ol {
     padding: 0;
     margin: 0;
     list-style-type: none;
 }
+
 figure, figcaption, fieldset, legend {
     display: block;
     margin:  0;
@@ -65,4 +56,4 @@ figure, figcaption, fieldset, legend {
 }
 
 
-/* ------------------------------------ EOF: html base */
+/* eof html base */

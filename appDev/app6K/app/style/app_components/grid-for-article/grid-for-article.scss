@@ -1,5 +1,7 @@
-/* grid for article layout (main+aside+extra) */
-/* 2018.12.5 */
+/* ==============================================================
+    grid for article layout (main+aside+extra)
+    2018.12.7
+============================================================== */
 
 
 //* ------------------------------------ dependencies
@@ -110,11 +112,16 @@ $grid_formula--article-right-wrapped:
 }
 @mixin grid_layout--components {
     &>*              { grid-column: main; }
+
+    &>.grid,
     &>.layer         { grid-column: full; }
-    &>.block         { grid-column: overmain; }
-    &>.aside         { grid-column: aside; }
-    &>.merge         { grid-column: merge; }
+
+    &>.block,
     &>.illustration  { grid-column: overmain; }
+
+    &>.aside         { grid-column: aside; }
+
+    &>.merge         { grid-column: merge; }
 }
 .grid-for-markup  {
     @extend %grid_layout-for-markup;
@@ -126,7 +133,7 @@ $grid_formula--article-right-wrapped:
 }
 
 
-//* ------------------------------------ grid components
+//* ------------------------------------ grid cells
 
 
 .grid {
@@ -137,19 +144,9 @@ $grid_formula--article-right-wrapped:
     @extend %grid_layout-for-markup;
     @include grid_layout--components;
 }
-.aside {
-    @media ($screenForArticleLayout) {
-        &.has-block {
-            height: 0;
-            overflow: visible;
-            margin-left:  -$margin-def;
-            margin-right: -$margin-def;
-        }
-    }
-}
 
+// wrap cells
 
-//* --- wrap cells
 .left-wrap-in-grid {
     @extend %grid_layout-for-markup;
     @include grid_layout--components;
@@ -160,25 +157,24 @@ $grid_formula--article-right-wrapped:
     @include grid_layout--components;
     grid-column: overmain-start / full-end;
 }
-/**/
 
 
-//* ------------------------------------ pending
+//* ------------------------------------ grid features
 
 
-//* --- two columns
-%grid_layout--type-ab {
-    display: grid;
-    grid-template-columns: auto auto;
-    grid-gap: $margin-def;
-    &>*{ grid-column: auto; }
+// aside floating feature
+@media ($screenForArticleLayout) {
+    .aside {
+        &.has-block {
+            height: 0;
+            overflow: visible;
+            grid-column: overmain-end / merge-end;
+        }
+    }
 }
-.has-two-columns {
-    @extend %grid_layout--type-ab;
-    &>.block { grid-column: auto; }
+@media ($screenNotArticleLayout) {
+    .aside.has-block { grid-column: overmain; }
 }
-/**/
-
 
 
 /* eof grid for article */

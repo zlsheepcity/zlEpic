@@ -1,6 +1,10 @@
-/* split fullscreen into parts header/body/footer */
-/* 2018.12.5
-```html template
+/* ==============================================================
+    split fullscreen into parts header/body/footer
+    2018.12.5
+============================================================== */
+
+
+/* html template
 
     <section class="fullscreen">
         <header class="fullscreen-header"></header>
@@ -8,21 +12,22 @@
         <footer class="fullscreen-footer"></footer>
     </section>
 
-```
 */
+
+
 .fullscreen {
 
-    // is fullscreen box;
+    /* is fullscreen box */
     display:    block;
     width:      100%;
     min-height: 100vh;
 
-    // has illustrated background
+    /* has illustrated background */
     background-size:     cover;
     background-repeat:   no-repeat;
     background-position: center center;
 
-    // has fixed background
+    /* has fixed background */
     &.has-fixed-background:before {
         position: fixed;
         z-index:  -1;
@@ -33,7 +38,7 @@
         background-position: center center;
     }
 
-    // has rows
+    /* has rows */
     display:         flex;
     flex-direction:  column;
     justify-content: space-between;
@@ -43,7 +48,7 @@
     .fullscreen-body   { order: 2; flex-grow: 2; }
     .fullscreen-footer { order: 3; flex-grow: 0; }
 
-    // contentbox--xy-centered
+    /* contentbox--xy-centered */
     .fullscreen-body,
     .fullscreen-footer {
         display:         flex;
@@ -54,4 +59,5 @@
 
 }
 
-/*  */
+
+/* eof fullscreen */

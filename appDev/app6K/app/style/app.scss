@@ -18,7 +18,9 @@
 @import "app_components/grid-for-article/grid-for-article.scss";
 
 @import "app_components/content-markup/content-markup.scss";
+@import "app_components/content-markup/content-typography.scss";
 @import "app_components/content-markup/design-template.scss";
+
 
 
 // ----------------------------------------------- other components
@@ -32,6 +34,18 @@
 
 
 // ----------------------------------------------- pending
+
+
+//* ------------------------------------ pending
+
+.group {
+    display: grid;
+    grid-template-columns: none;
+    grid-auto-flow: column;
+    grid-gap: $margin-def;
+    &>*,
+    &>.block { grid-column: auto; }
+}
 
 
 // grid cases

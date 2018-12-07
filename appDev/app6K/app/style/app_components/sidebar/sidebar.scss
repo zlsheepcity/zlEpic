@@ -1,16 +1,21 @@
 /* ==============================================================
- # Sidebars & Friends
+    autohidden sidebar
+    2018.5.12
 ============================================================== */
-/* 2018.5.12 */
+
 
 //* ------------------------------------ required
 
+
 $z-index-sidebar: 3;
+
 
 //* ------------------------------------ settings
 
+
 $sidebar__width-limit:               38rem;
 $sidebar__remaining-space-limit:     6rem;
+
 
 // formulas
 
@@ -18,30 +23,39 @@ $a: $sidebar__width-limit;
 $b: $sidebar__remaining-space-limit;
 $screenNotFullscreenSidebar: 'min-width: #{ $a + $b }';
 
+
 //* ------------------------------------ sidebar component
+
+
 .sidebar {
+    background-color: $color_main_back;
+
+    /* is screen fixed */
     position: fixed;
-    z-index: $z-index-sidebar;
+    z-index:  $z-index-sidebar;
     top:    0;
     bottom: 0;
     left:   100%;
+
+    /* has width */
     width:  100%;
-    overflow: auto;
     @media screen and ($screenNotFullscreenSidebar) {
         max-width: $sidebar__width-limit;
     };
 
+    /* has unpredictable content */
+    overflow: auto;
+
+    /* closed state */
     transform: translateX(0);
     transition: transform 200ms ease-in;
-    background-color: $color_main_back;
 
-    // open state
-
+    /* open state */
     &.is-active {
         transition-timing-function: ease-out;
         transform: translateX(-100%);
     }
 }
-/**/
 
-/* EOF: Sidebars */
+
+/* eof sidebar */

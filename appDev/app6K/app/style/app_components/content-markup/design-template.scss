@@ -1,5 +1,8 @@
-/* content markup */
-/* 2018.12.5 */
+/* ==============================================================
+    design template - content markup
+    2018.12.7
+============================================================== */
+
 
 //* ------------------------------------ required
 
@@ -7,7 +10,9 @@
 $dim: $dim; // 0.8rem;
 $margin-less: $margin-less; // 2*$dim;
 
+$screenForXS:     $screenForXS;     // max-width: 1100px
 $screenNotTablet: $screenNotTablet; // min-width: 901px
+
 
 //* ------------------------------------ settings
 
@@ -31,43 +36,27 @@ $color_main_back:      hsl(60, 100%, 98.6%);
 $color_main_front:     hsl(0, 0%, 6.7%);
 
 
-//* ------------------------------------ constructor
-
-
-@mixin word-wrap() {
-    overflow-wrap: break-word;
-    word-wrap: break-word;
-    -ms-word-break: break-all;
-    word-break: break-word;
-    -ms-hyphens: auto;
-    -moz-hyphens: auto;
-    -webkit-hyphens: auto;
-    hyphens: auto;
-}
-
-
 //* ------------------------------------ body design
 
-html { font-size: 20px; }
-body {
-    background-color:     $color_main_back;
-    color:                $color_main_front;
-    font-family:          $font-list-for-design-template;
 
-    /* default font */
-    font-weight: 400;
+html { font-size: 20px; }
+@media screen and ($screenForXS) {
+    html { font-size: 10px; }
+}
+
+body {
+    background-color: $color_main_back;
+    color:            $color_main_front;
+    font-family:      $font-list-for-design-template;
+    font-weight:      400;
+
+    /* 16/28 */
     font-size:   16px;
     line-height: 1.75;
 }
 
 
-//* ------------------------------------ app interface design
-
-
-
-
-
-//* ------------------------------------ content design
+//* ------------------------------------ design base
 
 
 .design-template {
@@ -77,47 +66,54 @@ body {
             hanging-punctuation: first;
         }
     }
+
     h1, h2, h3, h4, h5, h6 {
         font-family: inherit;
-        @include word-wrap;
+        font-weight: 400;
     }
     h1, .big-title {
-        font-weight: 400;
+        /* 40/48 */
         font-size:   2.5em;
         line-height: 1.2;
     }
     h2, .title {
-        padding-top: 1*$dim;
-
-        font-style:  italic;
-        font-weight: 400;
+        /* 32/40 */
         font-size:   2em;
         line-height: 1.25;
     }
     h3, .min-title {
-        font-style:  italic;
-        font-weight: 400;
+        /* 24/28 */
         font-size:   1.5em;
-        line-height: 1;
+        line-height: 1.16666666667;
     }
-    .subtitle {
-        font-style:  normal;
-        font-size:   1.125em;
-        line-height: 1.333333;
-    }
-    .text-accent {
-        font-weight: 400;
+    .has-text-accent {
+        /* 24/36 */
         font-size:   1.5em;
         line-height: 1.5;
     }
     .aside {
+        /* 14/24 */
         font-size:   0.875em;
         line-height: 1.714285;
     }
-    small {
-        font-size: 0.875em;
-        line-height: 2;
+
+    h2, .title,
+    h3, .min-title {
+        font-style:  italic;
     }
+
+}
+
+
+//* ------------------------------------ app interface design
+
+
+.design-template {
+
+    h2, .title {
+        padding-top: 1*$dim;
+    }
+
     .box {
         @media screen and ($screenNotTablet) {
             /* has visualy equal paddings */
@@ -125,19 +121,7 @@ body {
             padding-bottom: $margin-less;
         }
     }
-    table {
-        td {
-            /* small sans */
-            font-family: $font-list-for-content-table;
-            letter-spacing: .03em;
-            font-size:    0.875em;
-            line-height: 1.714285;
-        }
-    }
 
-    /* design workers */
-
-    .has-sans {
-        font-family: $font-list-for-content-table;
-    }
 }
+
+/* eof design template */

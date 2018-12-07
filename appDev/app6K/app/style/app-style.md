@@ -2,15 +2,16 @@
 
 1. copy your scss files into subfolders
 2. update file `app.scss`
-3. rebuild sass
+3. rebuild sass¹
+4. use your css in markup
 
-tip
+## ¹)
+
 ```bash
 scss -C --sourcemap=none app.scss app.css
 ```
 or
+
 ```bash
 sass --no-source-map app.scss app.css
 ```
-
-4. use your html markup

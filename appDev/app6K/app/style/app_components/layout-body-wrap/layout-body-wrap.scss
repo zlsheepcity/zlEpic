@@ -1,12 +1,14 @@
 /* ==============================================================
- # box model for HTML & BODY
+    box model for HTML & BODY
+    2018.12.7
 ============================================================== */
 
-// 2018.12.5
 
-/* ------------------------------------ required */
+//* ------------------------------------ required
 
 $color_main_back: $color_main_back; // white
+
+//* ------------------------------------ body box model
 
 .body-wrap {
     min-height: 100%;
@@ -24,4 +26,4 @@ $color_main_back: $color_main_back; // white
     margin-top: auto;
 }
 
-/* */
+/* eof body wrap */

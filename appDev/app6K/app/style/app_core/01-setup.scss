@@ -1,7 +1,10 @@
-/* Required settings app6002  */
-/* 2018.12.5 */
+/* ==============================================================
+    required settings app6011
+    2018.12.7
+============================================================== */
 
-// ------------------------------------ padding system
+
+//* ------------------------------------ padding system
 
 $dim:           0.8rem; // design unit
 $margin-min:    1*$dim;
@@ -9,7 +12,7 @@ $margin-def:    3*$dim;
 $margin-less: 2.5*$dim;
 $margin-half: $margin-def / 2;
 
-// ------------------------------------ colors
+//* ------------------------------------ colors
 
 $color_main_back:      white;
 $color_main_front:     black;
@@ -18,7 +21,30 @@ $color_use_red:        hsla(  1, 66%, 84%, 1);
 $color_use_green:      hsla( 78, 49%, 83%, 1);
 $color_use_blue:       hsla(177, 42%, 76%, 1);
 
-/* ------------------------------------ screen sizes */
+//* ------------------------------------ fonts
+
+//* tufte 2018
+$font-list-serif:
+    Vollkorn,
+    et-book,
+    Palatino,
+    "Palatino Linotype",
+    "Palatino LT STD",
+    "Book Antiqua",
+    Georgia,
+    serif;
+$font-list-sans:
+    "Trebuchet MS",
+    "Gill Sans",
+    "Gill Sans MT",
+    sans-serif;
+$fontSize:     16px;
+$fontRegular:  400;
+$fontSemibold: 400;
+$fontBolder:   700;
+/**/
+
+//* ------------------------------------ screen sizes
 
 // last update: spring 2018
 
@@ -44,4 +70,4 @@ $screenNotTablet:   "min-width: #{$screenMaxSizeForTablet + 1}";
 $screenForMobile:   "max-width: #{$screenMaxSizeForMobile}";
 $screenNotMobile:   "min-width: #{$screenMaxSizeForMobile + 1}";
 
-/* EOF: Required settings */
+/* eof required settings */

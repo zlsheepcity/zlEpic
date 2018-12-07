@@ -1,109 +1,59 @@
-/* styles for content */
-/* 2018.12.5 */
+/* ==============================================================
+    styles for content (excluding typography)
+    2018.12.7
+============================================================== */
+
 
 //* ------------------------------------ required
 
 
-$color_main_shadow:    $color_main_shadow; //rgba(0,0,0,0.1);
+$color_main_shadow: $color_main_shadow; //rgba(0,0,0,0.1);
+$screenNotTablet:   $screenNotTablet; // min-width: 901px
 
 
 //* ------------------------------------ html standarts
 
-
-h1, .big-title {
-    font-size:   2.5em;
-    line-height: 1.2;
-    margin: 0;
-}
-h2, .title {
-    font-size:   2em;
-    line-height: 1.25;
-    margin: 0;
-}
-h3, .min-title {
-    font-size:   1.5em;
-    line-height: 1;
-    margin: 0;
-}
-h4 {
-    font-size:   inherit;
-    line-height: inherit;
-    margin: 0;
-}
-h5 {
-    font-size:   inherit;
-    line-height: inherit;
-    margin: 0;
-}
-h6 {
-    font-size:   inherit;
-    line-height: inherit;
-    margin: 0;
-}
-.subtitle {
-    margin-top: 0;
-
-    font-style:  italic;
-    font-size:   1.125em;
-    line-height: 1.333333;
-}
-p {
-    margin: 0;
+h1, h2, h3, h4, h5, h6, p, blockquote, ul, ol {
+    margin:  0;
+    padding: 0;
 }
 a {
-    background-color: transparent;
     color: inherit;
+    background-color: transparent;
     text-decoration: underline;
 }
-ul {
-    margin:       0;
-    padding-left: 0;
-    margin-left:  1.5em;
-}
-ol {
-    margin:       0;
-    padding-left: 0;
+ul, ol {
     margin-left:  1.5em;
 }
 hr {
-    font-size: inherit;
     border: 0;
     background: transparent;
     box-shadow: none;
 
     /* use as visual spacer */
-    display: block;
-    min-height: 2em;
-
+    display:    block;
+    font-size:  inherit;
+    min-height: 1.5em;
 }
 img {
-  display: block;
-  border:  none;
-  max-width: 100%;
+    display:   block;
+    border:    none;
+    max-width: 100%;
 }
 svg {
-  display: block;
-  border:  none;
-  max-width: 100%;
+    display:   block;
+    border:    none;
+    max-width: 100%;
 }
 table {
-    th {
-        text-align: left;
+    * {
+        text-align:     left;
+        vertical-align: top;
     }
     td {
         padding-top:    1*$dim;
         padding-bottom: 1*$dim;
-
-        font-family: sans-serif;
-        font-size: 0.875em;
-        line-height: 2;
     }
-}
-figure,
-figcaption,
-blockquote {
-    margin:  0;
-    padding: 0;
 }
 
 
@@ -114,9 +64,39 @@ blockquote {
     text-align: center;
     justify-content: center;
 }
+.is-centered-box {
+    /* contentbox--xy-centered */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+}
 
-// content box used with background
-.box {
+@media screen and ($screenNotTablet) {
+    .is-sticky {
+        position: sticky;
+        top: 0.5*$dim;
+    }
+    .is-sticky-box {
+        position: sticky;
+        top: 0;
+    }
+}
+
+
+.chapter { // context divider
+
+    overflow: visible;
+    position: relative;
+    z-index: 0;
+
+    /* has paddings */
+    padding-top:    $margin-def;
+    padding-bottom: $margin-def;
+}
+
+.box { // for elements with background
+
     /* has paddings */
     padding-top:    $margin-def;
     padding-bottom: $margin-def;
@@ -129,18 +109,25 @@ blockquote {
 
 .bg { background-color: $color_main_shadow; }
 
+.has-bg {
+    /* has illustrated background */
+    background-size:     cover;
+    background-repeat:   no-repeat;
+    background-position: center center;
+}
+
 
 //* ------------------------------------ minimal form-item
 
 
 %form-item {
-    // has row layout
-    display: flex;
-    flex-direction: column;
-    flex-wrap: nowrap;
+    /* has rows */
+    display:         flex;
+    flex-direction:  column;
+    flex-wrap:       nowrap;
     justify-content: flex-start;
-    align-items: stretch;
-    align-content: center;
+    align-items:     stretch;
+    align-content:   center;
     &>*     { order: 3 }
     &>label { order: 1 }
     &>input { order: 2 }
@@ -148,32 +135,33 @@ blockquote {
 .form-item     { @extend %form-item; }
 .form-textarea { @extend %form-item; }
 .form-submit   { @extend %form-item; }
+
 label {
     display: block;
 }
 input {
     display: block;
-    width: 100%;
+    width:   100%;
     padding: 0.25em 1em;
 }
 textarea {
     display: block;
-    width: 100%;
+    width:   100%;
     padding: 1em;
-    resize: vertical;
+    resize:  vertical;
 }
 button {
     padding: 0.25em 1em;
 }
-/**/
 
 
 //* ------------------------------------ extra features
 
 
-[bg] { @extend .bg; }
+[hidden], .hidden { display: none!important; }
 
-
+[bg]      { @extend .bg; }
+[chapter] { @extend .grid; @extend .chapter; }
 
 
 /* eof styles for content */

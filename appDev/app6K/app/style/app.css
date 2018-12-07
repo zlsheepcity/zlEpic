@@ -1,12 +1,60 @@
-/* app scss constructor - mixins and templates*/
-/* 2018.12.5 */
-/* EOF: app scss constructor */
-/* Required settings app6002  */
-/* 2018.12.5 */
-/* ------------------------------------ screen sizes */
-/* EOF: Required settings */
-/* html base css 1004 */
-/* 2018.12.5 */
+/* ==============================================================
+    app scss constructor - mixins and templates
+    2018.12.7
+============================================================== */
+.dev, .dev-box, [dev-box], .dev-img, [dev-img], .dev-pic, [dev-pic], [dev] {
+  background: repeating-linear-gradient(-55deg, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1) 0.5rem, rgba(0, 0, 0, 0.2) 0.5rem, rgba(0, 0, 0, 0.2) 1rem); }
+
+.dev-box, [dev-box] {
+  padding: 1.6rem;
+  /* contentbox--xy-centered */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center; }
+
+.dev-img, [dev-img] {
+  width: 100%;
+  height: auto;
+  padding-top: 42%;
+  position: relative;
+  /* contentbox--xy-centered */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center; }
+  .dev-img:before, [dev-img]:before {
+    content: 'picture';
+    font-size: 4em;
+    line-height: 1;
+    opacity: 0.32;
+    /* is xy-centered by absolute */
+    position: absolute;
+    bottom: 50%;
+    right: 50%;
+    transform: translate(50%, 50%); }
+
+.dev-pic, [dev-pic] {
+  display: inline-block;
+  vertical-align: middle;
+  font-size: 1rem;
+  line-height: 1;
+  min-width: 2em;
+  min-height: 2em;
+  /* Note the RADIAL */
+  background: repeating-radial-gradient(circle, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2) 0.2rem, rgba(0, 0, 0, 0.1) 0.2rem, rgba(0, 0, 0, 0.1) 0.4rem); }
+
+/* eof app scss constructor */
+/* ==============================================================
+    required settings app6011
+    2018.12.7
+============================================================== */
+/**/
+/* eof required settings */
+/* ==============================================================
+    html base css 1004
+    2018.12.7
+============================================================== */
 /* ------------------------------------ minimal box model */
 *, *:before, *:after {
   box-sizing: inherit; }
@@ -19,7 +67,7 @@ html, body {
   margin: 0;
   padding: 0; }
 
-/* ------------------------------------ unit & font sizes */
+/* ------------------------------------ basic unit & font sizes */
 html {
   font-size: 10px; }
 
@@ -37,14 +85,6 @@ body {
 canvas {
   display: inline-block; }
 
-html {
-  -ms-text-size-adjust: 100%;
-  -webkit-text-size-adjust: 100%; }
-
-body {
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased; }
-
 a, area, button, input, label, select, summary, textarea, [tabindex] {
   -ms-touch-action: manipulation;
   touch-action: manipulation; }
@@ -52,9 +92,6 @@ a, area, button, input, label, select, summary, textarea, [tabindex] {
 /* ----------------- use semantic markup without standart design */
 article, section, header, footer, main, aside, nav, details {
   display: block; }
-
-[hidden] {
-  display: none !important; }
 
 summary {
   display: list-item; }
@@ -71,11 +108,11 @@ figure, figcaption, fieldset, legend {
   border: 0;
   white-space: normal; }
 
-/* ------------------------------------ EOF: html base */
+/* eof html base */
 /* ==============================================================
- # box model for HTML & BODY
+    box model for HTML & BODY
+    2018.12.7
 ============================================================== */
-/* ------------------------------------ required */
 .body-wrap {
   min-height: 100%;
   margin-top: 0;
@@ -91,10 +128,12 @@ figure, figcaption, fieldset, legend {
 .body-wrap-footer {
   margin-top: auto; }
 
-/* */
-/* grid for article layout (main+aside+extra) */
-/* 2018.12.5 */
-.grid-for-markup, .block, .left-wrap-in-grid, .right-wrap-in-grid, .grid-for-article, .grid {
+/* eof body wrap */
+/* ==============================================================
+    grid for article layout (main+aside+extra)
+    2018.12.7
+============================================================== */
+.grid-for-markup, .block, .left-wrap-in-grid, .right-wrap-in-grid, .grid-for-article, .grid, [chapter] {
   display: grid;
   grid-auto-rows: min-content;
   grid-auto-flow: row;
@@ -106,178 +145,115 @@ figure, figcaption, fieldset, legend {
   grid-template-columns:  [full-start merge-start overmain-start]  2.4rem  [main-start aside-start]  auto  [main-end aside-end]  2.4rem  [full-end merge-end overmain-end] ; }
 
 @media (max-width: 900px) {
-  .grid-for-article, .grid {
+  .grid-for-article, .grid, [chapter] {
     grid-template-columns:  [full-start merge-start overmain-start]  2.4rem  [main-start aside-start]  auto  [main-end aside-end]  2.4rem  [full-end merge-end overmain-end] ; } }
 @media (min-width: 901px) {
-  .grid-for-article, .grid {
+  .grid-for-article, .grid, [chapter] {
     grid-template-columns:  [full-start]  minmax(0, 1fr)  [merge-start overmain-start]  2.4rem  [main-start]  minmax(0, 38em)  [main-end]  2.4rem  [overmain-end]  2.4rem  [aside-start]  16em  [aside-end]  2.4rem  [merge-end]  minmax(0, 1fr)  [full-end] ; } }
 
 .grid-for-markup > * {
   grid-column: main; }
-.grid-for-markup > .layer {
+.grid-for-markup > .grid, .grid-for-markup > [chapter], .grid-for-markup > .layer {
   grid-column: full; }
-.grid-for-markup > .block {
+.grid-for-markup > .block, .grid-for-markup > .illustration {
   grid-column: overmain; }
 .grid-for-markup > .aside {
   grid-column: aside; }
 .grid-for-markup > .merge {
   grid-column: merge; }
-.grid-for-markup > .illustration {
-  grid-column: overmain; }
 
 .grid-for-article > * {
   grid-column: main; }
-.grid-for-article > .layer {
+.grid-for-article > .grid, .grid-for-article > [chapter], .grid-for-article > .layer {
   grid-column: full; }
-.grid-for-article > .block {
+.grid-for-article > .block, .grid-for-article > .illustration {
   grid-column: overmain; }
 .grid-for-article > .aside {
   grid-column: aside; }
 .grid-for-article > .merge {
   grid-column: merge; }
-.grid-for-article > .illustration {
-  grid-column: overmain; }
 
-.grid > * {
+.grid > *, [chapter] > * {
   grid-column: main; }
-.grid > .layer {
+.grid > .grid, [chapter] > .grid, .grid > [chapter], [chapter] > [chapter], .grid > .layer, [chapter] > .layer {
   grid-column: full; }
-.grid > .block {
+.grid > .block, [chapter] > .block, .grid > .illustration, [chapter] > .illustration {
   grid-column: overmain; }
-.grid > .aside {
+.grid > .aside, [chapter] > .aside {
   grid-column: aside; }
-.grid > .merge {
+.grid > .merge, [chapter] > .merge {
   grid-column: merge; }
-.grid > .illustration {
-  grid-column: overmain; }
 
 .block > * {
   grid-column: main; }
-.block > .layer {
+.block > .grid, .block > [chapter], .block > .layer {
   grid-column: full; }
-.block > .block {
+.block > .block, .block > .illustration {
   grid-column: overmain; }
 .block > .aside {
   grid-column: aside; }
 .block > .merge {
   grid-column: merge; }
-.block > .illustration {
-  grid-column: overmain; }
-
-@media (min-width: 901px) {
-  .aside.has-block {
-    height: 0;
-    overflow: visible;
-    margin-left: -2.4rem;
-    margin-right: -2.4rem; } }
 
 .left-wrap-in-grid {
   grid-column: full-start / overmain-end; }
   .left-wrap-in-grid > * {
     grid-column: main; }
-  .left-wrap-in-grid > .layer {
+  .left-wrap-in-grid > .grid, .left-wrap-in-grid > [chapter], .left-wrap-in-grid > .layer {
     grid-column: full; }
-  .left-wrap-in-grid > .block {
+  .left-wrap-in-grid > .block, .left-wrap-in-grid > .illustration {
     grid-column: overmain; }
   .left-wrap-in-grid > .aside {
     grid-column: aside; }
   .left-wrap-in-grid > .merge {
     grid-column: merge; }
-  .left-wrap-in-grid > .illustration {
-    grid-column: overmain; }
 
 .right-wrap-in-grid {
   grid-column: overmain-start / full-end; }
   .right-wrap-in-grid > * {
     grid-column: main; }
-  .right-wrap-in-grid > .layer {
+  .right-wrap-in-grid > .grid, .right-wrap-in-grid > [chapter], .right-wrap-in-grid > .layer {
     grid-column: full; }
-  .right-wrap-in-grid > .block {
+  .right-wrap-in-grid > .block, .right-wrap-in-grid > .illustration {
     grid-column: overmain; }
   .right-wrap-in-grid > .aside {
     grid-column: aside; }
   .right-wrap-in-grid > .merge {
     grid-column: merge; }
-  .right-wrap-in-grid > .illustration {
-    grid-column: overmain; }
 
-/**/
-.has-two-columns {
-  display: grid;
-  grid-template-columns: auto auto;
-  grid-gap: 2.4rem; }
-  .has-two-columns > * {
-    grid-column: auto; }
-
-.has-two-columns > .block {
-  grid-column: auto; }
-
-/**/
+@media (min-width: 901px) {
+  .aside.has-block {
+    height: 0;
+    overflow: visible;
+    grid-column: overmain-end / merge-end; } }
+@media (max-width: 900px) {
+  .aside.has-block {
+    grid-column: overmain; } }
 /* eof grid for article */
-/* styles for content */
-/* 2018.12.5 */
-h1, .big-title {
-  font-size: 2.5em;
-  line-height: 1.2;
-  margin: 0; }
-
-h2, .title {
-  font-size: 2em;
-  line-height: 1.25;
-  margin: 0; }
-
-h3, .min-title {
-  font-size: 1.5em;
-  line-height: 1;
-  margin: 0; }
-
-h4 {
-  font-size: inherit;
-  line-height: inherit;
-  margin: 0; }
-
-h5 {
-  font-size: inherit;
-  line-height: inherit;
-  margin: 0; }
-
-h6 {
-  font-size: inherit;
-  line-height: inherit;
-  margin: 0; }
-
-.subtitle {
-  margin-top: 0;
-  font-style: italic;
-  font-size: 1.125em;
-  line-height: 1.333333; }
-
-p {
-  margin: 0; }
+/* ==============================================================
+    styles for content (excluding typography)
+    2018.12.7
+============================================================== */
+h1, h2, h3, h4, h5, h6, p, blockquote, ul, ol {
+  margin: 0;
+  padding: 0; }
 
 a {
-  background-color: transparent;
   color: inherit;
+  background-color: transparent;
   text-decoration: underline; }
 
-ul {
-  margin: 0;
-  padding-left: 0;
-  margin-left: 1.5em; }
-
-ol {
-  margin: 0;
-  padding-left: 0;
+ul, ol {
   margin-left: 1.5em; }
 
 hr {
-  font-size: inherit;
   border: 0;
   background: transparent;
   box-shadow: none;
   /* use as visual spacer */
   display: block;
-  min-height: 2em; }
+  font-size: inherit;
+  min-height: 1.5em; }
 
 img {
   display: block;
@@ -289,24 +265,39 @@ svg {
   border: none;
   max-width: 100%; }
 
-table th {
-  text-align: left; }
+table * {
+  text-align: left;
+  vertical-align: top; }
 table td {
   padding-top: 0.8rem;
-  padding-bottom: 0.8rem;
-  font-family: sans-serif;
-  font-size: 0.875em;
-  line-height: 2; }
-
-figure,
-figcaption,
-blockquote {
-  margin: 0;
-  padding: 0; }
+  padding-bottom: 0.8rem; }
 
 .is-centered {
   text-align: center;
   justify-content: center; }
+
+.is-centered-box {
+  /* contentbox--xy-centered */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center; }
+
+@media screen and (min-width: 901px) {
+  .is-sticky {
+    position: sticky;
+    top: 0.4rem; }
+
+  .is-sticky-box {
+    position: sticky;
+    top: 0; } }
+.chapter, [chapter] {
+  overflow: visible;
+  position: relative;
+  z-index: 0;
+  /* has paddings */
+  padding-top: 2.4rem;
+  padding-bottom: 2.4rem; }
 
 .box {
   /* has paddings */
@@ -320,7 +311,14 @@ blockquote {
 .bg, [bg] {
   background-color: rgba(0, 0, 0, 0.1); }
 
+.has-bg {
+  /* has illustrated background */
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center; }
+
 .form-item, .form-textarea, .form-submit {
+  /* has rows */
   display: flex;
   flex-direction: column;
   flex-wrap: nowrap;
@@ -351,83 +349,152 @@ textarea {
 button {
   padding: 0.25em 1em; }
 
-/**/
+[hidden], .hidden {
+  display: none !important; }
+
 /* eof styles for content */
-/* content markup */
-/* 2018.12.5 */
+/* ==============================================================
+    all about font-sizes and line-heights
+    2018.12.7
+============================================================== */
+body {
+  /* 16/28 */
+  font-size: 16px;
+  line-height: 1.75;
+  font-family: Vollkorn, et-book, Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, serif;
+  font-weight: 400; }
+
+h1, h2, h3, h4, h5, h6, p, blockquote {
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  font-weight: inherit; }
+
+h1, .big-title {
+  /* 40/48 */
+  font-size: 2.5em;
+  line-height: 1.2; }
+
+h2, .title {
+  /* 32/40 */
+  font-size: 2em;
+  line-height: 1.25; }
+
+h3, .min-title {
+  /* 24/32 */
+  font-size: 1.5em;
+  line-height: 1.333333; }
+
+.subtitle {
+  /* 20/24 */
+  font-size: 1.25em;
+  line-height: 1.2; }
+
+small {
+  /* 14/28 */
+  font-size: 0.875em;
+  line-height: 2; }
+
+td {
+  font-family: "Trebuchet MS", "Gill Sans", "Gill Sans MT", sans-serif;
+  /* 14/24 */
+  font-size: 0.875em;
+  line-height: 1.714285; }
+
+.has-text-accent {
+  font-weight: 400;
+  /* 24/36 */
+  font-size: 1.5em;
+  line-height: 1.5; }
+
+.has-small-text {
+  /* 14/24 */
+  font-size: 0.875em;
+  line-height: 1.714285; }
+
+.has-sans-text {
+  font-family: "Trebuchet MS", "Gill Sans", "Gill Sans MT", sans-serif;
+  letter-spacing: .03em;
+  /* 14/24 */
+  font-size: 0.875em;
+  line-height: 1.714285; }
+
+@supports (hanging-punctuation: first) {
+  * {
+    hanging-punctuation: first; } }
+
+html {
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%; }
+
+body {
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased; }
+
+/* eof typography */
+/* ==============================================================
+    design template - content markup
+    2018.12.7
+============================================================== */
 html {
   font-size: 20px; }
 
+@media screen and (max-width: 1100px) {
+  html {
+    font-size: 10px; } }
 body {
   background-color: #fffff8;
   color: #111111;
   font-family: Vollkorn, et-book, Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, serif;
-  /* default font */
   font-weight: 400;
+  /* 16/28 */
   font-size: 16px;
   line-height: 1.75; }
 
-.design-template {
-  /* design workers */ }
-  @supports (hanging-punctuation: first) {
-    .design-template * {
-      hanging-punctuation: first; } }
-  .design-template h1, .design-template h2, .design-template h3, .design-template h4, .design-template h5, .design-template h6 {
-    font-family: inherit;
-    overflow-wrap: break-word;
-    word-wrap: break-word;
-    -ms-word-break: break-all;
-    word-break: break-word;
-    -ms-hyphens: auto;
-    -moz-hyphens: auto;
-    -webkit-hyphens: auto;
-    hyphens: auto; }
-  .design-template h1, .design-template .big-title {
-    font-weight: 400;
-    font-size: 2.5em;
-    line-height: 1.2; }
-  .design-template h2, .design-template .title {
-    padding-top: 0.8rem;
-    font-style: italic;
-    font-weight: 400;
-    font-size: 2em;
-    line-height: 1.25; }
-  .design-template h3, .design-template .min-title {
-    font-style: italic;
-    font-weight: 400;
-    font-size: 1.5em;
-    line-height: 1; }
-  .design-template .subtitle {
-    font-style: normal;
-    font-size: 1.125em;
-    line-height: 1.333333; }
-  .design-template .text-accent {
-    font-weight: 400;
-    font-size: 1.5em;
-    line-height: 1.5; }
-  .design-template .aside {
-    font-size: 0.875em;
-    line-height: 1.714285; }
-  .design-template small {
-    font-size: 0.875em;
-    line-height: 2; }
-  @media screen and (min-width: 901px) {
-    .design-template .box {
-      /* has visualy equal paddings */
-      padding-top: 2rem;
-      padding-bottom: 2rem; } }
-  .design-template table td {
-    /* small sans */
-    font-family: "Trebuchet MS", "Gill Sans", "Gill Sans MT", sans-serif;
-    letter-spacing: .03em;
-    font-size: 0.875em;
-    line-height: 1.714285; }
-  .design-template .has-sans {
-    font-family: "Trebuchet MS", "Gill Sans", "Gill Sans MT", sans-serif; }
+@supports (hanging-punctuation: first) {
+  .design-template * {
+    hanging-punctuation: first; } }
+.design-template h1, .design-template h2, .design-template h3, .design-template h4, .design-template h5, .design-template h6 {
+  font-family: inherit;
+  font-weight: 400; }
+.design-template h1, .design-template .big-title {
+  /* 40/48 */
+  font-size: 2.5em;
+  line-height: 1.2; }
+.design-template h2, .design-template .title {
+  /* 32/40 */
+  font-size: 2em;
+  line-height: 1.25; }
+.design-template h3, .design-template .min-title {
+  /* 24/28 */
+  font-size: 1.5em;
+  line-height: 1.16666666667; }
+.design-template .has-text-accent {
+  /* 24/36 */
+  font-size: 1.5em;
+  line-height: 1.5; }
+.design-template .aside {
+  /* 14/24 */
+  font-size: 0.875em;
+  line-height: 1.714285; }
+.design-template h2, .design-template .title,
+.design-template h3, .design-template .min-title {
+  font-style: italic; }
 
-/* split fullscreen into parts header/body/footer */
-/* 2018.12.5
-```html template
+.design-template h2, .design-template .title {
+  padding-top: 0.8rem; }
+@media screen and (min-width: 901px) {
+  .design-template .box {
+    /* has visualy equal paddings */
+    padding-top: 2rem;
+    padding-bottom: 2rem; } }
+
+/* eof design template */
+/* ==============================================================
+    split fullscreen into parts header/body/footer
+    2018.12.5
+============================================================== */
+/* html template
 
     <section class="fullscreen">
         <header class="fullscreen-header"></header>
@@ -435,20 +502,24 @@ body {
         <footer class="fullscreen-footer"></footer>
     </section>
 
-```
 */
 .fullscreen {
+  /* is fullscreen box */
   display: block;
   width: 100%;
   min-height: 100vh;
+  /* has illustrated background */
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
+  /* has fixed background */
+  /* has rows */
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-content: stretch;
-  align-items: stretch; }
+  align-items: stretch;
+  /* contentbox--xy-centered */ }
   .fullscreen.has-fixed-background:before {
     position: fixed;
     z-index: -1;
@@ -476,22 +547,27 @@ body {
     align-items: center;
     align-content: center; }
 
-/*  */
+/* eof fullscreen */
 /* ==============================================================
- # Sidebars & Friends
+    autohidden sidebar
+    2018.5.12
 ============================================================== */
-/* 2018.5.12 */
 .sidebar {
+  background-color: #fffff8;
+  /* is screen fixed */
   position: fixed;
   z-index: 3;
   top: 0;
   bottom: 0;
   left: 100%;
+  /* has width */
   width: 100%;
+  /* has unpredictable content */
   overflow: auto;
+  /* closed state */
   transform: translateX(0);
   transition: transform 200ms ease-in;
-  background-color: #fffff8; }
+  /* open state */ }
   @media screen and (min-width: 44rem) {
     .sidebar {
       max-width: 38rem; } }
@@ -499,5 +575,11 @@ body {
     transition-timing-function: ease-out;
     transform: translateX(-100%); }
 
-/**/
-/* EOF: Sidebars */
+/* eof sidebar */
+.group {
+  display: grid;
+  grid-template-columns: none;
+  grid-auto-flow: column;
+  grid-gap: 2.4rem; }
+  .group > *, .group > .block {
+    grid-column: auto; }
