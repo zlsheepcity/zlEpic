@@ -1,3 +1,190 @@
+.demo-introduction {
+
+    overflow: hidden;
+
+    background-color: #A7DBD8;
+    color: #111111;
+
+    font-family: Vollkorn, et-book, Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, serif;
+    font-weight: 400;
+
+}
+.demo-introduction .grid {
+    padding-top:    160px;
+    padding-bottom: 160px;
+}
+.demo-introduction .text-accent {
+    font-weight: 400;
+    font-size: 1.5em;
+    line-height: 1.5;
+}
+
+.demo-introduction p,
+.demo-introduction h1,
+.demo-introduction h2,
+.demo-introduction h3 {
+    color: inherit;
+    font-family: inherit;
+    position: static;
+    top: auto;
+    display: block;
+    width: auto;
+    margin: 0;
+    background-color: transparent;
+    font-weight: 400;
+    text-align: left;
+}
+.demo-introduction p {
+    font-size: inherit;
+    line-height: inherit;
+}
+.gl-reasons-list {
+    max-width: 38em;
+}
+.gl-reasons-wrap {
+    background-position: 94% 60%;
+    background-size: auto 80%;
+    background-repeat: no-repeat;
+    background-image: url(../images/logo-icon.svg);
+}
+.gl-reasons-wrap.box {
+    padding-bottom: 4.8rem;
+}
+.gl-islands-wrap {
+    padding-top:    4.8rem;
+    padding-bottom: 4.8rem;
+}
+.gl-islands {
+    max-width: 48em;
+    margin-left:  auto;
+    margin-right: auto;
+
+    position: relative;
+    z-index: 0;
+}
+.gl-islands th,
+.gl-islands td {
+    padding-left:  2.4rem;
+    padding-right: 2.4rem;
+    width: 50%;
+    vertical-align: top;
+}
+@media all and (max-width:900px) {
+    .gl-islands { max-width: 100%; }
+    .gl-islands th:first-child,
+    .gl-islands td:first-child {
+        padding-left:  0;
+        padding-right: 1.2rem;
+    }
+    .gl-islands th:last-child,
+    .gl-islands td:last-child {
+        padding-right: 0;
+        padding-left:  1.2rem;
+    }
+}
+.gl-islands--curacao:before {
+    /* is decoration block */
+    content: '';
+    display: block;
+    position: absolute;
+    z-index: -1;
+
+    /* decoration rule */
+    bottom: 0;
+    width: 60%;
+    padding-top: 50%;
+    opacity: 0.1;
+    transform: translateX(-40%);
+
+    /* has illustrated background */
+    background-size:     contain;
+    background-repeat:   no-repeat;
+    background-position: center center;
+    background-image: url(../images/curacao-island-plain.svg);
+
+}
+.gl-islands--malta:before {
+    /* is decoration block */
+    content: '';
+    display: block;
+    position: absolute;
+    z-index: -1;
+
+    /* decoration rule */
+    width: 60%;
+    padding-top: 50%;
+    opacity: 0.1;
+    transform: translateX(30%);
+
+    /* has illustrated background */
+    background-size:     contain;
+    background-repeat:   no-repeat;
+    background-position: center center;
+    background-image: url(../images/malta-islands-plain.svg);
+}
+
+/* pros&cons aside decoration */
+@media all and (max-width:900px) {
+    .gl-proscons-aside.aside {
+        grid-column: overmain;
+    }
+    .gl-proscons-placement { display: none; }
+
+    /* has two columns *
+    .gl-proscons-block {
+        grid-template-columns: auto auto;
+        grid-gap: 0;
+    }
+    .gl-proscons-block>.block {
+        grid-column: auto;
+    }
+    /**/
+
+}
+@media all and (min-width:901px) {
+    .gl-proscons-placement {
+        height: 20px;
+    }
+    .gl-proscons-block {
+        transform: translateY(-33%);
+        position: relative;
+        font-family: sans-serif;
+        font-size: 0.8em;
+        line-height: 1.5;
+    }
+    .gl-proscons-block.box {
+        padding-top:    2.4rem;
+        padding-bottom: 2.4rem;
+    }
+    .gl-proscons-block:before {
+        /* is decoration block */
+        content: '';
+        position: absolute;
+        z-index: -1;
+
+        /* is left pseudo-border */
+        top: 0;
+        bottom: 0;
+        right: 100%;
+        width: 2.4rem;
+
+        /* has design */
+        background-color: inherit;
+        clip-path: polygon(
+            0                     calc( 33% ),
+            calc( 100% + 1px )    -1px,
+            calc( 100% + 1px )    calc( 100% + 1px ),
+            0                     calc( 33% + 20px )
+        );
+    }
+}
+
+
+
+
+
+
+
 /* classic article sample */
 
 .demo-markup {

@@ -5,8 +5,7 @@
 //* ------------------------------------ dependencies
 
 
-$margin-def:  $margin-def;  // 2.4rem
-$margin-less: $margin-less; // 1.6rem
+$margin-def:      $margin-def;  // 2.4rem
 $screenNotTablet: $screenNotTablet;
 $screenForTablet: $screenForTablet;
 
@@ -14,7 +13,7 @@ $screenForTablet: $screenForTablet;
 //* ------------------------------------ setup
 
 
-$grid-settings--main-maximum: 40em;
+$grid-settings--main-maximum: 38em;
 $grid-settings--aside:        16em;
 
 $screenForArticleLayout: $screenNotTablet;
@@ -94,7 +93,7 @@ $grid_formula--article-right-wrapped:
     grid-auto-flow: row;
     grid-template-columns: $grid_formula--base;
     align-items: start;
-    grid-gap: $margin-less 0;
+    grid-gap: 1.5em 0;
 }
 %grid_layout-for-markup {
     @extend %grid_layout--base;
@@ -110,11 +109,7 @@ $grid_formula--article-right-wrapped:
     }
 }
 @mixin grid_layout--components {
-    &>* {
-        grid-column: main;
-        margin-top: 0;
-        margin-bottom: 0;
-    }
+    &>*              { grid-column: main; }
     &>.layer         { grid-column: full; }
     &>.block         { grid-column: overmain; }
     &>.aside         { grid-column: aside; }

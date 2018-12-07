@@ -41,10 +41,11 @@ h6 {
     margin: 0;
 }
 .subtitle {
+    margin-top: 0;
+
     font-style:  italic;
     font-size:   1.125em;
-    line-height: 1.33333;
-    margin-top: 0;
+    line-height: 1.333333;
 }
 p {
     margin: 0;
@@ -55,19 +56,25 @@ a {
     text-decoration: underline;
 }
 ul {
+    margin:       0;
     padding-left: 0;
-    margin-left: 2rem;
+    margin-left:  1.5em;
 }
 ol {
+    margin:       0;
     padding-left: 0;
-    margin-left: 2rem;
+    margin-left:  1.5em;
 }
 hr {
-    display: block;
-    min-height: 3.2rem;
+    font-size: inherit;
     border: 0;
     background: transparent;
     box-shadow: none;
+
+    /* use as visual spacer */
+    display: block;
+    min-height: 2em;
+
 }
 img {
   display: block;
@@ -88,8 +95,15 @@ table {
         padding-bottom: 1*$dim;
 
         font-family: sans-serif;
-        font-size: 0.8em;
+        font-size: 0.875em;
+        line-height: 2;
     }
+}
+figure,
+figcaption,
+blockquote {
+    margin:  0;
+    padding: 0;
 }
 
 
