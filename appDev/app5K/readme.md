@@ -1,3 +1,25 @@
+# review 2018.12.8
+
+## html
+index       - mutated
+animated    - dead
+layout      - mutated
+vue-test    - renamed =KEEP=
+
+alps/index              - =KEEP=
+alps/vane               - mutated
+alps/eg                 - dead
+alps/documentation      - =KEEP=
+alps/content-x          - =KEEP=
+
+## topic alps
+alps/content-x
+amps/art
+
+## art
+! save data
+
+
 -------------------------------------
 # todo
 -------------------------------------

@@ -93,7 +93,33 @@ table {
     /* has paddings */
     padding-top:    $margin-def;
     padding-bottom: $margin-def;
+
+    &.is-first  { padding-top:    0; }
+    &.is-last   { padding-bottom: 0; }
+    &.is-markup { padding: 0; }
 }
+.chapter-slide-header {
+    /* is fixed */
+    position: relative;
+    position: sticky;
+    z-index: -1;
+    top:      0;
+    &:before {
+        content: '';
+        /* is fullscreen back */
+        position: absolute;
+        z-index: -2;
+        top:    0;
+        right:  0;
+        left:   0;
+        height: 100vh;
+        /* has illustrated background */
+        background-size:     cover;
+        background-repeat:   no-repeat;
+        background-position: center center;
+    }
+}
+
 
 .div     { display: block; }
 .span    { display: inline; }

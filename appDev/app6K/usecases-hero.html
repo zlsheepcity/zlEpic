@@ -23,6 +23,9 @@
 
 
     <style>
+        [demo-chapter] {
+            background-color: wheat;
+        }
         [demo-fullscreen] {
             background-color: hsla(177, 42%, 76%,   1);
         }
@@ -36,6 +39,12 @@
         [demo-form] .form-submit {
             padding-top: 0.875em;
         }
+        [demo-slide-header] {
+            height: 40vh;
+        }
+        [demo-slide-header]:before {
+            background-image: url(art/design-template/bg__light.jpg);
+        }
     </style>
 
 
@@ -44,11 +53,139 @@
 </head>
 <body class="body-wrap design-template">
 
+<section class="chapter is-markup">
+
+<header demo-slide-header class="layer block box bg grid chapter-slide-header">
+    <h2>back-slide <i class="pill bg" id="T01">#T01</i></h2>
+</header>
+
+<section demo-chapter class="grid box">
+    <h1>Responsive Data Tables <i class="pill bg" id="T01">#T04</i></h1>
+
+    <p>
+        break-point: 600px
+    </p>
+
+    
+
+    <section class="block">
+        <caption>
+            <h2 class="bg is-centered">Simple</h2>
+        </caption>
+        <table class="data-table" data-table-type="1str,2num,3txt">
+            <thead>
+                <tr>
+                    <th>
+                        Provider
+                    </th>
+                    <th>
+                        Games
+                    </th>
+                    <th>
+                        Description
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th>
+                        Microgaming
+                    </th>
+                    <td>
+                        590
+                    </td>
+                    <td>
+                        The game is devoted to the Mighty Scandinavian god Thor, which gives out different symbols, such as Scatter Ram, to help a player win prizes. The option of additional gambling game is also available.
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        Evolution Gaming
+                    </th>
+                    <td>
+                        84
+                    </td>
+                    <td>
+                        Evolution Gaming works with top-tier casino operators across Europe. The company is an undisputable leader in live dealer gaming business.
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        Betradar
+                    </th>
+                    <td>
+                        12800
+                    </td>
+                    <td>
+                        A reliable software that allows bookmaker operations, registering an impressive number of bets, monitor ratio changes and live scores, analyse large volumes of sports data. Betradar software has a robust functionality that will enable your casino to operate efficiently and smoothly under the supervision of a minimum number of employees.
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <table class="data-table has-data-titles" data-table-type="1str,2num,3txt">
+        <caption>
+            <h2 class="bg is-centered">Has markup for data-title</h2>
+        </caption>
+        <thead>
+            <tr>
+                <th>
+                    Provider
+                </th>
+                <th>
+                    Games
+                </th>
+                <th>
+                    Description
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th data-title="Provider">
+                    Microgaming
+                </th>
+                <td data-title="Games">
+                    590
+                </td>
+                <td data-title="Description with long value">
+                    The game is devoted to the Mighty Scandinavian god Thor, which gives out different symbols, such as Scatter Ram, to help a player win prizes. The option of additional gambling game is also available.
+                </td>
+            </tr>
+            <tr>
+                <th data-title="Provider">
+                    Evolution Gaming
+                </th>
+                <td data-title="Games">
+                    84
+                </td>
+                <td data-title="Description">
+                    Evolution Gaming works with top-tier casino operators across Europe. The company is an undisputable leader in live dealer gaming business.
+                </td>
+            </tr>
+            <tr>
+                <th data-title="Provider">
+                    Betradar
+                </th>
+                <td data-title="Games">
+                    12800
+                </td>
+                <td data-title="Description">
+                    A reliable software that allows bookmaker operations, registering an impressive number of bets, monitor ratio changes and live scores, analyse large volumes of sports data. Betradar software has a robust functionality that will enable your casino to operate efficiently and smoothly under the supervision of a minimum number of employees.
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+</section>
+
 <section demo-fullscreen class="fullscreen">
 
     <header class="fullscreen-header">
         <div dev-box title>
             fullscreen-header / fullscreen-body / fullscreen-footer
+            <i class="pill bg" id="T02">#T02</i>
         </div>
     </header>
 
@@ -126,9 +263,10 @@
 </div>
 <!-- fullscreen template -->
 
-<section chapter>
+</section>
+<section chapter demo-chapter>
 
-    <h2>Default form</h2>
+    <h2>Default form <i class="pill bg" id="T03">#T03</i></h2>
 
     <div demo-form class="block box bg">
 

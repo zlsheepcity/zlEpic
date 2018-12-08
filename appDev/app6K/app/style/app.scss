@@ -13,13 +13,19 @@
 // default components
 
 
+/* 010 */@import "app_components/grid-for-article/grid-for-article.scss";
+
+/* 020 */@import "app_components/content-markup/content-markup.scss";
+/* 021 */@import "app_components/content-markup/content-typography.scss";
+/* 022 */@import "app_components/content-markup/design-template.scss";
+
 @import "app_components/layout-body-wrap/layout-body-wrap.scss";
 
-@import "app_components/grid-for-article/grid-for-article.scss";
+@import "app_components/group/group.scss";
 
-@import "app_components/content-markup/content-markup.scss";
-@import "app_components/content-markup/content-typography.scss";
-@import "app_components/content-markup/design-template.scss";
+
+
+
 
 
 
@@ -35,33 +41,7 @@
 
 // ----------------------------------------------- pending
 
-
-//* ------------------------------------ pending
-
-.group {
-
-    /* is grid */
-    display: grid;
-    grid-template-columns: none;
-    grid-auto-flow: column;
-    grid-auto-rows: 1fr;
-    grid-gap: $margin-def;
-
-    &>* {
-        grid-column: auto;
-        height: 100%;
-    }
-    &>.block {
-        grid-column: auto;
-    }
-    &.block {
-        padding-left:  $margin-def;
-        padding-right: $margin-def;
-    }
-
-    /* has overflow fallback */
-    overflow: auto;
-}
+@import "app_components/data-table/data-table.scss";
 
 
 // grid cases
