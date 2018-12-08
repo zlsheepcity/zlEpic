@@ -150,12 +150,22 @@ $grid_formula--article-right-wrapped:
 .left-wrap-in-grid {
     @extend %grid_layout-for-markup;
     @include grid_layout--components;
-    grid-column: full-start / overmain-end;
+    &, &.grid, &.block {
+        grid-column: full-start / overmain-end;
+    }
+    &.grid {
+        grid-template-columns: $grid_formula--article-left-wrapped;
+    }
 }
 .right-wrap-in-grid {
     @extend %grid_layout-for-markup;
     @include grid_layout--components;
-    grid-column: overmain-start / full-end;
+    &, &.grid, &.block {
+        grid-column: overmain-start / full-end;
+    }
+    &.grid {
+        grid-template-columns: $grid_formula--article-right-wrapped;
+    }
 }
 
 

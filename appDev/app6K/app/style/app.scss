@@ -39,19 +39,35 @@
 //* ------------------------------------ pending
 
 .group {
+
+    /* is grid */
     display: grid;
     grid-template-columns: none;
     grid-auto-flow: column;
+    grid-auto-rows: 1fr;
     grid-gap: $margin-def;
-    &>*,
-    &>.block { grid-column: auto; }
+
+    &>* {
+        grid-column: auto;
+        height: 100%;
+    }
+    &>.block {
+        grid-column: auto;
+    }
+    &.block {
+        padding-left:  $margin-def;
+        padding-right: $margin-def;
+    }
+
+    /* has overflow fallback */
+    overflow: auto;
 }
 
 
 // grid cases
 
-//@import "app_pending/logo-matrix/logo-matrix";
-//@import "app_pending/logo-matrix/design-template";
+@import "app_pending/logo-matrix/logo-matrix";
+@import "app_pending/logo-matrix/design-template";
 
 //@import "app_pending/logo-selector/logo-selector";
 
