@@ -112,63 +112,53 @@
 
 <div id="learn-more-1"></div>
 
-    <section class="fullscreen">
+<!-- fullscreen template -->
+<div class="fullscreen">
+    <div class="fullscreen-header">
+        <div dev-box>fullscreen-header</div>
+    </div>
+    <div class="fullscreen-body">
+        <div dev-box>fullscreen-body</div>
+    </div>
+    <div class="fullscreen-footer">
+        <div dev-box>fullscreen-footer</div>
+    </div>
+</div>
+<!-- fullscreen template -->
 
-        <header class="fullscreen-header">
-            <div dev-box title>fullscreen-top</div>
-        </header>
+<section chapter>
 
-        <section class="fullscreen-body">
+    <h2>Default form</h2>
 
-            <div class="welcome-boxes-layout">
-                <div class="box welcome-links">
-                    <div class="block">
-                        <h1><a href="">Curacao Gaming Licence</a></h1>
-                        <p>Licensing of all iGaming Products — online casinos, sports betting, poker, lotteries, and bingo!</p>
-                    </div>
-                    <div class="block">
-                        <h2><a href="">Banking Solutions</a></h2>
-                        <p>Open bank & processing accounts for your gambling business.</p>
-                    </div>
+    <div demo-form class="block box bg">
+
+        <!-- default form -->
+        <p>To apply for a <em>gaming licence</em>, open a <em>bank account</em> or ask a <em>question</em>, please, fill in the form:</p>
+        <form class="block" action="?it-was-form-submit">
+            <section class="block">
+                <div class="form-item">
+                     <input tabindex="1" type="text" name="your-name" id="your-name" value="" placeholder="(required)" required />
+                     <label for="your-name">Name</label>
                 </div>
-                <div class="box welcome-form">
-                    <p>To apply for a <em>gaming licence</em>, open a <em>bank account</em> or ask a <em>question</em>, please, fill in the form:</p>
-
-                    <form class="block form-design--plains" action="?it-was-form-submit">
-                        <fieldset class="form-group">
-                            <div class="form-item">
-                                 <input tabindex="2" type="text" name="your-name" id="your-name" value="" placeholder="(required)" required />
-                                 <label for="your-name">Name</label>
-                            </div>
-                            <div class="form-item">
-                                 <input tabindex="2" type="email" name="your-email" id="your-email" value="" placeholder="(required)" required />
-                                 <label for="your-email">Email</label>
-                            </div>
-                            <div class="form-item">
-                                 <input tabindex="2" type="tel" name="your-phone" id="your-phone" value="" />
-                                 <label for="your-phone">Phone</label>
-                            </div>
-                            <div class="form-item">
-                                 <input tabindex="2" type="text" name="your-skype" id="your-skype" value="" />
-                                 <label for="your-skype">Skype</label>
-                            </div>
-                            <div class="form-textarea">
-                                 <textarea tabindex="2" name="your-message" id="your-message" rows="4"></textarea>
-                                 <label for="your-message">Message/Question</label>
-                            </div>
-                        </fieldset>
-                        <div class="form-submit">
-                             <button tabindex="6" type="submit" class="button">Send</button>
-                        </div>
-                    </form>
+                <div class="form-item">
+                     <input tabindex="1" type="email" name="your-email" id="your-email" value="" placeholder="(required)" required />
+                     <label for="your-email">Email</label>
                 </div>
-            </div>
+                <div class="form-textarea">
+                     <textarea tabindex="1" name="your-message" id="your-message" rows="4"></textarea>
+                     <label for="your-message">Message or Question</label>
+                </div>
+            </section>
+            <section class="form-submit">
+                 <button tabindex="1" type="submit" class="button">Send</button>
+                 <label></label>
+            </section>
+        </form>
+        <!-- /default form -->
 
-        </section>
-        <footer class="fullscreen-footer">
-            <a href="#learn-more-1" class="pill bg title">learn more</a>
-        </footer>
-    </section>
+    </div>
+
+</section>
 
 </body>
 </html>
