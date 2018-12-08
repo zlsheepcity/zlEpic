@@ -66,63 +66,62 @@
         break-point: 600px
     </p>
 
-    
-
-    <section class="block">
+    <table class="data-table" data-table-type="1str,2num,3txt">
         <caption>
             <h2 class="bg is-centered">Simple</h2>
         </caption>
-        <table class="data-table" data-table-type="1str,2num,3txt">
-            <thead>
-                <tr>
-                    <th>
-                        Provider
-                    </th>
-                    <th>
-                        Games
-                    </th>
-                    <th>
-                        Description
-                    </th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <th>
-                        Microgaming
-                    </th>
-                    <td>
-                        590
-                    </td>
-                    <td>
-                        The game is devoted to the Mighty Scandinavian god Thor, which gives out different symbols, such as Scatter Ram, to help a player win prizes. The option of additional gambling game is also available.
-                    </td>
-                </tr>
-                <tr>
-                    <th>
-                        Evolution Gaming
-                    </th>
-                    <td>
-                        84
-                    </td>
-                    <td>
-                        Evolution Gaming works with top-tier casino operators across Europe. The company is an undisputable leader in live dealer gaming business.
-                    </td>
-                </tr>
-                <tr>
-                    <th>
-                        Betradar
-                    </th>
-                    <td>
-                        12800
-                    </td>
-                    <td>
-                        A reliable software that allows bookmaker operations, registering an impressive number of bets, monitor ratio changes and live scores, analyse large volumes of sports data. Betradar software has a robust functionality that will enable your casino to operate efficiently and smoothly under the supervision of a minimum number of employees.
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-    </section>
+        <thead>
+            <tr>
+                <th>
+                    Provider
+                </th>
+                <th>
+                    Games
+                </th>
+                <th>
+                    Description
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th>
+                    Microgaming
+                </th>
+                <td>
+                    590
+                </td>
+                <td>
+                    The game is devoted to the Mighty Scandinavian god Thor, which gives out different symbols, such as Scatter Ram, to help a player win prizes. The option of additional gambling game is also available.
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    Evolution Gaming
+                </th>
+                <td>
+                    84
+                </td>
+                <td>
+                    Evolution Gaming works with top-tier casino operators across Europe. The company is an undisputable leader in live dealer gaming business.
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    Betradar
+                </th>
+                <td>
+                    12800
+                </td>
+                <td>
+                    A reliable software that allows bookmaker operations, registering an impressive number of bets, monitor ratio changes and live scores, analyse large volumes of sports data. Betradar software has a robust functionality that will enable your casino to operate efficiently and smoothly under the supervision of a minimum number of employees.
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <p aside>
+        class="data-table" data-table-type="1str,2num,3txt"
+    </p>
 
     <table class="data-table has-data-titles" data-table-type="1str,2num,3txt">
         <caption>
@@ -177,6 +176,9 @@
             </tr>
         </tbody>
     </table>
+    <p aside>
+        class="data-table has-data-titles" data-table-type="1str,2num,3txt"
+    </p>
 
 </section>
 
@@ -213,24 +215,24 @@
                 <form class="block" action="?it-was-form-submit">
                     <section class="block">
                         <div class="form-item">
-                             <input tabindex="1" type="text" name="your-name" id="your-name" value="" placeholder="(required)" required />
-                             <label for="your-name">Name</label>
+                             <input tabindex="2" type="text" name="yourname" id="yourname" value="" placeholder="(required)" required />
+                             <label for="yourname">Name</label>
                         </div>
                         <div class="form-item">
-                             <input tabindex="1" type="email" name="your-email" id="your-email" value="" placeholder="(required)" required />
-                             <label for="your-email">Email</label>
+                             <input tabindex="2" type="email" name="youremail" id="youremail" value="" placeholder="(required)" required />
+                             <label for="youremail">Email</label>
                         </div>
                         <div class="form-item">
-                             <input tabindex="1" type="tel" name="your-phone" id="your-phone" value="" />
-                             <label for="your-phone">Phone</label>
+                             <input tabindex="2" type="tel" name="yourphone" id="yourphone" value="" />
+                             <label for="yourphone">Phone</label>
                         </div>
                         <div class="form-textarea">
-                             <textarea tabindex="1" name="your-message" id="your-message" rows="4"></textarea>
-                             <label for="your-message">Message or Question</label>
+                             <textarea tabindex="2" name="yourmessage" id="yourmessage" rows="4"></textarea>
+                             <label for="yourmessage">Message or Question</label>
                         </div>
                     </section>
                     <section class="form-submit">
-                         <button tabindex="1" type="submit" class="button">Send</button>
+                         <button tabindex="2" type="submit" class="button">Send</button>
                          <label></label>
                     </section>
                 </form>
@@ -266,12 +268,15 @@
 </section>
 <section chapter demo-chapter>
 
-    <h2>Default form <i class="pill bg" id="T03">#T03</i></h2>
-
     <div demo-form class="block box bg">
 
-        <!-- default form -->
-        <p>To apply for a <em>gaming licence</em>, open a <em>bank account</em> or ask a <em>question</em>, please, fill in the form:</p>
+        <h3>
+            Default form
+            <i class="pill bg" id="T03">#T03</i>
+        </h3>
+
+        <!-- minimal form template -->
+        <p>minimal form template, please, fill in the form:</p>
         <form class="block" action="?it-was-form-submit">
             <section class="block">
                 <div class="form-item">
@@ -292,7 +297,7 @@
                  <label></label>
             </section>
         </form>
-        <!-- /default form -->
+        <!-- /minimal form template -->
 
     </div>
 

@@ -1,5 +1,5 @@
 @charset "UTF-8";
-// ordnung: 2018.12.5
+// ordnung: 2018.12.8
 
 
 // required core
@@ -12,6 +12,7 @@
 
 // default components
 
+/* 000 */@import "app_components/layout-body-wrap/layout-body-wrap.scss";
 
 /* 010 */@import "app_components/grid-for-article/grid-for-article.scss";
 
@@ -19,11 +20,9 @@
 /* 021 */@import "app_components/content-markup/content-typography.scss";
 /* 022 */@import "app_components/content-markup/design-template.scss";
 
-@import "app_components/layout-body-wrap/layout-body-wrap.scss";
-
 @import "app_components/group/group.scss";
 
-
+@import "app_components/data-table/data-table.scss";
 
 
 
@@ -41,7 +40,7 @@
 
 // ----------------------------------------------- pending
 
-@import "app_components/data-table/data-table.scss";
+
 
 
 // grid cases
