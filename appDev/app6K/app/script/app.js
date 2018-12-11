@@ -1,93 +1,92 @@
-// ------------------------ Description app6002
-/*
-    Noble objects
-    - are objects
-    - has name and role
-    - has is.something
-    - has do({something})
-    - code blastula ʕ⊙ᴥ⊙ʔ
-
-    List of noble objects
-    - router as king
-    - libs as lord
-    - templates as queen
-    - models with CAPSNAMES
-
-*/ // last review: 2018.11.27
+const DNA = { name:'wild', do:(protein)=>false };
+var app = new AppKing({name:'app'});
+var q = {name:'mutate'};
+app.take(q);
+app.do(1).do(2).do(3);
+app.Welcome();
+app.do(5).do(6).do(7);
 
 
-// ------------------------ Initialization
+app.do(1).do(2).do(3);
+app.take(q).love.mutate.do(4);
+var app2 = new AppKing({name:'app2'});
+app2.Welcome();
 
-//*/// ʕ⊙ᴥ⊙ʔ Noble Blastula - app avant garde
-var DNA = { name:'wild', role:false, do:(rna)=>false, is:{} };
-//var app = Object.assign({}, DNA);
-/*
-app.do  = function StoreRequest (that) {
-    this.seed = [].concat( this.seed||[], [that] );
-    let delegator =
-        typeof(that) === 'string'
-        ? this
-        : false;
-    return delegator
-        // Ordered usage: app.do('order')(DNA)
-        ? (dna)=>delegator.do( Object.assign({delegator:that}, dna) )
-        // Free usage:    app.do(DNA)
-        : this
-};
-*/
 
-function AppKing (name, dna) {
+app.take( new QueenMutate() );
+app.do({when:'trigger',has:'click',do:'mutate',addClass:'nigger'});
+
+
+function AppKing (dna) {
+
+    this.do   = lordKeepInMind;
+    this.doit = lordDelegator;
+    this.take = lordTakeTheQueen;
+
+    this.Welcome = lordWelcome;
 
            // ʕ⊙ᴥ⊙ʔ
-         dna = dna||DNA;
+         dna = dna||{};
         for(favor in dna)
     this[favor] = dna[favor];
 
-//..tion Description (codex)
+}
+function AppQueen (dna) {
 
-    this.name = name || 'king' ;
-    this.seed = this.seed || [];
-    this.team = this.team || {};
-    this.do = function (that) {
-        let delegator = typeof(that)==='string';
-        let situation = this.is.ready || false;
-        let decide_what_to_do_with  =
-            situation && delegator ? 'Delegate' :
-            situation              ? 'Ribosome' :
-            delegator              ? 'RequestDelegation' :
-                                     'Keep' ;
-        return this[decide_what_to_do_with](this,that);
-    }
-    
+    this.do = lordKeepInMind;
 
-//..tion Service workers
-
-    this.Delegate = function FindAndDelegate (king,lord) {
-        let delegator = king.team[lord] || king;
-        return delegator.do;
-    }
-    this.Keep = function PushIntoSeed (dna,request) {
-        dna.seed = [].concat( dna.seed||[], [request] );
-        return dna;
-    }
-    this.RequestDelegation = function UpdateRequest (dna,name) {
-        return (that)=>dna.do( Object.assign({delegator:name}, that) )
-    }
+           // ʕ⊙ᴥ⊙ʔ
+         dna = dna||{};
+        for(favor in dna)
+    this[favor] = dna[favor];
 
 }
-var app = new AppKing('app');
+function lordKeepInMind (that) {
+    // store data in array
 
+    this.mind = [].concat( this.mind||[], [that] );
+    return this;
 
-/* REMOVED
-
-function DNA__AppModel(name) {
-    this.name = name;
-    this.is   = this;
-    this.role = false;
-    this.do   = (rna)=>false;
 }
-const DNA = new DNA__AppModel('DNA');
+function lordDelegator (order) {
 
-var app = { name:'wild', role:false, do:(rna)=>false, is:{} };
+    let it = order.do||'report';
+    if (this.love[it]) this.love[it].do(order);
+    return this;
 
-*/
+}
+function lordTakeTheQueen (dna) {
+    // update command list
+
+    let queen = new AppQueen(dna);
+    let name  = queen.name;
+    this.love = Object.assign( this.love||{} , {[name]:queen} );
+    return this;
+
+}
+function lordWelcome () {
+    this.take( new QueenReporter() );
+    this.do = this.doit;
+    for ( let everything in this.mind ) this.do(this.mind[everything]);
+    return this;
+
+}
+
+
+
+function QueenReporter () {
+    this.name = 'report';
+    this.do   = lordDevConsole;
+}
+function lordDevConsole (rna) {
+
+    console.log(this.name+' ::', rna);
+    return this;
+
+}
+
+
+function QueenMutate () {
+    this.name = 'mutate';
+    this.do   = lordDevConsole;
+}
