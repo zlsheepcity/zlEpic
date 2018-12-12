@@ -1,132 +1,130 @@
 const DNA = { name:'wild', do:(that)=>false, in:{state:false} };
-var app = new AppKing('app');
+var app = new AppKing('app')
 
-app.do('report',{msg:'it’s ok'});
+app
+    .Welcome()
+    .use( new QueenMutate() )
+
 
 //app.take( new QueenReporter() );
 
 
 function AppKing (dna) {
 
-    let app = 'AppKing'
+    // DNA transcription
     let rna = dna
+    if (typeof(rna)==='string') rna = { name: rna  }
+    if (typeof(rna)!=='object') rna = {}
 
-    if (typeof(rna)==='string') rna = { name:rna }
-    if (typeof(rna)!=='object') rna = { name:app }
-
-    this.name = rna.name
+    // noble king codex
+    this.name = rna.name || 'app'
     this.in   = { love:{}, mind:[] }
     this.do   = rna.do   || lordKeepInMind
 
     // public
     this.use  = rna.use  || lordTakeTheQueen;
-    this.love = rna.love || lordDelegator;
+    this.love = rna.love || lordDelegate;
 
-/*
-    this.take = lordTakeTheQueen;
-    this.love = lordDelegator;
-    this.keep = lordKeepInMind;
-    this.do   = this.keep;
+    // welcome king codex
+    this.Welcome = function WelcomeKing () {
 
-    this.Welcome = lordWelcomeKing;
-*/
+        // autoload report queen
+        this.use( new QueenReporter() )
+        this.do = this.love
+        app.do('report','like this')
+
+        // re-mind process
+        let memory = this.in.mind
+        for ( let has in memory )
+            this.do(
+                memory[has].do,
+                memory[has].with
+            )
+
+        return this
+    }
 }
-function AppQueen (roxana, dna) {
+function AppQueen (dna) {
 
-    this.name = roxana || 'roxana';
-    this.do   = lordKeepInMind;
-    this.in   = { theNameOfKing:false };
-    this.love = lordNameOfKing;
-    //this.f    = dna || (that)=>false;
+    // DNA transcription
+    let rna = dna
+    if (typeof(rna)==='string') rna = { name: rna  }
+    if (typeof(rna)!=='object') rna = {}
+
+    // noble queen codex
+    this.name = rna.name || 'queen'
+    this.in   = { theNameOf:false }
+    this.do   = rna.do   || lordKeepInMind
+    this.love = rna.love || lordNameOfKing
+    this.f    = rna.f    || this.do
 
 }
 function lordKeepInMind (that, memory) {
 
-    let  keep = this.in.theNameOf || this;
-    keep.in.mind = [].concat(
-        keep.in.mind ||[],
-        [{ do:that, with:memory }]
-    );
+    let keep = this.in.theNameOf || this
 
-    return this;
+    keep.in.mind = [].concat(
+        keep.in.mind || [],
+        [{ do:that, with:memory }]
+    )
+
+    return this
+}
+function lordDelegate (queen, rna) {
+    if (queen && this.in.love[queen]) this.in.love[queen].f(rna)
+    return this
 }
 function lordTakeTheQueen (dna) {
 
-    this.in.love  = this.in.love||{};
-
     let king  = this;
-    let name  = dna.name;
-    let queen = new AppQueen(name, dna);
+    let queen = new AppQueen(dna)
+    let when  = queen.name
 
-    king.in.love[name] = queen.love(king);
+    king.in.love[when] = queen.love(king)
 
-    return this;
-
+    return this
 }
 function lordNameOfKing (king) {
-    console.log('app',app.in.theNameOf);
-    console.log('i',this);
-    this.in.theNameOf = king;
-    console.log('i',this);
-    console.log('app',app.in.theNameOf);
-    this.do = king.do;
-    return this;
+    console.log('i love', this)
+    this.in.theNameOf = king
+    this.do = king.do
+    return this
 }
 
-
-function lordDelegator (order) {
-
-    let it = order.do||'report';
-    if (this.love[it]) this.love[it].do(order);
-    return this;
-
+//* -------------------------------------------- Reporter
+function QueenReporter (name) {
+    this.name    = name || 'report'
+    this.Report  = overlordReporterConsole
+    this.Profile = overlordReporterProfile
+    this.f = (rna)=>{
+        if (rna) this.Report(rna)
+        else     this.Profile()
+        return this
+    }
 }
-function lordWelcomeKing () {
-
-    this.take( new QueenReporter() );
-    this.do = this.love;
-    for ( let everything in this.mind ) this.do(this.mind[everything]);
-    return this;
-
+function overlordReporterConsole (rna) {
+    console.log(this.name+' ::', rna)
+    return this
 }
+function overlordReporterProfile () {
 
+    console.log(this)
+    let king = this.in.theNameOf || this
 
-function QueenReporter (dna) {
+    console.group(this.name)
+    console.log(this.in)
+    console.log(this.in.mind)
+    console.log(this.in.love)
+    console.end
 
-           // ʕ⊙ᴥ⊙ʔ
-         dna = dna||DNA;
-        for(favor in dna)
-    this[favor] = dna[favor];
-
-    this.name    = 'report';
-    this.f       = lordDevConsole;
-    this.Profile = lordDevProfile;
+    return this
 }
-function lordDevConsole (rna) {
+/**/
 
-    if (rna) console.log(this.name+' ::', rna);
-    else this.Profile( this.in.theNameOf || this );
-    
-    return this;
-
-}
-function lordDevProfile (noble) {
-    console.group('Profile of ' + noble.name);
-    console.log({
-        name: noble.name,
-        inTheNameOf: noble.in.theNameOf
-    });
-    console.log(noble.in.mind);
-    console.log(noble.in.love);
-    console.groupEnd();
-    return this;
-}
-
-
-
-function QueenMutate () {
-    this.name = 'mutate';
-    this.do   = lordDevConsole;
+//* -------------------------------------------- Mutate
+function QueenMutate (name) {
+    this.name = name || 'mutate'
+    this.do   = overlordReporterConsole;
 }
 function lordMutateRibosome (rna) {
 
