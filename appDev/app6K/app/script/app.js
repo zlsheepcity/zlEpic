@@ -6,32 +6,38 @@ app.do('report',{msg:'it’s ok'});
 //app.take( new QueenReporter() );
 
 
-function AppKing (alexander, dna) {
+function AppKing (dna) {
 
-           // ʕ⊙ᴥ⊙ʔ
-         dna = dna||DNA;
-        for(favor in dna)
-    this[favor] = dna[favor];
+    let app = 'AppKing'
+    let rna = dna
 
-    this.name = alexander || this.name;
+    if (typeof(rna)==='string') rna = { name:rna }
+    if (typeof(rna)!=='object') rna = { name:app }
+
+    this.name = rna.name
+    this.in   = { love:{}, mind:[] }
+    this.do   = rna.do   || lordKeepInMind
+
+    // public
+    this.use  = rna.use  || lordTakeTheQueen;
+    this.love = rna.love || lordDelegator;
+
+/*
     this.take = lordTakeTheQueen;
     this.love = lordDelegator;
     this.keep = lordKeepInMind;
     this.do   = this.keep;
 
     this.Welcome = lordWelcomeKing;
-
+*/
 }
 function AppQueen (roxana, dna) {
 
-           // ʕ⊙ᴥ⊙ʔ
-         dna = dna||DNA;
-        for(favor in dna)
-    this[favor] = dna[favor];
-
-    this.name = roxana || this.name;
+    this.name = roxana || 'roxana';
+    this.do   = lordKeepInMind;
+    this.in   = { theNameOfKing:false };
     this.love = lordNameOfKing;
-    //this.ff    = dna || (that)=>false;
+    //this.f    = dna || (that)=>false;
 
 }
 function lordKeepInMind (that, memory) {
