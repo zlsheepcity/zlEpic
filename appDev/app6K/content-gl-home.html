@@ -12,24 +12,37 @@
 
     <!-- ========================================= APP PRIMARY -->
 
+    <!-- FRONT IMITATOR
+
      <link rel="stylesheet" type="text/css" href="https://www.gaminglicensing.com/page/wp-content/themes/gaminglicensing/bootstrap/css/bootstrap.min.css">
       <link rel="stylesheet" type="text/css" href="https://www.gaminglicensing.com/css/normalize.css">
       <link rel="stylesheet" type="text/css" href="https://www.gaminglicensing.com/css/webflow.css">
       <link rel="stylesheet" type="text/css" href="https://www.gaminglicensing.com/css/wagertec.css">
       <link rel="stylesheet" type="text/css" href="https://www.gaminglicensing.com/css/upd.css">
-    
-    <!--
+      <style>
+        @font-face {
+          font-family: 'Myriadpro';
+          src: url('gl/fonts/MyriadPro-Regular.otf') format('opentype');
+          font-weight: 400;
+          font-style: normal;
+        }
+      </style>
+    <!--  -->
+
+    <!-- WP IMITATOR
     <link  href="https://test.gaminglicensing.com/css/normalize.css" rel="stylesheet" type="text/css">
     <link  href="https://test.gaminglicensing.com/css/upd.css" rel="stylesheet" type="text/css">
     <link  href="https://test.gaminglicensing.com/page/wp-content/themes/gaminglicensing/wp-base.css" rel="stylesheet" type="text/css">
     <link  href="https://test.gaminglicensing.com/page/wp-content/themes/gaminglicensing/gl-design.css" rel="stylesheet" type="text/css">
     <link  href="https://test.gaminglicensing.com/page/wp-content/themes/gaminglicensing/style.css" rel="stylesheet" type="text/css">
-    -->
+    <!--  -->
 
     <!-- ========================================= APP MAIN -->
 
+    <!-- design font -->
+    <link href="https://fonts.googleapis.com/css?family=Vollkorn:400,400i,700&subset=cyrillic" rel="stylesheet">
+
     <link  href="app/style/app.css" rel="stylesheet" type="text/css">
-    <link  href="gl/app.css" rel="stylesheet" type="text/css">
 
 
     <!-- ========================================= APP CUSTOM -->
@@ -38,7 +51,180 @@
     <!-- ========================================== ʕ⊙ᴥ⊙ʔ = -->
     <!-- ========================================= END HEAD -->
 </head>
-<body class="screen">
+<body class="screen design-template">
+
+
+
+    <!-- WELCOME SCREEN + MAIN HEADER -->
+
+    <section class="fullscreen glWelcomeScreen">
+
+        <header class="fullscreen-header">
+            <!-- main header -->
+            <section class="group glPageHeader">
+                <figure class="brand">
+                    <figcaption>GamingLicensing.com</figcaption>
+                </figure>
+                <section class="contacts">
+                    <div>
+                        <a href="skype:gaminglicensing.com?call"><span hidden>skype:</span>gaminglicensing.com</a>
+                        <a href="mailto:sales@gaminglicensing.com"><span hidden>email:</span>gaminglicensing.com</a>
+                    </div>
+                </section>
+                <nav class="language">
+                    <span>English</span>
+                </nav>
+            </section>
+            <!-- / -->
+        </header>
+
+        <section class="fullscreen-body box">
+
+            <div class="block group">
+                <div class="block box bg">
+
+                    <!-- box content -->
+                    <div class="block">
+                        <h1 title><a href="">Curacao Gaming Licence</a></h1>
+                        <p subtitle>Licensing of all iGaming Products — online casinos, sports betting, poker, lotteries, and bingo!</p>
+                    </div>
+                    <div class="block">
+                        <h2 title><a href="">Banking Solutions</a></h2>
+                        <p subtitle>Open bank & processing accounts for your gambling business.</p>
+                    </div>
+                    <!-- / -->
+
+                </div>
+                <div demo-form class="block box bg">
+
+                    <!-- box content -->
+                    <p>To apply for a <em>gaming licence</em>, open a <em>bank account</em> or ask a <em>question</em>, please, fill in the form:</p>
+                    <form class="block" action="?it-was-form-submit">
+                        <section class="block">
+                            <div class="form-item">
+                                 <input tabindex="2" type="text" name="yourname" id="yourname" value="" placeholder="(required)" required />
+                                 <label for="yourname">Name</label>
+                            </div>
+                            <div class="form-item">
+                                 <input tabindex="2" type="email" name="youremail" id="youremail" value="" placeholder="(required)" required />
+                                 <label for="youremail">Email</label>
+                            </div>
+                            <div class="form-item">
+                                 <input tabindex="2" type="tel" name="yourphone" id="yourphone" value="" />
+                                 <label for="yourphone">Phone</label>
+                            </div>
+                            <div class="form-textarea">
+                                 <textarea tabindex="2" name="yourmessage" id="yourmessage" rows="4"></textarea>
+                                 <label for="yourmessage">Message or Question</label>
+                            </div>
+                        </section>
+                        <section class="form-submit">
+                             <button tabindex="2" type="submit" class="button">Send</button>
+                             <label></label>
+                        </section>
+                    </form>
+                    <!-- / -->
+
+                </div>
+            </div>
+
+        </section>
+
+        <footer class="fullscreen-footer">
+            <a href="#learn-more" class="pill bg title">learn more</a>
+        </footer>
+
+    </section>
+    <div id="learn-more"></div>
+
+
+    <!-- LONG TEXT ABOUT -->
+
+    <article class="chapter grid">
+
+        <header class="block has-text-accent">
+            <p>Your casino needs a <a href="/what-is-a-gambling-licence/">license</a> but you don’t know where to start? The procedure is like this: you write a letter to a Curacao master license holder or to the Malta Gaming Authority. You will then be given a list of required documents. They will tell you about charter capital, business plan and profits tax, overwhelm you with numbers, lists, legal niceties and requirements. Bear in mind that it will all be in English. So, you hire a translator, a legal advisor and an accountant, and after a few months, if you do it all right, you will finally obtain a long-awaited license.</p>
+        </header>
+
+
+        <section class="block">
+            <h3 class="min-title">Pros</h3>
+            <ul class="block">
+                <li>You save money because you do everything on your own</li>
+            </ul>
+        </section>
+        <section class="block">
+            <h3 class="min-title">Cons</h3>
+            <ul class="block">
+                <li>You spend a large amount of time</li>
+                <li>There is a big chance of making a mistake. For instance, you may fail to gather all the required documents, and it will cause even more bureaucratic delays</li>
+                <li>You may integrate not all of the payment systems—or integrate ones you do not need</li>
+                <li>There is a probability of breaking the law in countries where online gambling is prohibited</li>
+                <li>There is a risk of cooperating with a dishonest sublicensee and losing your money</li>
+            </ul>
+        </section>
+
+
+
+        <p>Does the only advantage outweigh the numerous disadvantages? For some people, yes. However, if you value your time, want to relieve yourself of the troubles that come with licensing and start a casino business in the shortest time possible, let our specialists take care of the process. We offer a full range of services, including:</p>
+        <ul>
+            <li>choosing the optimal <a href="/jurisdictions/">jurisdiction</a> for you online casino (<a href="/jurisdictions/curacao/">Curacao</a>, <a href="/jurisdictions/malta/">Malta</a>);</li>
+            <li>gathering the required <a href="/gaming-licence-requirements/">documentation</a>;</li>
+            <li><a href="/open-a-bank-account/">opening an account</a> in a reliable bank;</li>
+            <li>registering an offshore company;</li>
+            <li>providing high-capacity <a href="/hosting-service/">uninterrupted hosting</a>;</li>
+            <li>helping in gambling software certification;</li>
+            <li>integrating <a href="/quality-software-proper-payments-system/">payment systems</a>, including <a href="/cryptocurrency-solution/">cryptocurrency</a>;</li>
+            <li>licensing counselling;</li>
+            <li>obtaining a license and handing it over to a client.</li>
+        </ul>
+        <hr>
+        <section class="right-wrap-in-grid box gl-reasons-wrap" bg>
+            <h2 class="title">5 reasons why you should contact GamingLicensing</h2>
+            <ol class="block gl-reasons-list">
+                <li>Having worked in the industry since 2015, we keep a close eye on gambling jurisdictions requirements and always stay informed of any new legal rules. We have the most up-to-date information in the gambling business.</li>
+                <li>GamingLicensing experts know everything (or almost everything) about gambling licensing in different countries: <a href="/jurisdictions/austria/">Austria</a>, <a href="/jurisdictions/belarus/">Belarus</a>, <a href="/jurisdictions/bulgaria/">Bulgaria</a>, <a href="/jurisdictions/united-kingdom/">the UK</a>, etc. If you want to come to specific countries’ gambling market, we will deal with it swiftly and professionally.</li>
+                <li>Your online casino will definitely be a hit. This is because we will provide you with the best gaming solutions of the best developers: Microgaming, NetEnt, Betsoft and other foremost brands.</li>
+                <li>We deal with licensing for online casinos, <a href="/bingo-licence/">bingo games</a>, <a href="/poker-licence/">poker rooms</a> and <a href="/how-to-get-a-lottery-licence/">lotteries</a>.</li>
+                <li>GamingLicensing experts are always scrupulous in financial matters, and therefore you get an extremely accurate <a href="/gambling-licence-cost/">cost estimation</a> beforehand.</li>
+            </ol>
+        </section>
+        <hr>
+        <h2 class="title">Which license is better: Curacao or Maltese?</h2>
+        <p>Our clients have different demands, plans and financial capacities, and gambling jurisdictions also have different particularities, so there can be no universal answer. We will look into your needs and recommend you the optimal jurisdiction for your business.</p>
+        <section class="block merge gl-islands-wrap">
+            <h2 class="big-title is-centered">Curacao and Malta gambling licenses specifics</h2>
+            <table class="content-table gl-islands">
+                <tr>
+                    <th class="gl-islands--curacao">Curacao</th>
+                    <th class="gl-islands--malta"  >Malta</th>
+                </tr>
+                <tr>
+                    <td>Annual financial reports</td>
+                    <td>Annual and monthly reports</td>
+                </tr>
+                <tr>
+                    <td>A single income tax at 2%</td>
+                    <td>A fixed annual license fee – €25,000; flexible taxation – 0.40-1.25%</td>
+                </tr>
+                <tr>
+                    <td>Your company will be registered in a special economic zone (E-Zone) and Curacao Chamber of Commerce. One of the chief officers (de jure) must be a resident.</td>
+                    <td>You will have to register as a legal entity in Malta. Chief officers and shareholders may be non-residents.</td>
+                </tr>
+                <tr>
+                    <td>Registration period: 2-3 weeks</td>
+                    <td>Registration period: provisional license is issued in 2-3 weeks, and full license is issued in 6 months.</td>
+                </tr>
+            </table>
+        </section>
+        <footer class="text-accent">
+            <p>By entrusting us with licensing processes, you are guaranteed to have full consulting services of our experts, professional recommendations and, most importantly, a legal business supported by a prestigious license of Curacao or Malta. We have intimate knowledge of legal niceties related to gambling. Therefore, your online casino will be 100% legal which in turn means it will become attractive to players.</p>
+        </footer>
+    </article>
+
+
+
+
 
     <article class="story">
         <header class="intro">
