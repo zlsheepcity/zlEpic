@@ -19,6 +19,15 @@ $src-gl-contact-icon: '../../gl/design/icon-contact-form.svg';
 
 /* ------------------------------------ GL theme */
 
+@media screen and (max-width: 1000px) {
+    html {
+        font-size: 0.9vw;
+    }
+    body {
+        font-size: 1.4vw;
+    }
+}
+
 .design-template {
 
     .button {
@@ -82,8 +91,10 @@ $src-gl-contact-icon: '../../gl/design/icon-contact-form.svg';
     justify-content: space-between;
     align-items:     center;
     align-content:   center;
+    &>*         { flex-grow: 0; }
+    &>.language { flex-grow: 1; }
 
-    padding: 0 $margin-def;
+    padding: $dim $margin-def;
 
     // header design
 
@@ -95,16 +106,63 @@ $src-gl-contact-icon: '../../gl/design/icon-contact-form.svg';
 
     .brand {
         width: 20%;
-        padding: $dim/2 0;
-        flex-grow: 0;
     }
 
-    .contacts {
-        flex-grow: 2;
-        text-align: right;
+    // menu
+    .language {
+        flex-grow: 1;
+    }
+
+    // contacts
+
+    .contact {
+        /* has box model */
+        display:   flex;
+        flex-wrap: nowrap;
+        flex-direction:  row;
+        justify-content: flex-start;
+        align-items:     flex-start;
+        align-content:   flex-start;
+
+        /* has distance between links */
+        a {
+            margin-top:    0.25em;
+            margin-bottom: 0.25em;
+        }
+
         .is-button:hover {
             background-color: $color-gl-light-accent-shadow;
             color: $color-gl-dark-accent-plain;
+        }
+    }
+    .contact-links {
+        /* has box model */
+        display:   flex;
+        flex-wrap: nowrap;
+        flex-direction:  row;
+        justify-content: flex-end;
+        align-items:     flex-start;
+        align-content:   flex-start;
+
+        /* has links */
+        li {
+            width: 220px;
+            transition: width 240ms ease-in;
+            overflow:      hidden;
+            white-space:   nowrap;
+        }
+    }
+    .contact-trigger {
+        margin-left: 0.75em;
+    }
+
+    &:hover {
+        .contact-links li {
+            width: calc( 1.5em + 1.25em );
+            transition-timing-function: ease-out;
+        }
+        .contact-links li a span {
+            display: none;
         }
     }
 

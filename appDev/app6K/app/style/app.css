@@ -939,6 +939,12 @@ Fixed rows and side scroll
     line-height: 1; }
 
 /* ------------------------------------ GL theme */
+@media screen and (max-width: 1000px) {
+  html {
+    font-size: 0.9vw; }
+
+  body {
+    font-size: 1.4vw; } }
 .design-template .button {
   /* is plain button */
   border: 0;
@@ -978,21 +984,55 @@ Fixed rows and side scroll
   justify-content: space-between;
   align-items: center;
   align-content: center;
-  padding: 0 2.4rem;
+  padding: 0.8rem 2.4rem;
   background-color: white;
   color: black; }
+  .glPageHeader > * {
+    flex-grow: 0; }
+  .glPageHeader > .language {
+    flex-grow: 1; }
   .glPageHeader a {
     color: #00b0f0; }
   .glPageHeader .brand {
-    width: 20%;
-    padding: 0.4rem 0;
-    flex-grow: 0; }
-  .glPageHeader .contacts {
-    flex-grow: 2;
-    text-align: right; }
-    .glPageHeader .contacts .is-button:hover {
+    width: 20%; }
+  .glPageHeader .language {
+    flex-grow: 1; }
+  .glPageHeader .contact {
+    /* has box model */
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+    align-content: flex-start;
+    /* has distance between links */ }
+    .glPageHeader .contact a {
+      margin-top: 0.25em;
+      margin-bottom: 0.25em; }
+    .glPageHeader .contact .is-button:hover {
       background-color: rgba(0, 176, 240, 0.1);
       color: #0e142f; }
+  .glPageHeader .contact-links {
+    /* has box model */
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: flex-start;
+    align-content: flex-start;
+    /* has links */ }
+    .glPageHeader .contact-links li {
+      width: 220px;
+      transition: width 240ms ease-in;
+      overflow: hidden;
+      white-space: nowrap; }
+  .glPageHeader .contact-trigger {
+    margin-left: 0.75em; }
+  .glPageHeader:hover .contact-links li {
+    width: calc( 1.5em + 1.25em );
+    transition-timing-function: ease-out; }
+  .glPageHeader:hover .contact-links li a span {
+    display: none; }
 
 .glWelcomeScreen {
   background-color: #0e142f;
