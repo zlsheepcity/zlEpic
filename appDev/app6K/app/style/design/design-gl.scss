@@ -1,19 +1,114 @@
 
-$color-gl-dark-accent:        hsla(229, 55%, 12%, 0.7);
-$color-gl-dark-accent-plain:  hsl(229, 55%, 12%);
-$color-gl-light-accent-plain: hsl(196, 100%, 47%);
+// required
+
+$dim: $dim; // 0.8rem;
+$margin-def: $margin-def; // 2.4rem;
+
+// design settings
+
+$color-gl-dark-accent:         hsla(229, 55%, 12%, 0.7);
+$color-gl-dark-accent-plain:   hsl(229, 55%, 12%);
+$color-gl-light-accent-plain:  hsl(196, 100%, 47%);
+$color-gl-light-accent-hover:  hsl(196, 100%, 37%);
+$color-gl-light-accent-shadow: hsla(196, 100%, 47%, 0.1);
 
 $src-gl-welcome-background: '../../gl/design/welcome-background.jpg';
+$src-gl-skype-icon: '../../gl/design/icon-skype-in-circle.svg';
+$src-gl-email-icon: '../../gl/design/icon-email-in-circle.svg';
+$src-gl-contact-icon: '../../gl/design/icon-contact-form.svg';
 
 /* ------------------------------------ GL theme */
 
 .design-template {
 
+    .button {
+
+        /* is plain button */
+        border: 0;
+        box-shadow: none;
+
+        /* has design */
+        background-color: $color-gl-light-accent-plain;
+        &:hover { background-color: $color-gl-light-accent-hover; }
+        border-radius: 4px;
+        color: white;
+        text-decoration: none;
+
+    }
+
+    // iconization
+
+    .some-icon-in-pseudo-before {
+        content: '';
+        display: inline-block;
+        vertical-align: middle;
+
+        /* box model */
+        width:  1em;
+        height: 1em;
+        transform: scale(1.25);
+        margin-right: 0.5em;
+
+        /* has image in background */
+        background-size:     contain;
+        background-repeat:   no-repeat;
+        background-position: center center;
+    }
+    .has-skype-icon:before {
+        @extend .some-icon-in-pseudo-before;
+        background-image: url($src-gl-skype-icon);
+    }
+    .has-email-icon:before {
+        @extend .some-icon-in-pseudo-before;
+        background-image: url($src-gl-email-icon);
+    }
+    .has-contact-icon:before {
+        @extend .some-icon-in-pseudo-before;
+        background-image: url($src-gl-contact-icon);
+    }
 
 
 }
 
 /* ------------------------------------ GL components */
+
+.glPageHeader {
+
+    // has box model
+
+    display:   flex;
+    flex-wrap: nowrap;
+    flex-direction:  row;
+    justify-content: space-between;
+    align-items:     center;
+    align-content:   center;
+
+    padding: 0 $margin-def;
+
+    // header design
+
+    background-color: white;
+    color: black;
+    a { color: $color-gl-light-accent-plain; }
+
+    // logo
+
+    .brand {
+        width: 20%;
+        padding: $dim/2 0;
+        flex-grow: 0;
+    }
+
+    .contacts {
+        flex-grow: 2;
+        text-align: right;
+        .is-button:hover {
+            background-color: $color-gl-light-accent-shadow;
+            color: $color-gl-dark-accent-plain;
+        }
+    }
+
+}
 
 .glWelcomeScreen {
 

@@ -335,27 +335,8 @@ table td {
   .chapter.is-last, .is-last[chapter] {
     padding-bottom: 0; }
   .chapter.is-markup, .is-markup[chapter] {
-    padding: 0; }
-
-.chapter-slide-header {
-  /* is fixed */
-  position: relative;
-  position: sticky;
-  z-index: -1;
-  top: 0; }
-  .chapter-slide-header:before {
-    content: '';
-    /* is fullscreen back */
-    position: absolute;
-    z-index: -2;
-    top: 0;
-    right: 0;
-    left: 0;
-    height: 100vh;
-    /* has illustrated background */
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center center; }
+    padding-top: 0;
+    padding-bottom: 0; }
 
 .div, [div] {
   display: block; }
@@ -396,6 +377,12 @@ table td {
   background-repeat: no-repeat;
   background-position: center center; }
 
+.has-hidden-text {
+  /* has visually hidden text content */
+  text-indent: 100%;
+  white-space: nowrap;
+  overflow: hidden; }
+
 .form-item, .form-textarea, .form-submit {
   /* has rows */
   display: flex;
@@ -434,7 +421,9 @@ textarea {
   font-size: inherit;
   line-height: inherit; }
 
-button {
+button, .button, .is-button {
+  display: inline-block;
+  vertical-align: middle;
   padding: 0.25em 0.75em;
   /* default font */
   font-family: inherit;
@@ -443,6 +432,26 @@ button {
 
 [hidden], .hidden {
   display: none !important; }
+
+.chapter-slide-header {
+  /* is fixed */
+  position: relative;
+  position: sticky;
+  z-index: -1;
+  top: 0; }
+  .chapter-slide-header:before {
+    content: '';
+    /* is fullscreen back */
+    position: absolute;
+    z-index: -2;
+    top: 0;
+    right: 0;
+    left: 0;
+    height: 100vh;
+    /* has illustrated background */
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center; }
 
 /* eof styles for content */
 /* 021 */
@@ -930,7 +939,61 @@ Fixed rows and side scroll
     line-height: 1; }
 
 /* ------------------------------------ GL theme */
+.design-template .button {
+  /* is plain button */
+  border: 0;
+  box-shadow: none;
+  /* has design */
+  background-color: #00b0f0;
+  border-radius: 4px;
+  color: white;
+  text-decoration: none; }
+  .design-template .button:hover {
+    background-color: #008abd; }
+.design-template .some-icon-in-pseudo-before, .design-template .has-skype-icon:before, .design-template .has-email-icon:before, .design-template .has-contact-icon:before {
+  content: '';
+  display: inline-block;
+  vertical-align: middle;
+  /* box model */
+  width: 1em;
+  height: 1em;
+  transform: scale(1.25);
+  margin-right: 0.5em;
+  /* has image in background */
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center center; }
+.design-template .has-skype-icon:before {
+  background-image: url("../../gl/design/icon-skype-in-circle.svg"); }
+.design-template .has-email-icon:before {
+  background-image: url("../../gl/design/icon-email-in-circle.svg"); }
+.design-template .has-contact-icon:before {
+  background-image: url("../../gl/design/icon-contact-form.svg"); }
+
 /* ------------------------------------ GL components */
+.glPageHeader {
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  align-content: center;
+  padding: 0 2.4rem;
+  background-color: white;
+  color: black; }
+  .glPageHeader a {
+    color: #00b0f0; }
+  .glPageHeader .brand {
+    width: 20%;
+    padding: 0.4rem 0;
+    flex-grow: 0; }
+  .glPageHeader .contacts {
+    flex-grow: 2;
+    text-align: right; }
+    .glPageHeader .contacts .is-button:hover {
+      background-color: rgba(0, 176, 240, 0.1);
+      color: #0e142f; }
+
 .glWelcomeScreen {
   background-color: #0e142f;
   color: white;

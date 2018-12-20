@@ -71,7 +71,6 @@ table {
     align-items: center;
     align-content: center;
 }
-
 @media screen and ($screenNotTablet) {
     .is-sticky {
         position: sticky;
@@ -96,27 +95,9 @@ table {
 
     &.is-first  { padding-top:    0; }
     &.is-last   { padding-bottom: 0; }
-    &.is-markup { padding: 0; }
-}
-.chapter-slide-header {
-    /* is fixed */
-    position: relative;
-    position: sticky;
-    z-index: -1;
-    top:      0;
-    &:before {
-        content: '';
-        /* is fullscreen back */
-        position: absolute;
-        z-index: -2;
-        top:    0;
-        right:  0;
-        left:   0;
-        height: 100vh;
-        /* has illustrated background */
-        background-size:     cover;
-        background-repeat:   no-repeat;
-        background-position: center center;
+    &.is-markup {
+        padding-top:    0;
+        padding-bottom: 0;
     }
 }
 
@@ -153,6 +134,12 @@ table {
     background-size:     cover;
     background-repeat:   no-repeat;
     background-position: center center;
+}
+.has-hidden-text {
+    /* has visually hidden text content */
+    text-indent: 100%;
+    white-space: nowrap;
+    overflow: hidden;
 }
 
 
@@ -200,7 +187,9 @@ textarea {
     font-size:   inherit;
     line-height: inherit;
 }
-button {
+button, .button, .is-button {
+    display:  inline-block;
+    vertical-align: middle;
     padding: 0.25em 0.75em;
 
     /* default font */
@@ -234,5 +223,30 @@ button {
 [aside]     { @extend .aside; }
 [image]     { @extend .illustration; }
 
+
+
+//* ------------------------------------ PENDING
+
+.chapter-slide-header {
+    /* is fixed */
+    position: relative;
+    position: sticky;
+    z-index: -1;
+    top:      0;
+    &:before {
+        content: '';
+        /* is fullscreen back */
+        position: absolute;
+        z-index: -2;
+        top:    0;
+        right:  0;
+        left:   0;
+        height: 100vh;
+        /* has illustrated background */
+        background-size:     cover;
+        background-repeat:   no-repeat;
+        background-position: center center;
+    }
+}
 
 /* eof styles for content */
