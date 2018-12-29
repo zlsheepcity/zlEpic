@@ -1,0 +1,140 @@
+<!doctype html><!-- app6011 -->
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- ========================================= HEAD CONTENT -->
+
+
+    <title>Supergrid</title>
+
+
+    <!-- ========================================= APP MAIN -->
+
+    <!-- design font -->
+    <link href="https://fonts.googleapis.com/css?family=Vollkorn:400,400i,700&subset=cyrillic" rel="stylesheet">
+    <link href="try-supergrid.css" rel="stylesheet">
+
+    <!-- ========================================= APP CUSTOM -->
+    
+    <script>
+        function p() {
+            const p = document.getElementsByTagName('p')
+            for ( let i in p ) {
+                let texts = [
+                    'Petrovich is more than just a programming language, it is a complete computer operating system and program development environment. It is named after Ivan Petrovich Pavlov, the guy who demonstrated conditional responses to stimuli in dogs. I would have called the language "Pavlov", but it seems all the cool names for languages have already been used by someone else.',
+                    'In order to understand how Petrovich works, it is instructive to run through some examples. This is a sample interactive Petrovich session, annotated with comments.',
+                    'The user asked Petrovich to do something with some scientific data. It responds first by plotting the data and printing it. Since this is not what the user wanted, he punishes Petrovich, then tries again. Wanting to avoid punishment, Petrovich tries something different, and this time performs an operation useful to the user. To encourage such behaviour, the user rewards Petrovich.'
+                    ]
+                let text = texts[Math.floor(Math.random()*texts.length)]
+                let textnode = document.createTextNode(text)
+                if (p[i].appendChild) p[i].appendChild(textnode)
+            }
+        }
+        window.onload = function(e){
+            p();
+        }
+    </script>
+
+
+    <style>
+
+    </style>
+
+
+    <!-- ========================================== ????? = -->
+    <!-- ========================================= END HEAD -->
+</head>
+<body>
+
+    <main chapter style="position:relative;">
+
+        <h1>Simple flow</h1>
+
+        <div menu style="position:sticky;top:0;">
+            <b>Menu</b>
+            <div>abc</div>
+        </div>
+
+        <div intro>
+            <p></p>
+        </div>
+
+        <div aside>
+            <b>Aside</b>
+        </div>
+
+        <p></p>
+        <p></p>
+
+        <div overmain box>
+            <p></p>
+            <p></p>
+        </div>
+
+        <p></p>
+        
+        <div half-left>
+            <b>Side A</b>
+            <p></p>
+        </div>
+        <div half-right>
+            <b>Side B</b>
+            <p></p>
+        </div>
+
+        <p></p>
+
+        <div layer box>
+            <p></p>
+        </div>
+
+
+    </main>
+
+<hr>
+
+<main chapter>
+
+<div menu>
+    <p class="p"></p>
+</div>
+
+<div overmain>
+    <p class="p"></p>
+    <div overmain box>
+        <p class="p"></p>
+    </div>
+    <p class="p"></p>
+</div>
+
+<div aside>
+    <p class="p"></p>
+</div>
+
+<div menu-screen>
+    <p class="p"></p>
+</div>
+
+<p class="p"></p>
+
+<p class="p"></p>
+
+<p half-left box>AAA I dont like electronic music ... Cyberpunk 2077 use it in a trailer ... I suddenly have nothing against jamming to this for hours.</p>
+
+<p half-right box>AAA I dont like electronic music ... Cyberpunk 2077 use it in a trailer ... I suddenly have nothing against jamming to this for hours.</p>
+
+<div aside box>Aside I dont like electronic music ... Cyberpunk 2077 use it in a trailer ... I suddenly have nothing against jamming to this for hours</div>
+
+<div aside-screen>Aside I dont like electronic music ... Cyberpunk 2077 use it in a trailer ... I suddenly have nothing against jamming to this for hours</div>
+
+<div merge>MERGE I dont like electronic music ... Cyberpunk 2077 use it in a trailer ... I suddenly have nothing against jamming to this for hours</div>
+
+<div halfscreen>halfscreen I dont like electronic music ... Cyberpunk 2077 use it in a trailer ... I suddenly have nothing against jamming to this for hours</div>
+<div halfscreen-right>halfscreen I dont like electronic music ... Cyberpunk 2077 use it in a trailer ... I suddenly have nothing against jamming to this for hours</div>
+
+</main>
+
+</body>
+</html>

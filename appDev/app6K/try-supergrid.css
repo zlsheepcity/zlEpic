@@ -1,0 +1,95 @@
+html {
+  font-family: Vollkorn;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+p {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+.grid-overmain, [overmain], .grid-layer, [layer], .grid, .grid-chapter, [chapter] {
+  display: grid;
+  align-items: start;
+  grid-auto-flow: row;
+  grid-auto-rows: min-content;
+  grid-gap: 0.9rem 1rem;
+}
+
+.grid-layer, [layer], .grid, .grid-chapter, [chapter] {
+  grid-template-columns:  [full-start]  1fr  [menu-start]  16vw  [menu-end overmain-start]  0  [main-start a]  1fr  [b]  1fr  [c]  1fr  [d midpoint]  1fr  [e]  1fr  [f]  1fr  [main-end g]  0  [overmain-end aside-start]  16vw  [aside-end]  1fr  [full-end] ;
+}
+
+.grid-overmain, [overmain] {
+  grid-template-columns:  [overmain-start full-start]  0  [main-start menu-start aside-start a]  1fr  [b]  1fr  [c]  1fr  [d midpoint]  1fr  [e]  1fr  [f]  1fr  [main-end menu-end aside-end g]  0  [overmain-end full-end] ;
+}
+
+.grid, .grid-chapter, [chapter] {
+  grid-column: full;
+}
+.grid *, .grid-chapter *, [chapter] * {
+  grid-column: main;
+}
+
+.grid-chapter, [chapter] {
+  padding-top: 0.9rem;
+  padding-bottom: 0.9rem;
+}
+
+.grid-layer, [layer] {
+  grid-column: full;
+}
+
+.grid-overmain, [overmain] {
+  grid-column: overmain;
+}
+
+.grid-overmain, [overmain] {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+[half-left] {
+  grid-column: main-start/midpoint;
+}
+
+[half-right] {
+  grid-column: midpoint/main-end;
+}
+
+[halfscreen] {
+  grid-column: full-start/midpoint;
+}
+
+[halfscreen-right] {
+  grid-column: midpoint/full-end;
+}
+
+[aside] {
+  grid-column: aside;
+}
+
+[aside-screen] {
+  grid-column: aside-start/full-end;
+}
+
+[menu] {
+  grid-column: menu;
+}
+
+[menu-screen] {
+  grid-column: full-start/menu-end;
+}
+
+[merge] {
+  grid-column: menu-start/aside-end;
+}
+
+.box, [box] {
+  padding-top: 0.9rem;
+  padding-bottom: 0.9rem;
+  background-color: firebrick;
+  color: white;
+}
