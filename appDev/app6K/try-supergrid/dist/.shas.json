@@ -1,0 +1,65 @@
+[
+  {
+    "type": "::map::minify",
+    "inputSha": [
+      {
+        "file": "index.html",
+        "sha": "fc64b86360775430f3fed78bed5f6c2e30283d65"
+      }
+    ],
+    "outputSha": "e94c42d3d631930d78150d8eed6d0b74dec751f5",
+    "input": "index.html",
+    "output": [
+      "index.html"
+    ]
+  },
+  {
+    "type": "::map::minify",
+    "inputSha": [
+      {
+        "file": "scripts/main.js",
+        "sha": "a8332cf73bf5c88733fec336f0e76a0e0d0a372c"
+      }
+    ],
+    "outputSha": "ce97e30de42eca6208a04cb5283a0b4ef847a5bd",
+    "input": "scripts/main.js",
+    "output": [
+      "scripts/main.js.map",
+      "scripts/main.js"
+    ]
+  },
+  {
+    "type": "node-sass@4.11.0::map::minify",
+    "inputSha": [
+      {
+        "file": "styles/main.scss",
+        "sha": "fecc87fda37547a17bbe1732ab27044202d4533b"
+      },
+      {
+        "file": "styles/try-supergrid.scss",
+        "sha": "4d1ee96485680def951c19966d574944003e4d79"
+      }
+    ],
+    "outputSha": "dedfeaad12a8a907af509a3082cb34b3dbf5b538",
+    "input": "styles/main.scss",
+    "output": [
+      "styles/main.css.map",
+      "styles/main.css"
+    ]
+  },
+  {
+    "type": "node-sass@4.11.0::map::minify",
+    "inputSha": [
+      {
+        "file": "styles/try-supergrid.scss",
+        "sha": "4d1ee96485680def951c19966d574944003e4d79"
+      }
+    ],
+    "outputSha": "65d74a924e11229a4b0a87d613de8ff410442b00",
+    "input": "styles/try-supergrid.scss",
+    "output": [
+      "styles/try-supergrid.css.map",
+      "styles/try-supergrid.css"
+    ]
+  }
+]

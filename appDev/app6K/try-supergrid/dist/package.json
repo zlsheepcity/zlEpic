@@ -1,0 +1,19 @@
+{
+	"name": "try-supergrid",
+	"version": "1.0.0",
+	"description": "",
+	"main": "index.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"start": "pingy dev",
+		"export": "pingy export"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"dependencies": {},
+	"devDependencies": {
+		"@pingy/cli": "^0.13.0",
+		"node-sass": "^4"
+	}
+}
