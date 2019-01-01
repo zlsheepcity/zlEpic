@@ -4,10 +4,10 @@
     "inputSha": [
       {
         "file": "index.html",
-        "sha": "fc64b86360775430f3fed78bed5f6c2e30283d65"
+        "sha": "01d9f0b0760e9e7c282de9503240553c05c3066e"
       }
     ],
-    "outputSha": "e94c42d3d631930d78150d8eed6d0b74dec751f5",
+    "outputSha": "a0acca96274d8212ff812b4c3349372bfbf01ece",
     "input": "index.html",
     "output": [
       "index.html"
@@ -33,33 +33,14 @@
     "inputSha": [
       {
         "file": "styles/main.scss",
-        "sha": "fecc87fda37547a17bbe1732ab27044202d4533b"
-      },
-      {
-        "file": "styles/try-supergrid.scss",
-        "sha": "4d1ee96485680def951c19966d574944003e4d79"
+        "sha": "38725b44a13e65810a7fefcfe64c83f5b49353e4"
       }
     ],
-    "outputSha": "dedfeaad12a8a907af509a3082cb34b3dbf5b538",
+    "outputSha": "52899dd7cac8a13ace9e2694ae669d2f5566dfa3",
     "input": "styles/main.scss",
     "output": [
       "styles/main.css.map",
       "styles/main.css"
-    ]
-  },
-  {
-    "type": "node-sass@4.11.0::map::minify",
-    "inputSha": [
-      {
-        "file": "styles/try-supergrid.scss",
-        "sha": "4d1ee96485680def951c19966d574944003e4d79"
-      }
-    ],
-    "outputSha": "65d74a924e11229a4b0a87d613de8ff410442b00",
-    "input": "styles/try-supergrid.scss",
-    "output": [
-      "styles/try-supergrid.css.map",
-      "styles/try-supergrid.css"
     ]
   }
 ]
