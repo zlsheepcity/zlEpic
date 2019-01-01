@@ -7,13 +7,14 @@
     <!-- ========================================= HEAD CONTENT -->
 
 
-    <title>Supergrid</title>
+    <title>Supergrid 2</title>
 
 
     <!-- ========================================= APP MAIN -->
 
     <!-- design font -->
     <link href="https://fonts.googleapis.com/css?family=Vollkorn:400,400i,700&subset=cyrillic" rel="stylesheet">
+
     <link href="try-supergrid.css" rel="stylesheet">
 
     <!-- ========================================= APP CUSTOM -->
@@ -48,48 +49,316 @@
 </head>
 <body>
 
-    <main chapter style="position:relative;">
+    <main class="grid--chapter">
 
-        <h1>Simple flow</h1>
-
-        <div menu style="position:sticky;top:0;">
-            <b>Menu</b>
-            <div>abc</div>
-        </div>
-
-        <div intro>
-            <p></p>
-        </div>
-
-        <div aside>
-            <b>Aside</b>
-        </div>
+        <h1>Simple text</h1>
 
         <p></p>
         <p></p>
 
-        <div overmain box>
+        <h2>Collumns</h2>
+
+        <nav class="grid--menu small">
+            <p></p>
+        </nav>
+        <section class="grid--keep">
+            <p></p>
+            <p></p>
+            <p></p>
+        </section>
+        <aside class="grid--side small">
+            <p></p>
+        </aside>
+
+
+        <section class="grid--merge">
+            <h2>Merge text</h2>
+            <p></p>
+            <p></p>
+        </section>
+
+
+        <section class="grid--merge-menu">
+            <b>Merge menu</b>
+            <p></p>
+            <p></p>
+        </section>
+        <aside class="grid--side small">
+            <p></p>
+        </aside>
+
+
+        <aside class="grid--menu small">
+            <p></p>
+        </aside>
+        <section class="grid--merge-side">
+            <b>Merge side</b>
+            <p></p>
+            <p></p>
+        </section>
+
+
+        <aside class="grid--menu-screen small">
+            <b>Menu screen</b>
+            <p></p>
+        </aside>
+        <div class="grid--half-one">
+            <b>Side One</b>
+            <p></p>
+        </div>
+        <div class="grid--half-two">
+            <b>Side Two</b>
+            <p></p>
+        </div>
+        <aside class="grid--side-screen small">
+            <b>Side screen</b>
+            <p></p>
+        </aside>
+
+        <section class="grid--layer">
+            <h2>Fullscreen row</h2>
+            <p></p>
+            <p></p>
+            <p></p>
+            <div class="grid--half-one">
+                <b>Fullscreen Side One</b>
+                <p></p>
+                <div class="grid--half-one">
+                    <b>Side One-One</b>
+                    <p></p>
+                </div>
+                <div class="grid--half-two">
+                    <b>Side One-Two</b>
+                    <p></p>
+                </div>
+            </div>
+            <div class="grid--half-two">
+                <b>Fullscreen Side Two</b>
+                <p></p>
+                <p></p>
+                <p></p>
+            </div>
+        </section>
+
+        <section class="grid--half-screen-one">
+            <h2>Halfscreen One</h2>
+            <p></p>
+            <p></p>
+            <div class="grid--half-one">
+                <b>Side One-One</b>
+                <p></p>
+            </div>
+            <div class="grid--half-two">
+                <b>Side One-Two</b>
+                <p></p>
+            </div>
+        </section>
+
+        <section class="grid--half-screen-two">
+            <h2>Halfscreen Two</h2>
+            <p></p>
+            <p></p>
+        </section>
+
+
+        <section class="grid--merge-menu-screen">
+            <p></p>
+            <p></p>
+            <p></p>
+            <p></p>
+        </section>
+        <aside class="grid--side small">
+            <h2>Merge menu screen</h2>
+            <p></p>
+        </aside>
+
+
+        <aside class="grid--menu small">
+            <h2>Merge side screen</h2>
+            <p></p>
+        </aside>
+        <section class="grid--merge-side-screen">
+            <p></p>
+            <p></p>
+            <p></p>
+            <p></p>
+        </section>
+
+        <p></p>
+        <p></p>
+
+
+
+    </main>
+    <main class="grid--chapter">
+
+        <h1>Boxes</h1>
+
+        <div class="grid--menu box small">
+            <p></p>
+        </div>
+        <div class="grid--overmain box">
+            <p></p>
+            <p></p>
+            <p></p>
+        </div>
+        <div class="grid--side box small">
+            <p></p>
+        </div>
+
+    </main>
+
+<main class="grid--chapter">
+
+        <section class="grid--layer box">
+            <p></p>
+        </section>
+
+        <h2>Main columns</h2>
+
+        <div class="grid--menu">
+            <ul>
+                <li>menu</li>
+                <li>items</li>
+            </ul>
+        </div>
+
+        <div class="grid--keep">
+            <p></p>
+            <h3>grid-keep</h3>
             <p></p>
             <p></p>
         </div>
 
+        <div class="grid--side small">
+            <div class="img"></div>
+            <p></p>
+        </div>
+
+        <h3>After grid-keep</h3>
         <p></p>
-        
-        <div half-left>
+
+        <div class="grid--overmain box">
+            <p></p>
+            <p></p>
+        </div>
+
+        <div class="grid--side small">
+            <p></p>
+        </div>
+
+        <p></p>
+
+        <div class="grid--half-one">
             <b>Side A</b>
             <p></p>
         </div>
-        <div half-right>
+        <div class="grid--half-two">
             <b>Side B</b>
             <p></p>
         </div>
 
+        <div class="grid--overmain box">
+            <div class="grid--half-one">
+                <b>Side A</b>
+                <p></p>
+            </div>
+            <div class="grid--half-two">
+                <b>Side B</b>
+                <p></p>
+            </div>
+        </div>
+
         <p></p>
 
-        <div layer box>
+
+        <section class="grid--merge-menu-screen box">
+            <div class="grid--menu small">
+                <p></p>
+            </div>
+            <p></p>
+        </section>
+
+        <section class="grid--side-screen box small">
+            <p></p>
+        </section>
+
+        <section class="grid--menu-screen box small">
+            <p></p>
+        </section>
+
+        <section class="grid--merge-side-screen box">
+            <p></p>
+        </section>
+
+        <section class="grid--merge-side-screen grid--as-overmain box">
+            <p></p>
+        </section>
+
+        <h2>Merge MM</h2>
+
+        <section class="grid--merge-menu box">
+            <p></p>
+        </section>
+
+        <section class="grid--side">
+            <b>side</b>
+        </section>
+
+        <section class="grid--merge-menu grid--as-overmain box">
+            <p></p>
+        </section>
+
+        <section class="grid--side">
+            <b>side</b>
+        </section>
+
+        <h2>Merge MA</h2>
+
+        <section class="grid--menu">
+            <b>Menu</b>
+        </section>
+
+        <section class="grid--merge-side box">
+            <p></p>
+        </section>
+        
+        <h2>Merge MMA</h2>
+        
+        <section class="grid--merge box">
+            <p></p>
+            <div class="grid--half-one">
+                <b>Side A</b>
+                <p></p>
+            </div>
+            <div class="grid--half-two">
+                <b>Side B</b>
+                <p></p>
+            </div>
+        </section>
+
+        <div class="grid--half-one">
+            <b>Side A</b>
+            <p></p>
+        </div>
+        <div class="grid--half-two">
+            <b>Side B</b>
             <p></p>
         </div>
 
+        <h2>Merge MMA/alt</h2>
+        
+        <section class="grid--merge grid--as-overmain box">
+            <p></p>
+            <div class="grid--half-one">
+                <b>Side A</b>
+                <p></p>
+            </div>
+            <div class="grid--half-two">
+                <b>Side B</b>
+                <p></p>
+            </div>
+        </section>
 
     </main>
 
@@ -109,7 +378,7 @@
     <p class="p"></p>
 </div>
 
-<div aside>
+<div side>
     <p class="p"></p>
 </div>
 
@@ -125,9 +394,9 @@
 
 <p half-right box>AAA I dont like electronic music ... Cyberpunk 2077 use it in a trailer ... I suddenly have nothing against jamming to this for hours.</p>
 
-<div aside box>Aside I dont like electronic music ... Cyberpunk 2077 use it in a trailer ... I suddenly have nothing against jamming to this for hours</div>
+<div side box>side I dont like electronic music ... Cyberpunk 2077 use it in a trailer ... I suddenly have nothing against jamming to this for hours</div>
 
-<div aside-screen>Aside I dont like electronic music ... Cyberpunk 2077 use it in a trailer ... I suddenly have nothing against jamming to this for hours</div>
+<div side-screen>side I dont like electronic music ... Cyberpunk 2077 use it in a trailer ... I suddenly have nothing against jamming to this for hours</div>
 
 <div merge>MERGE I dont like electronic music ... Cyberpunk 2077 use it in a trailer ... I suddenly have nothing against jamming to this for hours</div>
 
