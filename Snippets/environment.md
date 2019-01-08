@@ -43,6 +43,8 @@ git config --list
 >>> user.email=king-kong@gmail.com
 
 git merge --no-commit --squash develop
+
+git commit --amend -m "update last commit message"
 ```
 
 .gitkeep
