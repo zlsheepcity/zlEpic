@@ -1,0 +1,208 @@
+// PALETTE
+
+$color--shy: rgba(0,0,50,0.075);
+$color--warm-sea: #EBF7F8; //hsl(200, 80%, 93%);
+$color--warm-sea-overlay: #D0E0EB;
+$color--deep-sea: hsl(200, 100%, 63%);
+
+// COLOR MODELS
+
+%colorModel--warm-sea {
+    background-color: $color--warm-sea;
+    color: black;
+    .link span { color: black; }
+}
+%colorModel--deep-sea {
+    background-color: $color--deep-sea;
+    color: white;
+    .link span { color: white; }
+}
+
+// SPACES
+
+$m-def: 3.2rem;
+
+// FONTS
+
+%text-as-big-title {
+    font-weight: 400;
+    font-size: 2em;
+    line-height: 1.25;
+}
+%text-as-mid-title {
+    font-weight: 600;
+    font-size: 1.5em;
+    line-height: 1.25;
+}
+%text-as-min-title {
+    font-weight: 600;
+    font-size: 1em;
+    line-height: inherit;
+}
+%text-as-bigger-than-main {
+    font-weight: 400;
+    font-size: 1.25em;
+    line-height: inherit;
+}
+.big-title { @extend %text-as-big-title; }
+.title     { @extend %text-as-mid-title; }
+.min-title { @extend %text-as-min-title; }
+.has-text-accent { @extend %text-as-bigger-than-main; }
+
+
+html {
+    font-family: Vollkorn;
+    cursor:default;
+}
+a {
+    color: inherit;
+}
+.link {
+    color: rgba(0,0,0,.25);
+    span { color: black; }
+    &:hover { color: $color--deep-sea; }
+}
+.box {
+    background-color: $color--shy;
+    color: inherit;
+    padding-top:    1.6rem;
+    padding-bottom: 1.6rem;
+}
+.big-box {
+    @extend .box;
+    padding-top:    $m-def;
+    padding-bottom: $m-def;
+}
+.is-layer {
+    margin-top:    $m-def;
+    margin-bottom: $m-def;
+}
+
+.desgin-chapter-header {
+    padding-top:    $m-def;
+    padding-bottom: $m-def;
+    margin-bottom:  $m-def;
+    h1, h2 { @extend %text-as-big-title; }
+}
+.chapter--plain {
+    display: block;
+    padding: 0;
+}
+
+.chapter--ProcedureDescription {
+    @extend %colorModel--warm-sea;
+    .box { background-color: $color--warm-sea-overlay; }
+    .desgin-chapter-header { @extend %colorModel--deep-sea; }
+}
+.chapter--CuracaoOrMalta {
+    padding-top: 0;
+    padding-bottom: $m-def;
+    @extend %colorModel--deep-sea;
+    color: black;
+    .big-title, .title { color: white; }
+    .desgin-chapter-header {
+        margin-top: $m-def;
+        margin-bottom: 0;
+    }
+}
+.chapter--AboutCuracaoIsland {
+    background-color: #CAFF42;
+}
+.chapter--OpenCasinoOrBetting {
+    padding-top:    2*$m-def;
+    padding-bottom: 2*$m-def;
+    background-image: url(https://www.gaminglicensing.com/images/online-casino-bg.jpg);
+    background-size: cover;
+    background-attachment: fixed;
+}
+.chapter--eGamingsGroup {
+    padding-top:    2*$m-def;
+    padding-bottom: 2*$m-def;
+    .big-box {
+        background-color: #F02475;
+        color: white;
+    }
+}
+.chapter--contact-footer {
+    padding-top:    2*$m-def;
+    padding-bottom: 2*$m-def;
+    background-color: #CAFF42;
+    border-top: 3.2rem solid $color--deep-sea;
+}
+
+.design-side-logoicon {
+    text-align: center;
+    img {
+        display: inline-block;
+        vertical-align: middle;
+    }
+    @media ($screenNotClassicGrid) {
+        figure {
+            padding-top: 1rem;
+        }
+        img {
+            max-height: 8em;
+        }
+    }
+}
+.design--FourFeatures {
+    margin:  0;
+    padding: 0;
+    list-style: none;
+    text-align: center;
+
+    /* has colores */
+    background-color: #C7F464;
+    .feature:nth-child(4n+0) { background-color: #CAFF42; }
+    .feature:nth-child(4n+1) { background-color: $color--deep-sea; }
+    .feature:nth-child(4n+2) { background-color: #F02475; }
+    .feature:nth-child(4n+3) { background-color: #F8CA00; }
+
+    /* has box model */
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-auto-rows: 1fr;
+    .feature {
+        grid-column: auto;
+        padding: $m-def;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        &>* {
+            width: 280px;
+            max-width: 100%;
+        }
+    }
+    .feature:nth-child(2n+1) { align-items: flex-end; }
+
+    /* has icons */
+    figure {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        padding-bottom: 1rem;
+        img, svg {
+            height: 6rem;
+            width: auto;
+            fill: rgba(255,255,200,.5);
+        }
+    }
+}
+
+.design--hover-island {
+    img, svg {
+        transition: transform 400ms ease-in-out;
+    }
+    &:hover img, &:hover svg {
+        transition-duration: 1s;
+        transform: scale(1.5)
+    }
+}
+.design--AdvantagesColumn {
+    @media all and ($screenForCompactGrid) {
+        grid-column: full;
+        grid-template-columns: $grid-template-columns--overmain;
+    }
+}

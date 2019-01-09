@@ -26,6 +26,7 @@ $grid-settings--row-gap:       1.0rem;
 $grid-settings--screenspacer:  minmax(0, 1fr);
 $grid-settings--width-of-menu: 16vw;
 $grid-settings--width-of-side: 16vw;
+$grid-settings--overmainspacer: 1rem;
 
 $grid-settings--max-width-for-main: 700px;
 
@@ -50,7 +51,7 @@ $grid-settings--main-unit: minmax(0, calc( (#{$w} - (5*#{$g})) / 6 ) );
 $BEGIN--grid-formula:        unquote(" [ ") full-start;
 $END--grid-formula:          full-end unquote(" ] ");
 $SCREEN-SPACE--grid-formula: unquote(" ] ") $grid-settings--screenspacer unquote(" [ ");
-$MIDDLE-SPACE--grid-formula: unquote(" ] ") 0 unquote(" [ ");
+$MIDDLE-SPACE--grid-formula: unquote(" ] ") $grid-settings--overmainspacer unquote(" [ ");
 
 $CONTENT--grid-formula:
     $grid-settings--main-unit unquote(" [b] ")
@@ -341,27 +342,72 @@ $grid-template-columns--overmain-cut-one:
             full-end
         unquote(" ] ")
     ;
+$grid-template-columns--overmain-cut-one-and-keep:
+    $BEGIN--grid-formula
+        $SCREEN-SPACE--grid-formula
+            $OVERMENU--grid-formula
+                overmain-start
+                overside-start
+                $MIDDLE-SPACE--grid-formula
+                    side-start
+                    main-start
+                    a
+                    unquote(" ] ")
+                        $grid-settings--main-unit unquote(" [b] ")
+                        $grid-settings--main-unit unquote(" [c] ")
+                        $grid-settings--main-unit
+                    unquote(" [ ")
+                    d midpoint e f g
+                    main-end
+                    side-end
+                overmain-end
+                overside-end
+    $END--grid-formula
+    ;
 $grid-template-columns--overmain-cut-two:
-        unquote(" [ ")
-            full-start
+    $BEGIN--grid-formula
             overmenu-start
             overmain-start
             overside-start
+            $MIDDLE-SPACE--grid-formula
             menu-start
             side-start
             main-start a
+            unquote(" ] ")
+                $CONTENT--grid-formula
+            unquote(" [ ")
+            g
+            main-end
+            menu-end
+            side-end
+        $MIDDLE-SPACE--grid-formula
         unquote(" ] ")
-            $CONTENT--grid-formula
-        unquote(" [ ")
-            main-end g
-            menu-end side-end
-        unquote(" ] ")
-            0
-    unquote(" [overmain-end overmenu-end overside-end full-end] ")
+        overmain-end overmenu-end overside-end
+    $END--grid-formula
+    ;
+$grid-template-columns--overmain-cut-two-and-keep:
+    $BEGIN--grid-formula
+            overmenu-start
+            overmain-start
+            menu-start
+            main-start
+            a b c d midpoint
+                unquote(" ] ")
+                    $grid-settings--main-unit unquote(" [e] ")
+                    $grid-settings--main-unit unquote(" [f] ")
+                    $grid-settings--main-unit
+                unquote(" [ ")
+            g
+            main-end
+            menu-end
+            $MIDDLE-SPACE--grid-formula
+            $OVERSIDE--grid-formula
+        $SCREEN-SPACE--grid-formula
+    $END--grid-formula
     ;
 $grid-template-columns--overmain-half-one:
     unquote(" [overmain-start full-start] ")
-            0
+            $grid-settings--overmainspacer
         unquote(" [main-start menu-start side-start a] ")
             $CONTENT--grid-formula
         unquote(" [main-end menu-end side-end overmain-end full-end g] ")
@@ -371,7 +417,7 @@ $grid-template-columns--overmain-half-two:
         unquote(" [overmain-start full-start main-start menu-start side-start a] ")
             $CONTENT--grid-formula
         unquote(" [main-end menu-end side-end g] ")
-            0
+            $grid-settings--overmainspacer
     unquote(" [overmain-end full-end] ")
     ;
 

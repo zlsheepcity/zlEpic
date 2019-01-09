@@ -1,26 +1,13 @@
 $colorShy: rgba(0,0,50,0.075);
 
-html {
-    font-family: Vollkorn;
-    cursor:default;
-}
-html, body { margin: 0; padding: 0; }
-
-p,ul,h1,h2 {
-    &:hover { background-color: $colorShy; }
-}
-
-.img {
-    padding-top: 40%;
-    background-color: goldenrod;
-}
-
-.is-centered {
-    text-align: center;
-}
-
-
+@import "parts/base-reset-html.scss";
 
 @import "parts/try-supergrid-formula.scss";
 @import "parts/try-supergrid.scss";
+
+.top-clip    { padding-top: 0; }
+.is-centered { text-align: center; }
+
+@import "parts/design-template.scss";
+
 

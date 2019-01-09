@@ -34,21 +34,24 @@
 // griz classes
 // --------------------------------------------------------------
 
+.grid * {
+    grid-column: main;
+    margin-top:    0;
+    margin-bottom: 0;
+}
 .grid {
     @extend %grid-setup;
     @extend %grid-template--full;
     grid-column: full;
-    * {
-        grid-column: main;
-        margin-top:    0;
-        margin-bottom: 0;
-    }
 }
+
 
 // Major columns
 
 .grid--layer {
     @extend %grid-setup;
+    padding-left:  0;
+    padding-right: 0;
     grid-column: full;
     grid-template-columns: $grid-template-columns--overmain-no-limit;
 }
@@ -115,6 +118,37 @@
     grid-template-columns: $grid-template-columns--overmain-no-limit;
 }
 
+// Halves
+
+.grid--half-one {
+    @extend %grid-setup;
+    grid-template-columns: $grid-template-columns--short;
+    grid-column: main-start / midpoint;
+}
+.grid--half-two {
+    @extend %grid-setup;
+    grid-template-columns: $grid-template-columns--short;
+    grid-column: midpoint / main-end;
+}
+.grid--half-screen-one {
+    @extend %grid-setup;
+    grid-template-columns: $grid-template-columns--overmain-no-limit;
+    grid-column: full-start / midpoint;
+    @media all and ($screenForCompactGrid) {
+        grid-template-columns: $grid-template-columns--overmain;
+        grid-column: full;
+    }
+}
+.grid--half-screen-two {
+    @extend %grid-setup;
+    grid-template-columns: $grid-template-columns--overmain-no-limit;
+    grid-column: d / full-end;
+    @media all and ($screenForCompactGrid) {
+        grid-template-columns: $grid-template-columns--overmain;
+        grid-column: full;
+    }
+}
+
 // Keep grid
 
 .grid--keep {
@@ -128,17 +162,25 @@
 
     @media all and ($screenForClassicGrid) {
         &.grid--layer { grid-template-columns: $grid-template-columns--full; }
+        &.grid--overmain { grid-template-columns: $grid-template-columns--overmain; }
         &.grid--merge { grid-template-columns: $grid-template-columns--merge; }
         &.grid--merge-menu { grid-template-columns: $grid-template-columns--merge-menu; }
         &.grid--merge-side { grid-template-columns: $grid-template-columns--merge-side; }
         &.grid--merge-menu-screen { grid-template-columns: $grid-template-columns--merge-menu-screen; }
         &.grid--merge-side-screen { grid-template-columns: $grid-template-columns--merge-side-screen; }
+        &.grid--half-screen-one {
+            grid-template-columns: $grid-template-columns--overmain-cut-one-and-keep;
+        }
+        &.grid--half-screen-two {
+            grid-template-columns: $grid-template-columns--overmain-cut-two-and-keep;
+        }
     }
     @media all and ($screenNotClassicGrid) and ($screenNotCompactGrid) {
         &.grid--layer
         {
             grid-template-columns: $grid-template-columns--overmain-spaced;
         }
+        &.grid--overmain,
         &.grid--merge,
         &.grid--merge-menu,
         &.grid--merge-side {
@@ -155,6 +197,7 @@
     }
     @media all and ($screenForCompactGrid) {
         &.grid--layer,
+        &.grid--overmain,
         &.grid--merge,
         &.grid--merge-menu,
         &.grid--merge-menu-screen,
@@ -166,40 +209,14 @@
     }
 }
 
-// Halves
-
-.grid--half-one {
-    @extend %grid-setup;
-    grid-template-columns: $grid-template-columns--short;
-    grid-column: main-start / midpoint;
-}
-.grid--half-two {
-    @extend %grid-setup;
-    grid-template-columns: $grid-template-columns--short;
-    grid-column: midpoint / main-end;
-}
-.grid--half-screen-one {
-    @extend %grid-setup;
-    grid-template-columns: $grid-template-columns--overmain-cut-one;
-    grid-column: full-start / midpoint;
-}
-.grid--half-screen-two {
-    @extend %grid-setup;
-    grid-template-columns: $grid-template-columns--overmain-cut-two;
-    grid-column: d / full-end;
-}
-
 // Alignment
 
-.is-v-centered {
-    align-self: center;
-}
-.has-v-centered {
-    &>* { align-self: center; }
-}
-.has-v-slices {
-    grid-row-gap: 0;
-}
+.is-v-centered  { align-self: center; }
+.has-v-centered { &>* { align-self: center; } }
+.is-v-equal { align-self: stretch; }
+.has-v-equal { &>* { align-self: stretch; } }
+.has-v-slices { grid-row-gap: 0; }
+
 
 
 
@@ -220,13 +237,21 @@
 
 
 
+.is-sticky {
+    @media all and ($screenNotReducedGrid) {
+        position: sticky;
+        top: 0;
+    }
+}
+
+
 
 [chapter]           { @extend .grid--chapter; }
 [layer]             { @extend .grid--layer; }
 [overmain]          { @extend .grid--overmain; }
 
 
-.grid:hover *:not(.box):not(.img) { background-color: $colorShy; }
+// .grid:hover *:not(.box):not(.img) { background-color: $colorShy; }
 
 
 [half-left] { grid-column: main-start / midpoint; }
