@@ -1,0 +1,31 @@
+// ------------------------------------------ settings
+
+$margin-less: $margin-less; // 2rem
+$margin-def:  $margin-def; // 3.2rem
+
+/* ------------------------------------------ helpers classes */
+
+.is-v-centered      { align-self: center; }
+.has-v-centered>*   { align-self: center; }
+
+.is-v-equal         { align-self: stretch; }
+.has-v-equal>*      { align-self: stretch; }
+
+.has-v-slices       { grid-row-gap: 0; }
+
+.is-v-spaced {
+    margin-top:    $margin-less;
+    margin-bottom: $margin-less;
+}
+.is-v-padded {
+    padding-top:    $margin-def;
+    padding-bottom: $margin-def;
+}
+
+.is-box {
+    padding-top:    $margin-less;
+    padding-bottom: $margin-less;
+    background-color: rgba(0,0,0,0.1);
+}
+
+/* EOF helpers classes */

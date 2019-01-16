@@ -287,13 +287,18 @@ hr {
   font-size: inherit;
   min-height: 1.5em; }
 
+figure {
+  display: block; }
+
 img {
-  display: block;
+  display: inline-block;
+  vertical-align: middle;
   border: none;
   max-width: 100%; }
 
 svg {
-  display: block;
+  display: inline-block;
+  vertical-align: middle;
   border: none;
   max-width: 100%; }
 
@@ -580,9 +585,8 @@ body {
   /* 14/24 */
   font-size: 0.875em;
   line-height: 1.714285; }
-.design-template h2, .design-template .title, .design-template [title],
-.design-template h3, .design-template .min-title, .design-template [min-title] {
-  font-style: italic; }
+.design-template a {
+  color: inherit; }
 
 .design-template h2, .design-template .title, .design-template [title] {
   padding-top: 0.4rem; }
@@ -951,179 +955,91 @@ $zetka-half-screen-two                    in][][][side][]-
 
   .zetka-as-main {
     grid-template-columns:  [  full-start overmain-start overside-start overmenu-start menu-start side-start main-start a  ]  1fr  [b]  1fr  [c]  1fr  [d midmenu midpoint midside]  1fr  [e]  1fr  [f]  1fr  [  main-end g menu-end side-end overmain-end overside-end overmenu-end full-end  ] ; } }
-/* grid with cards */
-/* 2018.11.27 */
+/* EOF zetka columns */
+/* ------------------------------------------ helpers classes */
+.is-v-centered {
+  align-self: center; }
+
+.has-v-centered > * {
+  align-self: center; }
+
+.is-v-equal {
+  align-self: stretch; }
+
+.has-v-equal > * {
+  align-self: stretch; }
+
+.has-v-slices {
+  grid-row-gap: 0; }
+
+.is-v-spaced {
+  margin-top: 2rem;
+  margin-bottom: 2rem; }
+
+.is-v-padded {
+  padding-top: 2.4rem;
+  padding-bottom: 2.4rem; }
+
+.is-box {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  background-color: rgba(0, 0, 0, 0.1); }
+
+/* EOF helpers classes */
+.chapter--ProcedureDescription {
+  background-color: #EBF7F8;
+  color: black; }
+  .chapter--ProcedureDescription .link span {
+    color: black; }
+
+.chapter--ProcedureDescription .desgin-chapter-header, .chapter--CuracaoOrMalta {
+  background-color: #42c0ff;
+  color: white; }
+  .chapter--ProcedureDescription .desgin-chapter-header .link span, .chapter--CuracaoOrMalta .link span {
+    color: white; }
+
+.chapter--OfferDescription .design-higlight-offer {
+  background-color: #42c0ff;
+  color: black; }
+  .chapter--OfferDescription .design-higlight-offer .link span {
+    color: black; }
+
+.big-title, [big-title], .desgin-chapter-header h1, .desgin-chapter-header h2 {
+  font-weight: 400;
+  font-size: 2em;
+  line-height: 1.25; }
+
+.title, [title] {
+  font-weight: 600;
+  font-size: 1.5em;
+  line-height: 1.25; }
+
+.min-title, [min-title] {
+  font-weight: 600;
+  font-size: 1em;
+  line-height: inherit; }
+
+.has-text-accent {
+  font-weight: 400;
+  font-size: 1.25em;
+  line-height: inherit; }
+
+/* ------------------------------------ GL theme 2019.1.14 */
 /*
-
-# Use 1/2
-Horizontals cards in grid
-
-```css
-    div.logo-matrix
-        div
-        ...
-```
-
-# Use 2/2
-Fixed rows and side scroll
-
-```css
-    div.logo-matrix.has-scroll
-        div
-        ...
-```
-
-*/
-.logo-matrix {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  grid-template-rows: min-content;
-  grid-auto-flow: row;
-  grid-gap: 1rem;
-  padding: 2.4rem;
-  font-size: 1rem;
-  line-height: 1.6; }
-  .logo-matrix .card {
-    width: 100%;
-    max-width: 100%; }
-  .logo-matrix.has-scroll {
-    display: grid;
-    grid-template-columns: min-content;
-    grid-template-rows: 1fr 1fr 1fr 1fr;
-    grid-auto-flow: column;
-    overflow: auto; }
-    .logo-matrix.has-scroll .card {
-      width: 80vw;
-      max-width: 42em; }
-  .logo-matrix .card {
-    grid-column: auto;
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    align-items: stretch;
-    align-content: stretch; }
-  .logo-matrix .card-picture {
-    order: 2;
-    flex-shrink: 0;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    align-content: center; }
-  .logo-matrix .card-text {
-    order: 1;
-    flex-grow: 2;
-    align-self: stretch;
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    align-items: center;
-    align-content: center; }
-  .logo-matrix .card-picture {
-    width: 10rem;
-    padding: 1rem 1.6rem; }
-  .logo-matrix .card-text {
-    padding: 1rem 1.6rem; }
-  .logo-matrix .card-text {
-    transition: background 200ms ease-out;
-    background-color: transparent;
-    padding-right: 2.4rem;
-    clip-path: polygon(0 -1px, calc( 100% - 2.4rem ) -1px, 100% 50%, calc( 100% - 2.4rem ) 100%, 0 100%); }
-  .logo-matrix .card:focus .card-text,
-  .logo-matrix .card:active .card-text,
-  .logo-matrix .card:hover .card-text {
-    background-color: rgba(0, 0, 0, 0.1);
-    transition-timing-function: ease-in; }
-  @media all and (max-width: 40rem) {
-    .logo-matrix .card-text > * {
-      max-height: 6rem;
-      overflow: hidden; } }
-
-/* eof */
-/* logo-matrix */
-.design-template {
-  /* logo-matrix */
-  /**/
-  /* sgSND integration */
-  /**/ }
-  .design-template .logo-matrix {
-    grid-gap: 1px;
-    background-color: #5b7d8f;
-    font-family: sans-serif;
-    font-size: 1rem;
-    line-height: 1.6; }
-    .design-template .logo-matrix .card {
-      background-color: white;
-      color: black; }
-    .design-template .logo-matrix .card:hover .card-text {
-      background-color: #8cded2;
-      color: black; }
-    .design-template .logo-matrix .link {
-      display: inline-block;
-      border-bottom: 1px solid #8cded2;
-      padding-right: 0.2em;
-      font-weight: 600;
-      font-size: 1.2em;
-      line-height: 1; }
-    .design-template .logo-matrix::-webkit-scrollbar {
-      height: 2.4rem; }
-    .design-template .logo-matrix::-webkit-scrollbar-track {
-      -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3); }
-    .design-template .logo-matrix::-webkit-scrollbar-thumb {
-      background-color: #8cded2;
-      outline: 1px solid #8cded2; }
-  .design-template .logo-matrix a {
-    text-decoration: none; }
-  .design-template .logo-matrix .card {
-    border-radius: 0;
-    border: 0;
-    font-size: 12px;
-    line-height: 20px; }
-  .design-template .logo-matrix .card-text {
-    padding: 10px 24px 10px 16px;
-    clip-path: polygon(0 -1px, calc( 100% - 24px ) -1px, 100% 50%, calc( 100% - 24px ) 100%, 0 100%); }
-  .design-template .logo-matrix .card-text-content {
-    max-height: 72px;
-    overflow: hidden; }
-  .design-template .logo-matrix .card-picture {
-    width: 10em;
-    padding: 10px 16px; }
-  .design-template .logo-matrix .card {
-    position: relative;
-    z-index: 0; }
-  .design-template .logo-matrix .card-clickable a {
-    position: absolute;
-    z-index: 1;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0; }
-    .design-template .logo-matrix .card-clickable a span {
-      display: block;
-      text-indent: 100%;
-      white-space: nowrap;
-      overflow: hidden; }
-  .design-template .logo-matrix.has-three-rows {
-    grid-template-columns: min-content;
-    grid-template-rows: 1fr 1fr 1fr; }
-  .design-template .logo-matrix .insert-page,
-  .design-template .logo-matrix .card {
-    height: 100%; }
-  .design-template .logo-matrix [link], .design-template .logo-matrix [name] {
-    display: inline-block;
-    border-bottom: 1px solid #8cded2;
-    padding-right: 0.2em;
-    font-weight: 600;
-    font-size: 1.2em;
-    line-height: 1; }
-
-/* ------------------------------------ GL theme */
 @media screen and (max-width: 1000px) {
-  html {
-    font-size: 0.9vw; }
+    html {
+        font-size: 0.9vw;
+    }
+    body {
+        font-size: 1.4vw;
+    }
+}
+*/
+html {
+  font-family: Vollkorn;
+  cursor: default; }
 
-  body {
-    font-size: 1.4vw; } }
+/* ------------------------------------ GL components */
 .design-template .button {
   /* is plain button */
   border: 0;
@@ -1135,6 +1051,12 @@ Fixed rows and side scroll
   text-decoration: none; }
   .design-template .button:hover {
     background-color: #008abd; }
+.design-template .link {
+  color: rgba(240, 36, 117, 0.5); }
+  .design-template .link span {
+    color: black; }
+  .design-template .link:hover {
+    color: #f02475; }
 .design-template .some-icon-in-pseudo-before, .design-template .has-skype-icon:before, .design-template .has-email-icon:before, .design-template .has-contact-icon:before {
   content: '';
   display: inline-block;
@@ -1223,3 +1145,167 @@ Fixed rows and side scroll
   .glWelcomeScreen .title, .glWelcomeScreen [title] {
     font-style: normal;
     font-family: sans-serif; }
+
+.desgin-chapter-header {
+  padding-top: 2.4rem;
+  padding-bottom: 2.4rem; }
+
+.chapter--ProcedureDescription {
+  background-image: url("https://www.gaminglicensing.com/images/contacts-bg.jpg");
+  background-size: cover;
+  background-attachment: fixed; }
+  @media all and (max-width: 600px) {
+    .chapter--ProcedureDescription .design-pros-cons .zetka-half-screen-two,
+    .chapter--ProcedureDescription .design-pros-cons .zetka-half-one {
+      grid-column: full;
+      grid-template-columns:  [  full-start overmain-start overmenu-start overside-start  ]  0  [  menu-start side-start main-start a  ]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [b]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [c]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [d midmenu midpoint midside]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [e]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [f]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [  main-end g side-end menu-end  ]  0  [  overmain-end overmenu-end overside-end full-end  ] ; } }
+  @media (max-width: 900px) {
+    .chapter--ProcedureDescription .desgin-chapter-header {
+      text-align: center; } }
+
+.chapter--OfferDescription {
+  background-image: url("https://www.gaminglicensing.com/images/curacao-bg.png");
+  background-size: cover;
+  background-attachment: fixed; }
+  .chapter--OfferDescription .design-higlight-offer {
+    padding-top: 3.2rem;
+    padding-bottom: 3.2rem; }
+  @media (max-width: 900px) {
+    .chapter--OfferDescription .mid-title {
+      text-align: center;
+      font-size: 2.5em;
+      line-height: 1.2; } }
+
+.chapter--CuracaoOrMalta {
+  padding-top: 0;
+  padding-bottom: 2.4rem;
+  color: black; }
+  .chapter--CuracaoOrMalta .big-title, .chapter--CuracaoOrMalta [big-title], .chapter--CuracaoOrMalta .title, .chapter--CuracaoOrMalta [title] {
+    color: white; }
+  .chapter--CuracaoOrMalta .desgin-chapter-header {
+    margin-top: 2.4rem;
+    margin-bottom: 0; }
+  @media (max-width: 900px) {
+    .chapter--CuracaoOrMalta {
+      padding-bottom: 0; }
+      .chapter--CuracaoOrMalta .big-title, .chapter--CuracaoOrMalta [big-title], .chapter--CuracaoOrMalta .title, .chapter--CuracaoOrMalta [title] {
+        text-align: center; }
+      .chapter--CuracaoOrMalta .design-curacao-malta-compare .big-title, .chapter--CuracaoOrMalta .design-curacao-malta-compare [big-title] {
+        text-align: left; }
+      .chapter--CuracaoOrMalta hr:last-child {
+        display: none; } }
+
+@media (max-width: 900px) {
+  .chapter--EZone .big-title, .chapter--EZone [big-title] {
+    text-align: center; } }
+
+.chapter--AboutCuracaoIsland {
+  background-color: #CAFF42; }
+  @media (max-width: 900px) {
+    .chapter--AboutCuracaoIsland .big-title, .chapter--AboutCuracaoIsland [big-title] {
+      text-align: center; }
+    .chapter--AboutCuracaoIsland .design-curacao-schematic-map {
+      text-align: center; }
+      .chapter--AboutCuracaoIsland .design-curacao-schematic-map img {
+        max-height: 10em; } }
+
+.chapter--OpenCasinoOrBetting {
+  padding-top: 4.8rem;
+  padding-bottom: 4.8rem;
+  background-image: url("https://www.gaminglicensing.com/images/online-casino-bg.jpg");
+  background-size: cover;
+  background-attachment: fixed; }
+  .chapter--OpenCasinoOrBetting .big-title, .chapter--OpenCasinoOrBetting [big-title] {
+    color: #f02475; }
+  @media (max-width: 900px) {
+    .chapter--OpenCasinoOrBetting .big-title, .chapter--OpenCasinoOrBetting [big-title] {
+      text-align: center; } }
+
+.chapter--eGamingsGroup {
+  padding-top: 4.8rem;
+  padding-bottom: 4.8rem; }
+  .chapter--eGamingsGroup .big-box {
+    background-color: #F02475;
+    color: white; }
+  .chapter--eGamingsGroup .big-title, .chapter--eGamingsGroup [big-title] {
+    color: #42c0ff; }
+
+.chapter--contact-footer {
+  padding-top: 4.8rem;
+  padding-bottom: 4.8rem;
+  background-color: #CAFF42; }
+
+.chapter--sitemap-footer {
+  padding-top: 4.8rem;
+  padding-bottom: 4.8rem;
+  background-color: #42c0ff; }
+
+.design-side-logoicon {
+  text-align: center; }
+  .design-side-logoicon img {
+    display: inline-block;
+    vertical-align: middle; }
+  @media (max-width: 900px) {
+    .design-side-logoicon figure {
+      padding-top: 1rem; }
+    .design-side-logoicon img {
+      max-height: 8em; } }
+
+.design--FourFeatures {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  text-align: center;
+  /* has colores */
+  background-color: #C7F464;
+  /* has box model */
+  display: grid;
+  grid-template-columns: 50% 50%;
+  grid-auto-rows: 1fr;
+  /* has icons */ }
+  .design--FourFeatures .feature:nth-child(4n+0) {
+    background-color: #CAFF42; }
+  .design--FourFeatures .feature:nth-child(4n+1) {
+    background-color: #42c0ff; }
+  .design--FourFeatures .feature:nth-child(4n+2) {
+    background-color: #F02475; }
+  .design--FourFeatures .feature:nth-child(4n+3) {
+    background-color: #F8CA00; }
+  .design--FourFeatures .feature {
+    grid-column: auto;
+    padding: 2.4rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; }
+    .design--FourFeatures .feature > * {
+      width: 280px;
+      max-width: 100%; }
+  .design--FourFeatures .feature:nth-child(2n+1) {
+    align-items: flex-end; }
+  .design--FourFeatures figure {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 1rem; }
+    .design--FourFeatures figure img, .design--FourFeatures figure svg {
+      height: 6rem;
+      width: auto;
+      fill: rgba(255, 255, 200, 0.5); }
+
+.design--hover-island img, .design--hover-island svg {
+  transition: transform 400ms ease-in-out; }
+.design--hover-island:hover img, .design--hover-island:hover svg {
+  transition-duration: 1s;
+  transform: scale(1.5); }
+
+.design--AdvantagesColumn .big-title, .design--AdvantagesColumn [big-title],
+.design--ServicesColumn .big-title,
+.design--ServicesColumn [big-title] {
+  color: #f02475; }
+@media all and (max-width: 600px) {
+  .design--AdvantagesColumn,
+  .design--ServicesColumn {
+    grid-column: full;
+    grid-template-columns:  [  full-start overmain-start overmenu-start overside-start  ]  0  [  menu-start side-start main-start a  ]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [b]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [c]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [d midmenu midpoint midside]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [e]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [f]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [  main-end g side-end menu-end  ]  0  [  overmain-end overmenu-end overside-end full-end  ] ; } }

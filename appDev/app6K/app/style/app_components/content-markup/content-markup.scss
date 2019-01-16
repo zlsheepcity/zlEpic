@@ -35,13 +35,18 @@ hr {
     font-size:  inherit;
     min-height: 1.5em;
 }
+figure {
+    display: block;
+}
 img {
-    display:   block;
+    display: inline-block;
+    vertical-align: middle;
     border:    none;
     max-width: 100%;
 }
 svg {
-    display:   block;
+    display: inline-block;
+    vertical-align: middle;
     border:    none;
     max-width: 100%;
 }

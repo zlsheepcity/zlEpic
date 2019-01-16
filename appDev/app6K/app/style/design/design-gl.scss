@@ -1,10 +1,20 @@
 
-// required
+// DESIGN TEMPLATES
+
+$zetka-overmain: $zetka-overmain;
+
+// SCREENS
+
+$screenForCompactZetka: $screenForCompactZetka; // 600px
+$screenNotClassicZetka: $screenNotClassicZetka; // 900px
+
+// SPACES
 
 $dim: $dim; // 0.8rem;
 $margin-def: $margin-def; // 2.4rem;
+$m-def: $margin-def;
 
-// design settings
+// PALETTE
 
 $color-gl-dark-accent:         hsla(229, 55%, 12%, 0.7);
 $color-gl-dark-accent-plain:   hsl(229, 55%, 12%);
@@ -12,13 +22,72 @@ $color-gl-light-accent-plain:  hsl(196, 100%, 47%);
 $color-gl-light-accent-hover:  hsl(196, 100%, 37%);
 $color-gl-light-accent-shadow: hsla(196, 100%, 47%, 0.1);
 
+$color--shy: rgba(0,0,50,0.075);
+$color--warm-sea: #EBF7F8; //hsl(200, 80%, 93%);
+$color--warm-sea-overlay: #D0E0EB;
+$color--deep-sea: hsl(200, 100%, 63%);
+$color--brand-accent: hsla(336, 87%, 54%, 1);
+$color--brand-light: hsla(336, 87%, 54%, 0.5);
+
+// COLOR MODELS
+
+%colorModel--warm-sea {
+    background-color: $color--warm-sea;
+    color: black;
+    .link span { color: black; }
+}
+%colorModel--deep-sea {
+    background-color: $color--deep-sea;
+    color: white;
+    .link span { color: white; }
+}
+%colorModel--contrast-sea {
+    background-color: $color--deep-sea;
+    color: black;
+    .link span { color: black; }
+}
+
+// IMG URL
+
 $src-gl-welcome-background: '../../gl/design/welcome-background.jpg';
 $src-gl-skype-icon: '../../gl/design/icon-skype-in-circle.svg';
 $src-gl-email-icon: '../../gl/design/icon-email-in-circle.svg';
 $src-gl-contact-icon: '../../gl/design/icon-contact-form.svg';
+$src-gl-chapter-background--online-casino: 'https://www.gaminglicensing.com/images/online-casino-bg.jpg';
+$src-gl-chapter-background--tropical: 'https://www.gaminglicensing.com/images/contacts-bg.jpg';
+$src-gl-chapter-background--curacao: 'https://www.gaminglicensing.com/images/curacao-bg.png';
 
-/* ------------------------------------ GL theme */
+// FONTS
 
+%text-as-big-title {
+    font-weight: 400;
+    font-size: 2em;
+    line-height: 1.25;
+}
+%text-as-mid-title {
+    font-weight: 600;
+    font-size: 1.5em;
+    line-height: 1.25;
+}
+%text-as-min-title {
+    font-weight: 600;
+    font-size: 1em;
+    line-height: inherit;
+}
+%text-as-bigger-than-main {
+    font-weight: 400;
+    font-size: 1.25em;
+    line-height: inherit;
+}
+.big-title { @extend %text-as-big-title; }
+.title     { @extend %text-as-mid-title; }
+.min-title { @extend %text-as-min-title; }
+.has-text-accent { @extend %text-as-bigger-than-main; }
+
+
+/* ------------------------------------ GL theme 2019.1.14 */
+
+/*
 @media screen and (max-width: 1000px) {
     html {
         font-size: 0.9vw;
@@ -27,6 +96,14 @@ $src-gl-contact-icon: '../../gl/design/icon-contact-form.svg';
         font-size: 1.4vw;
     }
 }
+*/
+
+html {
+    font-family: Vollkorn;
+    cursor:default;
+}
+
+/* ------------------------------------ GL components */
 
 .design-template {
 
@@ -43,6 +120,12 @@ $src-gl-contact-icon: '../../gl/design/icon-contact-form.svg';
         color: white;
         text-decoration: none;
 
+    }
+
+    .link {
+        color: $color--brand-light;
+        span { color: black; }
+        &:hover { color: $color--brand-accent; }
     }
 
     // iconization
@@ -185,4 +268,200 @@ $src-gl-contact-icon: '../../gl/design/icon-contact-form.svg';
         font-family: sans-serif;
     }
 
+}
+
+.desgin-chapter-header {
+    padding-top:    $m-def;
+    padding-bottom: $m-def;
+    h1, h2 { @extend %text-as-big-title; }
+}
+
+.chapter--ProcedureDescription {
+    @extend %colorModel--warm-sea;
+    .desgin-chapter-header { @extend %colorModel--deep-sea; }
+
+    background-image: url($src-gl-chapter-background--tropical);
+    background-size: cover;
+    background-attachment: fixed;
+
+    @media all and ($screenForCompactZetka) {
+        .design-pros-cons .zetka-half-screen-two,
+        .design-pros-cons .zetka-half-one {
+            grid-column: full;
+            grid-template-columns: $zetka-overmain;
+        }
+    }
+
+    @media ($screenNotClassicZetka) {
+        .desgin-chapter-header {
+            text-align: center;
+        }
+    }
+}
+.chapter--OfferDescription {
+
+    background-image: url($src-gl-chapter-background--curacao);
+    background-size: cover;
+    background-attachment: fixed;
+
+    .design-higlight-offer {
+        @extend %colorModel--contrast-sea;
+        padding-top:    3.2rem;
+        padding-bottom: 3.2rem;
+    }
+
+    @media ($screenNotClassicZetka) {
+        .mid-title {
+            text-align: center;
+            font-size: 2.5em;
+            line-height: 1.2;
+        }
+    }
+}
+.chapter--CuracaoOrMalta {
+    padding-top: 0;
+    padding-bottom: $m-def;
+    @extend %colorModel--deep-sea;
+    color: black;
+    .big-title, .title { color: white; }
+    .desgin-chapter-header {
+        margin-top: $m-def;
+        margin-bottom: 0;
+    }
+    @media ($screenNotClassicZetka) {
+        .big-title, .title { text-align: center; }
+        .design-curacao-malta-compare {
+            .big-title { text-align: left; }
+        }
+        padding-bottom: 0;
+        hr:last-child { display: none; }
+    }
+}
+.chapter--EZone {
+    @media ($screenNotClassicZetka) {
+        .big-title { text-align: center; }
+    }
+}
+.chapter--AboutCuracaoIsland {
+    background-color: #CAFF42;
+    @media ($screenNotClassicZetka) {
+        .big-title { text-align: center; }
+        .design-curacao-schematic-map {
+            text-align: center;
+            img { max-height: 10em; }
+        }
+    }
+}
+.chapter--OpenCasinoOrBetting {
+    padding-top:    2*$m-def;
+    padding-bottom: 2*$m-def;
+    background-image: url($src-gl-chapter-background--online-casino);
+    background-size: cover;
+    background-attachment: fixed;
+    .big-title {
+        color: $color--brand-accent;
+    }
+    @media ($screenNotClassicZetka) {
+        .big-title { text-align: center; }
+    }
+}
+.chapter--eGamingsGroup {
+    padding-top:    2*$m-def;
+    padding-bottom: 2*$m-def;
+    .big-box {
+        background-color: #F02475;
+        color: white;
+    }
+    .big-title {
+        color: $color--deep-sea;
+    }
+}
+.chapter--contact-footer {
+    padding-top:    2*$m-def;
+    padding-bottom: 2*$m-def;
+    background-color: #CAFF42;
+}
+.chapter--sitemap-footer {
+    padding-top:    2*$m-def;
+    padding-bottom: 2*$m-def;
+    background-color: $color--deep-sea;
+}
+
+.design-side-logoicon {
+    text-align: center;
+    img {
+        display: inline-block;
+        vertical-align: middle;
+    }
+    @media ($screenNotClassicZetka) {
+        figure {
+            padding-top: 1rem;
+        }
+        img {
+            max-height: 8em;
+        }
+    }
+}
+.design--FourFeatures {
+    margin:  0;
+    padding: 0;
+    list-style: none;
+    text-align: center;
+
+    /* has colores */
+    background-color: #C7F464;
+    .feature:nth-child(4n+0) { background-color: #CAFF42; }
+    .feature:nth-child(4n+1) { background-color: $color--deep-sea; }
+    .feature:nth-child(4n+2) { background-color: #F02475; }
+    .feature:nth-child(4n+3) { background-color: #F8CA00; }
+
+    /* has box model */
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-auto-rows: 1fr;
+    .feature {
+        grid-column: auto;
+        padding: $m-def;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        &>* {
+            width: 280px;
+            max-width: 100%;
+        }
+    }
+    .feature:nth-child(2n+1) { align-items: flex-end; }
+
+    /* has icons */
+    figure {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        padding-bottom: 1rem;
+        img, svg {
+            height: 6rem;
+            width: auto;
+            fill: rgba(255,255,200,.5);
+        }
+    }
+}
+
+.design--hover-island {
+    img, svg {
+        transition: transform 400ms ease-in-out;
+    }
+    &:hover img, &:hover svg {
+        transition-duration: 1s;
+        transform: scale(1.5)
+    }
+}
+.design--AdvantagesColumn,
+.design--ServicesColumn {
+    .big-title { color: $color--brand-accent; }
+    @media all and ($screenForCompactZetka) {
+        grid-column: full;
+        grid-template-columns: $zetka-overmain;
+    }
 }
