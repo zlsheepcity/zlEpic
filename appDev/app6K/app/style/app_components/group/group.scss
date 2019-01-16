@@ -13,7 +13,7 @@ $margin-def: $margin-def; // 2.4rem;
     grid-auto-flow: column;
     grid-auto-rows: 1fr;
     grid-gap: $margin-def;
-    &>* {
+    &>*, .is-in-group {
         grid-column: auto;
         height: 100%;
     }
@@ -21,14 +21,6 @@ $margin-def: $margin-def; // 2.4rem;
     /* has overflow fallback */
     overflow: auto;
 
-    /* app standarts */
-    &>.block {
-        grid-column: auto;
-    }
-    &.block {
-        padding-left:  $margin-def;
-        padding-right: $margin-def;
-    }
 }
 
 

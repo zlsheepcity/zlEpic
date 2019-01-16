@@ -1,5 +1,5 @@
 @charset "UTF-8";
-// ordnung: 2018.12.8
+// ordnung: 2019.1.16
 
 
 // required core
@@ -10,38 +10,24 @@
 @import "app_core/content-typography";
 
 
-// default components
+// layout components
 
-/* 010 */@import "app_components/layout-body-wrap/layout-body-wrap.scss";
-/* 011 */@import "app_components/grid-for-article/grid-for-article.scss";
-/* 012 */@import "app_components/group/group.scss";
-
-/* 020 */@import "app_components/content-markup/content-markup.scss";
-/* 021 */@import "app_components/content-markup/design-template.scss";
-
-
-@import "app_components/data-table/data-table.scss";
-
-
-
-
-
-// ----------------------------------------------- other components
-
-
-// screen interface
-
-@import "app_components/layout-fullscreen/layout-fullscreen.scss";
-
-@import "app_components/sidebar/sidebar.scss";
-
-
-// ----------------------------------------------- pending
+@import "app_components/layout-body-wrap/layout-body-wrap";
+@import "app_components/layout-fullscreen/layout-fullscreen";
+@import "app_components/group/group";
+@import "app_components/sidebar/sidebar";
 
 @import "app_components/zetka/zetka-formula.scss";
 @import "app_components/zetka/zetka-columns.scss";
 @import "app_components/zetka/zetka-modifyers.scss";
 
+// content parts
+
+@import "app_components/data-table/data-table";
+
+
+
+// ----------------------------------------------- pending
 
 // grid cases
 
@@ -51,8 +37,15 @@
 //@import "app_pending/logo-selector/logo-selector";
 
 
+// ----------------------------------------------- removed
+
+//@import "app_components/grid-for-article/grid-for-article.scss";
+//@import "app_components/content-markup/content-markup.scss";
+//@import "app_components/content-markup/design-template.scss";
+
+
 // ----------------------------------------------- custom
 
 
-@import "app-custom.scss";
-@import "design/design-gl.scss";
+//@import "app-custom.scss";
+//@import "design/design-gl.scss";

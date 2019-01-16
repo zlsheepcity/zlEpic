@@ -1,6 +1,6 @@
 /* ==============================================================
     required settings app6011
-    2018.12.7
+    2019.1.16
 ============================================================== */
 
 
@@ -20,33 +20,6 @@ $color_main_shadow:    rgba(0,0,0,0.1);
 $color_use_red:        hsla(  1, 66%, 84%, 1);
 $color_use_green:      hsla( 78, 49%, 83%, 1);
 $color_use_blue:       hsla(177, 42%, 76%, 1);
-
-//* ------------------------------------ fonts
-
-//* tufte 2018
-$font-list-collection--tufte-serif:
-    Vollkorn,
-    et-book,
-    Palatino,
-    "Palatino Linotype",
-    "Palatino LT STD",
-    "Book Antiqua",
-    Georgia,
-    serif;
-$font-list-collection--tufte-sans:
-    "Trebuchet MS",
-    "Gill Sans",
-    "Gill Sans MT",
-    sans-serif;
-/**/
-
-$font-list-serif: $font-list-collection--tufte-serif;
-$font-list-sans:  $font-list-collection--tufte-sans;
-
-$fontSize:     16px;
-$fontRegular:  400;
-$fontSemibold: 400;
-$fontBolder:   700;
 
 //* ------------------------------------ screen sizes
 

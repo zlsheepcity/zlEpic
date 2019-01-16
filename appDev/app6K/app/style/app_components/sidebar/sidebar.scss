@@ -1,23 +1,17 @@
 /* ==============================================================
-    autohidden sidebar
+    fixed sidebar with visible and hidden states
     2018.5.12
 ============================================================== */
 
 
-//* ------------------------------------ required
-
-
-$z-index-sidebar: 3;
-
-
 //* ------------------------------------ settings
 
-
+$z-index-sidebar: 3;
 $sidebar__width-limit:               38rem;
 $sidebar__remaining-space-limit:     6rem;
 
 
-// formulas
+//* ------------------------------------ formulas
 
 $a: $sidebar__width-limit;
 $b: $sidebar__remaining-space-limit;

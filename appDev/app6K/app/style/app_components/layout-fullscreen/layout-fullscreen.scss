@@ -1,6 +1,6 @@
 /* ==============================================================
     split fullscreen into parts header/body/footer
-    2018.12.5
+    2019.1.16
 ============================================================== */
 
 
@@ -26,17 +26,6 @@
     background-size:     cover;
     background-repeat:   no-repeat;
     background-position: center center;
-
-    /* has fixed background */
-    &.has-fixed-background:before {
-        position: fixed;
-        z-index:  -1;
-        top: 0; right: 0; bottom: 0; left: 0;
-        pointer-events: none;
-        background-size:     cover;
-        background-repeat:   no-repeat;
-        background-position: center center;
-    }
 
     /* has rows */
     display:         flex;

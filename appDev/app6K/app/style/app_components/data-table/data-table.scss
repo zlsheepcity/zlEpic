@@ -1,21 +1,52 @@
 /* ==============================================================
     data table - Responsive Data Tables
-    2018.12.8
+    2019.1.17
+
+    table
+        .has-data-titles = attr [data-title] will shown on mobile
+        .is-perfect = avoit mobile transformation
+        data-table-type="1str,2num,3txt" = content type for columns
+    td
+        .is-string/.is-number = content type alias
+
 ============================================================== */
 
+/* EXAMPLE:
 
-//* ------------------------------------ dependencies
+    <table class="data-table has-data-titles" data-table-type="1str,2num,3txt">
+        <caption>
+            <h2>Has markup for data-title</h2>
+        </caption>
+        <thead>
+            <tr>
+                <th>Provider</th>
+                <th>Games</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th data-title="Provider">
+                    Microgaming
+                </th>
+                <td data-title="Games">
+                    590
+                </td>
+                <td data-title="Description with long value">
+                    The game is devoted to the Mighty Scandinavian god Thor, which gives out different symbols, such as Scatter Ram, to help a player win prizes. The option of additional gambling game is also available.
+                </td>
+            </tr>
+        </tbody>
+    </table>
 
-
-$screenForMobile: $screenForMobile; //  "max-width: 600px";
-$screenNotMobile: $screenNotMobile; //  "min-width: 601px";
+*/
 
 
 //* ------------------------------------ settings
 
 
-$screenForSmallDataTable: $screenForMobile;
-$screenNotSmallDataTable: $screenNotMobile;
+$screenForSmallDataTable: $screenForMobile; //  "max-width: 600px";
+$screenNotSmallDataTable: $screenNotMobile; //  "min-width: 601px";
 
 
 //* ------------------------------------ markup
