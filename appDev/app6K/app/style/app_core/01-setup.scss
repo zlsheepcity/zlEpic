@@ -24,7 +24,7 @@ $color_use_blue:       hsla(177, 42%, 76%, 1);
 //* ------------------------------------ fonts
 
 //* tufte 2018
-$font-list-serif:
+$font-list-collection--tufte-serif:
     Vollkorn,
     et-book,
     Palatino,
@@ -33,16 +33,20 @@ $font-list-serif:
     "Book Antiqua",
     Georgia,
     serif;
-$font-list-sans:
+$font-list-collection--tufte-sans:
     "Trebuchet MS",
     "Gill Sans",
     "Gill Sans MT",
     sans-serif;
+/**/
+
+$font-list-serif: $font-list-collection--tufte-serif;
+$font-list-sans:  $font-list-collection--tufte-sans;
+
 $fontSize:     16px;
 $fontRegular:  400;
 $fontSemibold: 400;
 $fontBolder:   700;
-/**/
 
 //* ------------------------------------ screen sizes
 

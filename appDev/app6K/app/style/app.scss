@@ -4,10 +4,10 @@
 
 // required core
 
-
-@import "app_core/00-construct";
+@import "app_core/00-constructor";
 @import "app_core/01-setup";
 @import "app_core/02-reset-html";
+@import "app_core/content-typography";
 
 
 // default components
@@ -17,8 +17,7 @@
 /* 012 */@import "app_components/group/group.scss";
 
 /* 020 */@import "app_components/content-markup/content-markup.scss";
-/* 021 */@import "app_components/content-markup/content-typography.scss";
-/* 022 */@import "app_components/content-markup/design-template.scss";
+/* 021 */@import "app_components/content-markup/design-template.scss";
 
 
 @import "app_components/data-table/data-table.scss";

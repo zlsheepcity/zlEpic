@@ -1,6 +1,9 @@
 /* ==============================================================
-    app scss constructor - mixins and templates
-    2018.12.7
+    app sass constructor - mixins and templates
+    2019.1.16
+============================================================== */
+/* ==============================================================
+    unecessary dev markup
 ============================================================== */
 .dev, .dev-box, [dev-box], .dev-img, [dev-img], .dev-pic, [dev-pic], [dev] {
   background: repeating-linear-gradient(-55deg, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1) 0.5rem, rgba(0, 0, 0, 0.2) 0.5rem, rgba(0, 0, 0, 0.2) 1rem); }
@@ -53,8 +56,8 @@
 /* eof required settings */
 /* ==============================================================
     html base css 1004
-    2018.12.7
-*/
+    2019.1.16
+============================================================== */
 /* ------------------------------------ minimal box model */
 *, *:before, *:after {
   box-sizing: inherit; }
@@ -82,21 +85,19 @@ html {
 body {
   overflow-y: scroll; }
 
-canvas {
-  display: inline-block; }
-
 a, area, button, input, label, select, summary, textarea, [tabindex] {
   -ms-touch-action: manipulation;
   touch-action: manipulation; }
 
-/* ----------------- use semantic markup without standart design */
-article, section, header, footer, main, aside, nav, details {
-  display: block; }
+/* ------------------------------------ avoid visual errors */
+img, svg {
+  max-width: 100%; }
 
-summary {
-  display: list-item; }
+canvas {
+  display: inline-block; }
 
-nav ul, nav ol {
+/* ----------------- use semantic markup without browser`s design */
+nav ul, nav ol, ul.nav, ol.nav {
   padding: 0;
   margin: 0;
   list-style-type: none; }
@@ -108,7 +109,187 @@ figure, figcaption, fieldset, legend {
   border: 0;
   white-space: normal; }
 
+article, section, header, footer, main, aside, nav, details {
+  display: block; }
+
+summary {
+  display: list-item; }
+
+h1, h2, h3, h4, h5, h6, p, blockquote, ul, ol {
+  margin: 0;
+  padding: 0; }
+
+a {
+  color: inherit;
+  background-color: transparent;
+  text-decoration: underline; }
+
+ul, ol {
+  margin-left: 1.5em; }
+
+hr {
+  border: 0;
+  background: transparent;
+  box-shadow: none;
+  /* use as visual spacer */
+  display: block;
+  font-size: inherit;
+  min-height: 1.5em; }
+
+figure {
+  display: block;
+  padding: 0;
+  margin: 0; }
+
+img {
+  display: inline-block;
+  vertical-align: middle;
+  border: none;
+  max-width: 100%; }
+
+svg {
+  display: inline-block;
+  vertical-align: middle;
+  border: none;
+  max-width: 100%; }
+
+table * {
+  text-align: left;
+  vertical-align: top; }
+table td {
+  padding-top: 0.8rem;
+  padding-bottom: 0.8rem; }
+
+[hidden], .hidden {
+  display: none !important; }
+
+.form-item, .form-textarea, .form-submit {
+  /* has rows */
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-items: stretch;
+  align-content: center; }
+  .form-item > *, .form-textarea > *, .form-submit > * {
+    order: 3; }
+  .form-item > label, .form-textarea > label, .form-submit > label {
+    order: 1; }
+  .form-item > input, .form-textarea > input, .form-submit > input {
+    order: 2; }
+
+label {
+  display: block;
+  padding: 0 0.25em; }
+
+input {
+  display: block;
+  width: 100%;
+  padding: 0.25em 0.25em;
+  /* default font */
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit; }
+
+textarea {
+  display: block;
+  width: 100%;
+  padding: 0.25em;
+  resize: vertical;
+  /* default font */
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit; }
+
+button, .button, .is-button {
+  display: inline-block;
+  vertical-align: middle;
+  padding: 0.25em 0.25em;
+  /* default font */
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit; }
+
 /* eof html base */
+/* ==============================================================
+    all about font-sizes and line-heights
+    2019.1.16
+============================================================== */
+body {
+  /* 16/28 */
+  font-size: 16px;
+  line-height: 1.75;
+  font-family: Vollkorn, et-book, Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, serif;
+  font-weight: 400; }
+
+h1, h2, h3, h4, h5, h6, p, blockquote {
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  font-weight: inherit; }
+
+h1, .big-title, [big-title] {
+  /* 40/48 */
+  font-size: 2.5em;
+  line-height: 1.2; }
+
+h2, .title, [title] {
+  /* 32/40 */
+  font-size: 2em;
+  line-height: 1.25; }
+
+h3, .min-title, [min-title] {
+  /* 24/32 */
+  font-size: 1.5em;
+  line-height: 1.333333; }
+
+.subtitle, [subtitle] {
+  /* 20/24 */
+  font-size: 1.25em;
+  line-height: 1.2; }
+
+small {
+  /* 14/28 */
+  font-size: 0.875em;
+  line-height: 2; }
+
+td {
+  font-family: "Trebuchet MS", "Gill Sans", "Gill Sans MT", sans-serif;
+  /* 14/24 */
+  font-size: 0.875em;
+  line-height: 1.714285; }
+
+.has-text-accent {
+  font-weight: 400;
+  /* 24/36 */
+  font-size: 1.5em;
+  line-height: 1.5; }
+
+.has-small-text {
+  /* 14/24 */
+  font-size: 0.875em;
+  line-height: 1.714285; }
+
+.has-sans-text {
+  font-family: "Trebuchet MS", "Gill Sans", "Gill Sans MT", sans-serif;
+  letter-spacing: .03em;
+  /* 14/24 */
+  font-size: 0.875em;
+  line-height: 1.714285; }
+
+@supports (hanging-punctuation: first) {
+  * {
+    hanging-punctuation: first; } }
+
+html {
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%; }
+
+body {
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased; }
+
+/* eof typography */
 /* 010 */
 /* ==============================================================
     box model for HTML & BODY
@@ -266,49 +447,6 @@ figure, figcaption, fieldset, legend {
     styles for content (excluding typography)
     2018.12.7
 ============================================================== */
-h1, h2, h3, h4, h5, h6, p, blockquote, ul, ol {
-  margin: 0;
-  padding: 0; }
-
-a {
-  color: inherit;
-  background-color: transparent;
-  text-decoration: underline; }
-
-ul, ol {
-  margin-left: 1.5em; }
-
-hr {
-  border: 0;
-  background: transparent;
-  box-shadow: none;
-  /* use as visual spacer */
-  display: block;
-  font-size: inherit;
-  min-height: 1.5em; }
-
-figure {
-  display: block; }
-
-img {
-  display: inline-block;
-  vertical-align: middle;
-  border: none;
-  max-width: 100%; }
-
-svg {
-  display: inline-block;
-  vertical-align: middle;
-  border: none;
-  max-width: 100%; }
-
-table * {
-  text-align: left;
-  vertical-align: top; }
-table td {
-  padding-top: 0.8rem;
-  padding-bottom: 0.8rem; }
-
 .is-centered {
   text-align: center;
   justify-content: center; }
@@ -388,56 +526,6 @@ table td {
   white-space: nowrap;
   overflow: hidden; }
 
-.form-item, .form-textarea, .form-submit {
-  /* has rows */
-  display: flex;
-  flex-direction: column;
-  flex-wrap: nowrap;
-  justify-content: flex-start;
-  align-items: stretch;
-  align-content: center; }
-  .form-item > *, .form-textarea > *, .form-submit > * {
-    order: 3; }
-  .form-item > label, .form-textarea > label, .form-submit > label {
-    order: 1; }
-  .form-item > input, .form-textarea > input, .form-submit > input {
-    order: 2; }
-
-label {
-  display: block;
-  padding: 0 0.75em; }
-
-input {
-  display: block;
-  width: 100%;
-  padding: 0.25em 0.75em;
-  /* default font */
-  font-family: inherit;
-  font-size: inherit;
-  line-height: inherit; }
-
-textarea {
-  display: block;
-  width: 100%;
-  padding: 0.75em;
-  resize: vertical;
-  /* default font */
-  font-family: inherit;
-  font-size: inherit;
-  line-height: inherit; }
-
-button, .button, .is-button {
-  display: inline-block;
-  vertical-align: middle;
-  padding: 0.25em 0.75em;
-  /* default font */
-  font-family: inherit;
-  font-size: inherit;
-  line-height: inherit; }
-
-[hidden], .hidden {
-  display: none !important; }
-
 .chapter-slide-header {
   /* is fixed */
   position: relative;
@@ -460,86 +548,6 @@ button, .button, .is-button {
 
 /* eof styles for content */
 /* 021 */
-/* ==============================================================
-    all about font-sizes and line-heights
-    2018.12.7
-============================================================== */
-body {
-  /* 16/28 */
-  font-size: 16px;
-  line-height: 1.75;
-  font-family: Vollkorn, et-book, Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, serif;
-  font-weight: 400; }
-
-h1, h2, h3, h4, h5, h6, p, blockquote {
-  font-family: inherit;
-  font-size: inherit;
-  line-height: inherit;
-  font-weight: inherit; }
-
-h1, .big-title, [big-title] {
-  /* 40/48 */
-  font-size: 2.5em;
-  line-height: 1.2; }
-
-h2, .title, [title] {
-  /* 32/40 */
-  font-size: 2em;
-  line-height: 1.25; }
-
-h3, .min-title, [min-title] {
-  /* 24/32 */
-  font-size: 1.5em;
-  line-height: 1.333333; }
-
-.subtitle, [subtitle] {
-  /* 20/24 */
-  font-size: 1.25em;
-  line-height: 1.2; }
-
-small {
-  /* 14/28 */
-  font-size: 0.875em;
-  line-height: 2; }
-
-td {
-  font-family: "Trebuchet MS", "Gill Sans", "Gill Sans MT", sans-serif;
-  /* 14/24 */
-  font-size: 0.875em;
-  line-height: 1.714285; }
-
-.has-text-accent {
-  font-weight: 400;
-  /* 24/36 */
-  font-size: 1.5em;
-  line-height: 1.5; }
-
-.has-small-text {
-  /* 14/24 */
-  font-size: 0.875em;
-  line-height: 1.714285; }
-
-.has-sans-text {
-  font-family: "Trebuchet MS", "Gill Sans", "Gill Sans MT", sans-serif;
-  letter-spacing: .03em;
-  /* 14/24 */
-  font-size: 0.875em;
-  line-height: 1.714285; }
-
-@supports (hanging-punctuation: first) {
-  * {
-    hanging-punctuation: first; } }
-
-html {
-  -ms-text-size-adjust: 100%;
-  -webkit-text-size-adjust: 100%; }
-
-body {
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased; }
-
-/* eof typography */
-/* 022 */
 /* ==============================================================
     design template - content markup
     2018.12.7
