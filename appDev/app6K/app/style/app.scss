@@ -6,8 +6,8 @@
 
 @import "app_core/00-constructor";
 @import "app_core/01-setup";
-@import "app_core/02-reset-html";
-@import "app_core/content-typography";
+@import "app_core/02-typography";
+@import "app_core/03-core-html-markup";
 
 
 // layout components
@@ -19,7 +19,6 @@
 
 @import "app_components/zetka/zetka-formula.scss";
 @import "app_components/zetka/zetka-columns.scss";
-@import "app_components/zetka/zetka-modifyers.scss";
 
 // content parts
 
