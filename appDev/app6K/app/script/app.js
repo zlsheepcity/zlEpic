@@ -1,4 +1,17 @@
 /*  --------------------------------------------
+    ZAPP research 2019
+--------------------------------------------  */
+
+var zapp = {
+    // overlords
+    report: (rna)=>false,
+    mutate: (rna)=>false,
+    onload: (rna)=>false
+};
+
+
+
+/*  --------------------------------------------
     APP research 2018
 --------------------------------------------  */
 
@@ -272,7 +285,7 @@ function BFQ_Demo() {
     console.groupEnd()
 }
 
-BFQ_Demo()
+//BFQ_Demo()
 
 
 /* end of BFQ product system */
