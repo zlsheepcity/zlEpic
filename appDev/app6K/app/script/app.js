@@ -2,12 +2,33 @@
     ZAPP research 2019
 --------------------------------------------  */
 
+function DNA_transcription(dna) {
+    return Object.assign(
+        {// Model DNA
+            name: '',
+            do: (rna)=>false,
+            in: {}
+        },
+        typeof(dna)==='string' ? { name: dna } :
+        typeof(dna)!=='object' ? {} : dna
+    )
+}
+function apk (dna) {
+
+    Object.assign( this, DNA_transcription(dna) )
+
+}
+
 var zapp = {
     // overlords
     report: (rna)=>false,
     mutate: (rna)=>false,
     onload: (rna)=>false
 };
+
+
+
+let x = new apk({name:'x'})
 
 
 

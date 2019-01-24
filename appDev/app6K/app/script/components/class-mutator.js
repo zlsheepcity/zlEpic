@@ -8,7 +8,9 @@ function el_class_mutator(rna) {
     // Merge template and function properties
 
     let protein = {
-        el: false,  // element to change
+        el: false,
+        for: false,
+        find: false,
         addClass: false,
         removeClass: false,
         toggleClass: false
@@ -18,27 +20,30 @@ function el_class_mutator(rna) {
 
     // Ribosome actions:
 
-    // 1. Allow multi el
-    // 2. Allow to use dot ".classname" value
-    // 3. Allow to use space separated multiclass value
+    // 1. Allow to use for/find targets
+    // 2. Allow multi el
 
-    if ( !protein.el ) return false // i can`t
-    if ( !protein.el.length ) protein.el = [protein.el] // [1]
+    if ( !protein.el ) protein.el =
+        typeof(protein.for )==='string' ? document.querySelectorAll('.'+protein.for) :
+        typeof(protein.find)==='string' ? document.querySelectorAll(protein.find) :
+        false; // [1]
 
-    
+    if ( !protein.el )        return false // i can`t
+    if ( !protein.el.length ) protein.el = [protein.el] // [2]
+
+    // 3. Allow to use dot ".classname" value
+    // 4. Allow to use space separated multiclass value
 
     let ops = ['addClass','removeClass','toggleClass']
     for ( let opi in ops )
         if ( typeof(protein[ops[opi]]) === 'string' )
-            protein[ops[opi]] = protein[ops[opi]].replace(".","").split(" ") // [2], [3]
+            protein[ops[opi]] = protein[ops[opi]].replace(".","").split(" ") // [3], [4]
 
     // Mutation steps
-    console.log(protein.el)
 
     for ( let eli=0; eli<protein.el.length; eli++ ) {
 
         let cel = protein.el[eli]
-        console.log('cel:', cel)
 
         if ( protein.addClass && protein.addClass.length )
             for ( let i in protein.addClass )
@@ -57,26 +62,22 @@ function el_class_mutator(rna) {
     return protein
 
 }
-
-// zapp init
-
-zapp.mutate = el_class_mutator
-
-// demo .target
-
-var mtag, ptag
-
-window.onload = function DemoLoad (e){
-    mtag = document.querySelector('.target')
-    ptag = document.querySelectorAll('.target')
+function TestMutator(e){
+    let mtag = document.querySelector('.target')
+    let ptag = document.querySelectorAll('.target')
+    if (zapp) zapp.mutate = el_class_mutator
     el_class_mutator({
         el: ptag,
         addClass:".addme",
         toggleClass:'toga1 toga2',
         removeClass:['rem1']
     })
+    zapp.mutate({for:'target', addClass:'happy'})
     console.log(mtag, ptag)
 }
+
+// demo command
+window.onload = TestMutator
 
 
 /* EOF css class mutator */
