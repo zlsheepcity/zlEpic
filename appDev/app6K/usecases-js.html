@@ -18,24 +18,33 @@
     <link  href="app/style/app.css" rel="stylesheet" type="text/css">
     <script src="app/script/app.js"></script>
 
-    <!-- ========================================= APP JS COMPONENTS -->
+    <!-- ========================================= APP MUTATOR -->
 
     <script src="app/script/components/class-mutator.js"></script>
     <script>
         function TestMutator(e){
             let mtag = document.querySelector('.target')
             let ptag = document.querySelectorAll('.target')
-            if (zapp) zapp.mutate = el_class_mutator
+            if (zapp) {
+                zapp.mutate = el_class_mutator
+                zapp.mutate({for:'target', addClass:'happy'})
+            }
             el_class_mutator({
                 el: ptag,
                 addClass:".addme",
                 toggleClass:'toga1 toga2',
                 removeClass:['rem1']
             })
-            zapp.mutate({for:'target', addClass:'happy'})
+            console.log('TestMutator: mtag-ptag are fine')
             console.log(mtag, ptag)
         }
+        // onload→RunTests
     </script>
+
+    <!-- ========================================= APP IMG ZOOM -->
+
+    <script src="app/script/components/image-zoom.js"></script>
+    <script>(ActivateImageZoom)()</script>
 
 
     <!-- ========================================= PAGE CUSTOM -->
@@ -46,17 +55,25 @@
 
     <script>
         // demo command
-        window.onload = TestMutator
+        window.onload = function RunTests() {
+            TestMutator()
+        }
     </script>
 
 
     <!-- ========================================== ʕ⊙ᴥ⊙ʔ = -->
     <!-- ========================================= END HEAD -->
 </head>
-<body class="body-wrap design-template">
+<body class="body-wrap design-template zetka">
+
+    <h3 class="appTarget"><span>appTarget</span></h3>
 
     <h1 class="target rem1"><span>Target</span></h1>
     <h2 class="target rem2"><span>Target</span></h2>
+
+    <div class="zetka-block">
+        <figure><img src="art/bussiness_sample.png" class="zzz"></figure>
+    </div>
 
 </body>
 </html>

@@ -1,11 +1,11 @@
 /* -------------------------------------------
     css class mutator
-    2019.1.24
+    2019.1.28
 ------------------------------------------- */
 function el_class_mutator(rna) {
 
     // Usage example:
-    // el_class_mutator({ for:'target', addClass:'happy', removeClass:'unhappy' })
+    // el_class_mutator({ for:'classname', addClass:'happy', removeClass:'unhappy' })
 
     let operations = ['addClass','removeClass','toggleClass']
     let protein_base = {
@@ -14,7 +14,8 @@ function el_class_mutator(rna) {
         find: false, // '.selector' string
         addClass:    false,
         removeClass: false,
-        toggleClass: false
+        toggleClass: false,
+        callback: false
     }
 
     // Ribosome action
@@ -61,6 +62,10 @@ function el_class_mutator(rna) {
                 eachElement.classList.toggle(protein.toggleClass[i])
 
     }
+
+    // Callback report?
+
+    if ( typeof(protein.callback)==='function' ) protein.callback(protein)
 
     return protein
 

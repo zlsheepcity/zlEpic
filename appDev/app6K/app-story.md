@@ -36,22 +36,24 @@
 
 # 2019.1.28
 
-Благородная бластула уменьшилась до одной неблагородной строчки.
+Благородная бластула уменьшилась до одной строчки.
 ``` js
-    Object.assign( this, DNA_transcription(dna) )
+    dnaMix(this,o) // ← ʕ⊙ᴥ⊙ʔ Noble Blastula
 ```
 Вся благородность ушла в самостоятельную чистую функцию.
 ``` js
-    function DNA_transcription(dna) {
-        return Object.assign(
-            {// Model DNA
-                name: '',
-                do: (rna)=>false,
-                in: {}
+    function dnaMix(target,injection) {
+        Object.assign(
+            typeof(target)!=='object' ? {} : target,
+            {// [1] Model DNA
+                name: 'transcription',
+                do: (rna)=>false
             },
-            typeof(dna)==='string' ? { name: dna } :
-            typeof(dna)!=='object' ? {} : dna
+            target, // [2] target itself
+            typeof(injection)==='string' ? { name: injection } : // [3] simple name
+            typeof(injection)!=='object' ? {} : injection        // [4] full injection
         )
+        return target;
     }
 ```
 
