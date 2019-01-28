@@ -21,6 +21,21 @@
     <!-- ========================================= APP JS COMPONENTS -->
 
     <script src="app/script/components/class-mutator.js"></script>
+    <script>
+        function TestMutator(e){
+            let mtag = document.querySelector('.target')
+            let ptag = document.querySelectorAll('.target')
+            if (zapp) zapp.mutate = el_class_mutator
+            el_class_mutator({
+                el: ptag,
+                addClass:".addme",
+                toggleClass:'toga1 toga2',
+                removeClass:['rem1']
+            })
+            zapp.mutate({for:'target', addClass:'happy'})
+            console.log(mtag, ptag)
+        }
+    </script>
 
 
     <!-- ========================================= PAGE CUSTOM -->
@@ -28,6 +43,11 @@
 
     <style>
     </style>
+
+    <script>
+        // demo command
+        window.onload = TestMutator
+    </script>
 
 
     <!-- ========================================== ʕ⊙ᴥ⊙ʔ = -->

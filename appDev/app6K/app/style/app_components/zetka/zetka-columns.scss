@@ -58,6 +58,11 @@ $screenForAlways:       'min-width:1px';
     @extend %zetka-dna;
     grid-template-columns: $zetka-overmain;
 }
+.zetka-block {
+    grid-column: overmain;
+    @extend %zetka-dna;
+    grid-template-columns: $zetka-overmain;
+}
 
 .zetka-menu {
     grid-column: overmenu;
@@ -178,7 +183,7 @@ $screenForAlways:       'min-width:1px';
 
 
 @media ($screenForReducedZetka) {
-    
+
     .zetka,
     .zetka-layer
     { grid-template-columns: $zetka-overmain-spaced; }
@@ -215,6 +220,11 @@ $screenForAlways:       'min-width:1px';
 
     .zetka-half-screen-one { grid-template-columns: $zetka-overmain-half-one; }
     .zetka-half-screen-two { grid-template-columns: $zetka-overmain-half-two; }
+
+    .has-mobile-layout {
+        grid-column: overmain;
+        grid-template-columns: $zetka-overmain;
+    }
 
 }
 

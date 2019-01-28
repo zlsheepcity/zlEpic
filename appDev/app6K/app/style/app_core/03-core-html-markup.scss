@@ -205,5 +205,35 @@ $margin-def:  $margin-def; // 3.2rem
     background-color: rgba(0,0,0,0.1);
 }
 
+//* ------------------------------------ universal shadow overlay
+
+$z-index-shadowOverlay: 2;
+
+// container
+
+%screen-has-shadow-overlay {
+    overflow: hidden;
+    .screen-shadow-overlay {
+        opacity:0.8;
+        pointer-events: auto;
+    }
+}
+.has-shadow-overlay { @extend %screen-has-shadow-overlay; }
+
+// overlay
+
+.screen-shadow-overlay {
+    background-color: black;
+    position: fixed;
+    z-index: $z-index-shadowOverlay;
+    top:    0;
+    bottom: 0;
+    right:  0;
+    left:   0;
+    pointer-events: none;
+    opacity: 0;
+}
+/**/
+
 
 /* eof base html markup */

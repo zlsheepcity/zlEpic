@@ -276,6 +276,24 @@ button, .button, .is-button {
   padding-bottom: 2rem;
   background-color: rgba(0, 0, 0, 0.1); }
 
+.has-shadow-overlay, .has-active-sidebar {
+  overflow: hidden; }
+  .has-shadow-overlay .screen-shadow-overlay, .has-active-sidebar .screen-shadow-overlay {
+    opacity: 0.8;
+    pointer-events: auto; }
+
+.screen-shadow-overlay {
+  background-color: black;
+  position: fixed;
+  z-index: 2;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  pointer-events: none;
+  opacity: 0; }
+
+/**/
 /* eof base html markup */
 /* ==============================================================
     box model for HTML & BODY
@@ -363,10 +381,15 @@ button, .button, .is-button {
 /* eof sidebar */
 /* ==============================================================
     fixed sidebar with visible and hidden states
-    2018.5.12
+    2019.1.28
 ============================================================== */
+/* USE CASE
+    <nav class="sidebar is-active">
+        xoxox
+    </nav>
+*/
 .sidebar {
-  background-color: white;
+  background-color: black;
   /* is screen fixed */
   position: fixed;
   z-index: 3;
@@ -384,10 +407,11 @@ button, .button, .is-button {
   @media screen and (min-width: 44rem) {
     .sidebar {
       max-width: 38rem; } }
-  .sidebar.is-active {
+  .sidebar.is-active, .has-active-sidebar .sidebar {
     transition-timing-function: ease-out;
     transform: translateX(-100%); }
 
+/* Mod: use shadow overlay */
 /* eof sidebar */
 /*
 
@@ -417,7 +441,7 @@ $zetka-half-screen-one    -[][menu][][][ma
 $zetka-half-screen-two                    in][][][side][]-
 
 */
-.zetka, .zetka-layer, .zetka-overmain, .zetka-menu, .zetka-side, .zetka-merge, .zetka-merge-menu, .zetka-merge-side, .zetka-menu-screen, .zetka-side-screen, .zetka-merge-menu-screen, .zetka-merge-side-screen, .zetka-half-screen-one, .zetka-half-screen-two, .zetka-overhalf-one, .zetka-overhalf-two, .zetka-half-one, .zetka-half-two, .zetka-third-one, .zetka-third-two, .zetka-third-tri, .zetka-third-merge-one, .zetka-third-merge-tri {
+.zetka, .zetka-layer, .zetka-overmain, .zetka-block, .zetka-menu, .zetka-side, .zetka-merge, .zetka-merge-menu, .zetka-merge-side, .zetka-menu-screen, .zetka-side-screen, .zetka-merge-menu-screen, .zetka-merge-side-screen, .zetka-half-screen-one, .zetka-half-screen-two, .zetka-overhalf-one, .zetka-overhalf-two, .zetka-half-one, .zetka-half-two, .zetka-third-one, .zetka-third-two, .zetka-third-tri, .zetka-third-merge-one, .zetka-third-merge-tri {
   display: grid;
   align-items: start;
   grid-auto-flow: row;
@@ -432,67 +456,71 @@ $zetka-half-screen-two                    in][][][side][]-
 
 .zetka {
   grid-column: full;
-  grid-template-columns:  [  full-start  ]  minmax(0, 1fr)  [  overmenu-start  ]  0  [  menu-start  ]  16vw  [  menu-end  ]  0  [  overmenu-end overmain-start  ]  0  [  main-start a  ]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [b]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [c]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [d midmenu midpoint midside]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [e]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [f]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [  main-end g  ]  0  [  overmain-end overside-start  ]  0  [  side-start  ]  16vw  [  side-end  ]  0  [  overside-end  ]  minmax(0, 1fr)  [  full-end  ] ; }
+  grid-template-columns:  [  full-start  ]  minmax(0, 1fr)  [  overmenu-start  ]  1rem  [  menu-start  ]  16vw  [  menu-end  ]  1rem  [  overmenu-end overmain-start  ]  1rem  [  main-start a  ]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [b]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [c]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [d midmenu midpoint midside]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [e]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [f]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [  main-end g  ]  1rem  [  overmain-end overside-start  ]  1rem  [  side-start  ]  16vw  [  side-end  ]  1rem  [  overside-end  ]  minmax(0, 1fr)  [  full-end  ] ; }
 
 .zetka-layer {
   grid-column: full;
-  grid-template-columns:  [  full-start  ]  minmax(0, 1fr)  [  overmenu-start  ]  0  [  menu-start  ]  16vw  [  menu-end  ]  0  [  overmenu-end overmain-start  ]  0  [  main-start a  ]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [b]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [c]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [d midmenu midpoint midside]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [e]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [f]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [  main-end g  ]  0  [  overmain-end overside-start  ]  0  [  side-start  ]  16vw  [  side-end  ]  0  [  overside-end  ]  minmax(0, 1fr)  [  full-end  ] ; }
+  grid-template-columns:  [  full-start  ]  minmax(0, 1fr)  [  overmenu-start  ]  1rem  [  menu-start  ]  16vw  [  menu-end  ]  1rem  [  overmenu-end overmain-start  ]  1rem  [  main-start a  ]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [b]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [c]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [d midmenu midpoint midside]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [e]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [f]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [  main-end g  ]  1rem  [  overmain-end overside-start  ]  1rem  [  side-start  ]  16vw  [  side-end  ]  1rem  [  overside-end  ]  minmax(0, 1fr)  [  full-end  ] ; }
 
 .zetka-overmain {
   grid-column: overmain;
-  grid-template-columns:  [  full-start overmain-start overmenu-start overside-start  ]  0  [  menu-start side-start main-start a  ]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [b]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [c]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [d midmenu midpoint midside]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [e]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [f]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [  main-end g side-end menu-end  ]  0  [  overmain-end overmenu-end overside-end full-end  ] ; }
+  grid-template-columns:  [  full-start overmain-start overmenu-start overside-start  ]  1rem  [  menu-start side-start main-start a  ]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [b]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [c]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [d midmenu midpoint midside]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [e]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [f]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [  main-end g side-end menu-end  ]  1rem  [  overmain-end overmenu-end overside-end full-end  ] ; }
+
+.zetka-block {
+  grid-column: overmain;
+  grid-template-columns:  [  full-start overmain-start overmenu-start overside-start  ]  1rem  [  menu-start side-start main-start a  ]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [b]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [c]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [d midmenu midpoint midside]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [e]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [f]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [  main-end g side-end menu-end  ]  1rem  [  overmain-end overmenu-end overside-end full-end  ] ; }
 
 .zetka-menu {
   grid-column: overmenu;
-  grid-template-columns:  [  full-start overmain-start overmenu-start overside-start  ]  0  [  menu-start side-start main-start a  ]  1fr  [b]  1fr  [c]  1fr  [d midmenu midpoint midside]  1fr  [e]  1fr  [f]  1fr  [  main-end g side-end menu-end  ]  0  [  overmain-end overmenu-end overside-end full-end  ] ; }
+  grid-template-columns:  [  full-start overmain-start overmenu-start overside-start  ]  1rem  [  menu-start side-start main-start a  ]  1fr  [b]  1fr  [c]  1fr  [d midmenu midpoint midside]  1fr  [e]  1fr  [f]  1fr  [  main-end g side-end menu-end  ]  1rem  [  overmain-end overmenu-end overside-end full-end  ] ; }
 
 .zetka-side {
   grid-column: overside;
-  grid-template-columns:  [  full-start overmain-start overmenu-start overside-start  ]  0  [  menu-start side-start main-start a  ]  1fr  [b]  1fr  [c]  1fr  [d midmenu midpoint midside]  1fr  [e]  1fr  [f]  1fr  [  main-end g side-end menu-end  ]  0  [  overmain-end overmenu-end overside-end full-end  ] ; }
+  grid-template-columns:  [  full-start overmain-start overmenu-start overside-start  ]  1rem  [  menu-start side-start main-start a  ]  1fr  [b]  1fr  [c]  1fr  [d midmenu midpoint midside]  1fr  [e]  1fr  [f]  1fr  [  main-end g side-end menu-end  ]  1rem  [  overmain-end overmenu-end overside-end full-end  ] ; }
 
 .zetka-merge {
   grid-column: overmenu-start / overside-end;
-  grid-template-columns:  [  full-start overmenu-start  ]  0  [  menu-start  ]  16vw  [  menu-end  ]  0  [  overmenu-end overmain-start  ]  0  [  main-start a  ]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [b]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [c]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [d midmenu midpoint midside]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [e]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [f]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [  main-end g  ]  0  [  overmain-end overside-start  ]  0  [  side-start  ]  16vw  [  side-end  ]  0  [  overside-end full-end  ] ; }
+  grid-template-columns:  [  full-start overmenu-start  ]  1rem  [  menu-start  ]  16vw  [  menu-end  ]  1rem  [  overmenu-end overmain-start  ]  1rem  [  main-start a  ]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [b]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [c]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [d midmenu midpoint midside]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [e]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [f]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [  main-end g  ]  1rem  [  overmain-end overside-start  ]  1rem  [  side-start  ]  16vw  [  side-end  ]  1rem  [  overside-end full-end  ] ; }
 
 .zetka-merge-menu {
   grid-column: overmenu-start / overmain-end;
-  grid-template-columns:  [  full-start overmenu-start  ]  0  [  menu-start  ]  16vw  [  menu-end  ]  0  [  overmenu-end overside-start overmain-start  ]  0  [  side-start main-start a  ]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [b]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [c]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [d midmenu midpoint midside]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [e]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [f]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [  main-end g side-end  ]  0  [  overmain-end overside-end full-end  ] ; }
+  grid-template-columns:  [  full-start overmenu-start  ]  1rem  [  menu-start  ]  16vw  [  menu-end  ]  1rem  [  overmenu-end overside-start overmain-start  ]  1rem  [  side-start main-start a  ]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [b]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [c]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [d midmenu midpoint midside]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [e]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [f]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [  main-end g side-end  ]  1rem  [  overmain-end overside-end full-end  ] ; }
 
 .zetka-merge-side {
   grid-column: overmain-start / overside-end;
-  grid-template-columns:  [  full-start overmenu-start overmain-start  ]  0  [  menu-start main-start a  ]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [b]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [c]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [d midmenu midpoint midside]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [e]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [f]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [  main-end g menu-end  ]  0  [  overmain-end overmenu-end overside-start  ]  0  [  side-start  ]  16vw  [  side-end  ]  0  [  overside-end full-end  ] ; }
+  grid-template-columns:  [  full-start overmenu-start overmain-start  ]  1rem  [  menu-start main-start a  ]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [b]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [c]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [d midmenu midpoint midside]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [e]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [f]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [  main-end g menu-end  ]  1rem  [  overmain-end overmenu-end overside-start  ]  1rem  [  side-start  ]  16vw  [  side-end  ]  1rem  [  overside-end full-end  ] ; }
 
 .zetka-menu-screen {
   grid-column: full-start / overmenu-end;
-  grid-template-columns:  [  full-start  ]  minmax(0, 1fr)  [  overmain-start overmenu-start overside-start  ]  0  [  menu-start side-start main-start a b c d e f g midmenu midpoint midside  ]  16vw  [  main-end side-end menu-end  ]  0  [  overmain-end overmenu-end overside-end full-end  ] ; }
+  grid-template-columns:  [  full-start  ]  minmax(0, 1fr)  [  overmain-start overmenu-start overside-start  ]  1rem  [  menu-start side-start main-start a b c d e f g midmenu midpoint midside  ]  16vw  [  main-end side-end menu-end  ]  1rem  [  overmain-end overmenu-end overside-end full-end  ] ; }
 
 .zetka-side-screen {
   grid-column: overside-start / full-end;
-  grid-template-columns:  [  full-start overmain-start overmenu-start overside-start  ]  0  [  menu-start side-start main-start a b c d e f g midmenu midpoint midside  ]  16vw  [  main-end side-end menu-end  ]  0  [  overmain-end overmenu-end overside-end  ]  minmax(0, 1fr)  [  full-end  ] ; }
+  grid-template-columns:  [  full-start overmain-start overmenu-start overside-start  ]  1rem  [  menu-start side-start main-start a b c d e f g midmenu midpoint midside  ]  16vw  [  main-end side-end menu-end  ]  1rem  [  overmain-end overmenu-end overside-end  ]  minmax(0, 1fr)  [  full-end  ] ; }
 
 .zetka-merge-menu-screen {
   grid-column: full-start / overmain-end;
-  grid-template-columns:  [  full-start  ]  minmax(0, 1fr)  [  overmenu-start  ]  0  [  menu-start  ]  16vw  [  menu-end  ]  0  [  overmenu-end overside-start overmain-start  ]  0  [  side-start main-start a  ]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [b]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [c]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [d midmenu midpoint midside]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [e]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [f]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [  main-end g side-end  ]  0  [  overmain-end overside-end full-end  ] ; }
+  grid-template-columns:  [  full-start  ]  minmax(0, 1fr)  [  overmenu-start  ]  1rem  [  menu-start  ]  16vw  [  menu-end  ]  1rem  [  overmenu-end overside-start overmain-start  ]  1rem  [  side-start main-start a  ]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [b]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [c]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [d midmenu midpoint midside]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [e]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [f]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [  main-end g side-end  ]  1rem  [  overmain-end overside-end full-end  ] ; }
 
 .zetka-merge-side-screen {
   grid-column: overmain-start / full-end;
-  grid-template-columns:  [  full-start overmenu-start overmain-start  ]  0  [  menu-start main-start a  ]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [b]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [c]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [d midmenu midpoint midside]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [e]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [f]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [  main-end g menu-end  ]  0  [  overmain-end overmenu-end overside-start  ]  0  [  side-start  ]  16vw  [  side-end  ]  0  [  overside-end  ]  minmax(0, 1fr)  [  full-end  ] ; }
+  grid-template-columns:  [  full-start overmenu-start overmain-start  ]  1rem  [  menu-start main-start a  ]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [b]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [c]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [d midmenu midpoint midside]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [e]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [f]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [  main-end g menu-end  ]  1rem  [  overmain-end overmenu-end overside-start  ]  1rem  [  side-start  ]  16vw  [  side-end  ]  1rem  [  overside-end  ]  minmax(0, 1fr)  [  full-end  ] ; }
 
 .zetka-half-screen-one {
   grid-column: full-start / midpoint;
-  grid-template-columns:  [  full-start  ]  minmax(0, 1fr)  [  overmenu-start  ]  0  [  menu-start  ]  16vw  [  menu-end  ]  0  [  overmenu-end overmain-start overside-start  ]  0  [  side-start main-start a  ]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [b]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [c]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [  d midmenu midpoint midside e f g main-end side-end overmain-end overside-end full-end  ] ; }
+  grid-template-columns:  [  full-start  ]  minmax(0, 1fr)  [  overmenu-start  ]  1rem  [  menu-start  ]  16vw  [  menu-end  ]  1rem  [  overmenu-end overmain-start overside-start  ]  1rem  [  side-start main-start a  ]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [b]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [c]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [  d midmenu midpoint midside e f g main-end side-end overmain-end overside-end full-end  ] ; }
 
 .zetka-half-screen-two {
   grid-column: d / full-end;
-  grid-template-columns:  [  full-start overmenu-start overmain-start menu-start main-start a b c d midmenu midpoint midside  ]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [e]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [f]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [  g main-end menu-end  ]  0  [  overmain-end overmenu-end overside-start  ]  0  [  side-start  ]  16vw  [  side-end  ]  0  [  overside-end  ]  minmax(0, 1fr)  [  full-end  ] ; }
+  grid-template-columns:  [  full-start overmenu-start overmain-start menu-start main-start a b c d midmenu midpoint midside  ]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [e]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [f]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [  g main-end menu-end  ]  1rem  [  overmain-end overmenu-end overside-start  ]  1rem  [  side-start  ]  16vw  [  side-end  ]  1rem  [  overside-end  ]  minmax(0, 1fr)  [  full-end  ] ; }
 
 .zetka-overhalf-one {
   grid-column: overmain-start / midpoint;
-  grid-template-columns:  [  full-start overmenu-start overmain-start overside-start  ]  0  [  side-start main-start menu-start a  ]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [b]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [c]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [  d midmenu midpoint midside e f g main-end side-end menu-end overmain-end overside-end overmenu-end full-end  ] ; }
+  grid-template-columns:  [  full-start overmenu-start overmain-start overside-start  ]  1rem  [  side-start main-start menu-start a  ]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [b]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [c]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [  d midmenu midpoint midside e f g main-end side-end menu-end overmain-end overside-end overmenu-end full-end  ] ; }
 
 .zetka-overhalf-two {
   grid-column: d / overmain-end;
-  grid-template-columns:  [  full-start overmenu-start overmain-start overside-start menu-start main-start side-start a b c d midmenu midpoint midside  ]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [e]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [f]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [  g main-end menu-end side-end  ]  0  [  overmain-end overmenu-end overside-end full-end  ] ; }
+  grid-template-columns:  [  full-start overmenu-start overmain-start overside-start menu-start main-start side-start a b c d midmenu midpoint midside  ]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [e]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [f]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [  g main-end menu-end side-end  ]  1rem  [  overmain-end overmenu-end overside-end full-end  ] ; }
 
 .zetka-half-one {
   grid-column: main-start / midpoint;
@@ -525,26 +553,26 @@ $zetka-half-screen-two                    in][][][side][]-
 @media (max-width: 900px) {
   .zetka,
   .zetka-layer {
-    grid-template-columns:  [  full-start  ]  minmax(0, 1fr)  [  overmain-start overmenu-start overside-start  ]  0  [  menu-start side-start main-start a  ]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [b]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [c]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [d midmenu midpoint midside]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [e]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [f]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [  main-end g side-end menu-end  ]  0  [  overmain-end overmenu-end overside-end  ]  minmax(0, 1fr)  [  full-end  ] ; }
+    grid-template-columns:  [  full-start  ]  minmax(0, 1fr)  [  overmain-start overmenu-start overside-start  ]  1rem  [  menu-start side-start main-start a  ]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [b]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [c]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [d midmenu midpoint midside]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [e]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [f]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [  main-end g side-end menu-end  ]  1rem  [  overmain-end overmenu-end overside-end  ]  minmax(0, 1fr)  [  full-end  ] ; }
 
   .zetka-merge,
   .zetka-merge-menu,
   .zetka-merge-side {
-    grid-template-columns:  [  full-start overmain-start overmenu-start overside-start  ]  0  [  menu-start side-start main-start a  ]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [b]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [c]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [d midmenu midpoint midside]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [e]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [f]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [  main-end g side-end menu-end  ]  0  [  overmain-end overmenu-end overside-end full-end  ] ; }
+    grid-template-columns:  [  full-start overmain-start overmenu-start overside-start  ]  1rem  [  menu-start side-start main-start a  ]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [b]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [c]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [d midmenu midpoint midside]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [e]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [f]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [  main-end g side-end menu-end  ]  1rem  [  overmain-end overmenu-end overside-end full-end  ] ; }
 
   .zetka-menu-screen,
   .zetka-merge-menu-screen {
-    grid-template-columns:  [  full-start  ]  minmax(0, 1fr)  [  overmain-start overmenu-start overside-start  ]  0  [  menu-start side-start main-start a  ]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [b]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [c]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [d midmenu midpoint midside]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [e]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [f]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [  main-end g side-end menu-end  ]  0  [  overmain-end overmenu-end overside-end full-end  ] ; }
+    grid-template-columns:  [  full-start  ]  minmax(0, 1fr)  [  overmain-start overmenu-start overside-start  ]  1rem  [  menu-start side-start main-start a  ]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [b]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [c]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [d midmenu midpoint midside]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [e]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [f]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [  main-end g side-end menu-end  ]  1rem  [  overmain-end overmenu-end overside-end full-end  ] ; }
 
   .zetka-side-screen,
   .zetka-merge-side-screen {
-    grid-template-columns:  [  full-start overmain-start overmenu-start overside-start  ]  0  [  menu-start side-start main-start a  ]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [b]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [c]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [d midmenu midpoint midside]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [e]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [f]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [  main-end g side-end menu-end  ]  0  [  overmain-end overmenu-end overside-end full-end  ] ; }
+    grid-template-columns:  [  full-start overmain-start overmenu-start overside-start  ]  1rem  [  menu-start side-start main-start a  ]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [b]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [c]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [d midmenu midpoint midside]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [e]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [f]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [  main-end g side-end menu-end  ]  1rem  [  overmain-end overmenu-end overside-end full-end  ] ; }
 
   .zetka-half-screen-one {
-    grid-template-columns:  [  full-start  ]  minmax(0, 1fr)  [  overmenu-start overmain-start overside-start  ]  0  [  side-start main-start menu-start a  ]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [b]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [c]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [  d midmenu midpoint midside e f g main-end side-end menu-end overmain-end overside-end overmenu-end full-end  ] ; }
+    grid-template-columns:  [  full-start  ]  minmax(0, 1fr)  [  overmenu-start overmain-start overside-start  ]  1rem  [  side-start main-start menu-start a  ]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [b]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [c]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [  d midmenu midpoint midside e f g main-end side-end menu-end overmain-end overside-end overmenu-end full-end  ] ; }
 
   .zetka-half-screen-two {
-    grid-template-columns:  [  full-start overmenu-start overmain-start overside-start menu-start main-start side-start a b c d midmenu midpoint midside  ]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [e]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [f]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [  g main-end menu-end side-end  ]  0  [  overmain-end overmenu-end overside-end  ]  minmax(0, 1fr)  [  full-end  ] ; } }
+    grid-template-columns:  [  full-start overmenu-start overmain-start overside-start menu-start main-start side-start a b c d midmenu midpoint midside  ]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [e]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [f]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [  g main-end menu-end side-end  ]  1rem  [  overmain-end overmenu-end overside-end  ]  minmax(0, 1fr)  [  full-end  ] ; } }
 @media (max-width: 600px) {
   .zetka,
   .zetka-layer,
@@ -555,16 +583,20 @@ $zetka-half-screen-two                    in][][][side][]-
   .zetka-side-screen,
   .zetka-merge-menu-screen,
   .zetka-merge-side-screen {
-    grid-template-columns:  [  full-start overmain-start overmenu-start overside-start  ]  0  [  menu-start side-start main-start a  ]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [b]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [c]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [d midmenu midpoint midside]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [e]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [f]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [  main-end g side-end menu-end  ]  0  [  overmain-end overmenu-end overside-end full-end  ] ; }
+    grid-template-columns:  [  full-start overmain-start overmenu-start overside-start  ]  1rem  [  menu-start side-start main-start a  ]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [b]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [c]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [d midmenu midpoint midside]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [e]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [f]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [  main-end g side-end menu-end  ]  1rem  [  overmain-end overmenu-end overside-end full-end  ] ; }
 
   .zetka-half-screen-one {
-    grid-template-columns:  [  full-start overmenu-start overmain-start overside-start  ]  0  [  side-start main-start menu-start a  ]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [b]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [c]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [  d midmenu midpoint midside e f g main-end side-end menu-end overmain-end overside-end overmenu-end full-end  ] ; }
+    grid-template-columns:  [  full-start overmenu-start overmain-start overside-start  ]  1rem  [  side-start main-start menu-start a  ]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [b]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [c]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [  d midmenu midpoint midside e f g main-end side-end menu-end overmain-end overside-end overmenu-end full-end  ] ; }
 
   .zetka-half-screen-two {
-    grid-template-columns:  [  full-start overmenu-start overmain-start overside-start menu-start main-start side-start a b c d midmenu midpoint midside  ]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [e]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [f]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [  g main-end menu-end side-end  ]  0  [  overmain-end overmenu-end overside-end full-end  ] ; } }
+    grid-template-columns:  [  full-start overmenu-start overmain-start overside-start menu-start main-start side-start a b c d midmenu midpoint midside  ]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [e]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [f]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [  g main-end menu-end side-end  ]  1rem  [  overmain-end overmenu-end overside-end full-end  ] ; }
+
+  .has-mobile-layout {
+    grid-column: overmain;
+    grid-template-columns:  [  full-start overmain-start overmenu-start overside-start  ]  1rem  [  menu-start side-start main-start a  ]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [b]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [c]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [d midmenu midpoint midside]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [e]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [f]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [  main-end g side-end menu-end  ]  1rem  [  overmain-end overmenu-end overside-end full-end  ] ; } }
 @media (min-width: 1px) {
   .zetka-as-overmain {
-    grid-template-columns:  [  full-start overmain-start overmenu-start overside-start  ]  0  [  menu-start side-start main-start a  ]  1fr  [b]  1fr  [c]  1fr  [d midmenu midpoint midside]  1fr  [e]  1fr  [f]  1fr  [  main-end g side-end menu-end  ]  0  [  overmain-end overmenu-end overside-end full-end  ] ; }
+    grid-template-columns:  [  full-start overmain-start overmenu-start overside-start  ]  1rem  [  menu-start side-start main-start a  ]  1fr  [b]  1fr  [c]  1fr  [d midmenu midpoint midside]  1fr  [e]  1fr  [f]  1fr  [  main-end g side-end menu-end  ]  1rem  [  overmain-end overmenu-end overside-end full-end  ] ; }
 
   .zetka-as-main {
     grid-template-columns:  [  full-start overmain-start overside-start overmenu-start menu-start side-start main-start a  ]  1fr  [b]  1fr  [c]  1fr  [d midmenu midpoint midside]  1fr  [e]  1fr  [f]  1fr  [  main-end g menu-end side-end overmain-end overside-end overmenu-end full-end  ] ; } }

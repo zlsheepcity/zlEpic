@@ -34,4 +34,26 @@
     var FNA = (rna)=>false;
 ```
 
+# 2019.1.28
 
+Благородная бластула уменьшилась до одной неблагородной строчки.
+``` js
+    Object.assign( this, DNA_transcription(dna) )
+```
+Вся благородность ушла в самостоятельную чистую функцию.
+``` js
+    function DNA_transcription(dna) {
+        return Object.assign(
+            {// Model DNA
+                name: '',
+                do: (rna)=>false,
+                in: {}
+            },
+            typeof(dna)==='string' ? { name: dna } :
+            typeof(dna)!=='object' ? {} : dna
+        )
+    }
+```
+
+Лорды и королевы получают независимость от королевского имени.
+У короля пропала память и отчётность.

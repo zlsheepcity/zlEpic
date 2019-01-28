@@ -1,8 +1,8 @@
-/* APP AVANT GARDE the leading part of an app */
+/* APP AVANT GARDE primary css rules */
 
 /*
     base css 1002 Monica De Gennaro
-    v2018.11.16
+    v2019.1.28
 */
 
 /* ------------------------------------ app defaults */
@@ -18,5 +18,6 @@ html {
 body {
     overflow-y: scroll;
 }
+img, svg { max-width: 100%; }
 
 /* EOF: avant garde */
