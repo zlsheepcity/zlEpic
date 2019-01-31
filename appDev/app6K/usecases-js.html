@@ -18,11 +18,16 @@
     <link  href="app/style/app.css" rel="stylesheet" type="text/css">
     <script src="app/script/app.js"></script>
 
+    <!-- ========================================= APP CUSTOM -->
+
+    <script>
+    </script>
+
     <!-- ========================================= APP MUTATOR -->
 
     <script src="app/script/components/class-mutator.js"></script>
     <script>
-        function TestMutator(e){
+        function DemoTestMutator(e){
             let mtag = document.querySelector('.target')
             let ptag = document.querySelectorAll('.target')
             if (zapp) {
@@ -35,8 +40,7 @@
                 toggleClass:'toga1 toga2',
                 removeClass:['rem1']
             })
-            console.log('TestMutator: mtag-ptag are fine')
-            console.log(mtag, ptag)
+            return mtag && ptag
         }
         // onload→RunTests
     </script>
@@ -54,9 +58,20 @@
     </style>
 
     <script>
-        // demo command
+        // demo tests
+        function report(test,msg) {
+            console.assert(test, {"message":"it`s wrong","test":test,"msg":msg})
+            if (test) console.log(msg)
+            if (test) countSuccessfulReports++
+            countTotalReports++
+        }
+        var countSuccessfulReports = 0
+        var countTotalReports = 0
         window.onload = function RunTests() {
-            TestMutator()
+            report(DemoTestMutator(), 'TestMutator: mtag-ptag are fine')
+            report(zzz, 'TestImageZoom: zzz is fine')
+
+            report(countSuccessfulReports==countTotalReports, '༼°▽°༽ TESTS: '+countSuccessfulReports+'/'+countTotalReports)
         }
     </script>
 
