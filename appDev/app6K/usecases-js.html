@@ -22,7 +22,8 @@
 
     <script>
     </script>
-    <script src="app/script/research/BFQ-product-system.js"></script>
+
+    <!-- script src="app/script/research/BFQ-product-system.js"></script -->
 
     <!-- ========================================= APP MUTATOR -->
 
@@ -52,11 +53,47 @@
     <script>(ActivateImageZoom)()</script>
 
 
+    <!-- ========================================= APP SCROLL EVENTS -->
+
+    <script src="app/script/vendor/waypoints/noframework.waypoints.js"></script>
+    <!-- npm install waypoints -->
+    <script>
+        function TestWaypoints() {
+            var tested_waypoint_object = new Waypoint({
+                element: document.getElementById('js-waypoint'),
+                handler: function(direction) {
+                    zapp.mutate({
+                        el:this.element,
+                        toggleClass:'is-active'
+                    })
+                },
+                offset: '50%'
+            })
+            return tested_waypoint_object
+        }
+    </script>
+
+
     <!-- ========================================= PAGE CUSTOM -->
 
+    <script>
+        // insert random content into paragraphs
+        function p() {
+            const p = document.getElementsByTagName('p')
+            for ( let i in p ) {
+                let texts = [
+                    'Petrovich is more than just a programming language, it is a complete computer operating system and program development environment. It is named after Ivan Petrovich Pavlov, the guy who demonstrated conditional responses to stimuli in dogs. I would have called the language "Pavlov", but it seems all the cool names for languages have already been used by someone else.',
+                    'In order to understand how Petrovich works, it is instructive to run through some examples. This is a sample interactive Petrovich session, annotated with comments.',
+                    'The user asked Petrovich to do something with some scientific data. It responds first by plotting the data and printing it. Since this is not what the user wanted, he punishes Petrovich, then tries again. Wanting to avoid punishment, Petrovich tries something different, and this time performs an operation useful to the user. To encourage such behaviour, the user rewards Petrovich.'
+                    ]
+                let text = texts[Math.floor(Math.random()*texts.length)]
+                let textnode = document.createTextNode(text)
+                if (p[i].appendChild) p[i].appendChild(textnode)
+            }
+        }
+        // onload→p();
+    </script>
 
-    <style>
-    </style>
 
     <script>
         // demo tests
@@ -69,12 +106,29 @@
         var countSuccessfulReports = 0
         var countTotalReports = 0
         window.onload = function RunTests() {
+
+            p(); //auto
+
             report(DemoTestMutator(), 'TestMutator: mtag-ptag are fine')
             report(zzz, 'TestImageZoom: zzz is fine')
+            report(TestWaypoints(), 'TestWaypoints: point is fine')
 
             report(countSuccessfulReports==countTotalReports, '༼°▽°༽ TESTS: '+countSuccessfulReports+'/'+countTotalReports)
+
         }
     </script>
+
+    <style>
+        .dev-box {
+            background-color: firebrick;
+            color: white;
+            padding: 2em;
+        }
+        .dev-box.is-active {
+            background-color: navy;
+            grid-column: full;
+        }
+    </style>
 
 
     <!-- ========================================== ʕ⊙ᴥ⊙ʔ = -->
@@ -89,6 +143,16 @@
 
     <div class="zetka-block">
         <figure><img src="art/bussiness_sample.png" class="zzz"></figure>
+    </div>
+
+    <div>
+        <p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p>
+    </div>
+
+    <div class="dev-box js-waypoint" id="js-waypoint"></div>
+
+    <div>
+        <p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p>
     </div>
 
 </body>

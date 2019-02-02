@@ -1,5 +1,7 @@
 @import url("part.css");
 
+<link media="none" onload="if(media!="all") media="all"" rel="stylesheet" type="text/css", href= main.css>
+
 html {
   scroll-behavior: smooth;
 }
@@ -225,8 +227,7 @@ page-break-inside : auto | avoid
 }
 
 @supports (clip-path:polygon(0 0, 50% 50%, 100% 0)) {
-    clip-path: polygon(0 -1px, 100% -1px, 100% 100%, 0 100%, $padding--mid 50%);
-    padding-left: $padding--mid + $padding--def;
+    clip-path: polygon(0 -1px, 100% -1px, 100% 100%, 0 100%, 2rem 50%);
 }
 
 @font-face {
