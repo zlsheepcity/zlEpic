@@ -97,23 +97,46 @@
 
     <script>
         // demo tests
-        function report(test,msg) {
+        function testreport(test,msg) {
             console.assert(test, {"message":"it`s wrong","test":test,"msg":msg})
             if (test) console.log(msg)
             if (test) countSuccessfulReports++
             countTotalReports++
         }
+        var zapp = {
+            // overlords
+            report: (rna)=>false,
+            mutate: (rna)=>false,
+            onload: (rna)=>false
+        };
         var countSuccessfulReports = 0
         var countTotalReports = 0
         window.onload = function RunTests() {
 
-            p(); //auto
+            // demo update
 
-            report(DemoTestMutator(), 'TestMutator: mtag-ptag are fine')
-            report(zzz, 'TestImageZoom: zzz is fine')
-            report(TestWaypoints(), 'TestWaypoints: point is fine')
+            p();
 
-            report(countSuccessfulReports==countTotalReports, '༼°▽°༽ TESTS: '+countSuccessfulReports+'/'+countTotalReports)
+            // Run & Test libs
+
+            testreport(DemoTestMutator(), 'TestMutator: mtag-ptag are fine')
+            testreport(zzz, 'TestImageZoom: zzz is fine')
+            testreport(TestWaypoints(), 'TestWaypoints: point is fine')
+
+            testreport(countSuccessfulReports==countTotalReports, '༼°▽°༽ Run & Test libs: '+countSuccessfulReports+'/'+countTotalReports)
+
+            // APP TESTS
+
+            console.group('App tests before Welcome')
+                app.do('report','App test #1: report this message')
+                app.report('App test #2: report this message')
+                app.mutate({find:'html',addClass:'has-app'})
+                app.mutate({find:'html',addClass:'has-app'})
+            console.groupEnd()
+
+            app.Welcome({dev:true, queens:{log:console.log}})
+
+
 
         }
     </script>
@@ -134,7 +157,7 @@
     <!-- ========================================== ʕ⊙ᴥ⊙ʔ = -->
     <!-- ========================================= END HEAD -->
 </head>
-<body class="body-wrap design-template zetka">
+<body class="body-wrap design-template zetka" id="mybody">
 
     <h3 class="appTarget"><span>appTarget</span></h3>
 
