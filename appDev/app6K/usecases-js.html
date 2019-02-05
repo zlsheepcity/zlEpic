@@ -127,12 +127,10 @@
 
             // APP TESTS
 
-            console.group('App tests before Welcome')
-                app.do('report','App test #1: report this message')
-                app.report('App test #2: report this message')
-                app.mutate({find:'html',addClass:'has-app'})
-                app.mutate({find:'html',addClass:'has-app'})
-            console.groupEnd()
+            app.do('report','App test #1: report this message')
+            app.report('App test #2: report this message')
+            app.mutate({find:'html',addClass:'has-app'})
+            app.mutate({find:'html',addClass:'has-app'})
 
             app.Welcome({dev:true, queens:{log:console.log}})
 
