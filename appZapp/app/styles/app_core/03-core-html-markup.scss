@@ -1,10 +1,8 @@
 /* ==============================================================
     base html markup
-    2019.2.7
+    2019.2.8
 ============================================================== */
 
-
-$dim: $dim; // 0.8rem;
 $margin-less: $margin-less; // 2rem
 $margin-def:  $margin-def; // 3.2rem
 $screenForMobile: $screenForMobile;
@@ -110,11 +108,14 @@ table {
         vertical-align: top;
     }
     td {
-        padding-top:    1*$dim;
-        padding-bottom: 1*$dim;
+        padding-top:    0.25em;
+        padding-bottom: 0.25em;
     }
 }
 [hidden], .hidden { display: none!important; }
+
+
+
 
 
 //* ------------------------------------ minimal form-item
@@ -131,9 +132,9 @@ $form-space-horizontal-padding: 0.25em;
     justify-content: flex-start;
     align-items:     stretch;
     align-content:   center;
-    &>*     { order: 3 }
-    &>label { order: 1 }
-    &>input { order: 2 }
+    &>*               { order: 3 }
+    &>label, &>.label { order: 1 }
+    &>input, &>.input { order: 2 }
 }
 .form-item     { @extend %form-item; }
 .form-textarea { @extend %form-item; }
@@ -152,6 +153,7 @@ input {
     font-family: inherit;
     font-size:   inherit;
     line-height: inherit;
+    font-weight: inherit;
 }
 textarea {
     display: block;
@@ -163,6 +165,7 @@ textarea {
     font-family: inherit;
     font-size:   inherit;
     line-height: inherit;
+    font-weight: inherit;
 }
 button, .button, .is-button {
     display:  inline-block;
@@ -173,43 +176,7 @@ button, .button, .is-button {
     font-family: inherit;
     font-size:   inherit;
     line-height: inherit;
-}
-
-/* ------------------------------------------ univeral helpers */
-
-$margin-less: $margin-less; // 2rem
-$margin-def:  $margin-def; // 3.2rem
-
-.is-centered { text-align: center; justify-content: center; }
-.is-mob-centered { @media ($screenForMobile) { text-align: center; justify-content: center; } }
-
-.is-v-centered      { align-self: center; }
-.has-v-centered>*   { align-self: center; }
-
-.is-v-equal         { align-self: stretch; }
-.has-v-equal>*      { align-self: stretch; }
-
-.has-v-slices       { grid-row-gap: 0; }
-
-.is-v-spaced {
-    margin-top:    $margin-less;
-    margin-bottom: $margin-less;
-}
-.is-v-padded {
-    padding-top:    $margin-def;
-    padding-bottom: $margin-def;
-}
-
-.is-box {
-    padding-top:    $margin-less;
-    padding-bottom: $margin-less;
-    background-color: rgba(0,0,0,0.1);
-}
-
-.layer {
-    display: block;
-    grid-column: full;
-    .zetka & { grid-column: full; }
+    font-weight: inherit;
 }
 
 //* ------------------------------------ universal shadow overlay

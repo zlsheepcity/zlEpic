@@ -1,0 +1,200 @@
+/* ==============================================================
+    data table - Responsive Data Tables
+    2019.1.17
+
+    table
+        .has-data-titles = attr [data-title] will shown on mobile
+        .is-perfect = avoit mobile transformation
+        data-table-type="1str,2num,3txt" = content type for columns
+    td
+        .is-string/.is-number = content type alias
+
+============================================================== */
+
+/* EXAMPLE:
+
+    <table class="data-table has-data-titles" data-table-type="1str,2num,3txt">
+        <caption>
+            <h2>Has markup for data-title</h2>
+        </caption>
+        <thead>
+            <tr>
+                <th>Provider</th>
+                <th>Games</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th data-title="Provider">
+                    Microgaming
+                </th>
+                <td data-title="Games">
+                    590
+                </td>
+                <td data-title="Description with long value">
+                    The game is devoted to the Mighty Scandinavian god Thor, which gives out different symbols, such as Scatter Ram, to help a player win prizes. The option of additional gambling game is also available.
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+*/
+
+
+//* ------------------------------------ settings
+
+
+$screenForSmallDataTable: $screenForMobile; //  "max-width: 600px";
+$screenNotSmallDataTable: $screenNotMobile; //  "min-width: 601px";
+
+
+//* ------------------------------------ markup
+
+
+.data-table {
+
+    /* table critical css */
+
+    th,
+    td {
+        padding-left:   0.5em;
+        padding-right:  0.5em;
+        padding-top:    0.5em;
+        padding-bottom: 0.5em;
+        vertical-align: top;
+    }
+    caption,
+    th {
+        text-align:  left;
+        line-height: 1.25;
+    }
+
+    @media all and ($screenNotSmallDataTable) {
+        th:first-child,
+        td:first-child {
+            padding-left:  0.125em;
+        }
+        th:last-child,
+        td:last-child {
+            padding-right: 0.125em;
+        }
+    }
+
+
+    /* table addon - has compact mobile view */
+
+    @media all and ($screenForSmallDataTable) {
+        &:not(.is-perfect) {
+            &,
+            caption,
+            thead,
+            tbody,
+            tfooter,
+            tr {
+                display: block;
+            }
+            th,
+            td {
+                display:       block;
+                text-align:    left;
+                width:         100%;
+                padding-left:  0;
+                padding-right: 0;
+                border:        0;
+            }
+            &[data-table-type] table tr > * {
+                text-align: left;
+            }
+            &[data-table-type] table tr > *:not(th) {
+                font-family: inherit;
+            }
+            thead th {
+                text-align:     right;
+                padding-top:    0;
+                padding-bottom: 0;
+            }
+            tr + tr *:first-child {
+                border-top:  2px dashed rgba(0,0,0,.15);
+                margin-top:  1em;
+                padding-top: 1em
+            }
+            tr:hover {
+                background-color: transparent;
+            }
+            &[data-table-type] tr > td,
+            &[data-table-type] tr > td,
+            .is-number {
+                text-align: left;
+            }
+        }
+    }
+
+
+    /* table addon -- has Data Titles */
+
+    @media all and ($screenForSmallDataTable) {
+        &.has-data-titles:not(.is-perfect) {
+            thead {
+                display: none;
+            }
+            th,
+            td {
+                font-size:     inherit;
+                line-height:   inherit;
+            }
+            th[data-title],
+            td[data-title] {
+                position:     relative;
+                padding-left: 8em;
+                box-sizing:   border-box;
+            }
+            th[data-title]:before,
+            td[data-title]:before {
+                content:      attr(data-title) ": ";
+                position:     absolute;
+                display:      block;
+                margin-left: -8em;
+                width:        7.5em;
+            }
+        }
+    }
+
+
+    /* table addon -- has type of content */
+
+    &[data-table-type*="1num"] tr > *:nth-child(1),
+    &[data-table-type*="2num"] tr > *:nth-child(2),
+    &[data-table-type*="3num"] tr > *:nth-child(3),
+    &[data-table-type*="4num"] tr > *:nth-child(4),
+    &[data-table-type*="5num"] tr > *:nth-child(5),
+    .is-number {
+        text-align: right;
+    }
+
+    &[data-table-type*="1num"] tr > *:not(th):nth-child(1),
+    &[data-table-type*="2num"] tr > *:not(th):nth-child(2),
+    &[data-table-type*="3num"] tr > *:not(th):nth-child(3),
+    &[data-table-type*="4num"] tr > *:not(th):nth-child(4),
+    &[data-table-type*="5num"] tr > *:not(th):nth-child(5),
+    .is-number:not(th) {
+        font-family: monospace;
+    }
+
+    @media all and ($screenNotSmallDataTable) {
+    &[data-table-type*="1str"] tr > *:not(th):nth-child(1),
+    &[data-table-type*="2str"] tr > *:not(th):nth-child(2),
+    &[data-table-type*="3str"] tr > *:not(th):nth-child(3),
+    &[data-table-type*="4str"] tr > *:not(th):nth-child(4),
+    &[data-table-type*="5str"] tr > *:not(th):nth-child(5),
+    .is-string:not(th) {
+        white-space:   nowrap;
+        text-overflow: ellipsis;
+        overflow:      hidden;
+    }
+}
+
+
+}
+
+/* eof data table */

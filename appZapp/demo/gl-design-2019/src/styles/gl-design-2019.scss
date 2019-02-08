@@ -1,0 +1,869 @@
+// ------------------------------------ required settings
+
+$screenForTablet: $screenForTablet;
+$screenForMobile: $screenForMobile;
+$m-def: $margin-def;
+$m-mid: $margin-half;
+
+// ------------------------------------ colors
+
+$color--deep-sea:     hsl(200, 100%, 63%);
+$color--dark-sea:     hsl(229, 55%, 12%);
+$color--deep-green:   #CAFF42;
+$color--dark-overlay: hsla(229, 55%, 12%, 0.7);
+$color--link-blue:    #00aeef;
+
+$color--shy: rgba(0,0,50,0.075);
+$color--warm-sea: hsl(200, 100%, 63%); //#EBF7F8; //hsl(200, 80%, 93%);
+$color--warm-sea-overlay: #D0E0EB;
+$color--contrast-sea: hsl(200, 88%, 44%);
+$color--deep-sea:     hsla(200, 94%, 32%, 1);
+$color--brand-accent: hsla(336, 87%, 54%, 1);
+$color--brand-light: hsla(336, 87%, 54%, 0.5);
+$color--content-accent: hsla(188, 58%, 50%, 1);
+
+%colorModel--office-doc {
+    background-color:      white;
+    color:                 black;
+    .link span { color:    black; }
+    .color-accent { color: $color--content-accent; }
+}
+%colorModel--deep-green {
+    background-color: $color--deep-green;
+    color: black;
+    .link span { color: black; }
+}
+%colorModel--light-sea {
+    background-color:      $color--warm-sea;
+    color:                 black;
+    .link span { color:    black; }
+    .color-accent { color: black; }
+}
+%colorModel--deep-sea {
+    background-color:      $color--deep-sea;
+    color:                 white;
+    .link span { color:    white; }
+    .color-accent { color: white; }
+}
+%colorModel--contrast-sea {
+    background-color:      $color--contrast-sea;
+    color:                 white;
+    .link { color:         $color--brand-accent; }
+    .link span { color:    white; }
+    .color-accent { color: white; }
+}
+%colorModel--brand-accent {
+    background-color:      $color--brand-accent;
+    color:                 white;
+    .link span { color:    white; }
+    .color-accent { color: white; }
+}
+
+// ------------------------------------ URLs
+
+$url_logo_img: '../images/logo/logo-full-2019.png';
+$url_welcome_background: '../images/backgrounds/welcome-background.jpg';
+$src-gl-chapter-background--tropical: 'https://www.gaminglicensing.com/images/contacts-bg.jpg';
+$src-gl-chapter-background--curacao: 'https://www.gaminglicensing.com/images/curacao-bg.png';
+$src-gl-chapter-background--online-casino: 'https://www.gaminglicensing.com/images/online-casino-bg.jpg';
+$url_decoration_curacao_island: '../images/decorations/curacao-island-plain--transparent.svg';
+$url_decoration_malta_island:   '../images/decorations/malta-islands-plain--transparent.svg';
+$url_decoration_waves_light:   '../images/decorations/wave-line.svg';
+$url_decoration_waves_dark:   '../images/decorations/wave-line-dark.svg';
+
+// ------------------------------------ design
+
+
+body {
+    /* 16/28 */
+    font-size:   $fontSize;
+    line-height: 1.75;
+
+    font-family: $font-list-sans; //$font-list-serif;
+    font-weight: $fontRegular;
+}
+
+.design-template {
+    position: relative;
+}
+.link {
+    color: rgba(0,0,0,.25);
+    text-decoration: underline;
+    span { color: black; }
+    &:hover {
+        color: $color--deep-sea;
+        text-decoration: underline;
+    }
+}
+
+
+
+.desgin-chapter-header {
+    @extend .zetka;
+    @extend %colorModel--contrast-sea;
+
+    /* is big padded layer */
+    padding-top:    2em;
+    padding-bottom: 2em;
+
+    .big-title {
+        @extend .zetka-merge-side;
+        @extend .zetka-as-overmain;
+        padding-top:    4rem;
+        padding-bottom: 4rem;
+        @media ($screenForMobile) {
+            /* 24/32 */
+            font-size:   1.5em;
+            line-height: 1.333333;
+        }
+    }
+
+    
+
+}
+.design-chapter-body-start {
+    min-height: calc( 2em - 2rem );
+}
+.design-rowicon {
+    @extend .zetka-menu;
+    @extend .color-accent;
+    align-self: center;
+    display: flex;
+    justify-content: flex-end;
+    &>* {
+        transform-origin: center right;
+        transform: scale(2);
+    }
+    @media ($screenForTablet) {
+        justify-content: flex-start;
+        &>* { transform-origin: center center; }
+    }
+    @media ($screenForMobile) {
+        justify-content: center;
+    }
+}
+.design-wave-light,
+.design-wave-dark {
+    /* has waves decoration */
+    position: relative;
+    &:before {
+        content:'';
+        grid-column: full;
+        position: absolute;
+        bottom: 100%;
+        left: 0;
+        right: 0;
+        display: block;
+        height: 2em;
+        background-size: auto 100%;
+        background-repeat: repeat-x;
+    }
+}
+.design-wave-dark  { &:before { background-image: url($url_decoration_waves_dark); height: 4em } }
+.design-wave-light { &:before { background-image: url($url_decoration_waves_light); } }
+
+.content-plus-minus-blocks {
+    @extend .zetka-merge;
+    padding-top:    4rem;
+    padding-bottom: 4rem;
+}
+.content-advantages-lists {
+    .big-title {
+        color: $color--brand-accent;
+        @media ($screenNotMobile) {
+            padding-bottom: 1em;
+        }
+        @media ($screenForMobile) {
+            text-align: center;
+        }
+    }
+    ul {
+        margin-left: 0;
+        list-style: none;
+    }
+}
+.content-take-care {
+    @extend %colorModel--brand-accent;
+    padding-top: 4em;
+    padding-bottom: 4em;
+    clip-path: polygon(0 -1px, 100% 4em, 100% 100%, 0 calc( 100% - 4em ) );
+}
+
+.content-curacao-or-maltese {
+    &.desgin-chapter-header { @extend %colorModel--deep-sea; }
+}
+.design-curacao-malta-compare {
+    padding-top: 2em;
+    .curacao { @extend .zetka-half-one; }
+    .malta   { @extend .zetka-half-two; }
+    .curacao, .malta {
+        padding-top: 1em;
+        padding-bottom: 1em;
+    }
+    .has-long-text {
+        @media ($screenNotMobile) {
+            padding-right: 2em;
+        }
+    }
+
+    background:
+        left  top url($url_decoration_curacao_island),
+        right top url($url_decoration_malta_island);
+    background-repeat: no-repeat;
+    background-size: 50% auto;
+
+    /* has mobile layout */
+    @media ($screenForMobile) {
+        .curacao, .malta {
+            padding-top:    0;
+            //padding-bottom: 0;
+        }
+    }
+}
+.design-side-logoicon {
+    @media ($screenNotClassicZetka) {
+        text-align: center;
+        img { max-height: 8rem; }
+    }
+}
+.design-range-of-services-list {
+    /* 20/24 */
+    font-size:   1.25em;
+    line-height: 1.5;
+    ul {
+        list-style: none;
+        li { position: relative; }
+        li:before {
+            content: '—';
+            position: absolute;
+            transform: translateX(-150%);
+            color: rgba(0,0,0,0.32);
+        }
+    }
+}
+.design-license-decoration {
+    img { position: absolute; }
+    @media ($screenNotClassicZetka) { display: none; }
+}
+.brand-banner {
+    @extend %colorModel--brand-accent;
+}
+.glSimplePageHeader {
+
+    /* ------------------------------ layout */
+
+    padding-top: 2rem;
+
+    .header-wrap    { @extend .zetka; }
+    .header-brand   { @extend .zetka-menu; }
+    .header-menu    { grid-column: overmain; }
+    .header-submenu { @extend .zetka-layer; }
+    .header-contact { @extend .zetka-side; }
+    .subnav-links   { @extend .zetka-merge; @extend .zetka-as-overmain; }
+
+
+    .header-logo {
+        display: block;
+        width: 100%;
+        padding-bottom: calc( 33.33% + 1rem ); // 55.55%;
+        .text-fallback { display: none; }
+    }
+    .header-menu {
+        align-self: end;
+        width: 100%;
+        display: flex;
+        flex-direction:  row;
+        justify-content: flex-end;
+    }
+    .header-contact {
+        align-self: end;
+        padding-bottom: 0.5rem;
+    }
+
+    /* ------------------------------ mobile layout */
+
+    @media ($screenForTablet) {
+        .header-brand   { grid-column: b / f; }
+        .header-menu    {
+            grid-column: main;
+            justify-content: center;
+        }
+        .header-contact {
+            //grid-column: e / full-end;
+            display: block;
+            position: fixed;
+            z-index: 3;
+            top:   0;
+            right: 0;
+            padding-bottom: 0;
+        }
+    }
+
+    /* ------------------------------ components */
+
+    .nav-links {
+        display: flex;
+        justify-content: flex-end;
+        list-style: none;
+        padding: 0 0.25rem;
+        background-color: white;
+        .dropdown-toggle {
+            transition: transform 200ms ease-out;
+        }
+        .dropdown-toggle:not(.collapsed) {
+            background-color: $color--deep-sea;
+            color: white;
+            transform: translateY(2.85rem) scale(1.1);
+        }
+    }
+    .subnav-links {
+        &.collapse:not(.show) { display: none; }
+        padding: 0; // smooth animation requirements
+        &>*:first-child   { padding-top: 3rem; }
+        &>*:last-child { padding-bottom: 3rem; }
+        .title { color: white; }
+
+        /* has link list in 3 columns */
+        .row { justify-content: center; }
+        .col-md {
+            flex-grow: 0;
+            min-width: 15em;
+        }
+        ul {
+            padding-bottom: 1rem;
+            line-height: 1.25;
+        }
+        li {
+            color: rgba(0,0,0,.25);
+            padding-top: 0.25em;
+            padding-bottom: 0.25em;
+        }
+
+
+    }
+    .contact-button {
+        margin-right: auto;
+        @include text-design-is-inherited;
+        white-space: nowrap;
+        border-radius: 0;
+        border: 0;
+        padding: 0.5rem 1.5rem;
+        .icon {
+            display: inline-block;
+            vertical-align: middle;
+            margin-right: 0.5em;
+            transform: scale(1.333)
+        }
+        @media ($screenForTablet) {
+            white-space: normal;
+            .text { white-space: nowrap; }
+            .text { display: none; }
+            .icon { margin-right: 0; }
+            text-align: center;
+        }
+    }
+
+    /* ------------------------------ design */
+
+    background-color: white;
+    color: black;
+
+    .header-logo {
+        background-size:     contain;
+        background-repeat:   no-repeat;
+        background-position: top center;
+        background-image:    url($url_logo_img);
+    }
+    .header-menu {
+        padding-bottom: 0.5rem;
+    }
+    .header-submenu {
+        @extend %colorModel--deep-sea;
+    }
+
+}
+.glWelcomeScreen {
+
+    // design
+
+    background-color: $color--dark-sea;
+    color: white;
+    background-image: url($url_welcome_background);
+    background-attachment: fixed;
+
+    .learn-more {
+        padding: 1em 2em;
+        color: inherit;
+        &:hover {
+            background-color: $color--dark-overlay;
+        }
+    }
+
+    @media ($screenNotTablet) {
+        .fullscreen-body .group { overflow: visible; }
+    }
+
+    /* ------------------------------ mobile layout */
+
+    @media ($screenForTablet) {
+        .fullscreen-body {
+            align-items: flex-start;
+            background-color: $color--dark-overlay;
+            .glWelcomeLinks,
+            .glWelcomeForm {
+                background-color: transparent;
+            }
+        }
+        // welcome screen has vertical layout
+        .fullscreen-body .group {
+            grid-auto-flow: row;
+            grid-auto-rows: auto;
+            grid-gap: 0;
+        }
+    }
+
+}
+.glWelcomeLinks {
+    background-color: $color--dark-overlay;
+    padding: 3em 4em;
+    grid-gap: 3em;
+
+    /* sans typography */
+    font-family: $font-list-sans;
+    letter-spacing: .03em;
+    /* 14/24 */
+    font-size:    0.875em;
+    line-height: 1.714285;
+
+    a {
+        color: $color--link-blue;
+        text-decoration: underline;
+        display: block;
+    }
+    p {
+        max-width: 26em;
+    }
+
+    /* has mobile layout */
+    @media ($screenForTablet) {
+        padding-left:  1em;
+        padding-right: 1em;
+        .title {
+            text-align: left;
+            /* 24/32 */
+            font-size:   1.5em;
+            line-height: 1.333333;
+        }
+    }
+}
+.glWelcomeForm {
+    max-width: 26em;
+    margin: 0 auto;
+    background-color: $color--dark-overlay;
+    padding: $margin-def;
+
+
+
+    /* has cool focus effect */
+    @media ($screenNotTablet) {
+        position: relative;
+        z-index: 1;
+        &:before {
+            content: '';
+            position: fixed;
+            z-index: -1;
+            pointer-events: none;
+            opacity: 0;
+        }
+        &:active, &:focus, &:hover {
+            &:before {
+                background-color: $color--brand-accent;
+                background-color: $color--dark-sea;
+                top:0;
+                bottom:0;
+                left:0;
+                right:0;
+                opacity: 0.75;
+                transition: opacity 200ms ease-in;
+                transition-delay: 800ms;
+            }
+        }
+    }
+
+    @media ($screenForTablet) {
+        max-width: 100%;
+        padding: 0 1em;
+        padding-bottom: $margin-def;
+    }
+
+    /* design upfate */
+    .extra-compact-form {
+        margin: 0 -0.5em;
+
+        background-color: #fff;
+        color: #000;
+        border-radius:  0.5em 0.5em 1em 1em;
+
+        .form-submit {
+            .btn {
+                border-radius: 0 0 0.5em 0.5em;
+            }
+        }
+    }
+
+}
+.chapter--ProcedureDescription {
+
+    @extend %colorModel--office-doc;
+
+    .desgin-chapter-header {
+        @extend %colorModel--contrast-sea;
+    }
+
+    /*
+    background-image: url($src-gl-chapter-background--tropical);
+    background-size: cover;
+    background-attachment: fixed;
+    */
+}
+.chapter--OfferDescription {
+
+    @extend %colorModel--office-doc;
+
+    /*
+    background-image: url($src-gl-chapter-background--curacao);
+    background-size: cover;
+    background-attachment: fixed;
+    */
+
+    .design-higlight-offer {
+        //@extend %colorModel--contrast-sea;
+        //background-color: white;
+        padding-top:    3.2rem;
+        padding-bottom: 3.2rem;
+    }
+    .brand-banner {
+        background-color: $color--brand-accent;
+        .big-title { color: white; }
+    }
+
+    @media ($screenNotClassicZetka) {
+        .mid-title {
+            text-align: center;
+            font-size: 2.5em;
+            line-height: 1.2;
+        }
+        .design-side-logoicon {
+            text-align: center;
+            img { max-height: 8rem; }
+        }
+    }
+    @media ($screenForMobile) {
+        .design--ServicesColumn,
+        .design--AdvantagesColumn {
+            grid-column: overmain;
+            .big-title {
+                /* 24/32 */
+                font-size:   1.5em;
+                line-height: 1.333333;
+            }
+            .min-title {
+                /* 20/24 */
+                font-size:   1.25em;
+                line-height: 1.2;
+            }
+        }
+        .brand-banner {
+            .big-title {
+                /* 24/32 */
+                font-size:   1.5em;
+                line-height: 1.333333;
+            }
+        }
+    }
+}
+.design--FourFeatures {
+    margin:  0;
+    padding: 2em 0;
+    list-style: none;
+    text-align: center;
+
+    /* has colores *
+    background-color: #C7F464;
+    .feature:nth-child(4n+0) { background-color: #CAFF42; }
+    .feature:nth-child(4n+1) { background-color: $color--deep-sea; }
+    .feature:nth-child(4n+2) { background-color: #F02475; }
+    .feature:nth-child(4n+3) { background-color: #F8CA00; }
+    /**/
+
+    /* has box model */
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-auto-rows: 1fr;
+    .feature {
+        grid-column: auto;
+        padding: $m-def;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        &>* {
+            width: 280px;
+            max-width: 100%;
+        }
+    }
+    .feature:nth-child(2n+1) { align-items: flex-end; }
+
+    /* has icons */
+    figure {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        padding-bottom: 1rem;
+        img, svg {
+            height: 6rem;
+            width: auto;
+            fill: rgba(255,255,200,.5);
+            fill: $color--brand-accent;
+        }
+    }
+
+    @media ($screenForMobile) {
+        p {
+            /* 14/24 */
+            font-size:   0.875em;
+            line-height: 1.714285;
+        }
+        .title {
+            /* 20/24 */
+            font-size:   1.25em;
+            line-height: 1.2;
+        }
+        .feature {
+            padding: $m-mid;
+        }
+    }
+}
+.design--hover-island {
+    img, svg {
+        transition: transform 400ms ease-in-out;
+    }
+    &:hover img, &:hover svg {
+        transition-duration: 1s;
+        transform: scale(1.5)
+    }
+}
+.chapter--CuracaoOrMalta {
+    padding-top: 4em;
+    padding-bottom: $m-def;
+
+    @extend %colorModel--light-sea;
+
+    .big-title, .title { color: white; }
+    .desgin-chapter-header {
+        margin-top: $m-def;
+        margin-bottom: 0;
+    }
+
+
+
+    @media ($screenNotClassicZetka) {
+        .big-title, .title { text-align: center; }
+        .design-curacao-malta-compare {
+            .big-title { text-align: left; }
+            /* 14/24 */
+            font-size:   0.875em;
+            line-height: 1.714285;
+        }
+    }
+}
+.design-before-EZone {
+    padding-bottom: 4em;
+    clip-path: polygon(0 -6em, 100% -6em, 100% 100%, 0 calc( 100% - 4em ) );
+}
+.design-after-EZone {
+    padding-top:    4em;
+    clip-path: polygon(0 4em, 100% -1px, 100% 100%, 0 100% );
+}
+.chapter--EZone {
+    @media ($screenNotClassicZetka) {
+        .big-title { text-align: center; }
+    }
+}
+.chapter--AboutCuracaoIsland {
+    padding-bottom: 2em;
+    background-color: #CAFF42;
+    @media ($screenNotClassicZetka) {
+        .big-title { text-align: center; }
+        .design-curacao-schematic-map {
+            text-align: center;
+            img { max-height: 10em; }
+        }
+    }
+}
+.chapter--OpenCasinoOrBetting {
+    padding-top:    2*$m-def;
+    padding-bottom: 2*$m-def;
+    background-image: url($src-gl-chapter-background--online-casino);
+    background-size: cover;
+    background-attachment: fixed;
+    .big-title {
+        color: $color--brand-accent;
+    }
+    @media ($screenNotClassicZetka) {
+        .big-title { text-align: center; }
+    }
+}
+.chapter--eGamingsGroup {
+    padding-top:    2*$m-def;
+    padding-bottom: 2*$m-def;
+    .big-box {
+        background-color: #F02475;
+        color: white;
+    }
+    .design-promo-message {
+        background-color: $color--brand-accent;
+        color: white;
+        padding-top: $m-def;
+        padding-bottom: $m-def;
+        margin-top: $m-def;
+        margin-bottom: $m-def;
+        .big-title {
+            grid-column: overmenu-start / overmain-end;
+        }
+    }
+    @media ($screenNotClassicZetka) {
+        .brand-logo {
+            grid-column: b / f;
+            padding-bottom: 2rem;
+        }
+    }
+}
+.chapter--contact-footer {
+    padding-top:    2*$m-def;
+    padding-bottom: 2*$m-def;
+    &.desgin-chapter-header {
+        @extend %colorModel--deep-green;
+    }
+    .design-rowicon>* {
+        transform: scale(1)
+    }
+    .icon {
+        font-size: 1.5em;
+        vertical-align: middle;
+        margin-right: 0.2em;
+        color: $color--deep-sea;
+    }
+    @media ($screenForMobile) {
+        .contacts {
+            margin-top: $margin-def;
+            grid-column: overmain;
+        }
+        .adress {
+            grid-column: main;
+        }
+        .title {
+            /* 20/24 */
+            font-size:   1.25em;
+            line-height: 1.2;
+        }
+    }
+}
+
+.site-footer {
+    @media ($screenForMobile) {
+        .big-title {
+            /* 24/32 */
+            font-size:   1.5em;
+            line-height: 1.333333;
+            padding: 1em 0;
+        }
+    }
+}
+
+
+.extra-compact-form {
+
+    padding-bottom: 0;
+
+    .form-submit {
+        margin: 0 -1em;
+        margin-top: 1rem;
+        padding: 0em;
+        .btn {
+            background-color: hsl(188, 78%, 41%);
+            border-top: 0.2em solid hsl(188, 98%, 31%);
+            border-radius: 0;
+            padding: 1em 1.5em;
+            text-align: center;
+            &:active {
+                background-color: hsl(188, 98%, 31%);
+                outline:none;
+            }
+        }
+    }
+    .form-textarea {
+        label {
+            padding-bottom: 0;
+            padding-top:    1.5em;
+            padding-left:   0.75em;
+        }
+    }
+}
+.design-contact-sidebar {
+    @extend %colorModel--office-doc;
+
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-content: stretch;
+    align-items: stretch;
+    .design-contact-form {
+        padding-bottom: 0;
+        padding-top: 2em;
+    }
+    .contacts {
+        flex-grow: 2;
+        color: #056b9e;
+        .icon { margin-right: 0.25em; color: #056b9e; }
+    }
+    .glWelcomeForm-header {
+        padding-left:  1.25em;
+        padding-right: 1.25em;
+    }
+    .sidebar-closer {
+        text-align: center;
+        font-size: 3em;
+        line-height: 1;
+        
+        background-color: hsl(200, 94%, 32%);
+        color: white;
+        cursor: pointer;
+
+        position: sticky;
+        top: 0;
+    }
+}
+.design-contact-form {
+
+    /* sans typography */
+    font-family: $font-list-sans;
+    letter-spacing: .03em;
+    /* 14/24 */
+    font-size:    0.875em;
+    line-height: 1.714285;
+
+    .intro-text {
+        line-height: 1.25;
+        em {
+            font-style: normal;
+            color: $color--warm-sea;
+        }
+    }
+    .form-submit,
+    .mobile-form-trigger {
+        padding-top: 1em;
+        .btn { font-size: 1.25em; }
+    }
+}

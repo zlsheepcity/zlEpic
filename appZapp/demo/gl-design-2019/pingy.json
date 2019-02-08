@@ -1,0 +1,14 @@
+{
+	"name": "gl-design-2019",
+	"exportDir": "dist",
+	"minify": true,
+	"compile": true,
+	"exclusions": [
+		{
+			"path": "node_modules",
+			"action": "exclude",
+			"type": "dir"
+		}
+	],
+	"port": 35835
+}

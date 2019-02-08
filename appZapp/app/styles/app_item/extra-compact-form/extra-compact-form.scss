@@ -1,0 +1,41 @@
+/* ==============================================================
+    contact form compact theme
+    2019.2.7
+
+    required short labels
+
+============================================================== */
+
+.extra-compact-form {
+
+    padding: 0.5em 1em;
+    padding-bottom: 2em;
+
+    .form-item {
+        border-bottom: 1px solid rgba(0,0,0,0.25);
+        padding: 0.5em;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        input {
+            border: 0;
+            background-color: transparent;
+            color: inherit;
+        }
+    }
+    .form-textarea label {
+        padding: 0.5em;
+        padding-top: 1em;
+    }
+    .form-textarea textarea {
+        background-color: transparent;
+        color: inherit;
+        padding: 0.25em 0.5em;
+        border-color: rgba(0,0,0,0.25);
+    }
+    .form-submit {
+        padding: 0.5em;
+    }
+}
+
+/* eof base html markup */

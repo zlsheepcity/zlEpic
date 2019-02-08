@@ -1,0 +1,280 @@
+<!doctype html><!-- app6011 -->
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- ========================================= HEAD CONTENT -->
+
+
+    <title>Zetka</title>
+
+
+    <!-- ========================================= APP MAIN -->
+
+    <!-- design font -->
+    <link href="https://fonts.googleapis.com/css?family=Vollkorn:400,400i,700&subset=cyrillic" rel="stylesheet">
+
+    <link  href="../../app/styles/app.css" rel="stylesheet" type="text/css">
+    <script src="../../app/script/app.js"></script>
+
+
+    <!-- ========================================= APP CUSTOM -->
+
+
+    <style>
+        h1,h2,h3,h4,h5,h6 { color: firebrick; }
+        .chapter-title { background-color: firebrick; color:white; }
+        .chapter-title h2 { color: white; }
+    </style>
+    <script>
+        // insert random content into paragraphs
+        function p() {
+            const p = document.getElementsByTagName('p')
+            for ( let i in p ) {
+                let texts = [
+                    'Petrovich is more than just a programming language, it is a complete computer operating system and program development environment. It is named after Ivan Petrovich Pavlov, the guy who demonstrated conditional responses to stimuli in dogs. I would have called the language "Pavlov", but it seems all the cool names for languages have already been used by someone else.',
+                    'In order to understand how Petrovich works, it is instructive to run through some examples. This is a sample interactive Petrovich session, annotated with comments.',
+                    'The user asked Petrovich to do something with some scientific data. It responds first by plotting the data and printing it. Since this is not what the user wanted, he punishes Petrovich, then tries again. Wanting to avoid punishment, Petrovich tries something different, and this time performs an operation useful to the user. To encourage such behaviour, the user rewards Petrovich.'
+                    ]
+                let text = texts[Math.floor(Math.random()*texts.length)]
+                let textnode = document.createTextNode(text)
+                if (p[i].appendChild) p[i].appendChild(textnode)
+            }
+        }
+        window.onload = function(e){
+            p();
+        }
+    </script>
+
+
+    <!-- ========================================== ʕ⊙ᴥ⊙ʔ = -->
+    <!-- ========================================= END HEAD -->
+</head>
+<body class="body-wrap design-template">
+
+    <main class="zetka">
+
+        <header class="zetka-layer is-box">
+            <h1>Zetka</h1>
+            <div>2019.1.28, last update 2019.2.8</div>
+        </header>
+
+        <ul>
+            <li><a href="#Columns">Columns</a></li>
+            <li><a href="#Merge">Merge</a></li>
+            <li><a href="#ScreenBorder">Screen Border</a></li>
+            <li><a href="#Halfs">Halfs</a></li>
+            <li><a href="#SplitColumns">Split Columns</a></li>
+            <li><a href="#HasMobileLayout">Mod: has-mobile-layout</a></li>
+            <li><a href="#VerticalSpace">Mod: Vertical space</a></li>
+        </ul>
+
+        <p></p>
+        <p></p>
+
+
+
+        <header id="Columns" class="zetka-layer is-box chapter-title">
+            <h2>Columns</h2>
+        </header>
+
+        <div class="zetka-menu">
+            <h3>zetka-menu</h3>
+            <p></p>
+        </div>
+        <div class="zetka-block">
+            <h3>zetka-block</h3>
+            <p></p>
+            <p></p>
+            <p></p>
+
+            <div class="zetka-block is-box">
+                <h3>zetka-block / is-box</h3>
+                <p></p>
+            </div>
+
+        </div>
+        <div class="zetka-side">
+            <h3>zetka-side</h3>
+            <p></p>
+        </div>
+
+
+
+        <header id="Merge" class="zetka-layer is-box chapter-title">
+            <h2>Merge</h2>
+        </header>
+
+        <div class="zetka-merge is-box">
+            <h3>zetka-merge</h3>
+            <p></p>
+        </div>
+        <div class="zetka-merge zetka-as-overmain is-box">
+            <h3>zetka-merge</h3>
+            <h4>zetka-as-overmain</h4>
+            <p></p>
+            <p></p>
+            <p></p>
+        </div>
+        <div class="zetka-merge-menu is-box">
+            <h3>zetka-merge-menu</h3>
+        </div>
+        <div class="zetka-merge-side is-box">
+            <h3>zetka-merge-side</h3>
+        </div>
+
+
+
+        <header id="ScreenBorder" class="zetka-layer is-box chapter-title">
+            <h2>Screen border</h2>
+        </header>
+
+        <div class="zetka-menu-screen is-box">
+            <h3>zetka-menu-screen</h3>
+        </div>
+        <p></p>
+        <div class="zetka-side-screen is-box">
+            <h3>zetka-side-screen</h3>
+        </div>
+
+        <div class="zetka-merge-menu-screen is-box">
+            <h3>zetka-merge-menu-screen</h3>
+            <p></p>
+            <p></p>
+        </div>
+        <div class="zetka-merge-side-screen is-box">
+            <h3>zetka-merge-side-screen</h3>
+            <p></p>
+        </div>
+
+
+
+        <header id="Halfs" class="zetka-layer is-box chapter-title">
+            <h2>Halfs</h2>
+        </header>
+
+        <div class="zetka-half-screen-one zetka-as-overmain is-box">
+            <h3>zetka-half-screen-one</h3>
+            <h4>zetka-as-overmain</h4>
+            <p></p>
+            <p></p>
+            <p></p>
+        </div>
+        <div class="zetka-half-screen-two zetka-as-overmain is-box">
+            <h3>zetka-half-screen-two</h3>
+            <h4>zetka-as-overmain</h4>
+            <p></p>
+            <p></p>
+            <p></p>
+        </div>
+
+        <div class="zetka-overhalf-one zetka-as-overmain is-box">
+            <h3>zetka-overhalf-one</h3>
+            <h4>zetka-as-overmain</h4>
+            <p></p>
+        </div>
+        <div class="zetka-overhalf-two zetka-as-overmain is-box">
+            <h3>zetka-overhalf-two</h3>
+            <h4>zetka-as-overmain</h4>
+            <p></p>
+        </div>
+
+
+
+        <header id="SplitColumns" class="zetka-layer is-box chapter-title">
+            <h2>Split columns</h2>
+        </header>
+
+        <div class="zetka-half-one">
+            <h3>zetka-half-one</h3>
+            <p></p>
+        </div>
+        <div class="zetka-half-two">
+            <h3>zetka-half-two</h3>
+            <p></p>
+        </div>
+
+        <div class="zetka-third-one">
+            <h3>zetka-third-one</h3>
+            <p></p>
+        </div>
+        <div class="zetka-third-two">
+            <h3>zetka-third-two</h3>
+            <p></p>
+        </div>
+        <div class="zetka-third-tri">
+            <h3>zetka-third-tri</h3>
+            <p></p>
+        </div>
+
+        <div class="zetka-third-merge-one">
+            <h3>zetka-third-merge-one</h3>
+            <p></p>
+        </div>
+
+        <div class="zetka-third-merge-tri">
+            <h3>zetka-third-merge-tri</h3>
+            <p></p>
+        </div>
+
+
+
+        <header id="HasMobileLayout" class="zetka-layer is-box chapter-title">
+            <h2>Mod: has-mobile-layout</h2>
+        </header>
+
+        <div class="zetka-half-one has-mobile-layout">
+            <h3>zetka-half-one</h3>
+            <h4>has-mobile-layout</h4>
+            <p></p>
+        </div>
+        <div class="zetka-half-two has-mobile-layout">
+            <h3>zetka-half-two</h3>
+            <h4>has-mobile-layout</h4>
+            <p></p>
+        </div>
+
+        <div class="zetka-half-screen-one zetka-as-overmain has-mobile-layout is-box">
+            <h3>zetka-half-screen-one</h3>
+            <h4>zetka-as-overmain</h4>
+            <h4>has-mobile-layout</h4>
+            <p></p>
+        </div>
+        <div class="zetka-half-screen-two zetka-as-overmain has-mobile-layout is-box">
+            <h3>zetka-half-screen-two</h3>
+            <h4>zetka-as-overmain</h4>
+            <h4>has-mobile-layout</h4>
+            <p></p>
+        </div>
+
+
+
+        <header id="VerticalSpace" class="zetka-layer is-box chapter-title">
+            <h2>Mod: Vertical space</h2>
+        </header>
+
+        <div class="zetka-menu is-v-centered is-box">
+            <h3>is-v-centered</h3>
+        </div>
+        <div class="zetka-overmain">
+            <p></p>
+            <p></p>
+            <p></p>
+            <p></p>
+        </div>
+        <div class="zetka-side is-v-equal is-box">
+            <h3>is-v-equal</h3>
+        </div>
+
+        <hr>
+
+        <header class="zetka-layer is-box chapter-title">
+            <h2>End</h2>
+            <hr>
+        </header>
+
+    </main>
+
+</body>
+</html>

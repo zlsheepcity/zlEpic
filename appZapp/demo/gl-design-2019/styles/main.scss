@@ -1,0 +1,52 @@
+@charset "UTF-8";
+/*
+    gl-2019 sass ordnung
+    2018.2.8
+*/
+
+
+// ---------------------------------------------------------------
+/* Zapp Sass Core - any project */
+// ---------------------------------------------------------------
+
+@import "../../../app/styles/app_core/01-core-constructor";
+@import "../../../app/styles/app_core/02-core-variables";
+@import "../../../app/styles/app_core/03-core-html-markup";
+@import "../../../app/styles/app_core/04-core-typography";
+
+
+// ---------------------------------------------------------------
+/* Zapp Sass Components - customizable list */
+// ---------------------------------------------------------------
+
+// screen layouts
+
+@import "../../../app/styles/app_item/layout-fullscreen/layout-fullscreen";
+
+// content formation
+
+@import "../../../app/styles/app_item/zetka/zetka-formula";
+@import "../../../app/styles/app_item/zetka/zetka-columns";
+
+@import "../../../app/styles/app_item/group/group";
+
+@import "../../../app/styles/app_item/data-table/data-table";
+
+// interface components
+
+@import "../../../app/styles/app_item/sidebar/sidebar";
+@import "../../../app/styles/app_item/extra-compact-form/extra-compact-form";
+
+
+// ---------------------------------------------------------------
+/* Zapp Sass Coat - any project */
+// ---------------------------------------------------------------
+
+@import "../../../app/styles/app_core/91-coat-markup-helpers";
+
+
+// ---------------------------------------------------------------
+/* Customs */
+// ---------------------------------------------------------------
+
+@import "../src/styles/gl-design-2019";

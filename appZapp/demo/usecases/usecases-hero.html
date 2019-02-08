@@ -1,0 +1,352 @@
+<!doctype html><!-- app7000-Zapp -->
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- ========================================= HEAD CONTENT -->
+
+
+    <title>Hero ʕ⊙ᴥ⊙ʔ</title>
+
+
+    <!-- ========================================= APP MAIN -->
+
+    <!-- design font -->
+    <link href="https://fonts.googleapis.com/css?family=Vollkorn:400,400i,700&subset=cyrillic" rel="stylesheet">
+
+    <link  href="../../app/styles/app.css" rel="stylesheet" type="text/css">
+    <script src="../../app/script/app.js"></script>
+
+
+    <!-- ========================================= APP CUSTOM -->
+
+
+    <style>
+        [demo-chapter] {
+            background-color: wheat;
+            padding-top:    2.4rem;
+            padding-bottom: 2.4rem;
+        }
+        [demo-fullscreen] {
+            background-color: hsla(177, 42%, 76%,   1);
+        }
+        [demo-fullscreen] .group>.bg {
+            background-color: hsla(229, 55%, 12%, 0.7);
+            color: white;
+        }
+        [demo-form] {
+            max-width: 28em;
+        }
+        [demo-form] .form-submit {
+            padding-top: 0.875em;
+        }
+        [demo-slide-header] {
+            height: 40vh;
+        }
+        [demo-slide-header]:before {
+            background-image: url(art/design-template/bg__light.jpg);
+        }
+    </style>
+
+    <!-- jQuery -->
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+
+    <script>
+        // insert random content into paragraphs
+        function p() {
+            const p = document.querySelectorAll('.auto')
+            for ( let i in p ) {
+                let texts = [
+                    'Petrovich is more than just a programming language, it is a complete computer operating system and program development environment. It is named after Ivan Petrovich Pavlov, the guy who demonstrated conditional responses to stimuli in dogs. I would have called the language "Pavlov", but it seems all the cool names for languages have already been used by someone else.',
+                    'In order to understand how Petrovich works, it is instructive to run through some examples. This is a sample interactive Petrovich session, annotated with comments.',
+                    'The user asked Petrovich to do something with some scientific data. It responds first by plotting the data and printing it. Since this is not what the user wanted, he punishes Petrovich, then tries again. Wanting to avoid punishment, Petrovich tries something different, and this time performs an operation useful to the user. To encourage such behaviour, the user rewards Petrovich.'
+                    ]
+                let text = texts[Math.floor(Math.random()*texts.length)]
+                let textnode = document.createTextNode(text)
+                if (p[i].appendChild) p[i].appendChild(textnode)
+            }
+        }
+        $(function(){p()})
+    </script>
+
+
+    <!-- ========================================== ʕ⊙ᴥ⊙ʔ = -->
+    <!-- ========================================= END HEAD -->
+</head>
+<body class="body-wrap design-template">
+
+<section demo-fullscreen class="fullscreen">
+
+    <header class="fullscreen-header is-box is-centered">
+        <h2>
+            fullscreen-header / fullscreen-body / fullscreen-footer
+            <i class="pill bg" id="T02">#T02</i>
+        </h2>
+    </header>
+
+    <section class="fullscreen-body is-v-padded">
+
+        <!-- box content -->
+        <div class="zetka zetka-as-overmain is-box">
+            <div class="block">
+                <h1 title><a href="">Curacao Gaming Licence</a></h1>
+                <p subtitle>Licensing of all iGaming Products — online casinos, sports betting, poker, lotteries, and bingo!</p>
+            </div>
+            <div class="block">
+                <h2 title><a href="">Banking Solutions</a></h2>
+                <p subtitle>Open bank & processing accounts for your gambling business.</p>
+            </div>
+        </div>
+        <!-- /box content -->
+
+    </section>
+
+    <footer class="fullscreen-footer is-box">
+        <a href="#learn-more-1" class="pill bg title">learn more</a>
+    </footer>
+
+</section>
+<div id="learn-more-1"></div>
+
+
+
+
+
+<section demo-chapter demo-sidebar class="zetka">
+    <h1>Sidebar <i class="pill bg" id="T05">#T05</i></h1>
+    <style>
+        [demo-sidebar] {
+            background-color: pink;
+        }
+        [demo-sidebar] .sidebar {
+            background-color: black;
+            color: white;
+        }
+    </style>
+    <div>
+        <button class="js-toggle-sidebar">open sidebar</button>
+    </div>
+    <nav class="sidebar is-box js-sidebar">
+        <div class="zetka zetka-as-overmain">
+            <h2>Sidebar</h2>
+            <p class="auto"></p>
+            <p class="auto"></p>
+            <p class="auto"></p>
+            <p class="auto"></p>
+            <p class="auto"></p>
+            <p class="auto"></p>
+            <p class="auto"></p>
+            <p class="auto"></p>
+            <p class="auto"></p>
+        </div>
+    </nav>
+    <script>
+        $(function(){
+            $('.js-screen-shadow-overlay').addClass('js-toggle-sidebar')
+            $('.js-toggle-sidebar').on('click',function(){
+                $('html').toggleClass('has-active-sidebar')
+                // Alternate: $('.js-sidebar').toggleClass('is-active')
+            })
+        })
+    </script>
+</section>
+
+
+
+
+
+<section demo-chapter class="zetka zetka-as-overmain">
+
+    <h1>Responsive Data Tables <i class="pill bg" id="T04">#T04</i></h1>
+
+    <p>
+        Break-point: 600px
+    </p>
+
+    <table class="data-table" data-table-type="1str,2num,3txt">
+        <caption>
+            <h2 class="bg is-centered">Simple Data Table</h2>
+        </caption>
+        <thead>
+            <tr>
+                <th>
+                    Provider
+                </th>
+                <th>
+                    Games
+                </th>
+                <th>
+                    Description
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th>
+                    Microgaming
+                </th>
+                <td>
+                    590
+                </td>
+                <td>
+                    The game is devoted to the Mighty Scandinavian god Thor, which gives out different symbols, such as Scatter Ram, to help a player win prizes. The option of additional gambling game is also available.
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    Evolution Gaming
+                </th>
+                <td>
+                    84
+                </td>
+                <td>
+                    Evolution Gaming works with top-tier casino operators across Europe. The company is an undisputable leader in live dealer gaming business.
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    Betradar
+                </th>
+                <td>
+                    12800
+                </td>
+                <td>
+                    A reliable software that allows bookmaker operations, registering an impressive number of bets, monitor ratio changes and live scores, analyse large volumes of sports data. Betradar software has a robust functionality that will enable your casino to operate efficiently and smoothly under the supervision of a minimum number of employees.
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <p>
+        class="data-table"<br>data-table-type="1str,2num,3txt"
+    </p>
+
+    <table class="data-table has-data-titles" data-table-type="1str,2num,3txt">
+        <caption>
+            <h2 class="bg is-centered">Mod: data-title="Column title"</h2>
+        </caption>
+        <thead>
+            <tr>
+                <th>
+                    Provider
+                </th>
+                <th>
+                    Games
+                </th>
+                <th>
+                    Description
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th data-title="Provider">
+                    Microgaming
+                </th>
+                <td data-title="Games">
+                    590
+                </td>
+                <td data-title="Description with long value">
+                    The game is devoted to the Mighty Scandinavian god Thor, which gives out different symbols, such as Scatter Ram, to help a player win prizes. The option of additional gambling game is also available.
+                </td>
+            </tr>
+            <tr>
+                <th data-title="Provider">
+                    Evolution Gaming
+                </th>
+                <td data-title="Games">
+                    84
+                </td>
+                <td data-title="Description">
+                    Evolution Gaming works with top-tier casino operators across Europe. The company is an undisputable leader in live dealer gaming business.
+                </td>
+            </tr>
+            <tr>
+                <th data-title="Provider">
+                    Betradar
+                </th>
+                <td data-title="Games">
+                    12800
+                </td>
+                <td data-title="Description">
+                    A reliable software that allows bookmaker operations, registering an impressive number of bets, monitor ratio changes and live scores, analyse large volumes of sports data. Betradar software has a robust functionality that will enable your casino to operate efficiently and smoothly under the supervision of a minimum number of employees.
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <p>
+        class="data-table has-data-titles" data-table-type="1str,2num,3txt"
+    </p>
+
+</section>
+
+
+
+
+
+
+
+<section chapter demo-chapter  class="zetka">
+
+    <h1>
+        <span>Default form</span>
+        <i class="pill bg" id="T03">#T03</i>
+    </h1>
+
+    <div demo-form class="zetka-overmain is-box">
+
+        <header>
+            <p>Minimal form template, please, fill in the form:</p>
+        </header>
+
+
+        <!-- minimal form template -->
+        <form class="block" action="?it-was-form-submit">
+            <section class="block">
+                <div class="form-item">
+                     <input tabindex="1" type="text" name="your-name" id="your-name" value="" placeholder="(required)" required />
+                     <label for="your-name">Name</label>
+                </div>
+                <div class="form-item">
+                     <input tabindex="1" type="email" name="your-email" id="your-email" value="" placeholder="(required)" required />
+                     <label for="your-email">Email</label>
+                </div>
+                <div class="form-textarea">
+                     <textarea tabindex="1" name="your-message" id="your-message" rows="4"></textarea>
+                     <label for="your-message">Message or Question</label>
+                </div>
+            </section>
+            <section class="form-submit">
+                 <button tabindex="1" type="submit" class="button">Send</button>
+                 <label></label>
+            </section>
+        </form>
+        <!-- /minimal form template -->
+
+    </div>
+
+</section>
+
+
+<!-- fullscreen template -->
+<div class="fullscreen">
+    <div class="fullscreen-header">
+        <div>fullscreen-header</div>
+    </div>
+    <div class="fullscreen-body">
+        <div>fullscreen-body</div>
+    </div>
+    <div class="fullscreen-footer">
+        <div>fullscreen-footer</div>
+    </div>
+</div>
+<!-- / fullscreen template -->
+
+<!-- empty div for shadow overlay -->
+<div class="screen-shadow-overlay js-screen-shadow-overlay"></div>
+<!-- / empty div for shadow overlay -->
+
+</body>
+</html>

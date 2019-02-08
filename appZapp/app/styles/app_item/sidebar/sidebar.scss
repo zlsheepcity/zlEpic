@@ -1,0 +1,65 @@
+/* ==============================================================
+    fixed sidebar with visible and hidden states
+    2019.1.28
+============================================================== */
+
+/* USE CASE
+    <nav class="sidebar is-active">
+        xoxox
+    </nav>
+*/
+
+
+//* ------------------------------------ settings
+
+$z-index-sidebar: 3;
+$sidebar__width-limit:               38rem;
+$sidebar__remaining-space-limit:     6rem;
+
+
+//* ------------------------------------ formulas
+
+$a: $sidebar__width-limit;
+$b: $sidebar__remaining-space-limit;
+$screenNotFullscreenSidebar: 'min-width: #{ $a + $b }';
+
+
+//* ------------------------------------ sidebar component
+
+
+.sidebar {
+    background-color: black;
+
+    /* is screen fixed */
+    position: fixed;
+    z-index:  $z-index-sidebar;
+    top:    0;
+    bottom: 0;
+    left:   100%;
+
+    /* has width */
+    width:  100%;
+    @media screen and ($screenNotFullscreenSidebar) {
+        max-width: $sidebar__width-limit;
+    };
+
+    /* has unpredictable content */
+    overflow: auto;
+
+    /* closed state */
+    transform: translateX(0);
+    transition: transform 200ms ease-in;
+
+    /* open state */
+    &.is-active,
+    .has-active-sidebar & {
+        transition-timing-function: ease-out;
+        transform: translateX(-100%);
+    }
+}
+
+/* Mod: use shadow overlay */
+.has-active-sidebar { @extend %screen-has-shadow-overlay; }
+
+
+/* eof sidebar */

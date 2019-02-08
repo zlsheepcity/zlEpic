@@ -1,0 +1,181 @@
+<!doctype html><!-- app6011 -->
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- ========================================= HEAD CONTENT -->
+
+
+    <title>Hero ʕ⊙ᴥ⊙ʔ</title>
+
+
+    <!-- ========================================= APP MAIN -->
+
+    <!-- design font -->
+    <link href="https://fonts.googleapis.com/css?family=Vollkorn:400,400i,700&subset=cyrillic" rel="stylesheet">
+
+    <link  href="../../app/styles/app.css" rel="stylesheet" type="text/css">
+    <script src="../../app/script/app.js"></script>
+
+    <!-- ========================================= APP CUSTOM -->
+
+    <script>
+    </script>
+
+    <!-- script src="app/script/research/BFQ-product-system.js"></script -->
+
+    <!-- ========================================= APP MUTATOR -->
+
+    <script src="../../app/script/components/class-mutator.js"></script>
+    <script>
+        function DemoTestMutator(e){
+            let mtag = document.querySelector('.target')
+            let ptag = document.querySelectorAll('.target')
+            if (zapp) {
+                zapp.mutate = el_class_mutator
+                zapp.mutate({for:'target', addClass:'happy'})
+            }
+            el_class_mutator({
+                el: ptag,
+                addClass:".addme",
+                toggleClass:'toga1 toga2',
+                removeClass:['rem1']
+            })
+            return mtag && ptag
+        }
+        // onload→RunTests
+    </script>
+
+    <!-- ========================================= APP IMG ZOOM -->
+
+    <script src="../../app/script/components/image-zoom.js"></script>
+    <script>(ActivateImageZoom)()</script>
+
+
+    <!-- ========================================= APP SCROLL EVENTS -->
+
+    <script src="../../app/vendor/waypoints/noframework.waypoints.js"></script>
+    <!-- npm install waypoints -->
+    <script>
+        function TestWaypoints() {
+            var tested_waypoint_object = new Waypoint({
+                element: document.getElementById('js-waypoint'),
+                handler: function(direction) {
+                    zapp.mutate({
+                        el:this.element,
+                        toggleClass:'is-active'
+                    })
+                },
+                offset: '50%'
+            })
+            return tested_waypoint_object
+        }
+    </script>
+
+
+    <!-- ========================================= PAGE CUSTOM -->
+
+    <script>
+        // insert random content into paragraphs
+        function p() {
+            const p = document.getElementsByTagName('p')
+            // const p = document.querySelectorAll('.auto')
+            for ( let i in p ) {
+                let texts = [
+                    'Petrovich is more than just a programming language, it is a complete computer operating system and program development environment. It is named after Ivan Petrovich Pavlov, the guy who demonstrated conditional responses to stimuli in dogs. I would have called the language "Pavlov", but it seems all the cool names for languages have already been used by someone else.',
+                    'In order to understand how Petrovich works, it is instructive to run through some examples. This is a sample interactive Petrovich session, annotated with comments.',
+                    'The user asked Petrovich to do something with some scientific data. It responds first by plotting the data and printing it. Since this is not what the user wanted, he punishes Petrovich, then tries again. Wanting to avoid punishment, Petrovich tries something different, and this time performs an operation useful to the user. To encourage such behaviour, the user rewards Petrovich.'
+                    ]
+                let text = texts[Math.floor(Math.random()*texts.length)]
+                let textnode = document.createTextNode(text)
+                if (p[i].appendChild) p[i].appendChild(textnode)
+            }
+        }
+        // onload→p();
+    </script>
+
+
+    <script>
+        // demo tests
+        function testreport(test,msg) {
+            console.assert(test, {"message":"it`s wrong","test":test,"msg":msg})
+            if (test) console.log(msg)
+            if (test) countSuccessfulReports++
+            countTotalReports++
+        }
+        var zapp = {
+            // overlords
+            report: (rna)=>false,
+            mutate: (rna)=>false,
+            onload: (rna)=>false
+        };
+        var countSuccessfulReports = 0
+        var countTotalReports = 0
+        window.onload = function RunTests() {
+
+            // demo update
+
+            p();
+
+            // Run & Test libs
+
+            testreport(DemoTestMutator(), 'TestMutator: mtag-ptag are fine')
+            testreport(zzz, 'TestImageZoom: zzz is fine')
+            testreport(TestWaypoints(), 'TestWaypoints: point is fine')
+
+            testreport(countSuccessfulReports==countTotalReports, '༼°▽°༽ Run & Test libs: '+countSuccessfulReports+'/'+countTotalReports)
+
+            // APP TESTS
+
+            app.do('report','App test #1: report this message')
+            app.report('App test #2: report this message')
+            app.mutate({find:'html',addClass:'has-app'})
+            app.mutate({find:'html',addClass:'has-app'})
+
+            app.Welcome({dev:true, queens:{log:console.log}})
+
+
+
+        }
+    </script>
+
+    <style>
+        .dev-box {
+            background-color: firebrick;
+            color: white;
+            padding: 2em;
+        }
+        .dev-box.is-active {
+            background-color: navy;
+            grid-column: full;
+        }
+    </style>
+
+
+    <!-- ========================================== ʕ⊙ᴥ⊙ʔ = -->
+    <!-- ========================================= END HEAD -->
+</head>
+<body class="body-wrap design-template zetka" id="mybody">
+
+    <h3 class="appTarget"><span>appTarget</span></h3>
+
+    <h1 class="target rem1"><span>Target</span></h1>
+    <h2 class="target rem2"><span>Target</span></h2>
+
+    <div class="zetka-block">
+        <figure><img src="art/bussiness_sample.png" class="zzz"></figure>
+    </div>
+
+    <div>
+        <p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p>
+    </div>
+
+    <div class="dev-box js-waypoint" id="js-waypoint"></div>
+
+    <div>
+        <p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p>
+    </div>
+
+</body>
+</html>
