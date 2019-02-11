@@ -1,0 +1,201 @@
+<!doctype html><!-- app7000-Zapp -->
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- ========================================= HEAD CONTENT -->
+
+
+    <title>ʕ⊙ Dev Log</title>
+
+
+    <!-- ========================================= APP MAIN -->
+
+    <!-- design font -->
+    <link href="https://fonts.googleapis.com/css?family=Vollkorn:400,400i,700&subset=cyrillic" rel="stylesheet">
+
+    <link  href="app/styles/app.css" rel="stylesheet" type="text/css">
+    <script src="app/script/components/class-mutator.js"></script>
+    <script src="app/script/app.js"></script>
+
+
+    <!-- ========================================= APP CUSTOM -->
+
+    <script>
+        window.onload = function RunTests() {
+
+            p();
+            app.Welcome()
+
+        }
+    </script>
+    <style>
+        .mother-chapter > section {
+            margin-top:    2em;
+            margin-bottom: 2em;
+        }
+        .codeblock {
+            white-space: pre-line;
+            border-left:  0.2em solid hsla(0,100%,0%,0.2);
+            padding-left: 0.8em;
+            margin-left:  1em;
+        }
+    </style>
+
+    <!-- ========================================= PAGE CUSTOM -->
+
+    <script>
+        // insert random content into paragraphs
+        function p() {
+            // const p = document.getElementsByTagName('p')
+            const p = document.querySelectorAll('.auto')
+            for ( let i in p ) {
+                let texts = [
+                    'Petrovich is more than just a programming language, it is a complete computer operating system and program development environment. It is named after Ivan Petrovich Pavlov, the guy who demonstrated conditional responses to stimuli in dogs. I would have called the language "Pavlov", but it seems all the cool names for languages have already been used by someone else.',
+                    'In order to understand how Petrovich works, it is instructive to run through some examples. This is a sample interactive Petrovich session, annotated with comments.',
+                    'The user asked Petrovich to do something with some scientific data. It responds first by plotting the data and printing it. Since this is not what the user wanted, he punishes Petrovich, then tries again. Wanting to avoid punishment, Petrovich tries something different, and this time performs an operation useful to the user. To encourage such behaviour, the user rewards Petrovich.'
+                    ]
+                let text = texts[Math.floor(Math.random()*texts.length)]
+                let textnode = document.createTextNode(text)
+                if (p[i].appendChild) p[i].appendChild(textnode)
+            }
+        }
+        // onload→p();
+    </script>
+
+
+    <!-- ========================================== ʕ⊙ᴥ⊙ʔ = -->
+    <!-- ========================================= END HEAD -->
+</head>
+<body class="body-wrap design-template mother-chapter">
+
+    <section class="zetka">
+        <header class="chapter-title">
+            <h2>Placeholder</h2>
+            <div>2019.2.11</div>
+        </header>
+    </section>
+
+    <section class="zetka">
+        <header class="chapter-title">
+            <h2>CSS Multi-column Layout</h2>
+            <div>2019.2.11</div>
+        </header>
+        <style>
+            .test-for-multicolumn {
+                column-width: 14em;
+                column-gap:   4em;
+                column-rule:  1px solid #ccc;
+            }
+        </style>
+        <code class="codeblock">/* css */
+            .test-for-multicolumn {
+                column-width: 14em;
+                column-gap:   4em;
+                column-rule:  1px solid #ccc;
+            }
+        </code>
+        <div class="zetka-merge zetka-as-overmain">
+            <div class="test-for-multicolumn">
+                <p class="auto"></p>
+                <p class="auto"></p>
+                <p class="auto"></p>
+                <p class="auto"></p>
+                <p class="auto"></p>
+                <p class="auto"></p>
+            </div>
+        </div>
+    </section>
+
+    <section class="zetka">
+        <header class="chapter-title">
+            <h2>CSS Paint API / Houdini’s paint worklet</h2>
+            <div>2019.2.11</div>
+        </header>
+        <p>Doesn`t works on local machine</p>
+        <div class="b1"></div>
+        <script>
+            console.group('CSS Paint API / Houdini’s paint worklet')
+
+            if('registerProperty' in CSS) {
+                CSS.registerProperty({
+                    name: '--circle-color',
+                    syntax: '<color>',
+                    initialValue: 'black',
+                    inherits: true
+                })
+                CSS.registerProperty({
+                    name: '--circle-size',
+                    syntax: '<length-percentage>',
+                    initialValue: '40px',
+                    inherits: false
+                })
+            } else console.log(':: registerProperty not in CSS')
+
+            if('paintWorklet' in CSS) {
+                CSS.paintWorklet.addModule('__devlog/css-worklet.js')
+            } else console.log(':: paintWorklet not in CSS')
+
+            console.groupEnd()
+
+        </script>
+        <style>
+            .b1 {
+                --circle-color: 'pink';
+                --circle-size: 20px;
+            }
+            @supports (background: paint(something)) {
+                .b1 { background-image: paint(dots); }
+            }
+            .b1 {
+                /* has demo design */
+                height: 8em;
+                border: 2px solid firebrick;
+            }
+        </style>
+    </section>
+
+    <section class="zetka">
+        <header class="chapter-title">
+            <h2>CSS custom variables</h2>
+            <div>2019.2.11</div>
+        </header>
+        <div class="zetka-menu">
+            <div class="a1"><span>hover me</span></div>
+        </div>
+        <style>
+            :root {
+                --default: red;
+            }
+            .a1 {
+                background-color: var( --hover, var(--default) );
+            }
+            .a1:hover {
+                --hover: firebrick;
+            }
+            .a1 {
+                /* has demo design */
+                min-height: 4em;
+                padding:  0 1em;
+                display:         flex;
+                justify-content: center;
+                align-items:     center;
+            }
+        </style>
+        <code class="codeblock">/* css var() usage */
+            :root {
+                --default: red;
+            }
+            .a1 {
+                background-color: var( --hover, var(--default) );
+            }
+            .a1:hover {
+                --hover: firebrick;
+            }
+        </code>
+    </section>
+
+
+</body>
+</html>

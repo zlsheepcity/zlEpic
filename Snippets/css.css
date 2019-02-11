@@ -1,6 +1,8 @@
 @import url("part.css");
 
+/* это тот же async только для .css */
 <link media="none" onload="if(media!="all") media="all"" rel="stylesheet" type="text/css", href= main.css>
+
 
 html {
   scroll-behavior: smooth;
@@ -360,3 +362,59 @@ base, basefont, datalist, head, meta, script, style, title, noembed, param, temp
 
 https://css-tricks.com/putting-the-flexbox-albatross-to-real-use/
 flex-basis: calc(560px * 999 - 100% * 999)
+
+
+/* ================================================================= SASS */
+
+/* function removes size-unit from value */
+/* In Sass, a unit divided by another unit of the same type will strip the unit and return the digit. */
+
+@function scut-strip-unit ($num) {
+  @return $num / ($num * 0 + 1);
+  // 12px / 1px = 12
+}
+
+/* using of & */
+
+.MyComponent {
+  &-title {}
+  &-content {}
+}
+
+// Compiles to
+.MyComponent {}
+.MyComponent-title {}
+.MyComponent-content {}
+
+/* using of variables+& */
+
+.MyComponent {
+  $block: &;
+  $xmasTheme: #{&}--xmasTheme;
+
+  &-title {
+    #{$xmasTheme} & {
+    }
+  }
+}
+
+// Still compiles to
+.MyComponent {}
+.MyComponent-title {}
+.MyComponent--xmasTheme .MyComponent-title {}
+
+/*
+
+  One of the more popular methodologies for organizing Sass files is the 7-1 Pattern. That’s seven distinct folders containing Sass files that are imported into a single Sass file.
+
+  Those folders are:
+
+  abstracts
+  base
+  components
+  layout
+  pages
+  themes
+  vendor
+
+*/
