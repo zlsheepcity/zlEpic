@@ -5,7 +5,7 @@
 
 
 window.onload = function(e){
-    
+
 }
 
 // alternative to load event
@@ -161,6 +161,49 @@ for (let i = 0; i < 1e10; i++) {
 
 // ---------------------------------------------- // trick functions
 
+// url string animated with symbols
+
+var f = ['🌑', '🌒', '🌓', '🌔', '🌕', '🌖', '🌗', '🌘'];
+var f = ['🕐','🕑','🕒','🕓','🕔','🕕','🕖','🕗','🕘','🕙','🕚','🕛'];
+
+    function loop() {
+        location.hash = f[Math.floor((Date.now()/100)%f.length)];
+
+        setTimeout(loop, 50);
+    }
+
+var f = ['🌑', '🌘', '🌗', '🌖', '🌕', '🌔', '🌓', '🌒'],
+        d = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        m = 0;
+
+    function loop2() {
+        var s = '', x = 0;
+
+        if (!m) {
+            while (d[x] == 4) x ++;
+            if (x >= d.length) m = 1;
+            else d[x] ++;
+        }
+        else {
+            while (d[x] == 0)x ++;
+            if (x >= d.length) m = 0;
+            else {
+                d[x] ++;
+
+                if (d[x] == 8) d[x] = 0;
+            }
+        }
+
+        d.forEach(function (n) {
+            s += f[n];
+        });
+
+        location.hash = s;
+
+        setTimeout(loop2, 50);
+    }
+
+
 
 // named while
 
@@ -193,7 +236,7 @@ var killId = setTimeout(function() {
 
 
 /* auto slideshow
-http://mediatemple.net/blog/tips/carousels-dont-have-to-be-complicated/ 
+http://mediatemple.net/blog/tips/carousels-dont-have-to-be-complicated/
 */
 $('.aFadeinSlideshow img:gt(0)').hide();
 setInterval(
@@ -246,7 +289,7 @@ const array2 = restElement;
 
 
 const array = [1, 2, 3];
-const array2 = array.concat() 
+const array2 = array.concat()
 //array2 [1, 2, 3]
 
 Array.from(arrayLike[, mapFn[, thisArg]])
