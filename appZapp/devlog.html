@@ -77,6 +77,34 @@
         </header>
     </section>
 
+
+    <section class="zetka">
+        <header class="chapter-title">
+            <h2>Learn js patterns</h2>
+            <div>2019.2.12</div>
+        </header>
+        <h3>Factory with a private constructor</h3>
+        <code class="codeblock">/* js */
+            let Todo = (function createTodoFactory(){
+             function Todo(spec){
+               Object.assign(this, spec);
+             }
+
+             return function(spec){
+               let todo = new Todo(spec);
+               return Object.freeze(todo);
+             }
+            })();
+
+            let todo = Todo({title : "A description"});
+            todo.title = "Another description";
+            // Cannot assign to read only property 'title' of object
+
+            todo.toString = function() {};
+            //Cannot assign to read only property 'toString' of object
+        </code>
+    </section>
+
     <section class="zetka">
         <header class="chapter-title">
             <h2>CSS Multi-column Layout</h2>
@@ -97,14 +125,42 @@
             }
         </code>
         <div class="zetka-merge zetka-as-overmain">
+            <h3>Long text sample</h3>
             <div class="test-for-multicolumn">
                 <p class="auto"></p>
                 <p class="auto"></p>
                 <p class="auto"></p>
                 <p class="auto"></p>
-                <p class="auto"></p>
-                <p class="auto"></p>
             </div>
+        </div>
+        <div class="zetka-merge zetka-as-overmain">
+            <h3>Long list sample, column-rule: 0;</h3>
+            <ul class="test-for-multicolumn" style="column-rule: 0;">
+                <li>Abraham Okorodudu</li>
+                <li>Al Faber</li>
+                <li>Alain Laroche</li>
+                <li>Albert Johnson</li>
+                <li>Albert Mantingh</li>
+                <li>Albert van der Ark</li>
+                <li>Aldert van Steinvoorn</li>
+                <li>Alex Wesby</li>
+                <li>Alton Mason</li>
+                <li>Andre Venema</li>
+                <li>Andrew Smith</li>
+                <li>Anjo Mekel</li>
+                <li>Anne Renkema</li>
+                <li>Anthony Brooks</li>
+                <li>Arend Jan Julius</li>
+                <li>Armand Chin Ten Fung</li>
+                <li>Arnell Jones</li>
+                <li>Arnold Berman</li>
+                <li>Aron Molnar</li>
+                <li>Aron Royé</li>
+                <li>Arthur Caldwell</li>
+                <li>Arthur Green</li>
+                <li>Arvin Slagter</li>
+                <li>Avis Wyatt</li>
+            </ul>
         </div>
     </section>
 
