@@ -153,4 +153,167 @@ var app = new AppKing('app');
     }
 */
 
+
+//*  -------------------------------------------- PENDING
+
+
+function AppKing2(dna) {
+
+    // ---------------------------------------------- Profile
+
+    let king = this
+
+    king.name           = 'appKing'
+    king.description    = 'interface controlled by content'
+    king.actions        = ['report','mutate']
+    king.has            = {}
+
+
+    function blastula(dna) {
+        return typeof(dna)==='object' ? dna :
+               typeof(dna)==='string' ? {name:dna}
+                                      : {dna:dna}
+    }
+
+    // inject DNA
+    Object.assign(king, profile, blastula(dna))
+
+    // ---------------------------------------------- Shortcut delegation
+
+    function overlordDelegator (name) {
+        return function appKingDelegation (rna) {
+            return king.do(name, rna)
+        }
+    }
+    king.actions.map((name)=>king[name]=overlordDelegator(name))
+
+    // ---------------------------------------------- Lords
+
+
+    // keep command in memory, execute later
+    function lordKeepInMemory (that, data) {
+        this.memory = [].concat(
+            this.memory || [],
+            [{ do:that, with:data }]
+        )
+    }
+
+    // read and execute memory
+    function lordMemoryFlashback () {
+        this.memory = this.memory || []
+        this.memory.forEach((memory)=>lordDoit(memory.do,memory.with), this)
+        this.memory = []
+    }
+
+    // take the queen function as new command
+    function lordTakeTheQueen (queen, f) {
+        this.has[queen] = f
+    }
+
+    // find & run command
+    function lordDoit (queen, todo) {
+        if ( !queen || typeof(this.has[queen]) === 'undefined' ) return this
+        if ( typeof(this.has[queen])==='function' ) this.has[queen](todo)
+        return this
+    }
+
+    // ---------------------------------------------- Queens
+
+    function QueenReporter (report = false) {
+
+        function ribosome (mRNA) { return {
+            name: 'protein-reporter',
+            msg:  typeof(mRNA)     === 'string' ? mRNA :
+                  typeof(mRNA.msg) === 'string' ? mRNA.msg :
+                  '',
+            data: typeof(mRNA.data) === 'array' ? mRNA.data : []
+        }}
+
+        let king = Object.assign({},this)
+        let protein = ribosome(report)
+
+        // queen action
+
+        if ( mRNA === false )      console.table(king, ['Value', 'name', 'length'])
+        if ( protein.msg )         console.log( protein.msg )
+        if ( protein.data.length ) protein.data.map((o)=>console.log(o))
+
+        return protein
+    }
+
+    // ---------------------------------------------- Welcome
+
+    // initialization of appKing
+    function lordWelcomeKing (options) {
+
+
+    }
+
+}
+
+
+function AppKing3(DNA) {
+
+    let king = this
+
+    king.name           = 'appKing'
+
+    function blastula(dna) {
+        return typeof(dna)==='object' ? dna :
+               typeof(dna)==='string' ? {name:dna}
+                                      : {dna:dna}
+    }
+
+    // ---------------------------------------------- Lords
+
+    king.team = {
+
+        // shortcut delegation:
+        // app.command(x) → app.do(command,x)
+        Delegation: function overlordDelegator (qName) {
+            return  function appKingDelegation (mRNA) {
+                return king.do(qName, mRNA)
+            }
+        },
+
+        // keep command in memory, execute later
+        MemoryKeeper: function lordKeepInMemory (that, thing) {
+            let memory = new function MemoryActionFor (that, thing) {
+                //{ that, thing } = { that || false, thing || false }
+                Object.assign( this, {that,thing} )
+                this.remember = function MemoryRestore () {}
+            }
+            /*let doRemember = function actionToExecuteLater (that, memory) {
+                
+            }*/
+            king.memory = [].concat(
+                king.memory || [],
+                [{ qName, mRNA }]
+            )
+        },
+
+        // read and execute memory
+        MemoryFlashbak: function lordMemoryFlashback () {
+            king.memory = king.memory || []
+            king.memory.forEach((mem)=>king.do(mem.queen, mem.todo), this)
+            king.memory = []
+        },
+
+        // take the queen function as new command
+        QueenTaker: function lordTakeTheQueen (queen, f) {
+            king.has[queen] = f
+        },
+
+        // find & run command
+        DoIt: function lordDoit (qName, mRNA) {
+            if ( !queen || typeof(king.has[queen]) === 'undefined' ) return king
+            if ( typeof(king.has[queen])==='function' ) king.has[queen](todo)
+            return king
+        }
+
+    }
+
+}
+
+
 /* EOF app.js */
