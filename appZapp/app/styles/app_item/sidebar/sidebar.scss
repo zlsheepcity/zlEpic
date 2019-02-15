@@ -56,6 +56,18 @@ $screenNotFullscreenSidebar: 'min-width: #{ $a + $b }';
         transition-timing-function: ease-out;
         transform: translateX(-100%);
     }
+
+    /* mode: other side */
+    &.is-from-other-side {
+        left:  auto;
+        right: 100%;
+        &.is-active,
+        .has-active-sidebar & {
+            transition-timing-function: ease-out;
+            transform: translateX(100%);
+        }
+    }
+
 }
 
 /* Mod: use shadow overlay */

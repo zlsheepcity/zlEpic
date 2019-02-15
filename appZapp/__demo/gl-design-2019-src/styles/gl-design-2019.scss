@@ -62,6 +62,7 @@ $color--content-accent: hsla(188, 58%, 50%, 1);
 // ------------------------------------ URLs
 
 $url_logo_img: '../images/logo/logo-full-2019.png';
+$url_whitelogo_img: '../images/logo/logo-full-white-text-2019.svg';
 $url_welcome_background: '../images/backgrounds/welcome-background.jpg';
 $src-gl-chapter-background--tropical: 'https://www.gaminglicensing.com/images/contacts-bg.jpg';
 $src-gl-chapter-background--curacao: 'https://www.gaminglicensing.com/images/curacao-bg.png';
@@ -227,9 +228,12 @@ body {
     }
 }
 .design-range-of-services-list {
-    /* 20/24 */
-    font-size:   1.25em;
-    line-height: 1.5;
+
+    @media ($screenNotMobile) {
+        /* 20/24 */
+        font-size:   1.25em;
+        line-height: 1.5;
+    }
     ul {
         list-style: none;
         li { position: relative; }
@@ -238,6 +242,16 @@ body {
             position: absolute;
             transform: translateX(-150%);
             color: rgba(0,0,0,0.32);
+        }
+    }
+    .is-multicolumned-list {
+        display: block;
+        column-width: 16em;
+        column-gap: 2em;
+        padding: 0 2em;
+        li {
+            padding-bottom: 0.5em;
+            padding-top:    0.5em;
         }
     }
 }
@@ -263,10 +277,7 @@ body {
 
 
     .header-logo {
-        display: block;
-        width: 100%;
-        padding-bottom: calc( 33.33% + 1rem ); // 55.55%;
-        .text-fallback { display: none; }
+        
     }
     .header-menu {
         align-self: end;
@@ -283,9 +294,11 @@ body {
     /* ------------------------------ mobile layout */
 
     @media ($screenForTablet) {
+        padding-top: 0.8rem;
+
         .header-brand   { grid-column: b / f; }
         .header-menu    {
-            grid-column: main;
+            grid-column: full;
             justify-content: center;
         }
         .header-contact {
@@ -306,6 +319,7 @@ body {
         justify-content: flex-end;
         list-style: none;
         padding: 0 0.25rem;
+        margin:  0;
         background-color: white;
         .dropdown-toggle {
             transition: transform 200ms ease-out;
@@ -313,7 +327,11 @@ body {
         .dropdown-toggle:not(.collapsed) {
             background-color: $color--deep-sea;
             color: white;
-            transform: translateY(2.85rem) scale(1.1);
+            transform: translateY(3.5rem) scale(1.1);
+        }
+        .nav-link:not(.dropdown-toggle),
+        .nav-link.dropdown-toggle.collapsed {
+            text-decoration: underline;
         }
     }
     .subnav-links {
@@ -331,12 +349,13 @@ body {
         }
         ul {
             padding-bottom: 1rem;
+            font-size: 0.9em;
             line-height: 1.25;
         }
         li {
             color: rgba(0,0,0,.25);
-            padding-top: 0.25em;
-            padding-bottom: 0.25em;
+            padding-top: 0.5em;
+            padding-bottom: 0.5em;
         }
 
 
@@ -358,8 +377,19 @@ body {
             white-space: normal;
             .text { white-space: nowrap; }
             .text { display: none; }
-            .icon { margin-right: 0; }
+            .icon { margin-right: 0; line-height: 1 }
+
+            border-radius: 50%;
+            border: 2px solid white;
+            margin: 0.5rem;
+            width: 3em;
+            height: 3em;
+            display: flex;
+            align-content: center;
+            align-items: center;
+            justify-content: center;
             text-align: center;
+            padding: 0;
         }
     }
 
@@ -368,11 +398,33 @@ body {
     background-color: white;
     color: black;
 
+    .header-brand {
+        @media ($screenForMobile) {
+            display: block;
+        }
+    }
     .header-logo {
-        background-size:     contain;
-        background-repeat:   no-repeat;
-        background-position: top center;
-        background-image:    url($url_logo_img);
+
+        @media ($screenNotTablet) {
+            max-width: 20vh;
+        }
+        @media ($screenForMobile) {
+            max-width: 8em;
+            margin-left:  auto;
+            margin-right: auto;
+        }
+
+        .design-logo-image {
+            display: block;
+            width: 100%;
+            padding-bottom: calc( 33.33% + 1rem ); // 55.55%;
+            .text-fallback { display: none; }
+
+            background-size:     contain;
+            background-repeat:   no-repeat;
+            background-position: top center;
+            background-image:    url($url_logo_img);
+        }
     }
     .header-menu {
         padding-bottom: 0.5rem;
@@ -381,6 +433,21 @@ body {
         @extend %colorModel--deep-sea;
     }
 
+}
+.header-float-menu-button {
+    @media ($screenNotTablet) {
+        display: none;
+    }
+    @media ($screenForTablet) {
+        display: block;
+        position: fixed;
+        z-index: 3;
+        top: 0;
+        left: 0;
+    }
+    .btn {
+        background-color: $color--brand-accent;
+    }
 }
 .glWelcomeScreen {
 
@@ -446,8 +513,8 @@ body {
 
     /* has mobile layout */
     @media ($screenForTablet) {
-        padding-left:  1em;
-        padding-right: 1em;
+        padding-left:  2em;
+        padding-right: 2em;
         .title {
             text-align: left;
             /* 24/32 */
@@ -492,7 +559,7 @@ body {
 
     @media ($screenForTablet) {
         max-width: 100%;
-        padding: 0 1em;
+        padding: 0 2em;
         padding-bottom: $margin-def;
     }
 
@@ -519,12 +586,29 @@ body {
     .desgin-chapter-header {
         @extend %colorModel--contrast-sea;
     }
+    .content-ProcedureDescription-summary {
+        @media ($screenForMobile) {
+            /* base text */
+            font-size: 1em;
+            line-height: 1.75;
+        }
+    }
 
     /*
     background-image: url($src-gl-chapter-background--tropical);
     background-size: cover;
     background-attachment: fixed;
     */
+}
+.chapter--FullRangeOfServices {
+    @media ($screenForMobile) {
+        padding-top: 0;
+        .big-title {
+            text-align: center;
+            padding-top:    1em;
+            padding-bottom: 1em;
+        }
+    }
 }
 .chapter--OfferDescription {
 
@@ -657,6 +741,9 @@ body {
 .chapter--CuracaoOrMalta {
     padding-top: 4em;
     padding-bottom: $m-def;
+    @media ($screenForMobile) {
+        padding-top: $m-def;
+    }
 
     @extend %colorModel--light-sea;
 
@@ -712,7 +799,11 @@ body {
         color: $color--brand-accent;
     }
     @media ($screenNotClassicZetka) {
-        .big-title { text-align: center; }
+        .big-title {
+            text-align: center;
+            padding-bottom: 1em;
+        }
+        padding-bottom: 0;
     }
 }
 .chapter--eGamingsGroup {
@@ -725,27 +816,48 @@ body {
     .design-promo-message {
         background-color: $color--brand-accent;
         color: white;
-        padding-top: $m-def;
-        padding-bottom: $m-def;
-        margin-top: $m-def;
-        margin-bottom: $m-def;
+
+        padding-top:    1*$m-def;
+        padding-bottom: 1*$m-def;
+        margin-top:     1*$m-def;
+        margin-bottom:  1*$m-def;
+
+        @media ($screenNotMobile) {
+            padding-top:    2*$m-def;
+            padding-bottom: 2*$m-def;
+        }
+
         .big-title {
             grid-column: overmenu-start / overmain-end;
         }
     }
     @media ($screenNotClassicZetka) {
         .brand-logo {
+            display: block;
             grid-column: b / f;
             padding-bottom: 2rem;
         }
     }
 }
-.chapter--contact-footer {
-    padding-top:    2*$m-def;
-    padding-bottom: 2*$m-def;
-    &.desgin-chapter-header {
-        @extend %colorModel--deep-green;
+.chapter--sitemap-footer {
+
+    @extend %colorModel--contrast-sea;
+
+    ul {
+        line-height: 1.25;
     }
+    li {
+        padding-bottom: 1em;
+    }
+
+}
+.chapter--contact-footer {
+
+    @extend %colorModel--deep-green;
+
+    padding-top:    0;
+    padding-bottom: 2*$m-def;
+
     .design-rowicon>* {
         transform: scale(1)
     }
@@ -757,8 +869,15 @@ body {
     }
     @media ($screenForMobile) {
         .contacts {
-            margin-top: $margin-def;
+            margin-top: 0;
             grid-column: overmain;
+
+            font-size: 1em;
+            line-height: 1.75;
+            .min-title {
+                font-size:   inherit;
+                line-height: inherit;
+            }
         }
         .adress {
             grid-column: main;
@@ -770,7 +889,6 @@ body {
         }
     }
 }
-
 .site-footer {
     @media ($screenForMobile) {
         .big-title {
@@ -832,18 +950,29 @@ body {
         padding-left:  1.25em;
         padding-right: 1.25em;
     }
-    .sidebar-closer {
-        text-align: center;
-        font-size: 3em;
-        line-height: 1;
-        
-        background-color: hsl(200, 94%, 32%);
-        color: white;
-        cursor: pointer;
+}
+.design-menu-sidebar {
+    @extend %colorModel--office-doc;
+}
+.sidebar-closer {
+    text-align: right;
+    padding-right: 1rem;
+    font-size: 3em;
+    line-height: 1;
 
-        position: sticky;
-        top: 0;
-    }
+    background-color: hsl(200, 94%, 32%);
+    color: white;
+    cursor: pointer;
+
+    position: sticky;
+    top: 0;
+}
+.sidebar-header {
+    grid-column: full;
+    background-image: url($url_whitelogo_img);
+    background-size: auto 80%;
+    background-repeat: no-repeat;
+    background-position: center center;
 }
 .design-contact-form {
 
@@ -867,3 +996,27 @@ body {
         .btn { font-size: 1.25em; }
     }
 }
+.chapter-title {
+
+    @extend .zetka-merge-menu-screen;
+
+    @media ($screenNotMobile) {
+        margin-top: 1.5*$m-def;
+    }
+
+    background-color: $color--shy;
+    padding-top:    1em;
+    padding-bottom: 1em;
+    margin-bottom:  1*$m-def;
+
+    @media ($screenForMobile) {
+        .title {
+            /* 20/24 */
+            font-size:   1.25em;
+            line-height: 1.2;
+        }
+    }
+}
+
+
+

@@ -35,9 +35,9 @@
     <script defer src="https://use.fontawesome.com/releases/v5.6.3/js/all.js" integrity="sha384-EIHISlAOj4zgYieurP0SdoiBYfGJKkgWedPHH4jCzpCXLmzVsw1ouK59MuUtP4a1" crossorigin="anonymous"></script>
 
     <!-- Scroll Events -->
-    <script src="vendor/waypoints/jquery.waypoints.js"></script>
-    <script src="vendor/waypoints/shortcuts/sticky.min.js"></script>
-    <script src="vendor/waypoints/shortcuts/inview.min.js"></script>
+    <script src="src/vendor/waypoints/jquery.waypoints.js"></script>
+    <script src="src/vendor/waypoints/shortcuts/sticky.min.js"></script>
+    <script src="src/vendor/waypoints/shortcuts/inview.min.js"></script>
 
     <!-- ========================================= APP MAIN -->
 
@@ -46,7 +46,7 @@
 
     <!-- ========================================= APP CUSTOM -->
 
-    <script src="scripts/interface.js"></script>
+    <script src="src/scripts/interface.js"></script>
 
 
     <!-- ========================================== ʕ⊙ᴥ⊙ʔ = -->
@@ -68,7 +68,7 @@
                 </div>
                 <div class="header-menu">
                     <div class="header-float-menu-button">
-                        <a href="#" class="btn btn-info contact-button js-menu-bar-trigger"><span class="icon"><span class="fas fa-bars"></span></span><span class="text">Menu</span></a>
+                        <a href="#" class="btn btn-info contact-button js-contact-bar-trigger"><span class="icon"><span class="fas fa-bars"></span></span><span class="text">Menu</span></a>
                     </div>
                     <ul class="nav-links">
                         <li><a class="nav-link" href="/index.html">Home</a></li>
@@ -183,6 +183,54 @@
         </section>
 
     </header>
+
+    <nav id="InterfaceContactBar" class="sidebar is-not-active">
+        <div class="zetka zetka-as-overmain design-contact-sidebar">
+            <div class="sidebar-header sidebar-closer js-contact-bar-trigger">×</div>
+            <div class="zetka-overmain is-box contacts">
+                <div class="title">Contact Us</div>
+                <div><a class="link" href="skype:gaminglicensing.com?call"><span hidden>skype:</span><span class="icon fab fa-skype"></span><span>gaminglicensing.com</span></a></div>
+                <div><a class="link" href="mailto:sales@gaminglicensing.com"><span hidden>email:</span><span class="icon fas fa-envelope"></span><span>sales@gaminglicensing.com</span></a></div>
+            </div>
+            <div class="zetka zetka-as-main box design-contact-form">
+
+                <!-- box content -->
+                <div class="intro-text glWelcomeForm-header">
+                    
+                    <p>To apply for a <em>gaming licence</em>, open a <em>bank account</em> or ask a <em>question</em>, please, fill in the form:</p>
+                </div>
+                <form class="block glWelcomeForm-body extra-compact-form" action="?it-was-form-submit">
+                    <section class="block">
+                        <div class="form-item">
+                             <input tabindex="2" type="text" name="yourname" id="yourname" value="" placeholder="(required)" required />
+                             <label for="yourname">Name</label>
+                        </div>
+                        <div class="form-item">
+                             <input tabindex="2" type="email" name="youremail" id="youremail" value="" placeholder="(required)" required />
+                             <label for="youremail">Email</label>
+                        </div>
+                        <div class="form-item">
+                             <input tabindex="2" type="tel" name="yourphone" id="yourphone" value="" />
+                             <label for="yourphone">Phone</label>
+                        </div>
+                        <div class="form-item">
+                             <input tabindex="2" type="text" name="yourskype" id="yourskype" value="" />
+                             <label for="yourskype">Skype</label>
+                        </div>
+                        <div class="form-textarea">
+                             <textarea tabindex="2" name="yourmessage" id="yourmessage" rows="4" placeholder="(required)" required></textarea>
+                             <label for="yourmessage">Message or Question</label>
+                        </div>
+                    </section>
+                    <section class="form-submit">
+                         <button tabindex="2" type="submit" class="btn btn-info">Send</button>
+                    </section>
+                </form>
+                <!-- / -->
+
+            </div>
+        </div>
+    </nav>
 
     <div id="learn-more"></div>
 
@@ -621,74 +669,6 @@
         </div>
     </div>
 
-    <nav id="InterfaceMenuBar" class="sidebar design-menu-sidebar is-from-other-side is-not-active">
-        <div class="zetka zetka-as-overmain">
-            <div class="sidebar-header sidebar-closer js-menu-bar-trigger">×</div>
-            <div class="title">Menu</div>
-            <ul class="zetka-as-overmain">
-                <li><a class="link" href="/what-is-a-gambling-licence/"><span>What is a Gaming Licence?</span></a></li>
-                <li><a class="link" href="/gaming-licence-requirements/"><span>Gaming Licence Requirements</span></a></li>
-                <li><a class="link" href="/gambling-licence-cost/"><span>Gaming Licence Cost</span></a></li>
-                <li><a class="link" href="/quality-software-proper-payments-system/"><span>Quality Software &amp; Proper Payment System</span></a></li>
-                <li><a class="link" href="/poker-licence/"><span>Poker Licence</span></a></li>
-                <li><a class="link" href="/how-to-get-a-lottery-licence/"><span>Lottery Licence</span></a></li>
-                <li><a class="link" href="/bingo-licence/"><span>Bingo Licence</span></a></li>
-                <li><a class="link" href="/open-a-bank-account/"><span>Open a Bank Account</span></a></li>
-                <li><a class="link" href="/cryptocurrency-solution/"><span>Cryptocurrency solution</span></a></li>
-                <li><a class="link" href="/hosting-service/"><span>Hosting service</span></a></li>
-                <li><a class="link" href="/jurisdictions/"><span>Licensing in different countries</span></a></li>
-            </ul>
-        </div>
-    </nav>
-
-    <nav id="InterfaceContactBar" class="sidebar is-not-active">
-        <div class="zetka zetka-as-overmain design-contact-sidebar">
-            <div class="sidebar-header sidebar-closer js-contact-bar-trigger">×</div>
-            <div class="zetka-overmain is-box contacts">
-                <div class="title">Contact Us</div>
-                <div><a class="link" href="skype:gaminglicensing.com?call"><span hidden>skype:</span><span class="icon fab fa-skype"></span><span>gaminglicensing.com</span></a></div>
-                <div><a class="link" href="mailto:sales@gaminglicensing.com"><span hidden>email:</span><span class="icon fas fa-envelope"></span><span>sales@gaminglicensing.com</span></a></div>
-            </div>
-            <div class="zetka zetka-as-main box design-contact-form">
-
-                <!-- box content -->
-                <div class="intro-text glWelcomeForm-header">
-                    
-                    <p>To apply for a <em>gaming licence</em>, open a <em>bank account</em> or ask a <em>question</em>, please, fill in the form:</p>
-                </div>
-                <form class="block glWelcomeForm-body extra-compact-form" action="?it-was-form-submit">
-                    <section class="block">
-                        <div class="form-item">
-                             <input tabindex="2" type="text" name="yourname" id="yourname" value="" placeholder="(required)" required />
-                             <label for="yourname">Name</label>
-                        </div>
-                        <div class="form-item">
-                             <input tabindex="2" type="email" name="youremail" id="youremail" value="" placeholder="(required)" required />
-                             <label for="youremail">Email</label>
-                        </div>
-                        <div class="form-item">
-                             <input tabindex="2" type="tel" name="yourphone" id="yourphone" value="" />
-                             <label for="yourphone">Phone</label>
-                        </div>
-                        <div class="form-item">
-                             <input tabindex="2" type="text" name="yourskype" id="yourskype" value="" />
-                             <label for="yourskype">Skype</label>
-                        </div>
-                        <div class="form-textarea">
-                             <textarea tabindex="2" name="yourmessage" id="yourmessage" rows="4" placeholder="(required)" required></textarea>
-                             <label for="yourmessage">Message or Question</label>
-                        </div>
-                    </section>
-                    <section class="form-submit">
-                         <button tabindex="2" type="submit" class="btn btn-info">Send</button>
-                    </section>
-                </form>
-                <!-- / -->
-
-            </div>
-        </div>
-    </nav>
-
 
 <footer class="body-wrap-footer">
     <div class="zetka is-v-spaced design-footer-copyright">
@@ -700,7 +680,7 @@
 </footer>
 
 <!-- empty div for shadow overlay -->
-<div class="screen-shadow-overlay js-screen-shadow-overlay"></div>
+<div class="screen-shadow-overlay js-screen-shadow-overlay js-contact-bar-trigger"></div>
 <!-- / empty div for shadow overlay -->
 
 </body>

@@ -1,0 +1,1 @@
+{"version":3,"sources":["main.src.js"],"names":["WelcomeMessage","console","log","$","setTimeout","InterfaceEventsInitialization"],"mappings":"AAAA,GAAIA,gBAAiB,WACZC,SAAiC,kBAAfA,SAAW,KAC9BA,QAAQC,IAAI,yBAGpBF,kBAEAG,EAAE,WAE8C,kBAAlC,gCACNC,WAAWC,8BAA8B","file":"main.js"}
