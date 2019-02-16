@@ -1,52 +1,31 @@
-/* DEPRECATED 2019.2.16 */
-
-// --------------------------------------------------------------
+/* --------------------------------------------------------------
 // ZETKA grid settings and formula
 // 2019.1.11
-//
-// Naming:
+// → 2019.2.16 36week37
+// --------------------------------------------------------------
+
+# file stricture
+
+--setup
+--constructor
+--layout
+
+// --------------------------------------------------------------
+// ZETKA CONSTRUCTOR
+// -------------------------------------------------------------- */
+
+// Names of columns:
 // screen → | [menu] [main] [side] | ← screen
 //
-// Compact mode:
+// Compact mode transformation:
 // screen → | [menu] | ← screen
 // screen → | [main] | ← screen
 // screen → | [side] | ← screen
 //
-// overmain, overmenu, overside
-// — same columns with horizontal padding-space
+// [overmain], [overmenu], [overside]
+// — same columns with some space both sides
 //
-// --------------------------------------------------------------
 
-// ------------------------------------------ settings // 2019.1.11
-
-$zetka--screensize-for-compact:       600px; // one column
-$zetka--screensize-for-overcompact:   900px; // one column with screen space
-
-$zetka--column-gap:     1.0rem;
-$zetka--row-gap:        1.0rem;
-
-$zetka--screenspacer:   minmax(0, 1fr);
-$zetka--overmainspacer: 1rem; // 0;
-
-$zetka--width-menu:     16vw;
-$zetka--width-side:     16vw;
-$zetka--width-main-limit-max: 700px;
-
-
-// ------------------------------------------ auto settings
-
-$screenForCompactZetka: 'max-width: #{$zetka--screensize-for-compact}';
-$screenNotCompactZetka: 'min-width: #{$zetka--screensize-for-compact + 1}';
-$screenForReducedZetka: 'max-width: #{$zetka--screensize-for-overcompact}';
-$screenNotReducedZetka: 'min-width: #{$zetka--screensize-for-overcompact + 1}';
-$screenForClassicZetka: 'min-width: #{$zetka--screensize-for-overcompact + 1}';
-$screenNotClassicZetka: 'max-width: #{$zetka--screensize-for-overcompact}';
-
-$w: $zetka--width-main-limit-max;
-$g: $zetka--column-gap;
-$zetka--width-main-subcolumn: minmax(0, calc( (#{$w} - (5*#{$g})) / 6 ) ); // 6 columns
-
-// ------------------------------------------ constructor
 
 $BEGIN--zetka-constructor:        unquote(" [ ") full-start;
 $END--zetka-constructor:          full-end unquote(" ] ");
@@ -145,7 +124,7 @@ $zetka-half-screen-two                    in][][][side][]-
 */
 
 
-// ------------------------------------------ full layout
+// ------------------------------------------ full
 $zetka-full:
     $BEGIN--zetka-constructor
         $SCREEN-SPACE--zetka-constructor
@@ -154,7 +133,7 @@ $zetka-full:
             $OVERSIDE--zetka-constructor
         $SCREEN-SPACE--zetka-constructor
     $END--zetka-constructor;
-// ------------------------------------------ single main-column layout
+// ------------------------------------------ main
 $zetka-main:
     $BEGIN--zetka-constructor
         overmain-start
@@ -169,7 +148,7 @@ $zetka-main:
         overside-end
         overmenu-end
     $END--zetka-constructor;
-// ------------------------------------------ 
+// ------------------------------------------
 $zetka-main-limitless:
     $BEGIN--zetka-constructor
         overmain-start
@@ -184,7 +163,7 @@ $zetka-main-limitless:
         overside-end
         overmenu-end
     $END--zetka-constructor;
-// ------------------------------------------ overmain layout
+// ------------------------------------------ overmain
 $zetka-overmain:
     $BEGIN--zetka-constructor
         overmain-start
@@ -201,7 +180,7 @@ $zetka-overmain:
         overmenu-end
         overside-end
     $END--zetka-constructor;
-// ------------------------------------------ overmain without width limit
+// ------------------------------------------
 $zetka-overmain-limitless:
     $BEGIN--zetka-constructor
         overmain-start
@@ -218,7 +197,7 @@ $zetka-overmain-limitless:
         overmenu-end
         overside-end
     $END--zetka-constructor;
-// ------------------------------------------ overmain with screen space
+// ------------------------------------------
 $zetka-overmain-spaced:
     $BEGIN--zetka-constructor
         $SCREEN-SPACE--zetka-constructor
@@ -318,14 +297,14 @@ $zetka-menu-spaced:
             overmenu-end
             overside-end
     $END--zetka-constructor;
-// ------------------------------------------ merge all
+// ------------------------------------------ merge
 $zetka-merge:
     $BEGIN--zetka-constructor
         $OVERMENU--zetka-constructor
         $OVERMAIN--zetka-constructor
         $OVERSIDE--zetka-constructor
     $END--zetka-constructor;
-// ------------------------------------------ merge with menu
+// ------------------------------------------
 $zetka-merge-menu:
     $BEGIN--zetka-constructor
         $OVERMENU--zetka-constructor
@@ -597,3 +576,7 @@ $zetka-merge-without-side:
     $END--zetka-constructor;
 
 // --------------------------------------------------------------
+
+
+
+/* eof zetka constructor */

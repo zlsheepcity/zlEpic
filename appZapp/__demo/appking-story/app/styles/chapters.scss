@@ -1,0 +1,93 @@
+/* story chapters */
+/* 2019.2.16 36week37 */
+
+$one-space: 4*$dim;
+
+.scene {
+    @extend .zetka-layer;
+}
+.is-invisible {
+    opacity: 0;
+}
+.zetka blockquote {
+    @extend .zetka-overmain;
+}
+
+        .mother-scene {
+            padding-top:    4em;
+            padding-bottom: 4em;
+        }
+        .el-dialog {
+            padding:       1em;
+            border-radius: 0.5em;
+            background-color: hsla(80,54%,52%,1);
+            max-width: 64%;
+            margin-right: auto;
+        }
+        .el-dialog--universe {
+            justify-self: end;
+            margin-right: 0;
+            margin-left: auto;
+            background-color: hsla(260,54%,72%,1);
+        }
+        .el-dialog--author {
+            background-color: hsla(200,64%,62%,1);
+        }
+
+// -----------------------------------------------
+
+.scene-action--welcome-legend {
+    @extend .zetka-layer;
+
+    padding-top:    30vh;
+    margin-bottom:  30vh;
+    position: relative;
+
+    h2 { align-self: end; }
+}
+.character-welcome-appking {
+    @extend .zetka-menu;
+
+    @media ($screenForClassicZetka) {
+        position: sticky;
+        top: 0;
+    }
+
+    img {
+        width:  8em;
+        height: auto;
+    }
+}
+.scene-action--legend-about-appking {
+    @extend .zetka-merge-side-screen;
+
+    padding-top:    $one-space;
+    padding-bottom: $one-space;
+    margin-top:     10vh;
+
+    background-color: hsla(222,44%,40%,1);
+    color: white;
+
+    blockquote {
+        min-height:    60vh;
+        align-content: center;
+
+        @extend %text-is-larger;
+        *::first-letter {
+            font-size:   2em;
+            line-height: 1;
+            letter-spacing: 0.025em;
+        }
+    }
+
+    .illustration {
+        @extend .zetka-side-screen;
+    }
+}
+.scene-action--what-content-is {
+    margin-top: 20vh;
+}
+
+// -----------------------------------------------
+
+

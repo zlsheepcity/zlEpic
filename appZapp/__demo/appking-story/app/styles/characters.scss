@@ -1,0 +1,13 @@
+#ScreenAppking {
+
+    &:not(.is-active) { display: none; }
+
+    position: fixed;
+    bottom:   10vh;
+
+    img {
+        width:  8em;
+        height: auto;
+    }
+
+}

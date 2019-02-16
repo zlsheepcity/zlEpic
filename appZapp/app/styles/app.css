@@ -1,3 +1,4 @@
+@charset "UTF-8";
 /*
     zapp default sass ordnung
     2018.2.8
@@ -345,6 +346,37 @@ body {
     align-content: center; }
 
 /* eof fullscreen */
+/* --------------------------------------------------------------
+// ZETKA grid settings and formula
+// 2019.1.11
+// → 2019.2.16 36week37
+// --------------------------------------------------------------
+
+# file stricture
+
+--setup
+--constructor
+--layout
+
+// --------------------------------------------------------------
+// ZETKA SETUP
+// -------------------------------------------------------------- */
+/* eof zetka setup */
+/* --------------------------------------------------------------
+// ZETKA grid settings and formula
+// 2019.1.11
+// → 2019.2.16 36week37
+// --------------------------------------------------------------
+
+# file stricture
+
+--setup
+--constructor
+--layout
+
+// --------------------------------------------------------------
+// ZETKA CONSTRUCTOR
+// -------------------------------------------------------------- */
 /*
 
 $zetka-full               -[][menu][][][main][][][side][]-
@@ -373,6 +405,22 @@ $zetka-half-screen-one    -[][menu][][][ma
 $zetka-half-screen-two                    in][][][side][]-
 
 */
+/* eof zetka constructor */
+/* --------------------------------------------------------------
+// ZETKA grid settings and formula
+// 2019.1.11
+// → 2019.2.16 36week37
+// --------------------------------------------------------------
+
+# file stricture
+
+--setup
+--constructor
+--layout
+
+// --------------------------------------------------------------
+// ZETKA LAYOUT
+// -------------------------------------------------------------- */
 .zetka, .zetka-layer, .zetka-overmain, .zetka-block, .zetka-menu, .zetka-side, .zetka-merge, .zetka-merge-menu, .zetka-merge-side, .zetka-menu-screen, .zetka-side-screen, .zetka-merge-menu-screen, .zetka-merge-side-screen, .zetka-half-screen-one, .zetka-half-screen-two, .zetka-overhalf-one, .zetka-overhalf-two, .zetka-half-one, .zetka-half-two, .zetka-third-one, .zetka-third-two, .zetka-third-tri, .zetka-third-merge-one, .zetka-third-merge-tri {
   display: grid;
   align-items: start;
@@ -532,7 +580,7 @@ $zetka-half-screen-two                    in][][][side][]-
 
   .zetka-as-main {
     grid-template-columns:  [  full-start overmain-start overside-start overmenu-start menu-start side-start main-start a  ]  1fr  [b]  1fr  [c]  1fr  [d midmenu midpoint midside]  1fr  [e]  1fr  [f]  1fr  [  main-end g menu-end side-end overmain-end overside-end overmenu-end full-end  ] ; } }
-/* EOF zetka columns */
+/* eof zetka layout */
 /* ==============================================================
     column solution
     2018.12.8
@@ -545,10 +593,15 @@ $zetka-half-screen-two                    in][][][side][]-
   grid-auto-rows: 1fr;
   grid-gap: 2.4rem;
   /* has overflow fallback */
-  overflow: auto; }
+  overflow: auto;
+  /* has mobile layout */ }
   .group > *, .group .is-in-group {
     grid-column: auto;
     height: 100%; }
+  @media (max-width: 600px) {
+    .group {
+      grid-auto-flow: row;
+      grid-auto-rows: unset; } }
 
 /* eof sidebar */
 /* ==============================================================
@@ -705,13 +758,20 @@ $zetka-half-screen-two                    in][][][side][]-
   /* closed state */
   transform: translateX(0);
   transition: transform 200ms ease-in;
-  /* open state */ }
+  /* open state */
+  /* mode: other side */ }
   @media screen and (min-width: 44rem) {
     .sidebar {
       max-width: 38rem; } }
   .sidebar.is-active, .has-active-sidebar .sidebar {
     transition-timing-function: ease-out;
     transform: translateX(-100%); }
+  .sidebar.is-from-other-side {
+    left: auto;
+    right: 100%; }
+    .sidebar.is-from-other-side.is-active, .has-active-sidebar .sidebar.is-from-other-side {
+      transition-timing-function: ease-out;
+      transform: translateX(100%); }
 
 /* Mod: use shadow overlay */
 /* eof sidebar */

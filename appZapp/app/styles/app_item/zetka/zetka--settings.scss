@@ -1,0 +1,48 @@
+/* --------------------------------------------------------------
+// ZETKA grid settings and formula
+// 2019.1.11
+// → 2019.2.16 36week37
+// --------------------------------------------------------------
+
+# file stricture
+
+--setup
+--constructor
+--layout
+
+// --------------------------------------------------------------
+// ZETKA SETUP
+// -------------------------------------------------------------- */
+
+
+// ------------------------------------------ settings // 2019.1.11
+
+$zetka--screensize-for-compact:       600px; // one column
+$zetka--screensize-for-overcompact:   900px; // one column with screen space
+
+$zetka--column-gap:     1.0rem;
+$zetka--row-gap:        1.0rem;
+
+$zetka--screenspacer:   minmax(0, 1fr);
+$zetka--overmainspacer: 1rem; // 0;
+
+$zetka--width-menu:     16vw;
+$zetka--width-side:     16vw;
+$zetka--width-main-limit-max: 700px;
+
+// ------------------------------------------ auto settings
+
+$screenForCompactZetka: 'max-width: #{$zetka--screensize-for-compact}';
+$screenNotCompactZetka: 'min-width: #{$zetka--screensize-for-compact + 1}';
+$screenForReducedZetka: 'max-width: #{$zetka--screensize-for-overcompact}';
+$screenNotReducedZetka: 'min-width: #{$zetka--screensize-for-overcompact + 1}';
+$screenForClassicZetka: 'min-width: #{$zetka--screensize-for-overcompact + 1}';
+$screenNotClassicZetka: 'max-width: #{$zetka--screensize-for-overcompact}';
+
+$w: $zetka--width-main-limit-max;
+$g: $zetka--column-gap;
+$zetka--width-main-subcolumn: minmax(0, calc( (#{$w} - (5*#{$g})) / 6 ) ); // 6 columns
+
+
+
+/* eof zetka setup */

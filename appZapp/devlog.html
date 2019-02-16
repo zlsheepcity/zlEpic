@@ -80,6 +80,40 @@
 
     <section class="zetka">
         <header class="chapter-title">
+            <h2>Waypoints</h2>
+            <div>2019.2.16</div>
+        </header>
+        <script src="app/vendor/waypoints/noframework.waypoints.js"></script>
+        <script src="app/vendor/waypoints/shortcuts/inview.js"></script>
+        <div id="TestWaypoints">
+            <p>Has away trigger + 50px</p>
+        </div>
+        <style>
+            #TestWaypoints { background-color:wheat;padding:0.5em;text-align:center; }
+            #TestWaypoints.is-active { background-color: firebrick; color: white; }
+        </style>
+        <script>
+            function TestWaypoints() {
+                var elForWaypoint = document.getElementById('TestWaypoints')
+                var tested_waypoint_object = new Waypoint({
+                    element: elForWaypoint,
+                    handler: function(direction) {
+                        app.mutate({
+                            el:this.element,
+                            toggleClass:'is-active'
+                        })
+                    },
+                    offset: 50
+                })
+            }
+            (TestWaypoints)()
+        </script>
+    </section>
+
+
+
+    <section class="zetka">
+        <header class="chapter-title">
             <h2>js pattern</h2>
             <div>2019.2.12</div>
         </header>

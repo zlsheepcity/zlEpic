@@ -1,4 +1,18 @@
-/* DEPRECATED 2019.2.16 */
+/* --------------------------------------------------------------
+// ZETKA grid settings and formula
+// 2019.1.11
+// → 2019.2.16 36week37
+// --------------------------------------------------------------
+
+# file stricture
+
+--setup
+--constructor
+--layout
+
+// --------------------------------------------------------------
+// ZETKA LAYOUT
+// -------------------------------------------------------------- */
 
 // ------------------------------------------ settings
 
@@ -38,7 +52,12 @@ $screenForAlways:       'min-width:1px';
     margin-bottom: 0;
 
 }
-
+%zetka-grid-mother {
+    * { @extend %zetka-child-dna; }
+}
+%zetka-grid {
+    
+}
 
 // --------------------------------------------------------------
 // components
@@ -47,8 +66,8 @@ $screenForAlways:       'min-width:1px';
 .zetka {
     grid-column: full;
     @extend %zetka-dna;
+    @extend %zetka-grid-mother;
     grid-template-columns: $zetka-full;
-    * { @extend %zetka-child-dna; }
 }
 .zetka-layer {
     grid-column: full;
@@ -240,4 +259,5 @@ $screenForAlways:       'min-width:1px';
     .zetka-as-main     { grid-template-columns: $zetka-main-limitless; }
 }
 
-/* EOF zetka columns */
+
+/* eof zetka layout */

@@ -1,7 +1,7 @@
 @charset "UTF-8";
 /*
     zapp default sass ordnung
-    2018.2.8
+    2019.2.16
 */
 
 
@@ -26,8 +26,9 @@
 
 // ----- content formation
 
-@import "app_item/zetka/zetka-formula";
-@import "app_item/zetka/zetka-columns";
+@import "app_item/zetka/zetka--settings";
+@import "app_item/zetka/zetka--constructor";
+@import "app_item/zetka/zetka--layout";
 
 @import "app_item/group/group";
 

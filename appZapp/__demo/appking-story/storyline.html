@@ -15,34 +15,34 @@
     <!-- design font -->
     <link href="https://fonts.googleapis.com/css?family=Vollkorn:400,400i,700&subset=cyrillic" rel="stylesheet">
 
-    <link  href="../../app/styles/app.css" rel="stylesheet" type="text/css">
+    <link  href="app/styles/app.css" rel="stylesheet" type="text/css">
     <script src="../../app/script/app.js"></script>
 
 
     <!-- ========================================= APP CUSTOM -->
 
     <style>
-        .mother-scene {
-            padding-top:    4em;
-            padding-bottom: 4em;
-        }
-        .el-dialog {
-            padding:       1em;
-            border-radius: 0.5em;
-            background-color: hsla(80,54%,52%,1);
-            max-width: 64%;
-            margin-right: auto;
-        }
-        .el-dialog--universe {
-            justify-self: end;
-            margin-right: 0;
-            margin-left: auto;
-            background-color: hsla(260,54%,72%,1);
-        }
-        .el-dialog--author {
-            background-color: hsla(200,64%,62%,1);
-        }
+
     </style>
+
+    <script src="../../app/vendor/waypoints/noframework.waypoints.js"></script>
+    <script src="../../app/vendor/waypoints/shortcuts/inview.js"></script>
+
+    <script src="../../app/script/components/class-mutator.js"></script>
+
+
+    <script src="app/script/chapter-actions.js"></script>
+
+    <script>
+        window.onload = function WelcomeAppKing() {
+
+            app.Welcome();
+            app.mutate({find:'body',addClass:'app-ready'})
+
+            ActivateChapterActions();
+
+        }
+    </script>
 
 
     <!-- ========================================== ʕ⊙ᴥ⊙ʔ = -->
@@ -52,25 +52,69 @@
 
     <article class="zetka mother-scene">
 
+<section class="scene scene-welcome-appking">
+
+    <div class="scene-action--welcome-legend">
+
+        <div class="character-welcome-appking">
+            <figure><img src="art/characters/appking-welcome.svg" alt="App King"></figure>
+        </div>
+
+        <h2>Это король Апп.</h2>
+        <p>Он настоящий король, потому что ¹) умеет управлять и ²) у него есть корона.</p>
+        <p>Корона слегка повреждена, об этом рассказывает древняя легенда.</p>
+
+        <div class="scene-action--legend-about-appking">
+            <blockquote>
+                <p>Было дело, гулял молодой король по тропинкам вокруг действующего вулкана. Опасные были прогулки, но король продолжал гулять пока не закалилась смелость и термостойкость.</p>
+                <p>Встретил чёрного орла, во время одной из прогулок. Орёл был чёрный от мрачных мыслей и шёл прыгать в жерло вулкана. Потому что давеча поспорил с дятлом у кого клюв крепче. Дятел выиграл, а у орла теперь, со сломанным клювом, нет никакой надежды на счастливую жизнь.</p>
+                <p>Король выслушал беду и отломал кусок от своей золотой короны. Смастерил из куска новый орлиный клюв. Хороший получился клюв — ¹) красивый, ²) удобный, ³) прочный. Орёл обрадовался и жили они долго и счастливо. Такие дела.</p>
+            </blockquote>
+            <div class="illustration">
+                <figure>[LEGENDA]</figure>
+            </div>
+        </div>
+    </div>
+    <style>
+        .scene-action--welcome-legend {
+            margin-bottom: 40vh;
+        }
+    </style>
+
+    <p>Король Апп не любит исчезать с экрана во время прокрутки. Там за краем экрана темно и скучно. Поэтому король из всех возможных позиций предпочитает <abbr title="position: fixed">фиксированную</abbr>, что даёт ему право оставаться в углу экрана.</p>
+
+    <p>Отсюда очень удобно наблюдать как неведомая сила тянет содержание вверх вытаскивая снизу что-то новое.</p>
+
+    <p>Что это за неведомая сила и почему она тянет содержание вверх? Этого король Апп не знает и не занимает голову вопросами. Зато у себя на родине он известный ценитель <em>содержания</em>.</p>
+
+    <div class="scene-action--what-content-is">
+        <div class="el-dialog el-dialog--appking">
+            <p>Содержание? Конечно знаю, дома мы назваем его <abbr title="термин: content">контент</abbr>, там он растёт под светом идей и даже дети умеют собирать контент.<br><br> Содержание — это то, что повествуется, излагается, изображается как-либо…</p>
+        </div>
+    </div>
+
+    <p>Поблагодарим короля, за выдержку из энциклопедии.</p>
+
+    <div class="el-dialog el-dialog--appking">
+        <p>Кто здесь?</p>
+    </div>
+
+    <p>Пока неважно. Важно, что здесь делает король.</p>
+
+
+</section>
+
+<section class="scene scene-welcome-this-place">
+
+    <div class="scene-action--why-king-is-here">
+        <p>Что привлекло короля в эти земли<em>?</em></p>
+    </div>
+
+</section>
+
         <section class="zetka scene scene-welcome-appking">
 
-            <figure>[APPKING]</figure>
-            <code>[action-appking-goes-home]</code>
-            <p>Это король Апп.</p>
-            <p>Он настоящий король, потому что ¹) умеет управлять и ²) у него есть корона.</p>
-            <p>Корона немного повреждена, об этом рассказывает древняя легенда.</p>
 
-
-            <div class="zetka-merge-side is-box el-appking-legend">
-                <div class="zetka-block">
-                    <p>Было дело, гулял молодой король по тропинкам вокруг действующего вулкана. Опасные были прогулки, но король продолжал гулять пока не закалилась смелость и термостойкость.</p>
-                    <p>Встретил чёрного ворона, во время одной из прогулок. Ворон был чёрный от мрачных мыслей и шёл прыгать в жерло вулкана. Потому что давеча поспорил с дятлом у кого клюв крепче. Дятел выиграл, а у ворона теперь, со сломанным клювом, нет никакой надежды на счастливую жизнь.</p>
-                    <p>Король выслушал беду и отломал кусок от своей золотой короны. Смастерил из куска новый клюв для ворона. Хороший получился клюв — ¹) красивый, ²) удобный, ³) прочный. Ворон обрадовался и жили они долго и счастливо. Такие дела.</p>
-                </div>
-                <div class="zetka-side">
-                    <figure>[LEGENDA]</figure>
-                </div>
-            </div>
 
 
             <p>Что этот славный малый здесь делает?</p>
@@ -180,6 +224,15 @@
         </section>
 
     </article>
+
+
+
+<div class="screen-characters">
+    <div id="ScreenAppking" class="">
+        <figure><img src="art/characters/appking-welcome.svg" alt="App King"></figure>
+    </div>
+</div>
+
 
 </body>
 </html>

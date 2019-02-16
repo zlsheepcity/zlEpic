@@ -1,0 +1,69 @@
+@charset "UTF-8";
+/*
+    zapp default sass ordnung
+    2019.2.16
+
+    appking story project
+    2019.2.16
+*/
+
+// ---------------------------------------------------------------
+/* Vendors */
+// ---------------------------------------------------------------
+
+@import "../../../../app/vendor/animate-css/animate";
+
+// ---------------------------------------------------------------
+/* Zapp Sass Core - any project */
+// ---------------------------------------------------------------
+
+@import "../../../../app/styles/app_core/01-core-constructor";
+@import "../../../../app/styles/app_core/02-core-variables";
+@import "../../../../app/styles/app_core/03-core-html-markup";
+@import "../../../../app/styles/app_core/04-core-typography";
+
+
+// ---------------------------------------------------------------
+/* Zapp Sass Components - customizable list */
+// ---------------------------------------------------------------
+
+// ----- screen layouts
+
+@import "../../../../app/styles/app_item/layout-body-wrap/layout-body-wrap";
+@import "../../../../app/styles/app_item/layout-fullscreen/layout-fullscreen";
+
+// ----- content formation
+
+@import "appking-zetka--settings";
+@import "../../../../app/styles/app_item/zetka/zetka--constructor";
+@import "../../../../app/styles/app_item/zetka/zetka--layout";
+
+//@import "../../../../app/styles/app_item/group/group";
+
+//@import "../../../../app/styles/app_item/data-table/data-table";
+
+// ----- interface components
+
+//@import "../../../../app/styles/app_item/sidebar/sidebar";
+
+
+
+// ---------------------------------------------------------------
+/* APPKING STORY */
+// ---------------------------------------------------------------
+
+@import "chapters";
+@import "characters";
+
+
+// ---------------------------------------------------------------
+/* Zapp Sass Coat - any project */
+// ---------------------------------------------------------------
+
+@import "../../../../app/styles/app_core/91-coat-markup-helpers";
+
+
+// ---------------------------------------------------------------
+/* Customs */
+// ---------------------------------------------------------------
+
