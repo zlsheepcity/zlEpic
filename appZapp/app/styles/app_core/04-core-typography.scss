@@ -48,10 +48,10 @@ $font-list-sans:  $font-list-collection--native-sans-serif;
 //* ------------------------------------ font-depended variables
 
 
-$fontSize:     16px;
-$fontRegular:  400;
-$fontSemibold: 400;
-$fontBolder:   700;
+$fontSize:     $fontSize; //16px;
+$fontRegular:  $fontRegular; // 400;
+$fontSemibold: $fontSemibold; // 400;
+$fontBolder:   $fontBolder; // 700;
 
 
 //* ------------------------------------ body base

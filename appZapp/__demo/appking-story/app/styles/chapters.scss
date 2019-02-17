@@ -5,6 +5,7 @@ $one-space: 4*$dim;
 
 .scene {
     @extend .zetka-layer;
+    @include has-illustrated-background;
 }
 .is-invisible {
     opacity: 0;
@@ -13,10 +14,10 @@ $one-space: 4*$dim;
     @extend .zetka-overmain;
 }
 
-        .mother-scene {
-            padding-top:    4em;
-            padding-bottom: 4em;
-        }
+.mother-scene {
+    @extend .has-v-slices;
+    padding-bottom: 4em;
+}
         .el-dialog {
             padding:       1em;
             border-radius: 0.5em;
@@ -47,11 +48,6 @@ $one-space: 4*$dim;
 }
 .character-welcome-appking {
     @extend .zetka-menu;
-
-    @media ($screenForClassicZetka) {
-        position: sticky;
-        top: 0;
-    }
 
     img {
         width:  8em;

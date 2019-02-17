@@ -1,5 +1,11 @@
 function ActivateChapterActions() {
 
+    if (ChapterAction && ChapterAction.length)
+        ChapterAction.map( (f) => f() )
+
+}
+
+    /*
     // app king like to be fixed
     let elScreenAppking = document.getElementById('ScreenAppking')
     let doKingLikeFixedPosition = new Waypoint.Inview({
@@ -21,6 +27,7 @@ function ActivateChapterActions() {
                 })
         }
     })
+    */
 
     /*
     // dialog: King about fixed position
@@ -42,7 +49,3 @@ function ActivateChapterActions() {
         addClass:'is-invisible'
     })
     */
-
-
-
-}

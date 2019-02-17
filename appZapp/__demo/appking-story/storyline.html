@@ -34,6 +34,9 @@
     <script src="app/script/chapter-actions.js"></script>
 
     <script>
+
+        var ChapterAction = [];
+
         window.onload = function WelcomeAppKing() {
 
             app.Welcome();
@@ -50,29 +53,223 @@
 </head>
 <body class="body-wrap design-template">
 
-    <article class="zetka mother-scene">
+
+<article class="zetka mother-scene">
+
 
 <section class="scene scene-welcome-appking">
+    <div class="character-welcome-appking">
+        <figure><img src="art/characters/appking-welcome.svg" alt="App King"></figure>
+        <div class="note1">¹)</div>
+        <div class="note2">²)</div>
+    </div>
+    <blockquote>
+        <h2><!-- Это король Апп. --> First Title</h2>
+        <p>Он настоящий король, потому что ¹) умеет управлять и ²) у него есть корона.</p>
+    </blockquote>
+    <p>Корона слегка повреждена, об этом рассказывает древняя легенда.</p>
+    <style>
+        .scene-welcome-appking {
+            background-color: wheat;
+            min-height:     90vh;
+            padding-top:    40vh;
+            padding-bottom: 2em;
+        }
+        .scene-welcome-appking blockquote {
+            align-self:  end;
+        }
+        .character-welcome-appking {
+            grid-column: menu;
+            align-self:  end;
+            position: relative;
+        }
+        .character-welcome-appking img {
+            width:  8em;
+            height: auto;
+        }
+        .character-welcome-appking .note1 {
+            position: absolute;
+            top:  1em;
+            left: -0.5em;
+            animation-duration: 200ms;
+            color: firebrick;
+        }
+        .character-welcome-appking .note2 {
+            position: absolute;
+            top:   0;
+            right: -0.5em;
+            animation-duration: 300ms;
+            animation-delay: 50ms;
+            color: firebrick;
+        }
+        .character-welcome-appking .note1:not(.is-active),
+        .character-welcome-appking .note2:not(.is-active) {
+            display:none;
+        }
+    </style>
+    <script>
+        ChapterAction.push((o)=>{
+            let scene = document.querySelector('.scene-welcome-appking')
+            let note1 = document.querySelector('.scene-welcome-appking .note1')
+            let note2 = document.querySelector('.scene-welcome-appking .note2')
+            let doWelcomeKingProof = new Waypoint({
+                element: scene,
+                handler: function showWelcomeKingProof (direction) {
+                    app.mutate({
+                        el: note1,
+                        addClass: 'is-active animated bounceInDown'
+                    })
+                    app.mutate({
+                        el: note2,
+                        addClass: 'is-active animated bounceInDown'
+                    })
+                    this.destroy()
+                },
+                offset: -10
+            })
+        })
+    </script>
+</section>
+<section class="scene scene-crown-legend">
+    <blockquote>
+        <header>
+            <h3><!-- Легенда о короне -->Text title</h3>
+            <p class="subtitle">24500 лет до н.э.</p>
+        </header>
+        <p>Было дело, гулял молодой король по тропинкам вокруг вулкана Таупо во время извержения Оруануи. Опасные были прогулки, но король продолжал гулять пока не закалилась смелость и термостойкость.</p>
+        <p>Встретил чёрного орла. Тот был чёрный от мрачных мыслей и шёл прыгать в жерло вулкана. Причиной тому был недавний спор с дятлом у кого клюв крепче. Дятел предложил испытание и выиграл спор. А орёл во время испытания свой клюв сломал, и больше не было у него надежды на счастливую жизнь без достойного клюва.</p>
+        <p>Король выслушал беду и отломал кусок от своей золотой короны. Смастерил из куска новый орлиный клюв. Хороший получился клюв — ¹) красивый, ²) удобный, ³) прочный. Орёл обрадовался и жили они долго и счастливо. Такие дела.</p>
+    </blockquote>
+    <style>
+        .scene-crown-legend {
+            color: white;
+            background-color: hsla(222,44%,40%,1);
+            background-image: url(art/illustrations/crown-legend-landscape.jpg);
+            background-attachment: fixed;
+            padding-top: 20vh;
+            padding-bottom: 20vh;
+            min-height: 100vh;
+        }
+        .scene-crown-legend h3 {
+            font-size:   2em;
+            line-height: 1;
+        }
+        .scene-crown-legend blockquote {
+            background-color: hsla(222,24%,32%,0);
+            transition: background 480ms ease-out;
+            padding: 1em;
+            font-size:   1.25em;
+            line-height: 1.4;
+        }
+        .scene-crown-legend.is-active blockquote {
+            background-color: hsla(222,24%,32%,0.8);
+        }
+        .scene-crown-legend blockquote>* {
+            grid-column: overmain;
+        }
+        .scene-crown-legend blockquote>*:not(header)::first-letter {
+            font-size:   2em;
+            line-height: 1;
+            letter-spacing: 0.025em;
+        }
+        .scene-crown-legend .subtitle {
+            font-size: 0.6em;
+            line-height: 1.33333;
+        }
+    </style>
+    <script>
+        ChapterAction.push((o)=>{
+            let scene = document.querySelector('.scene-crown-legend')
+            let doCrownLegendStory = new Waypoint({
+                element: scene,
+                handler: function showCrownLegendStory (direction) {
+                    app.mutate({
+                        el: this.element,
+                        addClass: 'is-active'
+                    })
+                    this.destroy()
+                },
+                offset: '30%'
+            })
+        })
+    </script>
+</section>
+<scene class="scene scene-about-king-rules">
+    <p>Конечно же, одной короны недостаточно, чтобы управлять подданными. Для управления король Апп пользуется правилами, которые сам же и придумывает.</p>
+    <header class="zetka-layer caption">
+        <h3>Зачем нужны правила?</h3>
+    </header>
+    <p>Во-первых, чтобы все понимали друг-друга. Предположим, один енот рисовал палочки считая запасы собранные для похода на Галлию:</p>
+    <figure><div>IIIII IIIII IIIII II</div></figure>
+    <p>Чтобы записи не были длинными, енот заменял пять подряд идущих палочек на символ V, а вместо десяти палочек рисовал X</p>
+    <figure><div>XVII</div></figure>
+    <p>Соседи енота таким же способом подсчитывали свои запасы, после чего собирались на ежегодную ярмарку хвастовства «Мой запас больше твоего». На ярмарке записанные числа сравнивали, и для сравнения по-разному записанных чисел требовались утомительные пересчёты.</p>
+    <figure>
+        <div>VIXI</div>
+        <div>VIVIV</div>
+        <div>IIVIIIVII</div>
+        <div>IIIIXIII</div>
+    </figure>
+    <p>Сложно с первого взгляда сказать равны ли эти числа. Поэтому король Апп, проходя мимо ярмарки, придумал два правила:</p>
+    <ol>
+        <li>Записывать символы слева направо в порядке убывания величины</li>
+        <li>Складывать символы в более крупные, начиная слева направо</li>
+    </ol>
+    <figure>
+        <div>IIVIIIVII → ¹) VVIIIIIII → ²) XVII</div>
+    </figure>
+    <p>Выполнение правил позволило быстрее сравнивать числа. Участники ярмарки понимали сколько запасов собрал каждый из них и могли устраивать совместные конкурсы.</p>
+    <figure>
+        <div>XXII</div>
+        <div>XVIII</div>
+        <div>XXVI</div>
+        <div>XXX</div>
+    </figure>
+    <p>Во-вторых, правило может быть универсальным и помогать в другой ситуации.</p>
+    <p>Когда на ярмарке не сравнивали, а складывали запасы, то числа записывали рядом и применяли правила:</p>
+    <figure>
+        <div>записали рядом</div>
+        <div>VII+VIII+XII → VIIVIIIXII</div>
+        <div>¹) переставили в порядке убывания</div>
+        <div>XVVIIIIIII</div>
+        <div>²) сложили символы, которые складываются</div>
+        <div>XXVII</div>
+    </figure>
+    <p>Универсальность избавляет от необходимости придумывать правила для каждого случая. Случаев может быть много, и вместо огромного количества уникальных правил легче пользоваться небольшим списоком универсальных правил.</p>
+    <p>Король Апп каждый день придумывает универсальные правила.</p>
+    <style>
+        .scene-about-king-rules {
+            padding-top: 20vh;
+        }
+        .scene-about-king-rules figure {
+            grid-column: overmain;
+            text-align: center;
+        }
+        .scene-about-king-rules .caption {
+            position: sticky;
+            top: 0;
+            background-color: hsl(200,10%,90%);
+            padding: 0.5em 0;
+        }
+    </style>
+</scene>
+
+<section class="scene scene-welcome-appking-a">
 
     <div class="scene-action--welcome-legend">
-        <div>[20px text]</div>
 
-        <div class="character-welcome-appking">
-            <figure><img src="art/characters/appking-welcome.svg" alt="App King"></figure>
-        </div>
+
 
         <blockquote class="b001">
-            <div>[block v- margins]</div>
-            <h2>Это король Апп.</h2>
-            <p>Он настоящий король, потому что ¹) умеет управлять и ²) у него есть корона.</p>
-            <p>Корона слегка повреждена, об этом рассказывает древняя легенда.</p>
+            
+
         </blockquote>
 
         <div class="scene-action--legend-about-appking">
             <blockquote>
                 <div>[layer with bg]</div>
                 <p>Было дело, гулял молодой король по тропинкам вокруг действующего вулкана. Опасные были прогулки, но король продолжал гулять пока не закалилась смелость и термостойкость.</p>
-                <p>Встретил чёрного орла, во время одной из прогулок. Орёл был чёрный от мрачных мыслей и шёл прыгать в жерло вулкана. Потому что давеча поспорил с дятлом у кого клюв крепче. Дятел выиграл, а у орла теперь, со сломанным клювом, нет никакой надежды на счастливую жизнь.</p>
+                <p>Встретил чёрного орла. Тот был чёрный от мрачных мыслей и шёл прыгать в жерло вулкана. Причиной тому был недавний спор с дятлом у кого клюв крепче. Дятел предложил испытание и выиграл спор. А орёл во время испытания свой клюв сломал, и теперь, нет у него надежды на счастливую жизнь без достойного клюва.</p>
                 <p>Король выслушал беду и отломал кусок от своей золотой короны. Смастерил из куска новый орлиный клюв. Хороший получился клюв — ¹) красивый, ²) удобный, ³) прочный. Орёл обрадовался и жили они долго и счастливо. Такие дела.</p>
             </blockquote>
             <div class="illustration">

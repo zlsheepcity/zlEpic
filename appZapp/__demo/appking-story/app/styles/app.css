@@ -2253,7 +2253,7 @@ html {
   font-size: 10px; }
 
 body {
-  font-size: 16px;
+  font-size: 20px;
   line-height: 1.5; }
 
 /* ------------------------------------ improve design & UX */
@@ -2415,7 +2415,7 @@ button, .button, .is-button {
 ============================================================== */
 body {
   /* 16/28 */
-  font-size: 16px;
+  font-size: 20px;
   line-height: 1.75;
   font-family: Vollkorn, et-book, Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, serif;
   font-weight: 400; }
@@ -2814,11 +2814,21 @@ $zetka-half-screen-two                    in][][][side][]-
 /* APPKING STORY */
 /* story chapters */
 /* 2019.2.16 36week37 */
+.scene {
+  /* has illustrated background */
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center; }
+
 .is-invisible {
   opacity: 0; }
 
+.subtitle {
+  /* 14/28 */
+  font-size: 0.875em;
+  line-height: 1.5; }
+
 .mother-scene {
-  padding-top: 4em;
   padding-bottom: 4em; }
 
 .el-dialog {
@@ -2844,10 +2854,6 @@ $zetka-half-screen-two                    in][][][side][]-
   .scene-action--welcome-legend h2 {
     align-self: end; }
 
-@media (min-width: 901px) {
-  .character-welcome-appking {
-    position: sticky;
-    top: 0; } }
 .character-welcome-appking img {
   width: 8em;
   height: auto; }
@@ -2900,7 +2906,7 @@ $zetka-half-screen-two                    in][][][side][]-
 .has-v-equal > * {
   align-self: stretch; }
 
-.has-v-slices {
+.has-v-slices, .mother-scene {
   grid-row-gap: 0; }
 
 .is-v-spaced {

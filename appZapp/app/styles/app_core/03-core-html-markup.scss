@@ -3,9 +3,14 @@
     2019.2.8
 ============================================================== */
 
+$remSize: $remSize; // 10px;
+$fontSize: $fontSize; // 16px;
+
 $margin-less: $margin-less; // 2rem
 $margin-def:  $margin-def; // 3.2rem
 $screenForMobile: $screenForMobile;
+
+
 
 
 /* ------------------------------------ minimal box model */
@@ -19,8 +24,8 @@ html, body               { margin: 0; padding: 0;  }
 /* ------------------------------------ basic unit & font sizes */
 
 
-html { font-size: 10px; }
-body { font-size: 16px; line-height: 1.5; }
+html { font-size: $remSize; }
+body { font-size: $fontSize; line-height: 1.5; }
 
 
 /* ------------------------------------ improve design & UX */
