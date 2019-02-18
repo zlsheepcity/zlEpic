@@ -21,6 +21,7 @@ $color--deep-sea:     hsla(200, 94%, 32%, 1);
 $color--brand-accent: hsla(336, 87%, 54%, 1);
 $color--brand-light: hsla(336, 87%, 54%, 0.5);
 $color--content-accent: hsla(188, 58%, 50%, 1);
+$color--contact: hsl(188, 78%, 41%);
 
 %colorModel--office-doc {
     background-color:      white;
@@ -256,13 +257,14 @@ body {
     }
 }
 .design-license-decoration {
-    img { position: absolute; }
+    figure { position: relative; }
+    img { position: absolute; top: 1em; }
     @media ($screenNotClassicZetka) { display: none; }
 }
 .brand-banner {
     @extend %colorModel--brand-accent;
 }
-.glSimplePageHeader {
+.page-header {
 
     /* ------------------------------ layout */
 
@@ -283,7 +285,7 @@ body {
         align-self: end;
         width: 100%;
         display: flex;
-        flex-direction:  row;
+        flex-direction:  column;
         justify-content: flex-end;
     }
     .header-contact {
@@ -294,22 +296,14 @@ body {
     /* ------------------------------ mobile layout */
 
     @media ($screenForTablet) {
-        padding-top: 0.8rem;
+        padding-top: 0.5rem;
 
         .header-brand   { grid-column: b / f; }
         .header-menu    {
             grid-column: full;
             justify-content: center;
         }
-        .header-contact {
-            //grid-column: e / full-end;
-            display: block;
-            position: fixed;
-            z-index: 3;
-            top:   0;
-            right: 0;
-            padding-bottom: 0;
-        }
+        .header-contact { display: none; }
     }
 
     /* ------------------------------ components */
@@ -332,6 +326,32 @@ body {
         .nav-link:not(.dropdown-toggle),
         .nav-link.dropdown-toggle.collapsed {
             text-decoration: underline;
+        }
+
+        @media ($screenForMobile) {
+            //justify-content: space-between;
+            justify-content: center;
+        }
+    }
+    .contact-links {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        list-style: none;
+        font-size: 0.8em;
+        a {
+            padding: 0 1rem;
+            span { color: $color--contact; }
+        }
+        .icon {
+            margin-right: 0.25em;
+            color: $color--contact;
+        }
+        @media ($screenForMobile) {
+            justify-content: center;
+            li:not(.language-menu) {
+                display: none;
+            }
         }
     }
     .subnav-links {
@@ -409,7 +429,7 @@ body {
             max-width: 20vh;
         }
         @media ($screenForMobile) {
-            max-width: 8em;
+            // max-width: 8em;
             margin-left:  auto;
             margin-right: auto;
         }
@@ -424,6 +444,11 @@ body {
             background-repeat:   no-repeat;
             background-position: top center;
             background-image:    url($url_logo_img);
+
+            @media ($screenForTablet) {
+                padding-bottom: 0;
+                height: 3.25em;
+            }
         }
     }
     .header-menu {
@@ -434,20 +459,66 @@ body {
     }
 
 }
-.header-float-menu-button {
-    @media ($screenNotTablet) {
-        display: none;
+.language-menu {
+    .dropdown {
+        font-size: 1em;
+        .btn { font-size: 1em; }
+        .dropdown-item { font-size: 1.5em; }
     }
-    @media ($screenForTablet) {
-        display: block;
-        position: fixed;
-        z-index: 3;
-        top: 0;
-        left: 0;
+}
+.round-button {
+    @include text-design-is-inherited;
+    .icon {
+        display: inline-block;
+        vertical-align: middle;
+        margin-right: 0.5em;
+        transform: scale(1.333)
     }
+    .text { white-space: nowrap; }
+    .text { display: none; }
+    .icon { margin-right: 0; line-height: 1 }
+
+    border-radius: 50%;
+    border: 2px solid white;
+    margin: 0.5rem;
+    width: 3em;
+    height: 3em;
+    display: flex;
+    align-content: center;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 0;
+}
+.float-menu-button {
+    display: block;
+    position: fixed;
+    z-index: 2;
+    top: 0;
+    left: 0;
+
     .btn {
         background-color: $color--brand-accent;
+        color: white;
     }
+
+    @media ($screenNotTablet) {    }
+    @media ($screenForTablet) {    }
+}
+.float-contact-button {
+    display: block;
+    position: fixed;
+    z-index: 2;
+    top: 0;
+    right: 0;
+
+    .btn {
+        background-color: $color--contact;
+        color: white;
+    }
+
+    @media ($screenNotTablet) {    }
+    @media ($screenForTablet) {    }
 }
 .glWelcomeScreen {
 
@@ -463,6 +534,9 @@ body {
         color: inherit;
         &:hover {
             background-color: $color--dark-overlay;
+        }
+        @media ($screenForMobile) {
+            display: none;
         }
     }
 
@@ -602,7 +676,6 @@ body {
 }
 .chapter--FullRangeOfServices {
     @media ($screenForMobile) {
-        padding-top: 0;
         .big-title {
             text-align: center;
             padding-top:    1em;
@@ -889,6 +962,10 @@ body {
         }
     }
 }
+.logo-in-footer {
+    align-self: center;
+    img { max-height: 3em; }
+}
 .site-footer {
     @media ($screenForMobile) {
         .big-title {
@@ -935,9 +1012,10 @@ body {
     min-height: 100%;
     display: flex;
     flex-direction: column;
-    align-content: stretch;
-    align-items: stretch;
+    align-content:  stretch;
+    align-items:    stretch;
     .design-contact-form {
+        //margin-top: auto;
         padding-bottom: 0;
         padding-top: 2em;
     }
@@ -953,26 +1031,45 @@ body {
 }
 .design-menu-sidebar {
     @extend %colorModel--office-doc;
+    .sidebar-header {
+        background-color: $color--brand-accent;
+    }
 }
 .sidebar-closer {
-    text-align: right;
-    padding-right: 1rem;
+    align-self: top;
     font-size: 3em;
     line-height: 1;
+    padding: 0.5rem;
+    padding-right: 1.25rem;
+}
+.sidebar-header {
+    grid-column: full;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: center;
 
-    background-color: hsl(200, 94%, 32%);
+    background-color: $color--contact;
     color: white;
     cursor: pointer;
 
     position: sticky;
     top: 0;
+
+    .title {
+        padding-left: 1.25rem;
+    }
 }
-.sidebar-header {
+.sidebar-menu {
     grid-column: full;
-    background-image: url($url_whitelogo_img);
-    background-size: auto 80%;
-    background-repeat: no-repeat;
-    background-position: center center;
+    li>a {
+        display: block;
+        padding: 0.5em 1.25em;
+        &:hover {
+            background-color: rgba(0,0,0,0.05);
+        }
+    }
 }
 .design-contact-form {
 

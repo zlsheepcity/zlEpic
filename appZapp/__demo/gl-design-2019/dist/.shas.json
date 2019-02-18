@@ -4,10 +4,10 @@
     "inputSha": [
       {
         "file": "HomePage.html",
-        "sha": "fc480c6c008978b337bbc279e7fa7f5dc1575a5e"
+        "sha": "40fa28bd0db66294fa523b8028163292cbfad238"
       }
     ],
-    "outputSha": "d1ac40429e4b3a0e3249081a5f777f900112b376",
+    "outputSha": "3f9034477e10c4ee297eec1641a88d5ee72bcfaa",
     "input": "HomePage.html",
     "output": [
       "HomePage.html"
@@ -36,19 +36,23 @@
       },
       {
         "file": "../../app/styles/app_core/03-core-html-markup.scss",
-        "sha": "36d6b48808c1348006331f3e469e411b1425100d"
+        "sha": "8eb60bd6c68da0b371bf80d2ea9b54cdca0d620a"
       },
       {
         "file": "../gl-design-2019-src/styles/gl-design-2019.scss",
-        "sha": "a6db78f1207a6b90e9300adfd67042c301f55566"
+        "sha": "264c9a38295b7c17693992fca452ab870d047322"
+      },
+      {
+        "file": "../../app/styles/app_core/02-core-variables.scss",
+        "sha": "02ff43c8072e73dca642e3ac263c0a45fe3937c1"
       },
       {
         "file": "../../app/styles/app_core/04-core-typography.scss",
-        "sha": "d25271a1e0a08cbf93ffd3c72ee9a16321632942"
+        "sha": "6806bd335912a4cefac9d6acde6eeb0959f9b5f4"
       },
       {
         "file": "../../app/styles/app_item/sidebar/sidebar.scss",
-        "sha": "92c37125c41f9a00bc7039fcb78c67d7ee628dbd"
+        "sha": "a1b07e5b3f9467539aa7d1c561375e3dc1b35b18"
       },
       {
         "file": "../../app/styles/app_item/layout-fullscreen/layout-fullscreen.scss",
@@ -56,19 +60,15 @@
       },
       {
         "file": "../../app/styles/app_item/zetka/zetka-columns.scss",
-        "sha": "1d708bb79343656c840e2dab0ca845a22f168aae"
+        "sha": "ef61792e64ec06903c06d6e8454ac750fd8d41e5"
       },
       {
         "file": "../../app/styles/app_item/zetka/zetka-formula.scss",
-        "sha": "6377d0e23fe59cb35f1e67348be66406780c9705"
+        "sha": "40b2a7c1342a70ae14c01e5dd5047ca5da779a2a"
       },
       {
         "file": "../../app/styles/app_item/group/group.scss",
         "sha": "702046464db661cc4b09e7feab69968331e33a30"
-      },
-      {
-        "file": "../../app/styles/app_core/02-core-variables.scss",
-        "sha": "2a31f98d2c9b16a37c8c78780f2380a325949c38"
       },
       {
         "file": "../../app/styles/app_core/91-coat-markup-helpers.scss",
@@ -87,11 +87,26 @@
         "sha": "cecfc2969051a48494c6a8434137682e91e53d89"
       }
     ],
-    "outputSha": "01ceada02aa0e56922a379cffaa6945cfb20ae5d",
+    "outputSha": "29f78146c0d09f4d64bc71b62b7733eaf94e357b",
     "input": "styles/main.scss",
     "output": [
       "styles/main.css.map",
       "styles/main.css"
+    ]
+  },
+  {
+    "type": "::map::minify",
+    "inputSha": [
+      {
+        "file": "scripts/interface.js",
+        "sha": "2a28f6054c1e38b826b65a062c3f90ec12f35fba"
+      }
+    ],
+    "outputSha": "ac5b08d9776d8a109c7978f41647a003493e5a68",
+    "input": "scripts/interface.js",
+    "output": [
+      "scripts/interface.js.map",
+      "scripts/interface.js"
     ]
   },
   {
@@ -113,60 +128,45 @@
     "type": "::map::minify",
     "inputSha": [
       {
-        "file": "src/scripts/interface.js",
-        "sha": "f838acc376f83f6fb4f04540704051b72edeeb98"
-      }
-    ],
-    "outputSha": "637495d0568ce635d13a3db1218b264826e547bc",
-    "input": "src/scripts/interface.js",
-    "output": [
-      "src/scripts/interface.js.map",
-      "src/scripts/interface.js"
-    ]
-  },
-  {
-    "type": "::map::minify",
-    "inputSha": [
-      {
-        "file": "src/vendor/waypoints/shortcuts/infinite.js",
+        "file": "vendor/waypoints/shortcuts/infinite.js",
         "sha": "5e8c67d8bc5728c47f690475cb81a2f09e7bf8ad"
       }
     ],
     "outputSha": "2e76e6162cbccd1689202832df1ab7929eaa1198",
-    "input": "src/vendor/waypoints/shortcuts/infinite.js",
+    "input": "vendor/waypoints/shortcuts/infinite.js",
     "output": [
-      "src/vendor/waypoints/shortcuts/infinite.js.map",
-      "src/vendor/waypoints/shortcuts/infinite.js"
+      "vendor/waypoints/shortcuts/infinite.js.map",
+      "vendor/waypoints/shortcuts/infinite.js"
     ]
   },
   {
     "type": "::map::minify",
     "inputSha": [
       {
-        "file": "src/vendor/waypoints/shortcuts/inview.js",
+        "file": "vendor/waypoints/shortcuts/inview.js",
         "sha": "0e08ae2a1e45f7b3a081efe73c300957f8693292"
       }
     ],
     "outputSha": "077f35758a0934db07fc5a6f16b35130bf367530",
-    "input": "src/vendor/waypoints/shortcuts/inview.js",
+    "input": "vendor/waypoints/shortcuts/inview.js",
     "output": [
-      "src/vendor/waypoints/shortcuts/inview.js.map",
-      "src/vendor/waypoints/shortcuts/inview.js"
+      "vendor/waypoints/shortcuts/inview.js.map",
+      "vendor/waypoints/shortcuts/inview.js"
     ]
   },
   {
     "type": "::map::minify",
     "inputSha": [
       {
-        "file": "src/vendor/waypoints/shortcuts/sticky.js",
+        "file": "vendor/waypoints/shortcuts/sticky.js",
         "sha": "58cf3989536052bc693cdcc24d383e5915d9a66e"
       }
     ],
     "outputSha": "cb1b43389288a9ccb3f660f564bbb164b18887de",
-    "input": "src/vendor/waypoints/shortcuts/sticky.js",
+    "input": "vendor/waypoints/shortcuts/sticky.js",
     "output": [
-      "src/vendor/waypoints/shortcuts/sticky.js.map",
-      "src/vendor/waypoints/shortcuts/sticky.js"
+      "vendor/waypoints/shortcuts/sticky.js.map",
+      "vendor/waypoints/shortcuts/sticky.js"
     ]
   }
 ]

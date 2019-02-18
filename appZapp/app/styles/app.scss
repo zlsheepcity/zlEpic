@@ -1,12 +1,12 @@
 @charset "UTF-8";
 /*
-    zapp default sass ordnung
-    2019.2.16
+    zApp default sass ordnung
+    2019.2.16 → last update 2019.2.18
 */
 
 
 // ---------------------------------------------------------------
-/* Zapp Sass Core - any project */
+/* zApp Sass Core */
 // ---------------------------------------------------------------
 
 @import "app_core/01-core-constructor";
@@ -16,7 +16,7 @@
 
 
 // ---------------------------------------------------------------
-/* Zapp Sass Components - customizable list */
+/* zApp Sass Components - customizable list */
 // ---------------------------------------------------------------
 
 // ----- screen layouts
@@ -41,20 +41,21 @@
     //pending @import "app_item/extra-compact-form/extra-compact-form";
 
 
-
-
-
 // ---------------------------------------------------------------
-/* Zapp Sass Coat - any project */
-// ---------------------------------------------------------------
-
-@import "app_core/91-coat-markup-helpers";
-
-
-// ---------------------------------------------------------------
-/* Customs */
+/* Project */
 // ---------------------------------------------------------------
 
 // sakura
 // @import "app_item/plain-markup-design/plain-markup-design";
 
+
+
+
+
+// ---------------------------------------------------------------
+/* zApp hi levels */
+// ---------------------------------------------------------------
+
+@import "app_core/91-coat-markup-helpers";
+
+/* EOF sass ordnung */
