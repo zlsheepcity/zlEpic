@@ -16,8 +16,8 @@
     <link href="https://fonts.googleapis.com/css?family=Vollkorn:400,400i,700&subset=cyrillic" rel="stylesheet">
 
     <link  href="app/styles/app.css" rel="stylesheet" type="text/css">
-    <script src="app/script/components/class-mutator.js"></script>
-    <script src="app/script/app.js"></script>
+    <script defer src="app/script/components/class-mutator.js"></script>
+    <script defer src="app/script/app.js"></script>
 
 
     <!-- ========================================= APP CUSTOM -->
@@ -75,6 +75,8 @@
             <h2>Placeholder</h2>
             <div>2019.2.11</div>
         </header>
+        <code class="codeblock">/* js */
+        </code>
     </section>
 
 
@@ -83,8 +85,13 @@
             <h2>ES Modules</h2>
             <div>2019.2.18</div>
         </header>
-        <p>All modules loads in strict mode</p>
+        <p>¹) modules loads in <em>strict mode</em></p>
+        <p>²) modules has <em>defer</em> script load</p>
         <script type="module" src="__devlog/es-module-import.js"></script>
+        <code class="codeblock">/* js */
+            import * from 'module'
+            import { a, b as two } from 'module'
+        </code>
     </section>
 
 
