@@ -31,6 +31,10 @@
         }
     </script>
     <style>
+        .design-template {
+            background-color: hsl(330, 2%, 16%); /* Entrapped InAPalette */
+            color: white;
+        }
         .mother-chapter > section {
             margin-top:    2em;
             margin-bottom: 2em;
@@ -69,6 +73,9 @@
     <!-- ========================================= END HEAD -->
 </head>
 <body class="body-wrap design-template mother-chapter">
+    <nav class="zetka">
+        <a href="designlog.html">design log</a>
+    </nav>
 
     <section class="zetka">
         <header class="chapter-title">
@@ -88,10 +95,13 @@
         <p>¹) modules loads in <em>strict mode</em></p>
         <p>²) modules has <em>defer</em> script load</p>
         <script type="module" src="__devlog/es-module-import.js"></script>
+        <script nomodule src="__devlog/es-module-fallback.js"></script>
         <code class="codeblock">/* js */
             import * from 'module'
             import { a, b as two } from 'module'
         </code>
+        <p>We can now use them! But we must also remember that having more than a few modules is going to have a performance hit on our pages, as it’s one more step that the browser must perform at runtime.</p>
+        <p><a href="https://flaviocopes.com/es-modules/">flaviocopes.com</a></p>
     </section>
 
 
