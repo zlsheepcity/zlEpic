@@ -1,0 +1,172 @@
+<!doctype html><!-- app7000-Zapp -->
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- ========================================= HEAD CONTENT -->
+
+
+    <title>Story</title>
+
+
+    <!-- ========================================= APP MAIN -->
+
+    <!-- design font -->
+    <link href="https://fonts.googleapis.com/css?family=Vollkorn:400,400i,700&subset=cyrillic" rel="stylesheet">
+
+    <link  href="app/styles/app.css" rel="stylesheet" type="text/css">
+    <script src="../../app/script/app.js"></script>
+
+
+    <!-- ========================================= APP CUSTOM -->
+
+    <style>
+
+    </style>
+
+    <script src="../../app/vendor/waypoints/noframework.waypoints.js"></script>
+    <script src="../../app/vendor/waypoints/shortcuts/inview.js"></script>
+
+    <script src="../../app/script/components/class-mutator.js"></script>
+
+
+    <script src="app/script/chapter-actions.js"></script>
+
+    <script>
+
+        var ChapterAction = [];
+
+        window.onload = function WelcomeAppKing() {
+
+            app.Welcome();
+            app.mutate({find:'body',addClass:'app-ready'})
+
+            ActivateChapterActions();
+
+        }
+    </script>
+
+
+    <!-- ========================================== ʕ⊙ᴥ⊙ʔ = -->
+    <!-- ========================================= END HEAD -->
+</head>
+<body class="body-wrap design-template">
+
+
+<article class="zetka mother-scene">
+<!-- ========================================== ʕ⊙ᴥ⊙ʔ = -->
+<!-- =========================================  SCENES  -->
+
+
+
+
+<!-- Знакомство с королём -->
+<section class="scene-- layer scene-welcome-appking">
+    <figure class="character-welcome-appking">
+        <img src="art/characters/appking-welcome.svg" alt="App King">
+    </figure>
+    <div class="textblock-welcome-appking">
+
+        <h2>Это король Апп.</h2>
+        <p>Он настоящий король, потому что <nobr>¹) умеет управлять</nobr> <nobr>и ²) у него</nobr> есть корона.</p>
+        <p>Корона слегка повреждена, об этом рассказывает легенда:</p>
+
+        <figure class="character-welcome-arrow">
+            <img src="art/characters/arrow-fat-bottom.svg" alt="Welcome!">
+        </figure>
+
+    </div>
+    <style>
+        .scene-welcome-appking {
+            background-color: hsl(201, 55%, 12%); /* Funny Like the Space */
+            color: white;
+            min-height: 100vh;
+
+            /* contentbox: xy-centered */
+            display: flex;
+            justify-content: center;
+            align-items:     center;
+            align-content:   center;
+        }
+        .character-welcome-appking {
+            flex-shrink: 0;
+            height: 100vh;
+            width:  50vh;
+
+            /* contentbox: xy-centered */
+            display: flex;
+            justify-content: center;
+            align-items:     center;
+            align-content:   center;
+        }
+        .character-welcome-appking img {
+            height: 100%;
+            width:  auto;
+        }
+        .textblock-welcome-appking {
+            font-size: 1.2em;
+            max-width: 24em;
+            align-self: flex-end;
+
+            /* has text grid */
+            display: grid;
+            grid-row-gap: 1.5em;
+            grid-auto-flow: row;
+            grid-template-columns: 1em [main-start] 1fr [main-end] 1em;
+        }
+        .character-welcome-arrow {
+            margin: 0 auto 2em 0;
+        }
+        .character-welcome-arrow img {
+            width:  auto;
+            height: 4em;
+        }
+        @media (max-width:56em) {
+            .scene-welcome-appking {
+                flex-direction: column;
+            }
+            .character-welcome-appking {
+                height:  32vh;
+                width:   100%;
+                padding: 0.5em 1.5em 0 1.6em;
+                justify-content: flex-start;
+            }
+            .textblock-welcome-appking {
+                font-size: 1em;
+            }
+            .character-welcome-arrow {
+                margin-left: auto;
+            }
+        }
+    </style>
+    <script>
+        /* Animated Welcome Arrow (AWA) */
+        ChapterAction.push((o)=>{
+            app.mutate({
+                find:'.character-welcome-arrow img',
+                addClass:'animated pulse infinite'
+            })
+        })
+        /**/
+    </script>
+</section>
+
+
+
+
+<!-- ========================================== ʕ⊙ᴥ⊙ʔ = -->
+<!-- ======================================= END SCENES -->
+</article>
+
+<div style="height:200vh;"></div>
+
+<div class="screen-characters">
+    <div id="ScreenAppking" class="">
+        <figure><img src="art/characters/appking-welcome.svg" alt="App King"></figure>
+    </div>
+</div>
+
+
+</body>
+</html>

@@ -68,12 +68,17 @@
     </div>
     <blockquote>
         <h2>Это король Апп.</h2>
-        <p>Он настоящий король, потому что ¹) умеет управлять и ²) у него есть корона.</p>
+        <p>Он настоящий король, потому что <nobr>¹) умеет управлять</nobr> <nobr>и ²) у него</nobr> есть корона.</p>
     </blockquote>
     <p>Корона слегка повреждена, об этом рассказывает древняя легенда.</p>
     <style>
         .scene-welcome-appking {
-            background-color: wheat;
+            background-color: hsl(330, 2%, 16%); /* Entrapped InAPalette */
+            background-color: hsl(201, 55%, 12%); /* Funny Like the Space */
+            background-color: hsl(223, 8%, 18%); /* She Is French, Yes? */
+            background-color: hsl(198, 17%, 20%); /* coup de grâce */
+            color: #F6F7BD;
+            color: white;
             min-height:     90vh;
             padding-top:    40vh;
             padding-bottom: 2em;
@@ -87,7 +92,6 @@
             position: relative;
         }
         .character-welcome-appking img {
-            width:  8em;
             height: auto;
         }
         .character-welcome-appking .note1 {
@@ -111,6 +115,7 @@
         }
     </style>
     <script>
+        /**
         ChapterAction.push((o)=>{
             let scene = document.querySelector('.scene-welcome-appking')
             let note1 = document.querySelector('.scene-welcome-appking .note1')
@@ -131,6 +136,7 @@
                 offset: -10
             })
         })
+        /**/
     </script>
 </section>
 
