@@ -62,7 +62,7 @@
 
 
 <!-- Знакомство с королём -->
-<section class="scene-- layer scene-welcome-appking">
+<section class="el-scene layer scene-welcome-appking">
     <figure class="character-welcome-appking">
         <img src="art/characters/appking-welcome.svg" alt="App King">
     </figure>
@@ -141,7 +141,7 @@
         }
     </style>
     <script>
-        /* Animated Welcome Arrow (AWA) */
+        /* Animated Welcome Arrow (AWA) *
         ChapterAction.push((o)=>{
             app.mutate({
                 find:'.character-welcome-arrow img',
@@ -152,6 +152,85 @@
     </script>
 </section>
 
+
+
+
+
+
+<!-- Легенда короны -->
+<section class="el-scene layer scene-crown-legend" style="position:relative;">
+    <div class="zetka-layer textblock-crown-legend">
+        <header class="zetka-layer crown-legend-header">
+            <h2>Легенда о короне</h2>
+            <p class="subtitle">24500 лет до н.э.</p>
+        </header>
+        <p>Было дело, гулял молодой король по тропинкам вокруг вулкана Таупо во время извержения Оруануи. Опасные были прогулки, но король продолжал гулять пока не проверил всё написанное в энциклопедии об этом вулкане.</p>
+        <div class="zetka-side note">
+            <div>
+                Извержение Оруануи — крупнейшее вулканическое извержение за последние 70 тысяч лет,
+                <a class="textlink" href="https://ru.wikipedia.org/wiki/%D0%98%D0%B7%D0%B2%D0%B5%D1%80%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5_%D0%9E%D1%80%D1%83%D0%B0%D0%BD%D1%83%D0%B8"><span>статья в Википедии</span></a> →
+            </div>
+        </div>
+        <p>Встретил чёрного орла. Тот был чёрный от мрачных мыслей и шёл прыгать в жерло вулкана. Причиной был недавний спор с дятлом у кого клюв крепче. Дятел предложил испытание и выиграл спор. А орёл во время испытания сломал себе клюв и потерял всякую надежду на счастливую жизнь. Потому что без достойного клюва орлиного счастья не бывает.</p>
+        <p>Король выслушал беду и отломал кусок от своей золотой короны. Смастерил из куска новый орлиный клюв. Хороший получился клюв — <nobr>¹) красивый,</nobr> <nobr>²) удобный,</nobr> <nobr>³) прочный.</nobr> Орёл обрадовался и жили они долго и счастливо. Такие дела.</p>
+    </div>
+    <style>
+        .scene-crown-legend {
+            background-color: white;
+            color: black;
+        }
+        .scene-crown-legend,
+        .crown-legend-header {
+            background-image: url(art/illustrations/crown-legend-landscape.jpg);
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+            background-position: 30% 40%;
+        }
+        .scene-crown-legend::before {
+            content: '';
+            display: block;
+            background-color: hsl(201, 55%, 12%); /* Funny Like the Space */
+            clip-path: polygon( 0 -1px, 100% -1px, 100% 0.5em, 75% 3em, 36% 0.5em, 10% 2em, 0 0.5em );
+            height: 3em;
+            margin-bottom: calc( 80vh - 3em );
+        }
+        .crown-legend-header {
+            grid-row-gap:   0;
+            padding-top: 2em;
+            padding-bottom: 1.5em;
+            margin-bottom:  20vh;
+            clip-path: polygon( 0 0, 100% 0, 100% 100%, 55% calc( 100% - 2em ), 36% 100%, 10% calc( 100% - 1em ), 0 100% );
+            position: sticky;
+            top: -2em;
+            color: black;
+            text-shadow: 2px 2px 0 white;
+        }
+        .textblock-crown-legend {
+            background-color: hsla(222,54%,12%,0.9);
+            color: white;
+            padding-bottom: 20vh;
+            font-size: 1.2em;
+        }
+        .textblock-crown-legend>*:last-child {
+            padding-bottom: 20vh;
+        }
+        .textblock-crown-legend>*:not(header)::first-letter {
+            font-size:   2em;
+            line-height: 1;
+            letter-spacing: 0.025em;
+        }
+        .textblock-crown-legend .subtitle,
+        .textblock-crown-legend .note {
+            font-size: 0.8em;
+            line-height: 1.33333;
+        }
+        @media (max-width:700px) {
+            .textblock-crown-legend {
+                font-size: 0.8em;
+            }
+        }
+    </style>
+</section>
 
 
 
