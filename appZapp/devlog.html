@@ -80,11 +80,47 @@
     <section class="zetka">
         <header class="chapter-title">
             <h2>Placeholder</h2>
-            <div>2019.2.11</div>
+            <div>2019.3.11</div>
         </header>
         <code class="codeblock">/* js */
         </code>
     </section>
+
+    <section class="zetka">
+        <header class="chapter-title">
+            <h2>Animation tasking</h2>
+            <div>2019.3.4</div>
+        </header>
+        <ul>
+            <li><a href="https://greensock.com/docs/">TweenLite</a></li>
+        </ul>
+    </section>
+
+    <section class="zetka">
+        <header class="chapter-title">
+            <h2>SVG Filters</h2>
+            <div>2019.3.4</div>
+        </header>
+        <ul>
+            <li><a href="https://habr.com/en/post/442004/">Tutorial Habr</a></li>
+        </ul>
+        <p>Basic syntax</p>
+        <textarea rows="10">
+<svg width="600" height="450" viewBox="0 0 600 450">
+    <filter id="myFilter">
+        <feGaussianBlur result="NAMEX" stDeviation="5"></feGaussianBlur>
+        <feMerge>
+            <feMergeNode in="SourceGraphic" />
+            <feMergeNode in="NAMEX" />
+        </feMerge>
+    </filter>
+    <image xlink:href="..."
+       width="100%" height="100%" x="0" y="0"
+       filter="url(#myFilter)"></image>   
+</svg>
+        </textarea>
+    </section>
+
 
 
     <section class="zetka">

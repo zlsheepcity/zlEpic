@@ -22,7 +22,13 @@
     <!-- ========================================= APP CUSTOM -->
 
     <style>
-
+        .el-placeholder {
+            grid-column: full;
+            min-height: 100vh;
+            padding:     20vh 0;
+            background-color: deeppink;
+        }
+        .el-placeholder:nth-child(2n) { background-color: pink; }
     </style>
 
     <script src="../../app/vendor/waypoints/noframework.waypoints.js"></script>
@@ -57,9 +63,6 @@
 <article class="zetka mother-scene">
 <!-- ========================================== ʕ⊙ᴥ⊙ʔ = -->
 <!-- =========================================  SCENES  -->
-
-
-
 
 <!-- Знакомство с королём -->
 <section class="el-scene layer scene-welcome-appking">
@@ -151,11 +154,6 @@
         /**/
     </script>
 </section>
-
-
-
-
-
 
 <!-- Легенда короны -->
 <section class="el-scene layer scene-crown-legend">
@@ -263,7 +261,6 @@
         }
     </style>
 </section>
-
 
 <!-- Описание мира -->
 <section class="el-scene zetka-layer scene-about-this-world">
@@ -591,12 +588,205 @@
     </script>
 </section>
 
+<!-- Это место -->
+<section class="el-placeholder zetka-layer scene-this-place">
+    <div class="scene-header">
+        <h2>Что-то новое</h2>
+    </div>
+    <div class="textblock-this-place-dialogs">
+    
+        <div>[THIS-PLACE]</div>
+
+        <div class="el-dialog el-dialog--author">
+            <div class="lorem">Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi.</div>
+        </div>
+
+        <div class="el-dialog el-dialog--universe">
+            <div class="lorem">Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</div>
+        </div>
+
+        <div class="el-dialog el-dialog--appking">
+            <p>Кто здесь?</p>
+        </div>
+
+    </div>
+</section>
+
+<!-- Создание меню -->
+<section class="el-placeholder scene-king-menu-creation">
+    <div class="zetka">
+
+Король Апп удивился диалогам на фоне чудесного места.
+
+Вроде бы никого не было рядом. Только он сам, его легенда и описание мира. Король не поленился составить точный список:
+
+<div class="menu-creation-seed">
+    <ul>
+        <li>Легенда короля</li>
+        <li>Описание мира</li>
+        <li>Это чудесное место</li>
+    </ul>
+</div>
+
+Из списка получилось отличное навигационное меню.
+
+Только вот совершенно не понятно кто разговаривал. Неужели говорящий кот? А если не кот, так ли важно кто разговаривал? Может просто декорации?
+
+Король Апп вернулся к чудесному месту и громко крикнул.
+
+<div class="el-dialog el-dialog--appking">
+    <p>Эй? Ты важный?</p>
+</div>
+    
+    </div>
+</section>
+
+<!-- Диалог с создателем -->
+<section class="el-placeholder zetka-layer scene-dialog-with-developer">
+
+    
+        <div>[THIS-PLACE-BG]</div>
+
+        <div class="el-dialog el-dialog--author">
+            <p>Очень важный. Я — создатель.</p>
+            <p>Ты можешь называть меня Автор и кланяться при встрече. Тебя я тоже создал из пустого места.</p>
+        </div>
+
+        <p>Король на секунду задумался. Нет причин сомневаться в заявлении собеседника, но есть полезная привычка задавать уточняющие вопросы.</p>
+
+        <div class="el-dialog el-dialog--appking">
+            <p>Ты меня создал... Чем докажешь?</p>
+        </div>
+
+        <div class="el-dialog el-dialog--author">
+            <p>Докажу каждой твоей частичкой, даже самой маленькой и абстрактной. Загибай пальцы.</p>
+            <div class="author">— ответил создатель и показал список из пяти доказательств.</div>
+        </div>
+
+        <div class="zetka-layer textblock-author-proovement">
+            <ol class="zetka-block">
+                <li>
+                    <p>Это ссылка на тебя в формате SVG <code>[APPKING]</code></p>
+                </li>
+                <li>
+                    <p>Это кусочек твоих внутренностей для примера. Символы описывает твой левый глаз:</p>
+                    <code>[svg-path-appkings-eye]</code>
+                </li>
+                <li>
+                    <p>Это другие символы, но тоже твой левый глаз. Он такой, когда ты удивлён:</p>
+                    <code>[svg-path-appkings-eye-alternative]</code>
+                </li>
+                <li>
+                    <p>Это копия моего письменного приказа. В переводе означает: если на тебя нажать, то ты удивляешься.</p>
+                    <code>[js-appking-onclick]</code>
+                </li>
+                <li>
+                    <p>А вот твоя детская фотография. Ты был милым скетчем. Жил в моём блокноте до того, как я приказал функциям и процедурам изменить тебя и перенести на это место.</p>
+                    <figure>[APPKING-SCETCH]</figure>
+                </li>
+            </ol>
+        </div>
+
+        <p>Король Апп обалдел от своих внутренностей. Чтобы подробностями не травмировать психику решил про себя, что его создатель могущественный волшебник, который может сделать что захочет. А вслух спросил:</p>
+
+        <div class="el-dialog el-dialog--appking">
+            <p>Я слышал <span class="el-voice-of-univerce">ещё один голос</span>. Его ты тоже создал?</p>
+        </div>
+
+        <div class="el-dialog el-dialog--universe">
+            <p>Нет, сама пришла :)</p>
+            <div class="el-historia-name">Привет, меня зовут История</div>
+            <div class="el-historia-name">Я модель вселенной</div>
+        </div>
+
+        <p>Рядом с королём появилась женщина удивительной красоты.</p>
+
+</section>
+
+<!-- Модель вселенной -->
+<section class="el-placeholder scene-model-universe">
+    <div class="zetka">
+        <figure>[МОДЕЛЬ ВСЕЛЕННОЙ]</figure>
+    <div class="el-dialog el-dialog--universe">
+        <p>Пока :)</p>
+    </div>
+    </div>
+</section>
+
+<!-- Миссия браузера -->
+<section class="el-placeholder scene-welcome-bergamot">
+    <div class="zetka">
+        <h1>— Псс, хочешь миссию?</h1>
+        <div>[BERGAMOT-CHARACTER]</div>
+    </div>
+</section>
+
+<!-- Поднятие модели ДНА -->
+<section class="el-placeholder scene-welcome-dna-model">
+    <div class="zetka">
+        <p>[Поднятие модели ДНА]</p>
+        <p>[Заколка для модели]</p>
+    </div>
+</section>
+
+<!-- Миссия команды -->
+<section class="el-placeholder scene-team-mission">
+    <div class="zetka">
+        <h1>Миссия команды</h1>
+        <p>Модель ДНА хочет имя</p>
+    </div>
+</section>
+
+<!-- Дорога в Карбонские болота -->
+<section class="el-placeholder">
+    <div class="zetka">
+        <h1>Дорога в Карбонские болота</h1>
+        <p>Ловля ошибок</p>
+        <p>Массив на входе в болота</p>
+    </div>
+</section>
+
+<!-- Присвоение имени -->
+<section class="el-placeholder">
+    <div class="zetka">
+        <p>Встреча модели ДНА с именем</p>
+        <figure>[DNA_MEETS_NAME]</figure>
+    </div>
+</section>
+
+<!-- Лекция массива -->
+<section class="el-placeholder">
+    <div class="zetka">
+        <h1>Лекция массива</h1>
+    </div>
+</section>
+
+<!-- Странное поведение имени -->
+<section class="el-placeholder">
+    <div class="zetka">
+        <h1>Странное поведение имени</h1>
+    </div>
+</section>
+
+<!-- Миссия своего места -->
+<section class="el-placeholder">
+    <div class="zetka">
+        <h1>Миссия своего места</h1>
+    </div>
+</section>
+
+
+
+
+<section class="el-placeholder">
+    <div class="zetka">
+        <p>placeholder</p>
+    </div>
+</section>
 
 <!-- ========================================== ʕ⊙ᴥ⊙ʔ = -->
 <!-- ======================================= END SCENES -->
 </article>
-
-<div style="height:200vh; background: pink;"></div>
 
 <div class="screen-characters">
     <div id="ScreenAppking" class="">
