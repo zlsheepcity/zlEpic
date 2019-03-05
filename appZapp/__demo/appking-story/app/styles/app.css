@@ -377,11 +377,11 @@
     -webkit-transform: skewX(-0.78125deg) skewY(-0.78125deg);
     transform: skewX(-0.78125deg) skewY(-0.78125deg); }
   77.7% {
-    -webkit-transform: skewX(0.39063deg) skewY(0.39063deg);
-    transform: skewX(0.39063deg) skewY(0.39063deg); }
+    -webkit-transform: skewX(0.390625deg) skewY(0.390625deg);
+    transform: skewX(0.390625deg) skewY(0.390625deg); }
   88.8% {
-    -webkit-transform: skewX(-0.19531deg) skewY(-0.19531deg);
-    transform: skewX(-0.19531deg) skewY(-0.19531deg); } }
+    -webkit-transform: skewX(-0.1953125deg) skewY(-0.1953125deg);
+    transform: skewX(-0.1953125deg) skewY(-0.1953125deg); } }
 @keyframes jello {
   from, 11.1%, to {
     -webkit-transform: none;
@@ -402,11 +402,11 @@
     -webkit-transform: skewX(-0.78125deg) skewY(-0.78125deg);
     transform: skewX(-0.78125deg) skewY(-0.78125deg); }
   77.7% {
-    -webkit-transform: skewX(0.39063deg) skewY(0.39063deg);
-    transform: skewX(0.39063deg) skewY(0.39063deg); }
+    -webkit-transform: skewX(0.390625deg) skewY(0.390625deg);
+    transform: skewX(0.390625deg) skewY(0.390625deg); }
   88.8% {
-    -webkit-transform: skewX(-0.19531deg) skewY(-0.19531deg);
-    transform: skewX(-0.19531deg) skewY(-0.19531deg); } }
+    -webkit-transform: skewX(-0.1953125deg) skewY(-0.1953125deg);
+    transform: skewX(-0.1953125deg) skewY(-0.1953125deg); } }
 .jello {
   -webkit-animation-name: jello;
   animation-name: jello;
@@ -2466,11 +2466,6 @@ td {
   font-size: 0.875em;
   line-height: 1.714285; }
 
-.scene-action--legend-about-appking blockquote {
-  /* 20/28 */
-  font-size: 1.25em;
-  line-height: 1.4; }
-
 .has-text-accent {
   font-weight: 400;
   /* 24/36 */
@@ -2482,7 +2477,7 @@ td {
   font-size: 0.875em;
   line-height: 1.714285; }
 
-.has-sans-text {
+.has-sans-text, .matrix-code-layer {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
   letter-spacing: .03em;
   /* 14/24 */
@@ -2644,7 +2639,7 @@ $zetka-half-screen-two                    in][][][side][]-
 // --------------------------------------------------------------
 // ZETKA LAYOUT
 // -------------------------------------------------------------- */
-.zetka, .zetka-layer, .scene, .scene-action--welcome-legend, .zetka-overmain, .zetka blockquote, .zetka-block, .zetka-menu, .character-welcome-appking, .zetka-side, .zetka-merge, .zetka-merge-menu, .zetka-merge-side, .zetka-menu-screen, .zetka-side-screen, .scene-action--legend-about-appking .illustration, .zetka-merge-menu-screen, .zetka-merge-side-screen, .scene-action--legend-about-appking, .zetka-half-screen-one, .zetka-half-screen-two, .zetka-overhalf-one, .zetka-overhalf-two, .zetka-half-one, .zetka-half-two, .zetka-third-one, .zetka-third-two, .zetka-third-tri, .zetka-third-merge-one, .zetka-third-merge-tri {
+.zetka, .zetka-layer, .matrix-code-layer, .zetka-overmain, .zetka blockquote, .zetka-block, .zetka-menu, .zetka-side, .zetka-merge, .zetka-merge-menu, .zetka-merge-side, .zetka-menu-screen, .zetka-side-screen, .zetka-merge-menu-screen, .zetka-merge-side-screen, .zetka-half-screen-one, .zetka-half-screen-two, .zetka-overhalf-one, .zetka-overhalf-two, .zetka-half-one, .zetka-half-two, .zetka-third-one, .zetka-third-two, .zetka-third-tri, .zetka-third-merge-one, .zetka-third-merge-tri {
   display: grid;
   align-items: start;
   grid-auto-flow: row;
@@ -2661,7 +2656,7 @@ $zetka-half-screen-two                    in][][][side][]-
   grid-column: full;
   grid-template-columns:  [  full-start  ]  minmax(0, 1fr)  [  overmenu-start  ]  3.2rem  [  menu-start  ]  16vw  [  menu-end  ]  3.2rem  [  overmenu-end overmain-start  ]  3.2rem  [  main-start a  ]  minmax(0, calc( (35em - (5*1rem)) / 6 ))  [b]  minmax(0, calc( (35em - (5*1rem)) / 6 ))  [c]  minmax(0, calc( (35em - (5*1rem)) / 6 ))  [d midmenu midpoint midside]  minmax(0, calc( (35em - (5*1rem)) / 6 ))  [e]  minmax(0, calc( (35em - (5*1rem)) / 6 ))  [f]  minmax(0, calc( (35em - (5*1rem)) / 6 ))  [  main-end g  ]  3.2rem  [  overmain-end overside-start  ]  3.2rem  [  side-start  ]  16vw  [  side-end  ]  3.2rem  [  overside-end  ]  minmax(0, 1fr)  [  full-end  ] ; }
 
-.zetka-layer, .scene, .scene-action--welcome-legend {
+.zetka-layer, .matrix-code-layer {
   grid-column: full;
   grid-template-columns:  [  full-start  ]  minmax(0, 1fr)  [  overmenu-start  ]  3.2rem  [  menu-start  ]  16vw  [  menu-end  ]  3.2rem  [  overmenu-end overmain-start  ]  3.2rem  [  main-start a  ]  minmax(0, calc( (35em - (5*1rem)) / 6 ))  [b]  minmax(0, calc( (35em - (5*1rem)) / 6 ))  [c]  minmax(0, calc( (35em - (5*1rem)) / 6 ))  [d midmenu midpoint midside]  minmax(0, calc( (35em - (5*1rem)) / 6 ))  [e]  minmax(0, calc( (35em - (5*1rem)) / 6 ))  [f]  minmax(0, calc( (35em - (5*1rem)) / 6 ))  [  main-end g  ]  3.2rem  [  overmain-end overside-start  ]  3.2rem  [  side-start  ]  16vw  [  side-end  ]  3.2rem  [  overside-end  ]  minmax(0, 1fr)  [  full-end  ] ; }
 
@@ -2673,7 +2668,7 @@ $zetka-half-screen-two                    in][][][side][]-
   grid-column: overmain;
   grid-template-columns:  [  full-start overmain-start overmenu-start overside-start  ]  3.2rem  [  menu-start side-start main-start a  ]  minmax(0, calc( (35em - (5*1rem)) / 6 ))  [b]  minmax(0, calc( (35em - (5*1rem)) / 6 ))  [c]  minmax(0, calc( (35em - (5*1rem)) / 6 ))  [d midmenu midpoint midside]  minmax(0, calc( (35em - (5*1rem)) / 6 ))  [e]  minmax(0, calc( (35em - (5*1rem)) / 6 ))  [f]  minmax(0, calc( (35em - (5*1rem)) / 6 ))  [  main-end g side-end menu-end  ]  3.2rem  [  overmain-end overmenu-end overside-end full-end  ] ; }
 
-.zetka-menu, .character-welcome-appking {
+.zetka-menu {
   grid-column: overmenu;
   grid-template-columns:  [  full-start overmain-start overmenu-start overside-start  ]  3.2rem  [  menu-start side-start main-start a  ]  1fr  [b]  1fr  [c]  1fr  [d midmenu midpoint midside]  1fr  [e]  1fr  [f]  1fr  [  main-end g side-end menu-end  ]  3.2rem  [  overmain-end overmenu-end overside-end full-end  ] ; }
 
@@ -2697,7 +2692,7 @@ $zetka-half-screen-two                    in][][][side][]-
   grid-column: full-start / overmenu-end;
   grid-template-columns:  [  full-start  ]  minmax(0, 1fr)  [  overmain-start overmenu-start overside-start  ]  3.2rem  [  menu-start side-start main-start a b c d e f g midmenu midpoint midside  ]  16vw  [  main-end side-end menu-end  ]  3.2rem  [  overmain-end overmenu-end overside-end full-end  ] ; }
 
-.zetka-side-screen, .scene-action--legend-about-appking .illustration {
+.zetka-side-screen {
   grid-column: overside-start / full-end;
   grid-template-columns:  [  full-start overmain-start overmenu-start overside-start  ]  3.2rem  [  menu-start side-start main-start a b c d e f g midmenu midpoint midside  ]  16vw  [  main-end side-end menu-end  ]  3.2rem  [  overmain-end overmenu-end overside-end  ]  minmax(0, 1fr)  [  full-end  ] ; }
 
@@ -2705,7 +2700,7 @@ $zetka-half-screen-two                    in][][][side][]-
   grid-column: full-start / overmain-end;
   grid-template-columns:  [  full-start  ]  minmax(0, 1fr)  [  overmenu-start  ]  3.2rem  [  menu-start  ]  16vw  [  menu-end  ]  3.2rem  [  overmenu-end overside-start overmain-start  ]  3.2rem  [  side-start main-start a  ]  minmax(0, calc( (35em - (5*1rem)) / 6 ))  [b]  minmax(0, calc( (35em - (5*1rem)) / 6 ))  [c]  minmax(0, calc( (35em - (5*1rem)) / 6 ))  [d midmenu midpoint midside]  minmax(0, calc( (35em - (5*1rem)) / 6 ))  [e]  minmax(0, calc( (35em - (5*1rem)) / 6 ))  [f]  minmax(0, calc( (35em - (5*1rem)) / 6 ))  [  main-end g side-end  ]  3.2rem  [  overmain-end overside-end full-end  ] ; }
 
-.zetka-merge-side-screen, .scene-action--legend-about-appking {
+.zetka-merge-side-screen {
   grid-column: overmain-start / full-end;
   grid-template-columns:  [  full-start overmenu-start overmain-start  ]  3.2rem  [  menu-start main-start a  ]  minmax(0, calc( (35em - (5*1rem)) / 6 ))  [b]  minmax(0, calc( (35em - (5*1rem)) / 6 ))  [c]  minmax(0, calc( (35em - (5*1rem)) / 6 ))  [d midmenu midpoint midside]  minmax(0, calc( (35em - (5*1rem)) / 6 ))  [e]  minmax(0, calc( (35em - (5*1rem)) / 6 ))  [f]  minmax(0, calc( (35em - (5*1rem)) / 6 ))  [  main-end g menu-end  ]  3.2rem  [  overmain-end overmenu-end overside-start  ]  3.2rem  [  side-start  ]  16vw  [  side-end  ]  3.2rem  [  overside-end  ]  minmax(0, 1fr)  [  full-end  ] ; }
 
@@ -2756,8 +2751,7 @@ $zetka-half-screen-two                    in][][][side][]-
 @media (max-width: 900px) {
   .zetka,
   .zetka-layer,
-  .scene,
-  .scene-action--welcome-legend {
+  .matrix-code-layer {
     grid-template-columns:  [  full-start  ]  minmax(0, 1fr)  [  overmain-start overmenu-start overside-start  ]  3.2rem  [  menu-start side-start main-start a  ]  minmax(0, calc( (35em - (5*1rem)) / 6 ))  [b]  minmax(0, calc( (35em - (5*1rem)) / 6 ))  [c]  minmax(0, calc( (35em - (5*1rem)) / 6 ))  [d midmenu midpoint midside]  minmax(0, calc( (35em - (5*1rem)) / 6 ))  [e]  minmax(0, calc( (35em - (5*1rem)) / 6 ))  [f]  minmax(0, calc( (35em - (5*1rem)) / 6 ))  [  main-end g side-end menu-end  ]  3.2rem  [  overmain-end overmenu-end overside-end  ]  minmax(0, 1fr)  [  full-end  ] ; }
 
   .zetka-merge,
@@ -2769,9 +2763,8 @@ $zetka-half-screen-two                    in][][][side][]-
   .zetka-merge-menu-screen {
     grid-template-columns:  [  full-start  ]  minmax(0, 1fr)  [  overmain-start overmenu-start overside-start  ]  3.2rem  [  menu-start side-start main-start a  ]  minmax(0, calc( (35em - (5*1rem)) / 6 ))  [b]  minmax(0, calc( (35em - (5*1rem)) / 6 ))  [c]  minmax(0, calc( (35em - (5*1rem)) / 6 ))  [d midmenu midpoint midside]  minmax(0, calc( (35em - (5*1rem)) / 6 ))  [e]  minmax(0, calc( (35em - (5*1rem)) / 6 ))  [f]  minmax(0, calc( (35em - (5*1rem)) / 6 ))  [  main-end g side-end menu-end  ]  3.2rem  [  overmain-end overmenu-end overside-end full-end  ] ; }
 
-  .zetka-side-screen, .scene-action--legend-about-appking .illustration,
-  .zetka-merge-side-screen,
-  .scene-action--legend-about-appking {
+  .zetka-side-screen,
+  .zetka-merge-side-screen {
     grid-template-columns:  [  full-start overmain-start overmenu-start overside-start  ]  3.2rem  [  menu-start side-start main-start a  ]  minmax(0, calc( (35em - (5*1rem)) / 6 ))  [b]  minmax(0, calc( (35em - (5*1rem)) / 6 ))  [c]  minmax(0, calc( (35em - (5*1rem)) / 6 ))  [d midmenu midpoint midside]  minmax(0, calc( (35em - (5*1rem)) / 6 ))  [e]  minmax(0, calc( (35em - (5*1rem)) / 6 ))  [f]  minmax(0, calc( (35em - (5*1rem)) / 6 ))  [  main-end g side-end menu-end  ]  3.2rem  [  overmain-end overmenu-end overside-end full-end  ] ; }
 
   .zetka-half-screen-one {
@@ -2782,17 +2775,14 @@ $zetka-half-screen-two                    in][][][side][]-
 @media (max-width: 600px) {
   .zetka,
   .zetka-layer,
-  .scene,
-  .scene-action--welcome-legend,
+  .matrix-code-layer,
   .zetka-merge,
   .zetka-merge-menu,
   .zetka-merge-side,
   .zetka-menu-screen,
   .zetka-side-screen,
-  .scene-action--legend-about-appking .illustration,
   .zetka-merge-menu-screen,
-  .zetka-merge-side-screen,
-  .scene-action--legend-about-appking {
+  .zetka-merge-side-screen {
     grid-template-columns:  [  full-start overmain-start overmenu-start overside-start  ]  3.2rem  [  menu-start side-start main-start a  ]  minmax(0, calc( (35em - (5*1rem)) / 6 ))  [b]  minmax(0, calc( (35em - (5*1rem)) / 6 ))  [c]  minmax(0, calc( (35em - (5*1rem)) / 6 ))  [d midmenu midpoint midside]  minmax(0, calc( (35em - (5*1rem)) / 6 ))  [e]  minmax(0, calc( (35em - (5*1rem)) / 6 ))  [f]  minmax(0, calc( (35em - (5*1rem)) / 6 ))  [  main-end g side-end menu-end  ]  3.2rem  [  overmain-end overmenu-end overside-end full-end  ] ; }
 
   .zetka-half-screen-one {
@@ -2814,19 +2804,9 @@ $zetka-half-screen-two                    in][][][side][]-
 /* APPKING STORY */
 /* story chapters */
 /* 2019.2.16 36week37 */
-.scene {
-  /* has illustrated background */
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center center; }
-
+/* Funny Like the Space */
 .is-invisible {
   opacity: 0; }
-
-.subtitle {
-  /* 14/28 */
-  font-size: 0.875em;
-  line-height: 1.5; }
 
 .mother-scene {
   padding-bottom: 4em; }
@@ -2847,34 +2827,22 @@ $zetka-half-screen-two                    in][][][side][]-
 .el-dialog--author {
   background-color: #60b3dc; }
 
-.scene-action--welcome-legend {
-  padding-top: 30vh;
-  margin-bottom: 30vh;
-  position: relative; }
-  .scene-action--welcome-legend h2 {
-    align-self: end; }
+.matrix-code-layer {
+  padding-top: 20vh;
+  padding-bottom: 20vh;
+  margin-top: 20vh;
+  margin-bottom: 40vh;
+  background-color: #051219;
+  color: limegreen; }
+  .matrix-code-layer .span1 {
+    padding-left: 1em; }
+  .matrix-code-layer .span2 {
+    padding-left: 2em; }
+  .matrix-code-layer .span3 {
+    padding-left: 3em; }
 
-.character-welcome-appking img {
-  width: 8em;
-  height: auto; }
-
-.scene-action--legend-about-appking {
-  padding-top: 3.2rem;
-  padding-bottom: 3.2rem;
-  margin-top: 10vh;
-  background-color: #395493;
-  color: white; }
-  .scene-action--legend-about-appking blockquote {
-    min-height: 60vh;
-    align-content: center; }
-    .scene-action--legend-about-appking blockquote *::first-letter {
-      font-size: 2em;
-      line-height: 1;
-      letter-spacing: 0.025em; }
-
-.scene-action--what-content-is {
-  margin-top: 20vh; }
-
+/* shaped top and bottom */
+/*clip-path: polygon( 0 2em, 10% 1em, 36% 2em, 55% 0, 100% 2em, 100% 100%, 55% calc( 100% - 2em ), 36% 100%, 10% calc( 100% - 1em ), 0 100% );*/
 #ScreenAppking {
   position: fixed;
   bottom: 10vh; }
@@ -2906,7 +2874,7 @@ $zetka-half-screen-two                    in][][][side][]-
 .has-v-equal > * {
   align-self: stretch; }
 
-.has-v-slices, .mother-scene {
+.has-v-slices, .mother-scene, .matrix-code-layer {
   grid-row-gap: 0; }
 
 .is-v-spaced {

@@ -1,9 +1,9 @@
 @charset "UTF-8";
 /*
-    zapp default sass ordnung
-    2018.2.8
+    zApp default sass ordnung
+    2019.2.16 → last update 2019.2.18
 */
-/* Zapp Sass Core - any project */
+/* zApp Sass Core */
 /* ==============================================================
     app sass constructor - mixins and/or copy-paste templates
     2019.2.8
@@ -279,7 +279,7 @@ body {
   -webkit-font-smoothing: antialiased; }
 
 /* eof typography */
-/* Zapp Sass Components - customizable list */
+/* zApp Sass Components - customizable list */
 /* ==============================================================
     box model for HTML & BODY
     2018.12.7
@@ -775,7 +775,8 @@ $zetka-half-screen-two                    in][][][side][]-
 
 /* Mod: use shadow overlay */
 /* eof sidebar */
-/* Zapp Sass Coat - any project */
+/* Project */
+/* zApp hi levels */
 /* ==============================================================
     univeral markup helpers
     2019.2.8
@@ -826,4 +827,4 @@ $zetka-half-screen-two                    in][][][side][]-
     justify-content: center; } }
 
 /* eof univeral markup helpers */
-/* Customs */
+/* EOF sass ordnung */
