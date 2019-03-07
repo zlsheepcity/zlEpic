@@ -86,6 +86,64 @@
         </code>
     </section>
 
+
+    <section class="zetka">
+        <header class="chapter-title">
+            <h2>Grid auto-fit usecase</h2>
+            <div>2019.3.7</div>
+        </header>
+        <div class="grid-auto-fit-usecase">
+            <div><p class="auto"></p></div>
+            <div><p class="auto"></p></div>
+            <div><p class="auto"></p></div>
+            <div><p class="auto"></p></div>
+            <div><p class="auto"></p></div>
+            <div><p class="auto"></p></div>
+            <div><p class="auto"></p></div>
+            <div><p class="auto"></p></div>
+            <div><p class="auto"></p></div>
+            <div><p class="auto"></p></div>
+            <div><p class="auto"></p></div>
+            <div><p class="auto"></p></div>
+            <div><p class="auto"></p></div>
+            <div><p class="auto"></p></div>
+            <div><p class="auto"></p></div>
+            <div><p class="auto"></p></div>
+            <div><p class="auto"></p></div>
+            <div><p class="auto"></p></div>
+            <div><p class="auto"></p></div>
+            <div><p class="auto"></p></div>
+        </div>
+        <code class="codeblock">/* css */
+            .grid-auto-fit-usecase {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+                grid-gap: 1rem;
+                grid-auto-flow: dense;
+            }
+        </code>
+        <style>
+            .grid-auto-fit-usecase {
+                grid-column: full;
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+                grid-gap: 1rem;
+                padding:  1rem;
+                grid-auto-flow: dense;
+            }
+            .grid-auto-fit-usecase>div {
+                grid-column: auto;
+                background-color: hsla(17,24%,80%,0.32);
+                padding: 1rem;
+                font-size: 0.64em;
+            }
+            .grid-auto-fit-usecase>div:nth-child(4) {
+              grid-column: span 2;
+              grid-row: span 2;
+            }
+        </style>
+    </section>
+
     <section class="zetka">
         <header class="chapter-title">
             <h2>Animation tasking</h2>
@@ -149,10 +207,10 @@
         <script src="app/vendor/waypoints/noframework.waypoints.js"></script>
         <script src="app/vendor/waypoints/shortcuts/inview.js"></script>
         <div id="TestWaypoints">
-            <p>Has away trigger + 50px</p>
+            <p>Has away trigger + 50%</p>
         </div>
         <style>
-            #TestWaypoints { background-color:wheat;padding:0.5em;text-align:center; }
+            #TestWaypoints { background-color:wheat;color:black;padding:0.5em;text-align:center; }
             #TestWaypoints.is-active { background-color: firebrick; color: white; }
         </style>
         <script>
@@ -166,7 +224,7 @@
                             toggleClass:'is-active'
                         })
                     },
-                    offset: 50
+                    offset: '50%'
                 })
             }
             (TestWaypoints)()
@@ -345,6 +403,30 @@
             }
             .a1:hover {
                 --hover: firebrick;
+            }
+        </code>
+        <div class="zetka-menu zetka-as-overmain">
+            <div class="var-data var-data-alpha"><p>var-data-alpha</p></div>
+            <div class="var-data var-data-beta"><p>var-data-beta</p></div>
+        </div>
+        <style>
+            .var-data {
+                padding: 0.5em;
+                background-color: hsla(17,44%,84%,0.8);
+                --text-color-var: black;
+                color: var(--text-color-var);
+            }
+            .var-data-beta {
+                --text-color-var: firebrick;
+            }
+        </style>
+        <code class="codeblock">/* css */
+            .var-data {
+                --text-color-var: black;
+                color: var(--text-color-var);
+            }
+            .var-data-beta {
+                --text-color-var: firebrick;
             }
         </code>
     </section>
