@@ -93,6 +93,16 @@ body.hasFocusedShadow .aFocusedShadow {
     box-shadow: 0 0 0 99999px rgba(0, 0, 0, .8);
 }
 
+/* hide scrollbar 2019 */
+
+.hidden-scroll {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.hidden-scroll::-webkit-scrollbar {
+  display: none;
+}
+
 /* custom scrollbar */
 
 .aCustomScrollbar::-webkit-scrollbar {
