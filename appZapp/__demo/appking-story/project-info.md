@@ -1,13 +1,7 @@
-# ADDON
-- история про ромашку
+# 2019.3.12
+Демо закончено.
+Дальше самостоятельный проект.
 
-
-# task list alpha-one
-2019.4.5
-
-- favicon
-- welcome arrow action
-- check VUE solution
 
 # Color Palette AppKing
 https://www.colourlovers.com/palette/953498/Headache
@@ -28,3 +22,13 @@ E6AC27
 Only Orangeby joy_of_summer
 BF4D28
 ```
+
+# task list alpha-one
+2019.2.5
+
+- favicon
+- welcome arrow action
+- check VUE solution
+
+2019.3.10
+- история про ромашку

@@ -50,6 +50,8 @@ $color-MatrixText: limegreen;
     background-color: $color-FunnyLikeTheSpace;
     color:            $color-MatrixText;
     @extend .has-sans-text;
+    font-size:   1em;
+    line-height: 1.5;
 
     .span1 { padding-left: 1em; }
     .span2 { padding-left: 2em; }

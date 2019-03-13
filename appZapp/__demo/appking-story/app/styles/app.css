@@ -2833,7 +2833,9 @@ $zetka-half-screen-two                    in][][][side][]-
   margin-top: 20vh;
   margin-bottom: 40vh;
   background-color: #051219;
-  color: limegreen; }
+  color: limegreen;
+  font-size: 1em;
+  line-height: 1.5; }
   .matrix-code-layer .span1 {
     padding-left: 1em; }
   .matrix-code-layer .span2 {
