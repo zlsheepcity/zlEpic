@@ -1,2 +1,0 @@
-var WelcomeMessage=function(){console&&"function"==typeof console.log&&console.log("Gaming Licensing 2019")};WelcomeMessage(),$(function(){"function"==typeof InterfaceEventsInitialization&&setTimeout(InterfaceEventsInitialization,200)});
-//# sourceMappingURL=main.js.map
