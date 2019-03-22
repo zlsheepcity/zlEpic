@@ -1,21 +1,11 @@
 # Installation command
 
 npx create-nuxt-app ProjectName
+...
+cd ProjectName
 
-# Instalation non command
-
-> package.json
-
-```json
-    {
-      "name": "my-app",
-      "scripts": {
-        "dev": "nuxt"
-      }
-    }
-```
-
-npm install --save nuxt
+npm run dev
+npm run build
 
 # SASS
 
@@ -48,7 +38,3 @@ Nuxt.js will transform every .vue file inside the pages directory as a route for
     section { h1 { color:red; } }
 </style>
 ```
-
-npm run dev
-npm run build
-
