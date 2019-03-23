@@ -7,6 +7,8 @@ closed: 2018.11.2
 
 ## features
 
+- Tufte CSS Design
+- data table
 - aside page menu
 
 
