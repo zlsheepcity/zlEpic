@@ -44,6 +44,17 @@
             border-left:  0.2em solid hsla(0,100%,0%,0.2);
             padding-left: 0.8em;
             margin-left:  1em;
+            color: hsl(200,40%,74%);
+        }
+        textarea {
+            background-color: transparent;
+            color: hsl(200,40%,74%);
+            padding-top: 1em;
+        }
+        .todo {
+            background-color: hsla(0,80%,74%,0.25);
+            clip-path: polygon( 2em 0, 4em 50%, 2em 100%, 100% 100%, 100% 0 );
+            padding: 1em 0;
         }
     </style>
 
@@ -84,6 +95,37 @@
         </header>
         <code class="codeblock">/* js */
         </code>
+    </section>
+
+    <section class="zetka">
+        <header class="chapter-title">
+            <h2>Manual SVG arc path for circle</h2>
+            <div>2019.3.28</div>
+        </header>
+        <textarea rows="10">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 120">
+            <path fill="#EF642A"
+              d="
+                M 75, 60
+                a 25,25 0 1,1  50,0
+                a 25,25 0 1,1 -50,0
+              "
+            />
+            </svg>
+        </textarea>
+        <p>M → start point</p>
+        <p>a → arc → X/Y radius + 0 1 1 + X/Y end relative point</p>
+        <div>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 120">
+            <path fill="#EF642A"
+              d="
+                M 75, 60
+                a 25,25 0 1,1  50,0
+                a 25,25 0 1,1 -50,0
+              "
+            />
+            </svg>
+        </div>
     </section>
 
 
@@ -144,7 +186,7 @@
         </style>
     </section>
 
-    <section class="zetka">
+    <section class="zetka todo">
         <header class="chapter-title">
             <h2>Animation tasking</h2>
             <div>2019.3.4</div>
@@ -288,6 +330,7 @@
                 <p class="auto"></p>
             </div>
         </div>
+        <hr>
         <div class="zetka-merge zetka-as-overmain">
             <h3>Long list sample, column-rule: 0;</h3>
             <ul class="test-for-multicolumn" style="column-rule: 0;">
