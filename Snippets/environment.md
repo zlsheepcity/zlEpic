@@ -50,6 +50,9 @@ git commit --amend -m "update last commit message"
 .gitkeep
     пустой файл, чтобы git видел пустую директорию
 
+## Коммит вернуть (по шагу назад)
+
+git reset --soft HEAD~1
 
 ## Один файл вернуть как был
 

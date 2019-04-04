@@ -6,6 +6,7 @@
 
 //* ------------------------------------------- PRELOAD
 
+var zzzClassname = "zoomer"
 var zzz = zzz || {};
 
 (function ( o ) {
@@ -28,7 +29,7 @@ var zzz = zzz || {};
 
   function checkImages () {
     var i;
-    var images = document.getElementsByClassName("zzz");
+    var images = document.getElementsByClassName("has-zooming");
 
     for (i = 0; i < images.length; ++i) {
       makeZoomable(images[i]);
