@@ -13,7 +13,11 @@
     <!-- ========================================= APP MAIN -->
 
 
-    <script defer src="app/script/app-core.js"></script>
+    <script src="app/script/app-core.js"></script>
+
+    <!-- ========================================= APP LIBS -->
+
+    <script defer src="app/script/components/scroll-watcher.js"></script>
 
 
     <!-- ========================================= APP CUSTOM -->
@@ -21,7 +25,10 @@
     <script>
         window.onload = function Run() {
 
-            //app.Welcome()
+            app.take({name:'report', f:console.log})
+            app.take({name:'wayway', f:basicScroll})
+
+            app.Welcome()
 
         }
     </script>
@@ -36,6 +43,11 @@
 <body class="body-wrap design-template">
 
     <h1>js</h1>
+    <script>
+        app.onload(function () {
+            app.report('On Load Trigger')
+        });
+    </script>
 
 </body>
 </html>

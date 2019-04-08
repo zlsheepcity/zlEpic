@@ -8,7 +8,6 @@ const DNA = {
     name: 'app',
     queens: [
         'report',
-        'takeit',
         'mutate',
         'onload',
         'wayway'
@@ -38,6 +37,15 @@ function AppKing (dna) {
     }
     king.do = lordDelegator
 
+    // register queen-library
+
+    function lordTakeTheQueen ({name, f}) {
+        king.has[name] = f
+        if ( king.isHere ) king.Wedding(name)
+        return king
+    }
+    king.take  = lordTakeTheQueen
+
     // save task for later execution
 
     function lordDoLater (responsible) {
@@ -54,7 +62,7 @@ function AppKing (dna) {
     function lordRememba () {
         king.mind = king.mind || []
         let read  = king.mind.splice(0, king.mind.length)
-        read.map((o)=>king.log(o.for, o.dna))
+        read.map((o)=>king[o.for](o.dna))
     }
     king.Rememba  = lordRememba
 
@@ -81,28 +89,21 @@ function AppKing (dna) {
     if (dna && dna.queens)
         dna.queens.map( (Q)=>{ king[Q] = king.Dolater(Q) } )
 
-    // Primary Queens
-
-    function lordTakeTheQueen ({name, f}) {
-        king.has[name] = f
-        if ( king.isHere ) king.Wedding(name)
-        return king
-    }
-    king.takeit  = lordTakeTheQueen
 
 }
 
 var app = new AppKing(DNA)
 
-app.mutate('xxx')
-app.wayway('xxx')
-app.mutate('yyy')
+// Mother Queens
 
-app.takeit({name:'report', f:console.log})
+app.take({
+    name:'onload',
+    f: function queenOnload (dna) {
+        if ('function'===typeof(dna)) dna();
+    }
+})
 
-app.Welcome()
 
-app.mutate('zzz')
 
 /* Samples
 

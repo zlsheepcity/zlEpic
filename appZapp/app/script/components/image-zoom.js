@@ -6,7 +6,7 @@
 
 //* ------------------------------------------- PRELOAD
 
-var zzzClassname = "zoomer"
+var zzzClassname = "zzz"
 var zzz = zzz || {};
 
 (function ( o ) {
