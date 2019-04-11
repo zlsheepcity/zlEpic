@@ -76,9 +76,11 @@ function AppKing (dna) {
 
     let queens = [
         'report',
-        'mutate',
         'onload',
-        'wayway'
+        'mutate',
+        'wayway',
+        'waydot',
+        'pathDance'
     ]
     queens.map( (Q)=>{ king[Q] = king.Dolater(Q) } )
 
@@ -91,7 +93,7 @@ var app = new AppKing()
 app.take({name:'report', f:console.log})
 app.take({name:'onload',
     f: function queenOnload (dna) {
-        if ('function'===typeof(dna)) dna();
+        if (typeof(dna)==='function') dna();
     }
 })
 

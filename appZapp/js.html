@@ -21,15 +21,39 @@
     <script src="app/script/components/class-mutator.js"></script>
     <script>app.take({name:'mutate', f:el_class_mutator})</script>
 
-    <script src="app/script/components/scroll-watcher.js"></script>
+    <script src="app/script/components/scroll-follower.js"></script>
     <script>
-        const queenScrollWatcher = function Ribosome (dna) {
+        const queenScrollFollower = function Ribosome (dna) {
             const rna = dna
             const instance = basicScroll.create(rna)
             instance.start()
             return instance
         }
-        app.take({name:'wayway', f:queenScrollWatcher})
+        app.take({name:'wayway', f:queenScrollFollower})
+    </script>
+
+    <script src="app/script/components/scroll-trigger.js"></script>
+    <script>
+        const queenScrollTrigger = function Ribosome (dna) {
+            const rna = dna
+            const instance = new Waypoint(rna)
+        }
+        app.take({name:'waydot', f:queenScrollTrigger})
+    </script>
+
+    <script src="app/script/components/svg-transform.js"></script>
+    <script>
+        const queenPathDance = function Ribosome (dna) {
+            const rna = {
+                el:     dna.el,
+                pathA:  dna.pathA,
+                pathB:  dna.pathB,
+                time:   dna.time
+            }
+            app.log(rna)
+            app.log(rna.el.attributes.d.value)
+        }
+        app.take({name:'pathDance', f:queenPathDance})
     </script>
 
 
@@ -42,6 +66,9 @@
 
         }
     </script>
+    <style>
+        .triggered { outline: 4px solid firebrick; }
+    </style>
 
 
     <!-- ========================================= PAGE CUSTOM -->
@@ -52,29 +79,100 @@
 </head>
 <body class="body-wrap design-template">
 
-    <div style="min-height: 100vh; background: #f0f0f0;"><h1 class="h1">js</h1></div>
+    <div style="min-height: 100vh; background: #f0f0f0;">
+        <h1 class="h1">js</h1>
+        <figure>
+            <style>
+                #Catground_Ann {
+                    width: 50vw;
+                    max-width: 600px;
+                    height: auto;
+                    margin: 0 auto;
+                }
+            </style>
+            <svg version="1.1" id="Catground_Ann" xmlns="http://www.w3.org/2000/svg" width="1000" height="1000" viewBox="0 0 1000 1000">
+            <style type="text/css">
+            <![CDATA[
+                .st0{opacity:0.08;}
+            ]]>
+            </style>
+            <g class="st0">
+                <path id="PathDancer" d="M617.8,210.4c24-10.9,59.5-68.6,77.9-71.2c31.9-4.6,110.3,138.6,125.3,163.7c14.6,24.4,58.7,106.3,53.7,141.6
+                    c-3.4,24.4-12.8,54.2-21.7,74.8c-14.5,33-28.4,68.9-29.5,105.4c-1.3,44.4-26.1,78.1-32.8,116c-11.3,63.3-75.1,99.9-135.9,111.4
+                    c-123.9,23.3-236.1,30.4-359.6-5.6c-50.3-14.6-120.8-35.1-153.6-79.9c-32.7-44.6-24.4-101.5-8-150.8
+                    c27.5-82.6,97.3-172.3,158.9-235c12.4-12.6,24.7-25.8,37.5-38.6c14.9-14.9,30.4-39,35.3-54.5c5.6-17.9,7.9-58.8,13.8-73.9
+                    c8.3-21.1,17.6-44,28.6-64c3.6-6.6,20.4-42.6,30-32.5c16.5,17.5,28.6,33.4,46.6,49.8c16.8,15.3,91.7,35.5,123.6,42.7
+                    C610.3,210.4,615.6,211.5,617.8,210.4z"/>
+            </g>
+            </svg>
+            <script>
+                const PathDancer = document.getElementById('PathDancer')
+                const PathA = PathDancer.attributes.d.value
+                app.pathDance({
+                    el:    PathDancer,
+                    pathA: PathA,
+                    pathB: "M1,1L2,1L1.5,2Z",
+                    time:  4
+                });
+            </script>
+        </figure>
+    </div>
     <script>
         app.onload(function () {
             app.log('On Load Trigger')
-            app.log(app.wayway)
         });
         app.mutate({for:'h1',addClass:'mutated'})
     </script>
+
+
+
+
+    <style>
+        .wayway-trigga {
+            --font: 10px;
+            font-size: var(--font);
+            line-height: 40px;
+        }
+    </style>
     <div style="min-height: 100vh; background: #f0d0d0;">
-        <h2 class="trigga">Way Way Trigger</h2>
+        <h2 class="wayway-trigga">Way Way Trigger</h2>
         <input type="text" id="trigga-data">
+        <div id="waypoint-trigga">waypoint-trigga</div>
     </div>
     <script>
         app.wayway({
-            elem: document.querySelector('.trigga'),
-            from: 'top-bottom',
-            to:   'middle-middle',
+            elem: document.querySelector('.wayway-trigga'),
+            from: 'top-middle',
+            to:   'top-top',
             direct:  true,
+            props: {
+                '--font': { from: '10px', to: '36px' }
+            }
+        })
+        app.wayway({
+            elem: document.querySelector('.wayway-trigga'),
+            from: 'top-middle',
+            to:   'top-top',
             inside:  (instance, percentage, props) => {
                 app.log('Inside!'+percentage)
+                app.mutate({el:document.querySelector('.wayway-trigga'),toggleClass:'triggered'})
                 instance.destroy()
             },
-            outside: (instance, percentage, props) => { app.log('Outside!'+percentage) },
+            outside: (instance, percentage, props) => { app.log('Outside!'+percentage) }
+        })
+        app.waydot({
+            element: document.getElementById('waypoint-trigga'),
+            offset: '70%',
+            handler: function (direction) {
+                app.mutate({el:this.element,toggleClass:'triggered'})
+            }
+        })
+        app.waydot({
+            element: document.getElementById('waypoint-trigga'),
+            offset: '30%',
+            handler: function (direction) {
+                app.mutate({el:this.element,toggleClass:'triggered'})
+            }
         })
     </script>
 
