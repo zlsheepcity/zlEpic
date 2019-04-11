@@ -2,18 +2,6 @@
     2019.4.5
 */
 
-//*  -------------------------------- DNA Model
-
-const DNA = {
-    name: 'app',
-    queens: [
-        'report',
-        'mutate',
-        'onload',
-        'wayway'
-        ]
-}
-
 //*  -------------------------------- King Description
 
 function AppKing (dna) {
@@ -84,20 +72,24 @@ function AppKing (dna) {
     }
     king.Welcome = lordWelcomeKing
 
-    // queen list from DNA
+    // queen list
 
-    if (dna && dna.queens)
-        dna.queens.map( (Q)=>{ king[Q] = king.Dolater(Q) } )
-
+    let queens = [
+        'report',
+        'mutate',
+        'onload',
+        'wayway'
+    ]
+    queens.map( (Q)=>{ king[Q] = king.Dolater(Q) } )
 
 }
 
-var app = new AppKing(DNA)
+// -------------------------------- King & First Queens
 
-// Mother Queens
+var app = new AppKing()
 
-app.take({
-    name:'onload',
+app.take({name:'report', f:console.log})
+app.take({name:'onload',
     f: function queenOnload (dna) {
         if ('function'===typeof(dna)) dna();
     }

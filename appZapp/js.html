@@ -14,19 +14,29 @@
 
 
     <script src="app/script/app-core.js"></script>
+    <script>app.log('... Wake Up, App!')</script>
 
     <!-- ========================================= APP LIBS -->
 
-    <script defer src="app/script/components/scroll-watcher.js"></script>
+    <script src="app/script/components/class-mutator.js"></script>
+    <script>app.take({name:'mutate', f:el_class_mutator})</script>
+
+    <script src="app/script/components/scroll-watcher.js"></script>
+    <script>
+        const queenScrollWatcher = function Ribosome (dna) {
+            const rna = dna
+            const instance = basicScroll.create(rna)
+            instance.start()
+            return instance
+        }
+        app.take({name:'wayway', f:queenScrollWatcher})
+    </script>
 
 
     <!-- ========================================= APP CUSTOM -->
 
     <script>
         window.onload = function Run() {
-
-            app.take({name:'report', f:console.log})
-            app.take({name:'wayway', f:basicScroll})
 
             app.Welcome()
 
@@ -42,11 +52,30 @@
 </head>
 <body class="body-wrap design-template">
 
-    <h1>js</h1>
+    <div style="min-height: 100vh; background: #f0f0f0;"><h1 class="h1">js</h1></div>
     <script>
         app.onload(function () {
-            app.report('On Load Trigger')
+            app.log('On Load Trigger')
+            app.log(app.wayway)
         });
+        app.mutate({for:'h1',addClass:'mutated'})
+    </script>
+    <div style="min-height: 100vh; background: #f0d0d0;">
+        <h2 class="trigga">Way Way Trigger</h2>
+        <input type="text" id="trigga-data">
+    </div>
+    <script>
+        app.wayway({
+            elem: document.querySelector('.trigga'),
+            from: 'top-bottom',
+            to:   'middle-middle',
+            direct:  true,
+            inside:  (instance, percentage, props) => {
+                app.log('Inside!'+percentage)
+                instance.destroy()
+            },
+            outside: (instance, percentage, props) => { app.log('Outside!'+percentage) },
+        })
     </script>
 
 </body>
