@@ -21,6 +21,17 @@
     <script src="app/script/components/class-mutator.js"></script>
     <script>app.take({name:'mutate', f:el_class_mutator})</script>
 
+    <script src="app/script/components/image-zoom.js"></script>
+    <script>
+        const queenImageZoomer = function Ribosome (dna) {
+            if( typeof(ActivateImageZoom)!=='function' ) return false
+            ActivateImageZoom()
+            return true
+        }
+        app.take({name:'zzzimg', f:queenImageZoomer})
+        app.onload(queenImageZoomer)
+    </script>
+
     <script src="app/script/components/scroll-follower.js"></script>
     <script>
         const queenScrollFollower = function Ribosome (dna) {
@@ -116,6 +127,9 @@
                 });
             </script>
         </figure>
+        <div>
+            <img src="art/favicons/192x192.png" class="zzz" alt="">
+        </div>
     </div>
     <script>
         app.onload(function () {

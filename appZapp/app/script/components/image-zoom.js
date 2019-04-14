@@ -29,7 +29,7 @@ var zzz = zzz || {};
 
   function checkImages () {
     var i;
-    var images = document.getElementsByClassName("has-zooming");
+    var images = document.getElementsByClassName(zzzClassname);
 
     for (i = 0; i < images.length; ++i) {
       makeZoomable(images[i]);

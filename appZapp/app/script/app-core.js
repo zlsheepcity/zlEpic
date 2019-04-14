@@ -78,6 +78,7 @@ function AppKing (dna) {
         'report',
         'onload',
         'mutate',
+        'zzzimg',
         'wayway',
         'waydot',
         'pathDance'
