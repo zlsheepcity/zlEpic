@@ -1,15 +1,17 @@
 /*
-    only-one-template for html markup
-    v2019.2.8
+    default design for semantic html markup
+    v2019.4.17
 
     Sakura based: https://github.com/oxalorg/sakura
 
-    This document:
+    Structure:
     - normalize.css
     - sakura.css
-    - sakura update zl
-*/
+    - sakura zl update
 
+    Template:
+    <html sakura>
+*/
 
 
 /*! normalize.css v5.0.0 | MIT License | github.com/necolas/normalize.css */
@@ -24,7 +26,7 @@
 /* Document
    ========================================================================== */
 
-html {
+html[sakura] {
   font-family: sans-serif; /* 1 */
   line-height: 1.15; /* 2 */
   -ms-text-size-adjust: 100%; /* 3 */
@@ -33,6 +35,9 @@ html {
 
 /* Sections
    ========================================================================== */
+
+html[sakura] {
+
 
 /**
  * Remove the margin in all browsers (opinionated).
@@ -463,6 +468,8 @@ template {
   display: none;
 }
 
+}
+
 /* Hidden
    ========================================================================== */
 
@@ -475,15 +482,18 @@ template {
 }
 
 
+
 /* Sakura.css v1.0.0
  * ================
  * Minimal css theme.
  * Project: https://github.com/oxalorg/sakura
  */
 /* Body */
-html {
+html[sakura] {
   font-size: 62.5%;
   font-family: serif; }
+
+html[sakura] {
 
 body {
   font-size: 1.8rem;
@@ -642,28 +652,40 @@ label, legend, fieldset {
   font-weight: 600; }
 
 
-/*
+}
+
+
+
+
+/*  -----------------------------------------------------
     zl append sakura
     v2018.8.26
 */
 
-html { margin:0; padding:0; }
-body { margin:0; padding:1rem; }
-img, svg { max-width:100%; }
-figure { margin-left:0; margin-right:0; }
-html { box-sizing: border-box; }
-*, *::before, *::after { box-sizing: inherit; }
-body {
-    margin: 0;
-    padding: 0;
-    max-width: 100%;
+html[sakura] {
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
 }
+
+*, *::before, *::after { box-sizing: inherit; }
+
+html[sakura] {
+    body {
+        margin: 0;
+        padding: 0;
+        max-width: 100%;
+    }
+    img, svg { max-width:100%; }
+    figure { margin-left:0; margin-right:0; }
+}
+
 
 /*
     MOD: Centered content column
 */
 
-.content-body {
+.sakura-content {
     display: grid;
     grid-template-columns:
         [full-start] minmax(1rem, 1fr)
@@ -671,12 +693,11 @@ body {
         [main-end]   minmax(1rem, 1fr)
         [full-end];
 }
-.content-body > * {
+.sakura-content > * {
     grid-column: main;
 }
-.content-body > .layer {
+.sakura-content > .layer {
     grid-column: full;
 }
-.content-body > .layer > * {
-    grid-column: main;
-}
+
+[sakura-content] { @extend .sakura-content; }

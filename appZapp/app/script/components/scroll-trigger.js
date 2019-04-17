@@ -3,6 +3,13 @@
     2019.4.11
 ------------------------------------------- */
 
+// app integration
+
+const queenScrollTrigger = function Ribosome (dna) {
+    const rna = dna
+    const instance = new Waypoint(rna)
+}
+
 /*!
 Waypoints - 4.0.1
 Copyright © 2011-2016 Caleb Troughton

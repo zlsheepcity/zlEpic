@@ -2,6 +2,7 @@
 
 ```bash
 scss -C --sourcemap=none app.scss app.css
+scss -C --sourcemap=none appZapp/app/styles/app.scss appZapp/app/styles/app.css
 ```
 
 or

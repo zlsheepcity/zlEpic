@@ -1,6 +1,6 @@
 /* ==============================================================
     fixed sidebar with visible and hidden states
-    2019.1.28
+    2019.4.13
 ============================================================== */
 
 /* USE CASE
@@ -9,8 +9,44 @@
     </nav>
 */
 
+//* ------------------------------------ universal shadow overlay
 
-//* ------------------------------------ settings
+$z-index-shadowOverlay: 2;
+
+// container
+
+%screen-has-shadow-overlay {
+    overflow: hidden;
+    .screen-shadow-overlay {
+        opacity:0.8;
+        pointer-events: auto;
+        transition: opacity 400ms ease-in;
+    }
+}
+.has-shadow-overlay { @extend %screen-has-shadow-overlay; }
+
+// overlay
+
+.screen-shadow-overlay {
+    background-color: black;
+    position: fixed;
+    z-index: $z-index-shadowOverlay;
+    top:    0;
+    bottom: 0;
+    right:  0;
+    left:   0;
+    pointer-events: none;
+    opacity: 0;
+}
+/**/
+
+.has-active-sidebar { @extend %screen-has-shadow-overlay; }
+
+
+
+
+
+//* ------------------------------------ sidebar settings
 
 $z-index-sidebar: 3;
 $sidebar__width-limit:               38rem;
@@ -22,6 +58,7 @@ $sidebar__remaining-space-limit:     6rem;
 $a: $sidebar__width-limit;
 $b: $sidebar__remaining-space-limit;
 $screenNotFullscreenSidebar: 'min-width: #{ $a + $b }';
+
 
 
 //* ------------------------------------ sidebar component
@@ -57,21 +94,14 @@ $screenNotFullscreenSidebar: 'min-width: #{ $a + $b }';
         transform: translateX(-100%);
     }
 
-    /* mode: other side */
-    &.is-from-other-side {
-        left:  auto;
-        right: 100%;
-        &.is-active,
-        .has-active-sidebar & {
-            transition-timing-function: ease-out;
-            transform: translateX(100%);
-        }
-    }
-
 }
-
-/* Mod: use shadow overlay */
-.has-active-sidebar { @extend %screen-has-shadow-overlay; }
-
+.sidebar-westside {
+    left:  auto;
+    right: 100%;
+    &.is-active,
+    .has-active-sidebar & {
+        transform: translateX(100%);
+    }
+}
 
 /* eof sidebar */

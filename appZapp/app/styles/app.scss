@@ -1,55 +1,51 @@
 @charset "UTF-8";
 /*
     zApp default sass ordnung
-    2019.2.16 → last update 2019.2.18
+    2019.2.16 → last update 2019.4.17
 */
 
 
+// -------------------------------------------- Core
+
+    @import "components/html-core/_settings";
+    @import "components/html-core/sass-workers";
+    @import "components/html-core/css-workers";
+
+// -------------------------------------------- HTML Setup
+
+    @import "components/html-core/html-wrap";
+    @import "components/html-core/html-typography";
+    @import "components/html-core/form-minimal";
+
+
+// -------------------------------------------- Components
+
+    @import "components/animate-css/required-animations";
+    @import "components/sidebar/sidebar";
+    @import "components/layout-fullscreen/layout-fullscreen";
+    @import "components/group/group";
+    @import "components/data-table/data-table";
+
+    @import "components/zetka/zetka--settings";
+    @import "components/zetka/zetka--constructor";
+    @import "components/zetka/zetka--layout";
+
+    @import "components/design-sakura/design-sakura";
+
+
+// -------------------------------------------- Rare Components
+
+    @import "rare-components/layout-body-wrap/layout-body-wrap";
+    @import "rare-components/extra-compact-form/extra-compact-form";
+
 // ---------------------------------------------------------------
-/* zApp Sass Core */
+/* zApp Sass Core *
 // ---------------------------------------------------------------
 
 @import "app_core/01-core-constructor";
 @import "app_core/02-core-variables";
 @import "app_core/03-core-html-markup";
 @import "app_core/04-core-typography";
-
-
-// ---------------------------------------------------------------
-/* zApp Sass Components - customizable list */
-// ---------------------------------------------------------------
-
-// ----- screen layouts
-
-@import "app_item/layout-body-wrap/layout-body-wrap";
-@import "app_item/layout-fullscreen/layout-fullscreen";
-
-// ----- content formation
-
-@import "app_item/zetka/zetka--settings";
-@import "app_item/zetka/zetka--constructor";
-@import "app_item/zetka/zetka--layout";
-
-@import "app_item/group/group";
-
-@import "app_item/data-table/data-table";
-
-// ----- interface components
-
-@import "app_item/sidebar/sidebar";
-
-    //pending @import "app_item/extra-compact-form/extra-compact-form";
-
-
-// ---------------------------------------------------------------
-/* Project */
-// ---------------------------------------------------------------
-
-// sakura
-// @import "app_item/plain-markup-design/plain-markup-design";
-
-
-
 
 
 // ---------------------------------------------------------------

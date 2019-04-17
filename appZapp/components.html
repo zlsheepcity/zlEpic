@@ -1,0 +1,115 @@
+<!doctype html><!-- app7001-Zapp -->
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- ========================================= HEAD CONTENT -->
+
+
+    <title>Components</title>
+
+
+    <!-- ========================================= DESIGN -->
+
+    <link
+        href="https://fonts.googleapis.com/css?family=Vollkorn:400,400i,700&subset=cyrillic"
+        rel="stylesheet">
+    <link
+        href="app/styles/app.css"
+        rel="stylesheet" type="text/css">
+
+    <!-- ========================================= APP MAIN -->
+
+
+    <script src="app/script/app-core.js"></script>
+    <script>app.log('... Wake Up, App!')</script>
+
+    <!-- ========================================= APP LIBS -->
+
+    <script src="app/script/components/class-mutator.js"></script>
+    <script>app.take({name:'mutate', f:el_class_mutator})</script>
+
+    <script src="app/script/components/scroll-follower.js"></script>
+    <script>app.take({name:'wayway', f:queenScrollFollower})</script>
+
+    <script src="app/script/components/scroll-trigger.js"></script>
+    <script>app.take({name:'waydot', f:queenScrollTrigger})</script>
+
+    <script src="app/script/components/image-zoom.js"></script>
+    <script>app.onload(ActivateImageZoom)</script>
+
+
+    <!-- ========================================= APP CUSTOM -->
+
+    <script>
+        function RunInterface () {
+            app.Welcome()
+            app.log('App, Welcome!')
+        }
+        window.onload = function Run() {
+            setTimeout(RunInterface,100)
+        }
+    </script>
+    <style>
+        .design-template {
+            background-color: hsl(330, 2%, 16%); /* Entrapped InAPalette */
+            color: white;
+        }
+        .mother-chapter > section {
+            margin-top:    2em;
+            margin-bottom: 2em;
+        }
+        .codeblock {
+            white-space: pre-line;
+            border-left:  0.2em solid hsla(0,0%,100%,0.2);
+            padding-left: 0.8em;
+            margin-left:  1em;
+            color: hsl(200,40%,74%);
+        }
+    </style>
+
+    <!-- ========================================== ʕ⊙ᴥ⊙ʔ = -->
+    <!-- ========================================= END HEAD -->
+</head>
+<body class="body-wrap design-template mother-chapter">
+
+
+
+    <section class="zetka">
+        <header class="chapter-title">
+            <h2>Components</h2>
+        </header>
+        <code class="codeblock">/* samples */
+        </code>
+    </section>
+
+
+
+
+
+
+<!-- ========================================= PAGE CUSTOM -->
+
+<script>
+    // insert random content into paragraphs
+    function p() {
+        // const p = document.getElementsByTagName('p')
+        const p = document.querySelectorAll('.auto')
+        for ( let i in p ) {
+            let texts = [
+                'Petrovich is more than just a programming language, it is a complete computer operating system and program development environment. It is named after Ivan Petrovich Pavlov, the guy who demonstrated conditional responses to stimuli in dogs. I would have called the language "Pavlov", but it seems all the cool names for languages have already been used by someone else.',
+                'In order to understand how Petrovich works, it is instructive to run through some examples. This is a sample interactive Petrovich session, annotated with comments.',
+                'The user asked Petrovich to do something with some scientific data. It responds first by plotting the data and printing it. Since this is not what the user wanted, he punishes Petrovich, then tries again. Wanting to avoid punishment, Petrovich tries something different, and this time performs an operation useful to the user. To encourage such behaviour, the user rewards Petrovich.'
+                ]
+            let text = texts[Math.floor(Math.random()*texts.length)]
+            let textnode = document.createTextNode(text)
+            if (p[i].appendChild) p[i].appendChild(textnode)
+        }
+    }
+    p()
+</script>
+
+
+</body>
+</html>

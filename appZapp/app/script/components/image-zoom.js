@@ -4,7 +4,7 @@
     Original: https://github.com/julienzmiro/zoomzoomzang/blob/master/zzz.js
 ------------------------------------------- */
 
-//* ------------------------------------------- PRELOAD
+//* ------------------------------------------- ENGINE
 
 var zzzClassname = "zzz"
 var zzz = zzz || {};

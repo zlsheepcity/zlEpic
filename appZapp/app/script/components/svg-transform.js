@@ -1,7 +1,11 @@
 /* -------------------------------------------
-    scroll trigger
+    SVG path transfromation
     2019.4.11
 ------------------------------------------- */
+
+// app integration
+
+
 
 // source: https://github.com/veltman/flubber
 

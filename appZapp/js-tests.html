@@ -22,35 +22,13 @@
     <script>app.take({name:'mutate', f:el_class_mutator})</script>
 
     <script src="app/script/components/image-zoom.js"></script>
-    <script>
-        const queenImageZoomer = function Ribosome (dna) {
-            if( typeof(ActivateImageZoom)!=='function' ) return false
-            ActivateImageZoom()
-            return true
-        }
-        app.take({name:'zzzimg', f:queenImageZoomer})
-        app.onload(queenImageZoomer)
-    </script>
+    <script>app.onload(ActivateImageZoom)</script>
 
     <script src="app/script/components/scroll-follower.js"></script>
-    <script>
-        const queenScrollFollower = function Ribosome (dna) {
-            const rna = dna
-            const instance = basicScroll.create(rna)
-            instance.start()
-            return instance
-        }
-        app.take({name:'wayway', f:queenScrollFollower})
-    </script>
+    <script>app.take({name:'wayway', f:queenScrollFollower})</script>
 
     <script src="app/script/components/scroll-trigger.js"></script>
-    <script>
-        const queenScrollTrigger = function Ribosome (dna) {
-            const rna = dna
-            const instance = new Waypoint(rna)
-        }
-        app.take({name:'waydot', f:queenScrollTrigger})
-    </script>
+    <script>app.take({name:'waydot', f:queenScrollTrigger})</script>
 
     <script src="app/script/components/svg-transform.js"></script>
     <script>
@@ -71,12 +49,13 @@
     <!-- ========================================= APP CUSTOM -->
 
     <script>
+        function RunInterface () { app.Welcome() }
+
         window.onload = function Run() {
-
-            app.Welcome()
-
+            setTimeout(RunInterface,100)
         }
     </script>
+
     <style>
         .triggered { outline: 4px solid firebrick; }
     </style>

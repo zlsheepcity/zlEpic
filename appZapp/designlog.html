@@ -1,4 +1,4 @@
-<!doctype html><!-- app7000-Zapp -->
+<!doctype html><!-- app7001-Zapp -->
 <html lang="en">
 <head>
     <meta charset="utf-8">
@@ -10,24 +10,44 @@
     <title>ʕ⊙ Dev Log</title>
 
 
+    <!-- ========================================= DESIGN -->
+
+    <link
+        href="https://fonts.googleapis.com/css?family=Vollkorn:400,400i,700&subset=cyrillic"
+        rel="stylesheet">
+    <link
+        href="app/styles/app.css"
+        rel="stylesheet" type="text/css">
+
     <!-- ========================================= APP MAIN -->
 
-    <!-- design font -->
-    <link href="https://fonts.googleapis.com/css?family=Vollkorn:400,400i,700&subset=cyrillic" rel="stylesheet">
 
-    <link  href="app/styles/app.css" rel="stylesheet" type="text/css">
-    <script defer src="app/script/components/class-mutator.js"></script>
-    <script defer src="app/script/app.js"></script>
+    <script src="app/script/app-core.js"></script>
+    <script>app.log('... Wake Up, App!')</script>
 
+    <!-- ========================================= APP LIBS -->
+
+    <script src="app/script/components/class-mutator.js"></script>
+    <script>app.take({name:'mutate', f:el_class_mutator})</script>
+
+    <script src="app/script/components/scroll-follower.js"></script>
+    <script>app.take({name:'wayway', f:queenScrollFollower})</script>
+
+    <script src="app/script/components/scroll-trigger.js"></script>
+    <script>app.take({name:'waydot', f:queenScrollTrigger})</script>
+
+    <script src="app/script/components/image-zoom.js"></script>
+    <script>app.onload(ActivateImageZoom)</script>
 
     <!-- ========================================= APP CUSTOM -->
 
     <script>
-        window.onload = function RunTests() {
-
-            p();
+        function RunInterface () {
             app.Welcome()
-
+            app.log('App, Welcome!')
+        }
+        window.onload = function Run() {
+            setTimeout(RunInterface,100)
         }
     </script>
     <style>
@@ -41,35 +61,13 @@
         }
     </style>
 
-    <!-- ========================================= PAGE CUSTOM -->
-
-    <script>
-        // insert random content into paragraphs
-        function p() {
-            // const p = document.getElementsByTagName('p')
-            const p = document.querySelectorAll('.auto')
-            for ( let i in p ) {
-                let texts = [
-                    'Petrovich is more than just a programming language, it is a complete computer operating system and program development environment. It is named after Ivan Petrovich Pavlov, the guy who demonstrated conditional responses to stimuli in dogs. I would have called the language "Pavlov", but it seems all the cool names for languages have already been used by someone else.',
-                    'In order to understand how Petrovich works, it is instructive to run through some examples. This is a sample interactive Petrovich session, annotated with comments.',
-                    'The user asked Petrovich to do something with some scientific data. It responds first by plotting the data and printing it. Since this is not what the user wanted, he punishes Petrovich, then tries again. Wanting to avoid punishment, Petrovich tries something different, and this time performs an operation useful to the user. To encourage such behaviour, the user rewards Petrovich.'
-                    ]
-                let text = texts[Math.floor(Math.random()*texts.length)]
-                let textnode = document.createTextNode(text)
-                if (p[i].appendChild) p[i].appendChild(textnode)
-            }
-        }
-        // onload→p();
-    </script>
-
-
     <!-- ========================================== ʕ⊙ᴥ⊙ʔ = -->
     <!-- ========================================= END HEAD -->
 </head>
 <body class="body-wrap design-template mother-chapter">
-    <nav class="zetka">
+    <header class="zetka">
         <a href="devlog.html">dev log</a>
-    </nav>
+    </header>
 
     <section class="zetka">
         <header class="chapter-title">
@@ -160,6 +158,27 @@
             <p class="auto has-text-accent"></p>
         </div>
     </section>
+
+<!-- ========================================= PAGE CUSTOM -->
+
+<script>
+    // insert random content into paragraphs
+    function p() {
+        // const p = document.getElementsByTagName('p')
+        const p = document.querySelectorAll('.auto')
+        for ( let i in p ) {
+            let texts = [
+                'Petrovich is more than just a programming language, it is a complete computer operating system and program development environment. It is named after Ivan Petrovich Pavlov, the guy who demonstrated conditional responses to stimuli in dogs. I would have called the language "Pavlov", but it seems all the cool names for languages have already been used by someone else.',
+                'In order to understand how Petrovich works, it is instructive to run through some examples. This is a sample interactive Petrovich session, annotated with comments.',
+                'The user asked Petrovich to do something with some scientific data. It responds first by plotting the data and printing it. Since this is not what the user wanted, he punishes Petrovich, then tries again. Wanting to avoid punishment, Petrovich tries something different, and this time performs an operation useful to the user. To encourage such behaviour, the user rewards Petrovich.'
+                ]
+            let text = texts[Math.floor(Math.random()*texts.length)]
+            let textnode = document.createTextNode(text)
+            if (p[i].appendChild) p[i].appendChild(textnode)
+        }
+    }
+    p()
+</script>
 
 
 </body>
