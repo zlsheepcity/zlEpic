@@ -36,7 +36,7 @@ html[sakura] {
 /* Sections
    ========================================================================== */
 
-html[sakura] {
+[sakura] {
 
 
 /**
@@ -493,7 +493,7 @@ html[sakura] {
   font-size: 62.5%;
   font-family: serif; }
 
-html[sakura] {
+[sakura] {
 
 body {
   font-size: 1.8rem;
@@ -670,7 +670,7 @@ html[sakura] {
 
 *, *::before, *::after { box-sizing: inherit; }
 
-html[sakura] {
+[sakura] {
     body {
         margin: 0;
         padding: 0;
@@ -678,8 +678,11 @@ html[sakura] {
     }
     img, svg { max-width:100%; }
     figure { margin-left:0; margin-right:0; }
+    p { margin: 1em 0; }
 }
 
+
+.sakura { @extend [sakura]; }
 
 /*
     MOD: Centered content column
