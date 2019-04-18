@@ -405,7 +405,7 @@ button, .button, .is-button {
   opacity: 0; }
 
 /**/
-.sidebar {
+.sidebar, .sidebar-westside {
   background-color: black;
   /* is screen fixed */
   position: fixed;
@@ -422,9 +422,9 @@ button, .button, .is-button {
   transition: transform 200ms ease-in;
   /* open state */ }
   @media screen and (min-width: 44rem) {
-    .sidebar {
+    .sidebar, .sidebar-westside {
       max-width: 38rem; } }
-  .sidebar.is-active, .has-active-sidebar .sidebar {
+  .sidebar.is-active, .is-active.sidebar-westside, .has-active-sidebar .sidebar, .has-active-sidebar .sidebar-westside {
     transition-timing-function: ease-out;
     transform: translateX(-100%); }
 
@@ -433,6 +433,29 @@ button, .button, .is-button {
   right: 100%; }
   .sidebar-westside.is-active, .has-active-sidebar .sidebar-westside {
     transform: translateX(100%); }
+
+.eastside {
+  background-color: pink;
+  color: black;
+  /* is screen fixed */
+  position: fixed;
+  z-index: 3;
+  top: 0;
+  right: auto;
+  bottom: 0;
+  left: 100%;
+  /* has width */
+  width: 100%;
+  /* has unpredictable content */
+  overflow: auto;
+  /* closed state */
+  transform: translateX(0);
+  /* open state */ }
+  @media screen and (min-width: 44rem) {
+    .eastside {
+      max-width: 38rem; } }
+  .eastside.is-active {
+    transform: translateX(-100%); }
 
 /* eof sidebar */
 /* ==============================================================

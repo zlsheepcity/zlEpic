@@ -96,12 +96,45 @@ $screenNotFullscreenSidebar: 'min-width: #{ $a + $b }';
 
 }
 .sidebar-westside {
+    @extend .sidebar;
     left:  auto;
     right: 100%;
     &.is-active,
     .has-active-sidebar & {
         transform: translateX(100%);
     }
+}
+
+.eastside {
+
+    background-color: pink;
+    color: black;
+
+    /* is screen fixed */
+    position: fixed;
+    z-index:  3;
+    top:      0;
+    right:    auto;
+    bottom:   0;
+    left:     100%;
+
+    /* has width */
+    width:  100%;
+    @media screen and ($screenNotFullscreenSidebar) {
+        max-width: $sidebar__width-limit;
+    };
+
+    /* has unpredictable content */
+    overflow: auto;
+
+    /* closed state */
+    transform: translateX(0);
+
+    /* open state */
+    &.is-active {
+        transform: translateX(-100%);
+    }
+
 }
 
 /* eof sidebar */
