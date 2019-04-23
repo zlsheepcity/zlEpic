@@ -39,18 +39,16 @@
     <script src="app/script/components/image-zoom.js"></script>
     <script>app.onload(ActivateImageZoom)</script>
 
+    <!-- ========================================= APP LOADER -->
+
+    <script>
+        function RunInterface () {app.Welcome();app.log('App, Welcome!')}
+        function Run() {setTimeout(RunInterface,100)}
+        window.onload = Run
+    </script>
 
     <!-- ========================================= APP CUSTOM -->
 
-    <script>
-        function RunInterface () {
-            app.Welcome()
-            app.log('App, Welcome!')
-        }
-        window.onload = function Run() {
-            setTimeout(RunInterface,100)
-        }
-    </script>
     <style>
         .design-template {
             background-color: hsl(330, 2%, 16%); /* Entrapped InAPalette */

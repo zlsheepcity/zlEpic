@@ -33,6 +33,12 @@
     <script src="app/script/components/svg-transform.js"></script>
     <script>
         const queenPathDance = function Ribosome (dna) {
+
+            var triangle = [[1, 0], [2, 2], [0, 2]],
+                pentagon = [[0, 0], [2, 0], [2, 1], [1, 2], [0, 1]];
+
+            var interpolator = flubber.interpolate(triangle, pentagon);
+
             const rna = {
                 el:     dna.el,
                 pathA:  dna.pathA,
@@ -46,15 +52,15 @@
     </script>
 
 
-    <!-- ========================================= APP CUSTOM -->
+    <!-- ========================================= APP LOADER -->
 
     <script>
-        function RunInterface () { app.Welcome() }
-
-        window.onload = function Run() {
-            setTimeout(RunInterface,100)
-        }
+        function RunInterface () {app.Welcome();app.log('App, Welcome!')}
+        function Run() {setTimeout(RunInterface,100)}
+        window.onload = Run
     </script>
+
+    <!-- ========================================= APP CUSTOM -->
 
     <style>
         .triggered { outline: 4px solid firebrick; }
@@ -68,6 +74,89 @@
     <!-- ========================================= END HEAD -->
 </head>
 <body class="body-wrap design-template">
+
+    <article id="PathDance">
+        <div class="pathDanceArea">
+            <div class="dancer">
+                <svg version="1.1" id="DemoDancer" class="SVG-dancer" xmlns="http://www.w3.org/2000/svg" width="1000" height="1000" viewBox="0 0 1000 1000">
+                    <g class="main">
+                        <path id="g1" d="M770.9,81.7c19.2-8.7,47.5-54.8,62.2-56.9c25.5-3.7,88.1,110.7,100.1,130.8c11.7,19.5,46.9,84.9,42.9,113.1
+                            c-2.7,19.5-10.2,43.3-17.3,59.7c-11.6,26.4-22.7,55-23.6,84.2c-1,35.5-20.8,62.4-26.2,92.7c-9,50.6-60,79.8-108.5,89
+                            c-99,18.6-188.6,24.3-287.2-4.5c-40.2-11.7-96.5-28-122.7-63.8c-26.1-35.6-19.5-81.1-6.4-120.4c22-66,77.7-137.6,126.9-187.7
+                            c9.9-10.1,19.7-20.6,30-30.8c11.9-11.9,24.3-31.2,28.2-43.5c4.5-14.3,6.3-47,11-59c6.6-16.9,14.1-35.1,22.8-51.1
+                            c2.9-5.3,16.3-34,24-26c13.2,14,22.8,26.7,37.2,39.8c13.4,12.2,73.2,28.4,98.7,34.1C764.9,81.7,769.1,82.6,770.9,81.7z"/>
+                    </g>
+                    <g class="next">
+                    <path id="g2" d="M149.3,704.8c13.3,0,17.1,5.1,23.7,15.8c8.1,13,4.1,18.8-5,29.1c-16.5,18.8,5.9,49.8,16.8,67.9
+                        c16.1,26.9,34.7,14.4,52.7-4.8c4-4.2,21.7-21,18.9-27.3c-4.7-10.7-9.7-20.1,0.5-30c14.4-14.1,40.2-3.6,42.9,16
+                        c1.5,11.1-8.2,15.6-15.7,21.2c-8.5,6.4-9,33.1-10.6,42.8c-4,25-8.2,49.4-11.1,74.5c-1.5,13.3-3.9,26.9-4,40.4
+                        c-0.2,16.2-2.8,17.7-18.8,12.7c-25.1-7.8-57.2-5.3-83-2.8c-27.4,2.6-55.5,6.5-81.6,15.8c-11.8,4.2-18.2,8.2-22.8-5.7
+                        c-3.9-12-7.7-24-11.4-36.1c-2.5-8.3-24.7-68.8-12-67.2c6.1,0.8,30.2,6.7,33.4-2.3c5.6-15.5,3.1-13.6,20.3-12.2
+                        c33.6,2.7,33.8-22,41.6-48.4c3.9-13.2,8.7-26.1,9.2-40c0.4-11.7-7.5-11.2-11.3-21.3c-3.2-8.4-0.5-20.5,4.5-27.8
+                        C128.2,712.4,143.7,704.6,149.3,704.8C152.2,704.8,149.3,704.8,149.3,704.8z"/>
+                    </g>
+                </svg>
+            </div>
+            <div style="height:100vh"></div>
+            <div id="DancerTrigga">o</div>
+        </div>
+        <script>
+            function DemoDancer () {
+                const g1 = document.getElementById('g1')
+                const g2 = document.getElementById('g2')
+                const d1 = g1.attributes.d.value
+                const d2 = g2.attributes.d.value
+                const interpolator = flubber.interpolate(d1, d2);
+                const action = function (x) {
+                    g1.attributes.d.value = interpolator(x)
+                }
+                return action
+                //g1.attributes.d.value = interpolator(0.5)
+            }
+            function do5 () {
+                const dodo = DemoDancer()
+                const trigga = document.getElementById('DancerTrigga')
+                app.wayway({
+                    elem: trigga,
+                    from: 'top-bottom',
+                    to:   'top-top',
+                    inside:  (instance, percentage, props) => {
+                        dodo(percentage*0.01)
+                        //app.log('wayway-trigga Inside!'+percentage)
+                        //app.mutate({el:document.querySelector('.wayway-trigga'),toggleClass:'triggered'})
+                        //instance.destroy()
+                    }
+                    //, outside: (instance, percentage, props) => { app.log('Outside!'+percentage) }
+                })
+            }
+            app.onload(do5)
+                //const PathDancer = document.getElementById('PathDancer')
+                //const PathA = PathDancer.attributes.d.value
+        </script>
+        <style>
+            .pathDanceArea {
+                min-height: 200vh;
+                background-color: wheat;
+            }
+            .dancer {
+                background-color: rgba(200,0,0,0.2);
+                overflow: hidden;
+                position: fixed;
+                z-index:  1;
+                top:      0;
+                right:    50vw;
+                bottom:   0;
+                left:     0;
+            }
+            .SVG-dancer {
+                width:      100%;
+                height:     auto;
+                max-height: 100%;
+            }
+            .SVG-dancer .next { opacity: 0.2; }
+        </style>
+    </article>
+    
 
     <div style="min-height: 100vh; background: #f0f0f0;">
         <h1 class="h1">js</h1>
@@ -98,12 +187,12 @@
             <script>
                 const PathDancer = document.getElementById('PathDancer')
                 const PathA = PathDancer.attributes.d.value
-                app.pathDance({
+                /*app.pathDance({
                     el:    PathDancer,
                     pathA: PathA,
                     pathB: "M1,1L2,1L1.5,2Z",
                     time:  4
-                });
+                });*/
             </script>
         </figure>
         <div>
@@ -147,11 +236,11 @@
             from: 'top-middle',
             to:   'top-top',
             inside:  (instance, percentage, props) => {
-                app.log('Inside!'+percentage)
+                app.log('wayway-trigga Inside!'+percentage)
                 app.mutate({el:document.querySelector('.wayway-trigga'),toggleClass:'triggered'})
                 instance.destroy()
-            },
-            outside: (instance, percentage, props) => { app.log('Outside!'+percentage) }
+            }
+            //, outside: (instance, percentage, props) => { app.log('Outside!'+percentage) }
         })
         app.waydot({
             element: document.getElementById('waypoint-trigga'),

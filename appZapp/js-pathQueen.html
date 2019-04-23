@@ -1,0 +1,120 @@
+<!doctype html><!-- app7000-Zapp -->
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- ========================================= HEAD CONTENT -->
+
+
+    <title>ʕ⊙ JS AppKing</title>
+
+
+    <!-- ========================================= APP MAIN -->
+
+
+    <script src="app/script/app-core.js"></script>
+    <script>app.log('... Wake Up, App!')</script>
+
+    <!-- ========================================= APP LIBS -->
+
+    <script src="app/script/components/class-mutator.js"></script>
+    <script>app.take({name:'mutate', f:el_class_mutator})</script>
+
+    <script src="app/script/components/image-zoom.js"></script>
+    <script>app.onload(ActivateImageZoom)</script>
+
+    <script src="app/script/components/scroll-follower.js"></script>
+    <script>app.take({name:'wayway', f:queenScrollFollower})</script>
+
+    <script src="app/script/components/scroll-trigger.js"></script>
+    <script>app.take({name:'waydot', f:queenScrollTrigger})</script>
+
+    <script src="app/script/components/svg-transform.js"></script>
+    <script>
+        const queenPathDance = function Ribosome (dna) {
+
+            var triangle = [[1, 0], [2, 2], [0, 2]],
+                pentagon = [[0, 0], [2, 0], [2, 1], [1, 2], [0, 1]];
+
+            var interpolator = flubber.interpolate(triangle, pentagon);
+
+            const rna = {
+                el:     dna.el,
+                pathA:  dna.pathA,
+                pathB:  dna.pathB,
+                time:   dna.time
+            }
+            app.log(rna)
+            app.log(rna.el.attributes.d.value)
+        }
+        app.take({name:'pathDance', f:queenPathDance})
+    </script>
+
+    <!-- ========================================= DanceQueen -->
+
+
+    <script>
+        function PathDanceQueen (dna={}) {
+
+            let queen = this
+            let magic = dna.magic || flubber || false
+
+            // CORE
+
+            queen.kids = {}
+            queen.kid = NewBaby({name:'ili'})
+
+            // API
+
+            Object.assign(queen ,{
+                Welcome
+            })
+
+            // Queen`s body
+
+            function PathDancer (dna={}) {
+                this.name = dna.name || ''
+            }
+
+            function NewBaby (dna) {
+                let kid = new PathDancer(dna)
+                queen.kids[kid.name] = kid
+                return kid
+            }
+
+            function Welcome () {
+                app.log( 'DanceQueen, Welcome!' )
+            }
+        }
+        const pathDanceQueen = new PathDanceQueen()
+        pathDanceQueen.Welcome()
+    </script>
+
+    <!-- ========================================= APP LOADER -->
+
+    <script>
+        function RunInterface () {app.Welcome();app.log('App, Welcome!')}
+        function Run() {setTimeout(RunInterface,100)}
+        window.onload = Run
+    </script>
+
+    <!-- ========================================= APP CUSTOM -->
+
+    <style>
+        .triggered { outline: 4px solid firebrick; }
+    </style>
+
+
+    <!-- ========================================= PAGE CUSTOM -->
+
+
+    <!-- ========================================== ʕ⊙ᴥ⊙ʔ = -->
+    <!-- ========================================= END HEAD -->
+</head>
+<body class="body-wrap design-template">
+
+    <h1>Path Dance Queen</h1>
+
+</body>
+</html>
