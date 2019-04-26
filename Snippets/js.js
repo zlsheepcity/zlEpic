@@ -118,8 +118,20 @@ myElement.addEventListener('change', function listener (event) {
 
 
 
+/* ---------------------------------------------- */// web workers
 
-/* ---------------------------------------------- */ // performance
+if (typeof(Worker) !== "undefined") {
+    worker = new Worker("worker.js");
+}
+>>> worker.js
+    i = 0;
+    while (i < 200000) {
+        postMessage("Web Worker Counter: " + i);
+        i++;
+    }
+
+
+/* ---------------------------------------------- */// performance
 
 // some scroll
 
@@ -160,6 +172,31 @@ for (let i = 0; i < 1e10; i++) {
 
 
 // ---------------------------------------------- // trick functions
+
+// Get Unique Values of an Array
+
+  var j = [...new Set([1, 2, 3, 3])]
+  >>> [1, 2, 3]
+
+// Merge Objects
+
+  const person     = { name: 'David Walsh', gender: 'Male' };
+  const tools      = { computer: 'Mac', editor: 'Atom' };
+  const attributes = { handsomeness: 'Extreme', hair: 'Brown', eyes: 'Blue' };
+
+  const summary = {...person, ...tools, ...attributes};
+
+// Get Query String Parameters
+
+  // Assuming "?post=1234&action=edit"
+
+  var urlParams = new URLSearchParams(window.location.search);
+
+  console.log(urlParams.has('post')); // true
+  console.log(urlParams.get('action')); // "edit"
+  console.log(urlParams.getAll('action')); // ["edit"]
+  console.log(urlParams.toString()); // "?post=1234&action=edit"
+  console.log(urlParams.append('active', '1')); // "?post=1234&action=edit&active=1"
 
 // url string animated with symbols
 
