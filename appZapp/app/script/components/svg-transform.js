@@ -1,9 +1,87 @@
 /* -------------------------------------------
     SVG path transfromation
-    2019.4.11
+    2019.5.7
+------------------------------------------- */
+
+/*  Usage
+
+    let dancer = pathDanceQueen.Create('HTML-ID')
+    let x = 0.5
+    dancer.Draw(x)
+    dancer.Stay(x)
+
 ------------------------------------------- */
 
 // app integration
+
+function PathDanceQueen (dna={}) {
+
+    let queen = this
+    let magic = dna.magic || flubber || false
+
+    // CORE
+
+    queen.kids = {}
+
+    // API
+
+    Object.assign(queen ,{
+        Welcome,
+        Create
+    })
+
+    // Queen`s body
+
+    function PathDancer (dna={}) {
+        // object linked to <path> element
+
+        let dancer  = this
+        dancer.id   = dna.id || ''
+        dancer.el   = dna.el || false // dom element
+
+        // path values
+
+        dancer.d0   = dna.d0 || '' // first
+        dancer.d1   = dna.d1 || '' // last
+        dancer.cx   = 0 // current state value between 0..1
+
+    }
+    function PathDancerBecomesActive (dancer) {
+        dancer.Dx = magic.interpolate( dancer.d0, dancer.d1 )
+        dancer.Draw = (x) => {
+            dancer.cx = x
+            dancer.el.attributes.d.value = dancer.Dx(dancer.cx)
+            return dancer
+        }
+        dancer.Stay = (x) => {
+            if (x<0) x = 0
+            if (x>1) x = 1
+            if (x != dancer.cx) dancer.Draw(x)
+            return dancer
+        }
+        return dancer
+    }
+    function Create (dna={}) {
+
+        if (typeof(dna)==='string') dna = {id:dna}
+        if (!dna.id) return false
+
+        dna.el   = document.getElementById(dna.id)
+        dna.ell  = document.getElementById(dna.id+'-1') // CODEX
+        dna.d0   = dna.el.attributes.d.value
+        dna.d1   = dna.ell.attributes.d.value
+
+        let dancer = PathDancerBecomesActive( new PathDancer(dna) )
+        queen.kids[dancer.id] = dancer
+        return dancer
+    }
+    function Welcome () {
+        app.log( 'DanceQueen, Welcome!' )
+    }
+
+    // End of Queen
+}
+const ActivatedPathDanceQueen = () => new PathDanceQueen()
 
 
 
