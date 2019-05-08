@@ -1,6 +1,6 @@
 /* -------------------------------------------
     SVG path transfromation
-    2019.5.7
+    Last revision: 2019.5.8
 ------------------------------------------- */
 
 /*  Usage
@@ -9,6 +9,7 @@
     let x = 0.5
     dancer.Draw(x)
     dancer.Stay(x)
+    app.wayway(dancer.WaywayMe({...}))
 
 ------------------------------------------- */
 
@@ -61,6 +62,22 @@ function PathDanceQueen (dna={}) {
         }
         return dancer
     }
+    function AttachPlugins (dancer) {
+
+        // Default transformation on scroll
+        dancer.wayway = (dna={}) => {
+            let defaultSeed = {
+                elem: dancer.el,
+                from: 'bottom-bottom',
+                to:   'top-top',
+                inside:  (instance, percentage, props) => dancer.Draw(percentage*0.01),
+                outside: (instance, percentage, props) => dancer.Stay(percentage*0.01)
+            }
+            return app.wayway( Object.assign( defaultSeed, dna ) )
+        }
+
+        return dancer
+    }
     function Create (dna={}) {
 
         if (typeof(dna)==='string') dna = {id:dna}
@@ -72,11 +89,12 @@ function PathDanceQueen (dna={}) {
         dna.d1   = dna.ell.attributes.d.value
 
         let dancer = PathDancerBecomesActive( new PathDancer(dna) )
+        AttachPlugins(dancer)
         queen.kids[dancer.id] = dancer
         return dancer
     }
     function Welcome () {
-        app.log( 'DanceQueen, Welcome!' )
+        app.log( 'PathDanceQueen, Welcome!' )
     }
 
     // End of Queen

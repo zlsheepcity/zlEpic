@@ -9,6 +9,22 @@
 
     <title>ʕ⊙ JS AppKing</title>
 
+    <!-- ========================================= DESIGN -->
+
+    <style> /* ༼°▽°༽ boot style */
+        img,svg { max-width: 100% }
+        body    { width: 100%; height: auto; overflow: hidden; }
+        body    { font-size: 16px; }
+    </style>
+
+    <link
+        href="https://fonts.googleapis.com/css?family=Vollkorn:400,400i,700&subset=cyrillic"
+        rel="stylesheet">
+    <link
+        href="app/styles/app.css"
+        rel="stylesheet" type="text/css">
+
+
 
     <!-- ========================================= APP MAIN -->
 
@@ -31,89 +47,13 @@
     <script>app.take({name:'waydot', f:queenScrollTrigger})</script>
 
     <script src="app/script/components/svg-transform.js"></script>
-    <script>app.take({name:'pathDance', f:ActivatedPathDanceQueen()})</script>
-
-    <!-- ========================================= DanceQueen -->
-
-
-    <script>
-        function PathDanceQueen (dna={}) {
-
-            let queen = this
-            let magic = dna.magic || flubber || false
-
-            // CORE
-
-            queen.kids = {}
-
-            // API
-
-            Object.assign(queen ,{
-                Welcome,
-                Create
-            })
-
-            // Queen`s body
-
-            function PathDancer (dna={}) {
-                // object linked to <path> element
-
-                let dancer  = this
-                dancer.id   = dna.id || ''
-                dancer.el   = dna.el || false // dom element
-
-                // path values
-
-                dancer.d0   = dna.d0 || '' // first
-                dancer.d1   = dna.d1 || '' // last
-                dancer.cx   = 0 // current state value between 0..1
-
-            }
-            function PathDancerBecomesActive (dancer) {
-                dancer.Dx = magic.interpolate( dancer.d0, dancer.d1 )
-                dancer.Draw = (x) => {
-                    dancer.cx = x
-                    dancer.el.attributes.d.value = dancer.Dx(dancer.cx)
-                    return dancer
-                }
-                dancer.Stay = (x) => {
-                    if (x<0) x = 0
-                    if (x>1) x = 1
-                    if (x != dancer.cx) dancer.Draw(x)
-                    return dancer
-                }
-                return dancer
-            }
-            function Create (dna={}) {
-
-                if (typeof(dna)==='string') dna = {id:dna}
-                if (!dna.id) return false
-
-                dna.el   = document.getElementById(dna.id)
-                dna.ell  = document.getElementById(dna.id+'-1') // CODEX
-                dna.d0   = dna.el.attributes.d.value
-                dna.d1   = dna.ell.attributes.d.value
-
-                let dancer = PathDancerBecomesActive( new PathDancer(dna) )
-                queen.kids[dancer.id] = dancer
-                return dancer
-            }
-            function Welcome () {
-                app.log( 'DanceQueen, Welcome!' )
-            }
-
-            // End of Queen
-        }
-        //const pathDanceQueen = new PathDanceQueen()
-        //app.take({name:'pathDance', f:pathDanceQueen})
-        //app.onload(pathDanceQueen.Welcome)
-    </script>
+    <script>app.take({name:'morphy', f:ActivatedPathDanceQueen()})</script>
 
     <!-- ========================================= APP LOADER -->
 
     <script>
-        function RunInterface () {app.Welcome();app.log('App, Welcome!')}
-        function Run() {setTimeout(RunInterface,100)}
+        function RunInterface () {app.Welcome().log('App, Welcome!')}
+        function Run() {setTimeout(RunInterface,200)}
         window.onload = Run
     </script>
 
@@ -193,36 +133,17 @@
     <script>
         var t2 = 1
         function testDanceQueen () {
-            t2 = app.pathDance.Create('demo-path')
+            t2 = app.morphy.Create('demo-path')
             const trigga = document.getElementById('TRIGGA')
-            app.wayway({
+            t2.wayway({
                 elem: trigga,
                 from: 'top-bottom',
-                to:   'top-middle',
-                inside:  (instance, percentage, props) => t2.Draw(percentage*0.01),
-                outside: (instance, percentage, props) => t2.Stay(percentage*0.01)
+                to:   'top-middle'
             })
+            
         }
         app.onload(testDanceQueen)
 
-
-            function DemoDancer () {
-                const g1 = document.getElementById('demo-path')
-                const g2 = document.getElementById('demo-path-1')
-                const d1 = g1.attributes.d.value
-                const d2 = g2.attributes.d.value
-                const interpolator = flubber.interpolate(d1, d2);
-                const action = function (x) {
-                    g1.attributes.d.value = interpolator(x)
-                }
-                return action
-                //g1.attributes.d.value = interpolator(0.5)
-            }
-            var dodo = ()=>false;
-            function do5 () {
-                dodo = DemoDancer()
-            }
-            //app.onload(do5)
             
     </script>
 

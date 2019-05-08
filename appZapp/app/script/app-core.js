@@ -1,12 +1,12 @@
-/*# App Initialization
-    2019.4.5
+/*# App Core
+    Last revision: 2019.5.8
 */
 
 //*  -------------------------------- King Description
 
 function AppKing (dna) {
 
-    /* Король управляет ключевыми функциями интерфейса — королевами. Если королева отсутствует, король заменяет её дежурной королевой, во избежание ошибок. Когда королева готова к работе, король откладывает её задачи до момента полной загрузки.  */
+    /* Король Апп. Управляет ключевыми функциями интерфейса — королевами. Если королева отсутствует, король заменяет её дежурной королевой, во избежание ошибок. Когда королева готова к работе, король откладывает её задачи до момента полной загрузки.  */
 
     let king = this
     king.has = { /* nothing */ }
@@ -57,8 +57,12 @@ function AppKing (dna) {
     // attach queen-function to app
 
     function lordWedding (queen) {
-        let brides = queen ? [queen] : Object.keys(king.has)
-        brides.map( (name)=>{ king[name] = king.has[name] } )
+        let brides  = queen ? [queen] : Object.keys(king.has)
+        let wedding = (bride) => {
+            king[bride] = king.has[bride]
+            if (typeof(king[bride].Welcome)==='function') king[bride].Welcome()
+        }
+        brides.map(wedding)
         return king
     }
     king.Wedding = lordWedding
@@ -73,6 +77,7 @@ function AppKing (dna) {
         king.isHere = true
         king.Wedding()
         king.Rememba()
+        return king
     }
     king.Welcome = lordWelcomeKing
 
@@ -85,7 +90,7 @@ function AppKing (dna) {
         'zzzimg',
         'wayway',
         'waydot',
-        'pathDance'
+        'morphy'
     ]
     queens.map( (Q)=>{ king[Q] = king.Dolater(Q) } )
 
@@ -102,25 +107,4 @@ app.take({name:'onload',
     }
 })
 
-
-
-/* Samples
-
-app.mutate(dna)
-app.report(dna)
-app.wayway({
-    el,
-    do: {
-            'actionName': f
-        }
-    offset
-    })
-
-app.do(f)(x)
-app.do('zoomer')()
-
-app.wayway(el,f)
-
-app.do('take')({name:wayway, f})
-
-*/
+// EOF app core
