@@ -9,6 +9,7 @@ or
 
 ```bash
 sass --no-source-map app.scss app.css
+sass --no-source-map appZapp/app/styles/app.scss appZapp/app/styles/app.css
 ```
 
 
