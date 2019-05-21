@@ -1624,7 +1624,8 @@ html[sakura], html.sakura {
       opacity: 1; }
 
 .swed-dropdown {
-  /* display action */ }
+  /* display action */
+  /* usability */ }
   .swed-dropdown {
     position: relative;
     z-index: 0; }
@@ -1651,15 +1652,6 @@ html[sakura], html.sakura {
     top: -0.25em;
     left: -0.25em;
     min-width: 100%; }
-    .swed-dropdown .droplist::before {
-      display: none;
-      content: '';
-      position: absolute;
-      z-index: -2;
-      top: -2em;
-      right: -2em;
-      bottom: -2em;
-      left: -2em; }
     .swed-dropdown .droplist::after {
       background-color: rgba(255, 255, 255, 0.1);
       content: '';
@@ -1699,8 +1691,6 @@ html[sakura], html.sakura {
     transform: rotate(180deg); }
   .swed-dropdown.has-hover-action:hover .droplist, .swed-dropdown.is-active .droplist {
     pointer-events: all; }
-  .swed-dropdown.has-hover-action:hover .droplist::before, .swed-dropdown.is-active .droplist::before {
-    display: block; }
   .swed-dropdown.has-hover-action:hover .droplist::after, .swed-dropdown.is-active .droplist::after {
     transform: scale(1);
     transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
@@ -1708,6 +1698,17 @@ html[sakura], html.sakura {
   .swed-dropdown.has-hover-action:hover .droplist > ul, .swed-dropdown.is-active .droplist > ul {
     opacity: 1;
     transition: opacity 240ms ease-in; }
+  .swed-dropdown.has-hover-action .droplist::before {
+    display: none;
+    content: '';
+    position: absolute;
+    z-index: -2;
+    top: -2em;
+    right: -2em;
+    bottom: -2em;
+    left: -2em; }
+  .swed-dropdown.has-hover-action:hover .droplist::before {
+    display: block; }
 
 .swed-group {
   display: flex;

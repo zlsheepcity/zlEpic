@@ -163,20 +163,6 @@ $colorSwedMedium: hsl(226, 17%, 20%);
         left:    -0.25em;
         min-width: 100%;
 
-        // expanded clickable area
-
-        &::before {
-            display:  none;
-
-            content:  '';
-            position: absolute;
-            z-index: -2;
-            top:     -2em;
-            right:   -2em;
-            bottom:  -2em;
-            left:    -2em;
-        }
-
         // background
 
         &::after {
@@ -231,7 +217,6 @@ $colorSwedMedium: hsl(226, 17%, 20%);
         .label            { color: hsl(2,45%,65%); }
         .label::after     { transform: rotate(180deg); }
         .droplist         { pointer-events: all; }
-        .droplist::before { display: block; }
         .droplist::after {
             transform: scale(1);
             transition-timing-function: cubic-bezier(0.175, 0.885, 0.320, 1.275); /* easeOutBack */
@@ -240,6 +225,23 @@ $colorSwedMedium: hsl(226, 17%, 20%);
             opacity: 1;
             transition: opacity 240ms ease-in;
         }
+    }
+
+    /* usability */
+
+    // transparent hover area around
+    &.has-hover-action {
+        .droplist::before {
+            display:  none;
+            content:  '';
+            position: absolute;
+            z-index: -2;
+            top:     -2em;
+            right:   -2em;
+            bottom:  -2em;
+            left:    -2em;
+        }
+        &:hover .droplist::before { display: block; }
     }
 
 }
