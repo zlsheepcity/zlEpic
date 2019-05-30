@@ -1,0 +1,462 @@
+<!doctype html><!-- app7001-Zapp :: 2019.5.8 -->
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- ========================================= HEAD CONTENT -->
+
+
+    <title>ʕ⊙ᴥ⊙ʔ EG</title>
+
+
+    <!-- ========================================= DESIGN -->
+
+    <style> /* ༼°▽°༽ boot style */
+        body    { width: 100%; height: auto; overflow: hidden; }
+        body    { font-size: 16px; }
+        img,svg { max-width: 100% }
+    </style>
+
+    <link
+        href="https://fonts.googleapis.com/css?family=Vollkorn:400,400i,700&subset=cyrillic"
+        rel="stylesheet">
+    <link
+        href="app/styles/app.css"
+        rel="stylesheet" type="text/css">
+
+    <!-- ========================================= APP HEAD -->
+
+    <script src="app/script/app-core.js"></script>
+    <script>app.log('... Wake Up, App!')</script>
+
+    <!-- ========================================= APP LIBS -->
+
+    <script src="app/script/components/image-zoom.js"></script>
+    <script>app.onload(ActivateImageZoom)</script>
+
+    <script src="app/script/components/class-mutator.js"></script>
+    <script>app.take({name:'mutate', f:el_class_mutator})</script>
+
+    <script src="app/script/components/scroll-follower.js"></script>
+    <script>app.take({name:'wayway', f:queenScrollFollower})</script>
+
+    <script src="app/script/components/scroll-trigger.js"></script>
+    <script>app.take({name:'waydot', f:queenScrollTrigger})</script>
+
+    <script src="app/script/components/svg-transform.js"></script>
+    <script>app.take({name:'morphy', f:ActivatedPathDanceQueen()})</script>
+
+    <!-- ========================================= APP LOADER -->
+
+    <script>
+        function RunInterface () { app.Welcome().log('App, Welcome!') }
+        function Run() { setTimeout(RunInterface,200) }
+        window.onload = Run
+    </script>
+
+    <!-- ========================================= APP CUSTOM -->
+
+    <link
+        href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
+        integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay"
+        crossorigin="anonymous" rel="stylesheet">
+
+    <style>
+        .productcard-grid {
+            display: grid;
+            grid-gap: 1em;
+            padding: 1em;
+            grid-template-columns: 1fr 1fr 1fr;
+        }
+        .productcard {
+            position: relative;
+        }
+        .productcard>.picture {
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+            padding-bottom: 40%;
+            background-color: hsla(222,50%,50%,1);
+        }
+        .productcard>.caption {
+            min-height: 3em;
+            padding: 0.25em 0.5em;
+        }
+        .productcard>.caption>.about {
+            font-size: 1em;
+            line-height: 1.25em;
+            max-height: 3.75em;
+            overflow: hidden;
+        }
+        .productcard>.clicker>a {
+            position: absolute;
+            top:    0;
+            left:   0;
+            width:  100%;
+            height: 100%;
+
+            display: flex;
+            justify-content: center;
+            align-items:     center;
+            align-content:   center;
+
+            opacity: 0;
+            background-color: hsla(222,70%,30%,0.4);
+            color: white;
+            font-size: 2em;
+            padding: 0.5em;
+            text-align: center;
+            text-decoration: none;
+        }
+        .productcard:hover>.clicker>a {
+            opacity: 1;
+        }
+        .productcard-img {
+            object-fit:  cover;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+
+            will-change: transform;
+            transition:  transform 440ms;
+            transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+        .productcard:hover .productcard-img {
+            transform: scale(1.1);
+        }
+
+        .casionis {
+            margin-right: 20em;
+            position: relative;
+            min-height: 16em;
+        }
+
+        .has-auto-focus>.casionis-label,
+        .casionis-label:hover {
+            background-color: hsla(222,0%,0%,0.15);
+        }
+        .has-auto-focus>.casionis-label+.casionis-graph,
+        .casionis-label:hover+.casionis-graph {
+            opacity: 1;
+        }
+        .casionis-list:hover .has-auto-focus>.casionis-label:not(:hover) { background-color: transparent; }
+        .casionis-list:hover .has-auto-focus>.casionis-label:not(:hover)+.casionis-graph { opacity: 0; }
+
+
+        .casionis-list:not(:hover) .has-auto-focus>.casionis-label+.casionis-graph::after,
+        .casionis-list:not(:hover) .has-auto-focus>.casionis-label+.casionis-graph>*,
+        .casionis-label:hover+.casionis-graph::after,
+        .casionis-label:hover+.casionis-graph>* {
+            transform: none;
+        }
+
+        .casionis-label {
+            padding: 0 0.5em;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .casionis-label::before {
+            content: "— ";
+            font-weight: bolder;
+            color: aqua;
+        }
+        .casionis-graph {
+            position: absolute;
+            z-index: 1;
+            right:   -20em;
+            top:  0;
+            width:  20em;
+            height: 16em;
+            background-color: hsla(222,70%,30%,0.4);
+
+            display: flex;
+            justify-content: center;
+            align-items:     center;
+            align-content:   center;
+
+            opacity: 0;
+            pointer-events: none;
+            overflow: hidden;
+        }
+        .casionis-graph>* {
+            font-size: 1.5em;
+            color: white;
+            padding: 0.25em;
+        }
+        .casionis-graph::after {
+            content: "";
+            position: absolute;
+            z-index: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 6em;
+            background-color: blue;
+
+            transform: scaleY(0);
+            transform-origin: center bottom;
+            will-change: transform;
+            transition: transform 440ms;
+            transition-timing-function: cubic-bezier(0.175, 0.885, 0.320, 1.275); /* easeOutBack */
+        }
+        .casionis-graph>.item-title {
+            position: absolute;
+            z-index: 1;
+            bottom: 50%;
+            left: 20%;
+
+            transform: scaleY(0.5);
+            will-change: transform;
+            transition: transform 240ms;
+            transition-timing-function: cubic-bezier(0.175, 0.885, 0.320, 1.275); /* easeOutBack */
+        }
+        .casionis-graph>.item-corner {
+            position: absolute;
+            z-index: 1;
+            top: 0;
+            right: 0;
+            transform: translate(100%,-100%);
+            will-change: transform;
+            transition: transform 440ms cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+        .casionis-graph>.item-footerA {
+            position: absolute;
+            z-index: 1;
+            bottom: 0%;
+            left: 20%;
+
+            transform: translateY(100%);
+            will-change: transform;
+            transition: transform 440ms;
+            transition-timing-function: cubic-bezier(0.175, 0.885, 0.320, 1.275); /* easeOutBack */
+            transition-delay: 240ms;
+        }
+        .casionis-graph>.item-footerB {
+            position: absolute;
+            z-index: 1;
+            bottom: 0%;
+            left: 60%;
+            transform: translateY(100%);
+            will-change: transform;
+            transition: transform 440ms;
+            transition-timing-function: cubic-bezier(0.175, 0.885, 0.320, 1.275); /* easeOutBack */
+            transition-delay: 440ms;
+        }
+        .casionis>ul {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .short-columns {
+            column-width: 10em;
+            column-gap:   2em;
+            column-rule:  0;
+        }
+    </style>
+
+    <!-- ========================================== ʕ⊙ᴥ⊙ʔ = -->
+    <!-- ========================================= END HEAD -->
+</head>
+<body class="body-wrap design-template">
+
+
+    <div class="casionis">
+        <div class="big-title">Casionis</div>
+        <ul class="casionis-list short-columns">
+            <li>
+                <div class="casionis-label">Abraham</div>
+                <div class="casionis-graph">
+                    <div class="item-title">
+                        <div>Sweden</div>
+                    </div>
+                    <div class="item-corner">
+                        <div>`16</div>
+                    </div>
+                    <div class="item-footerA">
+                        <div>126</div>
+                    </div>
+                    <div class="item-footerB">
+                        <div>826</div>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="casionis-label">Okorodudu</div>
+                <div class="casionis-graph">
+                    <div>Graphen Okorodudu</div>
+                </div>
+            </li>
+            <li>
+                <div class="casionis-label">Abraham</div>
+                <div class="casionis-graph">
+                    <div>Graphen Abraham</div>
+                </div>
+            </li>
+            <li>
+                <div class="casionis-label">Abraham</div>
+                <div class="casionis-graph">
+                    <div>Graphen Abraham</div>
+                </div>
+            </li>
+            <li>
+                <div class="casionis-label">Abraham</div>
+                <div class="casionis-graph">
+                    <div>Graphen Abraham</div>
+                </div>
+            </li>
+            <li>
+                <div class="casionis-label">Abraham</div>
+                <div class="casionis-graph">
+                    <div>Graphen Abraham</div>
+                </div>
+            </li>
+            <li>
+                <div class="casionis-label">Abraham</div>
+                <div class="casionis-graph">
+                    <div>Graphen Abraham</div>
+                </div>
+            </li>
+            <li class="has-auto-focus">
+                <div class="casionis-label">Steinvoorn</div>
+                <div class="casionis-graph">
+                    <div class="item-title">
+                        <div>Steinvoorn</div>
+                    </div>
+                    <div class="item-corner">
+                        <div>`16</div>
+                    </div>
+                    <div class="item-footerA">
+                        <div>226</div>
+                    </div>
+                    <div class="item-footerB">
+                        <div>1826</div>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="casionis-label">Abraham</div>
+                <div class="casionis-graph">
+                    <div>Graphen Abraham</div>
+                </div>
+            </li>
+            <li>
+                <div class="casionis-label">Abraham</div>
+                <div class="casionis-graph">
+                    <div>Graphen Abraham</div>
+                </div>
+            </li>
+            <li>
+                <div class="casionis-label">Abraham</div>
+                <div class="casionis-graph">
+                    <div>Graphen Abraham</div>
+                </div>
+            </li>
+            <li>
+                <div class="casionis-label">Abraham</div>
+                <div class="casionis-graph">
+                    <div>Graphen Abraham</div>
+                </div>
+            </li>
+        </ul>
+    </div>
+
+    <div class="big-title">Videos</div>
+
+    <div class="productcard-grid">
+        <div class="productcard">
+            <div class="picture"></div>
+        </div>
+        <div class="productcard">
+            <div class="picture"></div>
+        </div>
+        <div class="productcard">
+            <div class="picture"></div>
+        </div>
+    </div>
+
+    <div class="big-title">News</div>
+
+    <div class="productcard-grid">
+        <div class="productcard">
+            <div class="picture"><img src="art/favicons/192x192.png" class="productcard-img"></div>
+            <div class="caption">
+                <div class="about">Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante.</div>
+            </div>
+            <div class="clicker"><a href="#"><span>Learn more</span></a></div>
+        </div>
+        <div class="productcard">
+            <div class="picture"><img src="art/favicons/192x192.png" class="productcard-img"></div>
+            <div class="caption">
+                <div class="about">Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante.</div>
+            </div>
+            <div class="clicker"><a href="#"><span>Learn more</span></a></div>
+        </div>
+        <div class="productcard">
+            <div class="picture"><img src="art/favicons/192x192.png" class="productcard-img"></div>
+            <div class="caption">
+                <div class="about">Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</div>
+            </div>
+            <div class="clicker"><a href="#"><span>Learn more</span></a></div>
+        </div>
+    </div>
+
+    <div class="big-title">Products</div>
+
+    <div class="productcard-grid">
+        <div class="productcard">
+            <div class="picture"><img src="art/favicons/192x192.png" class="productcard-img"></div>
+            <div class="caption">
+                <div class="topic">Live</div>
+                <div class="title">Russian Roullette</div>
+            </div>
+            <div class="clicker"><a href="#"><span>Learn more</span></a></div>
+        </div>
+        <div class="productcard">
+            <div class="picture"></div>
+            <div class="caption"></div>
+        </div>
+        <div class="productcard">
+            <div class="picture"></div>
+            <div class="caption"></div>
+        </div>
+        <div class="productcard">
+            <div class="picture"><img src="art/favicons/192x192.png" class="productcard-img"></div>
+            <div class="caption">
+                <div class="topic">Live</div>
+                <div class="title">Russian Roullette</div>
+            </div>
+            <div class="clicker"><a href="#"><span>Learn more</span></a></div>
+        </div>
+        <div class="productcard">
+            <div class="picture"><img src="art/favicons/192x192.png" class="productcard-img"></div>
+            <div class="caption">
+                <div class="topic">Live</div>
+                <div class="title">Russian Roullette</div>
+            </div>
+            <div class="clicker"><a href="#"><span>Learn more</span></a></div>
+        </div>
+        <div class="productcard">
+            <div class="picture"></div>
+            <div class="caption"></div>
+        </div>
+        <div class="productcard">
+            <div class="picture"></div>
+            <div class="caption"></div>
+        </div>
+        <div class="productcard">
+            <div class="picture"></div>
+            <div class="caption"></div>
+        </div>
+        <div class="productcard">
+            <div class="picture"></div>
+            <div class="caption"></div>
+        </div>
+    </div>
+
+</body>
+</html>
