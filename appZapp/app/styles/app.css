@@ -12,6 +12,10 @@
     app sass constructor - mixins and/or copy-paste templates
     2019.2.8
 ============================================================== */
+.swed-button > a, .swed-button > a:link, .swed-button > a:visited, .swed-button > a:active, .swed-button > a:focus, .swed-button > a:hover {
+  color: inherit;
+  text-decoration: inherit; }
+
 /* eof app scss constructor */
 /* ==============================================================
     universal markup helpers
@@ -1538,14 +1542,10 @@ html[sakura], html.sakura {
   color: rgba(255, 255, 255, 0.75); }
   .design-template--swed .big-title {
     display: block;
-    text-align: center;
     font-size: 2em; }
   .design-template--swed .title {
     display: block;
-    text-align: center;
     font-size: 1.5em; }
-  .design-template--swed .subtitle {
-    text-align: center; }
 
 .swed-screen {
   min-height: 100vh;
@@ -1587,27 +1587,19 @@ html[sakura], html.sakura {
     background-color: #314863; }
 
 .swed-button {
+  padding: 0.5em 1em;
   display: block;
-  background-color: white;
-  color: black;
-  /* hover effect */
+  line-height: 1;
   position: relative;
   will-change: transform;
   transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1); }
-  .swed-button .title {
-    line-height: 1;
-    padding: 0.75em 2em;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis; }
-  .swed-button .icon {
-    display: block;
-    font-size: 1.5em;
-    padding: 0.75em;
-    line-height: 1; }
-    .swed-button .icon > * {
-      display: block;
-      transform: scale(2); }
+  .swed-button, .swed-button:link, .swed-button:visited, .swed-button:active, .swed-button:focus, .swed-button:hover {
+    background-color: white;
+    color: black;
+    text-decoration: none;
+    cursor: default; }
+  .swed-button > a {
+    cursor: default; }
   .swed-button::after {
     content: "";
     position: absolute;
@@ -1617,9 +1609,11 @@ html[sakura], html.sakura {
     width: 100%;
     height: 100%;
     opacity: 0;
-    transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1); }
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.3);
+    transition: inherit; }
   .swed-button:hover {
-    transform: scale(1.25, 1.25); }
+    transform: scale(1.25, 1.25);
+    z-index: 1; }
     .swed-button:hover::after {
       opacity: 1; }
 
@@ -1664,8 +1658,7 @@ html[sakura], html.sakura {
       transform: scale(0);
       transform-origin: 1em 1em;
       transition: transform 240ms;
-      transition-timing-function: cubic-bezier(0.6, -0.28, 0.735, 0.045);
-      /* easeInBack */ }
+      transition-timing-function: cubic-bezier(0.6, -0.28, 0.735, 0.045); }
     .swed-dropdown .droplist > ul {
       opacity: 0;
       list-style: none;
@@ -1683,8 +1676,7 @@ html[sakura], html.sakura {
           display: block;
           transform: translateX(0.25em);
           transition: transform 240ms ease-in;
-          transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
-          /* easeOutBack */ }
+          transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275); }
   .swed-dropdown.has-hover-action:hover .label, .swed-dropdown.is-active .label {
     color: #ce807e; }
   .swed-dropdown.has-hover-action:hover .label::after, .swed-dropdown.is-active .label::after {
@@ -1693,8 +1685,7 @@ html[sakura], html.sakura {
     pointer-events: all; }
   .swed-dropdown.has-hover-action:hover .droplist::after, .swed-dropdown.is-active .droplist::after {
     transform: scale(1);
-    transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    /* easeOutBack */ }
+    transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275); }
   .swed-dropdown.has-hover-action:hover .droplist > ul, .swed-dropdown.is-active .droplist > ul {
     opacity: 1;
     transition: opacity 240ms ease-in; }
@@ -1769,5 +1760,46 @@ html[sakura], html.sakura {
 
 .box:hover::after {
   opacity: 1; }
+
+.swed-double-sticker-wrap {
+  --middle-gap-size: 8em;
+  display: grid;
+  margin: 0 auto;
+  padding: 0 1rem;
+  grid-gap: 0 var(--middle-gap-size);
+  grid-template-columns: repeat(2, minmax(12em, max-content)); }
+  .swed-double-sticker-wrap > .swed-sticker {
+    align-self: center; }
+    .swed-double-sticker-wrap > .swed-sticker::after {
+      width: calc( 100% + 0.75*var(--middle-gap-size) ); }
+    .swed-double-sticker-wrap > .swed-sticker:nth-child(1)::after {
+      transform-origin: center right; }
+    .swed-double-sticker-wrap > .swed-sticker:nth-child(2)::after {
+      transform-origin: center left;
+      left: auto;
+      right: 0; }
+    .swed-double-sticker-wrap > .swed-sticker:hover:nth-child(1)::after {
+      transform: scale(1, 1.2) translate(calc( 0.25 * var(--middle-gap-size) * (-1) ), -1em); }
+    .swed-double-sticker-wrap > .swed-sticker:hover:nth-child(2)::after {
+      transform: scale(0.9, 1.2) translate(calc( 0.25 * var(--middle-gap-size) ), -1em); }
+
+.swed-sticker {
+  padding: 1em;
+  position: relative; }
+  .swed-sticker::after {
+    content: "";
+    pointer-events: none;
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #314863;
+    opacity: 0.25;
+    will-change: transform;
+    transition: all 800ms cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+  .swed-sticker:hover::after {
+    transform: scale(0.9, 1.2) translate(-15%, -10%); }
 
 /* EOF sass ordnung */

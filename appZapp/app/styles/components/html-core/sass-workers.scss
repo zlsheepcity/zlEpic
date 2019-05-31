@@ -45,5 +45,12 @@
     overflow:    hidden;
 }
 
+%link-style-as-inherit {
+    & ,&:link, &:visited, &:active, &:focus, &:hover {
+        color:           inherit;
+        text-decoration: inherit;
+    }
+}
+
 
 /* eof app scss constructor */
