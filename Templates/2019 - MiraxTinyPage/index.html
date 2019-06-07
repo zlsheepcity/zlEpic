@@ -1,0 +1,246 @@
+<!doctype html><!-- v2019.3.27 -->
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- HEAD CONTENT -->
+
+    <title>Mirax Management Ltd.</title>
+
+
+    <!-- DESIGN -->
+
+    <link href="https://fonts.googleapis.com/css?family=Vollkorn:400,400i,700&subset=cyrillic" rel="stylesheet">
+
+    <style>
+
+        /* colors */
+
+        body {
+            background-color:          hsl(53, 62%, 79%);
+            color:                     hsl(313, 18%, 31%);
+        }
+        main>header {
+            background-color:          hsl(152, 24%, 73%);
+            border-color:              hsl(81, 32%, 77%);
+        }
+        footer {
+            background-color:          hsl(81, 32%, 77%);
+            border-color:              hsl(210, 2%, 53%);
+        }
+        nav {
+            background-color:          hsla(81, 32%, 77%, 0.32);
+        }
+        h2, li  { color:               hsl(152, 24%, 73%); }
+        nav li  { color:               hsl(53, 62%, 79%); }
+        li>*    { color:               hsl(313, 18%, 31%); }
+
+        /* typography */
+
+        body {
+            font-size: 20px;
+            line-height: 1.6;
+        }
+        @media (max-width:1300px) {
+            body {
+                font-size: 16px;
+                line-height: 1.5;
+            }
+        }
+
+        body {
+            font-family: Vollkorn, serif;
+            font-weight: regular;
+        }
+        h1, h2, h4 {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+            font-weight: bolder;
+        }
+
+        h1 {
+            font-size:   12vw;
+            line-height: 0.8;
+        }
+        h2 {
+            font-size: 2em;
+            line-height: 1.25;
+            text-transform: uppercase;
+        }
+        h3 {
+            font-size:   1.2em;
+            line-height: 1.33333;
+        }
+        h4 {
+            font-size: 0.8em;
+            max-width: 28em;
+        }
+        li+li { margin-top: 0.25em; }
+        a {
+            color: inherit;
+            text-decoration: underline;
+        }
+
+        /* layout */
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { font-size: 10px; }
+        html, body { min-height: 100%; width: 100%; }
+        main { min-height: 100vh; }
+
+        /* grid */
+
+        main {
+            grid-template-areas:
+                'HEAD HEAD HEAD HEAD'
+                'INFO INFO DATA oooo'
+                'xxxx xxxx DATA oooo'
+                'FOOT FOOT FOOT FOOT';
+        }
+        main>header  { grid-area: HEAD; }
+        main>aside   { grid-area: INFO; }
+        main>article { grid-area: DATA; }
+        main>footer  { grid-area: FOOT; }
+
+        main, main>footer {
+            display: grid;
+            grid-gap: 0 2em;
+            grid-template-columns:
+                minmax(0, 1fr) minmax(0,24em) minmax(0,32em) minmax(0, 1fr);
+        }
+
+        main>footer>* { grid-column: 2 / span 2; }
+
+        @media (min-width:1000px) {
+
+            aside, nav {
+                display: grid;
+                grid-gap: 0 2em;
+                grid-template-columns: minmax(0, 1fr) minmax(0,24em);
+            }
+            aside>* { grid-column: 2 / span 1; }
+            nav {
+                grid-column: 1 / span 2;
+                clip-path:
+                    polygon( 0 0, calc( 100% - 2em ) 0, 100% 50%, calc( 100% - 2em ) 100%, 0 100% );
+            }
+            nav>* {
+                grid-column: 2 / span 1;
+                padding-right: 2em;
+            }
+
+        }
+
+        @media (max-width:999px) {
+
+            main {
+                grid-template-areas:
+                    'HEAD HEAD HEAD HEAD'
+                    'xxxo INFO INFO oxxx'
+                    'xxoo DATA DATA ooxx'
+                    'FOOT FOOT FOOT FOOT';
+            }
+            nav { display: none; }
+            main>article>section { padding-top: 0; }
+
+        }
+
+
+        /* design */
+
+        header {
+            text-align: center;
+            padding: 4rem 0;
+            border-bottom-width: 4rem;
+            border-bottom-style: solid;
+        }
+        section {
+            padding: 2em 0;
+            display: grid;
+            grid-template-columns: auto;
+            grid-gap: 1em 0;
+        }
+        footer {
+            padding: 2em 0 1em 0;
+            border-bottom-width: 1em;
+            border-bottom-style: solid;
+        }
+
+    </style>
+
+
+</head>
+<body>
+
+    <main>
+        <header>
+
+            <h1>Mirax</h1>
+            <p>Mirax Management Ltd.</p>
+
+        </header>
+        <aside>
+            <section>
+
+                <h2>About Us</h2>
+                <ul>
+                    <li><span>Founded in 2013</span></li>
+                    <li><span>Years of experience in the field</span></li>
+                    <li><span>Highly skilled professionals</span></li>
+                    <li><span>Open for consulting, suggestions, and possible collaborations</span></li>
+                </ul>
+
+            </section>
+            <nav>
+                <section>
+
+                    <h3>Offers various services such as:</h3>
+                    <ul>
+                        <li><span>Website Development</span></li>
+                        <li><span>Website Design</span></li>
+                        <li><span>Game Development and Publishing</span></li>
+                        <li><span>App Development</span></li>
+                        <li><span>Hosting</span></li>
+                    </ul>
+
+                </section>
+            </nav>
+        </aside>
+        <article>
+            <section>
+
+                <h2>Services</h2>
+                <h4>The company works in five main fields, which we listed in the About Us section. However, let’s dive deeper and see what exactly we’re doing in each of these five areas.</h4>
+
+                <h3>Website Development</h3>
+                <p>Our team has decades of combined experience in website development. This means that we can develop a user-friendly and professional website even if you have numerous requirements. The best thing is that you choose whether we use our own CMS or any other open-source CMS, such as Drupal, Joomla, Wordpress, etc. Our developers use the latest technology so your website won’t get outdated any time soon.</p>
+
+                <h3>Website Design</h3>
+                <p>Design is probably the most important part of every website. That’s where everything gets started and what developers base their code on. We work with each of our clients on an individual level, approaching each task with patience and enthusiasm. Therefore, you are guaranteed to get a top-notch design for your website.</p>
+
+                <h3>Game Development and Publishing</h3>
+                <p>Game development doesn’t take too much time nowadays, thanks to game engines. We can either use some of the most popular engines such as Unreal Engine 4 or Unity for your games, or we can do everything from scratch.</p>
+
+                <h3>App Development</h3>
+                <p>Having a dedicated app for your business is the key to success. Native applications allow developers to pay attention to details when it comes to user-interface and user-experience.</p>
+
+                <h3>Hosting</h3>
+                <p>If you decide to work with us and allow us to host your services on our servers, you can get incredible discounts and a free trial! You can find more information in the Hosting section.</p>
+
+            </section>
+        </article>
+        <footer>
+            <blockquote>
+
+                <p><strong>Mirax Management Ltd.</strong></p>
+                <p><strong><a href="mailto:info@miraxcompany.com">info@miraxcompany.com</a></strong></p>
+                <p><em>Reg. Nr.:</em> 110,537</p>
+                <p><em>Address:</em> New Horizon Building, Ground Floor, 3 ½ miles Philip S.W.Goldson Highway, Belize City, Belize</p>
+                <p>© 2013—2019</p>
+
+            </blockquote>
+        </footer>
+    </main>
+
+</body>
+</html>

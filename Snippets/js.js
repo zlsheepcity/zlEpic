@@ -3,6 +3,9 @@
 
 /* ---------------------------------------------- */ // onload
 
+document.addEventListener('DOMContentLoaded', function(event) {
+  //the event occurred
+})
 
 window.onload = function(e){
 
