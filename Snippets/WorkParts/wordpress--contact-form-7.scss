@@ -1,0 +1,232 @@
+/** Contact Form 7 Design & Hints
+    Theme:  egamings2019
+    Author: zl, 2019.6.8
+*/
+
+$wpcf7-color--form-bg:            white;
+$wpcf7-color--form-bg-opacity:    rgba(255,255,255,0.75);
+$wpcf7-color--form-text:          black;
+$wpcf7-color--form-err:           firebrick;
+$wpcf7-color--form-responce-text: white;
+$wpcf7-color--form-ok:            $color-egDark;
+
+:root {
+    --wpcf7-side-padding: 1rem;
+}
+
+@keyframes keyframeSimpleRotation {
+    from {transform: rotate(359deg);}
+    to   {transform: rotate(0deg);}
+}
+
+// ----------------------------------------- form design
+
+.eg-contact-form-7--wrap-form {
+
+    // layout
+
+    display:     block;
+    max-width:    20em;
+    margin-left:  auto;
+    margin-right: auto;
+
+    // design
+
+    background-color: $wpcf7-color--form-bg;
+    color:            $wpcf7-color--form-text;
+    padding: 0.5rem var(--wpcf7-side-padding);
+    padding-bottom: var(--wpcf7-side-padding);
+}
+.eg-design .wpcf7 { // use standart class-name for styling wrap
+    @extend .eg-contact-form-7--wrap-form;
+}
+
+
+.eg-contact-form-7--wrap-fields {
+
+    display: grid;
+    grid-template-columns: 100%;
+    grid-row-gap: 0.5rem;
+
+    .field-label {
+        display: inline-block;
+        &>i { opacity: 0.6; }
+    }
+    .submit-wrap {
+        position: relative;
+        .ajax-loader {
+            position: absolute;
+            z-index:  1;
+            &.is-active {
+                width:    100%;
+                height:   100%;
+                top:      0;
+                left:     0;
+                margin:   0;
+                padding:  0;
+                background-color: $wpcf7-color--form-bg-opacity;
+                background-position: 50% 50%;
+                background-repeat: no-repeat;
+
+                display:         flex;
+                justify-content: center;
+                align-content:   center;
+                align-items:     center;
+                &::before {
+                    content: '';
+                    display: block;
+                    width:      2em;
+                    height:     2em;
+                    max-width:  100%;
+                    max-height: 100%;
+                    background-position: 50% 50%;
+                    background-repeat: no-repeat;
+                    background-image: url('data:image/svg+xml,%3Csvg fill%3D%22#{$wpcf7-color--form-text}%22 height%3D%2224%22 viewBox%3D%220 0 24 24%22 width%3D%2224%22 xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath d%3D%22M12 4V1L8 5l4 4V6c3.31 0 6 2.69 6 6 0 1.01-.25 1.97-.7 2.8l1.46 1.46C19.54 15.03 20 13.57 20 12c0-4.42-3.58-8-8-8zm0 14c-3.31 0-6-2.69-6-6 0-1.01.25-1.97.7-2.8L5.24 7.74C4.46 8.97 4 10.43 4 12c0 4.42 3.58 8 8 8v3l4-4-4-4v3z%22%2F%3E%3C%2Fsvg%3E');
+                    background-size: contain;
+                    animation: keyframeSimpleRotation 1s infinite linear;
+                }
+            }
+        }
+    }
+
+    .wpcf7-not-valid {
+        border-color: $wpcf7-color--form-err;
+    }
+    .wpcf7-not-valid-tip {
+        color: $wpcf7-color--form-err;
+    }
+}
+
+// ----------------------------------------- responces
+
+.eg-design .wpcf7-response-output {
+    margin:   calc( var(--wpcf7-side-padding) * (-1) );
+    margin-top:     var(--wpcf7-side-padding);
+    padding: 0.5rem var(--wpcf7-side-padding);
+    border:  0;
+}
+.eg-design .wpcf7-spam-blocked,
+.eg-design .wpcf7-mail-sent-ng,
+.eg-design .wpcf7-aborted,
+.eg-design .wpcf7-validation-errors,
+.eg-design .wpcf7-acceptance-missing {
+    border:  0;
+    background-color: $wpcf7-color--form-err;
+    color:  $wpcf7-color--form-responce-text;
+}
+.eg-design .wpcf7-mail-sent-ok {
+    border: 0;
+    background-color: $wpcf7-color--form-ok;
+    color:  $wpcf7-color--form-responce-text;
+}
+
+.wpcf7 .sent .eg-contact-form-7--wrap-fields {
+    display: none;
+}
+
+.wpcf7 .screen-reader-response {
+    position: absolute;
+    overflow: hidden;
+    clip: rect(1px, 1px, 1px, 1px);
+    height: 1px;
+    width: 1px;
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+.wpcf7-display-none {
+    display: none;
+}
+
+// ----------------------------------------- hints
+/*
+
+
+
+# Disable default styles loading
+  Insert into wp-config.php
+
+define('WPCF7_LOAD_CSS', false);
+
+
+
+# Prevent double click
+  Use javascript
+
+jQuery(document).on('click', '.wpcf7-submit', function preventDoubleFormSubmit(e) {
+    let $button = jQuery(e.currentTarget)
+    let $form   = $button.closest('.wpcf7')
+    let $state  = $form.find('.ajax-loader').hasClass('is-active')
+    if( $state ) {
+        e.preventDefault()
+        return false
+    }
+})
+
+
+
+# Template placeholder inside wp-admin
+
+<div class="eg-contact-form-7--wrap-fields">
+
+    <div class="field-wrap">
+        <label><span class="field-label">Your Name *</span>
+        [text* your-name] </label>
+    </div>
+
+    <div class="field-wrap">
+        <label><span class="field-label">Your Email *</span>
+        [email* your-email] </label>
+    </div>
+
+    <div class="field-wrap">
+        <label><span class="field-label">Phone number <i>(optional)</i></span>
+        [phonetext your-phone] </label>
+    </div>
+
+    <div class="field-wrap">
+        <label><span class="field-label">Skype <i>(optional)</i></span>
+        [text your-skype] </label>
+    </div>
+
+    <div class="field-wrap">
+        <label><span class="field-label">Message or Question *</span>
+        [textarea* your-message x3] </label>
+    </div>
+
+    <div class="submit-wrap">
+        [submit "Send"]
+    </div>
+
+</div>
+
+
+
+# Email template placeholder inside wp-admin
+
+NAME:  [your-name] 
+EMAIL: [your-email]
+PHONE: [your-phone]
+SKYPE: [your-skype]
+MESSAGE ***
+[your-message]
+***
+
+Was sent from a contact form on Egamings
+
+URL:   [_url]
+DATE:  [_date] / [_time]
+ID:    [_serial_number]
+IP:    [_remote_ip]
+AGENT: [_user_agent]
+
+
+
+# WP-Plugin: Country & Phone Field Contact Form 7
+
+https://wordpress.org/plugins/country-phone-field-contact-form-7/
+
+
+
+*/
