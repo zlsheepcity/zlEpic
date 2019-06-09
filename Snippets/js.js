@@ -80,6 +80,7 @@ myElement.appendChild(hr)
 myElement.classList.add('foo')
 myElement.classList.remove('bar')
 myElement.classList.toggle('baz')
+myElement.classList.contains('myclass')
 
 // Using Array.from()
 Array.from(myElements).forEach(doSomethingWithEachElement)
