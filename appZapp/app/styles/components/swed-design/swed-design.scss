@@ -1,16 +1,40 @@
-$colorSwedAccent: hsl(212, 34%, 29%);
-$colorSwedAccent--text: white;
+$hslSwed-NobleBlack:            240, 15%, 12%;
+$hslSwed-NobleBlue:             212, 34%, 29%;
+$hslSwed-AccentBlue:            204, 22%, 55%;
+$hslSwed-AccentBlux:            226, 17%, 20%;
 
-$colorSwedDark:   hsl(240, 15%, 12%);
-$colorSwedDark--text: hsla(0,0%,100%,0.75);
-$colorSwedLight:  hsl(204, 22%, 55%);
-$colorSwedMedium: hsl(226, 17%, 20%);
+
+$colorSwedAccent:               hsl(212, 34%, 29%);
+$colorSwedAccent--text:         white;
+
+$colorSwedDark:                 hsl(240, 15%, 12%);
+$colorSwedDark--text:           hsla(0,0%,100%,0.75);
+$colorSwedLight:                hsl(204, 22%, 55%);
+$colorSwedMedium:               hsl(226, 17%, 20%);
 
 $timing-function--easeInBack:  cubic-bezier(0.600, -0.280, 0.735, 0.045);
 $timing-function--easeOutBack: cubic-bezier(0.175, 0.885, 0.320, 1.275);
 $timing-function--focusZoom:   cubic-bezier(0.165, 0.84, 0.44, 1);
 $timing-function--jumpClose:   $timing-function--easeInBack;
 $timing-function--jumpOpen:    $timing-function--easeOutBack;
+
+
+.bg-aaa {
+    --hsl-background: #{$hslSwed-NobleBlack};
+}
+.bg-bbb {
+    --hsl-background: #{$hslSwed-NobleBlue};
+}
+.bg-ccc {
+    --hsl-background: #{$hslSwed-AccentBlue};
+}
+.bg-ddd {
+    --hsl-background: #{$hslSwed-AccentBlux};
+}
+
+.bg-aaa, .bg-bbb, .bg-ccc, .bg-ddd {
+    background-color: hsl( var(--hsl-background) );
+}
 
 
 .design-template--swed {
@@ -29,6 +53,20 @@ $timing-function--jumpOpen:    $timing-function--easeOutBack;
     .subtitle {
         @extend .has-sans-text;
     }
+}
+
+.swd-section {
+    width:          100%;
+    padding-top:    10vh;
+    padding-bottom: 10vh;
+
+    display:         flex;
+    flex-direction:  column;
+    justify-content: center;
+    align-content:   center;
+    align-items:     center;
+
+    .title+.title { color: black; }
 }
 
 .swed-screen {

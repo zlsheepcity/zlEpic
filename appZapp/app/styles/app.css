@@ -1537,6 +1537,21 @@ html[sakura], html.sakura {
     padding: 0.5em; }
 
 /* eof base html markup */
+.bg-aaa {
+  --hsl-background: 240, 15%, 12%; }
+
+.bg-bbb {
+  --hsl-background: 212, 34%, 29%; }
+
+.bg-ccc {
+  --hsl-background: 204, 22%, 55%; }
+
+.bg-ddd {
+  --hsl-background: 226, 17%, 20%; }
+
+.bg-aaa, .bg-bbb, .bg-ccc, .bg-ddd {
+  background-color: hsl(var(--hsl-background)); }
+
 .design-template--swed {
   background-color: #1a1a23;
   color: rgba(255, 255, 255, 0.75); }
@@ -1546,6 +1561,18 @@ html[sakura], html.sakura {
   .design-template--swed .title {
     display: block;
     font-size: 1.5em; }
+
+.swd-section {
+  width: 100%;
+  padding-top: 10vh;
+  padding-bottom: 10vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  align-items: center; }
+  .swd-section .title + .title {
+    color: black; }
 
 .swed-screen {
   min-height: 100vh;
