@@ -19,6 +19,13 @@ $timing-function--jumpClose:   $timing-function--easeInBack;
 $timing-function--jumpOpen:    $timing-function--easeOutBack;
 
 
+:root {
+    --hsl-MainBackground: #{$hslSwed-NobleBlack};
+    --hsl-CardBackground: #{$hslSwed-NobleBlue};
+    --hsl-ItemBackground: #{$hslSwed-AccentBlue};
+}
+
+
 .bg-aaa {
     --hsl-background: #{$hslSwed-NobleBlack};
 }
@@ -34,6 +41,24 @@ $timing-function--jumpOpen:    $timing-function--easeOutBack;
 
 .bg-aaa, .bg-bbb, .bg-ccc, .bg-ddd {
     background-color: hsl( var(--hsl-background) );
+}
+
+
+.albatross {
+
+    display: flex;
+    flex-wrap: wrap;
+
+    &>* {
+        min-width:  25%;
+        max-width: 100%;
+        flex-grow: 1;
+        flex-basis: calc( 60rem * 999 - 100% * 999 );
+
+        padding: 0.25rem 0.5rem;
+        background-color: hsl( var(--hsl-ItemBackground) );
+    }
+
 }
 
 

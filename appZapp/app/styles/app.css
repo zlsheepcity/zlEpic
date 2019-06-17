@@ -1537,6 +1537,11 @@ html[sakura], html.sakura {
     padding: 0.5em; }
 
 /* eof base html markup */
+:root {
+  --hsl-MainBackground: 240, 15%, 12%;
+  --hsl-CardBackground: 212, 34%, 29%;
+  --hsl-ItemBackground: 204, 22%, 55%; }
+
 .bg-aaa {
   --hsl-background: 240, 15%, 12%; }
 
@@ -1551,6 +1556,17 @@ html[sakura], html.sakura {
 
 .bg-aaa, .bg-bbb, .bg-ccc, .bg-ddd {
   background-color: hsl(var(--hsl-background)); }
+
+.albatross {
+  display: flex;
+  flex-wrap: wrap; }
+  .albatross > * {
+    min-width: 25%;
+    max-width: 100%;
+    flex-grow: 1;
+    flex-basis: calc( 60rem * 20 - 100% * 20 );
+    padding: 0.25rem 0.5rem;
+    background-color: hsl(var(--hsl-ItemBackground)); }
 
 .design-template--swed {
   background-color: #1a1a23;
