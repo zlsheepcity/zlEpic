@@ -109,6 +109,62 @@
         </code>
     </section>
 
+
+
+    <section class="zetka">
+        <header class="chapter-title">
+            <h2>Friendly Web Components</h2>
+            <div>2019.6.18</div>
+        </header>
+        <div>
+            Source: Atomico<br>
+            https://github.com/atomicojs/atomico
+        </div>
+        <div style="background-color: azure; color: black;">
+
+            <!--declare your web-component-->
+            <web-component message="Hello!" counter="1">
+                <header>Header</header>
+            </web-component>
+            <button>Control Button</button>
+
+            <!--create your web-component-->
+            <script type="module">
+                import { customElement, useState } from "https://unpkg.com/atomico@0.8.6";
+                import html from "https://unpkg.com/atomico@0.8.6/html.js";
+
+                function WebComponent({ message, counter }) {
+                    return html`
+                        <host shadowDom>
+                            <style>
+                                :host { display: block; }
+                                button { margin-left: 1rem; }
+                            </stile>
+                            <slot />
+                            <div>${message}</div>
+                            <button>${counter+1}</button>
+                        </host>
+                    `;
+                }
+
+                WebComponent.observables = {
+                    message: String,
+                    counter: Number
+                };
+
+                customElement("web-component", WebComponent);
+
+                let wc = document.querySelector("web-component");
+                wc.message = "Atomico";
+
+            </script>
+
+        </div>
+
+    </section>
+
+
+
     <section class="zetka">
         <header class="chapter-title">
             <h2>Manual SVG arc path for circle</h2>
