@@ -1542,6 +1542,28 @@ html[sakura], html.sakura {
   --hsl-CardBackground: 212, 34%, 29%;
   --hsl-ItemBackground: 204, 22%, 55%; }
 
+/* ------------------------------------- current-color model */
+:root {
+  --current-color--front: white;
+  --current-color--back: hsl(var(--hsl-MainBackground));
+  --current-color--card-front: var(--current-color--front);
+  --current-color--card-back: hsl(var(--hsl-CardBackground));
+  --current-color--active: hsl(2, 45%, 75%);
+  --current-color--shadow: hsla(0, 0%, 0%, 0.32); }
+
+.color-model--classic {
+  --current-color--front: black;
+  --current-color--back: white;
+  --current-color--card-front: black;
+  --current-color--card-back: lightgray;
+  --current-color--active: firebrick;
+  --current-color--shadow: hsla(0, 0%, 0%, 0.32); }
+
+.use-color-model {
+  color: var(--current-color--front);
+  background-color: var(--current-color--back); }
+
+/* ------------------------------------- unsorted components */
 .bg-aaa {
   --hsl-background: 240, 15%, 12%; }
 
@@ -1557,6 +1579,9 @@ html[sakura], html.sakura {
 .bg-aaa, .bg-bbb, .bg-ccc, .bg-ddd {
   background-color: hsl(var(--hsl-background)); }
 
+.swd-section .title + .title {
+  color: black; }
+
 .albatross {
   display: flex;
   flex-wrap: wrap; }
@@ -1564,7 +1589,7 @@ html[sakura], html.sakura {
     min-width: 25%;
     max-width: 100%;
     flex-grow: 1;
-    flex-basis: calc( 60rem * 20 - 100% * 20 );
+    flex-basis: calc( 60rem * 999 - 100% * 999 );
     padding: 0.25rem 0.5rem;
     background-color: hsl(var(--hsl-ItemBackground)); }
 
@@ -1587,8 +1612,6 @@ html[sakura], html.sakura {
   justify-content: center;
   align-content: center;
   align-items: center; }
-  .swd-section .title + .title {
-    color: black; }
 
 .swed-screen {
   min-height: 100vh;
@@ -1742,6 +1765,158 @@ html[sakura], html.sakura {
     bottom: -2em;
     left: -2em; }
   .swed-dropdown.has-hover-action:hover .droplist::before {
+    display: block; }
+
+.swd-menu-row {
+  display: flex;
+  flex-wrap: nowrap;
+  position: relative;
+  z-index: 3; }
+
+.swd-button {
+  --color-front: var(--current-color--front);
+  --color-back: var(--current-color--card-back);
+  --color-active: var(--current-color--active);
+  --color-shadow: var(--current-color--shadow);
+  background-color: transparent;
+  color: var(--color-front);
+  text-decoration: none;
+  cursor: default;
+  display: block;
+  padding: 0.5em;
+  line-height: 1;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  /* -------------------------------- hover effect */
+  position: relative; }
+  .swd-button > a {
+    display: block;
+    margin: -0.5em -0.5em;
+    padding: 0.5em  0.5em;
+    color: inherit;
+    text-decoration: inherit;
+    cursor: inherit; }
+  .swd-button::after {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    background-color: var(--color-back);
+    will-change: transform;
+    transition: transform 240ms, opacity 240ms;
+    transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+  .swd-button:hover {
+    z-index: 1;
+    color: var(--color-active); }
+    .swd-button:hover::after {
+      opacity: 1;
+      transform: scale(1.25, 1.25); }
+
+.swd-dropmenu {
+  --color-front: var(--current-color--front);
+  --color-back: var(--current-color--card-back);
+  --color-active: var(--current-color--active);
+  --color-shadow: var(--current-color--shadow);
+  /* ----------------------------------------- label */
+  /* ----------------------------------------- droplist */
+  /* ----------------------------------------- usability */ }
+  .swd-dropmenu {
+    position: relative;
+    color: var(--color-front); }
+  .swd-dropmenu .label {
+    position: relative;
+    z-index: 2;
+    font-size: 1em;
+    line-height: 1.5;
+    padding: 0.25em 0.5em;
+    color: inherit;
+    background-color: transparent;
+    border: 0;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    display: flex;
+    align-items: center;
+    padding-right: 0.25em; }
+    .swd-dropmenu .label::after {
+      content: '';
+      display: block;
+      width: 1.5em;
+      height: 1.5em;
+      transition: transform 240ms;
+      transform-origin: center center;
+      background-size: 100%;
+      background-image: url("data:image/svg+xml,%3Csvg fill='white' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M7.41 7.84L12 12.42l4.59-4.58L18 9.25l-6 6-6-6z'/%3E%3C/svg%3E%0A"); }
+  .swd-dropmenu:not(.no-hover):hover .label, .swd-dropmenu.is-active .label,
+  .swd-dropmenu .label:focus {
+    color: var(--color-active); }
+    .swd-dropmenu:not(.no-hover):hover .label::after, .swd-dropmenu.is-active .label::after,
+    .swd-dropmenu .label:focus::after {
+      transform: scaleY(-1); }
+  .swd-dropmenu .droplist {
+    pointer-events: none;
+    position: absolute;
+    z-index: 1;
+    top: -0.25em;
+    left: -0.25em;
+    min-width: calc(100% + 0.5em); }
+    .swd-dropmenu .droplist::after {
+      background-color: var(--color-back);
+      content: '';
+      position: absolute;
+      z-index: -1;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      transform: scale(0);
+      transform-origin: 1em 1em;
+      transition: transform 240ms;
+      transition-timing-function: cubic-bezier(0.6, -0.28, 0.735, 0.045); }
+  .swd-dropmenu .droplist > ul {
+    opacity: 0;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    margin-top: 2.5em;
+    padding-bottom: 0.5em;
+    transition: opacity 240ms ease-out; }
+    .swd-dropmenu .droplist > ul > li {
+      white-space: nowrap;
+      padding: 0.25em 0.75em; }
+      .swd-dropmenu .droplist > ul > li:hover {
+        background-color: var(--color-shadow); }
+      .swd-dropmenu .droplist > ul > li:hover > span, .swd-dropmenu .droplist > ul > li:hover > a {
+        display: block;
+        transform: translateX(0.25em);
+        transition: transform 240ms;
+        transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+  .swd-dropmenu:not(.no-hover):hover, .swd-dropmenu.is-active {
+    z-index: 2; }
+  .swd-dropmenu:not(.no-hover):hover .label + .droplist, .swd-dropmenu.is-active .label + .droplist,
+  .swd-dropmenu .label:focus + .droplist {
+    pointer-events: all; }
+  .swd-dropmenu:not(.no-hover):hover .label + .droplist::after, .swd-dropmenu.is-active .label + .droplist::after,
+  .swd-dropmenu .label:focus + .droplist::after {
+    transform: scale(1);
+    transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+  .swd-dropmenu:not(.no-hover):hover .label + .droplist > ul, .swd-dropmenu.is-active .label + .droplist > ul,
+  .swd-dropmenu .label:focus + .droplist > ul {
+    opacity: 1;
+    transition: opacity 240ms ease-in; }
+  .swd-dropmenu:not(.no-hover) .droplist::before {
+    display: none;
+    content: '';
+    position: absolute;
+    z-index: -2;
+    top: -2em;
+    right: -2em;
+    bottom: -2em;
+    left: -2em; }
+  .swd-dropmenu:not(.no-hover):hover .droplist::before {
     display: block; }
 
 .swed-group {

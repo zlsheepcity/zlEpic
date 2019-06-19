@@ -25,6 +25,32 @@ $timing-function--jumpOpen:    $timing-function--easeOutBack;
     --hsl-ItemBackground: #{$hslSwed-AccentBlue};
 }
 
+/* ------------------------------------- current-color model */
+
+:root {
+    --current-color--front:      white;
+    --current-color--back:       hsl(var(--hsl-MainBackground));
+    --current-color--card-front: var(--current-color--front);
+    --current-color--card-back:  hsl(var(--hsl-CardBackground));
+    --current-color--active:     hsl(2, 45%, 75%);
+    --current-color--shadow:     hsla(0, 0%, 0%, 0.32);
+}
+.color-model--classic {
+    --current-color--front:      black;
+    --current-color--back:       white;
+    --current-color--card-front: black;
+    --current-color--card-back:  lightgray;
+    --current-color--active:     firebrick;
+    --current-color--shadow:     hsla(0, 0%, 0%, 0.32);
+}
+.use-color-model {
+    color:            var(--current-color--front);
+    background-color: var(--current-color--back);
+}
+
+
+/* ------------------------------------- unsorted components */
+
 
 .bg-aaa {
     --hsl-background: #{$hslSwed-NobleBlack};
@@ -43,6 +69,7 @@ $timing-function--jumpOpen:    $timing-function--easeOutBack;
     background-color: hsl( var(--hsl-background) );
 }
 
+.swd-section .title+.title { color: black; }
 
 .albatross {
 
@@ -60,7 +87,6 @@ $timing-function--jumpOpen:    $timing-function--easeOutBack;
     }
 
 }
-
 
 .design-template--swed {
 
@@ -90,10 +116,7 @@ $timing-function--jumpOpen:    $timing-function--easeOutBack;
     justify-content: center;
     align-content:   center;
     align-items:     center;
-
-    .title+.title { color: black; }
 }
-
 .swed-screen {
     min-height: 100vh;
     width:      100%;
@@ -104,7 +127,6 @@ $timing-function--jumpOpen:    $timing-function--easeOutBack;
     align-content:   center;
     align-items:     center;
 }
-
 .swed-welcome {
 
     min-height: 100vh;
@@ -144,7 +166,6 @@ $timing-function--jumpOpen:    $timing-function--easeOutBack;
     .side { background-color: $colorSwedAccent; }
 
 }
-
 .swed-button {
 
     // design
@@ -191,7 +212,6 @@ $timing-function--jumpOpen:    $timing-function--easeOutBack;
         &::after { opacity: 1; }
     }
 }
-
 .swed-dropdown {
 
     & {
@@ -313,6 +333,239 @@ $timing-function--jumpOpen:    $timing-function--easeOutBack;
         &:hover .droplist::before { display: block; }
     }
 
+}
+
+.swd-menu-row {
+    display:   flex;
+    flex-wrap: nowrap;
+    position: relative;
+    z-index: 3;
+    //.swd-dropmenu { z-index: 1; }
+}
+.swd-button {
+
+    --color-front:     var(--current-color--front);
+    --color-back:      var(--current-color--card-back);
+    --color-active:    var(--current-color--active);
+    --color-shadow:    var(--current-color--shadow);
+
+    // design
+
+    background-color: transparent;
+    color:            var(--color-front);
+    text-decoration:  none;
+    cursor:           default;
+
+    // layout
+
+    display:       block;
+    padding:       0.5em;
+    line-height:   1;
+    white-space:   nowrap;
+    text-overflow: ellipsis;
+
+    &>a {
+
+        display: block;
+        margin: -0.5em -0.5em;
+        padding: 0.5em  0.5em;
+
+        color:           inherit;
+        text-decoration: inherit;
+        cursor:          inherit;
+    }
+
+    &::after {
+        content:  "";
+        position: absolute;
+        z-index:  -1;
+        top:       0;
+        left:      0;
+        width:  100%;
+        height: 100%;
+
+        opacity: 0;
+        background-color: var(--color-back);
+        //box-shadow: 0 0.5rem 1rem var(--color-shadow);
+
+        will-change: transform;
+        transition:  transform 240ms, opacity 240ms;
+        transition-timing-function: $timing-function--jumpOpen;
+    }
+
+    /* -------------------------------- hover effect */
+
+    position:    relative;
+    &:hover {
+        z-index: 1;
+        color: var(--color-active);
+        &::after {
+            opacity:   1;
+            transform: scale(1.25, 1.25);
+        }
+    }
+
+}
+.swd-dropmenu {
+
+    --color-front:     var(--current-color--front);
+    --color-back:      var(--current-color--card-back);
+    --color-active:    var(--current-color--active);
+    --color-shadow:    var(--current-color--shadow);
+
+    & {
+        position: relative;
+        //z-index:  0; // stand alone
+        color:    var(--color-front);
+    }
+
+    /* ----------------------------------------- label */
+
+    .label {
+        position: relative;
+        z-index:  2;
+
+        font-size:   1em;
+        line-height: 1.5;
+        padding:     0.25em 0.5em;
+
+        // remove button styles
+
+        color:     inherit;
+        background-color: transparent;
+        border: 0;
+
+        // is invisible button
+
+        white-space:   nowrap;
+        text-overflow: ellipsis;
+
+        // has marker
+
+        display:     flex;
+        align-items: center;
+        padding-right: 0.25em;
+
+        &::after {
+            content: '';
+            display: block;
+            width:   1.5em;
+            height:  1.5em;
+            transition:       transform 240ms;
+            transform-origin: center center;
+            background-size:  100%;
+            background-image: url("data:image/svg+xml,%3Csvg fill='white' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M7.41 7.84L12 12.42l4.59-4.58L18 9.25l-6 6-6-6z'/%3E%3C/svg%3E%0A");
+        }
+    }
+
+    // label display action
+
+    &:not(.no-hover):hover .label, // on hover
+    &.is-active .label,            // on demand
+    .label:focus                   // has focus
+    {
+        color: var(--color-active);
+        &::after { transform: scaleY(-1); }
+    }
+
+    /* ----------------------------------------- droplist */
+
+    .droplist {
+        pointer-events: none;
+        position:  absolute;
+        z-index:   1;
+        top:      -0.25em;
+        left:     -0.25em;
+        min-width: calc(100% + 0.5em);
+
+        // background layer
+
+        &::after {
+            background-color: var(--color-back);
+
+            content:  '';
+            position: absolute;
+            z-index: -1;
+            top:      0;
+            right:    0;
+            bottom:   0;
+            left:     0;
+
+            transform:  scale(0);
+            transform-origin: 1em 1em;
+            transition: transform 240ms;
+            transition-timing-function: $timing-function--easeInBack;
+        }
+    }
+
+    // droplist content menu
+
+    .droplist>ul {
+        opacity: 0;
+
+        list-style: none;
+        margin:     0;
+        padding:    0;
+        margin-top: 2.5em;
+        padding-bottom: 0.5em;
+
+        transition: opacity 240ms ease-out;
+
+        &>li {
+            white-space: nowrap;
+            padding: 0.25em 0.75em;
+            &:hover { background-color: var(--color-shadow); }
+            &:hover>span,
+            &:hover>a {
+                display: block;
+                transform:  translateX(0.25em);
+                transition: transform 240ms;
+                transition-timing-function: $timing-function--easeOutBack;
+            }
+        }
+    }
+
+    // droplist display action
+
+    &:not(.no-hover):hover,
+    &.is-active {
+        z-index: 2;
+    }
+
+    &:not(.no-hover):hover .label, // on hover
+    &.is-active .label,            // on demand
+    .label:focus                   // has focus
+    {
+        &+.droplist  {
+            pointer-events: all;
+        }
+        &+.droplist::after {
+            transform: scale(1);
+            transition-timing-function: $timing-function--easeOutBack;
+        }
+        &+.droplist>ul {
+            opacity: 1;
+            transition: opacity 240ms ease-in;
+        }
+    }
+
+    /* ----------------------------------------- usability */
+
+    // transparent layer, to expand hover area
+
+    &:not(.no-hover) {
+        .droplist::before {
+            display:  none;
+            content:  '';
+            position: absolute;
+            z-index: -2;
+            top:     -2em;
+            right:   -2em;
+            bottom:  -2em;
+            left:    -2em;
+        }
+        &:hover .droplist::before { display: block; }
+    }
 }
 
 .swed-group {
