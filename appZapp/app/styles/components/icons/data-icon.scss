@@ -1,13 +1,13 @@
 /* ==============================================================
-    ATOMS
-    small components useful everywhere
+    data:image icons
+    Icons as :before with data:image in background
     2019.6.26
 ============================================================== */
 
 
 // ----------------------------------------- icon container
 
-.has-icon {
+.data-icon {
     vertical-align: middle;
     &::before {
         content: '';
@@ -58,15 +58,15 @@ $regular-icons: (
 // ----------------------------------------- auto assign icons
 
 
-//$has-icon--fill-color: 'hsl(0,0%25,0%25)';     // %25 = %
-//$has-icon--fill-color: '%23FFFFFF';            // %23 = #
-$has-icon--fill-color: white;
-.has-icon {
+//$data-icon--fill-color: 'hsl(0,0%25,0%25)';     // %25 = %
+//$data-icon--fill-color: '%23FFFFFF';            // %23 = #
+$data-icon--fill-color: white;
+.data-icon {
 
     --icon-image: none; // initial
 
-    // .has-icon.email { --icon-image: ... }
-    // .has-icon.phone { --icon-image: ... }
+    // .data-icon.email { --icon-image: ... }
+    // .data-icon.phone { --icon-image: ... }
     // ...
 
     @each $icon-name,  $icon-data in $regular-icons {
@@ -75,7 +75,7 @@ $has-icon--fill-color: white;
                 #{function-replace-in-string(
                     $icon-data,
                     "fill='black'",
-                    "fill='#{$has-icon--fill-color}'"
+                    "fill='#{$data-icon--fill-color}'"
                 )};
         }
     }
@@ -97,4 +97,4 @@ $has-icon--fill-color: white;
 */
 
 
-/* EOF ATOMS */
+/* EOF data:image icons */
