@@ -85,6 +85,8 @@
 
 <!-- ==================================================== use SVG inline -->
 
+URL-encoder for SVG
+https://yoksel.github.io/url-encoder/
 
 <style>
 input:invalid {
@@ -93,11 +95,30 @@ input:invalid {
 </style>
 
 
+<!-- ==================================================== SVG use xlink:href -->
+
+<!-- Reference IN THIS SAME DOCUMENT -->
+<svg>
+  <use xlink:href="#icon-1"></use>
+</svg>
+
+<!-- EXTERNAL reference -->
+<svg>
+  <use xlink:href="sprite.svg#icon-1"></use>
+</svg>
 
 
+<!-- SVG with symbols -->
+<svg xmlns="http://www.w3.org/2000/svg">
 
+  <symbol id="icon-1" viewBox="0 0 1024 1024">
+    <title>Kinda like alt text</title>
+    <path class="path-1" d="..."></path>
+  </symbol>
 
+  ...
 
+</svg>
 
 
 <!-- ==================================================== animated hamburger -->
