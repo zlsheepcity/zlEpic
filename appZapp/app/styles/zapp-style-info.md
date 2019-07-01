@@ -26,3 +26,9 @@ https://fonts.googleapis.com/css?family=Vollkorn:400,400i,700&subset=cyrillic
 <link  href="https://fonts.googleapis.com/css?family=Vollkorn:400,400i,700&subset=cyrillic" rel="stylesheet">
 ```
 
+---------------------------------------------------------------------
+# LOG
+---------------------------------------------------------------------
+
+2019.7.1
+...zetka v2
