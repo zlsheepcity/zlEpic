@@ -2,6 +2,7 @@ $hslSwed-NobleBlack:            240, 15%, 12%;
 $hslSwed-NobleBlue:             212, 34%, 29%;
 $hslSwed-AccentBlue:            204, 22%, 55%;
 $hslSwed-AccentBlux:            226, 17%, 20%;
+$hslSwed-NobleWhite:            226, 27%, 90%;
 
 $hslEg-Dark:                    220, 56%, 24%;
 $hslEg-Light:                   207, 57%, 75%;
@@ -55,6 +56,35 @@ $timing-function--jumpOpen:    $timing-function--easeOutBack;
     background-color: var(--current-color--back);
 }
 
+/* ------------------------------------- pending color model */
+:root {
+    --background-color: hsl(240, 15%, 12%);
+    --color:            hsl(226, 17%, 90%);
+}
+.colors-as-primary {
+    --background-color: hsl(240, 15%, 12%); //NobleBlack
+    --color:            hsl(226, 17%, 90%); //NobleWhite
+}
+.colors-as-secondary {
+    --background-color: hsl(212, 34%, 29%); //NobleBlue
+    --color:            hsl(226, 17%, 90%); //NobleWhite
+}
+.colors-as-highlight {
+    --background-color: hsl(226, 17%, 20%); //AccentBlux
+    --color:            hsl(226, 17%, 90%); //NobleWhite
+}
+.colors-as-alternative {
+    --background-color: hsl(204, 22%, 55%); //AccentBlue
+    --color:            hsl(204,  0%,  0%);
+}
+.colors-as-special {
+    --background-color: white;
+    --color:            black;
+}
+.color-box {
+    background-color:   var(--background-color);
+    color:              var(--color);
+}
 
 /* ------------------------------------- unsorted components */
 

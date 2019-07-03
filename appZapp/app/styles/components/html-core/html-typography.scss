@@ -1,6 +1,6 @@
 /* ==============================================================
     all about font-sizes and line-heights
-    2019.3.31
+    2019.7.1
 ============================================================== */
 
 //* ------------------------------------ font collection
@@ -61,9 +61,14 @@ $fontBolder:   700;
 
 
 body {
-    /* 16/28 */
+    /* 16/24 */
     font-size:   $fontSize;
     line-height: 1.5;
+
+    @media screen and (min-width: 1600px) {
+        /* 20/30 */
+        font-size: 20px;
+    }
 
     font-family: $font-list-serif;
     font-weight: $fontRegular;

@@ -7,8 +7,8 @@
 :root {
     --grid-base--column-gap:        1em;
     --grid-base--row-gap:           1em;
-    --grid-base--sidenote-width:    15em;
-    --grid-base--content-width:     35em;
+    --grid-base--sidenote-width:    16em;
+    --grid-base--contenta-width:    35em;
 }
 
 $zetka--begin:          unquote(" [ full-start ");
@@ -16,7 +16,7 @@ $zetka--end:            unquote(" full-end ] ");
 $zetka--screen-space:   unquote(" ] minmax(0, auto) [ ");
 $zetka--overmain-space: unquote(" ] 0 [ ");
 $zetka--side-column:    unquote(" ] minmax( auto, var(--grid-base--sidenote-width) ) [ ");
-$zetka--main-column:    unquote(" ] repeat( 6, minmax( auto, calc( ( var(--grid-base--content-width) - 5*var(--grid-base--column-gap) ) / 6 ) ) ) [ ");
+$zetka--main-column:    unquote(" ] repeat( 6, calc( ( var(--grid-base--contenta-width) - 5*var(--grid-base--column-gap) ) / 6 ) ) [ ");
 
 $zetka--media-fullsize:    'min-width: 64em';
 $zetka--media-notfullsize: 'min-width: 37em';
@@ -128,8 +128,8 @@ $article-grid--template-columns--fullsize:
 .article-grid *     { grid-column: main; }
 .article-grid       { grid-column: full; }
 .article-block      { grid-column: overmain; }
-.westnote           { grid-column: before; }
-.eastnote           { grid-column: after; }
+.westnote           { grid-column: before; min-width: 10em; }
+.eastnote           { grid-column: after;  min-width: 10em; }
 .layer              { grid-column: full; }
 
 
