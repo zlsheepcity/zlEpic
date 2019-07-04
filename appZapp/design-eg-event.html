@@ -1,0 +1,128 @@
+<!doctype html><!-- app7001-Zapp :: 2019.5.8 -->
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- ========================================= HEAD CONTENT -->
+
+
+    <title>Scan to Win</title>
+
+
+    <!-- ========================================= DESIGN -->
+
+    <style> /* ༼°▽°༽ boot style */
+        body    { width: 100%; height: auto; overflow: hidden; }
+        body    { font-size: 20px; }
+        img,svg { max-width: 100% }
+    </style>
+
+    <link
+        href="https://fonts.googleapis.com/css?family=Vollkorn:400,400i,700&subset=cyrillic"
+        rel="stylesheet">
+    <link
+        href="app/styles/app.css"
+        rel="stylesheet" type="text/css">
+
+    <!-- ========================================= APP HEAD -->
+
+    <script src="app/script/app-core.js"></script>
+    <script>app.log('... Wake Up, App!')</script>
+
+    <!-- ========================================= APP LIBS -->
+
+    <script src="app/script/components/image-zoom.js"></script>
+    <script>app.onload(ActivateImageZoom)</script>
+
+    <script src="app/script/components/class-mutator.js"></script>
+    <script>app.take({name:'mutate', f:el_class_mutator})</script>
+
+    <script src="app/script/components/scroll-follower.js"></script>
+    <script>app.take({name:'wayway', f:queenScrollFollower})</script>
+
+    <script src="app/script/components/scroll-trigger.js"></script>
+    <script>app.take({name:'waydot', f:queenScrollTrigger})</script>
+
+    <script src="app/script/components/svg-transform.js"></script>
+    <script>app.take({name:'morphy', f:ActivatedPathDanceQueen()})</script>
+
+    <!-- ========================================= APP LOADER -->
+
+    <script>
+        function RunInterface () { app.Welcome().log('App, Welcome!') }
+        function Run() { setTimeout(RunInterface,200) }
+        window.onload = Run
+    </script>
+
+    <!-- ========================================= APP CUSTOM -->
+
+<link
+    href="https://fonts.googleapis.com/css?family=Montserrat:500,500i,600,700,800&subset=cyrillic"
+    rel=stylesheet>
+
+    <style>
+        .design-template {
+            font-family: Montserrat;
+            font-weight: 500;
+        }
+        .egevent-intro {
+            padding:    1em;
+            -background-color: var(--higlight-background);
+        }
+
+        /* sg skup palette */
+
+        :root {
+            --hsl-egBrandGreen:        171, 43%, 50%;
+            --hsl-egBrandDarken:       171, 45%, 41%;
+            --hsl-egBrandAccent:       171, 55%, 71%;
+            --hsl-egMinorBlue:         201, 22%, 46%;
+        }
+
+        .colors-as-egBrandTiffany { --background-color: hsl(var(--hsl-egBrandGreen)); }
+        .colors-as-egBrandDarken  { --background-color: hsl(var(--hsl-egBrandDarken)); }
+        .colors-as-egBrandAccent  { --background-color: hsl(var(--hsl-egBrandAccent)); }
+        .colors-as-egMinorBlue    { --background-color: hsl(var(--hsl-egMinorBlue)); }
+
+    </style>
+
+    <!-- ========================================== ʕ⊙ᴥ⊙ʔ = -->
+    <!-- ========================================= END HEAD -->
+</head>
+<body class="body-wrap design-template">
+
+    <div class="color-box colors-as-egBrandDarken">zzz</div>
+    <div class="color-box colors-as-egBrandTiffany">zzz</div>
+    <div class="color-box colors-as-egBrandAccent">zzz</div>
+    <div class="color-box colors-as-egMinorBlue">zzz</div>
+
+    <div style="background: hsl(171, 45%, 41%);">colorMainTextLink</div>
+    <div style="background: hsl(167, 43%, 50%);">sg brand</div>
+    <div style="background: hsl(171, 45%, 64%);">colorAccentDarken</div>
+    <div style="background: hsl(171, 55%, 71%);">colorAccent</div>
+    <div style="background: hsl(170, 46%, 79%);">colorAccentLighter</div>
+    <div style="background: hsl(201, 22%, 46%);">MINOR</div>
+    <div style="background: hsl(201, 26%, 38%);">colorAccentMinorText</div>
+    <div style="background: hsl(201, 83%, 9%);">INVERSE</div>
+    <div style="background: hsl(0, 62%, 37%);">colorExtra</div>
+    <div style="background: hsl(0, 55%, 88%);">colorErrorBG</div>
+    <div style="background: hsl(176, 53%, 94%);">colorThirdBG</div>
+
+
+    <article class="swed-screen color-box colors-as-primary">
+
+        <div class="content-block egevent-intro">
+            <p>Enter an instant win giveaway<br>by <strong>SoftGamings</strong>.</p>
+            <p>Guaranteed prizes for all participants<br>and a chance to win the first prize<br>— <strong>The Gold Coin!</strong></p>
+            <p><strong>Good luck!</strong></p>
+        </div>
+
+        <div>
+            <p>Fill out the form, come to SoftGamings stand <strong>N1</strong>,<br>and show us the winning page to get your prize straight away!</p>
+        </div>
+
+    </article>
+
+</body>
+</html>

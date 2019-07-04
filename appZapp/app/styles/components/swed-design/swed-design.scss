@@ -57,30 +57,50 @@ $timing-function--jumpOpen:    $timing-function--easeOutBack;
 }
 
 /* ------------------------------------- pending color model */
+
+/* skup palette */
+
 :root {
-    --background-color: hsl(240, 15%, 12%);
-    --color:            hsl(226, 17%, 90%);
+    --hsl-NobleBlack:            240, 15%, 12%;
+    --hsl-NobleBlue:             212, 34%, 29%;
+    --hsl-AccentBlue:            204, 22%, 55%;
+    --hsl-AccentBlux:            226, 17%, 20%;
+    --hsl-NobleWhite:            226, 27%, 90%;
+    --hsl-NobleHighWhite:        226, 32%, 75%;
 }
+
+/* color model */
+
+:root,
 .colors-as-primary {
-    --background-color: hsl(240, 15%, 12%); //NobleBlack
-    --color:            hsl(226, 17%, 90%); //NobleWhite
+    --background-color:          hsl(var(--hsl-NobleBlack));
+    --color:                     hsl(var(--hsl-NobleWhite));
+    --higlight-text:             hsl(var(--hsl-NobleHighWhite));
+    --higlight-background:       hsl(var(--hsl-AccentBlux));
 }
 .colors-as-secondary {
-    --background-color: hsl(212, 34%, 29%); //NobleBlue
-    --color:            hsl(226, 17%, 90%); //NobleWhite
+    --background-color:          hsl(var(--hsl-NobleBlue));
+    --color:                     hsl(var(--hsl-NobleWhite));
+    --higlight-text:             hsl(var(--hsl-NobleHighWhite));
 }
 .colors-as-highlight {
-    --background-color: hsl(226, 17%, 20%); //AccentBlux
-    --color:            hsl(226, 17%, 90%); //NobleWhite
+    --background-color:          hsl(var(--hsl-AccentBlux));
+    --color:                     hsl(var(--hsl-NobleWhite));
+    --higlight-text:             hsl(var(--hsl-NobleHighWhite));
 }
 .colors-as-alternative {
-    --background-color: hsl(204, 22%, 55%); //AccentBlue
-    --color:            hsl(204,  0%,  0%);
+    --background-color:          hsl(var(--hsl-AccentBlue));
+    --color:                     hsl(204,  0%,  0%);
+    --higlight-text:             hsl(204,  0%,  0%);
 }
 .colors-as-special {
-    --background-color: white;
-    --color:            black;
+    --background-color:          white;
+    --color:                     black;
+    --higlight-text:             firebrick;
 }
+
+/* color workers */
+
 .color-box {
     background-color:   var(--background-color);
     color:              var(--color);
