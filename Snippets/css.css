@@ -136,6 +136,15 @@ body.hasFocusedShadow .aFocusedShadow {
   outline: 1px solid #ca0713;
 }
 
+/* scroll snap for sections */
+
+body {
+  scroll-snap-type: y mandatory;
+}
+section {
+  scroll-snap-align: start;
+}
+
 /* each slide snaps into place */
 
 .aSnapSlider {

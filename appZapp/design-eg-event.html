@@ -57,19 +57,17 @@
 
     <!-- ========================================= APP CUSTOM -->
 
-<link
-    href="https://fonts.googleapis.com/css?family=Montserrat:500,500i,600,700,800&subset=cyrillic"
-    rel=stylesheet>
-
+    <link
+        href="https://fonts.googleapis.com/css?family=Montserrat:500,500i,600,700,800&subset=cyrillic"
+        rel=stylesheet>
     <style>
         .design-template {
             font-family: Montserrat;
             font-weight: 500;
         }
-        .egevent-intro {
-            padding:    1em;
-            -background-color: var(--higlight-background);
-        }
+    </style>
+
+    <style>
 
         /* sg skup palette */
 
@@ -77,13 +75,68 @@
             --hsl-egBrandGreen:        171, 43%, 50%;
             --hsl-egBrandDarken:       171, 45%, 41%;
             --hsl-egBrandAccent:       171, 55%, 71%;
+            --hsl-egLight:             176, 53%, 94%;
+            --hsl-egInversion:         201, 83%,  9%;
             --hsl-egMinorBlue:         201, 22%, 46%;
+            --hsl-egMinorBackground:   201, 26%, 26%;
+            --hsl-egMinorDarken:       201, 32%, 16%;
+            --hsl-egActionRed:           0, 62%, 37%;
         }
 
-        .colors-as-egBrandTiffany { --background-color: hsl(var(--hsl-egBrandGreen)); }
-        .colors-as-egBrandDarken  { --background-color: hsl(var(--hsl-egBrandDarken)); }
-        .colors-as-egBrandAccent  { --background-color: hsl(var(--hsl-egBrandAccent)); }
-        .colors-as-egMinorBlue    { --background-color: hsl(var(--hsl-egMinorBlue)); }
+        /* ------------------------------------------------------ */
+
+        .egvent-welcome-screen {
+            min-height:      100vh;
+            display:         flex;
+            flex-direction:  row;
+            justify-content: space-between;
+            align-content:   stretch;
+            align-items:     stretch;
+
+          --background-color: hsl(var(--hsl-egMinorDarken));
+          --color:            white;
+            background-color: var(--background-color);
+            color:            var(--color);
+        }
+        .egvent-welcome-intro {
+            flex-grow: 1;
+            padding:   1em;
+            min-width: 22em;
+
+          --background-color: hsl(var(--hsl-egMinorBackground));
+            background-color: var(--background-color);
+
+            display:         flex;
+            flex-direction:  column;
+            justify-content: center;
+            align-content:   center;
+            align-items:     center;
+        }
+        .egvent-welcome-logo {
+            max-width:  10em;
+            padding-top: 2em;
+        }
+        .egvent-welcome-forma {
+            flex-grow: 2;
+            padding:   1em;
+            min-width: 24em;
+            box-shadow: 3em 0 3em -4em rgba(0,0,0,0.5) inset;
+
+            display:         flex;
+            flex-direction:  column;
+            justify-content: center;
+            align-content:   center;
+            align-items:     center;
+        }
+        .egvent-form {
+            max-width: 22em;
+        }
+        .egvent-form-fields {
+            display: none;
+        }
+        .egvent-form-fields .form-control {
+            display: block;
+        }
 
     </style>
 
@@ -91,6 +144,81 @@
     <!-- ========================================= END HEAD -->
 </head>
 <body class="body-wrap design-template">
+
+    <article class="egvent-welcome-screen">
+        <section class="egvent-welcome-intro">
+            <div class="content-block">
+                <p>Enter an instant win giveaway<br>by <strong>SoftGamings</strong>.</p>
+                <p>Guaranteed prizes for all participants<br>and a chance to win the first prize<br>— <strong>The Gold Coin!</strong></p>
+                <p><strong>Good luck!</strong></p>
+                <figure class="egvent-welcome-logo">
+                    <img src="https://www.softgamings.com/content/themes/softgamings/images/design/softgamings-logo.svg" alt="Softgamings">
+                </figure>
+            </div>
+        </section>
+        <section class="egvent-welcome-forma">
+            <div class="content-block egvent-form">
+                <p>Fill out the form, come to SoftGamings stand <strong>N1</strong>, and show us the winning page to get your prize straight away!</p>
+
+
+<div role="form" class="wpcf7" id="wpcf7-f39752-p39217-o1" lang="en-US" dir="ltr"><div class="screen-reader-response"></div><form action="/qr/#wpcf7-f39752-p39217-o1" method="post" class="wpcf7-form" novalidate="novalidate"><div style="display: none;">
+<input type="hidden" name="_wpcf7" value="39752">
+<input type="hidden" name="_wpcf7_version" value="5.1.3">
+<input type="hidden" name="_wpcf7_locale" value="en_US">
+<input type="hidden" name="_wpcf7_unit_tag" value="wpcf7-f39752-p39217-o1">
+<input type="hidden" name="_wpcf7_container_post" value="39217">
+<input type="hidden" name="g-recaptcha-response" value="03AOLTBLQ1eL9PPP26hi-gynzWNdG3s8wh8lD6jFGZ6dnsFYwq1cEzYWbbs4gHI_mkAKTCpLdiJAp6oh25XoxmFBpXYxWfBx5aSuONOnBZ-3wfq6gzwM4yuk5WHwRG4OUOC1HKuQFijdpnQ22NawZ9FBRxCb7u6jPGCnOi8lNG0ZR7x0_P36u3KtOHeaasZEcnoY3f8yHFtXdL25ROca85qEnECwEylwXrsz1KjKfF93Bt9QU3AXxCBWDRd6AQkFDzP-itVAnhsy5yPwIpsrb4PxWdImuFbtO2PkVWywdMR8G4qH-whrsnz17bQ-djsar6helS3SfhF3Hw"></div><div hidden="">
+<span class="wpcf7-form-control-wrap serial-prefix"><input type="hidden" name="serial-prefix" value="EV-CODE-231" size="40" class="wpcf7-form-control wpcf7dtx-dynamictext wpcf7-dynamichidden" aria-invalid="false"></span></div>
+<section class="egvent-form-fields">
+    <div class="form-group">
+        <span class="wpcf7-form-control-wrap your-name"><input type="text" name="your-name" value="" size="40" maxlength="250" class="wpcf7-form-control wpcf7-text wpcf7-validates-as-required form-control" aria-required="true" aria-invalid="false" placeholder="Full Name *"></span></div>
+    <div class="form-group form-phone-group">
+        <div class="number"><span class="wpcf7-form-control-wrap your-phone"><input type="text" name="your-phone" value="" size="40" maxlength="250" class="wpcf7-form-control wpcf7-text wpcf7-validates-as-required form-control" aria-required="true" aria-invalid="false" placeholder="Mobile Number *"></span></div>
+    </div>
+    <div class="form-group">
+        <span class="wpcf7-form-control-wrap your-email"><input type="email" name="your-email" value="" size="40" maxlength="250" class="wpcf7-form-control wpcf7-text wpcf7-email wpcf7-validates-as-required wpcf7-validates-as-email form-control" aria-required="true" aria-invalid="false" placeholder="Email *"></span></div>
+    <div class="form-group">
+        <span class="wpcf7-form-control-wrap your-message"><textarea name="your-message" cols="40" rows="3" class="wpcf7-form-control wpcf7-textarea form-control" aria-invalid="false" placeholder="Message (optional)"></textarea></span></div>
+    <div class="form-group">
+        <div><label for="your-business"><b>What is your relation to the gaming business *</b></label></div>
+        <div><span class="wpcf7-form-control-wrap your-business"><select name="your-business" class="wpcf7-form-control wpcf7-select wpcf7-validates-as-required form-control" aria-required="true" aria-invalid="false"><option value="">---</option><option value="Affiliate">Affiliate</option><option value="Marketing professional">Marketing professional</option><option value="Online casino operator">Online casino operator</option><option value="Land-based casino operator">Land-based casino operator</option><option value="Software developer">Software developer</option><option value="Investor">Investor</option><option value="Payment provider">Payment provider</option><option value="Other">Other</option></select></span></div>
+    </div>
+    <div class="form-submitwrap">
+        <input type="submit" value="Submit" class="wpcf7-form-control wpcf7-submit button"><span class="ajax-loader"></span></div>
+    <div hidden="">
+        <span class="wpcf7-form-control-wrap dynamichidden-pageurl"><input type="hidden" name="dynamichidden-pageurl" value="https://test.softgamings.com:443/qr/" size="40" class="wpcf7-form-control wpcf7dtx-dynamictext wpcf7-dynamichidden" aria-invalid="false"></span><br>
+        <span class="wpcf7-form-control-wrap dynamichidden-utm-source"><input type="hidden" name="dynamichidden-utm-source" value="" size="40" class="wpcf7-form-control wpcf7dtx-dynamictext wpcf7-dynamichidden" aria-invalid="false"></span><br>
+        <span class="wpcf7-form-control-wrap dynamichidden-utm-medium"><input type="hidden" name="dynamichidden-utm-medium" value="" size="40" class="wpcf7-form-control wpcf7dtx-dynamictext wpcf7-dynamichidden" aria-invalid="false"></span><br>
+        <span class="wpcf7-form-control-wrap dynamichidden-utm-term"><input type="hidden" name="dynamichidden-utm-term" value="" size="40" class="wpcf7-form-control wpcf7dtx-dynamictext wpcf7-dynamichidden" aria-invalid="false"></span><br>
+        <span class="wpcf7-form-control-wrap dynamichidden-utm-content"><input type="hidden" name="dynamichidden-utm-content" value="" size="40" class="wpcf7-form-control wpcf7dtx-dynamictext wpcf7-dynamichidden" aria-invalid="false"></span><br>
+        <span class="wpcf7-form-control-wrap dynamichidden-utm-campaign"><input type="hidden" name="dynamichidden-utm-campaign" value="" size="40" class="wpcf7-form-control wpcf7dtx-dynamictext wpcf7-dynamichidden" aria-invalid="false"></span><br>
+        <span class="wpcf7-form-control-wrap dynamichidden-utm-ip"><input type="hidden" name="dynamichidden-utm-ip" value="87.99.94.34" size="40" class="wpcf7-form-control wpcf7dtx-dynamictext wpcf7-dynamichidden" aria-invalid="false"></span><br>
+        <span class="wpcf7-form-control-wrap dynamichidden-refferer"><input type="hidden" name="dynamichidden-refferer" value="" size="40" class="wpcf7-form-control wpcf7dtx-dynamictext wpcf7-dynamichidden" aria-invalid="false"></span></div>
+</section>
+<div class="cContactForm__responce"><div class="wpcf7-response-output wpcf7-display-none"></div></div></form></div>
+
+
+            </div>
+        </section>
+    </article>
+
+    <style>
+        .egevent-intro {
+            padding:    1em;
+            -background-color: var(--higlight-background);
+        }
+
+        .colors-as-egBrandTiffany { --background-color: hsl(var(--hsl-egBrandGreen)); }
+        .colors-as-egBrandDarken  { --background-color: hsl(var(--hsl-egBrandDarken)); }
+        .colors-as-egBrandAccent  { --background-color: hsl(var(--hsl-egBrandAccent)); }
+        .colors-as-egMinorBlue    {
+          --background-color: hsl(var(--hsl-egMinorBackground));
+          --color: white;
+        }
+        .egevent-form {
+            max-width: 21em;
+        }
+    </style>
 
     <div class="color-box colors-as-egBrandDarken">zzz</div>
     <div class="color-box colors-as-egBrandTiffany">zzz</div>
@@ -110,16 +238,24 @@
     <div style="background: hsl(176, 53%, 94%);">colorThirdBG</div>
 
 
-    <article class="swed-screen color-box colors-as-primary">
+    <article class="swed-screen color-box colors-as-egMinorBlue">
 
-        <div class="content-block egevent-intro">
-            <p>Enter an instant win giveaway<br>by <strong>SoftGamings</strong>.</p>
-            <p>Guaranteed prizes for all participants<br>and a chance to win the first prize<br>— <strong>The Gold Coin!</strong></p>
-            <p><strong>Good luck!</strong></p>
-        </div>
+        <div class="swed-group">
 
-        <div>
-            <p>Fill out the form, come to SoftGamings stand <strong>N1</strong>,<br>and show us the winning page to get your prize straight away!</p>
+            <div class="content-block egevent-intro">
+                <p>Enter an instant win giveaway<br>by <strong>SoftGamings</strong>.</p>
+                <p>Guaranteed prizes for all participants<br>and a chance to win the first prize<br>— <strong>The Gold Coin!</strong></p>
+                <p><strong>Good luck!</strong></p>
+            </div>
+
+            <div class="content-block egevent-form">
+                <p>Fill out the form, come to SoftGamings stand <strong>N1</strong>, and show us the winning page to get your prize straight away!</p>
+
+                <div class="form">
+                    
+                </div>
+            </div>
+
         </div>
 
     </article>

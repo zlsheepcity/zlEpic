@@ -33,6 +33,14 @@ $timing-function--jumpOpen:    $timing-function--easeOutBack;
     --hsl-ItemBackground: #{$hslSwed-AccentBlue};
 }
 
+/* ------------------------------------- current-easing model */
+
+:root {
+  --timing-function--focusZoom: cubic-bezier(0.165, 0.84, 0.44, 1);
+  --timing-function--openJump:  cubic-bezier(0.175, 0.885, 0.320, 1.275);
+  --timing-function--closeJump: cubic-bezier(0.600, -0.280, 0.735, 0.045);
+}
+
 /* ------------------------------------- current-color model */
 
 :root {
@@ -69,34 +77,35 @@ $timing-function--jumpOpen:    $timing-function--easeOutBack;
     --hsl-NobleHighWhite:        226, 32%, 75%;
 }
 
-/* color model */
+/* color models */
 
 :root,
 .colors-as-primary {
     --background-color:          hsl(var(--hsl-NobleBlack));
     --color:                     hsl(var(--hsl-NobleWhite));
-    --higlight-text:             hsl(var(--hsl-NobleHighWhite));
-    --higlight-background:       hsl(var(--hsl-AccentBlux));
+    --mark-text-color:           hsl(var(--hsl-NobleHighWhite));
+    --mark-background-color:     hsl(var(--hsl-AccentBlux));
 }
 .colors-as-secondary {
     --background-color:          hsl(var(--hsl-NobleBlue));
     --color:                     hsl(var(--hsl-NobleWhite));
-    --higlight-text:             hsl(var(--hsl-NobleHighWhite));
+    --mark-text-color:           hsl(var(--hsl-NobleHighWhite));
 }
 .colors-as-highlight {
     --background-color:          hsl(var(--hsl-AccentBlux));
     --color:                     hsl(var(--hsl-NobleWhite));
-    --higlight-text:             hsl(var(--hsl-NobleHighWhite));
+    --mark-text-color:           hsl(var(--hsl-NobleHighWhite));
 }
 .colors-as-alternative {
     --background-color:          hsl(var(--hsl-AccentBlue));
     --color:                     hsl(204,  0%,  0%);
-    --higlight-text:             hsl(204,  0%,  0%);
+    --mark-text-color:           hsl(204,  0%,  0%);
 }
 .colors-as-special {
     --background-color:          white;
     --color:                     black;
-    --higlight-text:             firebrick;
+    --mark-text-color:           firebrick;
+    --mark-background-color:     lightgray;
 }
 
 /* color workers */
@@ -105,6 +114,50 @@ $timing-function--jumpOpen:    $timing-function--easeOutBack;
     background-color:   var(--background-color);
     color:              var(--color);
 }
+
+/* ------------------------------------- universal components */
+
+.albatross {
+  --albatross-full-min-width: 60em;
+  --albatross-item-min-width: 25%;
+
+    display:        flex;
+    flex-direction: row;
+    flex-wrap:      wrap;
+
+    &>* {
+        min-width: var(--albatross-item-min-width);
+        max-width: 100%;
+        flex-grow: 1;
+
+        // must be less than min-width
+        //   or greater than max-width
+        flex-basis: calc( var(--albatross-full-min-width) * 999 - 100% * 999 );
+    }
+}
+
+.jellyground {
+    position: relative;
+    &::after {
+        content:  "";
+        pointer-events: none;
+        position: absolute;
+        z-index: -1;
+        top:    0;
+        left:   0;
+        width:  100%;
+        height: 100%;
+
+        background-color: var(--mark-background-color);
+        transition: all 800ms;
+        transition-timing-function: var(--timing-function--openJump);
+        will-change: transform;
+    }
+    &:hover::after {
+        transform: scale(0.9, 1.2) translate(-15%,-10%);
+    }
+}
+
 
 /* ------------------------------------- unsorted components */
 
@@ -127,23 +180,6 @@ $timing-function--jumpOpen:    $timing-function--easeOutBack;
 }
 
 .swd-section .title+.title { color: black; }
-
-.albatross {
-
-    display: flex;
-    flex-wrap: wrap;
-
-    &>* {
-        min-width:  25%;
-        max-width: 100%;
-        flex-grow: 1;
-        flex-basis: calc( 60rem * 999 - 100% * 999 );
-
-        padding: 0.25rem 0.5rem;
-        background-color: hsl( var(--hsl-ItemBackground) );
-    }
-
-}
 
 .design-template--swed {
 
