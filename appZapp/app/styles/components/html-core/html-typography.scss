@@ -51,7 +51,7 @@ $font-list-sans:  $font-list-collection--native-sans-serif;
 //* ------------------------------------ font-depended variables
 
 
-$fontSize:     16px;
+$fontSize:     100%;
 $fontRegular:  400;
 $fontSemibold: 400;
 $fontBolder:   700;
@@ -61,79 +61,81 @@ $fontBolder:   700;
 
 
 body {
-    /* 16/24 */
-    font-size:   $fontSize;
     line-height: 1.5;
-
-    @media screen and (min-width: 1600px) {
-        /* 20/30 */
-        font-size: 20px;
-    }
-
     font-family: $font-list-serif;
     font-weight: $fontRegular;
 }
 
 
-//* ------------------------------------ markup system 2018
+//* ------------------------------------ font-size model 2019
 
 
-h1, h2, h3, h4, h5, h6, p, blockquote {
-    font-family: inherit;
-    font-size:   inherit;
-    line-height: inherit;
-    font-weight: inherit;
-}
-
-.big-title,
-.title,
-.min-title,
-.subtitle {
-    * {
-    font-family: inherit;
-    font-size:   inherit;
-    line-height: inherit;
-    font-weight: inherit;
-    }
-}
-
-
-h1, .big-title {
+%text-as-big-title {
     /* 40/48 */
     font-size:   2.5em;
     line-height: 1.2;
 }
-h2, .title {
+%text-as-title {
     /* 32/40 */
     font-size:   2em;
     line-height: 1.25;
 }
-h3, .min-title {
+%text-as-min-title {
     /* 24/32 */
     font-size:   1.5em;
     line-height: 1.333333;
 }
-.subtitle {
+%text-as-bigger {
     /* 20/24 */
     font-size:   1.25em;
     line-height: 1.2;
 }
-small {
-    /* 14/28 */
-    font-size: 0.875em;
-    line-height: 2;
+%text-as-regular {
+    /* 16/24 */
+    font-size:   1em;
+    line-height: 1.5;
 }
-td {
-    font-family: $font-list-sans;
+%text-as-smaller {
     /* 14/24 */
     font-size:    0.875em;
-    line-height: 1.714285;
+    line-height: 1.714286;
+}
+
+.big-title       { @extend %text-as-big-title; }
+.title           { @extend %text-as-title; }
+.min-title       { @extend %text-as-min-title; }
+.subtitle        { @extend %text-as-bigger; }
+.text-as-bigger  { @extend %text-as-bigger; }
+.text-as-regular { @extend %text-as-regular; }
+.text-as-smaller { @extend %text-as-smaller; }
+
+.big-title *,
+    .title *,
+.min-title *,
+ .subtitle * {
+    font-family: inherit;
+    font-size:   inherit;
+    line-height: inherit;
+    font-weight: inherit;
+}
+
+//* ------------------------------------ markup system 2018
+
+h1, h2, h3, h4, h5, h6, blockquote, p {
+    font-family: inherit;
+    font-size:   inherit;
+    line-height: inherit;
+    font-weight: inherit;
+}
+
+td {
+    font-family: $font-list-sans;
+    @extend     %text-as-smaller;
 }
 
 %text-is-larger {
     /* 20/28 */
     font-size:   1.25em;
-    line-height: 1.4;
 }
 
 

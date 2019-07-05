@@ -97,10 +97,10 @@ html, body {
 
 /* ------------------------------------ basic unit & font sizes */
 html {
-  font-size: 10px; }
+  /*font-size: 10px;*/ }
 
 body {
-  font-size: 16px;
+  /*font-size: 16px;*/
   line-height: 1.5; }
 
 /* ------------------------------------ improve design & UX */
@@ -201,21 +201,39 @@ table td {
 @import url('https://fonts.googleapis.com/css?family=Vollkorn:400,400i,700&subset=cyrillic');
 */
 body {
-  /* 16/24 */
-  font-size: 16px;
   line-height: 1.5;
   font-family: Vollkorn, et-book, Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, serif;
   font-weight: 400; }
-  @media screen and (min-width: 1600px) {
-    body {
-      /* 20/30 */
-      font-size: 20px; } }
 
-h1, h2, h3, h4, h5, h6, p, blockquote {
-  font-family: inherit;
-  font-size: inherit;
-  line-height: inherit;
-  font-weight: inherit; }
+.big-title {
+  /* 40/48 */
+  font-size: 2.5em;
+  line-height: 1.2; }
+
+.title {
+  /* 32/40 */
+  font-size: 2em;
+  line-height: 1.25; }
+
+.min-title {
+  /* 24/32 */
+  font-size: 1.5em;
+  line-height: 1.333333; }
+
+.subtitle, .text-as-bigger {
+  /* 20/24 */
+  font-size: 1.25em;
+  line-height: 1.2; }
+
+.text-as-regular {
+  /* 16/24 */
+  font-size: 1em;
+  line-height: 1.5; }
+
+.text-as-smaller, td {
+  /* 14/24 */
+  font-size: 0.875em;
+  line-height: 1.714286; }
 
 .big-title *,
 .title *,
@@ -226,36 +244,14 @@ h1, h2, h3, h4, h5, h6, p, blockquote {
   line-height: inherit;
   font-weight: inherit; }
 
-h1, .big-title {
-  /* 40/48 */
-  font-size: 2.5em;
-  line-height: 1.2; }
-
-h2, .title {
-  /* 32/40 */
-  font-size: 2em;
-  line-height: 1.25; }
-
-h3, .min-title {
-  /* 24/32 */
-  font-size: 1.5em;
-  line-height: 1.333333; }
-
-.subtitle {
-  /* 20/24 */
-  font-size: 1.25em;
-  line-height: 1.2; }
-
-small {
-  /* 14/28 */
-  font-size: 0.875em;
-  line-height: 2; }
+h1, h2, h3, h4, h5, h6, blockquote, p {
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  font-weight: inherit; }
 
 td {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-  /* 14/24 */
-  font-size: 0.875em;
-  line-height: 1.714285; }
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"; }
 
 .has-text-accent {
   font-weight: 400;
@@ -1752,11 +1748,9 @@ html[sakura], html.sakura {
   background-color: #1a1a23;
   color: rgba(255, 255, 255, 0.75); }
   .design-template--swed .big-title {
-    display: block;
-    font-size: 2em; }
+    display: block; }
   .design-template--swed .title {
-    display: block;
-    font-size: 1.5em; }
+    display: block; }
 
 .swd-section {
   width: 100%;
