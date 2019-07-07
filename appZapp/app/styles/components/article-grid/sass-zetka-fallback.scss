@@ -1,0 +1,152 @@
+
+.zetka {
+    @extend .article-grid;
+}
+.zetka-layer {
+    @extend .article-grid;
+}
+.zetka-overmain {
+    @extend .article-block;
+}
+.zetka-block {
+    @extend .article-block;
+}
+.zetka-menu {
+    @extend .article-block-before;
+}
+.zetka-side {
+    @extend .article-block-after;
+}
+
+// merge content
+
+.zetka-merge {
+    @extend .article-grid;
+}
+.zetka-merge-menu,
+.zetka-merge-menu-screen {
+    grid-column: full-start / overmain-end;
+    @extend .article-block;
+    @media ($zetka--media-fullsize) {
+    grid-template-columns:
+        #{$zetka--begin}
+            #{$zetka--screen-space}
+
+                before-start
+                    #{$zetka--side-column}
+                before-end
+
+                overmain-start
+                    #{$zetka--overmain-space}
+
+                    main-start after-start
+                        #{$zetka--main-column}
+                    main-end   after-end
+
+                    #{$zetka--overmain-space}
+                overmain-end
+
+        #{$zetka--end};
+    }
+}
+.zetka-merge-side,
+.zetka-merge-side-screen {
+    grid-column: overmain-start / full-end;
+    @extend .article-block;
+    @media ($zetka--media-fullsize) {
+    grid-template-columns:
+        #{$zetka--begin}
+
+                overmain-start
+                    #{$zetka--overmain-space}
+
+                    main-start before-start
+                        #{$zetka--main-column}
+                    main-end   before-end
+
+                    #{$zetka--overmain-space}
+                overmain-end
+
+                after-start
+                    #{$zetka--side-column}
+                after-end
+
+            #{$zetka--screen-space}
+        #{$zetka--end};
+    }
+}
+.zetka-menu-screen {
+    grid-column: full-start / before-end;
+    @extend .article-block;
+}
+.zetka-side-screen {
+    grid-column: after-start / full-end;
+    @extend .article-block;
+}
+.zetka-half-screen-one {
+    @media ($zetka--media-fullsize) {
+        grid-column: full-start / span 6;
+    }
+    @extend .article-block;
+}
+.zetka-half-screen-two {
+    @media ($zetka--media-fullsize) {
+        grid-column: 7 / full-end;
+    }
+    @extend .article-block;
+}
+.zetka-overhalf-one {
+    @media ($zetka--media-fullsize) {
+        grid-column: overmain-start / span 4;
+    }
+    @extend .article-block;
+}
+.zetka-overhalf-two {
+    @media ($zetka--media-fullsize) {
+        grid-column: 7 / overmain-end;
+    }
+    @extend .article-block;
+}
+
+.zetka-half-one {
+    @media ($zetka--media-fullsize) {
+        grid-column: main-start / span 3;
+    }
+    @extend .content-block;
+}
+.zetka-half-two {
+    @media ($zetka--media-fullsize) {
+        grid-column: 7 / main-end;
+    }
+    @extend .content-block;
+}
+.zetka-third-one {
+    @media ($zetka--media-fullsize) {
+        grid-column: 4 / span 2;
+    }
+    @extend .content-block;
+}
+.zetka-third-two {
+    @media ($zetka--media-fullsize) {
+        grid-column: 6 / span 2;
+    }
+    @extend .content-block;
+}
+.zetka-third-tri {
+    @media ($zetka--media-fullsize) {
+        grid-column: 8 / span 2;
+    }
+    @extend .content-block;
+}
+.zetka-third-merge-one {
+    @media ($zetka--media-fullsize) {
+        grid-column: 4 / span 4;
+    }
+    @extend .content-block;
+}
+.zetka-third-merge-tri {
+    @media ($zetka--media-fullsize) {
+        grid-column: 6 / span 4;
+    }
+    @extend .content-block;
+}

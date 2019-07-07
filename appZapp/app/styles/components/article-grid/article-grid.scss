@@ -1,292 +1,139 @@
 /* -------------------------------------------------------
- * ZETKA v2
- * 2019.7.1
+ * Article grid, css-variables
+ * 2019.7.7
  * -------------------------------------------------------
  */
 
+// ------------------------------------------- Settings
+
 :root {
-    --grid-base--column-gap:        1em;
-    --grid-base--row-gap:           1em;
-    --grid-base--sidenote-width:    16em;
-    --grid-base--contenta-width:    35em;
+    --grid-base--column-gap:        1rem;
+    --grid-base--row-gap:           1rem;
+    --grid-base--sidenote-width:    16rem;
+    --grid-base--contenta-width:    35rem;
 }
 
-$zetka--begin:          unquote(" [ full-start ");
-$zetka--end:            unquote(" full-end ] ");
-$zetka--screen-space:   unquote(" ] minmax(0, auto) [ ");
-$zetka--overmain-space: unquote(" ] 0 [ ");
-$zetka--side-column:    unquote(" ] minmax( auto, var(--grid-base--sidenote-width) ) [ ");
-$zetka--main-column:    unquote(" ] repeat( 6, calc( ( var(--grid-base--contenta-width) - 5*var(--grid-base--column-gap) ) / 6 ) ) [ ");
+// ------------------------------------------- Templates
 
-$zetka--media-fullsize:    'min-width: 64em';
-$zetka--media-notfullsize: 'min-width: 37em';
+:root {
+    --grid--compact:
+        [ full-start
+          overmain-start ]
+            1rem
+            [ before-start main-start after-start ]
+                repeat( 6, 1fr )
+            [ before-end   main-end   after-end ]
+            1rem
+        [ overmain-start
+          full-end ];
 
-// ------------------------------------------- Minimal size columns
+    --grid--notfullsize:
+        [ full-start
+          overmain-start ]
+            minmax(0, auto)
+            [ before-start main-start after-start ]
+                repeat( 6, calc( ( var(--grid-base--contenta-width) - 5*var(--grid-base--column-gap) ) / 6 ) )
+            [ before-end   main-end   after-end ]
+            minmax(0, auto)
+        [ overmain-start
+          full-end ];
 
-$article-grid--template-columns--minimal:
-    #{$zetka--begin}
-        overmain-start
-            #{$zetka--overmain-space}
+    --grid--fullsize:
+        [ full-start ]
+            minmax(0, auto)
+            [ before-start ]
+                minmax( auto, var(--grid-base--sidenote-width) )
+            [ before-end
+              overmain-start ]
+                1rem
+                [ main-start ]
+                    repeat( 6, calc( ( var(--grid-base--contenta-width) - 5*var(--grid-base--column-gap) ) / 6 ) )
+                [ main-end ]
+                1rem
+            [ overmain-end
+              after-start ]
+                minmax( auto, var(--grid-base--sidenote-width) )
+            [ after-end ]
+            minmax(0, auto)
+        [ full-end ];
 
-            before-start main-start after-start
-                unquote(" ] repeat( 6, 1fr ) [ ")
-            before-end   main-end   after-end
+    --grid--onlyrows:
+        [ full-start before-start overmain-start main-start after-start ]
+            auto
+        [ full-end   before-end   overmain-end   main-end   after-end ];
+}
 
-            #{$zetka--overmain-space}
-        overmain-end
-    #{$zetka--end};
+// ------------------------------------------- Responsive breakpoints
 
-// ------------------------------------------- Not full size columns
+body {
+    --grid--auto:     var(--grid--compact);
 
-$article-grid--template-columns--notfullsize:
-    #{$zetka--begin}
-        overmain-start
-            #{$zetka--screen-space}
+    @media (min-width: 37rem) {
+        --grid--auto: var(--grid--notfullsize);
+    }
 
-            before-start main-start after-start
-                #{$zetka--main-column}
-            before-end   main-end   after-end
+    @media (min-width: 64rem) {
+        --grid--auto: var(--grid--fullsize);
+    }
+}
 
-            #{$zetka--screen-space}
-        overmain-end
-    #{$zetka--end};
-
-// ------------------------------------------- Full size columns
-
-$article-grid--template-columns--fullsize:
-    #{$zetka--begin}
-        #{$zetka--screen-space}
-
-            before-start
-                #{$zetka--side-column}
-            before-end
-
-            overmain-start
-                #{$zetka--overmain-space}
-
-                main-start
-                    #{$zetka--main-column}
-                main-end
-
-                #{$zetka--overmain-space}
-            overmain-end
-
-            after-start
-                #{$zetka--side-column}
-            after-end
-
-        #{$zetka--screen-space}
-    #{$zetka--end};
+// ------------------------------------------- Layout Components
 
 %article-grid--seed {
-
     display:         grid;
     align-items:     start;
     grid-auto-flow:  row;
     grid-auto-rows:  min-content;
-
     grid-column-gap: var(--grid-base--column-gap);
     grid-row-gap:    var(--grid-base--row-gap);
-
-    &.has-paddings { padding: var(--grid-base--row-gap) 0; }
-
-}
-
-%article-grid--default-columns {
-    grid-template-columns: $article-grid--template-columns--minimal;
-    @media ($zetka--media-notfullsize) {
-        grid-template-columns: $article-grid--template-columns--notfullsize;
-    }
-    @media ($zetka--media-fullsize) {
-        grid-template-columns: $article-grid--template-columns--fullsize;
-    }
-}
-%article-grid--overmain-columns {
-    grid-template-columns: $article-grid--template-columns--minimal;
-}
-%article-grid--content-rows {
-    grid-template-columns:
-        [full-start before-start overmain-start main-start after-start]
-        auto
-        [full-end   before-end   overmain-end   main-end   after-end  ];
 }
 
 .article-grid {
     @extend %article-grid--seed;
-    @extend %article-grid--default-columns;
+    grid-template-columns: var(--grid--auto);
+    grid-column: full;
 }
+
+.article-grid {
+    * { grid-column: main; }
+    .article-block {
+        padding-left:  0;
+        padding-right: 0;
+    }
+    .article-block-before,
+    .article-block-after {
+        min-width: 10rem;
+    }
+}
+
+.article-layer {
+    @extend %article-grid--seed;
+    grid-template-columns: var(--grid--auto);
+    grid-column: full;
+}
+
 .article-block {
     @extend %article-grid--seed;
-    @extend %article-grid--overmain-columns;
+    grid-template-columns: var(--grid--compact);
+    grid-column: overmain;
 }
+.article-block-before {
+    grid-column: before;
+}
+.article-block-after {
+    grid-column: after;
+}
+
+
+// ------------------------------------------- Content Components
+
 .content-block {
     @extend %article-grid--seed;
-    @extend %article-grid--content-rows;
+    grid-template-columns: var(--grid--onlyrows);
 }
 
-
-.article-grid *     { grid-column: main; }
-.article-grid       { grid-column: full; }
-.article-block      { grid-column: overmain; }
-.westnote           { grid-column: before; min-width: 10em; }
-.eastnote           { grid-column: after;  min-width: 10em; }
-.layer              { grid-column: full; }
-
-
-
-
-
-
-
-
-.zetka {
-    @extend .article-grid;
-}
-.zetka-layer {
-    @extend .article-grid;
-}
-.zetka-overmain {
-    @extend .article-block;
-}
-.zetka-block {
-    @extend .article-block;
-}
-.zetka-menu {
-    @extend .westnote;
-}
-.zetka-side {
-    @extend .eastnote;
+.layer {
+    grid-column: full;
 }
 
-// merge content
-
-.zetka-merge {
-    @extend .article-grid;
-}
-.zetka-merge-menu,
-.zetka-merge-menu-screen {
-    grid-column: full-start / overmain-end;
-    @extend .article-block;
-    @media ($zetka--media-fullsize) {
-    grid-template-columns:
-        #{$zetka--begin}
-            #{$zetka--screen-space}
-
-                before-start
-                    #{$zetka--side-column}
-                before-end
-
-                overmain-start
-                    #{$zetka--overmain-space}
-
-                    main-start after-start
-                        #{$zetka--main-column}
-                    main-end   after-end
-
-                    #{$zetka--overmain-space}
-                overmain-end
-
-        #{$zetka--end};
-    }
-}
-.zetka-merge-side,
-.zetka-merge-side-screen {
-    grid-column: overmain-start / full-end;
-    @extend .article-block;
-    @media ($zetka--media-fullsize) {
-    grid-template-columns:
-        #{$zetka--begin}
-
-                overmain-start
-                    #{$zetka--overmain-space}
-
-                    main-start before-start
-                        #{$zetka--main-column}
-                    main-end   before-end
-
-                    #{$zetka--overmain-space}
-                overmain-end
-
-                after-start
-                    #{$zetka--side-column}
-                after-end
-
-            #{$zetka--screen-space}
-        #{$zetka--end};
-    }
-}
-.zetka-menu-screen {
-    grid-column: full-start / before-end;
-    @extend .article-block;
-}
-.zetka-side-screen {
-    grid-column: after-start / full-end;
-    @extend .article-block;
-}
-.zetka-half-screen-one {
-    @media ($zetka--media-fullsize) {
-        grid-column: full-start / span 6;
-    }
-    @extend .article-block;
-}
-.zetka-half-screen-two {
-    @media ($zetka--media-fullsize) {
-        grid-column: 7 / full-end;
-    }
-    @extend .article-block;
-}
-.zetka-overhalf-one {
-    @media ($zetka--media-fullsize) {
-        grid-column: overmain-start / span 4;
-    }
-    @extend .article-block;
-}
-.zetka-overhalf-two {
-    @media ($zetka--media-fullsize) {
-        grid-column: 7 / overmain-end;
-    }
-    @extend .article-block;
-}
-
-.zetka-half-one {
-    @media ($zetka--media-fullsize) {
-        grid-column: main-start / span 3;
-    }
-    @extend .content-block;
-}
-.zetka-half-two {
-    @media ($zetka--media-fullsize) {
-        grid-column: 7 / main-end;
-    }
-    @extend .content-block;
-}
-.zetka-third-one {
-    @media ($zetka--media-fullsize) {
-        grid-column: 4 / span 2;
-    }
-    @extend .content-block;
-}
-.zetka-third-two {
-    @media ($zetka--media-fullsize) {
-        grid-column: 6 / span 2;
-    }
-    @extend .content-block;
-}
-.zetka-third-tri {
-    @media ($zetka--media-fullsize) {
-        grid-column: 8 / span 2;
-    }
-    @extend .content-block;
-}
-.zetka-third-merge-one {
-    @media ($zetka--media-fullsize) {
-        grid-column: 4 / span 4;
-    }
-    @extend .content-block;
-}
-.zetka-third-merge-tri {
-    @media ($zetka--media-fullsize) {
-        grid-column: 6 / span 4;
-    }
-    @extend .content-block;
-}
+/* EOF article-grid */

@@ -1,0 +1,105 @@
+/* -------------------------------------------------------
+ * Article grid, sass formula
+ * 2019.7.1
+ * -------------------------------------------------------
+ */
+
+/*
+:root {
+    --grid-base--column-gap:        1em;
+    --grid-base--row-gap:           1em;
+    --grid-base--sidenote-width:    16em;
+    --grid-base--contenta-width:    35em;
+}
+*/
+
+$zetka--begin:          unquote(" [ full-start ");
+$zetka--end:            unquote(" full-end ] ");
+$zetka--screen-space:   unquote(" ] minmax(0, auto) [ ");
+$zetka--overmain-space: unquote(" ] 0 [ ");
+$zetka--side-column:    unquote(" ] minmax( auto, var(--grid-base--sidenote-width) ) [ ");
+$zetka--main-column:    unquote(" ] repeat( 6, calc( ( var(--grid-base--contenta-width) - 5*var(--grid-base--column-gap) ) / 6 ) ) [ ");
+
+$zetka--media-fullsize:    'min-width: 64em';
+$zetka--media-notfullsize: 'min-width: 37em';
+
+
+// ------------------------------------------- Minimal size columns
+
+$article-grid--template-columns--minimal:
+    #{$zetka--begin}
+        overmain-start
+            #{$zetka--overmain-space}
+
+            before-start main-start after-start
+                unquote(" ] repeat( 6, 1fr ) [ ")
+            before-end   main-end   after-end
+
+            #{$zetka--overmain-space}
+        overmain-end
+    #{$zetka--end};
+
+// ------------------------------------------- Not full size columns
+
+$article-grid--template-columns--notfullsize:
+    #{$zetka--begin}
+        overmain-start
+            #{$zetka--screen-space}
+
+            before-start main-start after-start
+                #{$zetka--main-column}
+            before-end   main-end   after-end
+
+            #{$zetka--screen-space}
+        overmain-end
+    #{$zetka--end};
+
+
+// ------------------------------------------- Full size columns
+
+$article-grid--template-columns--fullsize:
+    #{$zetka--begin}
+        #{$zetka--screen-space}
+
+            before-start
+                #{$zetka--side-column}
+            before-end
+
+            overmain-start
+                #{$zetka--overmain-space}
+
+                main-start
+                    #{$zetka--main-column}
+                main-end
+
+                #{$zetka--overmain-space}
+            overmain-end
+
+            after-start
+                #{$zetka--side-column}
+            after-end
+
+        #{$zetka--screen-space}
+    #{$zetka--end};
+
+// ------------------------------------------- Templates
+
+%article-grid--default-columns {
+    grid-template-columns: $article-grid--template-columns--minimal;
+    @media ($zetka--media-notfullsize) {
+        grid-template-columns: $article-grid--template-columns--notfullsize;
+    }
+    @media ($zetka--media-fullsize) {
+        grid-template-columns: $article-grid--template-columns--fullsize;
+        grid-template-columns: var(--article-grid--template-columns--fullsize);
+    }
+}
+%article-grid--overmain-columns {
+    grid-template-columns: $article-grid--template-columns--minimal;
+}
+%article-grid--content-rows {
+    grid-template-columns:
+        [full-start before-start overmain-start main-start after-start]
+        auto
+        [full-end   before-end   overmain-end   main-end   after-end  ];
+}

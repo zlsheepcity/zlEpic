@@ -335,475 +335,6 @@ button, .button, .is-button {
   font-weight: inherit; }
 
 /* EOF: minimal form-item */
-@keyframes keyframes--SimpleRotation {
-  from {
-    transform: rotate(0deg); }
-  to {
-    transform: rotate(359deg); } }
-@keyframes keyframes--TudaSudaRotation {
-  0% {
-    transform: rotate(0deg); }
-  50% {
-    transform: rotate(359deg); }
-  100% {
-    transform: rotate(0deg); } }
-.tudasuda {
-  animation: keyframes--TudaSudaRotation 4s infinite ease-out; }
-
-/*
- * source - animate.css, http://daneden.me/animate
-
-2019.4.4
-
-- pulse
-
-
- */
-.animated {
-  -webkit-animation-duration: 1s;
-  animation-duration: 1s;
-  -webkit-animation-fill-mode: both;
-  animation-fill-mode: both; }
-
-.animated.infinite {
-  -webkit-animation-iteration-count: infinite;
-  animation-iteration-count: infinite; }
-
-@-webkit-keyframes pulse {
-  from {
-    -webkit-transform: scale3d(1, 1, 1);
-    transform: scale3d(1, 1, 1); }
-  50% {
-    -webkit-transform: scale3d(1.05, 1.05, 1.05);
-    transform: scale3d(1.05, 1.05, 1.05); }
-  to {
-    -webkit-transform: scale3d(1, 1, 1);
-    transform: scale3d(1, 1, 1); } }
-@keyframes pulse {
-  from {
-    -webkit-transform: scale3d(1, 1, 1);
-    transform: scale3d(1, 1, 1); }
-  50% {
-    -webkit-transform: scale3d(1.05, 1.05, 1.05);
-    transform: scale3d(1.05, 1.05, 1.05); }
-  to {
-    -webkit-transform: scale3d(1, 1, 1);
-    transform: scale3d(1, 1, 1); } }
-.pulse {
-  -webkit-animation-name: pulse;
-  animation-name: pulse; }
-
-/* ==============================================================
-    fixed sidebar with visible and hidden states
-    2019.4.13
-============================================================== */
-/* USE CASE
-    <nav class="sidebar is-active">
-        xoxox
-    </nav>
-*/
-.has-shadow-overlay, .has-active-sidebar {
-  overflow: hidden; }
-  .has-shadow-overlay .screen-shadow-overlay, .has-active-sidebar .screen-shadow-overlay {
-    opacity: 0.8;
-    pointer-events: auto;
-    transition: opacity 400ms ease-in; }
-
-.screen-shadow-overlay {
-  background-color: black;
-  position: fixed;
-  z-index: 2;
-  top: 0;
-  bottom: 0;
-  right: 0;
-  left: 0;
-  pointer-events: none;
-  opacity: 0; }
-
-/**/
-.sidebar, .sidebar-westside {
-  background-color: black;
-  /* is screen fixed */
-  position: fixed;
-  z-index: 3;
-  top: 0;
-  bottom: 0;
-  left: 100%;
-  /* has width */
-  width: 100%;
-  /* has unpredictable content */
-  overflow: auto;
-  /* closed state */
-  transform: translateX(0);
-  transition: transform 200ms ease-in;
-  /* open state */ }
-  @media screen and (min-width: 44rem) {
-    .sidebar, .sidebar-westside {
-      max-width: 38rem; } }
-  .sidebar.is-active, .is-active.sidebar-westside, .has-active-sidebar .sidebar, .has-active-sidebar .sidebar-westside {
-    transition-timing-function: ease-out;
-    transform: translateX(-100%); }
-
-.sidebar-westside {
-  left: auto;
-  right: 100%; }
-  .sidebar-westside.is-active, .has-active-sidebar .sidebar-westside {
-    transform: translateX(100%); }
-
-.eastside {
-  background-color: pink;
-  color: black;
-  /* is screen fixed */
-  position: fixed;
-  z-index: 3;
-  top: 0;
-  right: auto;
-  bottom: 0;
-  left: 100%;
-  /* has width */
-  width: 100%;
-  /* has unpredictable content */
-  overflow: auto;
-  /* closed state */
-  transform: translateX(0);
-  /* open state */ }
-  @media screen and (min-width: 44rem) {
-    .eastside {
-      max-width: 38rem; } }
-  .eastside.is-active {
-    transform: translateX(-100%); }
-
-/* eof sidebar */
-/* ==============================================================
-    split fullscreen into parts header/body/footer
-    2019.1.16
-============================================================== */
-/* html template
-
-    <section class="fullscreen">
-        <div class="fullscreen-header"></div>
-        <div class="fullscreen-body"  ></div>
-        <div class="fullscreen-footer"></div>
-    </section>
-
-*/
-.fullscreen {
-  /* is fullscreen box */
-  display: block;
-  width: 100%;
-  min-height: 100vh;
-  /* has illustrated background */
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center center;
-  /* has rows */
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-content: stretch;
-  align-items: stretch;
-  /* contentbox--xy-centered */ }
-  .fullscreen .fullscreen-header {
-    order: 1;
-    flex-grow: 0; }
-  .fullscreen .fullscreen-body {
-    order: 2;
-    flex-grow: 2; }
-  .fullscreen .fullscreen-footer {
-    order: 3;
-    flex-grow: 0; }
-  .fullscreen .fullscreen-header,
-  .fullscreen .fullscreen-body,
-  .fullscreen .fullscreen-footer {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    align-content: center; }
-
-/* eof fullscreen */
-/* ==============================================================
-    column solution
-    2018.12.8
-============================================================== */
-.group {
-  /* is horizontal grid */
-  display: grid;
-  grid-template-columns: none;
-  grid-auto-flow: column;
-  grid-auto-rows: 1fr;
-  grid-gap: 2.4rem;
-  /* has overflow fallback */
-  overflow: auto;
-  /* has mobile layout */ }
-  .group > *, .group .is-in-group {
-    grid-column: auto;
-    height: 100%; }
-  @media (max-width: 600px) {
-    .group {
-      grid-auto-flow: row;
-      grid-auto-rows: unset; } }
-
-/* eof sidebar */
-/* ==============================================================
-    data table - Responsive Data Tables
-    2019.1.17
-
-    table
-        .has-data-titles = attr [data-title] will shown on mobile
-        .is-perfect = avoit mobile transformation
-        data-table-type="1str,2num,3txt" = content type for columns
-    td
-        .is-string/.is-number = content type alias
-
-============================================================== */
-/* EXAMPLE:
-
-    <table class="data-table has-data-titles" data-table-type="1str,2num,3txt">
-        <caption>
-            <h2>Has markup for data-title</h2>
-        </caption>
-        <thead>
-            <tr>
-                <th>Provider</th>
-                <th>Games</th>
-                <th>Description</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <th data-title="Provider">
-                    Microgaming
-                </th>
-                <td data-title="Games">
-                    590
-                </td>
-                <td data-title="Description with long value">
-                    The game is devoted to the Mighty Scandinavian god Thor, which gives out different symbols, such as Scatter Ram, to help a player win prizes. The option of additional gambling game is also available.
-                </td>
-            </tr>
-        </tbody>
-    </table>
-
-*/
-.data-table {
-  /* table critical css */
-  /* table addon - has compact mobile view */
-  /* table addon -- has Data Titles */
-  /* table addon -- has type of content */ }
-  .data-table th,
-  .data-table td {
-    padding-left: 0.5em;
-    padding-right: 0.5em;
-    padding-top: 0.5em;
-    padding-bottom: 0.5em;
-    vertical-align: top; }
-  .data-table caption,
-  .data-table th {
-    text-align: left;
-    line-height: 1.25; }
-  @media all and (min-width: 601px) {
-    .data-table th:first-child,
-    .data-table td:first-child {
-      padding-left: 0.125em; }
-    .data-table th:last-child,
-    .data-table td:last-child {
-      padding-right: 0.125em; } }
-  @media all and (max-width: 600px) {
-    .data-table:not(.is-perfect),
-    .data-table:not(.is-perfect) caption,
-    .data-table:not(.is-perfect) thead,
-    .data-table:not(.is-perfect) tbody,
-    .data-table:not(.is-perfect) tfooter,
-    .data-table:not(.is-perfect) tr {
-      display: block; }
-    .data-table:not(.is-perfect) th,
-    .data-table:not(.is-perfect) td {
-      display: block;
-      text-align: left;
-      width: 100%;
-      padding-left: 0;
-      padding-right: 0;
-      border: 0; }
-    .data-table:not(.is-perfect)[data-table-type] table tr > * {
-      text-align: left; }
-    .data-table:not(.is-perfect)[data-table-type] table tr > *:not(th) {
-      font-family: inherit; }
-    .data-table:not(.is-perfect) thead th {
-      text-align: right;
-      padding-top: 0;
-      padding-bottom: 0; }
-    .data-table:not(.is-perfect) tr + tr *:first-child {
-      border-top: 2px dashed rgba(0, 0, 0, 0.15);
-      margin-top: 1em;
-      padding-top: 1em; }
-    .data-table:not(.is-perfect) tr:hover {
-      background-color: transparent; }
-    .data-table:not(.is-perfect)[data-table-type] tr > td, .data-table:not(.is-perfect)[data-table-type] tr > td,
-    .data-table:not(.is-perfect) .is-number {
-      text-align: left; } }
-  @media all and (max-width: 600px) {
-    .data-table.has-data-titles:not(.is-perfect) thead {
-      display: none; }
-    .data-table.has-data-titles:not(.is-perfect) th,
-    .data-table.has-data-titles:not(.is-perfect) td {
-      font-size: inherit;
-      line-height: inherit; }
-    .data-table.has-data-titles:not(.is-perfect) th[data-title],
-    .data-table.has-data-titles:not(.is-perfect) td[data-title] {
-      position: relative;
-      padding-left: 8em;
-      box-sizing: border-box; }
-    .data-table.has-data-titles:not(.is-perfect) th[data-title]:before,
-    .data-table.has-data-titles:not(.is-perfect) td[data-title]:before {
-      content: attr(data-title) ": ";
-      position: absolute;
-      display: block;
-      margin-left: -8em;
-      width: 7.5em; } }
-  .data-table[data-table-type*="1num"] tr > *:nth-child(1), .data-table[data-table-type*="2num"] tr > *:nth-child(2), .data-table[data-table-type*="3num"] tr > *:nth-child(3), .data-table[data-table-type*="4num"] tr > *:nth-child(4), .data-table[data-table-type*="5num"] tr > *:nth-child(5),
-  .data-table .is-number {
-    text-align: right; }
-  .data-table[data-table-type*="1num"] tr > *:not(th):nth-child(1), .data-table[data-table-type*="2num"] tr > *:not(th):nth-child(2), .data-table[data-table-type*="3num"] tr > *:not(th):nth-child(3), .data-table[data-table-type*="4num"] tr > *:not(th):nth-child(4), .data-table[data-table-type*="5num"] tr > *:not(th):nth-child(5),
-  .data-table .is-number:not(th) {
-    font-family: monospace; }
-  @media all and (min-width: 601px) {
-    .data-table[data-table-type*="1str"] tr > *:not(th):nth-child(1), .data-table[data-table-type*="2str"] tr > *:not(th):nth-child(2), .data-table[data-table-type*="3str"] tr > *:not(th):nth-child(3), .data-table[data-table-type*="4str"] tr > *:not(th):nth-child(4), .data-table[data-table-type*="5str"] tr > *:not(th):nth-child(5),
-    .data-table .is-string:not(th) {
-      white-space: nowrap;
-      text-overflow: ellipsis;
-      overflow: hidden; } }
-
-/* eof data table */
-/* -------------------------------------------------------
- * ZETKA v2
- * 2019.7.1
- * -------------------------------------------------------
- */
-:root {
-  --grid-base--column-gap: 1em;
-  --grid-base--row-gap: 1em;
-  --grid-base--sidenote-width: 16em;
-  --grid-base--contenta-width: 35em; }
-
-.article-grid, .zetka, .zetka-layer, .zetka-merge, .article-block, .zetka-overmain, .zetka-block, .zetka-merge-menu,
-.zetka-merge-menu-screen, .zetka-merge-side,
-.zetka-merge-side-screen, .zetka-menu-screen, .zetka-side-screen, .zetka-half-screen-one, .zetka-half-screen-two, .zetka-overhalf-one, .zetka-overhalf-two, .content-block, .zetka-half-one, .zetka-half-two, .zetka-third-one, .zetka-third-two, .zetka-third-tri, .zetka-third-merge-one, .zetka-third-merge-tri {
-  display: grid;
-  align-items: start;
-  grid-auto-flow: row;
-  grid-auto-rows: min-content;
-  grid-column-gap: var(--grid-base--column-gap);
-  grid-row-gap: var(--grid-base--row-gap); }
-  .has-paddings.article-grid, .has-paddings.zetka, .has-paddings.zetka-layer, .has-paddings.zetka-merge, .has-paddings.article-block, .has-paddings.zetka-overmain, .has-paddings.zetka-block, .has-paddings.zetka-merge-menu,
-  .has-paddings.zetka-merge-menu-screen, .has-paddings.zetka-merge-side,
-  .has-paddings.zetka-merge-side-screen, .has-paddings.zetka-menu-screen, .has-paddings.zetka-side-screen, .has-paddings.zetka-half-screen-one, .has-paddings.zetka-half-screen-two, .has-paddings.zetka-overhalf-one, .has-paddings.zetka-overhalf-two, .has-paddings.content-block, .has-paddings.zetka-half-one, .has-paddings.zetka-half-two, .has-paddings.zetka-third-one, .has-paddings.zetka-third-two, .has-paddings.zetka-third-tri, .has-paddings.zetka-third-merge-one, .has-paddings.zetka-third-merge-tri {
-    padding: var(--grid-base--row-gap) 0; }
-
-.article-grid, .zetka, .zetka-layer, .zetka-merge {
-  grid-template-columns:  [ full-start  overmain-start  ] 0 [  before-start main-start after-start  ] repeat( 6, 1fr ) [  before-end main-end after-end  ] 0 [  overmain-end  full-end ] ; }
-  @media (min-width: 37em) {
-    .article-grid, .zetka, .zetka-layer, .zetka-merge {
-      grid-template-columns:  [ full-start  overmain-start  ] minmax(0, auto) [  before-start main-start after-start  ] repeat( 6, calc( ( var(--grid-base--contenta-width) - 5*var(--grid-base--column-gap) ) / 6 ) ) [  before-end main-end after-end  ] minmax(0, auto) [  overmain-end  full-end ] ; } }
-  @media (min-width: 64em) {
-    .article-grid, .zetka, .zetka-layer, .zetka-merge {
-      grid-template-columns:  [ full-start   ] minmax(0, auto) [  before-start  ] minmax( auto, var(--grid-base--sidenote-width) ) [  before-end overmain-start  ] 0 [  main-start  ] repeat( 6, calc( ( var(--grid-base--contenta-width) - 5*var(--grid-base--column-gap) ) / 6 ) ) [  main-end  ] 0 [  overmain-end after-start  ] minmax( auto, var(--grid-base--sidenote-width) ) [  after-end  ] minmax(0, auto) [   full-end ] ; } }
-
-.article-block, .zetka-overmain, .zetka-block, .zetka-merge-menu,
-.zetka-merge-menu-screen, .zetka-merge-side,
-.zetka-merge-side-screen, .zetka-menu-screen, .zetka-side-screen, .zetka-half-screen-one, .zetka-half-screen-two, .zetka-overhalf-one, .zetka-overhalf-two {
-  grid-template-columns:  [ full-start  overmain-start  ] 0 [  before-start main-start after-start  ] repeat( 6, 1fr ) [  before-end main-end after-end  ] 0 [  overmain-end  full-end ] ; }
-
-.content-block, .zetka-half-one, .zetka-half-two, .zetka-third-one, .zetka-third-two, .zetka-third-tri, .zetka-third-merge-one, .zetka-third-merge-tri {
-  grid-template-columns: [full-start before-start overmain-start main-start after-start] auto [full-end before-end overmain-end main-end after-end]; }
-
-.article-grid *, .zetka *, .zetka-layer *, .zetka-merge * {
-  grid-column: main; }
-
-.article-grid, .zetka, .zetka-layer, .zetka-merge {
-  grid-column: full; }
-
-.article-block, .zetka-overmain, .zetka-block, .zetka-merge-menu,
-.zetka-merge-menu-screen, .zetka-merge-side,
-.zetka-merge-side-screen, .zetka-menu-screen, .zetka-side-screen, .zetka-half-screen-one, .zetka-half-screen-two, .zetka-overhalf-one, .zetka-overhalf-two {
-  grid-column: overmain; }
-
-.westnote, .zetka-menu {
-  grid-column: before;
-  min-width: 10em; }
-
-.eastnote, .zetka-side {
-  grid-column: after;
-  min-width: 10em; }
-
-.layer {
-  grid-column: full; }
-
-.zetka-merge-menu,
-.zetka-merge-menu-screen {
-  grid-column: full-start / overmain-end; }
-  @media (min-width: 64em) {
-    .zetka-merge-menu,
-    .zetka-merge-menu-screen {
-      grid-template-columns:  [ full-start   ] minmax(0, auto) [  before-start  ] minmax( auto, var(--grid-base--sidenote-width) ) [  before-end overmain-start  ] 0 [  main-start after-start  ] repeat( 6, calc( ( var(--grid-base--contenta-width) - 5*var(--grid-base--column-gap) ) / 6 ) ) [  main-end after-end  ] 0 [  overmain-end  full-end ] ; } }
-
-.zetka-merge-side,
-.zetka-merge-side-screen {
-  grid-column: overmain-start / full-end; }
-  @media (min-width: 64em) {
-    .zetka-merge-side,
-    .zetka-merge-side-screen {
-      grid-template-columns:  [ full-start  overmain-start  ] 0 [  main-start before-start  ] repeat( 6, calc( ( var(--grid-base--contenta-width) - 5*var(--grid-base--column-gap) ) / 6 ) ) [  main-end before-end  ] 0 [  overmain-end after-start  ] minmax( auto, var(--grid-base--sidenote-width) ) [  after-end  ] minmax(0, auto) [   full-end ] ; } }
-
-.zetka-menu-screen {
-  grid-column: full-start / before-end; }
-
-.zetka-side-screen {
-  grid-column: after-start / full-end; }
-
-@media (min-width: 64em) {
-  .zetka-half-screen-one {
-    grid-column: full-start / span 6; } }
-
-@media (min-width: 64em) {
-  .zetka-half-screen-two {
-    grid-column: 7 / full-end; } }
-
-@media (min-width: 64em) {
-  .zetka-overhalf-one {
-    grid-column: overmain-start / span 4; } }
-
-@media (min-width: 64em) {
-  .zetka-overhalf-two {
-    grid-column: 7 / overmain-end; } }
-
-@media (min-width: 64em) {
-  .zetka-half-one {
-    grid-column: main-start / span 3; } }
-
-@media (min-width: 64em) {
-  .zetka-half-two {
-    grid-column: 7 / main-end; } }
-
-@media (min-width: 64em) {
-  .zetka-third-one {
-    grid-column: 4 / span 2; } }
-
-@media (min-width: 64em) {
-  .zetka-third-two {
-    grid-column: 6 / span 2; } }
-
-@media (min-width: 64em) {
-  .zetka-third-tri {
-    grid-column: 8 / span 2; } }
-
-@media (min-width: 64em) {
-  .zetka-third-merge-one {
-    grid-column: 4 / span 4; } }
-
-@media (min-width: 64em) {
-  .zetka-third-merge-tri {
-    grid-column: 6 / span 4; } }
-
 /*
     default design for semantic html markup
     v2019.4.17
@@ -1392,6 +923,470 @@ html[sakura], html.sakura {
 .sakura-content > .layer, [sakura-content] > .layer {
   grid-column: full; }
 
+@keyframes keyframes--SimpleRotation {
+  from {
+    transform: rotate(0deg); }
+  to {
+    transform: rotate(359deg); } }
+@keyframes keyframes--TudaSudaRotation {
+  0% {
+    transform: rotate(0deg); }
+  50% {
+    transform: rotate(359deg); }
+  100% {
+    transform: rotate(0deg); } }
+.tudasuda {
+  animation: keyframes--TudaSudaRotation 4s infinite ease-out; }
+
+/*
+ * source - animate.css, http://daneden.me/animate
+
+2019.4.4
+
+- pulse
+
+
+ */
+.animated {
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both; }
+
+.animated.infinite {
+  -webkit-animation-iteration-count: infinite;
+  animation-iteration-count: infinite; }
+
+@-webkit-keyframes pulse {
+  from {
+    -webkit-transform: scale3d(1, 1, 1);
+    transform: scale3d(1, 1, 1); }
+  50% {
+    -webkit-transform: scale3d(1.05, 1.05, 1.05);
+    transform: scale3d(1.05, 1.05, 1.05); }
+  to {
+    -webkit-transform: scale3d(1, 1, 1);
+    transform: scale3d(1, 1, 1); } }
+@keyframes pulse {
+  from {
+    -webkit-transform: scale3d(1, 1, 1);
+    transform: scale3d(1, 1, 1); }
+  50% {
+    -webkit-transform: scale3d(1.05, 1.05, 1.05);
+    transform: scale3d(1.05, 1.05, 1.05); }
+  to {
+    -webkit-transform: scale3d(1, 1, 1);
+    transform: scale3d(1, 1, 1); } }
+.pulse {
+  -webkit-animation-name: pulse;
+  animation-name: pulse; }
+
+/* ==============================================================
+    fixed sidebar with visible and hidden states
+    2019.4.13
+============================================================== */
+/* USE CASE
+    <nav class="sidebar is-active">
+        xoxox
+    </nav>
+*/
+.has-shadow-overlay, .has-active-sidebar {
+  overflow: hidden; }
+  .has-shadow-overlay .screen-shadow-overlay, .has-active-sidebar .screen-shadow-overlay {
+    opacity: 0.8;
+    pointer-events: auto;
+    transition: opacity 400ms ease-in; }
+
+.screen-shadow-overlay {
+  background-color: black;
+  position: fixed;
+  z-index: 2;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  pointer-events: none;
+  opacity: 0; }
+
+/**/
+.sidebar, .sidebar-westside {
+  background-color: black;
+  /* is screen fixed */
+  position: fixed;
+  z-index: 3;
+  top: 0;
+  bottom: 0;
+  left: 100%;
+  /* has width */
+  width: 100%;
+  /* has unpredictable content */
+  overflow: auto;
+  /* closed state */
+  transform: translateX(0);
+  transition: transform 200ms ease-in;
+  /* open state */ }
+  @media screen and (min-width: 44rem) {
+    .sidebar, .sidebar-westside {
+      max-width: 38rem; } }
+  .sidebar.is-active, .is-active.sidebar-westside, .has-active-sidebar .sidebar, .has-active-sidebar .sidebar-westside {
+    transition-timing-function: ease-out;
+    transform: translateX(-100%); }
+
+.sidebar-westside {
+  left: auto;
+  right: 100%; }
+  .sidebar-westside.is-active, .has-active-sidebar .sidebar-westside {
+    transform: translateX(100%); }
+
+.eastside {
+  background-color: pink;
+  color: black;
+  /* is screen fixed */
+  position: fixed;
+  z-index: 3;
+  top: 0;
+  right: auto;
+  bottom: 0;
+  left: 100%;
+  /* has width */
+  width: 100%;
+  /* has unpredictable content */
+  overflow: auto;
+  /* closed state */
+  transform: translateX(0);
+  /* open state */ }
+  @media screen and (min-width: 44rem) {
+    .eastside {
+      max-width: 38rem; } }
+  .eastside.is-active {
+    transform: translateX(-100%); }
+
+/* eof sidebar */
+/* ==============================================================
+    split fullscreen into parts header/body/footer
+    2019.1.16
+============================================================== */
+/* html template
+
+    <section class="fullscreen">
+        <div class="fullscreen-header"></div>
+        <div class="fullscreen-body"  ></div>
+        <div class="fullscreen-footer"></div>
+    </section>
+
+*/
+.fullscreen {
+  /* is fullscreen box */
+  display: block;
+  width: 100%;
+  min-height: 100vh;
+  /* has illustrated background */
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  /* has rows */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-content: stretch;
+  align-items: stretch;
+  /* contentbox--xy-centered */ }
+  .fullscreen .fullscreen-header {
+    order: 1;
+    flex-grow: 0; }
+  .fullscreen .fullscreen-body {
+    order: 2;
+    flex-grow: 2; }
+  .fullscreen .fullscreen-footer {
+    order: 3;
+    flex-grow: 0; }
+  .fullscreen .fullscreen-header,
+  .fullscreen .fullscreen-body,
+  .fullscreen .fullscreen-footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center; }
+
+/* eof fullscreen */
+/* ==============================================================
+    column solution
+    2018.12.8
+============================================================== */
+.group {
+  /* is horizontal grid */
+  display: grid;
+  grid-template-columns: none;
+  grid-auto-flow: column;
+  grid-auto-rows: 1fr;
+  grid-gap: 2.4rem;
+  /* has overflow fallback */
+  overflow: auto;
+  /* has mobile layout */ }
+  .group > *, .group .is-in-group {
+    grid-column: auto;
+    height: 100%; }
+  @media (max-width: 600px) {
+    .group {
+      grid-auto-flow: row;
+      grid-auto-rows: unset; } }
+
+/* eof sidebar */
+/* ==============================================================
+    data table - Responsive Data Tables
+    2019.1.17
+
+    table
+        .has-data-titles = attr [data-title] will shown on mobile
+        .is-perfect = avoit mobile transformation
+        data-table-type="1str,2num,3txt" = content type for columns
+    td
+        .is-string/.is-number = content type alias
+
+============================================================== */
+/* EXAMPLE:
+
+    <table class="data-table has-data-titles" data-table-type="1str,2num,3txt">
+        <caption>
+            <h2>Has markup for data-title</h2>
+        </caption>
+        <thead>
+            <tr>
+                <th>Provider</th>
+                <th>Games</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th data-title="Provider">
+                    Microgaming
+                </th>
+                <td data-title="Games">
+                    590
+                </td>
+                <td data-title="Description with long value">
+                    The game is devoted to the Mighty Scandinavian god Thor, which gives out different symbols, such as Scatter Ram, to help a player win prizes. The option of additional gambling game is also available.
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+*/
+.data-table {
+  /* table critical css */
+  /* table addon - has compact mobile view */
+  /* table addon -- has Data Titles */
+  /* table addon -- has type of content */ }
+  .data-table th,
+  .data-table td {
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+    vertical-align: top; }
+  .data-table caption,
+  .data-table th {
+    text-align: left;
+    line-height: 1.25; }
+  @media all and (min-width: 601px) {
+    .data-table th:first-child,
+    .data-table td:first-child {
+      padding-left: 0.125em; }
+    .data-table th:last-child,
+    .data-table td:last-child {
+      padding-right: 0.125em; } }
+  @media all and (max-width: 600px) {
+    .data-table:not(.is-perfect),
+    .data-table:not(.is-perfect) caption,
+    .data-table:not(.is-perfect) thead,
+    .data-table:not(.is-perfect) tbody,
+    .data-table:not(.is-perfect) tfooter,
+    .data-table:not(.is-perfect) tr {
+      display: block; }
+    .data-table:not(.is-perfect) th,
+    .data-table:not(.is-perfect) td {
+      display: block;
+      text-align: left;
+      width: 100%;
+      padding-left: 0;
+      padding-right: 0;
+      border: 0; }
+    .data-table:not(.is-perfect)[data-table-type] table tr > * {
+      text-align: left; }
+    .data-table:not(.is-perfect)[data-table-type] table tr > *:not(th) {
+      font-family: inherit; }
+    .data-table:not(.is-perfect) thead th {
+      text-align: right;
+      padding-top: 0;
+      padding-bottom: 0; }
+    .data-table:not(.is-perfect) tr + tr *:first-child {
+      border-top: 2px dashed rgba(0, 0, 0, 0.15);
+      margin-top: 1em;
+      padding-top: 1em; }
+    .data-table:not(.is-perfect) tr:hover {
+      background-color: transparent; }
+    .data-table:not(.is-perfect)[data-table-type] tr > td, .data-table:not(.is-perfect)[data-table-type] tr > td,
+    .data-table:not(.is-perfect) .is-number {
+      text-align: left; } }
+  @media all and (max-width: 600px) {
+    .data-table.has-data-titles:not(.is-perfect) thead {
+      display: none; }
+    .data-table.has-data-titles:not(.is-perfect) th,
+    .data-table.has-data-titles:not(.is-perfect) td {
+      font-size: inherit;
+      line-height: inherit; }
+    .data-table.has-data-titles:not(.is-perfect) th[data-title],
+    .data-table.has-data-titles:not(.is-perfect) td[data-title] {
+      position: relative;
+      padding-left: 8em;
+      box-sizing: border-box; }
+    .data-table.has-data-titles:not(.is-perfect) th[data-title]:before,
+    .data-table.has-data-titles:not(.is-perfect) td[data-title]:before {
+      content: attr(data-title) ": ";
+      position: absolute;
+      display: block;
+      margin-left: -8em;
+      width: 7.5em; } }
+  .data-table[data-table-type*="1num"] tr > *:nth-child(1), .data-table[data-table-type*="2num"] tr > *:nth-child(2), .data-table[data-table-type*="3num"] tr > *:nth-child(3), .data-table[data-table-type*="4num"] tr > *:nth-child(4), .data-table[data-table-type*="5num"] tr > *:nth-child(5),
+  .data-table .is-number {
+    text-align: right; }
+  .data-table[data-table-type*="1num"] tr > *:not(th):nth-child(1), .data-table[data-table-type*="2num"] tr > *:not(th):nth-child(2), .data-table[data-table-type*="3num"] tr > *:not(th):nth-child(3), .data-table[data-table-type*="4num"] tr > *:not(th):nth-child(4), .data-table[data-table-type*="5num"] tr > *:not(th):nth-child(5),
+  .data-table .is-number:not(th) {
+    font-family: monospace; }
+  @media all and (min-width: 601px) {
+    .data-table[data-table-type*="1str"] tr > *:not(th):nth-child(1), .data-table[data-table-type*="2str"] tr > *:not(th):nth-child(2), .data-table[data-table-type*="3str"] tr > *:not(th):nth-child(3), .data-table[data-table-type*="4str"] tr > *:not(th):nth-child(4), .data-table[data-table-type*="5str"] tr > *:not(th):nth-child(5),
+    .data-table .is-string:not(th) {
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      overflow: hidden; } }
+
+/* eof data table */
+/* -------------------------------------------------------
+ * Article grid, css-variables
+ * 2019.7.7
+ * -------------------------------------------------------
+ */
+:root {
+  --grid-base--column-gap: 1rem;
+  --grid-base--row-gap: 1rem;
+  --grid-base--sidenote-width: 16rem;
+  --grid-base--contenta-width: 35rem; }
+
+:root {
+  --grid--compact:
+      [ full-start
+        overmain-start ]
+          1rem
+          [ before-start main-start after-start ]
+              repeat( 6, 1fr )
+          [ before-end main-end after-end ]
+          1rem
+      [ overmain-start
+        full-end ];
+  --grid--notfullsize:
+      [ full-start
+        overmain-start ]
+          minmax(0, auto)
+          [ before-start main-start after-start ]
+              repeat( 6, calc( ( var(--grid-base--contenta-width) - 5*var(--grid-base--column-gap) ) / 6 ) )
+          [ before-end main-end after-end ]
+          minmax(0, auto)
+      [ overmain-start
+        full-end ];
+  --grid--fullsize:
+      [ full-start ]
+          minmax(0, auto)
+          [ before-start ]
+              minmax( auto, var(--grid-base--sidenote-width) )
+          [ before-end
+            overmain-start ]
+              1rem
+              [ main-start ]
+                  repeat( 6, calc( ( var(--grid-base--contenta-width) - 5*var(--grid-base--column-gap) ) / 6 ) )
+              [ main-end ]
+              1rem
+          [ overmain-end
+            after-start ]
+              minmax( auto, var(--grid-base--sidenote-width) )
+          [ after-end ]
+          minmax(0, auto)
+      [ full-end ];
+  --grid--onlyrows:
+      [ full-start before-start overmain-start main-start after-start ]
+          auto
+      [ full-end before-end overmain-end main-end after-end ]; }
+
+body {
+  --grid--auto: var(--grid--compact); }
+  @media (min-width: 37rem) {
+    body {
+      --grid--auto: var(--grid--notfullsize); } }
+  @media (min-width: 64rem) {
+    body {
+      --grid--auto: var(--grid--fullsize); } }
+
+.article-grid, .zetka, .zetka-layer, .zetka-merge, .article-layer, .article-block, .zetka-overmain, .zetka-block, .zetka-merge-menu,
+.zetka-merge-menu-screen, .zetka-merge-side,
+.zetka-merge-side-screen, .zetka-menu-screen, .zetka-side-screen, .zetka-half-screen-one, .zetka-half-screen-two, .zetka-overhalf-one, .zetka-overhalf-two, .content-block, .zetka-half-one, .zetka-half-two, .zetka-third-one, .zetka-third-two, .zetka-third-tri, .zetka-third-merge-one, .zetka-third-merge-tri {
+  display: grid;
+  align-items: start;
+  grid-auto-flow: row;
+  grid-auto-rows: min-content;
+  grid-column-gap: var(--grid-base--column-gap);
+  grid-row-gap: var(--grid-base--row-gap); }
+
+.article-grid, .zetka, .zetka-layer, .zetka-merge {
+  grid-template-columns: var(--grid--auto);
+  grid-column: full; }
+
+.article-grid *, .zetka *, .zetka-layer *, .zetka-merge * {
+  grid-column: main; }
+.article-grid .article-block, .zetka .article-block, .zetka-layer .article-block, .zetka-merge .article-block, .article-grid .zetka-overmain, .zetka .zetka-overmain, .zetka-layer .zetka-overmain, .zetka-merge .zetka-overmain, .article-grid .zetka-block, .zetka .zetka-block, .zetka-layer .zetka-block, .zetka-merge .zetka-block, .article-grid .zetka-merge-menu, .zetka .zetka-merge-menu, .zetka-layer .zetka-merge-menu, .zetka-merge .zetka-merge-menu,
+.article-grid .zetka-merge-menu-screen,
+.zetka .zetka-merge-menu-screen,
+.zetka-layer .zetka-merge-menu-screen,
+.zetka-merge .zetka-merge-menu-screen, .article-grid .zetka-merge-side, .zetka .zetka-merge-side, .zetka-layer .zetka-merge-side, .zetka-merge .zetka-merge-side,
+.article-grid .zetka-merge-side-screen,
+.zetka .zetka-merge-side-screen,
+.zetka-layer .zetka-merge-side-screen,
+.zetka-merge .zetka-merge-side-screen, .article-grid .zetka-menu-screen, .zetka .zetka-menu-screen, .zetka-layer .zetka-menu-screen, .zetka-merge .zetka-menu-screen, .article-grid .zetka-side-screen, .zetka .zetka-side-screen, .zetka-layer .zetka-side-screen, .zetka-merge .zetka-side-screen, .article-grid .zetka-half-screen-one, .zetka .zetka-half-screen-one, .zetka-layer .zetka-half-screen-one, .zetka-merge .zetka-half-screen-one, .article-grid .zetka-half-screen-two, .zetka .zetka-half-screen-two, .zetka-layer .zetka-half-screen-two, .zetka-merge .zetka-half-screen-two, .article-grid .zetka-overhalf-one, .zetka .zetka-overhalf-one, .zetka-layer .zetka-overhalf-one, .zetka-merge .zetka-overhalf-one, .article-grid .zetka-overhalf-two, .zetka .zetka-overhalf-two, .zetka-layer .zetka-overhalf-two, .zetka-merge .zetka-overhalf-two {
+  padding-left: 0;
+  padding-right: 0; }
+.article-grid .article-block-before, .zetka .article-block-before, .zetka-layer .article-block-before, .zetka-merge .article-block-before, .article-grid .zetka-menu, .zetka .zetka-menu, .zetka-layer .zetka-menu, .zetka-merge .zetka-menu,
+.article-grid .article-block-after,
+.zetka .article-block-after,
+.zetka-layer .article-block-after,
+.zetka-merge .article-block-after,
+.article-grid .zetka-side,
+.zetka .zetka-side,
+.zetka-layer .zetka-side,
+.zetka-merge .zetka-side {
+  min-width: 10rem; }
+
+.article-layer {
+  grid-template-columns: var(--grid--auto);
+  grid-column: full; }
+
+.article-block, .zetka-overmain, .zetka-block, .zetka-merge-menu,
+.zetka-merge-menu-screen, .zetka-merge-side,
+.zetka-merge-side-screen, .zetka-menu-screen, .zetka-side-screen, .zetka-half-screen-one, .zetka-half-screen-two, .zetka-overhalf-one, .zetka-overhalf-two {
+  grid-template-columns: var(--grid--compact);
+  grid-column: overmain; }
+
+.article-block-before, .zetka-menu {
+  grid-column: before; }
+
+.article-block-after, .zetka-side {
+  grid-column: after; }
+
+.content-block, .zetka-half-one, .zetka-half-two, .zetka-third-one, .zetka-third-two, .zetka-third-tri, .zetka-third-merge-one, .zetka-third-merge-tri {
+  grid-template-columns: var(--grid--onlyrows); }
+
+.layer {
+  grid-column: full; }
+
+/* EOF article-grid */
 /* ==============================================================
     Regular Inline Icons
     2019.6.27
@@ -2168,5 +2163,84 @@ html[sakura], html.sakura {
     transition: all 800ms cubic-bezier(0.175, 0.885, 0.32, 1.275); }
   .swed-sticker:hover::after {
     transform: scale(0.9, 1.2) translate(-15%, -10%); }
+
+/* -------------------------------------------------------
+ * Article grid, sass formula
+ * 2019.7.1
+ * -------------------------------------------------------
+ */
+/*
+:root {
+    --grid-base--column-gap:        1em;
+    --grid-base--row-gap:           1em;
+    --grid-base--sidenote-width:    16em;
+    --grid-base--contenta-width:    35em;
+}
+*/
+.zetka-merge-menu,
+.zetka-merge-menu-screen {
+  grid-column: full-start / overmain-end; }
+  @media (min-width: 64em) {
+    .zetka-merge-menu,
+    .zetka-merge-menu-screen {
+      grid-template-columns:  [ full-start   ] minmax(0, auto) [  before-start  ] minmax( auto, var(--grid-base--sidenote-width) ) [  before-end overmain-start  ] 0 [  main-start after-start  ] repeat( 6, calc( ( var(--grid-base--contenta-width) - 5*var(--grid-base--column-gap) ) / 6 ) ) [  main-end after-end  ] 0 [  overmain-end  full-end ] ; } }
+
+.zetka-merge-side,
+.zetka-merge-side-screen {
+  grid-column: overmain-start / full-end; }
+  @media (min-width: 64em) {
+    .zetka-merge-side,
+    .zetka-merge-side-screen {
+      grid-template-columns:  [ full-start  overmain-start  ] 0 [  main-start before-start  ] repeat( 6, calc( ( var(--grid-base--contenta-width) - 5*var(--grid-base--column-gap) ) / 6 ) ) [  main-end before-end  ] 0 [  overmain-end after-start  ] minmax( auto, var(--grid-base--sidenote-width) ) [  after-end  ] minmax(0, auto) [   full-end ] ; } }
+
+.zetka-menu-screen {
+  grid-column: full-start / before-end; }
+
+.zetka-side-screen {
+  grid-column: after-start / full-end; }
+
+@media (min-width: 64em) {
+  .zetka-half-screen-one {
+    grid-column: full-start / span 6; } }
+
+@media (min-width: 64em) {
+  .zetka-half-screen-two {
+    grid-column: 7 / full-end; } }
+
+@media (min-width: 64em) {
+  .zetka-overhalf-one {
+    grid-column: overmain-start / span 4; } }
+
+@media (min-width: 64em) {
+  .zetka-overhalf-two {
+    grid-column: 7 / overmain-end; } }
+
+@media (min-width: 64em) {
+  .zetka-half-one {
+    grid-column: main-start / span 3; } }
+
+@media (min-width: 64em) {
+  .zetka-half-two {
+    grid-column: 7 / main-end; } }
+
+@media (min-width: 64em) {
+  .zetka-third-one {
+    grid-column: 4 / span 2; } }
+
+@media (min-width: 64em) {
+  .zetka-third-two {
+    grid-column: 6 / span 2; } }
+
+@media (min-width: 64em) {
+  .zetka-third-tri {
+    grid-column: 8 / span 2; } }
+
+@media (min-width: 64em) {
+  .zetka-third-merge-one {
+    grid-column: 4 / span 4; } }
+
+@media (min-width: 64em) {
+  .zetka-third-merge-tri {
+    grid-column: 6 / span 4; } }
 
 /* EOF sass ordnung */

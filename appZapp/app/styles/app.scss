@@ -18,6 +18,10 @@
     @import "components/html-core/form-minimal";
 
 
+// -------------------------------------------- Quick Components
+
+    @import "components/design-sakura/design-sakura";
+
 // -------------------------------------------- Components
 
     @import "components/animate-css/required-animations";
@@ -26,13 +30,7 @@
     @import "components/group/group";
     @import "components/data-table/data-table";
 
-    //@import "components/zetka/zetka--settings";
-    //@import "components/zetka/zetka--constructor";
-    //@import "components/zetka/zetka--layout";
-
     @import "components/article-grid/article-grid";
-
-    @import "components/design-sakura/design-sakura";
 
     @import "components/icons/svg-icons";
     @import "components/icons/data-icon";
@@ -46,5 +44,15 @@
 // -------------------------------------------- Pending
 
     @import "components/swed-design/swed-design";
+
+
+// -------------------------------------------- Deprecated
+
+    //@import "components/zetka/zetka--settings";
+    //@import "components/zetka/zetka--constructor";
+    //@import "components/zetka/zetka--layout";
+    @import "components/article-grid/sass-formula";
+    @import "components/article-grid/sass-zetka-fallback";
+
 
 /* EOF sass ordnung */
