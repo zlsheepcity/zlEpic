@@ -1,4 +1,95 @@
 /* ==============================================================
+    sidepanel
+    2019.7.8
+============================================================== */
+
+.asidebar {
+
+  --asidebar--background-color: var(--background-color);
+  --asidebar--z-index:   100;
+  --asidebar--left:      auto;
+  --asidebar--right:     0;
+  --asidebar--max-width: 38rem;
+  --asidebar--transform: translateX(100%);
+  --asidebar--timing:    var(--timing-function--focusZoom);
+
+    &.from-westside {
+  --asidebar--left:      0;
+  --asidebar--right:     auto;
+  --asidebar--transform: translateX(-100%);
+    }
+
+    position:  fixed;
+    z-index:   var(--asidebar--z-index);
+    overflow:  visible;
+    top:    0;
+    right:  0;
+    left:   0;
+    height: 0;
+
+    &.is-active {
+        .asidebar-overlay {
+            pointer-events: all;
+            opacity:        0.8;
+        }
+        .asidebar-panel {
+          --asidebar--transform: translateX(0);
+          --asidebar--timing:    var(--timing-function--focusZoom);
+        }
+    }
+}
+.asidebar-overlay {
+    position:  fixed;
+    z-index:   calc( var(--asidebar--z-index) - 1 );
+    background-color: black;
+    pointer-events: none;
+    top:     0;
+    right:   0;
+    bottom:  0;
+    left:    0;
+    opacity: 0;
+    transition: opacity 400ms;
+}
+.asidebar-panel {
+
+    /* design */
+
+    background-color: var(--asidebar--background-color);
+    padding: 1em;
+
+    /* layout */
+
+    position:  fixed;
+    z-index:   var(--asidebar--z-index);
+    top:       0;
+    bottom:    0;
+    left:      var(--asidebar--left);
+    right:     var(--asidebar--right);
+    width:     100%;
+    max-width: var(--asidebar--max-width);
+
+    @media screen and (max-width: 900px) {
+        --asidebar--max-width: 100%;
+    }
+
+    /* content behavior */
+
+    overflow: auto;
+
+    /* closed/opened state */
+
+    will-change: transform;
+    transform:   var(--asidebar--transform);
+    transition:  transform 200ms;
+    transition-timing-function: var(--asidebar--timing);
+}
+.has-active-asidebar {
+    overflow: hidden;
+}
+
+
+
+/* ==============================================================
     fixed sidebar with visible and hidden states
     2019.4.13
 ============================================================== */

@@ -982,6 +982,75 @@ html[sakura], html.sakura {
   animation-name: pulse; }
 
 /* ==============================================================
+    sidepanel
+    2019.7.8
+============================================================== */
+.asidebar {
+  --asidebar--background-color: var(--background-color);
+  --asidebar--z-index: 100;
+  --asidebar--left: auto;
+  --asidebar--right: 0;
+  --asidebar--max-width: 38rem;
+  --asidebar--transform: translateX(100%);
+  --asidebar--timing: var(--timing-function--focusZoom);
+  position: fixed;
+  z-index: var(--asidebar--z-index);
+  overflow: visible;
+  top: 0;
+  right: 0;
+  left: 0;
+  height: 0; }
+  .asidebar.from-westside {
+    --asidebar--left: 0;
+    --asidebar--right: auto;
+    --asidebar--transform: translateX(-100%); }
+  .asidebar.is-active .asidebar-overlay {
+    pointer-events: all;
+    opacity: 0.8; }
+  .asidebar.is-active .asidebar-panel {
+    --asidebar--transform: translateX(0);
+    --asidebar--timing: var(--timing-function--focusZoom); }
+
+.asidebar-overlay {
+  position: fixed;
+  z-index: calc( var(--asidebar--z-index) - 1 );
+  background-color: black;
+  pointer-events: none;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  opacity: 0;
+  transition: opacity 400ms; }
+
+.asidebar-panel {
+  /* design */
+  background-color: var(--asidebar--background-color);
+  padding: 1em;
+  /* layout */
+  position: fixed;
+  z-index: var(--asidebar--z-index);
+  top: 0;
+  bottom: 0;
+  left: var(--asidebar--left);
+  right: var(--asidebar--right);
+  width: 100%;
+  max-width: var(--asidebar--max-width);
+  /* content behavior */
+  overflow: auto;
+  /* closed/opened state */
+  will-change: transform;
+  transform: var(--asidebar--transform);
+  transition: transform 200ms;
+  transition-timing-function: var(--asidebar--timing); }
+  @media screen and (max-width: 900px) {
+    .asidebar-panel {
+      --asidebar--max-width: 100%; } }
+
+.has-active-asidebar {
+  overflow: hidden; }
+
+/* ==============================================================
     fixed sidebar with visible and hidden states
     2019.4.13
 ============================================================== */
@@ -1388,10 +1457,10 @@ body {
 
 /* EOF article-grid */
 /* ==============================================================
-    Regular Inline Icons
+    SVGA Regular Inline Icons
     2019.6.27
 ============================================================== */
-.svg-icon {
+.svga-icon {
   --base-line-height: 1.5;
   display: inline-flex;
   justify-content: center;
@@ -1400,97 +1469,102 @@ body {
   vertical-align: middle;
   width: 1em;
   height: 1em; }
-  .svg-icon:not(.base-size) {
+  .svga-icon:not(.base-size) {
     margin-right: calc( var(--base-line-height)*1em - 1em );
     transform: scale(var(--base-line-height));
     transform-origin: left center; }
-  .svg-icon > svg {
+  .svga-icon > svg {
     width: 100%;
     height: 100%;
     fill: currentColor; }
 
-/* ------------------------------------------------ basic icon set
+/* ------------------------------------------------ regular icon set
 
-<figure class="svg-icon"><svg><use xlink:href="#svg-email"></use></svg></figure>
+<!-- EXTERNAL reference -->
 
-<svg xmlns="http://www.w3.org/2000/svg">
+<figure class="svga-icon"><svg><use xlink:href="svga-icons.svg#svg-email"></use></svg></figure>
 
+<!-- Reference IN THIS SAME DOCUMENT -->
+
+<figure class="svga-icon"><svg><use xlink:href="#svg-email"></use></svg></figure>
+
+<svg>
     <symbol id="svg-next" viewBox="0 0 24 24">
-        <title>Arrow Next, material icons</title>
+        <!--title>Arrow Next, material icons</title-->
         <path d="M0 0h24v24H0z" fill="none"/>
         <path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/>
     </symbol>
     <symbol id="svg-back" viewBox="0 0 24 24">
-        <title>Arrow Back, material icons</title>
+        <!--title>Arrow Back, material icons</title-->
         <path d="M0 0h24v24H0z" fill="none"/>
         <path d="M0 0h24v24H0z" fill="none"/><path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/>
     </symbol>
     <symbol id="svg-down" viewBox="0 0 24 24">
-        <title>Chevron Down, material icons</title>
+        <!--title>Chevron Down, material icons</title-->
         <path d="M0-.75h24v24H0z" fill="none"/>
         <path d="M7.41 7.84L12 12.42l4.59-4.58L18 9.25l-6 6-6-6z"/>
     </symbol>
     <symbol id="svg-menu" viewBox="0 0 24 24">
-        <title>Hamburger, material icons</title>
+        <!--title>Hamburger, material icons</title-->
         <path d="M0 0h24v24H0z" fill="none"/>
         <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
     </symbol>
     <symbol id="svg-check" viewBox="0 0 24 24">
-        <title>Check, material icons</title>
+        <!--title>Check, material icons</title-->
         <path d="M0 0h24v24H0z" fill="none"/>
         <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
     </symbol>
     <symbol id="svg-close" viewBox="0 0 24 24">
-        <title>Close X, material icons</title>
+        <!--title>Close X, material icons</title-->
         <path d="M0 0h24v24H0z" fill="none"/>
         <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
     </symbol>
 
     <symbol id="svg-email" viewBox="0 0 24 24">
-        <title>Email, material icons</title>
+        <!--title>Email, material icons</title-->
         <path d="M0 0h24v24H0z" fill="none"/>
         <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 14H4V8l8 5 8-5v10zm-8-7L4 6h16l-8 5z"/>
     </symbol>
     <symbol id="svg-phone" viewBox="0 0 24 24">
-        <title>Phone, material icons</title>
+        <!--title>Phone, material icons</title-->
         <path d="M0 0h24v24H0z" fill="none"/>
         <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
     </symbol>
     <symbol id="svg-skype" viewBox="-12 -12 88 88">
-        <title>Skype, custom 2019.6.27</title>
+        <!--title>Skype, custom 2019.6.27</title-->
         <path d="M61.7 37.3v.3l-.1-.6.1.3A29.3 29.3 0 0 0 60 20a29.7 29.7 0 0 0-16-16A29.5 29.5 0 0 0 32 1.6a32.1 32.1 0 0 0-5.7.5s.2 0 .3.2l-.7-.1.4-.1A18 18 0 0 0 5.2 5.3a17.8 17.8 0 0 0-3 21.3s0-.2.2-.3v.7l-.1-.4a31 31 0 0 0 2 17 29.7 29.7 0 0 0 16 16C23.8 61.2 27.8 62 32 62a28.2 28.2 0 0 0 5.3-.5l-.3-.2.6.1h-.3A17.2 17.2 0 0 0 46 64a17.9 17.9 0 0 0 15.6-26.6zm-29.6 13c-10.8 0-15.6-5.3-15.6-9.2 0-2 1.6-3.5 3.6-3.5 4.6 0 3.4 6.7 12 6.7 4.3 0 6.8-2.4 6.8-4.8 0-1.5-.8-3.1-3.6-3.8l-9.6-2.4c-7.7-1.9-9-6-9-10 0-8.1 7.6-11.1 14.7-11.1 6.6 0 14.4 3.6 14.4 8.5 0 2-1.8 3.2-3.9 3.2-4 0-3.2-5.4-11-5.4-4 0-6.1 1.7-6.1 4.3s3 3.3 5.8 4l7 1.5c7.8 1.8 9.8 6.2 9.8 10.5 0 6.6-5 11.5-15.3 11.5zm4.9 11c0 .2.1.2.3.3l.3-.1zm24.6-23.7l.1-.3-.1-.4zM2.3 26.3l-.1.3.2.4zm24.3-24l-.3-.1H26z"/>
     </symbol>
     <symbol id="svg-telegram" viewBox="-48 -48 624 624">
-        <title>Telegram Square, custom 2019.6.27</title>
+        <!--title>Telegram Square, custom 2019.6.27</title-->
         <path fill="currentColor" d="M248 8C111 8 0 119 0 256s111 248 248 248 248-111 248-248S385 8 248 8zm121.8 169.9l-40.7 191.8c-3 13.6-11.1 16.9-22.4 10.5l-62-45.7-29.9 28.8c-3.3 3.3-6.1 6.1-12.5 6.1l4.4-63.1 114.9-103.8c5-4.4-1.1-6.9-7.7-2.5l-142 89.4-61.2-19.1c-13.3-4.2-13.6-13.3 2.8-19.7l239.1-92.2c11.1-4 20.8 2.7 17.2 19.5z"/>
     </symbol>
     <symbol id="svg-chat" viewBox="-48 -48 624 624">
-        <title>Chat Bubble, font-awesome</title>
+        <!--title>Chat Bubble, font-awesome</title-->
         <path fill="currentColor" d="M256 32C114.6 32 0 125.1 0 240c0 49.6 21.4 95 57 130.7C44.5 421.1 2.7 466 2.2 466.5c-2.2 2.3-2.8 5.7-1.5 8.7S4.8 480 8 480c66.3 0 116-31.8 140.6-51.4 32.7 12.3 69 19.4 107.4 19.4 141.4 0 256-93.1 256-208S397.4 32 256 32zM128 272c-17.7 0-32-14.3-32-32s14.3-32 32-32 32 14.3 32 32-14.3 32-32 32zm128 0c-17.7 0-32-14.3-32-32s14.3-32 32-32 32 14.3 32 32-14.3 32-32 32zm128 0c-17.7 0-32-14.3-32-32s14.3-32 32-32 32 14.3 32 32-14.3 32-32 32z"/>
     </symbol>
 
     <symbol id="svg-linkedin" viewBox="0 0 448 512">
-        <title>Linkedin Square, font-awesome</title>
+        <!--title>Linkedin Square, font-awesome</title-->
         <path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/>
     </symbol>
     <symbol id="svg-twitter" viewBox="0 0 448 512">
-        <title>Twitter Square, font-awesome</title>
+        <!--title>Twitter Square, font-awesome</title-->
         <path d="M400 32H48C21.5 32 0 53.5 0 80v352c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V80c0-26.5-21.5-48-48-48zm-48.9 158.8c.2 2.8.2 5.7.2 8.5 0 86.7-66 186.6-186.6 186.6-37.2 0-71.7-10.8-100.7-29.4 5.3.6 10.4.8 15.8.8 30.7 0 58.9-10.4 81.4-28-28.8-.6-53-19.5-61.3-45.5 10.1 1.5 19.2 1.5 29.6-1.2-30-6.1-52.5-32.5-52.5-64.4v-.8c8.7 4.9 18.9 7.9 29.6 8.3a65.447 65.447 0 0 1-29.2-54.6c0-12.2 3.2-23.4 8.9-33.1 32.3 39.8 80.8 65.8 135.2 68.6-9.3-44.5 24-80.6 64-80.6 18.9 0 35.9 7.9 47.9 20.7 14.8-2.8 29-8.3 41.6-15.8-4.9 15.2-15.2 28-28.8 36.1 13.2-1.4 26-5.1 37.8-10.2-8.9 13.1-20.1 24.7-32.9 34z"/>
     </symbol>
     <symbol id="svg-facebook" viewBox="0 0 448 512">
-        <title>Facebook Square, font-awesome</title>
+        <!--title>Facebook Square, font-awesome</title-->
         <path d="M400 32H48A48 48 0 0 0 0 80v352a48 48 0 0 0 48 48h137.25V327.69h-63V256h63v-54.64c0-62.15 37-96.48 93.67-96.48 27.14 0 55.52 4.84 55.52 4.84v61h-31.27c-30.81 0-40.42 19.12-40.42 38.73V256h68.78l-11 71.69h-57.78V480H400a48 48 0 0 0 48-48V80a48 48 0 0 0-48-48z"/>
     </symbol>
     <symbol id="svg-youtube" viewBox="0 0 448 512">
-        <title>Youtube Square, font-awesome</title>
+        <!--title>Youtube Square, font-awesome</title-->
         <path d="M186.8 202.1l95.2 54.1-95.2 54.1V202.1zM448 80v352c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V80c0-26.5 21.5-48 48-48h352c26.5 0 48 21.5 48 48zm-42 176.3s0-59.6-7.6-88.2c-4.2-15.8-16.5-28.2-32.2-32.4C337.9 128 224 128 224 128s-113.9 0-142.2 7.7c-15.7 4.2-28 16.6-32.2 32.4-7.6 28.5-7.6 88.2-7.6 88.2s0 59.6 7.6 88.2c4.2 15.8 16.5 27.7 32.2 31.9C110.1 384 224 384 224 384s113.9 0 142.2-7.7c15.7-4.2 28-16.1 32.2-31.9 7.6-28.5 7.6-88.1 7.6-88.1z"/>
     </symbol>
     <symbol id="svg-instagram" viewBox="0 0 448 512">
-        <title>Instagram, font-awesome</title>
+        <!--title>Instagram, font-awesome</title-->
         <path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"/>
     </symbol>
     <symbol id="svg-github" viewBox="0 0 448 512">
-        <title>Github Square, font-awesome</title>
+        <!--title>Github Square, font-awesome</title-->
         <path d="M400 32H48C21.5 32 0 53.5 0 80v352c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V80c0-26.5-21.5-48-48-48zM277.3 415.7c-8.4 1.5-11.5-3.7-11.5-8 0-5.4.2-33 .2-55.3 0-15.6-5.2-25.5-11.3-30.7 37-4.1 76-9.2 76-73.1 0-18.2-6.5-27.3-17.1-39 1.7-4.3 7.4-22-1.7-45-13.9-4.3-45.7 17.9-45.7 17.9-13.2-3.7-27.5-5.6-41.6-5.6-14.1 0-28.4 1.9-41.6 5.6 0 0-31.8-22.2-45.7-17.9-9.1 22.9-3.5 40.6-1.7 45-10.6 11.7-15.6 20.8-15.6 39 0 63.6 37.3 69 74.3 73.1-4.8 4.3-9.1 11.7-10.6 22.3-9.5 4.3-33.8 11.7-48.3-13.9-9.1-15.8-25.5-17.1-25.5-17.1-16.2-.2-1.1 10.2-1.1 10.2 10.8 5 18.4 24.2 18.4 24.2 9.7 29.7 56.1 19.7 56.1 19.7 0 13.9.2 36.5.2 40.6 0 4.3-3 9.5-11.5 8-66-22.1-112.2-84.9-112.2-158.3 0-91.8 70.2-161.5 162-161.5S388 165.6 388 257.4c.1 73.4-44.7 136.3-110.7 158.3zm-98.1-61.1c-1.9.4-3.7-.4-3.9-1.7-.2-1.5 1.1-2.8 3-3.2 1.9-.2 3.7.6 3.9 1.9.3 1.3-1 2.6-3 3zm-9.5-.9c0 1.3-1.5 2.4-3.5 2.4-2.2.2-3.7-.9-3.7-2.4 0-1.3 1.5-2.4 3.5-2.4 1.9-.2 3.7.9 3.7 2.4zm-13.7-1.1c-.4 1.3-2.4 1.9-4.1 1.3-1.9-.4-3.2-1.9-2.8-3.2.4-1.3 2.4-1.9 4.1-1.5 2 .6 3.3 2.1 2.8 3.4zm-12.3-5.4c-.9 1.1-2.8.9-4.3-.6-1.5-1.3-1.9-3.2-.9-4.1.9-1.1 2.8-.9 4.3.6 1.3 1.3 1.8 3.3.9 4.1zm-9.1-9.1c-.9.6-2.6 0-3.7-1.5s-1.1-3.2 0-3.9c1.1-.9 2.8-.2 3.7 1.3 1.1 1.5 1.1 3.3 0 4.1zm-6.5-9.7c-.9.9-2.4.4-3.5-.6-1.1-1.3-1.3-2.8-.4-3.5.9-.9 2.4-.4 3.5.6 1.1 1.3 1.3 2.8.4 3.5zm-6.7-7.4c-.4.9-1.7 1.1-2.8.4-1.3-.6-1.9-1.7-1.5-2.6.4-.6 1.5-.9 2.8-.4 1.3.7 1.9 1.8 1.5 2.6z"/>
     </symbol>
 </svg>
@@ -1613,6 +1687,308 @@ body {
     padding: 0.5em; }
 
 /* eof base html markup */
+/** Contact Form 7 Design & Hints
+    Theme:  egamings2019
+    Author: zl, 2019.6.8
+*/
+:root {
+  --wpcf7-side-padding: 1rem;
+  --wpcf7-side-padding: 0;
+  --wpcf7-optimal-width: 24em; }
+
+@keyframes keyframeSimpleRotation {
+  from {
+    transform: rotate(359deg); }
+  to {
+    transform: rotate(0deg); } }
+.eg-contact-form-7--wrap-form, .design-template .wpcf7 {
+  display: block;
+  max-width: var(--wpcf7-optimal-width);
+  margin-left: auto;
+  margin-right: auto;
+  background-color: transparent;
+  color: inherit;
+  padding: 0.5rem var(--wpcf7-side-padding);
+  padding-bottom: var(--wpcf7-side-padding); }
+
+.eg-contact-form-7--wrap-fields {
+  display: grid;
+  grid-template-columns: 100%;
+  grid-row-gap: 0.5rem; }
+  .eg-contact-form-7--wrap-fields input, .eg-contact-form-7--wrap-fields select, .eg-contact-form-7--wrap-fields optgroup, .eg-contact-form-7--wrap-fields textarea {
+    font-family: inherit;
+    font-size: 0.8em;
+    line-height: 1.75;
+    display: block;
+    width: 100%;
+    padding: 0.25em;
+    background-color: white;
+    color: black; }
+  .eg-contact-form-7--wrap-fields select {
+    font-size: 1em; }
+  .eg-contact-form-7--wrap-fields label {
+    display: block;
+    padding: 0; }
+  .eg-contact-form-7--wrap-fields .wpcf7-submit {
+    background-color: hsl(var(--hsl-egBrandDarken));
+    color: hsl(var(--hsl-egLight));
+    font-size: 1.25em;
+    padding: 0.5rem 2rem;
+    border-radius: 5px;
+    border: 0;
+    margin-top: 1rem;
+    width: auto; }
+  .eg-contact-form-7--wrap-fields .field-label {
+    display: inline-block; }
+    .eg-contact-form-7--wrap-fields .field-label > i {
+      opacity: 0.6; }
+  .eg-contact-form-7--wrap-fields .submit-wrap {
+    position: relative; }
+    .eg-contact-form-7--wrap-fields .submit-wrap .ajax-loader {
+      position: absolute;
+      z-index: 1; }
+      .eg-contact-form-7--wrap-fields .submit-wrap .ajax-loader.is-active {
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        margin: 0;
+        padding: 0;
+        background-color: rgba(255, 255, 255, 0.75);
+        background-position: 50% 50%;
+        background-repeat: no-repeat;
+        display: flex;
+        justify-content: center;
+        align-content: center;
+        align-items: center; }
+        .eg-contact-form-7--wrap-fields .submit-wrap .ajax-loader.is-active::before {
+          content: '';
+          display: block;
+          width: 2em;
+          height: 2em;
+          max-width: 100%;
+          max-height: 100%;
+          background-position: 50% 50%;
+          background-repeat: no-repeat;
+          background-image: url("data:image/svg+xml,%3Csvg fill%3D%22inherit%22 height%3D%2224%22 viewBox%3D%220 0 24 24%22 width%3D%2224%22 xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath d%3D%22M12 4V1L8 5l4 4V6c3.31 0 6 2.69 6 6 0 1.01-.25 1.97-.7 2.8l1.46 1.46C19.54 15.03 20 13.57 20 12c0-4.42-3.58-8-8-8zm0 14c-3.31 0-6-2.69-6-6 0-1.01.25-1.97.7-2.8L5.24 7.74C4.46 8.97 4 10.43 4 12c0 4.42 3.58 8 8 8v3l4-4-4-4v3z%22%2F%3E%3C%2Fsvg%3E");
+          background-size: contain;
+          animation: keyframeSimpleRotation 1s infinite linear; }
+  .eg-contact-form-7--wrap-fields .wpcf7-not-valid {
+    border-color: firebrick; }
+  .eg-contact-form-7--wrap-fields .wpcf7-not-valid-tip {
+    color: firebrick; }
+
+.design-template .wpcf7-response-output {
+  margin: calc( var(--wpcf7-side-padding) * (-1) );
+  margin-top: var(--wpcf7-side-padding);
+  padding: 0.5rem var(--wpcf7-side-padding);
+  border: 0; }
+
+.design-template .wpcf7-spam-blocked,
+.design-template .wpcf7-mail-sent-ng,
+.design-template .wpcf7-aborted,
+.design-template .wpcf7-validation-errors,
+.design-template .wpcf7-acceptance-missing {
+  border: 0;
+  background-color: firebrick;
+  color: white; }
+
+.design-template .wpcf7-mail-sent-ok {
+  border: 0;
+  margin-top: calc( var(--wpcf7-side-padding) * (-1) );
+  background-color: #134556;
+  color: white; }
+
+.wpcf7 .sent .eg-contact-form-7--wrap-fields {
+  display: none; }
+
+.wpcf7 .screen-reader-response {
+  position: absolute;
+  overflow: hidden;
+  clip: rect(1px, 1px, 1px, 1px);
+  height: 1px;
+  width: 1px;
+  margin: 0;
+  padding: 0;
+  border: 0; }
+
+.wpcf7-display-none {
+  display: none; }
+
+.modal-overlay {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  padding: 2rem;
+  overflow: hidden; }
+  .modal-overlay:not(.is-active) {
+    display: none; }
+  .modal-overlay.is-active {
+    position: fixed;
+    z-index: 100;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.75); }
+  .modal-overlay .modal-overlay-content-box {
+    will-change: transform;
+    transform: translateY(-50%);
+    opacity: 0;
+    transition: all 240ms;
+    transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1); }
+  .modal-overlay.is-active .modal-overlay-content-box {
+    transform: translateY(0);
+    opacity: 1; }
+
+.modal-overlay-content-box {
+  max-height: 100%;
+  overflow: auto; }
+  .modal-overlay-content-box .eg-contact-form-7--wrap-form, .modal-overlay-content-box .design-template .wpcf7, .design-template .modal-overlay-content-box .wpcf7 {
+    font-size: 0.75em; }
+  .modal-overlay-content-box .intl-tel-input .country-list {
+    max-width: calc( var(--wpcf7-optimal-width) - 2*var(--wpcf7-side-padding) ); }
+    .modal-overlay-content-box .intl-tel-input .country-list .country {
+      text-overflow: ellipsis;
+      overflow: hidden; }
+  .modal-overlay-content-box .wpcf7-mail-sent-ok {
+    background-color: white;
+    color: black;
+    margin: 0;
+    padding: 1em 0;
+    font-size: 1.5em; }
+
+.modal-title {
+  background-color: #134556;
+  color: white;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+  align-content: flex-start; }
+  .modal-title .title {
+    margin: 0;
+    font-size: 1em;
+    line-height: 1.25;
+    padding: 0.5rem var(--wpcf7-side-padding); }
+  .modal-title .close {
+    cursor: pointer;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center; }
+    .modal-title .close > svg {
+      height: calc(1.25em + 1rem);
+      width: calc(1.25em + 1rem);
+      fill: currentColor;
+      will-change: transform;
+      transition: transform 420ms;
+      transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1); }
+    .modal-title .close:hover > svg {
+      transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1);
+      transform: scale(0.75) rotate(-90deg); }
+
+/*
+
+
+
+# Disable default styles loading
+  Insert into wp-config.php
+
+define('WPCF7_LOAD_CSS', false);
+
+
+
+# Prevent double click
+  Use javascript
+
+jQuery(document).on('click', '.wpcf7-submit', function preventDoubleFormSubmit(e) {
+    let $button = jQuery(e.currentTarget)
+    let $form   = $button.closest('.wpcf7')
+    let $state  = $form.find('.ajax-loader').hasClass('is-active')
+    if( $state ) {
+        e.preventDefault()
+        return false
+    }
+})
+
+
+
+# Template placeholder
+
+<div class="eg-contact-form-7--wrap-form">
+...
+</div>
+
+# Template placeholder form
+
+<div class="eg-contact-form-7--wrap-fields">
+
+    <div class="field-wrap">
+        <label><span class="field-label">Your Name *</span>
+        [text* your-name] </label>
+    </div>
+
+    <div class="field-wrap">
+        <label><span class="field-label">Your Email *</span>
+        [email* your-email] </label>
+    </div>
+
+    <div class="field-wrap">
+        <label><span class="field-label">Phone number <i>(optional)</i></span>
+        [phonetext your-phone] </label>
+    </div>
+
+    <div class="field-wrap">
+        <label><span class="field-label">Skype <i>(optional)</i></span>
+        [text your-skype] </label>
+    </div>
+
+    <div class="field-wrap">
+        <label><span class="field-label">Message or Question *</span>
+        [textarea* your-message x3] </label>
+    </div>
+
+    <div class="submit-wrap">
+        [submit "Send"]
+    </div>
+
+</div>
+
+
+
+
+
+# Email template placeholder inside wp-admin
+
+NAME:  [your-name] 
+EMAIL: [your-email]
+PHONE: [your-phone]
+SKYPE: [your-skype]
+MESSAGE ***
+[your-message]
+***
+
+Was sent from a contact form on Egamings
+
+URL:   [_url]
+DATE:  [_date] / [_time]
+ID:    [_serial_number]
+IP:    [_remote_ip]
+AGENT: [_user_agent]
+
+
+
+# WP-Plugin: Country & Phone Field Contact Form 7
+
+https://wordpress.org/plugins/country-phone-field-contact-form-7/
+
+
+
+*/
 :root {
   --hsl-MainBackground: 240, 15%, 12%;
   --hsl-CardBackground: 212, 34%, 29%;
