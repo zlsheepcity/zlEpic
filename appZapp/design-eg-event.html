@@ -111,14 +111,6 @@
             align-content:   center;
             align-items:     center;
         }
-        .egvent-welcome-intro h1 {
-            font-size:  1.5em;
-            line-height: 1.25;
-        }
-        .egvent-welcome-logo {
-            max-width:  10em;
-            padding-top: 2em;
-        }
         .egvent-welcome-forma {
             flex-grow: 2;
             padding:   1em;
@@ -130,6 +122,31 @@
             justify-content: center;
             align-content:   center;
             align-items:     center;
+        }
+        @media (max-width:900px) {
+            .egvent-welcome-screen {
+                flex-direction:  column;
+            }
+            .egvent-welcome-intro {
+                padding-top:    4em;
+                padding-bottom: 4em;
+            }
+            .egvent-welcome-forma {
+                padding-top:    4em;
+                padding-bottom: 4em;
+            }
+        }
+        .egvent-welcome-intro h1 {
+            font-size:  1.5em;
+            line-height: 1.25;
+        }
+        .egvent-welcome-logo {
+            max-width:  10em;
+            padding-top: 1em;
+        }
+        .egvent-welcome-coin {
+            max-width: 20em;
+            padding-bottom: 2em;
         }
         .egvent-details-screen {
             min-height:      40vh;
@@ -181,10 +198,19 @@
         .egvent-details-illustration img {
             max-width: 300px;
         }
-
-
         .egvent-form {
             max-width: 25em;
+        }
+        @media (max-width:800px) {
+            .egvent-details-screen {
+                flex-direction:  column;
+                justify-content: center;
+            }
+            .egvent-details-texts {
+                padding-top:    4em;
+                padding-bottom: 4em;
+                justify-content: center;
+            }
         }
 
     </style>
@@ -197,11 +223,14 @@
     <div class="egvent-welcome-screen">
         <section class="egvent-welcome-intro">
             <div class="content-block">
-                <h1>Enter an instant win giveaway<br>by <strong>SoftGamings</strong>.</h1>
+                <figure class="egvent-welcome-coin">
+                    <img src="https://test.softgamings.com/content/uploads/pamp-fortuna-narrow.png" alt="Pamp Fortuna Gold, 5g">
+                </figure>
+                <h1>Enter an instant win giveaway</h1>
                 <p>Guaranteed prizes for all participants<br>and a chance to win the first prize<br>— <strong>The Gold Coin!</strong></p>
                 <p>Good luck!</p>
                 <figure class="egvent-welcome-logo">
-                    <img src="https://www.softgamings.com/content/themes/softgamings/images/design/softgamings-logo.svg" alt="Softgamings">
+                    <a href="https://www.softgamings.com/"><img src="https://www.softgamings.com/content/themes/softgamings/images/design/softgamings-logo.svg" alt="Softgamings"></a>
                 </figure>
             </div>
         </section>

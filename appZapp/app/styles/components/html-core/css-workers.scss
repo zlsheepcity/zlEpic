@@ -1,7 +1,32 @@
 /* ==============================================================
     universal markup helpers
-    2019.7.17
+    2019.7.10
 ============================================================== */
+
+
+/* ------------------------------------------ layout */
+
+
+.group-wide {
+    display:         flex;
+    justify-content: space-between;
+    align-items:     center;
+    align-content:   center;
+}
+.group-center {
+    display:         flex;
+    justify-content: center;
+    align-items:     center;
+    align-content:   center;
+}
+
+
+/* ------------------------------------------ paddings */
+
+
+.pb { padding-bottom: 1em; }
+.pt { padding-top:    1em; }
+
 
 /* ------------------------------------------ univeral helpers */
 
@@ -34,7 +59,6 @@
 .layer {
     display: block;
     grid-column: full;
-    .zetka & { grid-column: full; }
 }
 
 .text-is-smaller {

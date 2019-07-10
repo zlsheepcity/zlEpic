@@ -124,12 +124,21 @@
         <div>
             <button class="js-toggle-asidebar">Asidebar</button>
         </div>
-        <aside class="asidebar from-eastside">
-            <div class="asidebar-overlay"></div>
+        <aside class="asidebar from-westside">
             <div class="asidebar-panel">
-                <div class="swed-group">
-                    <div class="title">Asidebar</div>
-                    <button class="js-toggle-asidebar">close</button>
+                <div class="group-wide pb">
+                    <h4 class="title">Asidebar Westside</h4>
+                    <button class="js-toggle-asidebar">Close</button>
+                </div>
+                <div><p class="auto"></p></div>
+                <div><p class="auto"></p></div>
+            </div>
+        </aside>
+        <aside class="asidebar from-eastside">
+            <div class="asidebar-panel">
+                <div class="group-wide pb">
+                    <h4 class="title">Asidebar Eastside</h4>
+                    <button class="js-toggle-asidebar">Close</button>
                 </div>
                 <div><p class="auto"></p></div>
                 <div><p class="auto"></p></div>
@@ -137,71 +146,54 @@
         </aside>
     </article>
     <script>
-
-        function ActivateAsidebar() {
-            const mom = document.querySelector('html')
-            const bar = document.querySelector('.asidebar')
-            const overlay  = bar.querySelector('.asidebar-overlay')
-            const toggleClass    = 'is-active'
-            const toggleMomClass = 'has-active-asidebar'
-
-            function doToggleAsidebar(e) {
-                bar.classList.toggle(toggleClass);
-                if (bar.classList.contains(toggleClass))
-                    mom.classList.add(toggleMomClass)
-                else
-                    mom.classList.remove(toggleMomClass)
+        function AsidebarComponent(dna={}) {
+            const classNames = {
+                asidebar: 'asidebar',
+                overlay:  'asidebar-overlay',
+                content:  'asidebar-content',
+                isActive: 'is-active',
+                htmlMarker: 'has-active-asidebar'
             }
 
-            const klikers = document.querySelectorAll('.js-toggle-asidebar')
-            const klikerActivator = (el)=>el.addEventListener('click', doToggleAsidebar)
-            klikers.forEach(klikerActivator)
-            klikerActivator(overlay)
+            const dot = (label)=>'.'+label
+            const htmlwrap = document.querySelector('html')
+
+            this.el   = dna.el   || document.querySelector(dot(classNames.asidebar))
+            this.wrap = dna.wrap || dna.wrap===false ? false : document.querySelector('html')
         }
-        ActivateAsidebar()
+        /*
+            
+        */
+        function  ActivateAsidebar(dna={}) {
+            const htmlwrap = document.querySelector('html')
+            const asidebar = dna.bar || document.querySelector('.asidebar')
+            const toggleClass     = 'is-active'
+            const toggleWrapClass = 'has-active-asidebar'
+            const togglerPointer  = '.js-toggle-asidebar'
 
-/*
-            function ChapterBarActivator () {
-
-                const bar = document.querySelector('.js-sidebar')
-                const toggleClass = 'is-active'
-                const mom = document.querySelector('html')
-                const toggleMomClass = 'has-shadow-overlay'
-
-                function setShadowOverlay (commander) {
-                    function checkStateForMom(elem, className) {
-                      return new RegExp(' ' + className + ' ').test(' ' + elem.className + ' ');
-                    }
-                    if (checkStateForMom(commander,toggleClass))
-                        app.mutate({el:mom, addClass:toggleMomClass })
-                    else
-                        app.mutate({el:mom, removeClass:toggleMomClass })
-                }
-                app.workers.ShadowOverlayToggler = setShadowOverlay
-
-                // toggle
-
-                const klikers = document.querySelectorAll('.js-toggle-sidebar')
-                const klikerActivator = (el)=>el.addEventListener('click', toggleChapterBar)
-                function toggleChapterBar (e) {
-                    app.mutate({el:bar, toggleClass})
-                    setShadowOverlay(bar)
-                }
-                app.workers.ChapterBarToggler = toggleChapterBar
-                klikers.forEach(klikerActivator)
-
-                // close
-
-                const closer = document.querySelectorAll('.js-close-sidebar')
-                function closeChapterBar (e) {
-                    app.mutate({el:bar, removeClass: toggleClass})
-                    app.mutate({el:mom, removeClass: toggleMomClass })
-                }
-                app.workers.ChapterBarCloser =   closeChapterBar
-                closer.forEach((el)=>el.addEventListener('click', closeChapterBar))
+            function doToggleAsidebarActivity(e) {
+                asidebar.classList.toggle(toggleClass);
+                if (asidebar.classList.contains(toggleClass))
+                    htmlwrap.classList.add(toggleWrapClass)
+                else
+                    htmlwrap.classList.remove(toggleWrapClass)
             }
-            app.onload(ChapterBarActivator)
-*/
+
+            // buttons
+            const clickerActivation = (el)=>el.addEventListener('click', doToggleAsidebarActivity)
+            document.querySelectorAll(togglerPointer).forEach(clickerActivation)
+
+            // overlay
+            let overlay = asidebar.querySelector('.asidebar-overlay')
+            if(!overlay) {
+                overlay = document.createElement('div')
+                overlay.classList.add('asidebar-overlay')
+                asidebar.prepend(overlay)
+            }
+            clickerActivation(overlay)
+        }
+        (ActivateAsidebar)()
+        //(ActivateAsidebar({bar:document.querySelector('.asidebar.from-eastside')}))
     </script>
 
     <!-- SVG Icons  -->

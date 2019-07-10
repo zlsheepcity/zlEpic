@@ -19,8 +19,21 @@
 /* eof app scss constructor */
 /* ==============================================================
     universal markup helpers
-    2019.7.17
+    2019.7.10
 ============================================================== */
+/* ------------------------------------------ layout */
+.group-wide {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  align-content: center; }
+
+.group-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center; }
+
 /* ------------------------------------------ univeral helpers */
 .is-centered {
   text-align: center;
@@ -57,8 +70,6 @@
 .layer {
   display: block;
   grid-column: full; }
-  .zetka .layer {
-    grid-column: full; }
 
 .text-is-smaller {
   font-size: 0.75em; }
