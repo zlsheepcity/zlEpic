@@ -35,7 +35,7 @@
                 repeat( 6, calc( ( var(--grid-base--contenta-width) - 5*var(--grid-base--column-gap) ) / 6 ) )
             [ before-end   main-end   after-end ]
             minmax(0, auto)
-        [ overmain-start
+        [ overmain-end
           full-end ];
 
     --grid--fullsize:
@@ -56,6 +56,18 @@
             [ after-end ]
             minmax(0, auto)
         [ full-end ];
+
+    --grid--cut-after:
+        [ full-start ]
+            minmax(0, auto)
+            [ before-start ]
+                minmax( auto, var(--grid-base--sidenote-width) )
+            [ before-end
+              overmain-start ]
+                1rem
+                [ main-start after-start ]
+                    repeat( 6, calc( ( var(--grid-base--contenta-width) - 5*var(--grid-base--column-gap) ) / 6 ) )
+                [ main-end after-end overmain-end full-end ];
 
     --grid--onlyrows:
         [ full-start before-start overmain-start main-start after-start ]
@@ -122,6 +134,12 @@ body {
 }
 .article-block-after {
     grid-column: after;
+}
+
+.article-reduce-after {
+    @extend %article-grid--seed;
+    grid-template-columns: var(--grid--cut-after);
+    grid-column: full-start / overmain-end;
 }
 
 

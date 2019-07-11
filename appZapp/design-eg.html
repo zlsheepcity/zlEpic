@@ -265,41 +265,233 @@
 <body class="body-wrap design-template">
 
     <style>
-        .article-grid {
-            --grid-base--column-gap:     1em;
-            --grid-base--row-gap:        1em;
-            --grid-base--sidenote-width: 15em;
-            --grid-base--content-width:  35em;
+        .test-grid {
+            display:         grid;
+            align-items:     start;
+            grid-auto-flow:  row;
+            grid-auto-rows:  min-content;
+            grid-column-gap: 0; /*var(--grid-base--column-gap);*/
+            grid-row-gap:    var(--grid-base--row-gap);
+
+            --grid-formula--empty-sidespace: 0;
+            --grid-formula--content-padding: 1rem;
+            --grid-formula--west-width:      var(--grid-base--sidenote-width);
+            --grid-formula--east-width:      var(--grid-base--sidenote-width);
+            --grid-formula--main-width:      var(--grid-base--contenta-width);
+            --grid-formula--main-width:      auto;
+
+
+            --grid-formula--start: [full-start] var(--grid-formula--empty-sidespace);
+            --grid-formula--end:   var(--grid-formula--empty-sidespace) [full-end];
+
+            --grid-formula--west-skip: 0;
+            --grid-formula--east-skip: 0;
+            --grid-formula--west-insert:
+                0
+                    [overwest-start]
+                        var(--grid-formula--content-padding)
+                            [west-start]
+                                var(--grid-formula--west-width)
+                            [west-end]
+                        var(--grid-formula--content-padding)
+                    [overwest-end]
+                0;
+            --grid-formula--east-insert:
+                0
+                    [overeast-start]
+                        var(--grid-formula--content-padding)
+                            [east-start]
+                                var(--grid-formula--east-width)
+                            [east-end]
+                        var(--grid-formula--content-padding)
+                    [overeast-end]
+                0;
+
+            --grid-formula--main-single:
+                0
+                    [overmain-start]
+                        var(--grid-formula--content-padding)
+                            [main-start]
+                                var(--grid-formula--main-width)
+                            [main-end]
+                        var(--grid-formula--content-padding)
+                    [overmain-end]
+                0;
+
+            --grid-formula--main-join-all:
+                0
+                    [overmain-start overwest-start overeast-start]
+                        var(--grid-formula--content-padding)
+                            [main-start west-start east-start]
+                                var(--grid-formula--main-width)
+                            [main-end   west-end   east-end]
+                        var(--grid-formula--content-padding)
+                    [overmain-end   overwest-end   overeast-end]
+                0;
+
+            --grid-formula--main-join-east:
+                0
+                    [overmain-start overeast-start]
+                        var(--grid-formula--content-padding)
+                            [main-start east-start]
+                                var(--grid-formula--main-width)
+                            [main-end   east-end]
+                        var(--grid-formula--content-padding)
+                    [overmain-end   overeast-end]
+                0;
+
+            --grid-formula--main-join-west:
+                0
+                    [overmain-start overwest-start]
+                        var(--grid-formula--content-padding)
+                            [main-start west-start]
+                                var(--grid-formula--main-width)
+                            [main-end   west-end]
+                        var(--grid-formula--content-padding)
+                    [overmain-end   overwest-end]
+                0;
+
+            --grid-part--START:          var(--grid-formula--start);
+            --grid-part--WEST:           var(--grid-formula--west-skip);
+            --grid-part--MAIN:           var(--grid-formula--main-join-all);
+            --grid-part--MAIN-join-WEST: var(--grid-formula--main-join-all);
+            --grid-part--MAIN-join-EAST: var(--grid-formula--main-join-all);
+            --grid-part--MAIN-join-ALL:  var(--grid-formula--main-join-all);
+            --grid-part--EAST:           var(--grid-formula--east-skip);
+            --grid-part--END:            var(--grid-formula--end);
+
+
+            --grid-template--default:
+                var(--grid-part--START)
+                var(--grid-part--WEST)
+                var(--grid-part--MAIN)
+                var(--grid-part--EAST)
+                var(--grid-part--END);
+
+            --grid-template--content-only:
+                [full-start overwest-start overeast-start overmain-start]
+                    var(--grid-formula--content-padding)
+                        [main-start west-start east-start]
+                            auto
+                        [main-end   west-end   east-end]
+                    var(--grid-formula--content-padding)
+                [full-end   overwest-end   overeast-end   overmain-end];
+
+            grid-template-columns: var(--grid-template--default);
+        }
+        .test-grid .article-westcol  { grid-column: west; }
+        .test-grid .article-eastcol  { grid-column: east; }
+        .test-grid .article-maincol  { grid-column: main; }
+        .test-grid .article-westbox  { grid-column: overwest; }
+        .test-grid .article-eastbox  { grid-column: overeast; }
+        .test-grid .article-mainbox  { grid-column: overmain; }
+
+        .test-grid .article-westside { grid-column: full-start / overwest-end; }
+        .test-grid .article-eastside { grid-column: overeast-start / full-end; }
+
+        .test-grid .article-westside,
+        .test-grid .article-eastside,
+        .test-grid .article-westbox,
+        .test-grid .article-eastbox,
+        .test-grid .article-mainbox {
+            display:         grid;
+            align-items:     start;
+            grid-auto-flow:  row;
+            grid-auto-rows:  min-content;
+            grid-column-gap: 0;
+            grid-row-gap:    var(--grid-base--row-gap);
+            grid-template-columns: var(--grid-template--content-only);
+            padding-top: var(--grid-base--row-gap);
+            padding-bottom: var(--grid-base--row-gap);
+        }
+
+
+        @media all and (min-width: 37rem) {
+            .test-grid {
+            --grid-formula--empty-sidespace: minmax(0, 1fr);
+            --grid-formula--main-width:      35rem;
+            }
+        }
+        @media all and (min-width: 55rem) {
+            .test-grid {
+            --grid-part--EAST:           var(--grid-formula--east-insert);
+            --grid-part--MAIN:           var(--grid-formula--main-join-west);
+            --grid-part--MAIN-join-WEST: var(--grid-formula--main-join-west);
+            }
+        }
+        @media all and (min-width: 73rem) {
+            .test-grid {
+            --grid-part--WEST:           var(--grid-formula--west-insert);
+            --grid-part--MAIN:           var(--grid-formula--main-single);
+            --grid-part--MAIN-join-EAST: var(--grid-formula--main-join-east);
+            }
+        }
+
+        .test-grid * {
+            grid-column: main;
+        }
+    </style>
+
+    <article class="test-grid">
+        <div class="article-westbox color-box"><p>a fantastic opportunity for networking</p></div>
+        <p>Events like G2E Asia provide a fantastic opportunity for networking — one of the key aspects of expanding your business. Apart from being able to explore new possibilities, casino operators and solution providers attending the event are also able to build new partnerships and find new business opportunities.
+        The expo is a three-day-long event which features an exhibit where providers can showcase their newest innovative gaming services and products, as well as plenty of events that increase the number of networking opportunities. G2E Asia was first held in June 2007, and today, after more than a decade of unique networking opportunities and quality exhibitions, it is one of the most reputable expo events in the gaming industry.</p>
+        <div class="article-eastbox color-box"><p>a fantastic opportunity for networking</p></div>
+        <div class="article-mainbox color-box"><p>The expo is a three-day-long event which features an exhibit where providers can showcase their newest innovative gaming services and products, as well as plenty of events that increase the number of networking opportunities. G2E Asia was first held in June 2007, and today, after more than a decade of unique networking opportunities and quality exhibitions, it is one of the most reputable expo events in the gaming industry.</p></div>
+        <div class="article-eastside color-box"><p>EASTSIDE</p></div>
+        <p style="grid-column: full;">The expo is a three-day-long event which features an exhibit where providers can showcase their newest innovative gaming services and products, as well as plenty of events that increase the number of networking opportunities. G2E Asia was first held in June 2007, and today, after more than a decade of unique networking opportunities and quality exhibitions, it is one of the most reputable expo events in the gaming industry.</p>
+    </article>
+
+
+
+    <style>
+        .article-sidebar-after {
+            grid-column: after-start / full-end;
+            align-self: stretch;
         }
     </style>
 
 
     <article class="article-grid">
-        <header>
-            <h1 class="big-title">Reminiscing About G2E Asia Awards 2019</h1>
-        </header>
-        <div class="content-block">
-            <p>Events like G2E Asia provide a fantastic opportunity for networking — one of the key aspects of expanding your business. Apart from being able to explore new possibilities, casino operators and solution providers attending the event are also able to build new partnerships and find new business opportunities.
-            The expo is a three-day-long event which features an exhibit where providers can showcase their newest innovative gaming services and products, as well as plenty of events that increase the number of networking opportunities. G2E Asia was first held in June 2007, and today, after more than a decade of unique networking opportunities and quality exhibitions, it is one of the most reputable expo events in the gaming industry.</p>
+        <section class="article-reduce-after">
+            <header>
+                <h1 class="big-title">Reminiscing About G2E Asia Awards 2019</h1>
+            </header>
+            <div class="article-block-before">
+                <p>This year at G2E Asia Awards, SoftGamings was nominated in the Best B2B Digital Product Solution category. Sadly, we weren’t able to secure the first place and the award, but even being shortlisted at such an important event is an impressive feat. Moreover, recognition such as this one is an excellent incentive, and our team at SoftGamings is motivated more than ever to continue to work hard and offer high-quality solutions to anyone looking to expand their business.</p>
+            </div>
+            <div class="content-block">
+                <p>Events like G2E Asia provide a fantastic opportunity for networking — one of the key aspects of expanding your business. Apart from being able to explore new possibilities, casino operators and solution providers attending the event are also able to build new partnerships and find new business opportunities.
+                The expo is a three-day-long event which features an exhibit where providers can showcase their newest innovative gaming services and products, as well as plenty of events that increase the number of networking opportunities. G2E Asia was first held in June 2007, and today, after more than a decade of unique networking opportunities and quality exhibitions, it is one of the most reputable expo events in the gaming industry.</p>
 
-            <p>However, what makes G2E Asia truly special is the rewards event. Considering the event’s long history and prestige, the awards presented at G2E Asia are considered the most reputable ones in the industry.</p>
+                <p>However, what makes G2E Asia truly special is the rewards event. Considering the event’s long history and prestige, the awards presented at G2E Asia are considered the most reputable ones in the industry.</p>
+
+                <p>The event gathers some of the most prominent names in the industry from various organisations. The official judging panel is comprised of 50 judges who ensure the whole process is legitimate and that all rewards are well-deserved.</p>
+
+                <p>This year at G2E Asia Awards, SoftGamings was nominated in the Best B2B Digital Product Solution category. Sadly, we weren’t able to secure the first place and the award, but even being shortlisted at such an important event is an impressive feat. Moreover, recognition such as this one is an excellent incentive, and our team at SoftGamings is motivated more than ever to continue to work hard and offer high-quality solutions to anyone looking to expand their business.</p>
+            </div>
+
+            <div class="article-block has-paddings" style="background:pink;">
+                <p>The event gathers some of the most prominent names in the industry from various organisations. The official judging panel is comprised of 50 judges who ensure the whole process is legitimate and that all rewards are well-deserved.</p>
+            </div>
 
             <p>The event gathers some of the most prominent names in the industry from various organisations. The official judging panel is comprised of 50 judges who ensure the whole process is legitimate and that all rewards are well-deserved.</p>
 
             <p>This year at G2E Asia Awards, SoftGamings was nominated in the Best B2B Digital Product Solution category. Sadly, we weren’t able to secure the first place and the award, but even being shortlisted at such an important event is an impressive feat. Moreover, recognition such as this one is an excellent incentive, and our team at SoftGamings is motivated more than ever to continue to work hard and offer high-quality solutions to anyone looking to expand their business.</p>
-        </div>
-        <div class="eastnote">
-            <p>This year at G2E Asia Awards, SoftGamings was nominated in the Best B2B Digital Product Solution category. Sadly, we weren’t able to secure the first place and the award, but even being shortlisted at such an important event is an impressive feat. Moreover, recognition such as this one is an excellent incentive, and our team at SoftGamings is motivated more than ever to continue to work hard and offer high-quality solutions to anyone looking to expand their business.</p>
-        </div>
-        <div class="article-block has-paddings" style="background:pink;">
-            <p>The event gathers some of the most prominent names in the industry from various organisations. The official judging panel is comprised of 50 judges who ensure the whole process is legitimate and that all rewards are well-deserved.</p>
+
+        </section>
+        <div class="article-sidebar-after color-box has-paddings">
+            <div class="sidemenu">
+                <ul>
+                    <li>Live Roulette</li>
+                    <li>Immersive Roulette</li>
+                    <li>Immersive Lite Roulette</li>
+                    <li>Speed Roulette</li>
+                </ul>
+            </div>
         </div>
 
-        <p>The event gathers some of the most prominent names in the industry from various organisations. The official judging panel is comprised of 50 judges who ensure the whole process is legitimate and that all rewards are well-deserved.</p>
-
-        <p>This year at G2E Asia Awards, SoftGamings was nominated in the Best B2B Digital Product Solution category. Sadly, we weren’t able to secure the first place and the award, but even being shortlisted at such an important event is an impressive feat. Moreover, recognition such as this one is an excellent incentive, and our team at SoftGamings is motivated more than ever to continue to work hard and offer high-quality solutions to anyone looking to expand their business.</p>
-
-        <div class="article-grid" style="background:wheat; padding: 1em 0;">
+        <div class="article-block" style="background:wheat;">
             <div class="westnote">
                 <p>However, what makes G2E Asia truly special is the rewards event.</p>
             </div>

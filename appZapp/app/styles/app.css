@@ -34,6 +34,13 @@
   align-items: center;
   align-content: center; }
 
+/* ------------------------------------------ paddings */
+.pb {
+  padding-bottom: 1em; }
+
+.pt {
+  padding-top: 1em; }
+
 /* ------------------------------------------ univeral helpers */
 .is-centered {
   text-align: center;
@@ -1372,7 +1379,7 @@ html[sakura], html.sakura {
               repeat( 6, calc( ( var(--grid-base--contenta-width) - 5*var(--grid-base--column-gap) ) / 6 ) )
           [ before-end main-end after-end ]
           minmax(0, auto)
-      [ overmain-start
+      [ overmain-end
         full-end ];
   --grid--fullsize:
       [ full-start ]
@@ -1392,6 +1399,17 @@ html[sakura], html.sakura {
           [ after-end ]
           minmax(0, auto)
       [ full-end ];
+  --grid--cut-after:
+      [ full-start ]
+          minmax(0, auto)
+          [ before-start ]
+              minmax( auto, var(--grid-base--sidenote-width) )
+          [ before-end
+            overmain-start ]
+              1rem
+              [ main-start after-start ]
+                  repeat( 6, calc( ( var(--grid-base--contenta-width) - 5*var(--grid-base--column-gap) ) / 6 ) )
+              [ main-end after-end overmain-end full-end ];
   --grid--onlyrows:
       [ full-start before-start overmain-start main-start after-start ]
           auto
@@ -1408,7 +1426,7 @@ body {
 
 .article-grid, .zetka, .zetka-layer, .zetka-merge, .article-layer, .article-block, .zetka-overmain, .zetka-block, .zetka-merge-menu,
 .zetka-merge-menu-screen, .zetka-merge-side,
-.zetka-merge-side-screen, .zetka-menu-screen, .zetka-side-screen, .zetka-half-screen-one, .zetka-half-screen-two, .zetka-overhalf-one, .zetka-overhalf-two, .content-block, .zetka-half-one, .zetka-half-two, .zetka-third-one, .zetka-third-two, .zetka-third-tri, .zetka-third-merge-one, .zetka-third-merge-tri {
+.zetka-merge-side-screen, .zetka-menu-screen, .zetka-side-screen, .zetka-half-screen-one, .zetka-half-screen-two, .zetka-overhalf-one, .zetka-overhalf-two, .article-reduce-after, .content-block, .zetka-half-one, .zetka-half-two, .zetka-third-one, .zetka-third-two, .zetka-third-tri, .zetka-third-merge-one, .zetka-third-merge-tri {
   display: grid;
   align-items: start;
   grid-auto-flow: row;
@@ -1459,6 +1477,10 @@ body {
 
 .article-block-after, .zetka-side {
   grid-column: after; }
+
+.article-reduce-after {
+  grid-template-columns: var(--grid--cut-after);
+  grid-column: full-start / overmain-end; }
 
 .content-block, .zetka-half-one, .zetka-half-two, .zetka-third-one, .zetka-third-two, .zetka-third-tri, .zetka-third-merge-one, .zetka-third-merge-tri {
   grid-template-columns: var(--grid--onlyrows); }
