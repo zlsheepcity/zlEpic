@@ -239,7 +239,17 @@
         .article-chapter:not(.is-on-top) { margin-top: calc( 2 * var(--grid-base--row-gap) ); }
         .article-chapter:not(.is-on-bottom) { margin-bottom: calc( 2 * var(--grid-base--row-gap) ); }
 
+        .test-grid .content-block {
+            /* grid seed */
+            display:         grid;
+            align-items:     start;
+            grid-auto-flow:  row;
+            grid-auto-rows:  min-content;
+            grid-column-gap: 0;
+            grid-row-gap:    var(--grid-base--row-gap);
 
+            grid-template-columns: var(--grid-template--content-block);
+        }
 
         @media all and (min-width: 37rem) {
             .test-grid {
@@ -310,6 +320,15 @@
             <h1 class="huge-title">Article grid usecases</h1>
             <p class="subtitle">2019.7.11</p>
         </header>
+
+        <h2 class="title">Mission</h2>
+        <ul class="content-block">
+            <li>Упростить вёрстку статей с большим количеством элементов оформления</li>
+            <li>Конструктор для уникальных вставок. Чтобы любой креатив вписывался в сетку.</li>
+            <li>Трёхколоночная модель — текст и примечания по обеим сторонам</li>
+            <li>Автоматическая адаптация под все экраны</li>
+        </ul>
+
     </article>
 
     <article class="test-grid article-chapter has-devlabels">
