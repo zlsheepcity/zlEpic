@@ -180,6 +180,7 @@ hr {
   border: 0;
   background: transparent;
   box-shadow: none;
+  margin: 0;
   /* use as visual spacer */
   display: block;
   font-size: inherit;
@@ -1350,143 +1351,300 @@ html[sakura], html.sakura {
 
 /* eof data table */
 /* -------------------------------------------------------
- * Article grid, css-variables
- * 2019.7.7
+ * Article grid
+ * 2019.7.13
+ *
+ * - 3 columns: west, main, east
+ * - is mobile first
  * -------------------------------------------------------
  */
 :root {
-  --grid-base--column-gap: 1rem;
   --grid-base--row-gap: 1rem;
-  --grid-base--sidenote-width: 16rem;
-  --grid-base--contenta-width: 35rem; }
+  --grid-base--col-gap: 1.25rem;
+  /* side paddings */
+  --grid-base--side-gap: 1rem;
+  /* additional paddings between main and sides columns */
+  --grid-base--main-width: 35rem;
+  --grid-base--side-width: 16rem; }
 
-:root {
-  --grid--compact:
-      [ full-start
-        overmain-start ]
-          1rem
-          [ before-start main-start after-start ]
-              repeat( 6, 1fr )
-          [ before-end main-end after-end ]
-          1rem
-      [ overmain-start
-        full-end ];
-  --grid--notfullsize:
-      [ full-start
-        overmain-start ]
-          minmax(0, auto)
-          [ before-start main-start after-start ]
-              repeat( 6, calc( ( var(--grid-base--contenta-width) - 5*var(--grid-base--column-gap) ) / 6 ) )
-          [ before-end main-end after-end ]
-          minmax(0, auto)
-      [ overmain-end
-        full-end ];
-  --grid--fullsize:
-      [ full-start ]
-          minmax(0, auto)
-          [ before-start ]
-              minmax( auto, var(--grid-base--sidenote-width) )
-          [ before-end
-            overmain-start ]
-              1rem
-              [ main-start ]
-                  repeat( 6, calc( ( var(--grid-base--contenta-width) - 5*var(--grid-base--column-gap) ) / 6 ) )
-              [ main-end ]
-              1rem
-          [ overmain-end
-            after-start ]
-              minmax( auto, var(--grid-base--sidenote-width) )
-          [ after-end ]
-          minmax(0, auto)
-      [ full-end ];
-  --grid--cut-after:
-      [ full-start ]
-          minmax(0, auto)
-          [ before-start ]
-              minmax( auto, var(--grid-base--sidenote-width) )
-          [ before-end
-            overmain-start ]
-              1rem
-              [ main-start after-start ]
-                  repeat( 6, calc( ( var(--grid-base--contenta-width) - 5*var(--grid-base--column-gap) ) / 6 ) )
-              [ main-end after-end overmain-end full-end ];
-  --grid--onlyrows:
-      [ full-start before-start overmain-start main-start after-start ]
-          auto
-      [ full-end before-end overmain-end main-end after-end ]; }
+/*
+    While we cant use var() in @media queries,
+    calculation should be manual
 
-body {
-  --grid--auto: var(--grid--compact); }
-  @media (min-width: 37rem) {
-    body {
-      --grid--auto: var(--grid--notfullsize); } }
-  @media (min-width: 64rem) {
-    body {
-      --grid--auto: var(--grid--fullsize); } }
+    Step 1:
+        main-width + 2*col-gap = 37.5
+    Step 2:
+        step1 + side-width + 2*col-gap + side-gap = 57
+    Step 3:
+        step2 + side-width + 2*col-gap + side-gap = 76.5
+*/
+.article-grid {
+  --grid-formula--main-width: auto;
+  --grid-formula--west-width: var(--grid-formula--main-width);
+  --grid-formula--east-width: var(--grid-formula--main-width);
+  --grid-formula--start-hard: [full-start] 0;
+  --grid-formula--end-hard: 0 [full-end];
+  --grid-formula--start-space: [full-start] minmax(0, 1fr);
+  --grid-formula--end-space: minmax(0, 1fr) [full-end];
+  --grid-formula--west-skip: 0;
+  --grid-formula--east-skip: 0;
+  --grid-formula--west-insert:
+            0
+        [overwest-start]
+            var(--grid-base--col-gap)
+        [west-start]
+            var(--grid-base--side-width)
+        [west-end]
+            var(--grid-base--col-gap)
+        [overwest-end]
+            var(--grid-base--side-gap);
+  --grid-formula--east-insert:
+            var(--grid-base--side-gap)
+        [overeast-start]
+            var(--grid-base--col-gap)
+        [east-start]
+            var(--grid-base--side-width)
+        [east-end]
+            var(--grid-base--col-gap)
+        [overeast-end]
+            0;
+  --grid-formula--main-single:
+            0
+        [overmain-start]
+            var(--grid-base--col-gap)
+        [main-start]
+            var(--grid-formula--main-width)
+        [main-end]
+            var(--grid-base--col-gap)
+        [overmain-end]
+            0;
+  --grid-formula--main-join-all:
+            0
+        [overmain-start overwest-start overeast-start]
+            var(--grid-base--col-gap)
+        [main-start west-start east-start]
+            var(--grid-formula--main-width)
+        [main-end west-end east-end]
+            var(--grid-base--col-gap)
+        [overmain-end overwest-end overeast-end]
+            0;
+  --grid-formula--main-join-east:
+            0
+        [overmain-start overeast-start]
+            var(--grid-base--col-gap)
+        [main-start east-start]
+            var(--grid-formula--main-width)
+        [main-end east-end]
+            var(--grid-base--col-gap)
+        [overmain-end overeast-end]
+            0;
+  --grid-formula--main-join-west:
+            0
+        [overmain-start overwest-start]
+            var(--grid-base--col-gap)
+        [main-start west-start]
+            var(--grid-formula--main-width)
+        [main-end west-end]
+            var(--grid-base--col-gap)
+        [overmain-end overwest-end]
+            0; }
 
-.article-grid, .zetka, .zetka-layer, .zetka-merge, .article-layer, .article-block, .zetka-overmain, .zetka-block, .zetka-merge-menu,
-.zetka-merge-menu-screen, .zetka-merge-side,
-.zetka-merge-side-screen, .zetka-menu-screen, .zetka-side-screen, .zetka-half-screen-one, .zetka-half-screen-two, .zetka-overhalf-one, .zetka-overhalf-two, .article-reduce-after, .content-block, .zetka-half-one, .zetka-half-two, .zetka-third-one, .zetka-third-two, .zetka-third-tri, .zetka-third-merge-one, .zetka-third-merge-tri {
+.article-grid {
+  --grid-part--START: var(--grid-formula--start-hard);
+  --grid-part--WEST: var(--grid-formula--west-skip);
+  --grid-part--MAIN: var(--grid-formula--main-join-all);
+  --grid-part--MAIN-join-WEST: var(--grid-formula--main-join-all);
+  --grid-part--MAIN-join-EAST: var(--grid-formula--main-join-all);
+  --grid-part--MAIN-join-ALL: var(--grid-formula--main-join-all);
+  --grid-part--EAST: var(--grid-formula--east-skip);
+  --grid-part--END: var(--grid-formula--end-hard); }
+
+@media all and (min-width: 37.5rem) {
+  .article-grid {
+    --grid-formula--main-width: var(--grid-base--main-width);
+    --grid-part--START: var(--grid-formula--start-space);
+    --grid-part--END: var(--grid-formula--end-space); } }
+@media all and (min-width: 57rem) {
+  .article-grid {
+    --grid-formula--east-width: var(--grid-base--side-width);
+    --grid-part--EAST: var(--grid-formula--east-insert);
+    --grid-part--MAIN: var(--grid-formula--main-join-west);
+    --grid-part--MAIN-join-WEST: var(--grid-formula--main-join-west); } }
+@media all and (min-width: 76.5rem) {
+  .article-grid {
+    --grid-formula--west-width: var(--grid-base--side-width);
+    --grid-part--WEST: var(--grid-formula--west-insert);
+    --grid-part--MAIN: var(--grid-formula--main-single);
+    --grid-part--MAIN-join-EAST: var(--grid-formula--main-join-east); } }
+.article-grid {
+  --grid-template-columns--default:
+        var(--grid-part--START)
+        var(--grid-part--WEST)
+        var(--grid-part--MAIN)
+        var(--grid-part--EAST)
+        var(--grid-part--END);
+  --grid-template-columns--content-block:
+        [full-start overwest-start overeast-start overmain-start main-start west-start east-start]
+            auto
+        [full-end overwest-end overeast-end overmain-end main-end west-end east-end];
+  --grid-template-columns--content-box:
+        [full-start overwest-start overeast-start overmain-start]
+            var(--grid-base--col-gap)
+        [main-start west-start east-start]
+            auto
+        [main-end west-end east-end]
+            var(--grid-base--col-gap)
+        [full-end overwest-end overeast-end overmain-end]; }
+
+.article-grid, .article-block-west,
+.article-block-east,
+.article-block-main,
+.article-block, .article-box-west,
+.article-box-east,
+.article-box-main,
+.article-box, .article-westside,
+.article-eastside, .article-block-merge-west,
+.article-block-merge-east,
+.article-block-merge, .article-box-merge-west,
+.article-box-merge-east,
+.article-box-merge {
   display: grid;
   align-items: start;
+  justify-content: start;
   grid-auto-flow: row;
   grid-auto-rows: min-content;
-  grid-column-gap: var(--grid-base--column-gap);
-  grid-row-gap: var(--grid-base--row-gap); }
+  grid-row-gap: var(--grid-base--row-gap);
+  grid-column-gap: 0; }
 
-.article-grid, .zetka, .zetka-layer, .zetka-merge {
-  grid-template-columns: var(--grid--auto);
-  grid-column: full; }
+.article-grid {
+  grid-template-columns: var(--grid-template-columns--default); }
 
-.article-grid *, .zetka *, .zetka-layer *, .zetka-merge * {
+.article-grid * {
   grid-column: main; }
-.article-grid .article-block, .zetka .article-block, .zetka-layer .article-block, .zetka-merge .article-block, .article-grid .zetka-overmain, .zetka .zetka-overmain, .zetka-layer .zetka-overmain, .zetka-merge .zetka-overmain, .article-grid .zetka-block, .zetka .zetka-block, .zetka-layer .zetka-block, .zetka-merge .zetka-block, .article-grid .zetka-merge-menu, .zetka .zetka-merge-menu, .zetka-layer .zetka-merge-menu, .zetka-merge .zetka-merge-menu,
-.article-grid .zetka-merge-menu-screen,
-.zetka .zetka-merge-menu-screen,
-.zetka-layer .zetka-merge-menu-screen,
-.zetka-merge .zetka-merge-menu-screen, .article-grid .zetka-merge-side, .zetka .zetka-merge-side, .zetka-layer .zetka-merge-side, .zetka-merge .zetka-merge-side,
-.article-grid .zetka-merge-side-screen,
-.zetka .zetka-merge-side-screen,
-.zetka-layer .zetka-merge-side-screen,
-.zetka-merge .zetka-merge-side-screen, .article-grid .zetka-menu-screen, .zetka .zetka-menu-screen, .zetka-layer .zetka-menu-screen, .zetka-merge .zetka-menu-screen, .article-grid .zetka-side-screen, .zetka .zetka-side-screen, .zetka-layer .zetka-side-screen, .zetka-merge .zetka-side-screen, .article-grid .zetka-half-screen-one, .zetka .zetka-half-screen-one, .zetka-layer .zetka-half-screen-one, .zetka-merge .zetka-half-screen-one, .article-grid .zetka-half-screen-two, .zetka .zetka-half-screen-two, .zetka-layer .zetka-half-screen-two, .zetka-merge .zetka-half-screen-two, .article-grid .zetka-overhalf-one, .zetka .zetka-overhalf-one, .zetka-layer .zetka-overhalf-one, .zetka-merge .zetka-overhalf-one, .article-grid .zetka-overhalf-two, .zetka .zetka-overhalf-two, .zetka-layer .zetka-overhalf-two, .zetka-merge .zetka-overhalf-two {
-  padding-left: 0;
-  padding-right: 0; }
-.article-grid .article-block-before, .zetka .article-block-before, .zetka-layer .article-block-before, .zetka-merge .article-block-before, .article-grid .zetka-menu, .zetka .zetka-menu, .zetka-layer .zetka-menu, .zetka-merge .zetka-menu,
-.article-grid .article-block-after,
-.zetka .article-block-after,
-.zetka-layer .article-block-after,
-.zetka-merge .article-block-after,
-.article-grid .zetka-side,
-.zetka .zetka-side,
-.zetka-layer .zetka-side,
-.zetka-merge .zetka-side {
-  min-width: 10rem; }
 
-.article-layer {
-  grid-template-columns: var(--grid--auto);
-  grid-column: full; }
+.article-block-west {
+  grid-column: west; }
 
-.article-block, .zetka-overmain, .zetka-block, .zetka-merge-menu,
-.zetka-merge-menu-screen, .zetka-merge-side,
-.zetka-merge-side-screen, .zetka-menu-screen, .zetka-side-screen, .zetka-half-screen-one, .zetka-half-screen-two, .zetka-overhalf-one, .zetka-overhalf-two {
-  grid-template-columns: var(--grid--compact);
+.article-block-east {
+  grid-column: east; }
+
+.article-block-main {
+  grid-column: main; }
+
+.article-block {
+  grid-column: main; }
+
+.article-block-west,
+.article-block-east,
+.article-block-main,
+.article-block {
+  grid-template-columns: var(--grid-template--content-block); }
+
+.article-box-west {
+  grid-column: overwest; }
+
+.article-box-east {
+  grid-column: overeast; }
+
+.article-box-main {
   grid-column: overmain; }
 
-.article-block-before, .zetka-menu {
-  grid-column: before; }
+.article-box {
+  grid-column: overmain; }
 
-.article-block-after, .zetka-side {
-  grid-column: after; }
+.article-box-west,
+.article-box-east,
+.article-box-main,
+.article-box {
+  grid-template-columns: var(--grid-template-columns--content-box); }
 
-.article-reduce-after {
-  grid-template-columns: var(--grid--cut-after);
-  grid-column: full-start / overmain-end; }
+.article-westside {
+  grid-column: full-start / overwest-end; }
 
-.content-block, .zetka-half-one, .zetka-half-two, .zetka-third-one, .zetka-third-two, .zetka-third-tri, .zetka-third-merge-one, .zetka-third-merge-tri {
-  grid-template-columns: var(--grid--onlyrows); }
+.article-eastside {
+  grid-column: overeast-start / full-end; }
 
-.layer {
-  grid-column: full; }
+.article-westside,
+.article-eastside {
+  grid-template-columns: var(--grid-template-columns--content-box); }
+
+.article-block-merge-west {
+  grid-column: west-start / main-end; }
+
+.article-block-merge-east {
+  grid-column: main-start / east-end; }
+
+.article-block-merge {
+  grid-column: west-start / east-end; }
+
+.article-block-merge-west,
+.article-block-merge-east,
+.article-block-merge {
+  grid-template-columns: var(--grid-template-columns--content-block); }
+
+.article-box-merge-west {
+  grid-column: overwest-start / overmain-end; }
+
+.article-box-merge-east {
+  grid-column: overmain-start / overeast-end; }
+
+.article-box-merge {
+  grid-column: overwest-start / overeast-end; }
+
+.article-box-merge-west,
+.article-box-merge-east,
+.article-box-merge {
+  grid-template-columns: var(--grid-template-columns--content-box); }
+
+.article-westside.keep-grid {
+  --grid-part--WEST-as-MAIN:
+            0
+        [overmain-start overwest-start overeast-start]
+            var(--grid-base--col-gap)
+        [main-start west-start east-start]
+            var(--grid-formula--west-width)
+        [main-end west-end east-end]
+            var(--grid-base--col-gap)
+        [overmain-end overwest-end overeast-end]
+            0;
+  grid-template-columns: var(--grid-part--START) var(--grid-part--WEST-as-MAIN) var(--grid-formula--end-hard); }
+
+.article-eastside.keep-grid {
+  --grid-part--EAST-as-MAIN:
+            0
+        [overmain-start overwest-start overeast-start]
+            var(--grid-base--col-gap)
+        [main-start west-start east-start]
+            var(--grid-formula--east-width)
+        [main-end west-end east-end]
+            var(--grid-base--col-gap)
+        [overmain-end overwest-end overeast-end]
+            0;
+  grid-template-columns: var(--grid-formula--start-hard) var(--grid-part--EAST-as-MAIN) var(--grid-part--END); }
+
+.article-box-merge.keep-grid {
+  grid-template-columns: var(--grid-formula--start-hard) var(--grid-part--WEST) var(--grid-part--MAIN) var(--grid-part--EAST) var(--grid-formula--end-hard); }
+
+.article-box-merge-east.keep-grid {
+  grid-template-columns: var(--grid-formula--start-hard) var(--grid-part--MAIN-join-WEST) var(--grid-part--EAST) var(--grid-formula--end-hard); }
+
+.article-box-merge-west.keep-grid {
+  grid-template-columns: var(--grid-formula--start-hard) var(--grid-part--WEST) var(--grid-part--MAIN-join-EAST) var(--grid-formula--end-hard); }
+
+.article-grid {
+  /* <HR> similar as row gap */
+  /* vertical paddings for columns with background-color */ }
+  .article-grid .single-line {
+    min-height: var(--grid-base--row-gap); }
+  .article-grid .color-box {
+    padding-top: var(--grid-base--row-gap);
+    padding-bottom: var(--grid-base--row-gap); }
+
+.article-chapter:not(.is-on-top) {
+  margin-top: calc( 2 * var(--grid-base--row-gap) ); }
+
+.article-chapter:not(.is-on-bottom) {
+  margin-bottom: calc( 2 * var(--grid-base--row-gap) ); }
 
 /* EOF article-grid */
 /* ==============================================================
@@ -2572,84 +2730,5 @@ https://wordpress.org/plugins/country-phone-field-contact-form-7/
     transition: all 800ms cubic-bezier(0.175, 0.885, 0.32, 1.275); }
   .swed-sticker:hover::after {
     transform: scale(0.9, 1.2) translate(-15%, -10%); }
-
-/* -------------------------------------------------------
- * Article grid, sass formula
- * 2019.7.1
- * -------------------------------------------------------
- */
-/*
-:root {
-    --grid-base--column-gap:        1em;
-    --grid-base--row-gap:           1em;
-    --grid-base--sidenote-width:    16em;
-    --grid-base--contenta-width:    35em;
-}
-*/
-.zetka-merge-menu,
-.zetka-merge-menu-screen {
-  grid-column: full-start / overmain-end; }
-  @media (min-width: 64em) {
-    .zetka-merge-menu,
-    .zetka-merge-menu-screen {
-      grid-template-columns:  [ full-start   ] minmax(0, auto) [  before-start  ] minmax( auto, var(--grid-base--sidenote-width) ) [  before-end overmain-start  ] 0 [  main-start after-start  ] repeat( 6, calc( ( var(--grid-base--contenta-width) - 5*var(--grid-base--column-gap) ) / 6 ) ) [  main-end after-end  ] 0 [  overmain-end  full-end ] ; } }
-
-.zetka-merge-side,
-.zetka-merge-side-screen {
-  grid-column: overmain-start / full-end; }
-  @media (min-width: 64em) {
-    .zetka-merge-side,
-    .zetka-merge-side-screen {
-      grid-template-columns:  [ full-start  overmain-start  ] 0 [  main-start before-start  ] repeat( 6, calc( ( var(--grid-base--contenta-width) - 5*var(--grid-base--column-gap) ) / 6 ) ) [  main-end before-end  ] 0 [  overmain-end after-start  ] minmax( auto, var(--grid-base--sidenote-width) ) [  after-end  ] minmax(0, auto) [   full-end ] ; } }
-
-.zetka-menu-screen {
-  grid-column: full-start / before-end; }
-
-.zetka-side-screen {
-  grid-column: after-start / full-end; }
-
-@media (min-width: 64em) {
-  .zetka-half-screen-one {
-    grid-column: full-start / span 6; } }
-
-@media (min-width: 64em) {
-  .zetka-half-screen-two {
-    grid-column: 7 / full-end; } }
-
-@media (min-width: 64em) {
-  .zetka-overhalf-one {
-    grid-column: overmain-start / span 4; } }
-
-@media (min-width: 64em) {
-  .zetka-overhalf-two {
-    grid-column: 7 / overmain-end; } }
-
-@media (min-width: 64em) {
-  .zetka-half-one {
-    grid-column: main-start / span 3; } }
-
-@media (min-width: 64em) {
-  .zetka-half-two {
-    grid-column: 7 / main-end; } }
-
-@media (min-width: 64em) {
-  .zetka-third-one {
-    grid-column: 4 / span 2; } }
-
-@media (min-width: 64em) {
-  .zetka-third-two {
-    grid-column: 6 / span 2; } }
-
-@media (min-width: 64em) {
-  .zetka-third-tri {
-    grid-column: 8 / span 2; } }
-
-@media (min-width: 64em) {
-  .zetka-third-merge-one {
-    grid-column: 4 / span 4; } }
-
-@media (min-width: 64em) {
-  .zetka-third-merge-tri {
-    grid-column: 6 / span 4; } }
 
 /* EOF sass ordnung */

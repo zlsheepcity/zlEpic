@@ -6,16 +6,16 @@
     @extend .article-grid;
 }
 .zetka-overmain {
-    @extend .article-block;
+    @extend .article-box;
 }
 .zetka-block {
-    @extend .article-block;
+    @extend .article-box;
 }
 .zetka-menu {
-    @extend .article-block-before;
+    @extend .article-block-west;
 }
 .zetka-side {
-    @extend .article-block-after;
+    @extend .article-block-east;
 }
 
 // merge content

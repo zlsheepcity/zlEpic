@@ -1,157 +1,374 @@
 /* -------------------------------------------------------
- * Article grid, css-variables
- * 2019.7.7
+ * Article grid
+ * 2019.7.13
+ *
+ * - 3 columns: west, main, east
+ * - is mobile first
  * -------------------------------------------------------
  */
 
-// ------------------------------------------- Settings
+
+// ------------------------------------------- General Settings
+
 
 :root {
-    --grid-base--column-gap:        1rem;
-    --grid-base--row-gap:           1rem;
-    --grid-base--sidenote-width:    16rem;
-    --grid-base--contenta-width:    35rem;
+  --grid-base--row-gap:       1rem;
+  --grid-base--col-gap:    1.25rem; /* side paddings */
+  --grid-base--side-gap:      1rem; /* additional paddings between main and sides columns */
+  --grid-base--main-width:   35rem;
+  --grid-base--side-width:   16rem;
 }
 
-// ------------------------------------------- Templates
+/*
+    While we cant use var() in @media queries,
+    calculation should be manual
 
-:root {
-    --grid--compact:
-        [ full-start
-          overmain-start ]
-            1rem
-            [ before-start main-start after-start ]
-                repeat( 6, 1fr )
-            [ before-end   main-end   after-end ]
-            1rem
-        [ overmain-start
-          full-end ];
+    Step 1:
+        main-width + 2*col-gap = 37.5
+    Step 2:
+        step1 + side-width + 2*col-gap + side-gap = 57
+    Step 3:
+        step2 + side-width + 2*col-gap + side-gap = 76.5
+*/
 
-    --grid--notfullsize:
-        [ full-start
-          overmain-start ]
-            minmax(0, auto)
-            [ before-start main-start after-start ]
-                repeat( 6, calc( ( var(--grid-base--contenta-width) - 5*var(--grid-base--column-gap) ) / 6 ) )
-            [ before-end   main-end   after-end ]
-            minmax(0, auto)
-        [ overmain-end
-          full-end ];
+// ------------------------------------------- Grid Formula
 
-    --grid--fullsize:
-        [ full-start ]
-            minmax(0, auto)
-            [ before-start ]
-                minmax( auto, var(--grid-base--sidenote-width) )
-            [ before-end
-              overmain-start ]
-                1rem
-                [ main-start ]
-                    repeat( 6, calc( ( var(--grid-base--contenta-width) - 5*var(--grid-base--column-gap) ) / 6 ) )
-                [ main-end ]
-                1rem
-            [ overmain-end
-              after-start ]
-                minmax( auto, var(--grid-base--sidenote-width) )
-            [ after-end ]
-            minmax(0, auto)
-        [ full-end ];
 
-    --grid--cut-after:
-        [ full-start ]
-            minmax(0, auto)
-            [ before-start ]
-                minmax( auto, var(--grid-base--sidenote-width) )
-            [ before-end
-              overmain-start ]
-                1rem
-                [ main-start after-start ]
-                    repeat( 6, calc( ( var(--grid-base--contenta-width) - 5*var(--grid-base--column-gap) ) / 6 ) )
-                [ main-end after-end overmain-end full-end ];
+.article-grid {
 
-    --grid--onlyrows:
-        [ full-start before-start overmain-start main-start after-start ]
+    // content width
+
+  --grid-formula--main-width: auto;
+  --grid-formula--west-width: var(--grid-formula--main-width);
+  --grid-formula--east-width: var(--grid-formula--main-width);
+
+    // start + end
+
+  --grid-formula--start-hard:  [full-start] 0;
+  --grid-formula--end-hard:    0 [full-end];
+  --grid-formula--start-space: [full-start] minmax(0, 1fr);
+  --grid-formula--end-space:   minmax(0, 1fr) [full-end];
+
+    // west + east
+
+  --grid-formula--west-skip: 0;
+  --grid-formula--east-skip: 0;
+  --grid-formula--west-insert:
+            0
+        [overwest-start]
+            var(--grid-base--col-gap)
+        [west-start]
+            var(--grid-base--side-width)
+        [west-end]
+            var(--grid-base--col-gap)
+        [overwest-end]
+            var(--grid-base--side-gap);
+  --grid-formula--east-insert:
+            var(--grid-base--side-gap)
+        [overeast-start]
+            var(--grid-base--col-gap)
+        [east-start]
+            var(--grid-base--side-width)
+        [east-end]
+            var(--grid-base--col-gap)
+        [overeast-end]
+            0;
+
+    // main
+
+  --grid-formula--main-single:
+            0
+        [overmain-start]
+            var(--grid-base--col-gap)
+        [main-start]
+            var(--grid-formula--main-width)
+        [main-end]
+            var(--grid-base--col-gap)
+        [overmain-end]
+            0;
+
+  --grid-formula--main-join-all:
+            0
+        [overmain-start overwest-start overeast-start]
+            var(--grid-base--col-gap)
+        [main-start west-start east-start]
+            var(--grid-formula--main-width)
+        [main-end   west-end   east-end]
+            var(--grid-base--col-gap)
+        [overmain-end   overwest-end   overeast-end]
+            0;
+
+  --grid-formula--main-join-east:
+            0
+        [overmain-start overeast-start]
+            var(--grid-base--col-gap)
+        [main-start east-start]
+            var(--grid-formula--main-width)
+        [main-end   east-end]
+            var(--grid-base--col-gap)
+        [overmain-end   overeast-end]
+            0;
+
+  --grid-formula--main-join-west:
+            0
+        [overmain-start overwest-start]
+            var(--grid-base--col-gap)
+        [main-start west-start]
+            var(--grid-formula--main-width)
+        [main-end   west-end]
+            var(--grid-base--col-gap)
+        [overmain-end   overwest-end]
+            0;
+}
+
+
+// ------------------------------------------- Grid Constructor
+
+
+// default short view
+
+.article-grid {
+  --grid-part--START:          var(--grid-formula--start-hard);
+  --grid-part--WEST:           var(--grid-formula--west-skip);
+  --grid-part--MAIN:           var(--grid-formula--main-join-all);
+  --grid-part--MAIN-join-WEST: var(--grid-formula--main-join-all);
+  --grid-part--MAIN-join-EAST: var(--grid-formula--main-join-all);
+  --grid-part--MAIN-join-ALL:  var(--grid-formula--main-join-all);
+  --grid-part--EAST:           var(--grid-formula--east-skip);
+  --grid-part--END:            var(--grid-formula--end-hard);
+}
+
+// screen paddings
+
+@media all and (min-width: 37.5rem) {
+    .article-grid {
+      --grid-formula--main-width:  var(--grid-base--main-width);
+      --grid-part--START:          var(--grid-formula--start-space);
+      --grid-part--END:            var(--grid-formula--end-space);
+    }
+}
+
+// east column
+
+@media all and (min-width: 57rem) {
+    .article-grid {
+      --grid-formula--east-width:  var(--grid-base--side-width);
+      --grid-part--EAST:           var(--grid-formula--east-insert);
+      --grid-part--MAIN:           var(--grid-formula--main-join-west);
+      --grid-part--MAIN-join-WEST: var(--grid-formula--main-join-west);
+    }
+}
+
+// both columns
+
+@media all and (min-width: 76.5rem) {
+    .article-grid {
+      --grid-formula--west-width:  var(--grid-base--side-width);
+      --grid-part--WEST:           var(--grid-formula--west-insert);
+      --grid-part--MAIN:           var(--grid-formula--main-single);
+      --grid-part--MAIN-join-EAST: var(--grid-formula--main-join-east);
+    }
+}
+
+
+// ------------------------------------------- Grid Templates
+
+
+.article-grid {
+  --grid-template-columns--default:
+        var(--grid-part--START)
+        var(--grid-part--WEST)
+        var(--grid-part--MAIN)
+        var(--grid-part--EAST)
+        var(--grid-part--END);
+
+  --grid-template-columns--content-block:
+        [full-start overwest-start overeast-start overmain-start main-start west-start east-start]
             auto
-        [ full-end   before-end   overmain-end   main-end   after-end ];
+        [full-end   overwest-end   overeast-end   overmain-end   main-end   west-end   east-end];
+
+  --grid-template-columns--content-box:
+        [full-start overwest-start overeast-start overmain-start]
+            var(--grid-base--col-gap)
+        [main-start west-start east-start]
+            auto
+        [main-end   west-end   east-end]
+            var(--grid-base--col-gap)
+        [full-end   overwest-end   overeast-end   overmain-end];
 }
 
-// ------------------------------------------- Responsive breakpoints
 
-body {
-    --grid--auto:     var(--grid--compact);
+// ------------------------------------------- Sass Shortcuts
 
-    @media (min-width: 37rem) {
-        --grid--auto: var(--grid--notfullsize);
-    }
 
-    @media (min-width: 64rem) {
-        --grid--auto: var(--grid--fullsize);
-    }
-}
-
-// ------------------------------------------- Layout Components
-
-%article-grid--seed {
+%article-grid-seed {
     display:         grid;
     align-items:     start;
+    justify-content: start;
     grid-auto-flow:  row;
     grid-auto-rows:  min-content;
-    grid-column-gap: var(--grid-base--column-gap);
     grid-row-gap:    var(--grid-base--row-gap);
+    grid-column-gap: 0;
 }
+
+
+// ------------------------------------------- Columns
+
 
 .article-grid {
-    @extend %article-grid--seed;
-    grid-template-columns: var(--grid--auto);
-    grid-column: full;
+    @extend %article-grid-seed;
+    grid-template-columns: var(--grid-template-columns--default);
 }
+.article-grid *     { grid-column: main; }
 
-.article-grid {
-    * { grid-column: main; }
-    .article-block {
-        padding-left:  0;
-        padding-right: 0;
-    }
-    .article-block-before,
-    .article-block-after {
-        min-width: 10rem;
-    }
-}
+// general blocks
 
-.article-layer {
-    @extend %article-grid--seed;
-    grid-template-columns: var(--grid--auto);
-    grid-column: full;
-}
+.article-block-west { grid-column: west; }
+.article-block-east { grid-column: east; }
+.article-block-main { grid-column: main; }
+.article-block      { grid-column: main; }
 
+.article-block-west,
+.article-block-east,
+.article-block-main,
 .article-block {
-    @extend %article-grid--seed;
-    grid-template-columns: var(--grid--compact);
-    grid-column: overmain;
-}
-.article-block-before {
-    grid-column: before;
-}
-.article-block-after {
-    grid-column: after;
+    @extend %article-grid-seed;
+    grid-template-columns: var(--grid-template--content-block);
 }
 
-.article-reduce-after {
-    @extend %article-grid--seed;
-    grid-template-columns: var(--grid--cut-after);
-    grid-column: full-start / overmain-end;
+// general boxes
+
+.article-box-west   { grid-column: overwest; }
+.article-box-east   { grid-column: overeast; }
+.article-box-main   { grid-column: overmain; }
+.article-box        { grid-column: overmain; }
+
+.article-box-west,
+.article-box-east,
+.article-box-main,
+.article-box {
+    @extend %article-grid-seed;
+    grid-template-columns: var(--grid-template-columns--content-box);
+}
+
+// screen sides
+
+.article-westside { grid-column: full-start / overwest-end; }
+.article-eastside { grid-column: overeast-start / full-end; }
+
+.article-westside,
+.article-eastside {
+    @extend %article-grid-seed;
+    grid-template-columns: var(--grid-template-columns--content-box);
+}
+
+// merge blocks
+
+.article-block-merge-west     { grid-column: west-start / main-end; }
+.article-block-merge-east     { grid-column: main-start / east-end; }
+.article-block-merge          { grid-column: west-start / east-end; }
+
+.article-block-merge-west,
+.article-block-merge-east,
+.article-block-merge {
+    @extend %article-grid-seed;
+    grid-template-columns: var(--grid-template-columns--content-block);
+}
+
+// merge boxes
+
+.article-box-merge-west   { grid-column: overwest-start / overmain-end; }
+.article-box-merge-east   { grid-column: overmain-start / overeast-end; }
+.article-box-merge        { grid-column: overwest-start / overeast-end; }
+
+.article-box-merge-west,
+.article-box-merge-east,
+.article-box-merge  {
+    @extend %article-grid-seed;
+    grid-template-columns: var(--grid-template-columns--content-box);
 }
 
 
-// ------------------------------------------- Content Components
+// ------------------------------------------- Keep grid for columns
 
-.content-block {
-    @extend %article-grid--seed;
-    grid-template-columns: var(--grid--onlyrows);
+
+.article-westside.keep-grid {
+  --grid-part--WEST-as-MAIN:
+            0
+        [overmain-start overwest-start overeast-start]
+            var(--grid-base--col-gap)
+        [main-start west-start east-start]
+            var(--grid-formula--west-width)
+        [main-end   west-end   east-end]
+            var(--grid-base--col-gap)
+        [overmain-end   overwest-end   overeast-end]
+            0;
+
+    grid-template-columns:
+        var(--grid-part--START)
+        var(--grid-part--WEST-as-MAIN)
+        var(--grid-formula--end-hard);
 }
 
-.layer {
-    grid-column: full;
+.article-eastside.keep-grid {
+  --grid-part--EAST-as-MAIN:
+            0
+        [overmain-start overwest-start overeast-start]
+            var(--grid-base--col-gap)
+        [main-start west-start east-start]
+            var(--grid-formula--east-width)
+        [main-end   west-end   east-end]
+            var(--grid-base--col-gap)
+        [overmain-end   overwest-end   overeast-end]
+            0;
+
+    grid-template-columns:
+        var(--grid-formula--start-hard)
+        var(--grid-part--EAST-as-MAIN)
+        var(--grid-part--END);
 }
+
+.article-box-merge.keep-grid {
+    grid-template-columns:
+        var(--grid-formula--start-hard)
+        var(--grid-part--WEST)
+        var(--grid-part--MAIN)
+        var(--grid-part--EAST)
+        var(--grid-formula--end-hard);
+}
+.article-box-merge-east.keep-grid {
+    grid-template-columns:
+        var(--grid-formula--start-hard)
+        var(--grid-part--MAIN-join-WEST)
+        var(--grid-part--EAST)
+        var(--grid-formula--end-hard);
+}
+.article-box-merge-west.keep-grid {
+    grid-template-columns:
+        var(--grid-formula--start-hard)
+        var(--grid-part--WEST)
+        var(--grid-part--MAIN-join-EAST)
+        var(--grid-formula--end-hard);
+}
+
+// ------------------------------------------- Workers
+
+.article-grid {
+
+    /* <HR> similar as row gap */
+    .single-line {
+        min-height: var(--grid-base--row-gap);
+    }
+
+    /* vertical paddings for columns with background-color */
+    .color-box {
+        padding-top:    var(--grid-base--row-gap);
+        padding-bottom: var(--grid-base--row-gap);
+    }
+
+}
+
+.article-chapter:not(.is-on-top)    { margin-top:    calc( 2 * var(--grid-base--row-gap) ); }
+.article-chapter:not(.is-on-bottom) { margin-bottom: calc( 2 * var(--grid-base--row-gap) ); }
 
 /* EOF article-grid */

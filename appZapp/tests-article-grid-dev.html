@@ -1,0 +1,406 @@
+<!doctype html><!-- app7001-Zapp :: 2019.6.28 -->
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- ========================================= HEAD CONTENT -->
+
+
+    <title>Article grid</title>
+
+
+    <!-- ========================================= DESIGN -->
+
+    <style> /* ༼°▽°༽ boot style */
+        body    { width: 100%; height: auto; overflow: hidden; }
+        img,svg { max-width: 100%; }
+    </style>
+
+    <link
+        href="https://fonts.googleapis.com/css?family=Vollkorn:400,400i,700&subset=cyrillic"
+        rel="stylesheet">
+    <link
+        href="app/styles/app.css"
+        rel="stylesheet" type="text/css">
+
+    <!-- ========================================= APP HEAD -->
+
+    <script src="app/script/app-core.js"></script>
+    <script>app.log('... Wake Up, App!')</script>
+
+    <!-- ========================================= APP LIBS -->
+
+    <script src="app/script/components/image-zoom.js"></script>
+    <script>app.onload(ActivateImageZoom)</script>
+
+    <script src="app/script/components/class-mutator.js"></script>
+    <script>app.take({name:'mutate', f:el_class_mutator})</script>
+
+    <script src="app/script/components/scroll-follower.js"></script>
+    <script>app.take({name:'wayway', f:queenScrollFollower})</script>
+
+    <script src="app/script/components/scroll-trigger.js"></script>
+    <script>app.take({name:'waydot', f:queenScrollTrigger})</script>
+
+    <script src="app/script/components/svg-transform.js"></script>
+    <script>app.take({name:'morphy', f:ActivatedPathDanceQueen()})</script>
+
+    <!-- ========================================= APP LOADER -->
+
+    <script>
+        function RunInterface () { app.Welcome().log('App, Welcome!') }
+        function Run() { setTimeout(RunInterface,200) }
+        window.onload = Run
+    </script>
+
+    <!-- ========================================= APP CUSTOM -->
+
+    <!-- ========================================== ʕ⊙ᴥ⊙ʔ = -->
+    <!-- ========================================= END HEAD -->
+</head>
+<body class="body-wrap design-template">
+
+    <style>
+        .test-grid {
+            /* grid seed */
+            display:         grid;
+            align-items:     start;
+            grid-auto-flow:  row;
+            grid-auto-rows:  min-content;
+            grid-column-gap: 0;
+            grid-row-gap:    var(--grid-base--row-gap);
+
+            --grid-formula--empty-sidespace: 0;
+            --grid-formula--content-padding: 1rem;
+            --grid-formula--west-width:      var(--grid-base--sidenote-width);
+            --grid-formula--east-width:      var(--grid-base--sidenote-width);
+            --grid-formula--main-width:      var(--grid-base--contenta-width);
+            --grid-formula--main-width:      auto;
+
+
+            --grid-formula--start: [full-start] var(--grid-formula--empty-sidespace);
+            --grid-formula--end:   var(--grid-formula--empty-sidespace) [full-end];
+
+            --grid-formula--west-skip: 0;
+            --grid-formula--east-skip: 0;
+            --grid-formula--west-insert:
+                0
+                    [overwest-start]
+                        var(--grid-formula--content-padding)
+                            [west-start]
+                                var(--grid-formula--west-width)
+                            [west-end]
+                        var(--grid-formula--content-padding)
+                    [overwest-end]
+                0;
+            --grid-formula--east-insert:
+                0
+                    [overeast-start]
+                        var(--grid-formula--content-padding)
+                            [east-start]
+                                var(--grid-formula--east-width)
+                            [east-end]
+                        var(--grid-formula--content-padding)
+                    [overeast-end]
+                0;
+
+            --grid-formula--main-single:
+                0
+                    [overmain-start]
+                        var(--grid-formula--content-padding)
+                            [main-start]
+                                var(--grid-formula--main-width)
+                            [main-end]
+                        var(--grid-formula--content-padding)
+                    [overmain-end]
+                0;
+
+            --grid-formula--main-join-all:
+                0
+                    [overmain-start overwest-start overeast-start]
+                        var(--grid-formula--content-padding)
+                            [main-start west-start east-start]
+                                var(--grid-formula--main-width)
+                            [main-end   west-end   east-end]
+                        var(--grid-formula--content-padding)
+                    [overmain-end   overwest-end   overeast-end]
+                0;
+
+            --grid-formula--main-join-east:
+                0
+                    [overmain-start overeast-start]
+                        var(--grid-formula--content-padding)
+                            [main-start east-start]
+                                var(--grid-formula--main-width)
+                            [main-end   east-end]
+                        var(--grid-formula--content-padding)
+                    [overmain-end   overeast-end]
+                0;
+
+            --grid-formula--main-join-west:
+                0
+                    [overmain-start overwest-start]
+                        var(--grid-formula--content-padding)
+                            [main-start west-start]
+                                var(--grid-formula--main-width)
+                            [main-end   west-end]
+                        var(--grid-formula--content-padding)
+                    [overmain-end   overwest-end]
+                0;
+
+            --grid-part--START:          var(--grid-formula--start);
+            --grid-part--WEST:           var(--grid-formula--west-skip);
+            --grid-part--MAIN:           var(--grid-formula--main-join-all);
+            --grid-part--MAIN-join-WEST: var(--grid-formula--main-join-all);
+            --grid-part--MAIN-join-EAST: var(--grid-formula--main-join-all);
+            --grid-part--MAIN-join-ALL:  var(--grid-formula--main-join-all);
+            --grid-part--EAST:           var(--grid-formula--east-skip);
+            --grid-part--END:            var(--grid-formula--end);
+
+
+            --grid-template--default:
+                var(--grid-part--START)
+                var(--grid-part--WEST)
+                var(--grid-part--MAIN)
+                var(--grid-part--EAST)
+                var(--grid-part--END);
+
+            --grid-template--content-block:
+                [full-start overwest-start overeast-start overmain-start main-start west-start east-start]
+                    auto
+                [full-end   overwest-end   overeast-end   overmain-end   main-end   west-end   east-end];
+
+            --grid-template--content-box:
+                [full-start overwest-start overeast-start overmain-start]
+                    var(--grid-formula--content-padding)
+                        [main-start west-start east-start]
+                            auto
+                        [main-end   west-end   east-end]
+                    var(--grid-formula--content-padding)
+                [full-end   overwest-end   overeast-end   overmain-end];
+
+            grid-template-columns: var(--grid-template--default);
+        }
+        .test-grid .article-block-west { grid-column: west; }
+        .test-grid .article-block-east  { grid-column: east; }
+        .test-grid .article-block-main  { grid-column: main; }
+        .test-grid .article-box-west  { grid-column: overwest; }
+        .test-grid .article-box-east  { grid-column: overeast; }
+        .test-grid .article-box-main  { grid-column: overmain; }
+
+        .test-grid .article-westside { grid-column: full-start / overwest-end; }
+        .test-grid .article-eastside { grid-column: overeast-start / full-end; }
+
+        .test-grid .article-block-merge { grid-column: west-start / east-end; }
+        .test-grid .article-block-merge-west { grid-column: west-start / main-end; }
+        .test-grid .article-block-merge-east { grid-column: main-start / east-end; }
+
+        .test-grid .article-box-merge { grid-column: overwest-start / overeast-end; }
+        .test-grid .article-box-merge-west { grid-column: overwest-start / overmain-end; }
+        .test-grid .article-box-merge-east { grid-column: overmain-start / overeast-end; }
+
+        .test-grid .article-block-merge,
+        .test-grid .article-block-merge-west,
+        .test-grid .article-block-merge-east,
+        .test-grid .article-block-west,
+        .test-grid .article-block-east,
+        .test-grid .article-block-main {
+            /* grid seed */
+            display:         grid;
+            align-items:     start;
+            grid-auto-flow:  row;
+            grid-auto-rows:  min-content;
+            grid-column-gap: 0;
+            grid-row-gap:    var(--grid-base--row-gap);
+
+            grid-template-columns: var(--grid-template--content-block);
+        }
+
+        .test-grid .article-box-merge,
+        .test-grid .article-box-merge-west,
+        .test-grid .article-box-merge-east,
+        .test-grid .article-westside,
+        .test-grid .article-eastside,
+        .test-grid .article-box-west,
+        .test-grid .article-box-east,
+        .test-grid .article-box-main {
+            /* grid seed */
+            display:         grid;
+            align-items:     start;
+            grid-auto-flow:  row;
+            grid-auto-rows:  min-content;
+            grid-column-gap: 0;
+            grid-row-gap:    var(--grid-base--row-gap);
+
+            grid-template-columns: var(--grid-template--content-box);
+        }
+
+        .article-chapter:not(.is-on-top) { margin-top: calc( 2 * var(--grid-base--row-gap) ); }
+        .article-chapter:not(.is-on-bottom) { margin-bottom: calc( 2 * var(--grid-base--row-gap) ); }
+
+        .test-grid .content-block {
+            /* grid seed */
+            display:         grid;
+            align-items:     start;
+            grid-auto-flow:  row;
+            grid-auto-rows:  min-content;
+            grid-column-gap: 0;
+            grid-row-gap:    var(--grid-base--row-gap);
+
+            grid-template-columns: var(--grid-template--content-block);
+        }
+
+        @media all and (min-width: 37rem) {
+            .test-grid {
+            --grid-formula--empty-sidespace: minmax(0, 1fr);
+            --grid-formula--main-width:      35rem;
+            }
+        }
+        @media all and (min-width: 55rem) {
+            .test-grid {
+            --grid-part--EAST:           var(--grid-formula--east-insert);
+            --grid-part--MAIN:           var(--grid-formula--main-join-west);
+            --grid-part--MAIN-join-WEST: var(--grid-formula--main-join-west);
+            }
+        }
+        @media all and (min-width: 73rem) {
+            .test-grid {
+            --grid-part--WEST:           var(--grid-formula--west-insert);
+            --grid-part--MAIN:           var(--grid-formula--main-single);
+            --grid-part--MAIN-join-EAST: var(--grid-formula--main-join-east);
+            }
+        }
+
+        .test-grid * {
+            grid-column: main;
+        }
+        .huge-title {
+            font-size: 4em;
+            line-height: 1;
+        }
+        .color-text {
+            color: var(--mark-text-color);
+        }
+        .test-grid .color-box {
+            padding-top:    calc( 1 * var(--grid-base--row-gap) );
+            padding-bottom: calc( 1 * var(--grid-base--row-gap) );
+        }
+        .has-devlabels [class^="article-"]:hover {
+            position: relative;
+            outline: 2px firebrick solid;
+        }
+        .has-devlabels [class^="article-"]:hover::before {
+            content: attr(class);
+            position: absolute;
+            z-index: 2;
+            top:50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+            max-width: 92%;
+            font-size: 1.5em;
+            line-height: 1;
+            color: firebrick;
+            padding: 0.5rem;
+        }
+        .has-devlabels [class^="article-"]:hover::after {
+            content: '';
+            position: absolute;
+            z-index: 1;
+            top:  0;
+            left: 0;
+            width:  100%;
+            height: 100%;
+            background-color: rgba(255,255,255,0.9);
+        }
+    </style>
+
+    <article class="test-grid article-chapter">
+        <header class="article-block-merge">
+            <h1 class="huge-title">Article grid usecases</h1>
+            <p class="subtitle">2019.7.11</p>
+        </header>
+
+        <h2 class="title">Mission</h2>
+        <ul class="content-block">
+            <li>Упростить вёрстку статей с большим количеством элементов оформления</li>
+            <li>Конструктор для уникальных вставок. Чтобы любой креатив вписывался в сетку.</li>
+            <li>Трёхколоночная модель — текст и примечания по обеим сторонам</li>
+            <li>Автоматическая адаптация под все экраны</li>
+        </ul>
+
+    </article>
+
+    <article class="test-grid article-chapter has-devlabels">
+        <header>
+            <h2 class="big-title">Components</h2>
+        </header>
+
+        <div class="article-block-west color-text"><p class="auto"></p></div>
+        <div class="article-block-main">
+            <p class="auto"></p>
+            <p class="auto"></p>
+            <p class="auto"></p>
+        </div>
+        <div class="article-block-east color-text"><p class="auto"></p></div>
+
+        <div class="article-box-west color-box"><p class="auto"></p></div>
+        <div class="article-block-main">
+            <p class="auto"></p>
+            <p class="auto"></p>
+            <p class="auto"></p>
+        </div>
+        <div class="article-box-east color-box"><p class="auto"></p></div>
+        <div class="article-box-main color-box"><p class="auto"></p></div>
+        <p class="auto"></p>
+
+        <div class="article-westside color-box"><p class="auto"></p></div>
+        <div class="article-block-main">
+            <p class="auto"></p>
+            <p class="auto"></p>
+            <p class="auto"></p>
+        </div>
+        <div class="article-eastside color-box color-text"><p class="auto"></p></div>
+
+        <div class="article-box-merge-east color-box"><p class="auto"></p></div>
+        <div class="article-block-merge-east">
+            <p class="auto"></p>
+            <p class="auto"></p>
+        </div>
+        <div class="article-box-merge color-box"><p class="auto"></p></div>
+        <div class="article-block-merge">
+            <p class="auto"></p>
+            <p class="auto"></p>
+            <p class="auto"></p>
+        </div>
+        <div class="article-box-merge-west color-box"><p class="auto"></p></div>
+        <div class="article-block-merge-west">
+            <p class="auto"></p>
+            <p class="auto"></p>
+        </div>
+
+    </article>
+
+<!-- ========================================= PAGE CUSTOM -->
+
+<script>
+    // insert random content into paragraphs
+    function p() {
+        // const p = document.getElementsByTagName('p')
+        const p = document.querySelectorAll('.auto')
+        for ( let i in p ) {
+            let texts = [
+                'Petrovich is more than just a programming language, it is a complete computer operating system and program development environment. It is named after Ivan Petrovich Pavlov, the guy who demonstrated conditional responses to stimuli in dogs. I would have called the language "Pavlov", but it seems all the cool names for languages have already been used by someone else.',
+                'In order to understand how Petrovich works, it is instructive to run through some examples. This is a sample interactive Petrovich session, annotated with comments.',
+                'The user asked Petrovich to do something with some scientific data. It responds first by plotting the data and printing it. Since this is not what the user wanted, he punishes Petrovich, then tries again. Wanting to avoid punishment, Petrovich tries something different, and this time performs an operation useful to the user. To encourage such behaviour, the user rewards Petrovich.'
+                ]
+            let text = texts[Math.floor(Math.random()*texts.length)]
+            let textnode = document.createTextNode(text)
+            if (p[i].appendChild) p[i].appendChild(textnode)
+        }
+    }
+    p()
+</script>
+
+</body>
+</html>

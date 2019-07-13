@@ -1,0 +1,157 @@
+/* -------------------------------------------------------
+ * Article grid, css-variables
+ * 2019.7.7
+ * -------------------------------------------------------
+ */
+
+// ------------------------------------------- Settings
+
+:root {
+    --grid-base--column-gap:        1rem;
+    --grid-base--row-gap:           1rem;
+    --grid-base--sidenote-width:    16rem;
+    --grid-base--contenta-width:    35rem;
+}
+
+// ------------------------------------------- Templates
+
+:root {
+    --grid--compact:
+        [ full-start
+          overmain-start ]
+            1rem
+            [ before-start main-start after-start ]
+                repeat( 6, 1fr )
+            [ before-end   main-end   after-end ]
+            1rem
+        [ overmain-start
+          full-end ];
+
+    --grid--notfullsize:
+        [ full-start
+          overmain-start ]
+            minmax(0, auto)
+            [ before-start main-start after-start ]
+                repeat( 6, calc( ( var(--grid-base--contenta-width) - 5*var(--grid-base--column-gap) ) / 6 ) )
+            [ before-end   main-end   after-end ]
+            minmax(0, auto)
+        [ overmain-end
+          full-end ];
+
+    --grid--fullsize:
+        [ full-start ]
+            minmax(0, auto)
+            [ before-start ]
+                minmax( auto, var(--grid-base--sidenote-width) )
+            [ before-end
+              overmain-start ]
+                1rem
+                [ main-start ]
+                    repeat( 6, calc( ( var(--grid-base--contenta-width) - 5*var(--grid-base--column-gap) ) / 6 ) )
+                [ main-end ]
+                1rem
+            [ overmain-end
+              after-start ]
+                minmax( auto, var(--grid-base--sidenote-width) )
+            [ after-end ]
+            minmax(0, auto)
+        [ full-end ];
+
+    --grid--cut-after:
+        [ full-start ]
+            minmax(0, auto)
+            [ before-start ]
+                minmax( auto, var(--grid-base--sidenote-width) )
+            [ before-end
+              overmain-start ]
+                1rem
+                [ main-start after-start ]
+                    repeat( 6, calc( ( var(--grid-base--contenta-width) - 5*var(--grid-base--column-gap) ) / 6 ) )
+                [ main-end after-end overmain-end full-end ];
+
+    --grid--onlyrows:
+        [ full-start before-start overmain-start main-start after-start ]
+            auto
+        [ full-end   before-end   overmain-end   main-end   after-end ];
+}
+
+// ------------------------------------------- Responsive breakpoints
+
+body {
+    --grid--auto:     var(--grid--compact);
+
+    @media (min-width: 37rem) {
+        --grid--auto: var(--grid--notfullsize);
+    }
+
+    @media (min-width: 64rem) {
+        --grid--auto: var(--grid--fullsize);
+    }
+}
+
+// ------------------------------------------- Layout Components
+
+%article-grid--seed {
+    display:         grid;
+    align-items:     start;
+    grid-auto-flow:  row;
+    grid-auto-rows:  min-content;
+    grid-column-gap: var(--grid-base--column-gap);
+    grid-row-gap:    var(--grid-base--row-gap);
+}
+
+.article-grid {
+    @extend %article-grid--seed;
+    grid-template-columns: var(--grid--auto);
+    grid-column: full;
+}
+
+.article-grid {
+    * { grid-column: main; }
+    .article-block {
+        padding-left:  0;
+        padding-right: 0;
+    }
+    .article-block-before,
+    .article-block-after {
+        min-width: 10rem;
+    }
+}
+
+.article-layer {
+    @extend %article-grid--seed;
+    grid-template-columns: var(--grid--auto);
+    grid-column: full;
+}
+
+.article-block {
+    @extend %article-grid--seed;
+    grid-template-columns: var(--grid--compact);
+    grid-column: overmain;
+}
+.article-block-before {
+    grid-column: before;
+}
+.article-block-after {
+    grid-column: after;
+}
+
+.article-reduce-after {
+    @extend %article-grid--seed;
+    grid-template-columns: var(--grid--cut-after);
+    grid-column: full-start / overmain-end;
+}
+
+
+// ------------------------------------------- Content Components
+
+.content-block {
+    @extend %article-grid--seed;
+    grid-template-columns: var(--grid--onlyrows);
+}
+
+.layer {
+    grid-column: full;
+}
+
+/* EOF article-grid */
