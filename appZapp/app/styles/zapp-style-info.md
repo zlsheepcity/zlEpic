@@ -32,3 +32,7 @@ https://fonts.googleapis.com/css?family=Vollkorn:400,400i,700&subset=cyrillic
 
 2019.7.1
 ...zetka v2
+
+2019.7.14
+Project closed.
+Continue: appart
