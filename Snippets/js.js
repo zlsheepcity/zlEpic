@@ -179,6 +179,8 @@ for (let i = 0; i < 1e10; i++) {
 
 // Get Unique Values of an Array
 
+const uniqueValues = [...new Set(myArray)];
+
   var j = [...new Set([1, 2, 3, 3])]
   >>> [1, 2, 3]
 
@@ -189,6 +191,27 @@ for (let i = 0; i < 1e10; i++) {
   const attributes = { handsomeness: 'Extreme', hair: 'Brown', eyes: 'Blue' };
 
   const summary = {...person, ...tools, ...attributes};
+
+
+// create or not create
+
+const myObject = { ...myProperty && { propName: myProperty } };
+
+{
+  value1,
+  value2,
+  ...condition1 && {
+    value3,
+    value4,
+  },
+  ...condition2 && {
+    value5,
+  },
+}
+
+// if myProperty==false, then myObject = {}
+
+
 
 // Get Query String Parameters
 
@@ -352,3 +375,16 @@ function volume(h) {
     }
 }
 volume(1)(2)(3)
+
+
+// --------------------------------------------- // JSON
+
+const formatted = JSON.stringify(myObj, null, 2);
+/*
+Метод stringify принимает три параметра. Первый — это JavaScript-объект.
+Второй, необязательный, представляет собой функцию, которую можно использовать для обработки JSON-кода,
+получающегося в ходе преобразования объекта. Последний параметр указывает на то,
+сколько пробелов нужно использовать при формировании отступов в JSON-коде. Если опустить последний параметр,
+то весь полученный JSON-код будет представлять собой одну длинную строку.
+Если в объекте myObj есть циклические ссылки, преобразовать его в формат JSON не удастся.
+*/
