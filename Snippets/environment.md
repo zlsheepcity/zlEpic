@@ -84,6 +84,10 @@ git reset --hard savepoint
 git branch -d savepoint
 
 
+# Сохранить пароль
+
+git config credential.helper store
+
 
 ## NEW PRJ
 
