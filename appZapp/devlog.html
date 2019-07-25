@@ -109,6 +109,34 @@
         </code>
     </section>
 
+    <!-- Intersection Observer -->
+
+    <section class="zetka">
+        <header class="chapter-title">
+            <h2>Intersection observer</h2>
+            <div>2019.7.25</div>
+        </header>
+        <div style="background:firebrick; min-height:1.50vh;">Marker at the bottom. Is-active, when goes away to top.</div>
+        <div class="IntersectionObserverMarkerA" style="position: absolute;height:0px;"></div>
+        <script>
+            function isActiveWhenGoesNorth (markerName) {
+                const marker    = document.querySelector('.'+markerName)
+                const doDisplay = () => marker.classList.add('is-active')
+                const doAway    = () => marker.classList.remove('is-active')
+
+                if( !window.IntersectionObserver ) return doDisplay()
+
+                const markerFunction = (reports) => {
+                    let status = reports[0]
+                    if (status.boundingClientRect.top>0) doAway()
+                    else doDisplay()
+                }
+                const markerObserver = new IntersectionObserver(markerFunction, {threshold:[0]} )
+                markerObserver.observe(marker)
+            }
+            isActiveWhenGoesNorth('IntersectionObserverMarkerA')
+        </script>
+    </section>
 
 
     <section class="zetka">
@@ -288,8 +316,6 @@
 </svg>
         </textarea>
     </section>
-
-
 
     <section class="zetka">
         <header class="chapter-title">
