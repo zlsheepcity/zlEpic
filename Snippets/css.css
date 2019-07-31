@@ -100,6 +100,17 @@ h1 span {
 }
 
 
+/* hover + focus */
+
+div:hover .extra-stuff {
+  transform: translateY(0);
+}
+
+div:focus-within .extra-stuff {
+  transform: translateY(0);
+}
+
+
 
 /* Focused shadow */
 
