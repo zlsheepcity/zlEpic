@@ -111,4 +111,7 @@ git rebase --continue OR git rebase --abort
 ```
 
 ------------------------------------------------------
+# EMBED SERVICES
 ------------------------------------------------------
+
+<iframe id="YT-video-player-wrapper" class="video" frameborder="0" allowfullscreen="1" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" title="YouTube video player" width="100%" height="100%" src="https://www.youtube.com/embed/4bi1b5w7alI?hl=en&amp;controls=1&amp;playsinline=1&amp;rel=0&amp;fs=0&amp;allowfullscreen=false&amp;enablejsapi=1&amp;origin=https%3A%2F%2F11mirrors-hotel.com&amp;widgetid=1"></iframe>
