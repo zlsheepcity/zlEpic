@@ -414,6 +414,17 @@ https://css-tricks.com/putting-the-flexbox-albatross-to-real-use/
 flex-basis: calc(560px * 999 - 100% * 999)
 
 
+/* ================================================================= CSS */
+
+
+a {
+  text-decoration-color: #EA215A;
+  text-decoration-thickness: .125em;
+  text-underline-offset: 1.5px;
+}
+
+
+
 /* ================================================================= SASS */
 
 /* function removes size-unit from value */
