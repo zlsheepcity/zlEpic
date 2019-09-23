@@ -3,9 +3,7 @@
 
 /* ---------------------------------------------- */ // onload
 
-document.addEventListener('DOMContentLoaded', function(event) {
-  //the event occurred
-})
+document.addEventListener('DOMContentLoaded', function(event) {})
 
 window.onload = function(e){
 
@@ -72,7 +70,23 @@ const link = document.createElement('a')
 const text = document.createTextNode('continue reading...')
 const hr = document.createElement('hr')
 
+// ======================== ATTRIBUTES
+
 link.href = 'foo.html'
+
+// keep perforamce while reading all attributes
+for ( let name of el.getAttributeNames() ) {
+  let value = el.getAttribute(name)
+  other__element.setAttribute(name, value)
+  console.log(name, value)
+}
+/*
+  ELEMENT.attributes should be avoided in performance critical scenarios
+  (it forces the creation of Attr objects which otherwise can stay hidden)
+*/
+
+// ======================== INSERT CONTENT
+
 link.appendChild(text)
 myElement.appendChild(link)
 myElement.appendChild(hr)
@@ -296,6 +310,17 @@ node.styles({
 var killId = setTimeout(function() {
   for (var i = killId; i > 0; i--) clearInterval(i)
 }, 3000);
+
+
+// ==================================== LAZY LOADING
+
+// browser native 2020 
+if ('loading' in HTMLImageElement.prototype) {
+  const images = document.querySelectorAll('img[loading="lazy"]');
+  images.forEach(img => {
+    img.src = img.dataset.src;
+  });
+}
 
 
 
