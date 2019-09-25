@@ -54,9 +54,18 @@ $(window).load(function() {
 // https://www.sitepoint.com/dom-manipulation-vanilla-javascript-no-jquery/
 
 const myElement = document.querySelector('#foo > div.bar')
-const myElements = document.querySelectorAll('.bar')
-const elements2 = document.getElementsByTagName('div')
 const myChildElemet = myElement.querySelector('input[type="submit"]')
+const parent = document.querySelector('p').closest('div')
+
+// возвращает статический NodeList
+const myElements = document.querySelectorAll('.bar')
+const arr = [...document.querySelectorAll('.bar')]
+
+// Возвращают живую HTMLCollection
+const elements2 = document.getElementsByTagName('div')
+const elements3 = document.getElementsByClassName('.bar')
+
+
 myElement.matches('div.bar') === true
 
 const newElement = document.createElement('div')
@@ -65,6 +74,29 @@ document.body.appendChild(newElement)
 element1.appendChild(element2)
 // Insert element2 as child of element 1, right before element3
 element1.insertBefore(element2, element3)
+// Insert custom HTML
+document.body.insertAdjacentHTML('beforeend','<a href="/home" class="active">Home</a>')
+document.body.insertAdjacentElement('beforebegin', myElement);
+/*
+  <!-- beforebegin -->
+  <p>
+    <!-- afterbegin -->
+    foo
+    <!-- beforeend -->
+  </p>
+  <!-- afterend -->
+*/
+
+// будет перемещен, а не скопирован!
+const h1 = document.querySelector('h1')
+const h2 = document.querySelector('h2')
+h1.insertAdjacentElement('afterend', h2)
+
+// будет перемещен и заменён
+const h1 = document.querySelector('h1')
+const h2 = document.querySelector('h2')
+h1.replaceWith(h2)
+
 
 const link = document.createElement('a')
 const text = document.createTextNode('continue reading...')
@@ -134,7 +166,30 @@ myElement.addEventListener('change', function listener (event) {
   this.removeEventListener('change', listener)
 })
 
+/* ---------------------------------------------- */// Mutation Observer
 
+
+const target = document.querySelector('#container');
+const observer = new MutationObserver(callback);
+observer.observe(target, options);
+
+const callback = (mutations, observer) => {
+  mutations.forEach(mutation => {
+    switch (mutation.type) {
+      case 'attributes':
+        // the name of the changed attribute is in
+        // mutation.attributeName
+        // and its old value is in mutation.oldValue
+        // the current value can be retrieved with
+        // target.getAttribute(mutation.attributeName)
+        break;
+      case 'childList':
+        // any added nodes are in mutation.addedNodes
+        // any removed nodes are in mutation.removedNodes
+        break;
+    }
+  });
+};
 
 /* ---------------------------------------------- */// web workers
 
@@ -314,7 +369,7 @@ var killId = setTimeout(function() {
 
 // ==================================== LAZY LOADING
 
-// browser native 2020 
+// browser native 2020
 if ('loading' in HTMLImageElement.prototype) {
   const images = document.querySelectorAll('img[loading="lazy"]');
   images.forEach(img => {
@@ -400,6 +455,12 @@ function volume(h) {
     }
 }
 volume(1)(2)(3)
+
+
+// Template literals (Template strings)
+`string text ${expression} string text`
+`string text line 1
+ string text line 2`
 
 
 // --------------------------------------------- // JSON
