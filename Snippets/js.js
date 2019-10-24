@@ -438,6 +438,9 @@ const array2 = array.concat()
 
 Array.from(arrayLike[, mapFn[, thisArg]])
 
+Превращает NodeList в array 
+[...document.querySelectorAll('div')]
+
 // ---------------------------------------------- // VARIOUS
 
 
