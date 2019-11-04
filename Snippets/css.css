@@ -1,22 +1,50 @@
 @charset "utf-8";
 @import url('part.css');
 
-/* это тот же async только для .css */
+/* это тот же async только для .css
 <link media="none" onload="if(media!="all") media="all"" rel="stylesheet" type="text/css", href= main.css>
+*/
 
+
+/* ======================================================== SCROLL UX */
 
 html {
   scroll-behavior: smooth;
 }
 
-/*
-     600px      900px                1200px       1800px
-phone     tablet     landscape tablet      desktop      big
-*/
 
-/*
---------------------------------------------------- basics
-*/
+/* scroll snap for sections */
+body {
+  scroll-snap-type: y mandatory;
+}
+section {
+  scroll-snap-align: start;
+}
+
+/* each slide snaps into place */
+.aSnapSlider {
+  scroll-snap-points-x: repeat(300px);
+  scroll-snap-type: mandatory;
+}
+
+
+/* SCROLL SNAP */
+
+#carousel {
+    scroll-snap-type: x mandatory;
+    scroll-padding-top: 40px;
+}
+#carousel > div {
+    scroll-snap-align: center;
+}
+#carousel > div.unskippable {
+  scroll-snap-stop: always;
+}
+
+
+
+/* ======================================================== BASICS */
+
 
 html {
     margin: 0;
@@ -29,6 +57,63 @@ body {
 html { box-sizing: border-box; }
 *, *::before, *::after { box-sizing: inherit; }
 
+
+a {
+  text-decoration-color: #EA215A;
+  text-decoration-thickness: .125em;
+  text-underline-offset: 1.5px;
+}
+
+/* focus border */
+a:focus {
+  outline: 1px solid;
+  outline-offset: .15em;
+}
+
+/* hover + focus */
+div:hover .extra-stuff {
+  transform: translateY(0);
+}
+div:focus-within .extra-stuff {
+  transform: translateY(0);
+}
+
+
+
+
+/* ======================================================== @MEDIA */
+
+
+@media screen and (prefers-reduced-motion: reduce) {}        /* do less animations */
+@media screen and (prefers-reduced-motion: no-preference) {} /* do animations */
+
+@media only screen and (min-device-width: 400px) {} /* Для устройств 400px и больше: */
+@media (min-width: 600px) and (max-width: 800px) {} /* AND statement */
+@media (max-width: 600px), (min-width: 800px) {} /* OR statement */
+@media (min-width: 768px) and (min-device-pixel-ratio: 1.5) {} /* detect retina mobile */
+@media screen and (min-aspect-ratio: 16/10) {}
+
+@media (hover:hover) {}
+@media (any-hover:hover) {}
+/*
+  hover: hover      , if the primary input mechanism can hover elements;
+  hover: none       , if the primary input mechanism can’t hover elements, or there is no primary pointing input mechanism.
+*/
+
+@media (pointer:hover) {}
+@media (any-pointer:hover) {}
+/*
+  pointer: coarse   , if the primary input mechanism includes a pointing device of limited accuracy;
+  pointer: fine     , if the primary input mechanism includes an accurate pointing device;
+  pointer: none     , if the primary input mechanism does not include a pointing device.
+*/
+
+  /*
+       600px      900px                1200px       1800px
+  phone     tablet     landscape tablet      desktop      big
+  */
+
+/* SASS PRESETS */
 
 @mixin for-phone-only {
   @media (max-width: 599px) { @content; }
@@ -47,82 +132,39 @@ html { box-sizing: border-box; }
 }
 
 
+/* ======================================================== PRINT */
 
-/* ======================================================== Snippets */
-
-/* base64 */
-
-div {
-    background-image: url("data:image/svg+xml;base64,-----");
+/*
+CSS Paged Media Module
+https://drafts.csswg.org/css-page-3/
+*/
+@media print {
+     @page {
+        margin: .5cm;
+    }
 }
 
-div {
-    background-image: url("data:image/svg+xml,%3Csvg width='30' height='30' viewBox='0 0 30 30' version='1.1' xmlns='http://www.w3.org/2000/svg'%3E%3Cg stroke='none' stroke-width='1' fill='none' fill-rule='evenodd'%3E%3Cg transform='translate%28-128.000000, -59.000000%29' fill='%23F44336'%3E%3Cpolygon points='157.848404 61.9920213 145.980053 73.8603723 157.848404 85.7287234 154.856383 88.7207447 142.988032 76.8523936 131.119681 88.7207447 128.12766 85.7287234 139.996011 73.8603723 128.12766 61.9920213 131.119681 59 142.988032 70.8683511 154.856383 59'%3E%3C/polygon%3E%3C/g%3E%3C/g%3E%3C/svg%3E%0A");
-}
-
-/* font size formula */
-
-The formula to make this work is relatively simple, it takes 4 variables: minimum size, maximum size, minimum viewport width and maximum viewport width.
-
-body {
-  font-size: calc([minimum size] + ([maximum size] - [minimum size]) * ((100vw - [minimum viewport width]) / ([maximum viewport width] - [minimum viewport width])));
+.pageBreak {
+  page-break-after  : auto | always | avoid | left | right
+  page-break-before : auto | always | avoid | left | right
+  page-break-inside : auto | avoid
 }
 
 
-/* ======================================================= Components */
+/* ======================================================== FORMS */
 
-/* first text row without empty space at the top */
 
-@mixin lhCrop($line-height) {
-  &::before {
-    content: '';
-    display: block;
-    height: 0;
-    width: 0;
-    margin-top: calc((1 - #{$line-height}) * 0.5em);
-  }
+.aFormInput:invalid:not(:placeholder-shown) {
+    color:brown;
 }
-
-
-/* inline background */
-h1 {
-  max-width: 300px;
-  font-family: Verdana;
-}
-
-h1 span {
-  background: blue;
-  color: white;
-  padding: 12px 12px;
-  line-height: 1.4;
-  -webkit-box-decoration-break: clone;
-  box-decoration-break: clone;
-}
-
-
-/* hover + focus */
-
-div:hover .extra-stuff {
-  transform: translateY(0);
-}
-
-div:focus-within .extra-stuff {
-  transform: translateY(0);
+.aFormInput:valid:not(:placeholder-shown) {
+    color:darkgreen;
 }
 
 
 
-/* Focused shadow */
+/* ======================================================== SCROLLBAR */
 
-body.hasFocusedShadow {
-    pointer-events:  none;
-}
-body.hasFocusedShadow .aFocusedShadow {
-    position: relative;
-    z-index: 9999;
-    pointer-events: auto;
-    box-shadow: 0 0 0 99999px rgba(0, 0, 0, .8);
-}
 
 /* hide scrollbar 2019 */
 
@@ -147,129 +189,20 @@ body.hasFocusedShadow .aFocusedShadow {
   outline: 1px solid #ca0713;
 }
 
-/* scroll snap for sections */
 
-body {
-  scroll-snap-type: y mandatory;
-}
-section {
-  scroll-snap-align: start;
-}
 
-/* each slide snaps into place */
+/* ======================================================== IMAGES */
 
-.aSnapSlider {
-  scroll-snap-points-x: repeat(300px);
-  scroll-snap-type: mandatory;
+/* base64 */
+div {
+    background-image: url("data:image/svg+xml;base64,-----");
 }
 
-/* */
-
-.aTextContentIsVisuallyHidden {
-  text-indent: 100%;
-  white-space: nowrap;
-  overflow: hidden;
-}
-
-/* loading spinner */
-
-.aLoadingIcon {
-    display:inline-block;
-    vertical-align:middle;
-    min-width:25px;
-    min-height:25px;
-    background-position: 50% 50%;
-    background-repeat: no-repeat;
-    background-image: url("data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjMDAwMDAwIiBoZWlnaHQ9IjI0IiB2aWV3Qm94PSIwIDAgMjQgMjQiIHdpZHRoPSIyNCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICAgIDxwYXRoIGQ9Ik0xMiA0VjFMOCA1bDQgNFY2YzMuMzEgMCA2IDIuNjkgNiA2IDAgMS4wMS0uMjUgMS45Ny0uNyAyLjhsMS40NiAxLjQ2QzE5LjU0IDE1LjAzIDIwIDEzLjU3IDIwIDEyYzAtNC40Mi0zLjU4LTgtOC04em0wIDE0Yy0zLjMxIDAtNi0yLjY5LTYtNiAwLTEuMDEuMjUtMS45Ny43LTIuOEw1LjI0IDcuNzRDNC40NiA4Ljk3IDQgMTAuNDMgNCAxMmMwIDQuNDIgMy41OCA4IDggOHYzbDQtNC00LTR2M3oiLz4KICAgIDxwYXRoIGQ9Ik0wIDBoMjR2MjRIMHoiIGZpbGw9Im5vbmUiLz4KPC9zdmc+");
-    -webkit-animation: keyframeSimpleRotation 1s infinite linear;
-    animation: keyframeSimpleRotation 1s infinite linear;
-}
-@-webkit-keyframes keyframeSimpleRotation {
-    from {-webkit-transform: rotate(359deg);}
-    to   {-webkit-transform: rotate(0deg);}
-}
-@keyframes keyframeSimpleRotation {
-    from {transform: rotate(359deg);}
-    to   {transform: rotate(0deg);}
-}
-
-/* focus border */
-
-a:focus {
-  outline: 1px solid;
-  outline-offset: .15em;
-}
-
-/* GRID */
-
-grid-column: span 8 / -1; // this item will always align to the end
-
-.grid {
-  display: grid;
-  grid-gap: 1rem;
-  grid-template-columns:
-     200px  1fr  1fr;
-  grid-template-areas:
-    "pro    a    b"
-    "pro    c    d";
-}
-
-/* =================================================================== Forms */
-
-.aFormInput:invalid:not(:placeholder-shown) {
-    color:brown;
-}
-.aFormInput:valid:not(:placeholder-shown) {
-    color:darkgreen;
-}
-
-/* =================================================================== @components */
-
-/* Для устройств 400px и больше: */
-@media only screen and (min-device-width: 400px) {
-
-}
-/* AND statement */
-@media (min-width: 600px) and (max-width: 800px) {
-
-}
-/* OR statement */
-@media (max-width: 600px), (min-width: 800px) {
-
-}
-/* detect retina mobile */
-@media (min-width: 768px) and (min-device-pixel-ratio: 1.5) {
-
-}
-
-@media screen and (min-aspect-ratio: 16/10) {
-  /* something for wide screens */
-}
-
-
-@media (any-pointer: fine) {
-  /* not-touchscreen devices */
-}
-
-@media (any-pointer: coarse) {
-  /* touchscreen devices only */
-}
-
-
-/*
-CSS Paged Media Module
-https://drafts.csswg.org/css-page-3/
+/* SVG→CSS encoder
+   https://yoksel.github.io/url-encoder/
 */
-@media print {
-     @page {
-        margin: .5cm;
-    }
-}
-
-.pageBreak {
-page-break-after  : auto | always | avoid | left | right
-page-break-before : auto | always | avoid | left | right
-page-break-inside : auto | avoid
+div {
+    background-image: url("data:image/svg+xml,%3Csvg width='30' height='30' viewBox='0 0 30 30'%3E%3Cg stroke='none' stroke-width='1' fill='none' fill-rule='evenodd'%3E%3Cg transform='translate%28-128.000000, -59.000000%29' fill='%23F44336'%3E%3Cpolygon points='157.848404 61.9920213 145.980053 73.8603723 157.848404 85.7287234 154.856383 88.7207447 142.988032 76.8523936 131.119681 88.7207447 128.12766 85.7287234 139.996011 73.8603723 128.12766 61.9920213 131.119681 59 142.988032 70.8683511 154.856383 59'%3E%3C/polygon%3E%3C/g%3E%3C/g%3E%3C/svg%3E%0A");
 }
 
 @supports (-webkit-background-clip: text) {
@@ -282,26 +215,10 @@ page-break-inside : auto | avoid
     clip-path: polygon(0 -1px, 100% -1px, 100% 100%, 0 100%, 2rem 50%);
 }
 
-@font-face {
-  font-family: 'AppFont';
-  src: url(data:application/x-font-woff;-------) format('woff');
-  font-weight: normal;
-  font-style: normal;
-}
 
 
-/* SCROLL SNAP */
+/* ======================================================= ANIMATION */
 
-#carousel {
-    scroll-snap-type: x mandatory;
-    scroll-padding-top: 40px;
-}
-#carousel > div {
-    scroll-snap-align: center;
-}
-#carousel > div.unskippable {
-  scroll-snap-stop: always;
-}
 
 /* keyframe animation */
 
@@ -330,16 +247,99 @@ page-break-inside : auto | avoid
 }
 
 
+/* ======================================================== FONTS */
 
-/* ================================================================= Tricks */
 
-
-tr:nth-child(odd of li:not(.BANISHED)) {
-  background: WhiteSmoke;
+@font-face {
+  font-family: 'AppFont';
+  src: url(data:application/x-font-woff;-------) format('woff');
+  font-weight: normal;
+  font-style: normal;
 }
-ol li:nth-child(n+7):nth-child(-n+14) {
-  background: lightpink;
+
+
+
+/* ======================================================== USECASE TRICKS */
+
+
+/* Inline Multirow Background */
+h1 {
+  max-width: 300px;
+  font-family: Verdana;
 }
+h1 span {
+  background: blue;
+  color: white;
+  padding: 12px 12px;
+  line-height: 1.4;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+}
+
+
+/* Font Size Formula
+   The formula to make this work is relatively simple, it takes 4 variables:
+   minimum size, maximum size, minimum viewport width and maximum viewport width.
+*/
+body {
+  font-size: calc([minimum size] + ([maximum size] - [minimum size]) * ((100vw - [minimum viewport width]) / ([maximum viewport width] - [minimum viewport width])));
+}
+
+
+/* Flex Albatross Trick
+   https://css-tricks.com/putting-the-flexbox-albatross-to-real-use/
+*/
+div {
+  flex-basis: calc(560px * 999 - 100% * 999);
+}
+
+
+
+/* Focused shadow */
+
+body.hasFocusedShadow {
+    pointer-events:  none;
+}
+body.hasFocusedShadow .aFocusedShadow {
+    position: relative;
+    z-index: 9999;
+    pointer-events: auto;
+    box-shadow: 0 0 0 99999px rgba(0, 0, 0, .8);
+}
+
+
+/* Invisible Content */
+
+.aTextContentIsVisuallyHidden {
+  text-indent: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+
+
+/* loading spinner */
+
+.aLoadingIcon {
+    display:inline-block;
+    vertical-align:middle;
+    min-width:25px;
+    min-height:25px;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    background-image: url("data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjMDAwMDAwIiBoZWlnaHQ9IjI0IiB2aWV3Qm94PSIwIDAgMjQgMjQiIHdpZHRoPSIyNCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICAgIDxwYXRoIGQ9Ik0xMiA0VjFMOCA1bDQgNFY2YzMuMzEgMCA2IDIuNjkgNiA2IDAgMS4wMS0uMjUgMS45Ny0uNyAyLjhsMS40NiAxLjQ2QzE5LjU0IDE1LjAzIDIwIDEzLjU3IDIwIDEyYzAtNC40Mi0zLjU4LTgtOC04em0wIDE0Yy0zLjMxIDAtNi0yLjY5LTYtNiAwLTEuMDEuMjUtMS45Ny43LTIuOEw1LjI0IDcuNzRDNC40NiA4Ljk3IDQgMTAuNDMgNCAxMmMwIDQuNDIgMy41OCA4IDggOHYzbDQtNC00LTR2M3oiLz4KICAgIDxwYXRoIGQ9Ik0wIDBoMjR2MjRIMHoiIGZpbGw9Im5vbmUiLz4KPC9zdmc+");
+    -webkit-animation: keyframeSimpleRotation 1s infinite linear;
+    animation: keyframeSimpleRotation 1s infinite linear;
+}
+@-webkit-keyframes keyframeSimpleRotation {
+    from {-webkit-transform: rotate(359deg);}
+    to   {-webkit-transform: rotate(0deg);}
+}
+@keyframes keyframeSimpleRotation {
+    from {transform: rotate(359deg);}
+    to   {transform: rotate(0deg);}
+}
+
 
 /* NO SELECTION / COPY ALL SELECTION */
 
@@ -356,15 +356,6 @@ ol li:nth-child(n+7):nth-child(-n+14) {
     user-select: all;          /* Likely future */
 }
 
-/* CSS COUNTER */
-
-.faq {
-    counter-reset: my-badass-counter;
-}
-.faq dt:before {
-    content: counter(my-badass-counter);
-    counter-increment: my-badass-counter;
-}
 
 /* COMPLETE RESET */
 html, body, div, span, applet, object, iframe,h1, h2, h3, h4, h5, h6, p, blockquote, pre,a, abbr, acronym, address, big, cite, code,del, dfn, em, img, ins, kbd, q, s, samp,small, strike, strong, sub, sup, tt, var,b, u, i, center,dl, dt, dd, ol, ul, li,fieldset, form, label, legend,table, caption, tbody, tfoot, thead, tr, th, td,article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary,time, mark, audio, video
@@ -381,26 +372,43 @@ table {	border-collapse: collapse;	border-spacing: 0;}
 /* MODERN RESET https://benfrain.com/a-modern-css-reset-with-caveats/ */
 * { all: unset; }
 base, basefont, datalist, head, meta, script, style, title, noembed, param, template { display: none; }
-/* MODERN RESET */
 
 
 
+/* ======================================================= CSS DEEP */
+
+
+tr:nth-child(odd of li:not(.BANISHED)) {
+  background: WhiteSmoke;
+}
+ol li:nth-child(n+7):nth-child(-n+14) {
+  background: lightpink;
+}
+
+
+/* CSS COUNTER */
+
+.faq {
+    counter-reset: my-badass-counter;
+}
+.faq dt:before {
+    content: counter(my-badass-counter);
+    counter-increment: my-badass-counter;
+}
 
 
 
-/* ================================================================= Variables */
+/*  Variables */
 
 
 :root {
     --grid-gutter: 1rem;
 }
-
 @media (min-width: 600px) {
     :root {
         --grid-gutter: 1.25rem;
     }
 }
-
 .grid {
     display: grid;
     grid-gap: var(--grid-gutter);
@@ -408,24 +416,38 @@ base, basefont, datalist, head, meta, script, style, title, noembed, param, temp
     margin-right: calc(-1 * var(--grid-gutter));
 }
 
-/* flex tricks */
 
-https://css-tricks.com/putting-the-flexbox-albatross-to-real-use/
-flex-basis: calc(560px * 999 - 100% * 999)
+/* GRID */
 
+grid-column: span 8 / -1; // this item will always align to the end
 
-/* ================================================================= CSS */
-
-
-a {
-  text-decoration-color: #EA215A;
-  text-decoration-thickness: .125em;
-  text-underline-offset: 1.5px;
+.grid {
+  display: grid;
+  grid-gap: 1rem;
+  grid-template-columns:
+     200px  1fr  1fr;
+  grid-template-areas:
+    "pro    a    b"
+    "pro    c    d";
 }
 
 
 
 /* ================================================================= SASS */
+
+/* first text row without empty space at the top */
+
+@mixin lhCrop($line-height) {
+  &::before {
+    content: '';
+    display: block;
+    height: 0;
+    width: 0;
+    margin-top: calc((1 - #{$line-height}) * 0.5em);
+  }
+}
+
+
 
 /* function removes size-unit from value */
 /* In Sass, a unit divided by another unit of the same type will strip the unit and return the digit. */
@@ -466,17 +488,17 @@ a {
 
 /*
 
-  One of the more popular methodologies for organizing Sass files is the 7-1 Pattern. That’s seven distinct folders containing Sass files that are imported into a single Sass file.
-
+  One of the more popular methodologies for organizing Sass files is the 7-1 Pattern.
+  That’s seven distinct folders containing Sass files that are imported into a single Sass file.
   Those folders are:
 
-  abstracts
-  base
-  components
-  layout
-  pages
-  themes
-  vendor
+    abstracts
+    base
+    components
+    layout
+    pages
+    themes
+    vendor
 
 */
 
