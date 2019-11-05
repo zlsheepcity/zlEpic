@@ -193,6 +193,27 @@ https://drafts.csswg.org/css-page-3/
 
 /* ======================================================== IMAGES */
 
+.blend-image-with-color {
+	background: rgb(244, 65, 106);
+	mix-blend-mode: multiply;
+}
+
+/*
+Background-blend-mode blends together the background layers of the element we’re targeting.
+Our element could have background images, colours and gradients, and they would all be blended
+with each other without affecting the foreground content. We can specify multiple values
+for background-blend-mode, one for each background layer.
+*/
+.Background-blend-mode {
+	background: url(#myUrl),
+		linear-gradient(45deg, rgba(65, 68,
+		244, 1), rgba(203, 66, 244, 0.5)),
+		rgba(244, 65, 106, 1);
+	background-size: cover;
+	background-blend-mode: screen,
+	multiply;
+}
+
 /* base64 */
 div {
     background-image: url("data:image/svg+xml;base64,-----");
