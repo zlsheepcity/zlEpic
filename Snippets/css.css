@@ -418,6 +418,13 @@ ol li:nth-child(n+7):nth-child(-n+14) {
 }
 
 
+/* COLUMNS */
+.test-for-multicolumn {
+  column-width: 14em;
+  column-gap:   4em;
+  column-rule:  1px solid #ccc;
+}
+
 
 /*  Variables */
 
@@ -450,6 +457,13 @@ grid-column: span 8 / -1; // this item will always align to the end
   grid-template-areas:
     "pro    a    b"
     "pro    c    d";
+}
+
+.grid-auto-fit-usecase {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  grid-gap: 1rem;
+  grid-auto-flow: dense;
 }
 
 
