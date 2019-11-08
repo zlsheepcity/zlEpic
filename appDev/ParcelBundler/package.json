@@ -1,0 +1,18 @@
+{
+  "name": "parcelbundler",
+  "version": "1.0.0",
+  "description": "Workflow instruction for Parcel project",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "zl",
+  "license": "ISC",
+  "devDependencies": {
+    "node-sass": "^4.13.0",
+    "parcel-bundler": "^1.12.4",
+    "parcel-plugin-imagemin": "^3.0.0",
+    "parcel-plugin-svg-sprite": "^1.4.1"
+  },
+  "dependencies": {}
+}

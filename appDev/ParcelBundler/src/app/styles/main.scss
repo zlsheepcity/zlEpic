@@ -1,0 +1,27 @@
+body {
+    box-sizing: border-box;
+    padding:    1rem 2rem;
+    margin:     0;
+    background: lightskyblue;
+}
+
+h1, h2 {
+    color:       white;
+    text-shadow: 0.05rem 0.05rem 0.25rem hsla(0,0%,0%,0.25);
+}
+a {
+    color: inherit;
+}
+figure {
+    margin:  0;
+    padding: 0;
+}
+
+.icon-grid {
+  --grid-gap:       1rem;
+  --cell-size:      10rem;
+    display:        grid;
+    grid-gap:       var(--grid-gap);
+    grid-auto-flow: dense;
+    grid-template-columns: repeat(auto-fit, minmax(var(--cell-size), 1fr));
+}
