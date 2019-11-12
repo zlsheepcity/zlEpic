@@ -42,6 +42,23 @@ section {
 }
 
 
+/* ======================================================== LAYOUT */
+
+html { box-sizing: border-box; }
+*, *::before, *::after { box-sizing: inherit; }
+
+/* full-height 2019
+   https://css-tricks.com/some-things-you-oughta-know-when-working-with-viewport-units/ */
+
+body {
+  min-height: 100vh; /* or min-height: calc(100vh - 80px); - depending on your preferences */
+  min-height: -webkit-fill-available;
+  min-height: -moz-available;
+  min-height: available; /* not sure if exist in any browser */
+  min-height: -webkit-stretch; /* not sure if exist in any browser */
+  min-height: -moz-stretch; /* not sure if exist in any browser */
+  min-height: stretch;
+}
 
 /* ======================================================== BASICS */
 
@@ -54,8 +71,6 @@ body {
     margin: 0;
     padding: 0;
 }
-html { box-sizing: border-box; }
-*, *::before, *::after { box-sizing: inherit; }
 
 
 a {

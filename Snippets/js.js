@@ -166,6 +166,37 @@ myElement.addEventListener('change', function listener (event) {
   this.removeEventListener('change', listener)
 })
 
+
+// ==================================== DATA
+
+// Using fetch
+
+const checkForError = response => {
+  if (!response.ok) throw Error(response.statusText);
+  return response.json();
+};
+
+fetch("https://jsonplaceholder.typicode.com/todos/100000")
+  .then(checkForError)
+  .then(data => console.log("data", data))
+  .catch(error => {
+    console.log("error", error);
+  });
+
+
+// Get Query String Parameters
+
+  // Assuming "?post=1234&action=edit"
+  var urlParams = new URLSearchParams(window.location.search);
+
+  console.log(urlParams.has('post')); // true
+  console.log(urlParams.get('action')); // "edit"
+  console.log(urlParams.getAll('action')); // ["edit"]
+  console.log(urlParams.toString()); // "?post=1234&action=edit"
+  console.log(urlParams.append('active', '1')); // "?post=1234&action=edit&active=1"
+
+
+
 /* ---------------------------------------------- */// Mutation Observer
 
 
@@ -281,18 +312,17 @@ const myObject = { ...myProperty && { propName: myProperty } };
 // if myProperty==false, then myObject = {}
 
 
+// Immutable objects workflow example
 
-// Get Query String Parameters
+const pureAddProp = (key, value, object) => ({
+  ...object,
+  [key]: value
+});
+const User= {
+  name: 'Alex'
+};
+const Admin= pureAddProp ('isAdmin', true, User);
 
-  // Assuming "?post=1234&action=edit"
-
-  var urlParams = new URLSearchParams(window.location.search);
-
-  console.log(urlParams.has('post')); // true
-  console.log(urlParams.get('action')); // "edit"
-  console.log(urlParams.getAll('action')); // ["edit"]
-  console.log(urlParams.toString()); // "?post=1234&action=edit"
-  console.log(urlParams.append('active', '1')); // "?post=1234&action=edit&active=1"
 
 // url string animated with symbols
 
@@ -438,7 +468,7 @@ const array2 = array.concat()
 
 Array.from(arrayLike[, mapFn[, thisArg]])
 
-Превращает NodeList в array 
+Превращает NodeList в array
 [...document.querySelectorAll('div')]
 
 // ---------------------------------------------- // VARIOUS
