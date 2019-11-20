@@ -148,6 +148,9 @@ div:focus-within .extra-stuff {
 
 
 /* ======================================================== PRINT */
+/* DATA LINKS
+   https://www.pagedmedia.org/paged-js/
+*/
 
 /*
 CSS Paged Media Module
@@ -163,6 +166,29 @@ https://drafts.csswg.org/css-page-3/
   page-break-after  : auto | always | avoid | left | right
   page-break-before : auto | always | avoid | left | right
   page-break-inside : auto | avoid
+}
+
+blockquote {
+    break-inside: avoid;
+}
+
+/* NAMED PAGES */
+
+@page cover {
+        margin: 20mm 30mm;
+      background: yellow;
+}
+section.first {
+      page: cover;
+}
+
+/* LEFT-RIGHT PAGES */
+
+@page :left {
+      margin-right: 2in;
+}
+@page :right {
+      margin-left: 2in;
 }
 
 

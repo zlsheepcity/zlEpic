@@ -1,6 +1,31 @@
 "use strict"
 // appName 123.0002
 
+/* принимает в качестве аргументов список выполняемых функций,
+   превращает их в массив, сохраняет его в замыкании и возвращает функцию,
+   которая ожидает начальное значение */
+const compose = (...fns) => x => fns.reduce((acc, fn) => fn(acc), x);
+
+ const curry = fn => (...args) => {
+   if (fn.length > args.length) {
+     const f = fn.bind(null, ...args);
+     return curry(f);
+   } else {
+     return fn(...args)
+   }
+ }
+
+ /* принимает функцию и первый аргумент, возвращает лямбду,
+    которая ожидает остальные и выполняет функцию */
+ const party = (fn, ...args) => (...rest) => fn(...args.concat(rest));
+
+   const sum = (a,b,c,d) => a+b+c+d;
+   const fn = curry(sum);
+   const r1 = fn(1,2,3,4);//очевидно, рабочий пример
+   const r2 = fn(1, 2, 3)(4);//этот и все последующие также будут работать
+   const r3 = fn(1, 2)(3)(4);
+   const r4 = fn(1)(2)(3)(4);
+
 /* ---------------------------------------------- */ // onload
 
 document.addEventListener('DOMContentLoaded', function(event) {})
