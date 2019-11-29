@@ -7,13 +7,18 @@ npm init
 npm install parcel-bundler node-sass --save-dev
 
 parcel src/*.html -p 3000 --open
+parcel src/index.html -p 3000 --open
 
 rm -rf dist/*
 parcel build src/*.html --public-url "./"
+parcel build src/index.html --public-url "./"
 
 ```
 
 # Plugins Workflow
+
+- images
+- Vue
 
 ## images
 https://github.com/DeMoorJasper/parcel-plugin-imagemin
@@ -32,6 +37,15 @@ module.exports = {
     webp: { quality: 10 }
 }
 ```
+
+## Vue
+
+```bash
+npm i @parcel/transformer-babel --save-dev
+npm install -D sass-loader
+npm install --save vue
+```
+
 
 # Links
 

@@ -4,15 +4,22 @@
   "description": "Workflow instruction for Parcel project",
   "main": "index.html",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Always fine\" && exit 1"
   },
   "author": "zl",
   "license": "ISC",
+  "dependencies": {
+    "app.vue": "^0.1.10",
+    "vue": "^2.6.10",
+    "vue-drag-drop": "^1.1.4",
+    "vue-hot-reload-api": "^2.3.4"
+  },
   "devDependencies": {
+    "@vue/component-compiler-utils": "^3.0.2",
     "node-sass": "^4.13.0",
     "parcel-bundler": "^1.12.4",
     "parcel-plugin-imagemin": "^3.0.0",
-    "parcel-plugin-svg-sprite": "^1.4.1"
-  },
-  "dependencies": {}
+    "parcel-plugin-svg-sprite": "^1.4.1",
+    "vue-template-compiler": "^2.6.10"
+  }
 }

@@ -1,0 +1,1 @@
+{"version":3,"sources":["app/script/app.js"],"names":["console","log","document","addEventListener","f"],"mappings":";AAAAA,QAAQC,IAAI,UACZC,SAASC,iBAAiB,mBAAoB,SAAAC,GAAGJ,OAAAA,QAAQC,IAAI","file":"app.6340b957.js","sourceRoot":"../src","sourcesContent":["console.log('app.js')\ndocument.addEventListener('DOMContentLoaded', f=>console.log('DOMContentLoaded') )\n"]}
