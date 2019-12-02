@@ -1,19 +1,30 @@
-# vuecliapp
+# Project workflow
+---------------------------------------------
+2019.12.4
 
-## Project setup
-```
-npm install
+```bash
+npm install -g @vue/cli
+npm install -g @vue/cli-service-global
 ```
 
-### Compiles and hot-reloads for development
-```
+```bash
+vue create vuecliapp
+cd vuecliapp
 npm run serve
 ```
 
-### Compiles and minifies for production
+```bash
+npm install
 ```
+
+```bash
+npm run serve
 npm run build
 ```
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+# To do
+---------------------------------------------
+2019.12.4
+
+- offsidebar component
+- svg-sprites plugin

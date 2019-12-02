@@ -1,7 +1,7 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <h1>vue-cli-app</h1>
+    <HelloWorld msg="Requierements Tests"/>
   </div>
 </template>
 
