@@ -1,6 +1,6 @@
 /** Contact Form 7 Design & Hints
     Theme:  egamings2019
-    Author: zl, 2019.6.8
+    Author: zl, 2019.12.5
 */
 
 $wpcf7-color--form-bg:            white;
@@ -8,13 +8,13 @@ $wpcf7-color--form-bg-opacity:    rgba(255,255,255,0.75);
 $wpcf7-color--form-text:          black;
 $wpcf7-color--form-err:           firebrick;
 $wpcf7-color--form-responce-text: white;
-$wpcf7-color--form-ok:            $color-egDark;
+$wpcf7-color--form-ok:            navy;
 
 :root {
-    --wpcf7-side-padding: 1rem;
+  --wpcf7-side-padding: 1rem;
 }
 
-@keyframes keyframeSimpleRotation {
+@keyframes formWaitingSimpleRotation {
     from {transform: rotate(359deg);}
     to   {transform: rotate(0deg);}
 }
@@ -83,7 +83,7 @@ $wpcf7-color--form-ok:            $color-egDark;
                     background-repeat: no-repeat;
                     background-image: url('data:image/svg+xml,%3Csvg fill%3D%22#{$wpcf7-color--form-text}%22 height%3D%2224%22 viewBox%3D%220 0 24 24%22 width%3D%2224%22 xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath d%3D%22M12 4V1L8 5l4 4V6c3.31 0 6 2.69 6 6 0 1.01-.25 1.97-.7 2.8l1.46 1.46C19.54 15.03 20 13.57 20 12c0-4.42-3.58-8-8-8zm0 14c-3.31 0-6-2.69-6-6 0-1.01.25-1.97.7-2.8L5.24 7.74C4.46 8.97 4 10.43 4 12c0 4.42 3.58 8 8 8v3l4-4-4-4v3z%22%2F%3E%3C%2Fsvg%3E');
                     background-size: contain;
-                    animation: keyframeSimpleRotation 1s infinite linear;
+                    animation: formWaitingSimpleRotation 1s infinite linear;
                 }
             }
         }
@@ -205,13 +205,12 @@ jQuery(document).on('click', '.wpcf7-submit', function preventDoubleFormSubmit(e
 
 # Email template placeholder inside wp-admin
 
-NAME:  [your-name] 
+[your-message]
+***
+NAME:  [your-name]
 EMAIL: [your-email]
 PHONE: [your-phone]
 SKYPE: [your-skype]
-MESSAGE ***
-[your-message]
-***
 
 Was sent from a contact form on Egamings
 
