@@ -309,7 +309,7 @@ div {
 }
 
 
-/* ======================================================== FONTS */
+/* ======================================================== TYPOGRAPHY */
 
 
 @font-face {
@@ -319,6 +319,20 @@ div {
   font-style: normal;
 }
 
+
+/* hanging-punctuation fallback */
+
+/* Fallback */
+blockquote {
+  text-indent: -0.45em; /* approx magic number */
+}
+/* If there's support, erase the indent and use the property instead */
+@supports ( hanging-punctuation: first) {
+  blockquote {
+    text-indent: 0;
+    hanging-punctuation: first;
+  }
+}
 
 
 /* ======================================================== USECASE TRICKS */
