@@ -1,0 +1,159 @@
+/* ------------------------------------------- Modify appart */
+    :root{
+      --text-color-accent:  slategray;
+    }
+    @media (max-width: 24rem) {
+        :root{
+          --row-space:  1rem;
+          --col-space:  1rem;
+        }
+    }
+/* ------------------------------------------- Settings */
+    :root {
+      --brand-color:          hsl(33, 92%, 61%);
+      --brand-color--accent:  hsl(41, 94%, 69%);
+      --brand-color--descent: hsl(41, 98%, 84%);
+    }
+    :root {
+          --h1-font-size:    3.5rem;
+          --h1-line-height:  calc(64/56);
+    }
+    @media (max-width:       52rem) {
+        :root {
+          --h1-font-size:    2rem;
+          --h1-line-height:  calc(40/32);
+          --big-space:       3rem;
+        }
+    }
+/* ------------------------------------------- Design */
+    .page-design h2.h1 {
+        font-style: italic;
+        color:      var(--text-color-accent);
+    }
+    .page-design p { max-width: 31em; }
+/* ------------------------------------------- Design Components */
+    .page-title {
+        transform: translateX(-0.125em);
+    }
+    .page-title dfn {
+        display: block;
+        color:   var(--text-color-accent);
+    }
+    .page-title dfn:after {
+        content: ' — ';
+    }
+    .intro-section {
+        background-color: var(--brand-color--descent);
+    }
+    .contact-button-area {
+        /*transform: translateX(-1.5em);*/
+    }
+    @media (max-width:38rem) {
+        .contact-button-area {
+            transform:   none;
+        }
+        .intro-section .contact-button-area>* {
+            justify-self: center;
+        }
+        .chapter {
+          --padding-top:    var(--row-space);
+          --padding-bottom: var(--row-space);
+        }
+    }
+    .links {
+        list-style: none;
+        margin:     0;
+        padding:    0;
+        transform:  translateX(-0.75rem);
+    }
+    .links.inline li { display: inline-block; }
+    .links a {
+        display:     inline-block;
+      --padding:     0.5rem 0.75rem;
+        padding:     var(--padding);
+
+        max-width:      100%;
+        overflow:       hidden;
+        text-overflow:  ellipsis;
+        vertical-align: middle;
+
+      --background-color:      transparent;
+        background-color:      var(--background-color);
+        text-decoration-color: var(--shadow-color);
+    }
+    .links a:hover,
+    .links a:focus {
+      --background-color:      var(--light-shadow);
+    }
+    .footer {
+        margin-top:  var(--row-space);
+    }
+    .footer>* {
+        border-top:  2px solid var(--brand-color);
+        padding-top: var(--row-space);
+    }
+    .top-level-menu a {
+      --font-size:   var(--h4-font-size);
+      --line-height: var(--h4-line-height);
+        font-size:   var(--font-size);
+        line-height: var(--line-height);
+    }
+    .top-level-contacts {
+        display:         flex;
+        flex-wrap:       wrap;
+        justify-content: flex-start;
+        align-items:     flex-start;
+        max-width:       90%;
+    }
+    .top-level-contacts .caption {
+        margin-right:  3rem;
+        margin-bottom: 0.125em;
+        line-height: 2.5rem;
+        font-style:  italic;
+    }
+    .partnership {
+      --text-color-accent:  var(--brand-color);
+    }
+    .services figure.side {
+        grid-row: 1;
+    }
+    .demo-area {
+      --background-color:   var(--brand-color);
+        background-color:   var(--background-color);
+                 --color:   white;
+                   color:   var(--color);
+      --text-color-accent:  var(--color);
+      --text-color-descent: var(--color);
+    }
+    .demo-area .contact-button-area {
+        margin-top: 0.5rem;
+    }
+    .page-footer {
+      --background-color:   var(--brand-color--accent);
+        background-color:   var(--background-color);
+      --text-color-accent:  black;
+      --padding-top:    0;
+      --padding-bottom: 0;
+    }
+    .page-footer .about {
+      --padding-top:    12rem;
+        padding-top:    var(--padding-top);
+    }
+    .page-footer .contacts {
+      --background-color:   var(--brand-color--descent);
+        background-color:   var(--background-color);
+        margin-top:         var(--big-space);
+    }
+    .product-title {
+      --padding-top:    var(--big-space);
+      --padding-bottom: var(--big-space);
+        padding-top:    var(--padding-top);
+        padding-bottom: var(--padding-bottom);
+
+      --background-color:   var(--brand-color);
+        background-color:   var(--background-color);
+                 --color:   white;
+                   color:   var(--color);
+      --text-color-accent:  var(--color);
+      --text-color-descent: var(--color);
+    }

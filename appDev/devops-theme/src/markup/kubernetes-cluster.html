@@ -1,0 +1,99 @@
+<article class="journal-grid join-layers centrale">
+
+<header class="chapter">
+    <div class="h1 page-title">
+        <dfn>Devops Care</dfn>
+        AWS Infrastructure Consultants
+    </div>
+</header>
+
+<nav class="wide">
+    <ul class="links inline">
+        <li><a href="/"><span>Home</span></a> →</li>
+        <li><a href="/kubernetes-cluster"><span>Kubernetes Cluster</span></a>
+    </ul>
+</nav>
+
+<section class="layer keep-grid product-title">
+    <h1>Kubernetes Cluster</h1>
+    <div class="h4 wide">
+        <p>Features that you get out of the box</p>
+    </div>
+</section>
+
+<section class="chapter base">
+    <header class="wide">
+        <h2 class="h1">Features</h2>
+    </header>
+    <ul class="box">
+        <li>
+            <p>VPC, bastion host (rarely needed due to TGW), organization-wide netwokr routes and set of security groups for every cluster</p>
+        </li>
+        <li>
+            <p>based on <a href="https://aws.amazon.com/eks/" target="_blank" data-content="https://aws.amazon.com/eks/" data-type="external" rel="undefined">AWS EKS</a>, providing HA, managed masters/etcds, simple upgrades and IAM integration</p>
+        </li>
+        <li>
+            <p>docker/kubelet is tuned to allow wide range of applications (like ELK requiring ulimit=65536)</p>
+        </li>
+        <li>
+            <p>worker nodes are created as <a href="https://aws.amazon.com/ec2/spot/" target="_blank" data-content="https://aws.amazon.com/ec2/spot/" data-type="external" rel="undefined">EC2 spot instances</a> reducing EC2 costs up to 90% at the expense of the rare situation of node being killed due to high spot instance demand. This situation happens approximately once in a month and is handled automatically by Kubernetes machinery causing minor disturbance</p>
+        </li>
+        <li>
+            <p>worker nodes live inside two AWS Availability Zones. This reduces a chance that cluster runs out of spot instance capacity, but induces Regional Data Transfer costs ($ 0.01/GB at the time of writing). If you application is doing heavy data hauling, it might be useful to use <a href="https://kubernetes.io/docs/reference/kubernetes-api/labels-annotations-taints/#failure-domainbetakubernetesiozone" target="_blank" data-content="https://kubernetes.io/docs/reference/kubernetes-api/labels-annotations-taints/#failure-domainbetakubernetesiozone" data-type="external" rel="undefined">AZ affinity</a></p>
+        </li>
+        <li>
+            <p><a href="https://github.com/helm/charts/tree/master/stable/cluster-autoscaler" target="_blank" data-content="https://github.com/helm/charts/tree/master/stable/cluster-autoscaler" data-type="external" rel="undefined">cluster-autoscaler</a> dynamically allocates and removes new worker nodes when capacity is requested. It also takes care of pod reallocation when spot instances get terminated due to high demand. <a href="https://github.com/helm/charts/tree/master/stable/cluster-overprovisioner" target="_blank" data-content="https://github.com/helm/charts/tree/master/stable/cluster-overprovisioner" data-type="external" rel="undefined">overprovisioner</a> makes sure there is always a spare capacity available eliminating node provisioning delay.</p>
+        </li>
+        <li>
+            <p>Thanks to <a href="https://docs.aws.amazon.com/eks/latest/userguide/pod-networking.html" target="_blank" data-content="https://docs.aws.amazon.com/eks/latest/userguide/pod-networking.html" data-type="external" rel="undefined">Amazon VPC CNI plugin</a> Kubernetes pods have the same IP address inside the pod as they do on the VPC network. It allows developers to directly interact with Kubernetes pods (or even better - Kubernetes <a href="https://kubernetes.io/docs/concepts/services-networking/service/#headless-services" target="_blank" data-content="https://kubernetes.io/docs/concepts/services-networking/service/#headless-services" data-type="external" rel="undefined">headless services</a>) even if they do they own service discovery and advertisement like <a href="https://github.com/helm/charts/blob/master/incubator/kafka/README.md#installing-the-chart" target="_blank" data-content="https://github.com/helm/charts/blob/master/incubator/kafka/README.md#installing-the-chart" data-type="external" rel="undefined">Kafka</a> does.</p>
+        </li>
+        <li>
+            <p>Kubernetes pod logs are collected with filebeat, stored in <a href="https://aws.amazon.com/elasticsearch-service/" target="_blank" data-content="https://aws.amazon.com/elasticsearch-service/" data-type="external" rel="undefined">AWS ElasticSearch</a> and accessible via Kubernetes-hosted Kibana. <a href="https://github.com/helm/charts/tree/master/stable/elasticsearch-curator" target="_blank" data-content="https://github.com/helm/charts/tree/master/stable/elasticsearch-curator" data-type="external" rel="undefined">es-curator</a> wipes logs after 7 days.</p>
+        </li>
+        <li>
+            <p>Kubernetes Services can be automatically exposed via Kibernetes Ingresses with the help of <a href="https://github.com/jenkins-x/exposecontroller" target="_blank" data-content="https://github.com/jenkins-x/exposecontroller" data-type="external" rel="undefined">jx/exposecontroller</a>. It manages FQDN host names and TLS annotations so you don't need to hardcode them in each deployment.</p>
+        </li>
+        <li>
+            <p>HTTP and potentially tcp/udp ingresses are exposed externally via <a href="https://github.com/helm/charts/tree/master/stable/nginx-ingress" target="_blank" data-content="https://github.com/helm/charts/tree/master/stable/nginx-ingress" data-type="external" rel="undefined">nginx-ingress</a> using single AWS ELB.</p>
+        </li>
+        <li>
+            <p>By default each ingress is exposed as HTTPS with a help of <a href="https://github.com/helm/charts/tree/master/stable/cert-manager" target="_blank" data-content="https://github.com/helm/charts/tree/master/stable/cert-manager" data-type="external" rel="undefined">letsencrypt/cert-manager</a>. Permanent services like Jenkins/Nexus receive production certificates, dynamic ones like feature branch preview deploys get staging certificate due to request quota.</p>
+        </li>
+    </ul>
+</section>
+
+<section class="chapter base">
+    <header class="wide">
+        <h2 class="h1">Bundled software</h2>
+    </header>
+    <ul class="box">
+        <li>
+            <p>Jenkins, configured to use Kubernetes pods as build agents. CI secrets are pre-created and accessible as Kubernetes secrets</p>
+        </li>
+        <li>
+            <p>Nexus with S3 plugin (at the time of writing repos needs to be manually configured to use it)</p>
+        </li>
+        <li>
+            <p><a href="https://chartmuseum.com/" target="_blank" data-content="https://chartmuseum.com/" data-type="external" rel="undefined">ChartMuseum</a> / Monocular to store and browse released helm charts</p>
+        </li>
+        <li>
+            <p>Kubernetes Dashboard in full-access mode</p>
+        </li>
+        <li>
+            <p>Prometheus Operator with MetricsServer, Prometheus and Grafana for collecting and displaying both cluster and application metrics</p>
+        </li>
+        <li>
+            <p><a href="https://www.keycloak.org/" target="_blank" data-content="https://www.keycloak.org/" data-type="external" rel="undefined">KeyCloak</a> for providing centralized authentication bridge between OpenID/SAML enabled services and LDAP/OneLogin/Okta identity providers. Comes pre-configured to use organization's Active Directory. Can be easily extended to allow custom users (i.e. external client/collaborator logins) or social login</p>
+        </li>
+        <li>
+            <p><a href="https://github.com/pusher/oauth2_proxy" target="_blank" data-content="https://github.com/pusher/oauth2_proxy" data-type="external" rel="undefined">oauth2-proxy</a> that can be used as <a href="https://kubernetes.github.io/ingress-nginx/examples/auth/oauth-external-auth/" target="_blank" data-content="https://kubernetes.github.io/ingress-nginx/examples/auth/oauth-external-auth/" data-type="external" rel="undefined">nginx authentication url</a> for services that don't support authentication natively. It's enabled merely adding couple of annotations to the Ingress saving hours of developer's time</p>
+        </li>
+        <li>
+            <p>(Coming Soon) Sentry</p>
+        </li>
+    </ul>
+</section>
+
+</article>
+
+<div>[insert page='footer-default' display='content']</div>

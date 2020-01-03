@@ -1,0 +1,98 @@
+<article class="journal-grid join-layers centrale">
+
+<header class="chapter">
+    <div class="h1 page-title">
+        <dfn>Devops Care</dfn>
+        AWS Infrastructure Consultants
+    </div>
+</header>
+
+<nav class="wide">
+    <ul class="links inline">
+        <li><a href="/"><span>Home</span></a> →</li>
+        <li><a href="/cadmium3"><span>Cadmium3</span></a></li>
+    </ul>
+</nav>
+
+<section class="layer keep-grid product-title">
+    <h1>Cadmium3</h1>
+    <div class="h4 wide">
+        <p>A well-thought solution for AWS-based software development</p>
+    </div>
+</section>
+
+<section class="chapter wide h4">
+    <p>Cadmium3 is set of Terraform scripts, Helm charts and Jenkinsfile examples that together create and manage organization's AWS infrastructure. Current feature set is geared towards providing multiple fully functional development environments with GitOps CI/CD in Kubernetes inside separate AWS accounts. Reasonable effort was put into separating the code into modules, but the final intent was to make it work like a complete turn-key package.</p>
+</section>
+
+<section class="chapter base back-color-descent">
+
+    <h2 class="h1">Enterprise-level scope</h2>
+    <ul class="box">
+        <li>
+            <p>AWS Account is automatically created and connected to AWS Organization</p>
+        </li>
+        <li>
+            <p>Organization Role is created inside AWS Account for sudo-like AssumeRole access</p>
+        </li>
+        <li>
+            <p>Access to AWS account is centrally managed via <a href="https://aws.amazon.com/single-sign-on/" target="_blank" data-content="https://aws.amazon.com/single-sign-on/" data-type="external" rel="undefined">AWS SSO</a> based on Active Directory group membership eliminating need to create, administer and cleanup IAM users inside individual AWS Accounts.</p>
+        </li>
+        <li>
+            <p>Organization Sysadmin SSH key is provisioned into AWS Account</p>
+        </li>
+        <li>
+            <p>IP address range is centrally-managed allowing overlap-free AWS Account peering</p>
+        </li>
+        <li>
+            <p>AWS Accounts are linked spoke-to-hub manner to <a href="https://aws.amazon.com/transit-gateway/" target="_blank" data-content="https://aws.amazon.com/transit-gateway/" data-type="external" rel="undefined">AWS Transit Gateway</a> providing truly hybrid cloud experience</p>
+        </li>
+        <li>
+            <p>Infrastructure VPC is connected to AWS Transit Gateway providing ActiveDirectory connections for LDAP(s) authentication and easy integration for other AD-dependent services (like AD-based MS SQL Server logins or Windows EC2 instances)</p>
+        </li>
+        <li>
+            <p>Office branches are connected to AWS Transit Gateway via <a href="https://aws.amazon.com/vpn/" target="_blank" data-content="https://aws.amazon.com/vpn/" data-type="external" rel="undefined">IPSEC (AWS Site-to-Site VPN)</a> extending your network space to developer's machines. The can directly access services running in cloud without the need of tunneling, proxies, NAT or client VPN</p>
+        </li>
+        <li>
+            <p>For the road/couch warriors <a href="https://docs.aws.amazon.com/vpn/latest/clientvpn-admin/what-is.html" target="_blank" data-content="https://docs.aws.amazon.com/vpn/latest/clientvpn-admin/what-is.html" data-type="external" rel="undefined">AWS Client VPN</a> (powered by OpenVPN) with built-in Active Directory authentication offers similar direct access to organization network</p>
+        </li>
+    </ul>
+
+</section>
+<section class="chapter base">
+
+   <h2 class="h1">AWS Account scope</h2>
+   <p class="h5">By AWS Account we mean on of the organization's aws accounts connected to AWS Organization and devoted single software product development (or set of connected products).</p>
+    <ul class="box">
+        <li>DNS sub-zone is created for AWS Account ready to be connected with TLD NS provider</li>
+        <li>GitHub repos are created and managed for each product along with respective teams and CI tool access</li>
+        <li>AWS ECR repos are created and managed for each product</li>
+        <li>S3 buckets are created for Nexus, Chartmuseum and generic use. Solves problem of Nexus running out of disk space for next 5 exabytes.</li>
+        <li>Centrally managed IP whitelist locks down account from unauthorized access on multiple levels - IAM SourceIP, AWS SecurityGroups, nginx allow/deny.</li>
+        <li>Set of organization-wide settings and secrets are maintained inside AWS Account to be discovered in a predictable manner and used by local services like Jenkins and Keycloak</li>
+        <li>Per AWS Account - GitHub repo, S3 bucket and DynamoDB for Terraform configuration of the individual account features</li>
+    </ul>
+
+</section>
+<section class="chapter base back-color-descent">
+
+    <h2 class="h1">Kubernetes cluster</h2>
+    <p class="h5">The cluster is a used as development environment and certain corners are cut in order to make it simple and usable. We assume that:</p>
+    <ul class="box">
+        <li>cluster users can tolerate minor downtimes. Spot Instances could be externally terminated, approximately once a month</li>
+        <li>information and deployment doesn't need to be backed up. In case of a total disaster everything can be rebuilt from git repos which are presumed durable enough due to distributed nature of git</li>
+        <li>authentication is enough. We don't offer fine grained authorization for the most services and role separation is more of guardrails and policies</li>
+        <li>firewalls limit external access, but anyone on the office network can reach cluster internals</li>
+    </ul>
+    <footer class="wide">
+        <div class="h3">
+            <a href="/kubernetes-cluster">What ships inside the cluster?</a>
+        </div>
+    </footer>
+</section>
+
+<hr>
+
+</article>
+
+<div>[insert page='footer-default' display='content']</div>
