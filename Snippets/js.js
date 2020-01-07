@@ -1,6 +1,12 @@
 "use strict"
 // appName 123.0002
 
+
+// ---------------------------------------------- // programming
+// ---------------------------------------------- // programming
+// ---------------------------------------------- // programming
+
+
 /* принимает в качестве аргументов список выполняемых функций,
    превращает их в массив, сохраняет его в замыкании и возвращает функцию,
    которая ожидает начальное значение */
@@ -25,6 +31,66 @@ const compose = (...fns) => x => fns.reduce((acc, fn) => fn(acc), x);
    const r2 = fn(1, 2, 3)(4);//этот и все последующие также будут работать
    const r3 = fn(1, 2)(3)(4);
    const r4 = fn(1)(2)(3)(4);
+
+
+
+// ---------------------------------------------- MODULE syntax //ES6 Version
+
+
+export function isNull(val){
+  return val === null;
+}
+export function isUndefined(val) {
+  return val === undefined;
+}
+export function isNullOrUndefined(val) {
+  return isNull(val) || isUndefined(val);
+}
+
+import * as helpers from './helpers.js'; // helpers is an object
+// or
+import { isNull, isUndefined, isNullOrUndefined as isValid } from './helpers.js';
+
+
+
+// ---------------------------------------------- CLASS syntax //ES6 Version
+
+class Person {
+    constructor(firstName, lastName, age, address){
+        this.lastName = lastName;
+        this.firstName = firstName;
+        this.age = age;
+        this.address = address;
+    }
+
+    static self() {
+       return this;
+    }
+
+    toString(){
+       return "[object Person]";
+    }
+
+    getFullName(){
+       return `${this.firstName} ${this.lastName}`;
+    }
+}
+class Employee extends Person { //Inherits from "Person" class
+  constructor(firstName, lastName, age, address, jobTitle, yearStarted) {
+    super(firstName, lastName, age, address);
+    this.jobTitle = jobTitle;
+    this.yearStarted = yearStarted;
+  }
+
+  describe() {
+    return `I am ${this.getFullName()} and I have a position of ${this.jobTitle} and I started at ${this.yearStarted}`;
+  }
+
+  toString() { // Overriding the "toString" method of "Person"
+    return "[object Employee]";
+  }
+}
+  const s = new Employee(...dna);
 
 /* ---------------------------------------------- */ // onload
 
