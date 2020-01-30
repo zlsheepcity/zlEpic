@@ -131,6 +131,24 @@
         <div>♥☺☯✈</div>
     </section>
 
+
+<img srcset="/img/3000x1500.png 3000w,
+             /img/2000x1000.png 2000w,
+             /img/1000x500.png 1000w,
+             /img/600x300.png 600w,
+             /img/300x150.png 300w"
+     sizes="(max-width: 350px) 150px,       // Выполняется первое подходящее условие, остальные игнорируются, поэтому порядок условий важен
+            (max-width: 600px) 300px,
+            (max-width: 1400px) 500px,
+            1000px"
+     src="/img/2000x1000.png"
+     alt="Пример 3"
+/>
+
+// sizes="100vw", which is saying: I assume that when you use an image, it's going to be the entire width of the viewport.
+
+
+
     <article aria-label="ARIA STRUCTURE">
 
 
