@@ -92,6 +92,35 @@ class Employee extends Person { //Inherits from "Person" class
 }
   const s = new Employee(...dna);
 
+
+/* ---------------------------------------------- */ // events click touch key press
+
+$(function(){
+
+    // eventClick
+    $('.element').on( 'click', klikerAction );
+    function klikerAction(e){
+        var kliker = $(e.currentTarget);
+    }
+
+    // eventKeypress
+    $('input.pressEnter').keydown(function(e) {
+        if(e.keyCode === 13) {
+            //
+        }
+    });
+
+});
+
+
+const activateEscape = e => {
+    e = e || window.event
+    if (e.key==='Escape' || e.key==='Esc') Api.close()
+}
+document.addEventListener('keyup', activateEscape)
+document.removeEventListener('keyup', activateEscape)
+
+
 /* ---------------------------------------------- */ // onload
 
 document.addEventListener('DOMContentLoaded', function(event) {})
@@ -119,22 +148,6 @@ $(document).ready(function(){
 $(function(){
 });
 
-$(function(){
-
-    // eventClick
-    $('.element').on( 'click', klikerAction );
-    function klikerAction(e){
-        var kliker = $(e.currentTarget);
-    }
-
-    // eventKeypress
-    $('input.pressEnter').keydown(function(e) {
-        if(e.keyCode === 13) {
-            //
-        }
-    });
-
-});
 
 /* waits until everything is loaded, not just DOM is ready */
 $(window).load(function() {
