@@ -33,6 +33,24 @@ const compose = (...fns) => x => fns.reduce((acc, fn) => fn(acc), x);
    const r4 = fn(1)(2)(3)(4);
 
 
+// ---------------------------------------------- PROMISE syntax
+
+
+    let result = function DemoPromise (resolve, reject) {
+        reject(data)
+        try {
+            /*timeout...*/resolve({token:'xToken'})
+        }
+        catch(err) { reject(err) }
+    }
+    return new Promise(result)
+	
+	// ...
+	
+	Backend_Axios.post({url,data})
+		.then(responce=>{})
+		.catch(responce=>{})
+
 
 // ---------------------------------------------- MODULE syntax //ES6 Version
 
