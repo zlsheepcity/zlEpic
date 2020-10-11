@@ -13,6 +13,12 @@
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@mdi/font@latest/css/materialdesignicons.min.css">
 	
+<my-component
+  v-for="item in items"
+  :item="item"
+  :index="$index">
+</my-component>
+	
 ```
 
 # Router sn
