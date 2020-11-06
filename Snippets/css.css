@@ -158,6 +158,14 @@ body {
   min-height: stretch;
 }
 
+/* place-items это краткая форма записи для align-items и justify-items */
+.parent {
+  display: grid;
+  place-items: center;
+}
+
+
+
 /* ======================================================== BASICS */
 
 
