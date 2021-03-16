@@ -1,13 +1,13 @@
 /* ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ Snippets 2020 */
 /* ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ MAIN CODE */
 
-	flex {
+    .flex {
         display:         flex;
         flex-direction:  column;
         justify-content: center;
         align-items:     center;
         align-content:   center;
-	}
+    }
 
 
 /* ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ PROTO MARKUP */
@@ -142,8 +142,12 @@ section {
 
 /* ======================================================== LAYOUT */
 
-html { box-sizing: border-box; }
-*, *::before, *::after { box-sizing: inherit; }
+html {
+    box-sizing: border-box;
+}
+*, *::before, *::after {
+    box-sizing: inherit;
+}
 
 /* full-height 2019
    https://css-tricks.com/some-things-you-oughta-know-when-working-with-viewport-units/ */
@@ -160,23 +164,17 @@ body {
 
 /* place-items это краткая форма записи для align-items и justify-items */
 .parent {
-  display: grid;
-  place-items: center;
+    display: grid;
+    place-items: center;
 }
 
-
+/* new line after inline element */
+label::after {
+    content: '\A';
+    white-space: pre;
+}
 
 /* ======================================================== BASICS */
-
-
-html {
-    margin: 0;
-    padding: 0;
-}
-body {
-    margin: 0;
-    padding: 0;
-}
 
 
 a {
@@ -433,9 +431,9 @@ div {
 }
 
 /* color link on hover */
-https://css-tricks.com/4-ways-to-animate-the-color-of-a-text-link-on-hover/
+/* https://css-tricks.com/4-ways-to-animate-the-color-of-a-text-link-on-hover/ */
 
-a {
+.hovered-link {
   position: relative;
   display: inline-block;
   font-size: 2em;
@@ -450,9 +448,9 @@ a {
   background-position: 100%;
   transition: background-position 275ms ease;
   text-decoration: none; // text decorations are clipped in WebKit browsers
-  &:hover {
+}
+.hovered-link:hover {
     background-position: 0 100%;
-  }
 }
 
 
@@ -513,7 +511,7 @@ body {
    https://css-tricks.com/putting-the-flexbox-albatross-to-real-use/
 */
 div {
-  flex-basis: calc(560px * 999 - 100% * 999);
+  flex-basis: calc(560px * 99999 - 100% * 99999);
 }
 
 
