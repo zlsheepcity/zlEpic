@@ -198,6 +198,15 @@ div:focus-within .extra-stuff {
 }
 
 
+// clamp()
+// 1rem min ... 10vw ... 2rem max
+width: clamp(1rem, 10vw, 2rem);
+
+/* way to display integer props */
+.red .value::before {
+  counter-reset: color-value var(--red);
+  content: counter(color-value);
+}
 
 
 /* ======================================================== @MEDIA */
@@ -453,6 +462,18 @@ div {
     background-position: 0 100%;
 }
 
+
+// define custom property
+// browser understand how to animate <integer>
+
+@property --red {
+  syntax: '<integer>';
+  inherits: true;
+  initial-value: 0;
+}
+@keyframes red-fade {
+  50% { --red: 255; }
+}
 
 /* ======================================================== TYPOGRAPHY */
 
