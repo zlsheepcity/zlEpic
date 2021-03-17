@@ -198,8 +198,8 @@ div:focus-within .extra-stuff {
 }
 
 
-// clamp()
-// 1rem min ... 10vw ... 2rem max
+/** clamp()
+    1rem min ... 10vw ... 2rem max */
 width: clamp(1rem, 10vw, 2rem);
 
 /* way to display integer props */
