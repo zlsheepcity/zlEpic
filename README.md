@@ -1,7 +1,10 @@
 # zlEpic
-dev components and snippets
+zlhome/webhome  
+
+(https://zlsheepcity.github.io/zlEpic/)  
+
 
 ## Author
 
-zl/sheep.today
-sheep.today@gmail.com
+zl  
+zl.sheepcity@gmail.com  
