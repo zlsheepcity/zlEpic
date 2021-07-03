@@ -1,0 +1,9 @@
+div#body {background:608px 0 repeat-y;padding-left:24px;}
+div#collumn_left {width:568px;float:left;margin-bottom:48px;}
+div#collumn_middle {width:268px;float:left;margin-bottom:48px;}
+div#collumn_right {width:268px;float:left;margin-bottom:48px;}
+
+div#body.twocollumns div#collumn_left {width:836px;}
+div#body.twocollumns div#collumn_middle {display:none;visibility:hidden;}
+
+div#body.twocollumns div#collumn_left div#collumn_leftleft {width:568px;float:left;}

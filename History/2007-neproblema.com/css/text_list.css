@@ -1,0 +1,44 @@
+div#collumn_left div.text_list {padding:0 24px;}
+
+div.text_list h1,
+div.text_list h2 {margin:0;padding:0 0 8px 0;font-size:2em;font-weight:normal;font-family:'georgia',serif;color:#000;
+	text-align:left;}
+div.text_list h2 {font-size:1.7em;padding-bottom:4px;}	
+div.text_list h1 a,
+div.text_list h2 a {color:#F90;text-decoration:none;}
+div.text_list h1 a:hover,
+div.text_list h2 a:hover {color:#66F;}
+div.text_list h5.name,
+div.text_list h5.date {padding:0;margin:0;font-size:1.2em;color:#666;font-weight:normal;font-style:italic;font-family:'georgia',serif;}
+div.text_list h5.name a {color:#666;text-decoration:none;}
+
+div.text_list h1.theme {padding:12px;margin:0 0 4px -12px;border-bottom:1px solid #666;background:#EEE;
+	font-size:19px;text-transform:uppercase;font-family:'georgia',serif;color:#000;}
+div.text_list h1.theme a {color:#000;text-decoration:none;}	
+div.text_list h1.theme a:hover {text-decoration:underline;}
+
+div.text_list h3.theme {padding:12px 0;margin:0 0 4px 0;font-weight:normal;font-size:1em;
+	text-transform:uppercase;font-family:'georgia',serif;color:#000;}
+
+
+div.text_list div.item {padding-bottom:0em;}
+
+div.text_list div.txt {font-family:arial,tahoma,sans-serif;font-size:.8em;line-height:1.5em;}
+div.text_list div.txt_intro {font-family:'georgia',serif;font-size:.9em;line-height:1.5em;font-style:italic;}
+
+div.text_list ul.lnk {margin:0 32px;padding:.5em 0;font-family:'georgia',serif;font-size:.9em;line-height:1.5em;}
+div.text_list ul.lnk li {margin:0;padding:0;color:#F90;}
+div.text_list ul.lnk li span {color:#666;}
+
+div.text_list div.divider {font-size:0;line-height:0;padding-top:32px;margin:0 16px 32px 16px;
+	border-bottom:#CCC dashed 1px;}
+	
+div.text_list ul.titles_list {margin:0 32px;padding:0;font-family:'georgia',serif;}	
+div.text_list ul.titles_list li {margin:0;padding:0;color:#F90;line-height:1.4em;}
+div.text_list ul.titles_list li.t {font-size:1.4em;}
+div.text_list ul.titles_list li.t a {color:#F90;text-decoration:underline;}
+div.text_list ul.titles_list li.t a:hover {color:#66F;}
+div.text_list ul.titles_list li.l {font-size:.9em;}
+
+
+div.pager {text-align:center;padding:0 48px;}

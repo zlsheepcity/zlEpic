@@ -1,0 +1,598 @@
+<!doctype html>
+<html>
+<head>
+  <title>TKS:4.Interface</title>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="html/css/all.css" media="all">
+  <link rel="stylesheet" href="html/css/interface.css" media="all">
+</head>
+<body>
+
+<div class="SERVER"></div>
+
+	<div class="blPopup welcomePopup" id="WelcomePopupV2">
+		<h6>Добро пожаловать в тренажер</h6>
+		<dl class="options">			
+			<dt>Твой рекорд:</dt>
+			<dd>
+				<b>%PercentCurrent%%</b>
+			</dd>
+			
+			<dt>Задачи:</dt>
+			<dd class="strikeArea">
+				<div class="strikeOnlyIf isUnlocked">1. Выбрать правильный статус для 10 ситуаций</div>
+				<div class="strikeOnlyIf isComplete">2. Выбрать правильный статус для 10 дополнительных ситуаций</div>
+				<div class="showOnlyIf isComplete">Максимальный результат достигнут!</div>
+			</dd>
+			
+			<dt class="showOnlyIf isNotComplete">Награда:</dt>
+			<dd class="showOnlyIf isNotComplete"><b>%MoneyToGo%</b> <span class="t-coin"></span><span class="t-coin-space"></span></dd>
+		</dl>
+		<div style="padding:8px 0 0 0;text-align:center;">
+			<span class="y-button b-close">Играть</span>
+			&nbsp;
+			<span class="y-button jsCL-next">Пропустить</span>
+		</div>
+	</div>
+	
+
+<div class="WRAP ExerciseInterface">
+		<div class="CurrentContent"></div>
+		<div class="blInterfaceOption">
+			<h4>Выбери правильный статус:</h4>			
+			<div class="intStyle-Button thisIsAnswer green"	value="a01">
+				Дозвон-успешно
+				<div class="hint">
+					<img src="html/img/hint-icon.png" alt="">
+					<span><b>«Занято/выключен»</b> — многократные гудки / номер заблокирован / выключен / вне зоны доступа / временно не обслуживается /клиент сбрасывает звонок.</span>
+				</div>
+			</div>
+			<div class="intStyle-Button openGroup"			value="a02">Перезвонить <span class="d">▼</span></div>
+			<div class="intStyle-OptGroup intStyle-OptGroup-a02" for="a02">
+				<label class="thisIsAnswer" 				value="a03">
+					<input type="radio" name="ia"> Клиент назначил удобное время
+					<div class="hint">
+						<img src="html/img/hint-icon.png" alt="">
+						<span><b>«Клиент назначил удобное время»</b> — клиент / 3 лицо сообщило удобное время для звонка.</span>
+					</div>					 
+				</label>
+				<label class="thisIsAnswer" 				value="a04">
+					<input type="radio" name="ia"> Клиент не назначил удобное время
+					<div class="hint">
+						<img src="html/img/hint-icon.png" alt="">
+						<span><b>«Клиент не назначил удобное время»</b> — клиент / 3 лицо не сообщило удобное время для звонка.</span>
+					</div>					
+				</label>
+			</div>
+			<div class="intStyle-Button openGroup" 			value="a05">Дозвон-отказ <span class="d">▼</span></div>
+			<div class="intStyle-OptGroup intStyle-OptGroup-a05" for="a05">
+				<label class="thisIsAnswer" 				value="a06">
+					<input type="radio" name="ia"> Переведён в ТКС
+					<div class="hint">
+						<img src="html/img/hint-icon.png" alt="">
+						<span><b>«Переведен в ТКС»</b> - вопрос клиента не отражен в инструкциях/материалах. Рекомендуем обратиться в call-центр банка.</span>
+					</div>					
+				</label>
+				<label class="thisIsAnswer" 				value="a07">
+					<input type="radio" name="ia"> Действующий клиент
+					<div class="hint">
+						<img src="html/img/hint-icon.png" alt="">
+						<span><b>«Действующий клиент»</b> — у клиента уже есть продукт ТКС-Банка (предлагаемый Вами).</span>
+					</div>
+				</label>
+				<label class="thisIsAnswer" 				value="a08">
+					<input type="radio" name="ia"> Уже оставил заявку
+					<div class="hint">
+						<img src="html/img/hint-icon.png" alt="">
+						<span><b>«Уже оставил заявку»</b> — клиент уже оставил заявку на кредитную карту и ждет результата рассмотрения или ранее получил отказ.</span>
+					</div>
+				</label>
+				<label class="thisIsAnswer" 				value="a09">
+					<input type="radio" name="ia"> Перезвонит позднее
+					<div class="hint">
+						<img src="html/img/hint-icon.png" alt="">
+						<span><b>«Перезвонит позднее»</b> — клиент готов сам перезвонить позднее в банк или хочет самостоятельно заполнить анкету на сайте Банка.</span>
+					</div>
+				</label>
+				<label class="thisIsAnswer" 				value="a10">
+					<input type="radio" name="ia"> Младше 18 лет / Старше 70
+					<div class="hint">
+						<img src="html/img/hint-icon.png" alt="">
+						<span><b>«Младше 18 лет / старше 70 лет»</b> — Банк не оформляет кредитные заявки лицам, указанного возрастного диапазона.</span>
+					</div>
+				</label>
+				<label class="thisIsAnswer" 				value="a11">
+					<input type="radio" name="ia"> Не гражданин РФ
+					<div class="hint">
+						<img src="html/img/hint-icon.png" alt="">
+						<span><b>«Не гражданин РФ»</b> — Банк оформляет кредитные заявки только гражданам РФ.</span>
+					</div>
+				</label>
+				<label class="thisIsAnswer" 				value="a12">
+					<input type="radio" name="ia"> Не устраивают условия
+					<div class="hint">
+						<img src="html/img/hint-icon.png" alt="">
+						<span><b>«Не устраивают условия»</b> — после агитации заявителя всё равно не устраивают условия кредитования.</span>
+					</div>
+				</label>
+				<label class="thisIsAnswer" 				value="a13">
+					<input type="radio" name="ia"> Не нужен кредит
+					<div class="hint">
+						<img src="html/img/hint-icon.png" alt="">
+						<span><b>«Не нужен кредит»</b> —  после агитации заявитель всё равно отказывается от оформления заявки, потому что не нужен кредит.</span>
+					</div>
+				</label>
+				<label class="thisIsAnswer" 				value="a14">
+					<input type="radio" name="ia"> Левый контакт
+					<div class="hint">
+						<img src="html/img/hint-icon.png" alt="">
+						<span><b>«Левый контакт»</b> — трубку взял другой человек (3-е лицо), при этом заявитель ему не знаком.</span>
+					</div>
+				</label>
+				<label class="thisIsAnswer" 				value="a15">
+					<input type="radio" name="ia"> Не звонить
+					<div class="hint">
+						<img src="html/img/hint-icon.png" alt="">
+						<span><b>«Не звонить»</b> —  клиент/третье лицо отказывается от разговора / услуг, просит больше не звонить.</span>
+					</div>
+				</label>
+				<label class="thisIsAnswer" 				value="a16">
+					<input type="radio" name="ia"> Клиент умер
+					<div class="hint">
+						<img src="html/img/hint-icon.png" alt="">
+						<span><b>«Клиент умер»</b> — выбирается, если ответивший сообщил о том, что клиент умер.</span>
+					</div>
+				</label>
+				<label class="thisIsAnswer" 				value="a17">
+					<input type="radio" name="ia"> Черный список
+					<div class="hint">
+						<img src="html/img/hint-icon.png" alt="">
+						<span><b>«Черный список»</b> — заявитель находится в учреждении закрытого типа (тюрьма, психбольница) / заявитель слабослышащий / с дефектами речи / плохо владеющий русским языком.</span>
+					</div>
+				</label>
+				<label class="thisIsAnswer" 				value="a18">
+					<input type="radio" name="ia"> Другое (нестандартная ситуация)
+					<div class="hint">
+						<img src="html/img/hint-icon.png" alt="">
+						<span><b>«Другое (нестандартная ситуация)»</b> — причина отказа, не отображена в инструкциях. Обязательно нужно внести комментарий к заявке.</span>
+					</div>
+				</label>
+			</div>
+			<div class="intStyle-Button openGroup" 			value="a19">Недозвон <span class="d">▼</span></div>
+			<div class="intStyle-OptGroup intStyle-OptGroup-a19" for="a19">
+				<label class="thisIsAnswer" 				value="a19a">
+					<input type="radio" name="ia"> Занято/выключен
+					<div class="hint">
+						<img src="html/img/hint-icon.png" alt="">
+						<span><b>«Занято/выключен»</b> — многократные гудки / номер заблокирован / выключен / вне зоны доступа / временно не обслуживается / клиент сбрасывает звонок.</span>
+					</div>
+				</label>
+				<label class="thisIsAnswer" 				value="a19b">
+					<input type="radio" name="ia"> Номера не существует					
+					<div class="hint">
+						<img src="html/img/hint-icon.png" alt="">
+						<span><b>«Номера не существует»</b> — неправильно набран номер / абонент в сети не зарегистрирован / номер изменен / номер не существует.</span>
+					</div>
+				</label>
+				<label class="thisIsAnswer" 				value="a19c">
+					<input type="radio" name="ia"> Клиент не берёт трубку
+					<div class="hint">
+						<img src="html/img/hint-icon.png" alt="">
+						<span><b>«Клиент не берет трубку»</b> — выбирается, если клиент в течение 30 секунд не ответил на звонок. Вторую попытку дозвона не совершать.</span>
+					</div>
+				</label>
+			</div>
+			<div class="intStyle-Button thisIsAnswer" 		value="a20">
+				Ошибка телефонии
+				<div class="hint">
+					<img src="html/img/hint-icon.png" alt="">
+					<span><b>«Ошибка телефонии»</b> — без установки соединения программой выдается сообщение «Занято»</span>
+				</div>
+			</div>
+			<div class="intStyle-Button thisIsAnswer" 		value="a21">
+				Мусор
+				<div class="hint">
+					<img src="html/img/hint-icon.png" alt="">
+					<span><b>«Мусор»</b> — данные в поле «ФИО» указаны некорректно, например – просто набор букв или название организации. Пустые поля «ФИО» некорректными не считаются.</span>
+				</div>
+			</div>
+		</div>
+		<div class="Timer">0:00</div>
+		<div class="ScoreBar"></div>	
+	
+    
+		<div class="blPopup" id="GameFeedback">
+			<h6 class="ifTimeout">Время истекло!</h6>
+			<h6 class="ifTaskover">Упражнение завершено!</h6>
+			<div class="BiathlonBarCopy"></div>
+			<div class="ifReward">
+				Вознаграждение: <span class="reward">0</span> р.
+			</div>
+			<div style="padding:8px 0;text-align:center;"><a href="4_interface.html" class="y-button">Играть ещё раз</a></div>
+		</div>	
+<!--    
+    <div class="blPopup GameFeedback" id="GameFeedback-v2">
+      <h6 class="caption">
+        <span class="ifTimeout">Время истекло!</span>
+        <span class="ifTaskover">Упражнение завершено!</span>
+      </h6>
+      <div class="content">
+        Правильных ответов: %CurResult% из %MaxResult%<br>
+        Упражнение выполнено на %CurResultProcent%<br>
+        Предыдущий рекорд: %PrevResultProcent%<br><br>
+        <span class="ifThisIsMaster">
+          Поздравляем! Максимальный результат снова достигнут!
+        </span>
+        <span class="ifResultIsNotImproved">
+          Чтобы заработать больше денег на тренажере,<br>
+          улучши свой результат.
+        </span>
+        <span class="ifResultIsImproved">
+          За улучшение результата с %PrevResultProcent% до %CurResultProcent%,<br>
+          ты зарабатываешь %MoneyEarned% монет.
+        </span>
+      </div>
+      <div class="buttonContainer"><a href="4_interface.html" class="y-button">Играть ещё раз</a></div>
+    </div>
+-->	
+	<div class="blPopup welcomePopup GameFeedback" id="GameFeedback-v2">
+		<h6 class="caption">
+		  <span class="ifTimeout">Время истекло!</span>
+		  <span class="ifTaskover">Упражнение завершено!</span>
+		</h6>
+		<dl class="options">
+			<dt>Результат:</dt>
+			<!-- <dd><b>%CurResult%</b> из <b>%MaxResult%</b> (<b>%CurResultProcent%</b>)</dd> -->
+			<dd><b>%CurResultProcent%</b></dd>
+			<dt>Предыдущий рекорд:</dt>
+			<dd><b>%PrevResultProcent%</b></dd>
+		</dl>
+		
+		<div class="content">
+			<span class="ifResultIsImproved">
+			За улучшение результата с <b>%PrevResultProcent%</b> до <b>%CurResultProcent%</b>, ты зарабатываешь:<br>
+			<div style="line-height:34px;"><b>%MoneyEarned%</b> <span class="t-coin-easy"></span></div>
+			</span>
+			<span class="ifResultIsNotImproved">
+			Чтобы заработать больше денег на тренажере,<br>улучши свой результат.
+			</span>
+			<span class="ifThisIsMaster">
+			Поздравляем! Максимальный результат снова достигнут.
+			</span>
+			<span class="ifThisIsMasterNow">
+			Поздравляем! Максимальный результат на тренажере достигнут!
+			</span>
+			<span class="ifResultIsWorst">
+			Упражнение не выполнено!<br>
+			Необходимо набрать не менее 50%.
+			</span>
+		</div>
+		
+		<div class="buttonContainer"><a href="4_interface.html" class="y-button">Играть ещё раз</a></div>
+	</div>
+    
+    
+</div>
+
+<div class="blPopup" id="ScreenUnlock">
+	<h6>Минимальный результат достигнут!</h6>
+	Теперь можно продолжить курс или попытаться выполнить больше заданий в тренажёре.
+	<div style="padding:8px 0;text-align:center;">
+		<span class="y-button b-close">Вернуться</span>
+	</div>
+</div>	
+
+<div class="DefaultEndOfCall EndOfCall DefaultEndOfCall-correct" style="color:green">
+	<!--
+	Правильно!<br>Статус для этой ситуации:<br>
+	<span class="correctAnswerCaption"></span>
+	-->
+	<span style="font-size:1.3em">Правильно!</span><br><br>
+	
+</div>
+
+<div class="DefaultEndOfCall EndOfCall DefaultEndOfCall-incorrect" style="color:red">
+	<span style="font-size:1.3em">Неправильно!</span><br><br>Правильный статус:<br>
+	<span class="correctAnswerCaption"></span>
+</div>
+
+<div class="DB DB-interface">
+
+	<div caption="Number28" answer="a19a" class="critical">
+		<div class="blPhoneDialog">
+			<blockquote class="message">
+				Ты пытаешься дозвониться до клиента, но линия занята (слышны многократные короткие гудки).
+			</blockquote>
+		</div>	
+		<!--
+		<div class="EndOfCall EndOfCall-correct">
+			Custom call feedback
+		</div>
+		<div class="EndOfCall EndOfCall-incorrect">
+			Custom call feedback
+		</div>
+		-->
+	</div>
+
+	<div caption="Number16" answer="a19b">
+		<div class="blPhoneDialog">
+			<blockquote class="message">
+				Ты пытаешься дозвониться до клиента, но автоответчик сообщает, что такого номера не существует.
+			</blockquote>
+		</div>	
+	</div>
+		
+	<div caption="Number16" answer="a19c" class="critical">
+		<div class="blPhoneDialog">
+			<blockquote class="message">
+				Ты долго слушаешь гудки, но никто не подходит к телефону...
+			</blockquote>
+		</div>	
+	</div>
+
+	<div caption="Number25" answer="a10" class="critical">
+		<div class="blPhoneDialog">
+			<blockquote class="operator">
+				– Назовите, пожалуйста, Вашу дату рождения.
+			</blockquote>
+			<blockquote class="client">
+				– 18 декабря 1998 года.
+			</blockquote>
+			<blockquote class="operator">
+				– К сожалению, мы не можем продолжить оформление. Получить кредитную карту нашего банка может только гражданин РФ старше 18 и младше 70 лет.
+			</blockquote>
+		</div>	
+	</div>
+
+	<div caption="Number22" answer="a07" class="critical">
+		<div class="blPhoneDialog">
+			<blockquote class="client">
+				– У меня уже есть карта вашего банка. Хочу оформить вторую.
+			</blockquote>
+			<blockquote class="operator">
+				– Правила нашего банка позволяют каждому клиенту иметь только одну кредитную карту. Поэтому я вынуждена с Вами попрощаться. Всего доброго!
+			</blockquote>
+		</div>	
+	</div>
+
+	<div caption="Number21" answer="a03">
+		<div class="blPhoneDialog">
+			<blockquote class="operator">
+				– Скажите, пожалуйста, кем выдан Ваш паспорт.
+			</blockquote>
+			<blockquote class="client">
+				– У меня нет с собой паспорта.
+			</blockquote>
+			<blockquote class="operator">
+				– Тогда давайте я перезвоню Вам в удобное время, когда у Вас будут при себе документы. 
+			</blockquote>
+			<blockquote class="client">
+				– Хорошо. Перезвоните мне в среду в 14:30.
+			</blockquote>
+		</div>	
+	</div>
+
+	<div caption="Number20" answer="a04">
+		<div class="blPhoneDialog">
+			<blockquote class="operator">
+				–  Назовите, пожалуйста, номер Вашего мобильного телефона.
+			</blockquote>
+			<blockquote class="client">
+				– Записывайте, мой телефон...<br>
+			</blockquote>
+			<blockquote class="message">
+				(В трубке раздаются короткие гудки. Вы пытаетесь перезвонить, но снова слышите короткие гудки)
+			</blockquote>
+		</div>	
+	</div>
+	
+	<div caption="Number17" answer="a13" class="critical">
+		<div class="blPhoneDialog">
+			<blockquote class="client">
+				– Нет, я достаточно зарабатываю. И вообще я против кредитов. Они мне не нужны.
+			</blockquote>
+			<blockquote class="operator">
+				– В таком случае я с Вами прощаюсь, всего доброго, до свидания!
+			</blockquote>
+		</div>	
+	</div>
+
+	<div caption="Number15" answer="a21">
+		<div class="blPhoneDialog">
+			<blockquote class="message">
+				Заявка загрузилась. В поле «ФИО заявителя» ты видишь некорректную информацию: «укцкцк кйцзюж аедждбддж».
+			</blockquote>
+		</div>	
+	</div>
+
+	<div caption="Number14" answer="a20" class="critical">
+		<div class="blPhoneDialog">
+			<blockquote class="message">
+				Ты пытаешься дозвониться до клиента. Но соединения не происходит, а программа выдает тебе сообщение «занято».
+			</blockquote>
+		</div>	
+	</div>
+
+	<div caption="Number13" answer="a04" class="critical">
+		<div class="blPhoneDialog">
+			<blockquote class="client">
+				–  Мне неудобно сейчас разговаривать.
+			</blockquote>
+			<blockquote class="operator">
+				– Давайте договоримся на удобное для Вас время?
+			</blockquote>
+			<blockquote class="client">
+				– Я не знаю, когда буду свободен. Перезвоните позднее.
+			</blockquote>
+		</div>	
+	</div>
+
+	<div caption="Number12" answer="a17">
+		<div class="blPhoneDialog">
+			<blockquote class="operator">
+				– Добрый день! Меня зовут Мария, я сотрудник Банка „Тинькофф Кредитные Системы”. С кем я разговариваю?
+			</blockquote>
+			<blockquote class="client">
+				– Это Анна Александровна, мать Евгения.
+			</blockquote>
+			<blockquote class="operator">
+				– А могу я поговорить с ним?
+			</blockquote>
+			<blockquote class="client">
+				– Нет, он в тюрьме.
+			</blockquote>
+			<blockquote class="operator">
+				– Извините. Всего хорошего, до свидания!
+			</blockquote>
+		</div>	
+	</div>
+
+	<div caption="Number11" answer="a16">
+		<div class="blPhoneDialog">
+			<blockquote class="client">
+				– Станислав Борисович в прошлом месяце умер.
+			</blockquote>
+			<blockquote class="operator">
+				– Примите мои соболезнования. До свидания!
+			</blockquote>
+		</div>	
+	</div>
+
+	<div caption="Number10" answer="a15">
+		<div class="blPhoneDialog">
+			<blockquote class="client">
+				– Я сто раз уже говорил, что не собираюсь заполнять никакую анкету! Пожалуйста, не звоните мне больше!
+			</blockquote>
+			<blockquote class="operator">
+				– Извините. Всего хорошего, до свидания!
+			</blockquote>
+		</div>	
+	</div>
+
+	<div caption="Number9" answer="a14">
+		<div class="blPhoneDialog">
+			<blockquote class="client">
+				– Алло, Петр Семенов слушает.
+			</blockquote>
+			<blockquote class="operator">
+				– Я могу поговорить с Валентином Сергеевичем?
+			</blockquote>
+			<blockquote class="client">
+				– Не знаю такого. Вы ошиблись номером.
+			</blockquote>
+			<blockquote class="operator">
+				– Извините. До свидания!
+			</blockquote>
+		</div>	
+	</div>
+
+	<div caption="Number7" answer="a12">
+		<div class="blPhoneDialog">
+			<blockquote class="client">
+				– Спасибо, теперь я гораздо лучше представляю себе преимущества Вашего банка. И всё-таки меня не устраивают условия, которые Вы предлагаете. Давайте закончим этот разговор.
+			</blockquote>
+			<blockquote class="operator">
+				– Очень жаль. В таком случае я с Вами прощаюсь, всего доброго, до свидания!
+			</blockquote>
+		</div>	
+	</div>
+
+	<div caption="Number6" answer="a11" class="critical">
+		<div class="blPhoneDialog">
+			<blockquote class="operator">
+				–  Кем выдан Ваш паспорт?
+			</blockquote>
+			<blockquote class="client">
+				–  Ереванским паспортно-визовым отделом.
+			</blockquote>
+			<blockquote class="operator">
+				–  То есть, Вы не гражданин РФ?
+			</blockquote>
+			<blockquote class="client">
+				–  Нет.
+			</blockquote>
+			<blockquote class="operator">
+				– К сожалению, мы не можем продолжить оформление. Получить кредитную карту нашего банка может только гражданин РФ. Всего доброго, до свидания!
+			</blockquote>
+		</div>	
+	</div>
+
+	<div caption="Number5" answer="a10">
+		<div class="blPhoneDialog">
+			<blockquote class="operator">
+				– Назовите, пожалуйста, Вашу дату рождения.
+			</blockquote>
+			<blockquote class="client">
+				– 18 декабря 1942 года.
+			</blockquote>
+			<blockquote class="operator">
+				– К сожалению, мы не можем продолжить оформление. Получить кредитную карту нашего банка может только гражданин РФ старше 18 и младше 70 лет.
+			</blockquote>
+		</div>	
+	</div>
+
+	<div caption="Number4" answer="a09" class="critical">
+		<div class="blPhoneDialog">
+			<blockquote class="client">
+				–  Мне неудобно сейчас разговаривать.
+			</blockquote>			
+			<blockquote class="operator">
+				– Давайте договоримся на удобное для Вас время?
+			</blockquote>
+			<blockquote class="client">
+				– Нет, я сам вам перезвоню.
+			</blockquote>
+		</div>	
+	</div>
+
+	<div caption="Number3" answer="a08"  class="critical">
+		<div class="blPhoneDialog">
+			<blockquote class="client">
+				– Мне вчера звонил Ваш коллега.
+			</blockquote>			
+			<blockquote class="operator">
+				– Вы оставили заявку на кредитную карту Тинькофф?
+			</blockquote>
+			<blockquote class="client">
+				– Да.
+			</blockquote>		
+			<blockquote class="operator">
+				– Хорошо. Тогда я с Вами прощаюсь. Всего доброго, до свидания!
+			</blockquote>
+		</div>	
+	</div>
+
+	<div caption="Number1" answer="a06">
+		<div class="blPhoneDialog">
+			<blockquote class="client">
+				– Меня не интересует оформление кредитной карты. Расскажите пожалуйста об условиях оформления дебетовой карты.
+			</blockquote>	
+			<blockquote class="operator">
+				– К сожалению, данный вопрос выходит за рамки моей компетенции. Вы можете обратиться в Центр обслуживания клиентов для уточнения необходимой информации по номеру: 8 800 555-77-78.
+			</blockquote>
+		</div>
+	</div>
+	
+	<div caption="Number30" answer="a18">
+		<div class="blPhoneDialog">
+			<blockquote class="operator">
+				– Назовите пожалуйста наименование организации работодателя.
+			</blockquote>
+			<blockquote class="client">
+				– Банк Тинькофф Кредитные Системы.
+			</blockquote>	
+			<blockquote class="operator">
+				– К сожалению, мы не можем продолжить оформление кредитной карты, Вам необходимо заполнить заявление у Вашего руководителя.
+			</blockquote>
+		</div>
+	</div>
+	
+</div>
+
+
+<script src="html/js/lib_jquery.js"></script>
+<script src="html/js/lib_jquery.bpopup.js"></script>
+<script src="html/js/all.js"></script>
+<script src="html/js/interface.js"></script>
+</body>
+</html>

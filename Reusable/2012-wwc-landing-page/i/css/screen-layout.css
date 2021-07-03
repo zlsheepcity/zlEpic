@@ -1,0 +1,77 @@
+/* Layout */
+
+.screen
+{
+  width:100%;
+  overflow:hidden;
+  padding-bottom:200px;
+  background:url(scrshdw.png) 50% 0 no-repeat;
+}
+
+.c-left
+{
+  width:42.5%;
+  margin:0 2.5% 0 5%;
+  float:left;
+  clear:left;
+}
+.c-right
+{
+  width:42.5%;
+  margin:0 5% 0 2.5%;
+  float:right;
+  clear:right;
+}
+.c-double
+{
+  width:90%;
+  margin:0 5%;
+}
+
+.c-tripple-left
+{
+  width:65%;
+  margin-left:5%;
+  margin-right:2%;
+  float:left;
+  overflow:hidden;
+}
+.c-tripple-right
+{
+  width:23%;
+  margin-right:5%;
+  float:right;
+  overflow:hidden;
+}
+
+.c-left > * { padding:4%; }
+.c-right > * { padding:4%; }
+
+
+ul.u-3bricks
+{
+  margin:0 -2%;
+  padding:0;
+  list-style:none;
+  overflow:hidden;
+  text-align:center;
+}
+ul.u-3bricks > li
+{
+  width:29.333%;
+  padding:2%;
+  display:block;
+  float:left;
+  text-align:left;
+  vertical-align:top;
+}
+.c-tripple-left ul.u-3bricks 
+{
+  margin-left:0;
+  margin-right:0;
+}
+.c-tripple-left ul.u-3bricks > li
+{
+  width:27.333%;
+  padding:3%;
+}

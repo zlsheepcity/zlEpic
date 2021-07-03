@@ -1,0 +1,91 @@
+.popupForScreenEditing
+{
+  position:absolute;
+  display:none;
+  width:300px;
+  height:200px;
+  background:#fff;
+  border:2px #ccc solid;
+  border-radius:8px;
+  box-shadow:0 0 4px rgba(0,0,0,.5);
+  z-index:40;
+}
+
+.popupForScreenEditing .close
+{
+  color:#ccc;
+  text-decoration:underline;
+  display:block;
+  text-align:center;
+  cursor:pointer;
+  height:25px;
+  border-radius:8px 8px 0 0;
+}
+.popupForScreenEditing .close:hover { 
+  color:#000; 
+  background:#eee; 
+}
+
+.popupForScreenEditing .delete
+{
+  color:#ccc;
+  text-decoration:underline;
+  display:block;
+  text-align:center;
+  cursor:pointer;
+  height:25px;
+  border-radius:8px 0 8px 0;
+  padding:0 6px;
+  float:right;
+}
+.popupForScreenEditing .delete:hover { 
+  color:#000; 
+  background:#eee; 
+}
+
+/*
+.popupForScreenEditing .addNewLinkToScreen
+{
+  display:block;
+  padding:0 6px;
+  color:#600;
+  cursor:pointer;
+  float:left;
+}
+.popupForScreenEditing .addNewLinkToScreen:hover { color:#c00; }
+*/
+
+/* DATA */
+
+.popupForScreenEditing .data
+{
+  height:150px;
+  overflow:auto;
+  padding:0 6px;
+}
+
+.popupForScreenEditing .data .caption
+{
+  display:block;
+  padding:4px 0;
+}
+
+.popupForScreenEditing .data .links
+{
+  display:block;
+}
+
+.popupForScreenEditing .data .links
+{
+  display:block;
+}
+
+.popupForScreenEditing .addNewLinkToScreen
+{
+  display:block;
+  padding:0 6px;
+  color:#600;
+  cursor:pointer;
+  text-decoration:underline;
+}
+.popupForScreenEditing .addNewLinkToScreen:hover { color:#c00; }

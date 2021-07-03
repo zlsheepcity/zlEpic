@@ -1,0 +1,141 @@
+
+.kirkwood {
+  position:fixed;
+  z-index:1400;
+}
+
+.kirkwood-full {
+  top:50px;
+  bottom:50px;
+  left:50px;
+  right:50px;
+}
+
+.kirkwood-mini {
+  bottom:20px;
+  right:20px;
+}
+
+.kirkwoodContent {
+  position:absolute;
+  top:0;
+  left:0;
+  right:0;
+  bottom:0;
+  box-sizing: border-box;
+  background:white;
+  color:black;
+  padding:20px 50px;
+  border:8px solid yellow;
+  font-size: 17px;
+  line-height: 25px;
+}
+
+.kirkwoodMini {
+  color:black;
+  padding:0px 20px 0px 120px;
+  border:2px solid yellow;  
+  font-size: 17px;
+  line-height: 40px;
+  background:url(../img/carolSeen.png) 0 0 no-repeat white;
+}
+
+.kirkwoodTask {
+  color:black;
+  padding:10px 32px 10px 170px;
+  background:url(../img/carolTask.png) 0 0 no-repeat white;
+  border:2px solid yellow;  
+  font-size: 14px;
+  line-height: 16px;
+}
+
+
+
+.kirkwoodPopup {
+  position:absolute;
+  z-index:1100;
+  background:yellow;
+  color:black;
+  box-sizing: border-box;
+  padding:20px 40px;
+  font-size: 14px;
+  line-height: 18px;  
+}
+
+.kirkwoodPopupCloser {
+  position:absolute;
+  right:0px;
+  top:0px;
+  font-size:30px;
+  line-height:30px;
+  width:30px;
+  height:30px;
+  cursor:pointer;
+  text-align:center;
+}
+
+
+
+
+.kirkwood h1 {
+  margin:0;
+  padding:0;
+  font-size:42px;
+  line-height:50px;
+  font-weight:400;
+}
+.kirkwood h2 {
+  margin:0;
+  padding:0;
+  font-size:32px;
+  line-height:40px;
+  font-weight:400;
+}
+.kirkwood h4 {
+  margin:0;
+  padding:0;
+  font-size:25px;
+  line-height:30px;
+  font-weight:400;
+}
+
+.kirkwood ul {
+  margin:0;
+  padding:0;
+}
+
+.kirkwood-link, a.kirkwood-link {
+  color:blue;
+  cursor:pointer;
+}
+
+.kirkwood-link:hover { color:red; }
+
+
+
+/* MAIN SCREENS */
+.kirkwoodPopuper { display:none; }
+
+#CurrentOrdnung[data-currentscreen="overview"]     .kirkwoodPopuper-overview,
+#CurrentOrdnung[data-currentscreen="orderform"]    .kirkwoodPopuper-orderform,
+#CurrentOrdnung[data-currentscreen="payments"]     .kirkwoodPopuper-payments,
+#CurrentOrdnung[data-currentscreen="vas"]          .kirkwoodPopuper-vas,
+#CurrentOrdnung[data-currentscreen="process"]      .kirkwoodPopuper-process,
+#CurrentOrdnung[data-currentscreen="result"]       .kirkwoodPopuper-result,
+#CurrentOrdnung[data-currentscreen="client"]       .kirkwoodPopuper-client,
+#CurrentOrdnung[data-currentscreen="events"]       .kirkwoodPopuper-events,
+#CurrentOrdnung[data-currentscreen="design"]       .kirkwoodPopuper-design
+{
+  display:block;
+}
+
+
+
+
+
+
+
+
+
+
+

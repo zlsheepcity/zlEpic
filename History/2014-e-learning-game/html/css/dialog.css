@@ -1,0 +1,126 @@
+body {
+	font-family: Verdana, Arial, sans-serif;
+}
+.WRAP
+{
+	width:1024px;
+	height:577px;
+	margin:0 auto;
+	position:relative;
+	background-color:#fefce5;
+}
+.DB-dialogues { display:none; }
+
+
+.Output
+{
+	width:1024px;
+	height:577px;
+	background:url(../img/dialog_background.png) 0 0 no-repeat;
+}
+
+
+/* CAPTION */
+.Output > h1
+{
+	position:absolute;
+	top:25px;
+	left:47px;
+	display:block;
+	background:#fedc23;
+	padding:3px 5px;
+	max-width:192px;
+	font: bold 14px/16px Verdana;
+	text-transform:uppercase;
+}
+
+/* PREV MSG */
+.Output div.PreviousMsg
+{
+	position:absolute;
+	/*top:25px;*/
+	bottom:444px;
+	left:254px;
+	width:480px;
+	padding:12px 18px;
+	border:1px solid #504a4c;
+	border-radius: 8px;
+}
+
+/* OPPONENT */
+.Output > h2
+{
+	display:block;
+	position:absolute;
+	left:225px;
+	top:150px;
+	padding:20px 24px;
+	margin:0;
+	color:black;
+	background:#ffb713;
+	border-radius:8px;
+	font: normal 17px/19px sans-serif;
+}
+
+/* OPTIONS */
+.Output > div.filling
+{
+	display:block;
+	position:absolute;
+	left:254px;
+	top:200px;
+	padding:20px 24px;
+	margin:0;
+	color:black;
+	background:transparent;
+	border-radius:8px;
+	font: normal 14px/16px sans-serif;
+}
+
+.Output > ul
+{
+	display:block;
+	position:absolute;
+	left:254px;
+	top:240px;
+	list-style:none;
+	margin:0;
+	padding:0;
+}
+.Output > ul > li
+{
+	display:block;
+	width:480px;
+	padding:12px 18px;
+	border:1px solid #524a48;
+	border-radius: 8px;
+	margin-bottom:5px;
+	background:#524a48;
+	color:white;
+	cursor:pointer;
+}
+.Output > ul > li:hover
+{
+	border:1px solid #fedc23;
+	background:#fedc23;
+	color:black;
+}
+
+
+
+/* TOOLS */
+
+.ScoreBar
+{
+	display:block;
+	position:absolute;
+	left:802px;
+	top:456px;
+	
+}
+
+
+
+
+
+/* ---------------------------------------------------------- */

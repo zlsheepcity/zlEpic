@@ -1,0 +1,135 @@
+.WRAP
+{
+  width:1024px;
+  height:581px;
+  position:relative;
+  overflow:hidden;
+  margin:auto;
+}
+
+.RoomBackground
+{
+  position:absolute;
+  top:0;
+  left:0;
+  right:0;
+  bottom:0;
+  background:url(../img/room_background.jpg) 0 0 no-repeat;
+}
+
+.RoomItems
+{
+  position:absolute;
+  top:0;
+  left:0;
+  right:0;
+  height:0;
+  overflow:visible;
+}
+.RoomItems > div
+{
+  position:absolute;
+}
+
+.RoomShopping
+{
+  position:absolute;
+  top:0;
+  left:0;
+  right:0;
+  height:0;
+  overflow:visible;
+}
+.PurchaseButton
+{
+  display:block;
+  position:absolute;
+  height:44px;
+  width:44px;
+  background:#FFDF00;
+  border-radius:22px;
+  box-shadow:0 1px 1px #CAAF18;
+  text-align:center;
+  color:black;
+  font:normal 12px/44px tahoma,arial,sans-serif;
+  cursor:pointer;
+}
+.PurchaseButton.nomoneynochears
+{
+  background:gray;
+  box-shadow:0 1px 1px gray;
+}
+
+
+.RoomInterface
+{
+  position:absolute;
+  top:0;
+  left:0;
+  right:0;
+  height:0;
+  overflow:visible;
+}
+.RoomInterface > .BalanceBar
+{
+  position:absolute;
+  top:14px;
+  right:23px;
+  white-space:nowrap;
+  min-width:200px;
+  font-size:14px;
+  text-align:center;
+  padding:8px;
+}
+
+.RoomInterface > .ShopButton
+{
+  position:absolute;
+  top:54px;
+  right:23px;
+  white-space:nowrap;
+  min-width:200px;
+  font-size:14px;
+  padding:0px 8px;
+}
+
+.ItemTooltip
+{
+  display:none;
+  position:absolute;
+  z-index:400;
+  left:22px;
+  bottom:22px;
+  min-height:32px;
+  min-width:200px;
+  max-width:400px;
+  padding:22px;
+  background: transparent;
+	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#CCFFFFFF,endColorstr=#CCFFFFFF)"; /* IE8 */
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#CCFFFFFF,endColorstr=#CCFFFFFF);   /* IE6 & 7 */
+    zoom: 1;
+  background:rgba(255,255,255,0.8);
+  border-radius:22px;
+  font: normal 12px/13px arial,sans-serif;
+}
+.ItemTooltip.tooltipOnTop
+{
+	bottom:auto;
+	top:22px;
+}
+.ItemTooltip > img
+{
+  float:left;
+  max-width:100px;
+  max-height:100px;
+}
+.ItemTooltip > div
+{
+  padding-left:12px;
+  overflow:hidden;
+  
+}
+
+.ShopButton 				   .currentIsShop { display: none; }
+.ShopButton.currentIsShop .currentIsShop { display: block; }
+.ShopButton.currentIsShop .currentIsRoom { display: none; }

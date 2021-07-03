@@ -1,0 +1,270 @@
+
+
+
+.CurrentOrder-Details {
+  min-width:1080px;
+  width:100%;  
+}
+
+
+.block-header {
+  font-size:12px;
+  margin:0;
+  padding;
+}
+.block-header .stripe {
+  background-color:#1E2730;
+  display:inline-block;
+  padding:4px 8px 4px 70px;  
+}
+
+
+/* -------------------------------------------------------- */
+
+.OrdnungDetailsBlock {
+  padding:12px 12px 12px 28px;
+  box-shadow: 0 40px 40px rgba(0,0,0,.2) inset;
+  transition:background .2s;
+  box-sizing: border-box;
+  
+}
+
+.OrdnungDetailsBlock-user               { min-height:200px; }
+.OrdnungDetailsBlock-communication      { min-height:350px; }
+
+.OrdnungDetailsBlock-payments           { min-height:250px; }
+.OrdnungDetailsBlock-vas                { min-height:300px; }
+
+.OrdnungDetailsBlock-writer               { min-height:150px; }
+.OrdnungDetailsBlock-process               { min-height:550px; }
+
+
+.OrdnungDetailsBlock-user { background-color:#2C2E1D; }       .OrdnungDetailsBlock-user:hover { background-color:#1C1E0D; }
+.OrdnungDetailsBlock-vas { background-color:#2C1824; }        .OrdnungDetailsBlock-vas:hover { background-color:#1C0814; }
+.OrdnungDetailsBlock-writer { background-color:#123220; }     .OrdnungDetailsBlock-writer:hover { background-color:#022210; }
+.OrdnungDetailsBlock-payments { background-color:#40151B; }   .OrdnungDetailsBlock-payments:hover { background-color:#30050B; }
+.OrdnungDetailsBlock-process { background-color:#12342E; }    .OrdnungDetailsBlock-process:hover { background-color:#02241E; }
+.OrdnungDetailsBlock-communication { background-color:#3A3220; }    .OrdnungDetailsBlock-communication:hover { background-color:#2A2210; }
+
+.OrdnungDetailsHeader {
+  font-size:21px;
+  font-weight:400;
+  margin:0;
+  padding:0 0 8px 0;
+  color:black;
+}
+.OrdnungDetailsHeader .plink {
+  display:block;
+  margin:-12px -12px 0 -28px;
+  padding:12px 12px 0 28px;
+}
+.OrdnungDetailsHeader .plink span {
+  display:inline-block;
+  border-bottom:1px solid transparent;
+}
+.OrdnungDetailsHeader .plink:hover span {
+  border-bottom:1px solid white;
+}
+
+.OrdnungDetailsSubheader {
+  margin:0;
+  padding:0 0 4px 0;
+  font-size:12px;
+  font-weight:200;
+  display:inline-block;
+}
+
+
+/* -------------------------------------------------------- */
+.OverviewPaymentsTable {
+  width:100%;
+  margin:0;
+  padding:0;
+}
+
+.OverviewPaymentsTable td {
+  border-bottom:1px solid rgba(255,255,255,.05);
+}
+
+.OverviewPaymentsTable-description {
+  width:50%;
+  font-size:14px;
+  vertical-align:middle;
+}
+.OverviewPaymentsTable-value {
+  width:20%;
+  font-size:18px;
+  vertical-align:middle;
+  text-align:right;
+}
+.OverviewPaymentsTable-status {
+  width:30%;
+  padding-left:8px;
+  text-align:left;
+  font-size:12px;
+  vertical-align:middle;
+}
+.OverviewPaymentsTable-status .ok {
+  font-size:14px;
+  color:#48C15E;
+}
+.OverviewPaymentsTable-status .akcent {
+  font-size:12px;
+  line-height:18px;
+  padding:0 4px;
+}
+.OverviewPaymentsTable tr:hover { color:#A0C6DA; }
+.OverviewPaymentsTable tr.total:hover { color:#60869A; }
+
+.OverviewPaymentsTable tr.total td {
+  padding-top:12px;
+  border-bottom:0;
+}
+.OverviewPaymentsTable tr.total .OverviewPaymentsTable-description {
+  color:white;
+}
+.OverviewPaymentsTable tr.total .OverviewPaymentsTable-value {
+  color:white;
+}
+
+
+/* -------------------------------------------------------- */
+
+.OverviewProject {
+  padding:20px 0;
+}
+.OverviewProject:hover .OverviewProjectHeader { color:#A0C6DA; }
+.OverviewProjectHeader {
+  font-size:14px;
+  padding-bottom:4px;
+}
+.OverviewProjectHeader-title {
+  font-size:12px;
+}
+.OverviewProjectHeader-title:before {
+  content:'“';
+  position:absolute;
+  margin-left:-7px;
+}
+.OverviewProjectHeader-title:after {
+  content:'“';
+}
+
+.OverviewProjectRoles {
+  padding-left:20px;
+  font-size:14px;
+  line-height:18px;
+}
+.OverviewProjectRoles dl {
+  margin:0;
+  padding:0;
+}
+.OverviewProjectRoles dt {
+  width:60px;
+}
+.OverviewProjectRoles dd {
+  margin-left:60px;
+  margin-top:-18px;
+}
+.OverviewProjectRoles dd .akcent {
+  padding: 0 4px;
+  margin-left:-4px;
+}
+
+
+
+
+/* -------------------------------------------------------- */
+.CommunicationLogEvent {
+  margin-left:-28px;
+  margin-right:-12px;
+  padding:4px 12px 4px 28px;
+}
+.CommunicationLogEvent:hover {
+  color:#A0C6DA;
+}
+
+.CommunicationLogEvent:after {
+  content:'';
+  display:block;
+  clear:both;
+}
+.CommunicationLogEvent .time {
+  font-size:12px;
+  line-height:13px;
+  padding-top:4px;
+  float:left;
+}
+.CommunicationLogEvent .event {
+  font-size:18px;
+  line-height:20px;
+  margin-left:40px;
+  margin-right:40px;
+}
+.CommunicationLogEvent .details {
+  font-size:12px;
+  margin-left:40px;
+  margin-right:40px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* -------------------------------------------------------- */
+/* -------------------------------------------------------- */
+/* -------------------------------------------------------- */
+/* -------------------------------------------------------- */
+
+.OverviewPaymentList {
+  max-width:280px;
+  padding:0 20px 12px 0;
+  margin-left:-8px;
+}
+
+.OverviewPaymentItem {
+  border-radius:4px;
+  padding:8px;
+  margin-bottom:4px;
+}
+.OverviewPaymentItem:hover {
+  background: rgba(255,255,255,.05);
+}
+
+.OverviewPaymentItem:after {
+  content:'';
+  display:block;
+  clear:both;
+}
+
+.OverviewPaymentValue {
+  float:right;
+  font-size:18px;
+  line-height:20px;
+  width:64px;
+  padding-right:8px;
+  text-align:right;
+}
+
+.OverviewPaymentDescription {
+  font-size:14px;
+  line-height:16px;
+}
+.OverviewPaymentStatus {
+  font-size:12px;
+}
+
+
+
+
+
+

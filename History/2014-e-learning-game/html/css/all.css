@@ -1,0 +1,291 @@
+/* ZEROCID */
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td { margin: 0; padding: 0; border: 0; outline: 0; font-weight: inherit; font-style: inherit; font-size: 100%; font-family: inherit; vertical-align: baseline; background: transparent; }  :focus { outline: 0; } body { line-height: 1; color: black; background: white; } ol, ul { list-style: none; } table { border-collapse: collapse; border-spacing: 0; } caption, th, td { text-align: left; font-weight: normal; } blockquote:before, blockquote:after, q:before, q:after { content: ""; } blockquote, q { quotes: "" ""; }
+
+html, body
+{
+  width:100%;
+  min-height:100%;
+  font-family: Verdana, Arial, sans-serif;
+  
+-webkit-touch-callout: none;
+-webkit-user-select: none;
+-khtml-user-select: none;
+-moz-user-select: none;
+-ms-user-select: none;
+user-select: none;
+}
+
+input { vertical-align:base-line; }
+
+
+/* -------------------------------------------------- */
+
+.DB, .SERVER { display:none; }
+.jsCL-next { display:none !important; }
+
+.WRAP
+{
+	width:1024px;
+	height:577px;
+	margin:0 auto;
+	position:relative;
+	background-color:#fefce5;
+}
+
+.y-button
+{
+  display:inline-block;
+  height:44px;
+  background:#FFDF00;
+  border:none;
+  border-radius:22px;
+  box-shadow:0 1px 1px #CAAF18;
+  min-width:180px;
+  padding:0 20px;
+  text-align:center;
+  color:black;
+  font:normal 20px/44px tahoma,arial,sans-serif;
+  cursor:pointer;
+  text-decoration:none;
+}
+
+.BiathlonBarCopy { overflow:hidden; min-width:400px; }
+.smile.happy, .smile.sad, .smile.unset
+{
+  display:block;
+  float:left;
+  vertical-align:middle;
+  background:url(../img/UnsetAnswer.png) 0 0 no-repeat;
+  width:34px;
+  height:29px;
+  margin-right:6px;
+  margin-bottom:16px;
+}
+.smile.happy { background-image:url(../img/HappyAnswer.png); }
+.smile.sad { background-image:url(../img/UnhappyAnswer.png); }
+
+
+/* ---------------------- DIALOG --------------------- */
+
+.blPhoneDialog > blockquote
+{
+	margin:0 24px 8px 24px;
+	padding:12px 14px;
+	border-radius:8px;
+	font: normal 14px/18px tahoma,arial,sans-serif;
+	color:black;
+	position:relative;
+	/* min-height:35px; */
+}
+.blPhoneDialog > blockquote:before,
+.blPhoneDialog > blockquote:after
+{
+	content:'';
+	display:none;
+	position:absolute;
+	top:0;
+	width:24px;
+	height:100%;
+	background: 0 50% no-repeat;
+}
+.blPhoneDialog > blockquote:before 	{ right:100%; background-image:url(../img/blPhoneDialog-w.png); }
+.blPhoneDialog > blockquote:after 		{ left:100%; background-image:url(../img/blPhoneDialog-e.png); }
+
+.blPhoneDialog > blockquote.operator { background-color:#52494c; color:white; margin-left: 50px;}
+.blPhoneDialog > blockquote.operator:after { display:block; }
+
+.blPhoneDialog > blockquote.client { background-color:#fdb813; margin-right: 50px;}
+.blPhoneDialog > blockquote.client:before { display:block; }
+
+.blPhoneDialog > blockquote.message { background-color:white; margin-right: 50px; margin-left:50px; border:#52494c 1px solid;}
+
+
+
+.Timer
+{
+	display:block;
+	position:absolute;
+	top:25px;
+	left:802px;
+	padding:8px 24px;
+	margin:0;
+	background:#010000;
+	color:#fee200;
+	border-radius:8px;
+	font: bold 20px/20px sans-serif;
+}
+.Progress
+{
+	display:block;
+	position:absolute;
+	bottom:12px;
+	left:12px;
+	padding:8px 24px;
+	margin:0;
+	background:#010000;
+	color:#fee200;
+	border-radius:8px;
+	font: bold 20px/20px sans-serif;
+}
+
+
+.blClientInfo
+{
+	background:white;
+	border:1px solid #fdb813;
+	border-radius:8px;
+	padding:18px 22px;	
+	margin-bottom:12px;
+}
+.blClientInfo b
+{
+	display:inline-block;
+	vertical-align:middle;
+	padding:2px;
+	margin-bottom:2px;
+	background:#fcda23;
+}
+
+
+.blOperatorAnswer
+{
+	background:white;
+	border:1px solid black;
+	border-radius:8px;
+	padding:18px 22px;	
+	margin:12px 0;
+}
+
+/* END OF CALL */
+
+.EndOfCall
+{
+	display:block;
+	position:absolute;
+	top:220px;
+	left:225px;
+	width:468px;
+	border-radius:8px;
+	background:#e5e5e5;
+	padding:20px;
+	text-align:center;
+}
+.EndOfCall .result
+{
+	padding:20px 0;
+}
+
+
+/* ---------------------- POPUP --------------------- */
+
+.blPopup
+{
+  display:none;
+  background:white;
+  padding:50px 70px;
+  border-radius:12px;
+  border:#d9d9d9 2px solid;
+  min-width:200px;
+  max-width:40%;
+  text-align:center;
+}
+.blPopup h6
+{
+  font: normal 18px/22px sans-serif;
+  padding-bottom:.5em;
+}
+
+.blPopup .content
+{
+	text-align:center;
+}
+.blPopup .y-button
+{
+	margin-top:20px;
+}
+
+/* CUSTOM POPUPS */
+
+.GameFeedback .buttonContainer
+{
+  padding:8px 0;
+  text-align:center;
+}
+
+.welcomePopup
+{
+	min-width:600px;
+	padding-top:75px;
+	margin-top:110px;
+}
+.welcomePopup:before
+{
+	content:'';
+	display:block;
+	position:absolute;
+	left:0;
+	right:0;
+	top:-130px;
+	height:191px;	
+	background:url(../img/ooo.png) 50% 0 no-repeat;
+}
+.welcomePopup.GameFeedback:before
+{
+	display:none;
+}
+.welcomePopup.GameFeedback
+{
+	margin-top:0;
+	padding-top:50px;
+}
+.welcomePopup dl.options
+{
+	padding:32px 0 12px 0;
+}
+.welcomePopup dl.options dt
+{
+	position:absolute;
+	right:50%;
+	margin-right:12%;
+	margin-top:-3px;
+	background:#FFDF00;
+	padding:3px;
+	font-weight:bold;
+}
+.welcomePopup dl.options dd
+{
+	margin-left:40%;
+	margin-bottom:20px;
+	text-align:left;
+}
+.welcomePopup dl.options dd div { padding-bottom:4px; }
+.welcomePopup h6 { font-size:22px; }
+
+.welcomePopup .showOnlyIf { display: none; }
+.welcomePopup .showOnlyIf.yes { display: block; }
+.welcomePopup .strikeOnlyIf.yes { color:#ccc; }
+
+
+.t-coin
+{
+	display:inline-block;
+	position:absolute;
+	width:33px;
+	height:34px;
+	margin-top:-8px;
+	margin-left:0px;
+	background:url(../img/coin.png) 0 0 no-repeat;
+}
+.t-coin-space
+{
+	display:inline-block;
+	width:33px;
+}
+.t-coin-easy
+{
+	display:inline-block;
+	width:33px;
+	height:34px;
+	background:url(../img/coin.png) 0 0 no-repeat;
+	vertical-align:middle;
+}

@@ -1,0 +1,494 @@
+<!doctype html>
+<html>
+<head>
+  <title>TKS:6.Claculator</title>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="html/css/all.css" media="all">
+  <link rel="stylesheet" href="html/css/calculator.css" media="all">
+</head>
+<body>
+
+<div class="SERVER"></div>
+
+	<div class="blPopup welcomePopup" id="WelcomePopupV2">
+		<h6>Добро пожаловать в тренажер</h6>
+		<dl class="options">			
+			<dt>Твой рекорд:</dt>
+			<dd>
+				<b>%PercentCurrent%%</b>
+			</dd>
+			
+			<dt>Задачи:</dt>
+			<dd class="strikeArea">
+				<div class="strikeOnlyIf isUnlocked">1. Правильно расчитать на калькуляторе не менее пяти ситуаций</div>
+				<div class="strikeOnlyIf isComplete">2. Правильно расчитать на калькуляторе все ситуации</div>
+				<div class="showOnlyIf isComplete">Максимальный результат достигнут!</div>
+			</dd>
+			
+			<dt class="showOnlyIf isNotComplete">Награда:</dt>
+			<dd class="showOnlyIf isNotComplete"><b>%MoneyToGo%</b> <span class="t-coin"></span><span class="t-coin-space"></span></dd>
+		</dl>
+		<div style="padding:8px 0 0 0;text-align:center;">
+			<span class="y-button b-close">Играть</span>
+			&nbsp;
+			<span class="y-button jsCL-next">Пропустить</span>
+		</div>
+	</div>
+
+
+<div class="WRAP">
+
+	<div class="ExerciseCalculator">
+		<div class="CurrentContent"></div>
+		<div class="Button">
+			<span class="y-button">Проверить</span>
+		</div>
+		<div class="Timer">0:00</div>
+		<div class="ScoreBar"></div>
+		<div class="NotaBene">Вводи числа без пробелов, дробную часть отделяй точкой.</div>
+	</div>	
+	
+</div>	
+
+<!--
+<div class="blPopup" id="GameFeedback">
+	<h6 class="timeout">Время истекло!</h6>
+	<h6 class="complete">Упражнение завершено!</h6>
+	<div class="ifReward">
+		Заработано: <span class="reward">0</span> р.
+	</div>		
+	<div style="padding:8px 0;text-align:center;"><a href="6_calculator.html" class="y-button">Играть ещё раз</a></div>
+</div>
+-->
+
+<!--
+    <div class="blPopup GameFeedback" id="GameFeedback-v2">
+      <h6 class="caption">
+        <span class="ifTimeout">Время истекло!</span>
+        <span class="ifTaskover">Упражнение завершено!</span>
+      </h6>
+      <div class="content">
+        Правильных ответов: %CurResult% из %MaxResult%<br>
+        Упражнение выполнено на %CurResultProcent%<br>
+        Предыдущий рекорд: %PrevResultProcent%<br><br>
+        <span class="ifThisIsMaster">
+          Поздравляем! Максимальный результат снова достигнут!
+        </span>
+        <span class="ifResultIsNotImproved">
+          Чтобы заработать больше денег на тренажере,<br>
+          улучши свой результат.
+        </span>
+        <span class="ifResultIsImproved">
+          За улучшение результата с %PrevResultProcent% до %CurResultProcent%,<br>
+          ты зарабатываешь %MoneyEarned% монет.
+        </span>
+      </div>
+      <div class="buttonContainer"><a href="6_calculator.html" class="y-button">Играть ещё раз</a></div>
+    </div>
+-->
+
+	<div class="blPopup welcomePopup GameFeedback" id="GameFeedback-v2">
+		<h6 class="caption">
+		  <span class="ifTimeout">Время истекло!</span>
+		  <span class="ifTaskover">Упражнение завершено!</span>
+		</h6>
+		<dl class="options">
+			<dt>Результат:</dt>
+			<!-- <dd><b>%CurResult%</b> из <b>%MaxResult%</b> (<b>%CurResultProcent%</b>)</dd> -->
+			<dd><b>%CurResultProcent%</b></dd>
+			<dt>Предыдущий рекорд:</dt>
+			<dd><b>%PrevResultProcent%</b></dd>
+		</dl>
+		
+		<div class="content">
+			<span class="ifResultIsImproved">
+			За улучшение результата с <b>%PrevResultProcent%</b> до <b>%CurResultProcent%</b>, ты зарабатываешь:<br>
+			<div style="line-height:34px;"><b>%MoneyEarned%</b> <span class="t-coin-easy"></span></div>
+			</span>
+			<span class="ifResultIsNotImproved">
+			Чтобы заработать больше денег на тренажере,<br>улучши свой результат.
+			</span>
+			<span class="ifThisIsMaster">
+			Поздравляем! Максимальный результат снова достигнут.
+			</span>
+			<span class="ifThisIsMasterNow">
+			Поздравляем! Максимальный результат на тренажере достигнут!
+			</span>
+			<span class="ifResultIsWorst">
+			Упражнение не выполнено!<br>
+			Необходимо набрать не менее 50%.
+			</span>
+		</div>
+		
+		<div class="buttonContainer"><a href="6_calculator.html" class="y-button">Играть ещё раз</a></div>
+	</div>	
+
+<div class="blPopup" id="ScreenUnlock">
+	<h6>Минимальный результат достигнут!</h6>
+	Теперь можно продолжить курс или попытаться выполнить больше заданий в тренажёре.
+	<div style="padding:8px 0;text-align:center;">
+		<span class="y-button b-close">Вернуться</span>
+	</div>
+</div>
+
+<div class="DefaultEndOfCall EndOfCall correct">
+	<span class="smile happy" style="display:none;"></span> 
+	Правильно!
+</div>
+
+<div class="DefaultEndOfCall EndOfCall incorrect">
+	<span class="smile sad" style="display:none;"></span> 
+	Неправильно!
+</div>
+
+
+<div class="DB DB-Calculator">
+	
+	<div caption="Calculator1">	
+		<div class="blClientInfo">
+			<b>ФИО:</b> Иванов Иван Иванович<br>
+			<b>Канал:</b> Заявки клиентов, которые звонили нам в КЦ
+		</div>			
+		<div class="blPhoneDialog">
+			<blockquote class="client">
+				- Если я потрачу на покупки 20 000 рублей и буду отдавать в течение двух лет, сколько я переплачу?
+			</blockquote>			
+		</div>			
+		<div class="blOperatorAnswer">
+			Если Вы будете погашать задолженность в течение двух лет, то плата за кредит составит <span class="input">5311</span> рублей.				
+		</div>		
+	</div>
+	
+	<div caption="Calculator2">	
+		<div class="blClientInfo">
+			<b>ФИО:</b> Петров Александр Васильевич<br>
+			<b>Канал:</b> Заявки клиентов, которые звонили нам в КЦ
+		</div>			
+		<div class="blPhoneDialog">
+			<blockquote class="client">
+				– Мне срочно понадобились 300 000 рублей наличными. Я могу отдавать по 40000 рублей в месяц. В течение какого срока я смогу погасить кредит?
+			</blockquote>				
+		</div>			
+		<div class="blOperatorAnswer">
+			Срок погашения кредита составит <span class="input">9</span> месяцев.
+		</div>			
+	</div>
+	
+	<div caption="Calculator3">	
+		<div class="blClientInfo">
+			<b>ФИО:</b> Петрова Марина Александровна<br>
+			<b>Канал:</b> Письмо-предложение
+		</div>			
+		<div class="blPhoneDialog">
+			<blockquote class="client">
+				– Хочу взять в кредит на покупки 35 000 рублей и вернуть за три месяца. Сколько мне придется отдавать ежемесячно?
+			</blockquote>			
+		</div>			
+		<div class="blOperatorAnswer">
+			Ежемесячный платеж составит <span class="input">12070</span> рублей.
+		</div>			
+	</div>
+	
+	<div caption="Calculator5">	
+		<div class="blClientInfo">
+			<b>ФИО:</b> Скворцова Анна Михайловна<br>
+			<b>Канал:</b> Заявки клиентов, которые звонили нам в КЦ
+		</div>			
+		<div class="blPhoneDialog">
+			<blockquote class="client">
+				– Я планирую крупную покупку за наличные деньги. Мне не хватает 22 000. Я хотела бы отдавать по 1000 рублей в месяц. За какой срок я смогу погасить кредит?
+			</blockquote>					
+		</div>			
+		<div class="blOperatorAnswer">
+			Срок погашения кредита составит <span class="input">32</span> месяца.
+		</div>			
+	</div>
+	
+	<div caption="Calculator6">	
+		<div class="blClientInfo">
+			<b>ФИО:</b> Ремизов Павел Антонович<br>
+			<b>Канал:</b> Письмо-предложение
+		</div>			
+		<div class="blPhoneDialog">
+			<blockquote class="client">
+				– Я хочу оплатить картой телевизор за 34 000 рублей, отдавать могу по 4 000 в месяц. Меня интересует, какой будет процент по кредиту?
+			</blockquote>			
+		</div>			
+		<div class="blOperatorAnswer">
+			Общий процент платы за кредит составит <span class="input">15.18</span> %.
+		</div>			
+	</div>
+	
+	<div caption="Calculator7">	
+		<div class="blClientInfo">
+			<b>ФИО:</b> Светлов Константин Петрович<br>
+			<b>Канал:</b> Письмо-предложение
+		</div>			
+		<div class="blPhoneDialog">
+			<blockquote class="client">
+				– Хочу взять наличными 36 000 рублей и возвращать по 3 000 в месяц. Скажите, какой будет процент по кредиту?
+			</blockquote>			
+		</div>			
+		<div class="blOperatorAnswer">
+			В таком случае годовой процент платы за кредит составит <span class="input">29.19</span> %.
+		</div>			
+	</div>
+	
+	<div caption="Calculator8">	
+		<div class="blClientInfo">
+			<b>ФИО:</b> Мерзликина Виктория Сергеевна<br>
+			<b>Канал:</b> Заявки клиентов, которые звонили нам в КЦ
+		</div>			
+		<div class="blPhoneDialog">
+			<blockquote class="client">
+				– Сколько я переплачу, если буду год расплачиваться за покупку стоимостью 10 000 рублей?
+			</blockquote>			
+		</div>			
+		<div class="blOperatorAnswer">
+			Если Вы будете погашать задолженность в течение года, сумма плата за кредит составит <span class="input">1284</span> рубля.
+		</div>			
+	</div>
+
+	<div caption="Calculator11">	
+		<div class="blClientInfo">
+			<b>ФИО:</b> Елисеев Павел Александрович<br>
+			<b>Канал:</b> Заявки клиентов, которые звонили нам в КЦ
+		</div>			
+		<div class="blPhoneDialog">
+			<blockquote class="client">
+				– Мне срочно нужны наличные. Во сколько мне обойдется кредит размером 43 000 рублей. Отдавать могу по 15 000 в месяц. Какой будет переплата?
+			</blockquote>				
+		</div>			
+		<div class="blOperatorAnswer">
+			Плата за кредит составит <span class="input">4442</span> рубля.
+		</div>			
+	</div>
+	
+	<div caption="Calculator12">	
+		<div class="blClientInfo">
+			<b>ФИО:</b> Светлов Леонид Сергеевич<br>
+			<b>Канал:</b> All Airlines
+		</div>			
+		<div class="blPhoneDialog">
+			<blockquote class="client">
+				– Если снять 75 000 рублей наличными и возвращать в течение года, то какой будет переплата?
+			</blockquote>			
+		</div>			
+		<div class="blOperatorAnswer">
+			Если Вы будете погашать задолженность в течение года, сумма плата за кредит составит <span class="input">15545</span> рублей.
+		</div>			
+	</div>
+	
+	<div caption="Calculator14">	
+		<div class="blClientInfo">
+			<b>ФИО:</b> Фирсова Екатерина Анатольевна<br>
+			<b>Канал:</b> All Airlines
+		</div>			
+		<div class="blPhoneDialog">
+			<blockquote class="client">
+				– Если я потрачу на покупки 120 000 рублей, а верну за полгода, какой процент я заплачу?
+			</blockquote>			
+		</div>			
+		<div class="blOperatorAnswer">
+			Общий процент платы за кредит составит <span class="input">6.97</span> %.
+		</div>			
+	</div>
+
+	<div caption="Calculator15">	
+		<div class="blClientInfo">
+			<b>ФИО:</b> Стычкин Виталий Семенович<br>
+			<b>Канал:</b> All Airlines
+		</div>			
+		<div class="blPhoneDialog">
+			<blockquote class="client">
+				– Мне нужен кредит 250 000 рублей для совершения покупок. Хочу погасить его в течение полугода. Какую сумму я должен возвращать каждый месяц?
+			</blockquote>			
+		</div>			
+		<div class="blOperatorAnswer">
+			Ежемесячный платеж составит <span class="input">44670</span> рублей.
+		</div>			
+	</div>
+
+	<div caption="Calculator16">	
+		<div class="blClientInfo">
+			<b>ФИО:</b> Ермолаева Нина Алексеевна<br>
+			<b>Канал:</b> All Airlines
+		</div>			
+		<div class="blPhoneDialog">
+			<blockquote class="client">
+				– Я хочу снять 340 000 рублей и возвращать в течение года. Сколько я буду платить ежемесячно?
+			</blockquote>			
+		</div>			
+		<div class="blOperatorAnswer">
+			Ежемесячный платеж составит <span class="input">34230</span> рублей.
+		</div>			
+	</div>
+	
+	<div caption="Calculator18">	
+		<div class="blClientInfo">
+			<b>ФИО:</b> Кошкина Анастасия Алексеевна<br>
+			<b>Канал:</b> All Airlines
+		</div>			
+		<div class="blPhoneDialog">
+			<blockquote class="client">
+				– Мне нужно 160 000 рублей наличными, отдавать смогу по 30000 рублей ежемесячно. Сколько я заплачу за такой кредит?
+			</blockquote>
+		</div>			
+		<div class="blOperatorAnswer">
+			Сумма платы за кредит составит <span class="input">20069</span> рублей.
+		</div>			
+	</div>
+	
+	<div caption="Calculator20">	
+		<div class="blClientInfo">
+			<b>ФИО:</b> Пригов Егор Александрович<br>
+			<b>Канал:</b> Заявки клиентов, которые звонили нам в КЦ
+		</div>			
+		<div class="blPhoneDialog">
+			<blockquote class="client">
+				– Если я потрачу 85 000 на покупки и буду возвращать в течение 15 месяцев, какой будет процент по кредиту?
+			</blockquote>
+		</div>			
+		<div class="blOperatorAnswer">
+			Годовой процент платы за кредит составит <span class="input">13.77</span> %.
+		</div>			
+	</div>	
+	
+	<div caption="Calculator22">	
+		<div class="blClientInfo">
+			<b>ФИО:</b> Рогозина Вероника Андреевна<br>
+			<b>Канал:</b> Письмо-предложение
+		</div>			
+		<div class="blPhoneDialog">
+			<blockquote class="client">
+				– Я планирую покупку, на которую мне нужно 66 000 рублей. А платить могу по 10 000 в месяц. В течение какого срока я смогу погасить кредит?
+			</blockquote>			
+		</div>			
+		<div class="blOperatorAnswer">
+			Максимальный срок погашения кредита составит <span class="input">8</span> месяцев.
+		</div>			
+	</div>
+<!-- removed by the client
+	
+	<div caption="Calculator23">	
+		<div class="blClientInfo">
+			<b>ФИО:</b> Крыгин Павел Андреевич<br>
+			<b>Канал:</b> Заявки клиентов, которые звонили нам в КЦ
+		</div>			
+		<div class="blPhoneDialog">
+			<blockquote class="client">
+				– Я хочу получить наличными 40 000 рублей и ежемесячно я буду отдавать по 2 000. Посчитайте мне, пожалуйста.
+			</blockquote>				
+		</div>			
+		<div class="blOperatorAnswer">
+			Хочу обратить Ваше внимание на то, что изначально Вы будете платить больше, так как минимальная сумма платежа составляет 6% от задолженности. Через <span class="input">8</span> месяцев, когда сумма задолженности уменьшиться, Вы будете платить по 2 000 рублей.
+		</div>			
+	</div>	
+	<div caption="Calculator24">	
+		<div class="blClientInfo">
+			<b>ФИО:</b> Скворцова Марина Викторовна<br>
+			<b>Канал:</b> Письмо-предложение
+		</div>			
+		<div class="blPhoneDialog">
+			<blockquote class="client">
+				– Я хочу получить наличными 60 000 рублей и ежемесячно я хотел бы отдавать по 3 500. Посчитайте мне, пожалуйста.
+			</blockquote>				
+		</div>			
+		<div class="blOperatorAnswer">
+			Хочу обратить Ваше внимание на то, что первый платеж составит  <span class="input">3870</span> рублей, так как минимальная сумма платежа составляет 6 % от задолженности. 
+		</div>			
+	</div>
+	
+	<div caption="Calculator4">	
+		<div class="blClientInfo">
+			<b>ФИО:</b> Сидоров Анатолий Сергеевич<br>
+			<b>Канал:</b> Письмо-предложение
+		</div>			
+		<div class="blPhoneDialog">
+			<blockquote class="client">
+				– Если я возьму 45 000 наличными, как долго я смогу погашать кредит? 
+			</blockquote>			
+		</div>			
+		<div class="blOperatorAnswer">
+			Максимальный срок погашения такой суммы будет <span class="input">85</span> месяцев.
+		</div>			
+	</div>
+	
+	<div caption="Calculator10">	
+		<div class="blClientInfo">
+			<b>ФИО:</b> Симонова Елена Ивановна<br>
+			<b>Канал:</b> Заявки клиентов, которые звонили нам в КЦ
+		</div>			
+		<div class="blPhoneDialog">
+			<blockquote class="client">
+				– Я хотела бы оформить кредитную карту. Если я заплачу за покупку 5 000 рублей, как долго я смогу возвращать эту сумму?
+			</blockquote>			
+		</div>			
+		<div class="blOperatorAnswer">
+			Срок погашения не может быть более <span class="input">10</span> месяцев.
+		</div>			
+	</div>
+	
+	<div caption="Calculator13">	
+		<div class="blClientInfo">
+			<b>ФИО:</b> Дорофеев Александр Александрович<br>
+			<b>Канал:</b> All Airlines
+		</div>			
+		<div class="blPhoneDialog">
+			<blockquote class="client">
+				– Расскажите о процентах. Например, я хочу сделать покупку на сумму 65 000 рублей. Сколько за год набежит?
+			</blockquote>			
+		</div>			
+		<div class="blOperatorAnswer">
+			Вы можете вообще не платить процент за покупки по карте. Для этого нужно оплатить полную сумму долга в срок, указанный в выписке. Иначе годовой процент составит <span class="input">13.13</span> %.
+		</div>			
+	</div>
+	
+	<div caption="Calculator17">	
+		<div class="blClientInfo">
+			<b>ФИО:</b> Белохвостиков Игорь Андреевич<br>
+			<b>Канал:</b> All Airlines
+		</div>			
+		<div class="blPhoneDialog">
+			<blockquote class="client">
+				– Слышал, если  расплачиваться за покупки картой All Airlines, то можно накопить бонусы, а потом обменять их на бесплатные билеты. А какой процент Вы берете за покупку? Допустим, я куплю билет на самолет за 40 000 рублей и буду возвращать деньги в течение 3 месяцев. 
+			</blockquote>			
+		</div>			
+		<div class="blOperatorAnswer">
+			Чем больше покупок Вы сделаете, тем больше бонусных миль заработаете. А общий процент платы за кредит составит <span class="input">3.91</span> %.
+		</div>			
+	</div>
+	
+	<div caption="Calculator21">	
+		<div class="blClientInfo">
+			<b>ФИО:</b> Шитов Кирилл Романович<br>
+			<b>Канал:</b> Письмо-предложение
+		</div>			
+		<div class="blPhoneDialog">
+			<blockquote class="client">
+				– Допустим, я обналичу в банкомате 12 000 и возвращать буду по четыре тысячи. Какой будет общий процент по кредиту? 
+			</blockquote>			
+		</div>			
+		<div class="blOperatorAnswer">
+			В таком случае общий процент платы за кредит составит <span class="input">15.97</span> %.
+		</div>			
+	</div>	
+	
+end of removed by the client	-->
+	
+	
+	
+</div>
+
+
+
+
+
+
+
+<script src="html/js/lib_jquery.js"></script>
+<script src="html/js/lib_jquery.bpopup.js"></script>
+<script src="html/js/all.js"></script>
+<script src="html/js/calculator.js"></script>
+</body>
+</html>

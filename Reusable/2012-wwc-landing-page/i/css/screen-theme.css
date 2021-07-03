@@ -1,0 +1,118 @@
+.theme-infoText h3
+{
+  color:#0077A4;
+  text-shadow:0 2px 3px #ccc;
+  padding-bottom:0;
+  margin-bottom:.33em;
+}
+.theme-infoText h3+div,
+.theme-infoText h3+ul
+{
+  padding-top:0;
+}
+
+.theme-infoText ul
+{
+  margin-left:1.5em;
+}
+.theme-infoText ul > li
+{
+  margin-bottom:.33em;
+}
+
+a.theme-biglink
+{
+  display:inline-block;
+  background:#0097c4;
+  padding:0 4px;
+  border-radius:4px;
+  color:#fff;
+  text-decoration:underline;
+}
+a.theme-biglink:hover
+{
+  text-decoration:none;
+}
+
+/* ------------ SPECIAL ---------------------- */
+
+.theme-intro
+{
+  background:#f0f0f0;
+  margin:1em 0 2em -14%;
+  padding-left:18%;
+  padding-right:6%;
+  padding-bottom:6%;
+  font-size:.8em;
+  /*
+  box-shadow:8px 8px 0 #cee;
+  border-top-right-radius: 4em 10em;
+  border-bottom-right-radius: 16em 1em;
+  */
+  
+}
+
+
+
+
+blockquote.theme-quote
+{
+  margin:2em 0;
+  background:#EEFFFF;
+  color:#444;
+  position:relative;
+}
+.c-left blockquote.theme-quote
+{
+  margin-left:-5%;
+  padding-left:9%;
+}
+blockquote.theme-quote:before,
+blockquote.theme-quote:after
+{
+  font-size:4em;
+  position:absolute;
+  color:#BCEDFF;
+  font-family:georgia,serif;
+  text-shadow: 2px 8px 0px #EEFFFF;
+}
+blockquote.theme-quote:before
+{
+  content: "«";
+  top:-.30em;
+  left:-.30em;
+}
+blockquote.theme-quote:after
+{
+  content: "»";
+  bottom:.10em;
+  right:-.30em;
+}
+blockquote.theme-quote > div 
+{
+  font-style:italic;
+  font-size:.8em;
+  margin-top:0.2em;
+}
+
+div blockquote.theme-quote:first-child { margin-top: 0; }
+
+
+
+ul.theme-hlist 
+{
+  list-style:none;
+  margin-left:0;
+}
+ul.theme-hlist > li
+{
+  margin-bottom:1em;
+}
+ul.theme-hlist > li > h4
+{
+  font-size:1.15em;
+}
+ul.theme-hlist > li > h4 + div
+{
+  font-size:.9em;
+}

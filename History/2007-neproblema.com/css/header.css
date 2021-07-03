@@ -1,0 +1,22 @@
+div#header {border-bottom:#000 1px solid;}
+
+/* HEADER */
+div#header h1 {font-size:33px;line-height:52px;font-family:'georgia',serif;font-weight:normal;
+	float:left;margin:0;padding:0 24px 8px 48px;color:#000;background:#FFF;font-style:italic;}
+
+/* RIGHT LINKS */
+div#header div.q {float:right;font-size:19px;text-transform:uppercase;padding-right:24px;font-family:'georgia',serif;
+	line-height:60px;}
+
+/* MAIN MENU */	
+div#header ul {margin:0;padding:0;list-style:none;float:left;}
+div#header ul li {margin:0;padding:0 12px;float:left;margin:0;font-family:'georgia',serif;
+	font-size:19px;text-transform:uppercase;line-height:60px;}
+div#header ul li.q {float:right;padding:0 24px 0 12px;}	
+div#header a {text-decoration:none;color:#999;white-space:nowrap;}
+div#header a:hover {text-decoration:underline;color:#F90;}
+div#header ul li.s {background:#EEE;}
+div#header ul li.s a {color:#000;}
+
+
+div#header h1 a {color:#000;text-decoration:none;}

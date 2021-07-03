@@ -1,0 +1,43 @@
+@import url(http://fonts.googleapis.com/css?family=Patrick+Hand);
+@import url(http://fonts.googleapis.com/css?family=Schoolbell);
+
+.mainWorkAreaDecorations
+{  
+  position:absolute;
+  top:40px;
+  right:0;
+  bottom:0;
+  left:0; 
+  overflow-x:hidden;
+  background:transparent;
+  border:#ccc 0px solid;
+}
+.mainWorkAreaDecorations:before
+{
+  content:'double click to create new screen';
+  color:rgba(255,255,255,.3);
+  position:absolute;
+  padding-top:20%;
+  font-size:40px;
+  margin-top:-20px;
+  text-align:center;
+  width:100%;
+}
+#mainWorkArea
+{
+  position:absolute;
+  top:0;
+  right:0;
+  bottom:0;
+  left:0; 
+  background:transparent;
+}
+#mainWorkScreens
+{
+  position:absolute;
+  background:transparent;
+}
+.blackboard {
+	background-image: url('images/blackboard.jpg');
+	background-size: cover;
+}
