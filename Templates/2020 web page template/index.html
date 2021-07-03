@@ -1,0 +1,614 @@
+<!doctype html>
+<html lang="en">
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- appseed 2020.2.22 ninini -->
+
+    <!-- ===================================== HEAD CONTENT -->
+
+
+    <title>Sheeping</title>
+    <meta name="description" content="IT Services, software development, technical support">
+
+
+    <!-- ## MICRODATA -->
+    <meta property="og:url"          content="">
+    <meta property="og:image"        content="">
+    <meta property="og:image:width"  content="1200">
+    <meta property="og:image:height" content="628">
+    <meta property="og:type"         content="article">
+    <meta property="og:locale"       content="en_US">
+
+
+    <!-- ===================================== FAVICON -->
+
+
+    <meta name="theme-color"             content="#c84649">
+    <meta name="msapplication-TileColor" content="#c84649">
+    <meta name="msapplication-TileImage" content="art/icon512.png">
+    <link type="image/png" rel="icon"       href="art/icon512.png">
+    <link rel="apple-touch-icon"            href="art/icon512.png">
+
+
+    <!-- ===================================== BOOT SERVICE -->
+
+
+    <!-- ༼°▽°༽ style boot -->
+    <style>
+        html       { margin:0; padding:0  0.25rem; }
+        body       { margin:0; padding:0; width:100%; height:auto; }
+        img,svg,hr { margin:0; border: 0; max-width:100%; }
+        body       { overflow-y:scroll; }
+    </style>
+
+
+    <!-- ༼°▽°༽ screen von loader -->
+    <style id="von-loader-style">
+        #von-loader { /* settings */
+          --back-color:       hsl(359, 54%, 53%);
+          --text-color:       hsl(226, 27%, 90%);
+          --icon-size:        6rem;
+         /* SVG: arrows circle loading */
+          --icon-image: url('data:image/svg+xml;utf8,<svg fill="white" width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 4V1L8 5l4 4V6c3.31 0 6 2.69 6 6 0 1.01-.25 1.97-.7 2.8l1.46 1.46C19.54 15.03 20 13.57 20 12c0-4.42-3.58-8-8-8zm0 14c-3.31 0-6-2.69-6-6 0-1.01.25-1.97.7-2.8L5.24 7.74C4.46 8.97 4 10.43 4 12c0 4.42 3.58 8 8 8v3l4-4-4-4v3z"/></svg>'); }
+        #von-loader {
+          --state-opacity:    0;
+          --state-pointer:    none;
+            transition:       opacity 240ms ease-out;
+            background-color: var(--back-color);
+            color:            var(--text-color);
+            pointer-events:   var(--state-pointer);
+            opacity:          var(--state-opacity);         
+            position: fixed;  z-index: 100;
+            top:      0;
+            right:    0;
+            bottom:   0;
+            left:     0; }
+        #von-loader.is-active {
+          --state-opacity:    1;
+          --state-pointer:    all; }
+        #von-loader::after {
+            content:  '';
+            position: absolute; z-index: 1;
+            top:      calc(40% - 0.5*var(--icon-size));
+            left:     calc(50% - 0.5*var(--icon-size));
+            width:    var(--icon-size);
+            height:   var(--icon-size);
+            background-image:    var(--icon-image);
+            background-size:     var(--icon-size);
+            background-repeat:   no-repeat;
+            background-position: center center; }
+        #von-loader.is-active::after {
+            animation: VonLoaderRotation 1s linear infinite; }
+            @keyframes VonLoaderRotation {
+                from { transform: rotate(360deg); }
+                to   { transform: rotate(  1deg); }
+            }
+    </style>
+    <script id="von-loader-script">
+        function vonLoader ( autostart = true ) {
+            let screen = document.querySelector('body')
+            let loader = document.createElement('div')
+                loader.id = "von-loader"
+                screen.appendChild(loader)
+            let ACTIVE = 'is-active'
+            let show   = () => { loader.classList.add(ACTIVE); }
+            let hide   = () => { loader.classList.remove(ACTIVE) }
+            let action = () => {
+                if (window.addEventListener) window.addEventListener("load", hide, false)
+                else if (window.attachEvent) window.attachEvent(   "onload", hide)
+                else hide() }
+            let start = () => {
+                show()
+                action() }
+            let init = autostart => {
+                if (autostart) start()
+                return { loader, show, hide, start } }
+            return init(autostart)
+        }
+    </script>
+
+
+    <!-- ༼°▽°༽ prefetch boot -->
+    <link rel="preload" href="app/fonts/Vollkorn-R.woff2" as="font">
+    <link rel="preload" href="app/fonts/Vollkorn-B.woff2" as="font">
+    <link rel="preload" href="app/fonts/Vollkorn-I.woff2" as="font">
+
+
+    <!-- ===================================== DESIGN -->
+
+
+    <link
+        media="none" onload="if(media!='all')media='all'"
+        href="app/system.css"
+        rel="stylesheet" type="text/css">
+        <link
+        media="none" onload="if(media!='all')media='all'"
+        href="app/design.css"
+        rel="stylesheet" type="text/css">
+<noscript>
+    <link
+        media="all"
+        href="app/system.css"
+        rel="stylesheet" type="text/css">
+    <link
+        media="all"
+        href="app/design.css"
+        rel="stylesheet" type="text/css">
+</noscript>
+
+
+    <!-- ===================================== APP -->
+
+
+    <script>
+        function welcomeScreenUI () {
+            const Dom = {
+                triger1: document.querySelector('.welcome-front-screen'),
+                target1: document.querySelector('.welcome-back-screen')
+            }
+            const ChangeWithObserver = function() {
+             // Define observer
+                const ObserverTask  = entries => entries.forEach(ObservationTask)
+                const ObservationTask = entry => entry.isIntersecting ? HideCover(entry.target) : ShowCover(entry.target)
+                const RemoveObservation = el => LazyObserver.unobserve(el)
+                const HideCover = el => {
+                      Dom.target1.classList.add('is-hidden')
+                }
+                const ShowCover = el => {
+                      Dom.target1.classList.remove('is-hidden')
+                }
+             // Run observer
+                let LazyObserver = new IntersectionObserver(ObserverTask, { rootMargin:'0% 0% -64% 0%' })
+                LazyObserver.observe(Dom.triger1)
+            }
+            if ('IntersectionObserver' in window) ChangeWithObserver()
+        }
+        document.addEventListener('DOMContentLoaded', welcomeScreenUI)
+    </script>
+
+    <script>
+        function homeButtonUI () {
+            const Dom = {
+                triger1: document.querySelector('.article'),
+                target1: document.querySelector('.article'),
+                marker1: 'in-view'
+            }
+            const ChangeWithObserver = function() {
+             // Define observer
+                const ObserverTask  = entries => entries.forEach(ObservationTask)
+                const ObservationTask = entry => entry.isIntersecting ? HideCover(entry.target) : ShowCover(entry.target)
+                const RemoveObservation = el => LazyObserver.unobserve(el)
+                const HideCover = el => { Dom.target1.classList.add(Dom.marker1)}
+                const ShowCover = el => {Dom.target1.classList.remove(Dom.marker1)}
+             // Run observer
+                let LazyObserver2 = new IntersectionObserver(ObserverTask, { rootMargin:'0% 0% -80% 0%' })
+                LazyObserver2.observe(Dom.triger1)
+
+            }
+            if ('IntersectionObserver' in window) ChangeWithObserver()
+        }
+        document.addEventListener('DOMContentLoaded', homeButtonUI)
+    </script>
+
+
+    <!-- ===================================== HEAD END -->
+</head>
+<body class="colors--primary"><script>vonLoader()</script>
+
+
+<!-- ========================================= DECORATION HEADER -->
+
+
+<header id="Start" class="welcome-back-screen">
+    <article class="banner-ninini ennoia-theme">
+        <figure class="ban-ninini-figure">
+            <div class="el-ninini-intro">
+                <img
+                    src="art/decoration-a.svg"
+                    alt=""
+                    class="el-ninini-img"
+                    role="presentation">
+            </div>
+        </figure>
+    </article>
+</header>
+
+
+<!-- ========================================= CONTENT -->
+
+
+<main id="Content" class="welcome-front-screen">
+
+    <header class="chapter isonbot grid-queen">
+        <div class="chapter-header mark">
+            <h1>Sheeping</h1>
+        </div>
+    </header>
+
+    <section class="chapter isontop article grid-queen">
+
+        <nav class="chapter-menu grid-column--note">
+            <a href="#Start" class="as-title menu-home"><span>Home</span></a>
+            <div class="as-title">Services</div>
+            <ul class="chapter-menu-list">
+                <li><a href="#ProductDevelopment">Product Development</a></li>
+                <li><a href="#FrontEndDevelopment">Front-End Development</a></li>
+                <li><a href="#WebDevelopment">Web Development</a></li>
+                <li><a href="#UIUXDesigns">UI/UX Designs</a></li>
+                <li><a href="#CustomApplicationDevelopment">Custom Application Development</a></li>
+                <li><a href="#PaymentSystemsIntegration">Payment Systems Integration</a></li>
+                <li><a href="#TechnicalSupportServices">TechnicalSupportServices</a></li>
+            </ul>
+            <div class="as-title menu-contact js-for-ContactBar"><span>Contact Us</span></div>
+        </nav>
+
+        <div class="article-content inngrid">
+
+            <h2>Who We Are </h2>
+
+            <p>If you are in need of a solid software foundation and further development of your business, you can rely on Sheeping for help. With 10+ years in software enterprise and development, our team of 100 full-time developers with BA and MA degrees obtained at top Eastern European Universities will support your business infrastructure with high-quality and scalable software solutions. We have a presence in cities across Russia, with branches in Pskov, Ryazan, and Voronezh. </p>
+
+            <h2>Our Vision & Mission</h2>
+
+            <p>Our primary mission is to help your enterprise grow and develop in this digital era. We are constantly pushing for innovation in various industries, from finance to e-commerce. Our process starts with ideation and ends with the final delivery of suitable software aimed at increasing your reach and clientele. </p>
+
+
+            <p>We employ the latest technologies, including front-end development, mobile development, Internet of Things (IoT), cognitive computing (AI/ML), customer experience (UX/UI), and FinTech to secure and enable your business transformation, growth, profitability, and consistency. </p>
+
+            <h2>Our Services</h2>
+
+            <p>We offer a host of services, from software development, financial systems API integration, and modernising legacy systems, to quality insurance and technical support. </p>
+
+            <div id="ProductDevelopment" class="inngrid color-box">
+                <h3>Product Development</h3>
+
+                <p>Sheeping has the resources, knowledge, and expert personnel ready to design high-quality scalable software and a robust product for your business. </p>
+
+
+                <p>We adhere to the latest code quality and design standards, following the prearranged timetable and schedule to deliver the product on time. Our customised software will perfectly fit the requirements and behaviour of your clients who will be able to use it on any operating system, browser, and device. </p>
+            </div>
+
+            <div id="FrontEndDevelopment" class="inngrid color-box">
+                <h3>Front-End Development</h3>
+
+                <p>Sheeping features a team of front-end developers with vast experience in HTML, JavaScript, and CSS coding which they employ to incorporate appealing visual and interactive elements into your website Our work will transform your webpage into a dynamic, user-friendly interface and allow for cross-browser and cross-device compatibility, HTTP performance, and sustainability. </p>
+            </div>
+
+            <div id="WebDevelopment" class="inngrid color-box">
+                <h3>Web Development</h3>
+
+                <p>With our web development solutions, you will receive customised web and mobile applications with high availability and scalability, all while maintaining a lower cost of ownership and seamless communication. </p>
+
+
+                <p>Also, when deploying our software, we make sure that your data is protected from any third-party interference so that we can ensure intuitive user experience. </p>
+            </div>
+
+            <div id="UIUXDesigns" class="inngrid color-box">
+                <h3>UI/UX Designs</h3>
+
+                <p>At Sheeping, we understand the need for having a stunning-looking website and app, which is why our UI/UX experts work tirelessly on all stages of the process, from conceptualisation to implementation. We can redesign your existing solution or create a new one from scratch, all with the aim of creating an expandable, intuitive, and friendly user interface. </p>
+            </div>
+
+            <div id="CustomApplicationDevelopment" class="inngrid color-box">
+                <h3>Custom Application Development</h3>
+
+                <p>Our success in custom application development comes from our understanding of how your business works. We focus on building internal software, client-facing systems, and applications that increase transparency, improve employee efficiency, collaboration, and interaction with customers. You can expect to see quickly produced prototypes of your future software and proven quality during every software development stage.</p>
+            </div>
+
+            <div id="PaymentSystemsIntegration" class="inngrid color-box">
+                <h3>Payment Systems Integration</h3>
+
+                <p>At Sheeping, we utilise a large number of payment systems you can offer to your customers. The integrated payment systems allow for fast processing, low fees, easy checkout on all devices, and offer the most convenient way of receiving online payments.</p>
+            </div>
+
+            <div id="TechnicalSupportServices" class="inngrid color-box">
+                <h3>Technical Support Services</h3>
+
+                <p>Sheeping also provides technical support services and conducts an assessment of your software in order to improve the software and your overall business. Also, we offer continuous technical support to all of our services, rendering them future-proof. </p>
+            </div>
+
+
+            <h2>Contact Us </h2>
+
+            <p>
+                <b>Sheeping ASSOCIATES LTD</b><br>
+                Quantano, 111 Zane House, 2084,<br>
+                Nikosia, Cyprus.
+            </p>
+
+            <p>If you have any feedback for us, would like to know more about what we can do for you or you simply want to share your ideas on how we can improve, feel free to fill in the box with your email, name, and phone number and we will contact you as soon as possible.</p>
+
+            <div class="contact-button">
+                <div class="as-button js-for-ContactBar">Fill the form</div>
+            </div>
+
+        </div>
+    </section>
+
+</main>
+
+
+<!-- ========================================= CONTACT FORM -->
+
+
+<aside class="">
+    <article class="offsidebar from-eastside ContactBar">
+        <div class="offsidebar-container">
+
+            <header class="offsidebar-header bar-header">
+                <h4>Contact Us</h4>
+            </header>
+
+            <div class="offsidebar-content form-design form-functional">
+
+                <div class="wrap-form-plugin">
+                    <div class="wrap-form">
+                        <form>
+                            <div class="wrap-form-fields">
+
+                                <div class="wrap-field">
+                                    <label><span class="field-label">Name <i>(required)</i></span><br>
+                                    <span><input type="text" name="contact-name" size="40" class="" aria-required="true" aria-invalid="false">
+                                    </span> </label>
+                                </div>
+
+                                <div class="wrap-field">
+                                    <label><span class="field-label">Email <i>(required)</i></span><br>
+                                    <span><input type="email" name="contact-mail" size="40" class="" aria-required="true" aria-invalid="false">
+                                    </span> </label>
+                                </div>
+
+                                <div class="wrap-field">
+                                    <label><span class="field-label">Your Message or Question</span><br>
+                                    <span><textarea name="your-message" rows="3" aria-required="true" aria-invalid="false"></textarea>
+                                    </span> </label>
+                                </div>
+
+                                <div class="wrap-field wrap-submit">
+                                    <input hidden type="submit" value="Send" class="form-design-button js-form-response">
+                                    <input type="button" value="Send" class="form-design-button js-form-response">
+                                    <span class="form-loader"></span>
+                                </div>
+
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="wrap-form-feedback">
+                    <div class="feedback-design rows">
+                        <h4>Your message was sent successfully. Thanks!</h4>
+                        <p>Our manager will reach out to you within the next 24 business hours.</p>
+                        <div class="next-links text-block-bigger">
+                            <p>Next:</p>
+                            <ul>
+                                <li>
+                                    <a
+                                    href="#Start" 
+                                    class="text-link js-for-ContactBar"
+                                    >Go Home</a>
+                                </li>
+                                <li>
+                                    <span class="text-link js-form-reset">New message</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </article>
+</aside>
+<script>
+    function InterfaceOffsideBar ( dna={} ) {
+
+    // Intro
+        if ( typeof(dna)==='string' ) dna = {name:dna}
+        if ( dna.name ) dna.el = document.querySelector('.'+dna.name)
+        if ( !dna.el  ) return false;
+
+    // Core
+
+        const asidebar = dna.el
+        const htmlwrap = document.querySelector('html')
+
+        const classActive     = 'is-active'
+        const classHasOverlay = 'has-offsidebar-overlay'
+        const classBarOverlay = 'offsidebar-overlay'
+        const classBackground = 'offsidebar-background'
+        const queryBartender  = '.js-for-' + dna.name
+
+    //  Interface
+
+        const activateEscape = e => {
+            e = e || window.event
+            if (e.key==='Escape' || e.key==='Esc') Api.close()
+        }
+
+        const Api = {
+
+        // State controller
+
+            getState: f => asidebar.classList.contains(classActive),
+            setStateClosed: f => {
+                asidebar.classList.remove(classActive)
+                htmlwrap.classList.remove(classHasOverlay)
+                document.removeEventListener('keyup', activateEscape)
+            },
+            setStateOpen: f => {
+                asidebar.classList.add(classActive)
+                htmlwrap.classList.add(classHasOverlay)
+                document.addEventListener('keyup', activateEscape)
+            },
+            toggleState: f => {
+                if (Api.getState()) Api.setStateClosed()
+                else                Api.setStateOpen()
+            },
+
+        // Public
+
+            open:   e => Api.setStateOpen(),
+            close:  e => Api.setStateClosed(),
+            toggle: e => Api.toggleState(),
+
+        // Delegators
+
+            delegateOpen: el => {
+                if (el) el.addEventListener('click', Api.open)
+            },
+            delegateClose: el => {
+                if (el) el.addEventListener('click', Api.close)
+            },
+            delegateToggle: el => {
+                if (el) el.addEventListener('click', Api.toggle)
+            }
+
+        }
+
+        const Construct_this_bar = () => {
+
+        // find/create background
+            let background = asidebar.querySelector('.'+classBackground)
+            if(!background) {
+                background = document.createElement('div')
+                background.classList.add(classBackground)
+                asidebar.prepend(background)
+            }
+
+        // find/create shadow overlay
+            let baroverlay = asidebar.querySelector('.'+classBarOverlay)
+            if(!baroverlay) {
+                baroverlay = document.createElement('div')
+                baroverlay.classList.add(classBarOverlay)
+                asidebar.prepend(baroverlay)
+            }
+            Api.delegateClose(baroverlay)
+
+        // find and activate bartenders
+            let bartenders = [...document.querySelectorAll(queryBartender)]
+                bartenders.forEach(Api.delegateToggle)
+        }
+
+    // Initialize
+        Construct_this_bar()
+        return Api
+    }
+    function Init__ContactForm (dna={}) {
+
+        const Mom = dna.el || document.querySelector(dna.selector || '.form-functional')
+        if ( !Mom ) return false
+
+        const hasStateLoading  = 'has-state-loading'
+        const hasStateResponse = 'has-state-response'
+        const isActive         = 'is-active'
+
+        const Dom = {
+            Former: Mom.classList.contains('form-functional') ? Mom : Mom.querySelector('.form-functional'),
+            Loader: Mom.querySelector('.form-loader') || Mom.querySelector('.ajax-loader'),
+            Answer: Mom.querySelector('.wrap-form-feedback'),
+            elWpcf: Mom.querySelector('.wpcf7'),
+            controllersReset: Mom.querySelectorAll('.js-form-reset'),
+            controllersLoad:  Mom.querySelectorAll('.js-form-loading'),
+            controllersResponse:  Mom.querySelectorAll('.js-form-response')
+        }
+
+        const Api = {
+
+            setStateLoading: e => {
+                if (Dom.Former) Dom.Former.classList.add(hasStateLoading)
+                if (Dom.Loader) Dom.Loader.classList.add(isActive)
+            },
+            remStateLoading: e => {
+                if (Dom.Former) Dom.Former.classList.remove(hasStateLoading)
+                if (Dom.Loader) Dom.Loader.classList.remove(isActive)
+            },
+            setStateResponse: e => {
+                if (Dom.Former) Dom.Former.classList.add(hasStateResponse)
+                if (Dom.Answer) Dom.Answer.classList.add(isActive)
+            },
+            remStateResponse: e => {
+                if (Dom.Former) Dom.Former.classList.remove(hasStateResponse)
+                if (Dom.Answer) Dom.Answer.classList.remove(isActive)
+            },
+            clearResponse: e => {
+                let ResponseToClean = Mom.querySelector('.wrap-validation-response')
+                if (ResponseToClean)  ResponseToClean.innerHTML = ''
+            },
+            resetState: e => {
+                Api.remStateLoading()
+                Api.remStateResponse()
+            },
+            setState: s => {
+                Api.resetState()
+                let command = 'setState'+s
+                return typeof(Api[command]) === 'function' ? Api[command]() : false
+            },
+            resetForm: e => {
+                Api.resetState()
+                Api.clearResponse()
+            },
+        // combo
+            stateLoading:  e => Api.setState('Loading'),
+            stateResponse: e => Api.setState('Response'),
+
+        // Delegators
+
+            delegateReset: el => {
+                if (el) el.addEventListener('click', Api.resetForm)
+            },
+            delegateLoading: el => {
+                if (el) el.addEventListener('click', Api.stateLoading)
+            },
+            delegateResponse: el => {
+                if (el) el.addEventListener('click', Api.stateResponse)
+            },
+
+        }
+
+        const Activate__core_events = ()=> {
+            Dom.controllersReset.forEach( el=>Api.delegateReset(el) )
+            Dom.controllersLoad.forEach( el=>Api.delegateLoading(el) )
+            Dom.controllersResponse.forEach( el=>Api.delegateResponse(el) )
+        }
+
+        const Integration__wpcf7 = ()=> {
+            if ( !Dom.elWpcf ) return false
+            const AddEvent = Dom.elWpcf.addEventListener
+            // success result
+                AddEvent( 'wpcf7mailsent', Api.stateResponse )
+        }
+
+    // Initialize
+        Activate__core_events()
+        Integration__wpcf7()
+        return Api
+    }
+    function ActivateContactBar() {
+        let  bar_api = InterfaceOffsideBar('ContactBar')
+        if  (bar_api)
+             bar_api.delegateToggle(document.querySelector('.toggle-ContactBar'))
+    }
+    function ActivateContactForm () {
+     // get api
+        let  selector = '.ContactBar'
+        let  form_api = Init__ContactForm({selector})
+     // delegate action
+        //let  imitator = document.querySelector('.js-imitate-form')
+        //form_api.delegateResponse(imitator)
+    }
+
+    // autorun
+    ActivateContactBar()
+    ActivateContactForm()
+</script>
+
+
+<!-- =========================================== ʕ⊙ᴥ⊙ʔ -->
+<!-- ========================================= BODY END -->
+
+</body>
+</html>

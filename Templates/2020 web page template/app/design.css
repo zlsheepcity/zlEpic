@@ -1,0 +1,398 @@
+.chapter-header {
+    font-weight: bolder;
+}
+.chapter-menu {
+    position: relative; z-index: 0;
+    padding-top: calc( var(--h2-font-size)*var(--h2-line-height) );
+}
+
+/** sticky anchor list */
+@media (min-width: 42rem) {
+    .chapter-menu {
+        position: sticky; z-index: 1;
+        top: 0;
+        background-color: var(--bak-color);
+    }
+    .as-title.menu-home {
+        position: absolute; z-index: 1;
+        top: 0;
+        display:         flex;
+        justify-content: flex-start;
+        align-items:     center;
+        align-content:   flex-end;
+        transition-property: opacity;
+        transition-duration: 240ms;
+        transition-timing-function: ease-in-out;
+      --opacity: 0;
+        opacity: var(--opacity, 0);
+        text-decoration: none;
+    }
+    .article.in-view .as-title.menu-home {
+        --opacity: 1;
+    }
+    .menu-home::after {
+        content: '';
+        display: block;
+        width:  1.25rem;
+        height: 1.25rem;
+     /* SVG: triangle > */
+        background-image: url('data:image/svg+xml;utf8,<svg fill="rgb(200, 70, 73)" width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M8 5v14l11-7z"/></svg>');
+        background-size: contain;
+        background-repeat: no-repeat;
+        transform: rotate(-90deg) translateX(var(--translateMarker));
+      --translateMarker: 0;
+        transition: transform 120ms ease-in-out;
+    }
+    .menu-home:hover::after {
+      --translateMarker: 0.25rem;
+    }
+    .article-content {
+        padding-top: calc( var(--h2-font-size)*var(--h2-line-height) );
+    }
+}
+@media (max-width: 42rem) {
+    .chapter-menu {
+        padding-bottom: var(--big-space);
+    }
+    .chapter-header {
+        text-align: center;
+    }
+    .as-title.menu-home {
+        display: none;
+    }
+}
+
+.as-title.menu-contact {
+    cursor: pointer;
+    display:         flex;
+    justify-content: flex-start;
+    align-items:     center;
+    align-content:   flex-end;
+    text-decoration: none;
+}
+.menu-contact::after {
+    content: '';
+    display: block;
+    width:  1.25rem;
+    height: 1.25rem;
+ /* SVG: triangle > */
+    background-image: url('data:image/svg+xml;utf8,<svg fill="rgb(200, 70, 73)" width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M8 5v14l11-7z"/></svg>');
+    background-size: contain;
+    background-repeat: no-repeat;
+    transform: translateX(var(--translateMarker));
+  --translateMarker: 0;
+    transition: transform 120ms ease-in-out;
+}
+.menu-contact:hover::after {
+    --translateMarker: 0.25rem;
+  }
+
+.as-title {
+    display: flex;
+    min-height: calc( var(--h2-font-size)*var(--h2-line-height) );
+    align-items: flex-end;
+    padding: 0.5rem 0;
+    font-size: var(--h4-font-size);
+    text-decoration: none;
+}
+.chapter-menu-list {
+    margin:     0;
+    padding:    0;
+    list-style: none;
+}
+.chapter-menu-list>li>a {
+    position: relative; z-index: 0;
+    display: inline-block;
+    padding: 0.5rem 0;
+    color: var(--link-color);
+    text-decoration: none;
+    transition: transform 120ms ease-in-out;
+    font-weight: bolder;
+}
+.chapter-menu-list>li>a:hover {
+    transform: translateX(0.5rem);
+}
+.chapter-menu-list>li>a:hover::before {
+    content: '⋅';
+    color: var(--text-color);
+    position: absolute; z-index: 0;
+    right: 100%;
+}
+
+.article-content {
+    position: relative; z-index: 0;
+    background-color: var(--back-color);
+}
+@media (min-width: 42rem) {
+    .article-content { grid-row: 1; }
+}
+
+
+
+
+
+.banner-ninini.ennoia-theme {
+
+    --back-color: var(--link-color);
+    --animation-fulltime: 12s;
+    --animation-function: ease-in-out;
+  
+   /* how image is zoomed */
+    --scaleA: 1;
+    --scaleB: 1.1;
+  
+   /* image crop alignment */
+    --coverA: center center;
+    --coverB: bottom right;
+  
+    --layer1-image:    url(../art/decoration-b.svg);
+    --layer2-image:    url(../art/decoration-c.svg);
+  }
+  
+  /** main layer for background image */
+  
+  .banner-ninini.ennoia-theme {
+    --layer0-frameset: timeline-ennoia-ninini-img;
+    --layer0-function: cubic-bezier(0.165,  0.84,  0.44,  1); /*SmoothFocus*/
+    --layer0-opacityA: 0.1;
+    --layer0-opacityB: 0.3;
+  }
+  @keyframes timeline-ennoia-ninini-img {
+      0% {
+          transform: scale(var(--scaleA));
+          opacity: var(--layer0-opacityA);
+      }
+      40% {
+          transform: scale(var(--scaleB));
+          opacity: var(--layer0-opacityB);
+      }
+      100% {
+          transform: scale(var(--scaleA));
+          opacity: var(--layer0-opacityA);
+      }
+  }
+  
+  /** layers for effects */
+  
+  .banner-ninini.ennoia-theme {
+    --layer1-frameset: timeline-ennoia-ninini-noize-1;
+    --layer1-opacityA: 0.2;
+    --layer1-opacityB: 0.3;
+  
+    --layer2-frameset: timeline-ennoia-ninini-noize-2;
+    --layer2-opacityA: 0.1;
+    --layer2-opacityB: 0.05;
+  }
+  @keyframes timeline-ennoia-ninini-noize-1 {
+      0% {
+          transform: scale(var(--scaleA));
+          opacity: var(--layer1-opacityA);
+      }
+      10% {
+          transform: scale(var(--scaleA));
+      }
+      44% {
+          transform: scale(var(--scaleB));
+          opacity: var(--layer1-opacityB);
+      }
+      60% {
+          opacity: var(--layer1-opacityA);
+      }
+      90% {
+          transform: scale(var(--scaleA));
+      }
+      100% {
+          opacity: var(--layer1-opacityA);
+      }
+  }
+  @keyframes timeline-ennoia-ninini-noize-2 {
+      0% {
+          transform: scale(var(--scaleA));
+          opacity: var(--layer2-opacityA);
+      }
+      36% {
+          transform: scale(var(--scaleB));
+          opacity: var(--layer2-opacityB);
+      }
+      60% {
+          opacity: var(--layer2-opacityA);
+      }
+      80% {
+          transform: scale(var(--scaleA));
+          opacity: var(--layer2-opacityB);
+      }
+      100% {
+          opacity: var(--layer2-opacityA);
+      }
+  }
+  
+  /** layout */
+  
+  .banner-ninini {
+      background-color: var(--back-color);
+      position:   relative; z-index: 0;
+      width:      100%;
+      min-height: 100vh;
+      overflow:   hidden;
+  }
+  .el-ninini-intro {
+      position: absolute; z-index: -1;
+      top:      0;
+      right:    0;
+      bottom:   0;
+      left:     0;
+  }
+  .el-ninini-img {
+      display:          block;
+      min-height:       100%;
+      min-width:        100%;
+      object-fit:       cover;
+      object-position:  var(--coverA);
+  }
+  .el-ninini-message {
+      pointer-events: all;
+      position: absolute; z-index: 1;
+      top:      0;
+      right:    0;
+      bottom:   0;
+      left:     0;
+  
+      display:          flex;
+      align-content:    flex-end;
+      align-items:      flex-end;
+      justify-content:  flex-start;
+  
+      font-size: 10vmax;
+      line-height: 0.75;
+      padding:  20vh 4vw;
+      color: hsla(0,0%,0%,0.8);
+  }
+  .el-ninini-message>a {
+      text-decoration: none;
+  }
+  
+  /** layers threesome */
+  
+  .ban-ninini-figure::before,
+  .ban-ninini-figure::after,
+  .ban-ninini-figure .el-ninini-intro {
+      transition-property:        transform;
+      transition-duration:        var(--animation-fulltime);
+      transition-timing-function: var(--layer0-function);
+      transform-origin:           var(--coverB);
+    --animation-name:             var(--layer0-frameset);
+      animation:
+          var(--animation-name)
+          var(--animation-fulltime)
+          infinite
+          var(--animation-function);
+  }
+  .ban-ninini-figure::before,
+  .ban-ninini-figure::after {
+      content:  '';
+      pointer-events: none;
+      position: absolute; z-index:1;
+      top:      0;
+      right:    0;
+      bottom:   0;
+      left:     0;
+  
+    --background-image:           var(--layer1-image);
+      background-image:           var(--background-image);
+      background-position:        var(--coverA);
+      background-size:            cover;
+      background-repeat:          no-repeat;
+  }
+  .ban-ninini-figure::after {
+    --background-image:           var(--layer1-image);
+    --animation-name:             var(--layer1-frameset);
+  }
+  .ban-ninini-figure::before {
+    --background-image:           var(--layer2-image);
+    --animation-name:             var(--layer2-frameset);
+  }
+  
+  /** back screen */
+  
+  .welcome-back-screen {
+      position: relative; z-index: 0;
+      width:  100%;
+      height: 40vh;
+  }
+  .welcome-back-screen>* {
+      position: fixed; z-index: -1;
+      top:      0;
+      right:    0;
+      bottom:   0;
+      left:     0;
+  }
+  .welcome-back-screen::after {
+      content:  '';
+      pointer-events: none;
+      position: absolute; z-index: -1;
+      top:      0;
+      right:    0;
+      bottom:   0;
+      left:     0;
+    --opacity:  0;
+      opacity:  var(--opacity);
+      background-color: black;
+      transition-property:        opacity;
+      transition-duration:        360ms;
+      transition-timing-function: cubic-bezier(0.6, 0.04,  0.98,  0.335);
+  }
+  
+  .welcome-back-screen.is-hidden::after {
+    --opacity:  0.8;
+  }
+
+.welcome-front-screen {
+    position: relative; z-index: 0;
+    min-height: 100vh;
+    box-shadow: 0 0 2rem black;
+    background-color: var(--back-color);
+}
+
+.offsidebar .bar-header,
+.offsidebar .bar-footer {
+    color: var(--text-color);
+    background-color: var(--link-color);
+}
+
+.contact-button {
+    display:         flex;
+    justify-content: flex-start;
+    align-items:     center;
+    align-content:   center;
+}
+.as-button {
+    display: block;
+    color: var(--text-color);
+  --background-color: var(--link-color);
+    background-color: var(--background-color);
+    font-size: var(--h4-font-size);
+    line-height: 1;
+    padding: 1rem 2rem;
+    display:         flex;
+    justify-content: flex-start;
+    align-items:     center;
+    align-content:   center;
+    cursor: pointer;
+}
+.as-button:hover {
+  --background-color: var(--link-color-accent);
+  --translateMarker: 0.25rem;
+}
+
+.as-button::after {
+    content: '';
+    display: block;
+    width:  1em;
+    height: 1em;
+ /* SVG: triangle > */
+    background-image: url('data:image/svg+xml;utf8,<svg fill="white" width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M8 5v14l11-7z"/></svg>');
+    background-size: contain;
+    background-repeat: no-repeat;
+    transform: translateX(var(--translateMarker, 0));
+    transition: transform 120ms ease-in-out;
+}
