@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Super Store</title>
+
+    <script defer src="https://www.gstatic.com/firebasejs/7.24.0/firebase-app.js"></script>
+    <script src="init-furebase.js"></script>
+
+</head>
+<body>
+<!-- ------------------------------------ -->
+
+
+
+<style>
+    body {
+        font-size: 32px;
+        color: hsl(212, 34%, 29%);
+    }
+    .yellow-gallery {
+        background-color: yellow;
+        display: grid;
+        place-items: center;
+        height: 100vh;
+    }
+    .product-card {
+        border: 1px solid gray;
+        padding: 0.5em;
+        text-align: center;
+        background-color: white;
+    }
+    .product-card .product-image {
+        width: 300px;
+        height: auto;
+    }
+    .product-card.luxury {
+        color: red;
+    }
+    .payment-form {
+        padding: 0.5em;
+    }
+</style>
+
+<div class="yellow-gallery">
+
+    <div class="product-card">
+        <img src="trinket.jpg" class="product-image">
+        <div class="title-field">Sheep Trinket</div>
+        <div>€1</div>
+        <div class="payment-form">
+            <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+                <input type="hidden" name="cmd" value="_xclick">
+                <input type="hidden" name="business" value="zl.sheepcity@gmail.com">
+                <input type="hidden" name="lc" value="US">
+                <input type="hidden" name="item_name" value="Trinket">
+                <input type="hidden" name="amount" value="1.00">
+                <input type="hidden" name="currency_code" value="EUR">
+                <input type="hidden" name="button_subtype" value="services">
+                <input type="hidden" name="no_note" value="0">
+                <input type="hidden" name="bn" value="PP-BuyNowBF:btn_buynowCC_LG.gif:NonHostedGuest">
+                <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+                <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+            </form>
+        </div>
+    </div>
+
+</div>
+
+<!-- ------------------------------------ -->
+</body>
+</html>
+

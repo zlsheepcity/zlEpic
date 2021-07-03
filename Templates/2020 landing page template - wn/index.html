@@ -1,0 +1,321 @@
+<!doctype html>
+<html lang="en" class="root">
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- appseed 2020.2.22 ninini -->
+
+    <!-- ===================================== HEAD CONTENT -->
+
+
+    <title>Winglebase</title>
+    <meta name="description" content="">
+    <meta name="author"      content="zl">
+
+
+    <!-- ## MICRODATA -->
+    <meta property="og:url"          content="">
+    <meta property="og:image"        content="">
+    <meta property="og:image:width"  content="1200">
+    <meta property="og:image:height" content="628">
+    <meta property="og:type"         content="article">
+    <meta property="og:locale"       content="en_US">
+
+
+    <!-- ===================================== FAVICON -->
+
+
+    <meta name="theme-color"             content="#154A8B">
+    <meta name="msapplication-TileColor" content="#154A8B">
+    <meta name="msapplication-TileImage" content="art/icon512.png">
+    <link type="image/png" rel="icon"       href="art/icon512.png">
+    <link rel="apple-touch-icon"            href="art/icon512.png">
+
+
+    <!-- ===================================== BOOT SERVICE -->
+
+
+    <!-- ༼°▽°༽ style boot -->
+    <style>
+        html       { margin:0; padding:0  0.25rem; }
+        body       { margin:0; padding:0; width:100%; height:auto; }
+        img,svg,hr { margin:0; border: 0; max-width:100%; }
+        body       { overflow-y:scroll; }
+    </style>
+
+
+    <!-- ༼°▽°༽ screen von loader -->
+    <style id="von-loader-style">
+        #von-loader { /* settings */
+          --back-color:       var(--brand-color,       hsl(212, 34%, 29%));
+          --text-color:       var(--brand-color--text, hsl(226, 27%, 90%));
+          --icon-size:        6rem;
+         /* SVG: arrows circle loading */
+          --icon-image: url('data:image/svg+xml;utf8,<svg fill="white" width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 4V1L8 5l4 4V6c3.31 0 6 2.69 6 6 0 1.01-.25 1.97-.7 2.8l1.46 1.46C19.54 15.03 20 13.57 20 12c0-4.42-3.58-8-8-8zm0 14c-3.31 0-6-2.69-6-6 0-1.01.25-1.97.7-2.8L5.24 7.74C4.46 8.97 4 10.43 4 12c0 4.42 3.58 8 8 8v3l4-4-4-4v3z"/></svg>'); }
+        #von-loader {
+          --state-opacity:    0;
+          --state-pointer:    none;
+            transition:       opacity 240ms ease-out;
+            background-color: var(--back-color);
+            color:            var(--text-color);
+            pointer-events:   var(--state-pointer);
+            opacity:          var(--state-opacity);
+            position: fixed;  z-index: 100;
+            top:      0;
+            right:    0;
+            bottom:   0;
+            left:     0; }
+        #von-loader.is-active {
+          --state-opacity:    1;
+          --state-pointer:    all; }
+        #von-loader::after {
+            content:  '';
+            position: absolute; z-index: 1;
+            top:      calc(40% - 0.5*var(--icon-size));
+            left:     calc(50% - 0.5*var(--icon-size));
+            width:    var(--icon-size);
+            height:   var(--icon-size);
+            background-image:    var(--icon-image);
+            background-size:     var(--icon-size);
+            background-repeat:   no-repeat;
+            background-position: center center;
+            animation: VonLoaderRotation 1s linear infinite; }
+            @keyframes VonLoaderRotation {
+                from { transform: rotate(360deg); }
+                to   { transform: rotate(  1deg); }
+            }
+    </style>
+    <script id="von-loader-script">
+        function vonLoader ( autostart = true ) {
+            let screen = document.querySelector('body')
+            let loader = document.createElement('div')
+                loader.id = "von-loader"
+                screen.appendChild(loader)
+            let ACTIVE = 'is-active'
+            let show   = () => { loader.classList.add(ACTIVE); }
+            let hide   = () => { loader.classList.remove(ACTIVE) }
+            let action = () => {
+                if (window.addEventListener) window.addEventListener("load", hide, false)
+                else if (window.attachEvent) window.attachEvent(   "onload", hide)
+                else hide() }
+            let start = () => {
+                show()
+                action() }
+            let init = autostart => {
+                if (autostart) start()
+                return { loader, show, hide, start } }
+            return init(autostart)
+        }
+    </script>
+
+
+    <!-- ===================================== GOOGLE FONTS -->
+
+
+    <!-- ༼°▽°༽ prefetch boot -->
+    <link rel="preconnect"   href="//fonts.gstatic.com" crossorigin>
+
+    <link
+        media="none" onload="if(media!='all')media='all'"
+        href="https://fonts.googleapis.com/css?family=Vollkorn:400,400i,700&subset=cyrillic"
+        rel="stylesheet">
+    <link
+        media="none" onload="if(media!='all')media='all'"
+        href="https://fonts.googleapis.com/css?family=VT323"
+        rel="stylesheet">
+
+<noscript>
+        <link
+        media="all"
+        href="https://fonts.googleapis.com/css?family=Vollkorn:400,400i,700&subset=cyrillic"
+        rel="stylesheet">
+    <link
+        media="all"
+        href="https://fonts.googleapis.com/css?family=VT323"
+        rel="stylesheet">
+</noscript>
+
+
+    <!-- ===================================== DESIGN -->
+
+   <!-- quick prototype -->
+   <link
+        media="all"
+        href="app/components/appart-dev.css"
+        rel="stylesheet" type="text/css">
+
+
+    <link
+        media="all"
+        href="app/components/system-core/html-markup.css"
+        rel="stylesheet" type="text/css">
+    <link
+        media="all"
+        href="app/components/system-core/html-typography.css"
+        rel="stylesheet" type="text/css">
+    <link
+        media="all"
+        href="app/components/old-style-code-block.css"
+        rel="stylesheet" type="text/css">
+    <link
+        media="all"
+        href="app/components/component-grid.css"
+        rel="stylesheet" type="text/css">
+    <link
+        media="all"
+        href="app/design-system.css"
+        rel="stylesheet" type="text/css">
+    <link
+        media="all"
+        href="app/design-templates.css"
+        rel="stylesheet" type="text/css">
+
+
+    <!-- ===================================== APP -->
+
+
+    <!-- ===================================== CUSTOM -->
+
+
+
+
+    <!-- ===================================== HEAD END -->
+</head>
+<body class="colors--root"><script>vonLoader()</script>
+
+<nav class="Logo">
+    <div class="icon"></div>
+    <div class="menu"></div>
+</nav>
+
+<nav class="User">
+    <div class="icon"></div>
+    <div class="menu"></div>
+</nav>
+
+<main>
+
+<!-- ========================================= WELCOME -->
+
+<article class="--no--ms-Grid Welcome-Portinari grid-queen">
+    <div class="header-space"></div>
+    <div class="illustration"></div>
+    <div class="introduction chapter-header">
+        <section class="el-deal">
+            <div class="logo">[LOGO]</div>
+            <div class="message">
+                <h1 class="h1">Database Access</h1>
+                <h2 class="h2">For your business success</h2>
+            </div>
+            <div class="action">
+                <div class="action-button"><span class="label">Enter</span></div>
+            </div>
+        </section>
+    </div>
+</article>
+
+<!-- ========================================= STATS -->
+
+<article class="Janja-Stats grid-queen chapter">
+    <header class="chapter-header">
+        <h2 class="h1">Real Stats</h2>
+    </header>
+    <figure class="chart-area sublayer">
+        <div class="inngrid-wrap">
+            <img src="art/illustrations/stats-design.png" alt="demo image">
+        </div>
+        <figcaption>
+            Chart design example<br>
+            Functional demo:
+            <a href="https://dataaddict.fr/prenoms/#ahmet-h,alizee-f,mario-h">https://dataaddict.fr/prenoms</a>
+        </figcaption>
+    </figure>
+</article>
+
+<!-- ========================================= INTEREFACE -->
+
+<article class="Janja-Stats grid-queen chapter use-colors colors--secondary">
+    <header class="chapter-header">
+        <h2 class="h1">Comfortable Interface</h2>
+    </header>
+    <div class="text-block-bigger">
+        <p>Alors je ne lui parlais ni de serpents boas, ni de forêts vierges, ni d’étoiles. Je me mettais à sa portée. Je lui parlais de bridge, de golf, de politique et de cravates. Et la grande personne était bien contente de connaître un homme aussi raisonnable.</p>
+    </div>
+    <div>
+        <div class="action-button"><span class="label">Launch Demo</span></div>
+    </div>
+</article>
+
+<!-- ========================================= STATS -->
+
+<article class="API-Product grid-queen chapter">
+
+    <header class="chapter isontop chapter-header">
+        <h2 class="h1">API Product</h2>
+    </header>
+
+    <div class="layer product-sample">
+        <section class="el-code-divoire">
+
+<!-- PRE CODE START -->
+<pre class="code-block">
+winglebase connect
+
+> *** WELCOME TO WINGLEBASE API ***
+> Help: winglebase help
+> ...ready
+
+winglebase search product "brandname1" as --a
+winglebase search product "brandname2" as --b
+winglebase compare products --a --b
+
+> <a href="#">Read Docs</a>
+</pre>
+<!-- PRE CODE END -->
+
+
+        </section>
+    </div>
+
+    <div class="features inngrid chapter">
+        <h3 class="h3">Features</h3>
+        <ul class="inngrid">
+            <li>Les grandes personnes m’ont conseillé de laisser de côté les dessins de serpents boas ouverts ou fermés,</li>
+            <li>Et de m’intéresser plutôt à la géographie, à l’histoire, au calcul et à la grammaire.</li>
+            <li>C’est ainsi que j’ai abandonné, à l’âge de six ans, une magnifique carrière de peintre.</li>
+        </ul>
+    </div>
+
+    <div class="action chapter-note chapter wc-align">
+        <div>
+            <div class="action-button"><span class="label">Prices</span></div>
+        </div>
+    </div>
+
+</article>
+
+<!-- ========================================= CONTENT -->
+
+...
+
+<!-- ========================================= -->
+</main>
+
+
+<!-- ========================================= SITEMAP -->
+
+<article class="Janja-Stats grid-queen chapter use-colors colors--primary">
+    <header class="chapter-header">
+        <h2 class="h1">Sitemap</h2>
+    </header>
+    <ul class="text-block-bigger">
+        <li><a href="sitemap.html">sitemap.html</a></li>
+    </ul>
+</article>
+
+<!-- =========================================== ʕ⊙ᴥ⊙ʔ -->
+<!-- ========================================= BODY END -->
+
+</body>
+</html>
