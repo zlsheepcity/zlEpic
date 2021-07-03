@@ -1,0 +1,56 @@
+/* ==============================================================
+    required settings app7001
+    2019.4.17
+============================================================== */
+
+
+//* ------------------------------------ padding system
+
+$remSize: 10px;
+
+$dim:           0.8rem; // design unit
+$margin-min:    1*$dim;
+$margin-def:    3*$dim;
+$margin-less: 2.5*$dim;
+$margin-half: $margin-def / 2;
+
+//* ------------------------------------ colors
+
+$color_main_back:      white;
+$color_main_front:     black;
+$color_main_shadow:    rgba(0,0,0,0.1);
+
+//* ------------------------------------ font-depended variables
+
+$fontSize:     1em;
+$fontRegular:  normal;
+$fontSemibold: normal;
+$fontBolder:   bolder;
+
+//* ------------------------------------ screen sizes
+
+// last update: spring 2018
+
+$screenMaxSizeForMobile:    600px;
+$screenMaxSizeForTablet:    900px;
+$screenMaxSizeForXS:       1100px;
+$screenMaxSizeForS:        1300px;
+$screenMaxSizeForM:        1400px;
+$screenMaxSizeForL:        1800px;
+
+$screenForAll:      "min-width: 0px";
+$screenForXL:       "min-width: #{$screenMaxSizeForL + 1}";
+$screenForL:        "max-width: #{$screenMaxSizeForL}";
+$screenNotL:        "min-width: #{$screenMaxSizeForL + 1}";
+$screenForM:        "max-width: #{$screenMaxSizeForM}";
+$screenNotM:        "min-width: #{$screenMaxSizeForM + 1}";
+$screenForS:        "max-width: #{$screenMaxSizeForS}";
+$screenNotS:        "min-width: #{$screenMaxSizeForS + 1}";
+$screenForXS:       "max-width: #{$screenMaxSizeForXS}";
+$screenNotXS:       "min-width: #{$screenMaxSizeForXS + 1}";
+$screenForTablet:   "max-width: #{$screenMaxSizeForTablet}";
+$screenNotTablet:   "min-width: #{$screenMaxSizeForTablet + 1}";
+$screenForMobile:   "max-width: #{$screenMaxSizeForMobile}";
+$screenNotMobile:   "min-width: #{$screenMaxSizeForMobile + 1}";
+
+/* eof required settings */

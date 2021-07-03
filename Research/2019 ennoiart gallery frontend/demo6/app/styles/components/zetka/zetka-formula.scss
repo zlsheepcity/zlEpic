@@ -1,0 +1,599 @@
+/* DEPRECATED 2019.2.16 */
+
+// --------------------------------------------------------------
+// ZETKA grid settings and formula
+// 2019.1.11
+//
+// Naming:
+// screen → | [menu] [main] [side] | ← screen
+//
+// Compact mode:
+// screen → | [menu] | ← screen
+// screen → | [main] | ← screen
+// screen → | [side] | ← screen
+//
+// overmain, overmenu, overside
+// — same columns with horizontal padding-space
+//
+// --------------------------------------------------------------
+
+// ------------------------------------------ settings // 2019.1.11
+
+$zetka--screensize-for-compact:       600px; // one column
+$zetka--screensize-for-overcompact:   900px; // one column with screen space
+
+$zetka--column-gap:     1.0rem;
+$zetka--row-gap:        1.0rem;
+
+$zetka--screenspacer:   minmax(0, 1fr);
+$zetka--overmainspacer: 1rem; // 0;
+
+$zetka--width-menu:     16vw;
+$zetka--width-side:     16vw;
+$zetka--width-main-limit-max: 700px;
+
+
+// ------------------------------------------ auto settings
+
+$screenForCompactZetka: 'max-width: #{$zetka--screensize-for-compact}';
+$screenNotCompactZetka: 'min-width: #{$zetka--screensize-for-compact + 1}';
+$screenForReducedZetka: 'max-width: #{$zetka--screensize-for-overcompact}';
+$screenNotReducedZetka: 'min-width: #{$zetka--screensize-for-overcompact + 1}';
+$screenForClassicZetka: 'min-width: #{$zetka--screensize-for-overcompact + 1}';
+$screenNotClassicZetka: 'max-width: #{$zetka--screensize-for-overcompact}';
+
+$w: $zetka--width-main-limit-max;
+$g: $zetka--column-gap;
+$zetka--width-main-subcolumn: minmax(0, calc( (#{$w} - (5*#{$g})) / 6 ) ); // 6 columns
+
+// ------------------------------------------ constructor
+
+$BEGIN--zetka-constructor:        unquote(" [ ") full-start;
+$END--zetka-constructor:          full-end unquote(" ] ");
+$SCREEN-SPACE--zetka-constructor: unquote(" ] ") $zetka--screenspacer unquote(" [ ");
+$MIDDLE-SPACE--zetka-constructor: unquote(" ] ") $zetka--overmainspacer unquote(" [ ");
+
+$CONTENT--zetka-constructor:
+    $zetka--width-main-subcolumn unquote(" [b] ")
+    $zetka--width-main-subcolumn unquote(" [c] ")
+    $zetka--width-main-subcolumn unquote(" [d midmenu midpoint midside] ")
+    $zetka--width-main-subcolumn unquote(" [e] ")
+    $zetka--width-main-subcolumn unquote(" [f] ")
+    $zetka--width-main-subcolumn ;
+$MAIN--zetka-constructor:
+    main-start a
+        unquote(" ] ")
+            $CONTENT--zetka-constructor
+        unquote(" [ ")
+    main-end g
+    ;
+$MAIN-NO-LIMIT--zetka-constructor:
+    main-start a
+        unquote(" ] ")
+            1fr unquote(" [b] ")
+            1fr unquote(" [c] ")
+            1fr unquote(" [d midmenu midpoint midside] ")
+            1fr unquote(" [e] ")
+            1fr unquote(" [f] ")
+            1fr
+        unquote(" [ ")
+    main-end g
+    ;
+$OVERMAIN--zetka-constructor:
+    overmain-start
+        $MIDDLE-SPACE--zetka-constructor
+            $MAIN--zetka-constructor
+        $MIDDLE-SPACE--zetka-constructor
+    overmain-end
+    ;
+$OVERMENU--zetka-constructor:
+    overmenu-start
+        $MIDDLE-SPACE--zetka-constructor
+            menu-start
+            unquote(" ] ")
+                $zetka--width-menu
+            unquote(" [ ")
+            menu-end
+        $MIDDLE-SPACE--zetka-constructor
+    overmenu-end
+    ;
+$OVERSIDE--zetka-constructor:
+    overside-start
+        $MIDDLE-SPACE--zetka-constructor
+            side-start
+            unquote(" ] ")
+                $zetka--width-side
+            unquote(" [ ")
+            side-end
+        $MIDDLE-SPACE--zetka-constructor
+    overside-end
+    ;
+
+
+
+// --------------------------------------------------------------
+// GRID TEMPLATES
+// --------------------------------------------------------------
+
+/*
+
+$zetka-full               -[][menu][][][main][][][side][]-
+$zetka-main                            [main]
+$zetka-main-limitless                 [-main-]
+$zetka-overmain                      [][main][]
+$zetka-overmain-limitless           [][-main-][]
+$zetka-overmain-spaced              -[][main][]-
+$zetka-overmain-spaced-menu         -[][main][]
+$zetka-overmain-spaced-side          [][main][]-
+
+$zetka-side-spaced                             [][side][]-
+$zetka-menu-spaced        -[][menu][]
+
+$zetka-merge               [][menu][][][main][][][side][]
+$zetka-merge-menu                    [][main][][][side][]
+$zetka-merge-side          [][menu][][][main][]
+$zetka-merge-menu-screen             [][main][][][side][]-
+$zetka-merge-side-screen  -[][menu][][][main][]
+
+$zetka-overmain-half-one             [][ma
+$zetka-overmain-half-two                  in][]
+$zetka-overmain-half-screen-one     -[][ma
+$zetka-overmain-half-screen-two           in][]-
+$zetka-half-screen-one    -[][menu][][][ma
+$zetka-half-screen-two                    in][][][side][]-
+
+*/
+
+
+// ------------------------------------------ full layout
+$zetka-full:
+    $BEGIN--zetka-constructor
+        $SCREEN-SPACE--zetka-constructor
+            $OVERMENU--zetka-constructor
+            $OVERMAIN--zetka-constructor
+            $OVERSIDE--zetka-constructor
+        $SCREEN-SPACE--zetka-constructor
+    $END--zetka-constructor;
+// ------------------------------------------ single main-column layout
+$zetka-main:
+    $BEGIN--zetka-constructor
+        overmain-start
+        overside-start
+        overmenu-start
+            menu-start
+            side-start
+                $MAIN--zetka-constructor
+            menu-end
+            side-end
+        overmain-end
+        overside-end
+        overmenu-end
+    $END--zetka-constructor;
+// ------------------------------------------ 
+$zetka-main-limitless:
+    $BEGIN--zetka-constructor
+        overmain-start
+        overside-start
+        overmenu-start
+            menu-start
+            side-start
+                $MAIN-NO-LIMIT--zetka-constructor
+            menu-end
+            side-end
+        overmain-end
+        overside-end
+        overmenu-end
+    $END--zetka-constructor;
+// ------------------------------------------ overmain layout
+$zetka-overmain:
+    $BEGIN--zetka-constructor
+        overmain-start
+        overmenu-start
+        overside-start
+            $MIDDLE-SPACE--zetka-constructor
+                menu-start
+                side-start
+                    $MAIN--zetka-constructor
+                side-end
+                menu-end
+            $MIDDLE-SPACE--zetka-constructor
+        overmain-end
+        overmenu-end
+        overside-end
+    $END--zetka-constructor;
+// ------------------------------------------ overmain without width limit
+$zetka-overmain-limitless:
+    $BEGIN--zetka-constructor
+        overmain-start
+        overmenu-start
+        overside-start
+            $MIDDLE-SPACE--zetka-constructor
+                menu-start
+                side-start
+                    $MAIN-NO-LIMIT--zetka-constructor
+                side-end
+                menu-end
+            $MIDDLE-SPACE--zetka-constructor
+        overmain-end
+        overmenu-end
+        overside-end
+    $END--zetka-constructor;
+// ------------------------------------------ overmain with screen space
+$zetka-overmain-spaced:
+    $BEGIN--zetka-constructor
+        $SCREEN-SPACE--zetka-constructor
+            overmain-start
+            overmenu-start
+            overside-start
+                $MIDDLE-SPACE--zetka-constructor
+                    menu-start
+                    side-start
+                        $MAIN--zetka-constructor
+                    side-end
+                    menu-end
+                $MIDDLE-SPACE--zetka-constructor
+            overmain-end
+            overmenu-end
+            overside-end
+        $SCREEN-SPACE--zetka-constructor
+    $END--zetka-constructor;
+// ------------------------------------------
+$zetka-overmain-spaced-menu:
+    $BEGIN--zetka-constructor
+        $SCREEN-SPACE--zetka-constructor
+            overmain-start
+            overmenu-start
+            overside-start
+                $MIDDLE-SPACE--zetka-constructor
+                    menu-start
+                    side-start
+                        $MAIN--zetka-constructor
+                    side-end
+                    menu-end
+                $MIDDLE-SPACE--zetka-constructor
+            overmain-end
+            overmenu-end
+            overside-end
+    $END--zetka-constructor;
+// ------------------------------------------
+$zetka-overmain-spaced-side:
+    $BEGIN--zetka-constructor
+            overmain-start
+            overmenu-start
+            overside-start
+                $MIDDLE-SPACE--zetka-constructor
+                    menu-start
+                    side-start
+                        $MAIN--zetka-constructor
+                    side-end
+                    menu-end
+                $MIDDLE-SPACE--zetka-constructor
+            overmain-end
+            overmenu-end
+            overside-end
+    $END--zetka-constructor;
+// ------------------------------------------ side and screen
+$zetka-side-spaced:
+    $BEGIN--zetka-constructor
+            overmain-start
+            overmenu-start
+            overside-start
+                $MIDDLE-SPACE--zetka-constructor
+                    menu-start
+                    side-start
+                    main-start
+                    a b c d e f g midmenu midpoint midside
+                        unquote(" ] ")
+                            $zetka--width-side
+                        unquote(" [ ")
+                    main-end
+                    side-end
+                    menu-end
+                $MIDDLE-SPACE--zetka-constructor
+            overmain-end
+            overmenu-end
+            overside-end
+        $SCREEN-SPACE--zetka-constructor
+    $END--zetka-constructor;
+// ------------------------------------------ menu and screen
+$zetka-menu-spaced:
+    $BEGIN--zetka-constructor
+        $SCREEN-SPACE--zetka-constructor
+            overmain-start
+            overmenu-start
+            overside-start
+                $MIDDLE-SPACE--zetka-constructor
+                    menu-start
+                    side-start
+                    main-start
+                    a b c d e f g midmenu midpoint midside
+                        unquote(" ] ")
+                            $zetka--width-menu
+                        unquote(" [ ")
+                    main-end
+                    side-end
+                    menu-end
+                $MIDDLE-SPACE--zetka-constructor
+            overmain-end
+            overmenu-end
+            overside-end
+    $END--zetka-constructor;
+// ------------------------------------------ merge all
+$zetka-merge:
+    $BEGIN--zetka-constructor
+        $OVERMENU--zetka-constructor
+        $OVERMAIN--zetka-constructor
+        $OVERSIDE--zetka-constructor
+    $END--zetka-constructor;
+// ------------------------------------------ merge with menu
+$zetka-merge-menu:
+    $BEGIN--zetka-constructor
+        $OVERMENU--zetka-constructor
+        overside-start
+        overmain-start
+            $MIDDLE-SPACE--zetka-constructor
+                side-start
+                    $MAIN--zetka-constructor
+                side-end
+            $MIDDLE-SPACE--zetka-constructor
+        overmain-end
+        overside-end
+    $END--zetka-constructor;
+// ------------------------------------------ merge with menu till screen end
+$zetka-merge-menu-screen:
+    $BEGIN--zetka-constructor
+        $SCREEN-SPACE--zetka-constructor
+            $OVERMENU--zetka-constructor
+            overside-start
+            overmain-start
+                $MIDDLE-SPACE--zetka-constructor
+                    side-start
+                        $MAIN--zetka-constructor
+                    side-end
+                $MIDDLE-SPACE--zetka-constructor
+            overmain-end
+            overside-end
+    $END--zetka-constructor;
+// ------------------------------------------ merge with side
+$zetka-merge-side:
+    $BEGIN--zetka-constructor
+        overmenu-start
+        overmain-start
+            $MIDDLE-SPACE--zetka-constructor
+                menu-start
+                    $MAIN--zetka-constructor
+                menu-end
+            $MIDDLE-SPACE--zetka-constructor
+        overmain-end
+        overmenu-end
+        $OVERSIDE--zetka-constructor
+    $END--zetka-constructor;
+// ------------------------------------------ merge with side till screen end
+$zetka-merge-side-screen:
+    $BEGIN--zetka-constructor
+            overmenu-start
+            overmain-start
+                $MIDDLE-SPACE--zetka-constructor
+                    menu-start
+                        $MAIN--zetka-constructor
+                    menu-end
+                $MIDDLE-SPACE--zetka-constructor
+            overmain-end
+            overmenu-end
+            $OVERSIDE--zetka-constructor
+        $SCREEN-SPACE--zetka-constructor
+    $END--zetka-constructor;
+// ------------------------------------------ keep grid in half screen one
+$zetka-half-screen-one:
+    $BEGIN--zetka-constructor
+        $SCREEN-SPACE--zetka-constructor
+            $OVERMENU--zetka-constructor
+                overmain-start
+                overside-start
+                $MIDDLE-SPACE--zetka-constructor
+                    side-start
+                    main-start
+                    a
+                    unquote(" ] ")
+                        $zetka--width-main-subcolumn unquote(" [b] ")
+                        $zetka--width-main-subcolumn unquote(" [c] ")
+                        $zetka--width-main-subcolumn
+                    unquote(" [ ")
+                    d midmenu midpoint midside e f g
+                    main-end
+                    side-end
+                overmain-end
+                overside-end
+    $END--zetka-constructor
+    ;
+// ------------------------------------------
+$zetka-overmain-half-screen-one:
+    $BEGIN--zetka-constructor
+        $SCREEN-SPACE--zetka-constructor
+                overmenu-start
+                overmain-start
+                overside-start
+                $MIDDLE-SPACE--zetka-constructor
+                    side-start
+                    main-start
+                    menu-start
+                    a
+                    unquote(" ] ")
+                        $zetka--width-main-subcolumn unquote(" [b] ")
+                        $zetka--width-main-subcolumn unquote(" [c] ")
+                        $zetka--width-main-subcolumn
+                    unquote(" [ ")
+                    d midmenu midpoint midside e f g
+                    main-end
+                    side-end
+                    menu-end
+                overmain-end
+                overside-end
+                overmenu-end
+    $END--zetka-constructor
+    ;
+// ------------------------------------------
+$zetka-overmain-half-one:
+    $BEGIN--zetka-constructor
+                overmenu-start
+                overmain-start
+                overside-start
+                $MIDDLE-SPACE--zetka-constructor
+                    side-start
+                    main-start
+                    menu-start
+                    a
+                    unquote(" ] ")
+                        $zetka--width-main-subcolumn unquote(" [b] ")
+                        $zetka--width-main-subcolumn unquote(" [c] ")
+                        $zetka--width-main-subcolumn
+                    unquote(" [ ")
+                    d midmenu midpoint midside e f g
+                    main-end
+                    side-end
+                    menu-end
+                overmain-end
+                overside-end
+                overmenu-end
+    $END--zetka-constructor
+    ;
+// ------------------------------------------ keep grid in half screen two
+$zetka-half-screen-two:
+    $BEGIN--zetka-constructor
+            overmenu-start
+            overmain-start
+                menu-start
+                main-start
+                a b c d midmenu midpoint midside
+                    unquote(" ] ")
+                        $zetka--width-main-subcolumn unquote(" [e] ")
+                        $zetka--width-main-subcolumn unquote(" [f] ")
+                        $zetka--width-main-subcolumn
+                    unquote(" [ ")
+                g
+                main-end
+                menu-end
+            $MIDDLE-SPACE--zetka-constructor
+            overmain-end
+            overmenu-end
+            $OVERSIDE--zetka-constructor
+        $SCREEN-SPACE--zetka-constructor
+    $END--zetka-constructor
+    ;
+// ------------------------------------------
+$zetka-overmain-half-screen-two:
+    $BEGIN--zetka-constructor
+            overmenu-start
+            overmain-start
+            overside-start
+                menu-start
+                main-start
+                side-start
+                a b c d midmenu midpoint midside
+                    unquote(" ] ")
+                        $zetka--width-main-subcolumn unquote(" [e] ")
+                        $zetka--width-main-subcolumn unquote(" [f] ")
+                        $zetka--width-main-subcolumn
+                    unquote(" [ ")
+                g
+                main-end
+                menu-end
+                side-end
+            $MIDDLE-SPACE--zetka-constructor
+            overmain-end
+            overmenu-end
+            overside-end
+        $SCREEN-SPACE--zetka-constructor
+    $END--zetka-constructor
+    ;
+// ------------------------------------------
+$zetka-overmain-half-two:
+    $BEGIN--zetka-constructor
+            overmenu-start
+            overmain-start
+            overside-start
+                menu-start
+                main-start
+                side-start
+                a b c d midmenu midpoint midside
+                    unquote(" ] ")
+                        $zetka--width-main-subcolumn unquote(" [e] ")
+                        $zetka--width-main-subcolumn unquote(" [f] ")
+                        $zetka--width-main-subcolumn
+                    unquote(" [ ")
+                g
+                main-end
+                menu-end
+                side-end
+            $MIDDLE-SPACE--zetka-constructor
+            overmain-end
+            overmenu-end
+            overside-end
+    $END--zetka-constructor
+    ;
+// --------------------------------------------------------------
+
+// PENDING
+
+// ------------------------------------------ without menu
+$zetka-full-without-menu:
+    $BEGIN--zetka-constructor
+        $SCREEN-SPACE--zetka-constructor
+            overmain-start
+            overmenu-start
+                $MIDDLE-SPACE--zetka-constructor
+                    menu-start
+                        $MAIN--zetka-constructor
+                    menu-end
+                $MIDDLE-SPACE--zetka-constructor
+            overmain-end
+            overmenu-end
+            $OVERSIDE--zetka-constructor
+        $SCREEN-SPACE--zetka-constructor
+    $END--zetka-constructor;
+// ------------------------------------------
+$zetka-merge-without-menu:
+    $BEGIN--zetka-constructor
+            overmain-start
+            overmenu-start
+                $MIDDLE-SPACE--zetka-constructor
+                    menu-start
+                        $MAIN--zetka-constructor
+                    menu-end
+                $MIDDLE-SPACE--zetka-constructor
+            overmain-end
+            overmenu-end
+            $OVERSIDE--zetka-constructor
+    $END--zetka-constructor;
+// ------------------------------------------ without side
+$zetka-full-without-side:
+    $BEGIN--zetka-constructor
+        $SCREEN-SPACE--zetka-constructor
+            $OVERMENU--zetka-constructor
+            overmain-start
+            overside-start
+                $MIDDLE-SPACE--zetka-constructor
+                    side-start
+                        $MAIN--zetka-constructor
+                    side-end
+                $MIDDLE-SPACE--zetka-constructor
+            overmain-end
+            overside-end
+        $SCREEN-SPACE--zetka-constructor
+    $END--zetka-constructor;
+// ------------------------------------------
+$zetka-merge-without-side:
+    $BEGIN--zetka-constructor
+            $OVERMENU--zetka-constructor
+            overmain-start
+            overside-start
+                $MIDDLE-SPACE--zetka-constructor
+                    side-start
+                        $MAIN--zetka-constructor
+                    side-end
+                $MIDDLE-SPACE--zetka-constructor
+            overmain-end
+            overside-end
+    $END--zetka-constructor;
+
+// --------------------------------------------------------------

@@ -1,0 +1,178 @@
+/* ==============================================================
+    all about font-sizes and line-heights
+    2019.3.31
+============================================================== */
+
+//* ------------------------------------ font collection
+
+/* font source
+@import url('https://fonts.googleapis.com/css?family=Vollkorn:400,400i,700&subset=cyrillic');
+*/
+
+// tufte 2018
+
+$font-list-collection--tufte-serif:
+    Vollkorn,
+    et-book,
+    Palatino,
+    "Palatino Linotype",
+    "Palatino LT STD",
+    "Book Antiqua",
+    Georgia,
+    serif;
+$font-list-collection--tufte-sans:
+    "Trebuchet MS",
+    "Gill Sans",
+    "Gill Sans MT",
+    sans-serif;
+
+// native font stack 2018
+
+$font-list-collection--native-sans-serif:
+  // Safari for macOS and iOS (San Francisco)
+  -apple-system,
+  // Chrome < 56 for macOS (San Francisco)
+  BlinkMacSystemFont,
+  // Windows
+  "Segoe UI",
+  // Android
+  "Roboto",
+  // Basic web fallback
+  "Helvetica Neue", Arial, sans-serif,
+  // Emoji fonts
+  "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol" !default;
+
+// summary
+
+$font-list-serif: $font-list-collection--tufte-serif;
+$font-list-sans:  $font-list-collection--native-sans-serif;
+
+
+//* ------------------------------------ font-depended variables
+
+
+$fontSize:     16px;
+$fontRegular:  400;
+$fontSemibold: 400;
+$fontBolder:   700;
+
+
+//* ------------------------------------ body base
+
+
+body {
+    /* 16/28 */
+    font-size:   $fontSize;
+    line-height: 1.5;
+
+    font-family: $font-list-serif;
+    font-weight: $fontRegular;
+}
+
+
+//* ------------------------------------ markup system 2018
+
+
+h1, h2, h3, h4, h5, h6, p, blockquote {
+    font-family: inherit;
+    font-size:   inherit;
+    line-height: inherit;
+    font-weight: inherit;
+}
+
+.big-title,
+.title,
+.min-title,
+.subtitle {
+    * {
+    font-family: inherit;
+    font-size:   inherit;
+    line-height: inherit;
+    font-weight: inherit;
+    }
+}
+
+
+h1, .big-title {
+    /* 40/48 */
+    font-size:   2.5em;
+    line-height: 1.2;
+}
+h2, .title {
+    /* 32/40 */
+    font-size:   2em;
+    line-height: 1.25;
+}
+h3, .min-title {
+    /* 24/32 */
+    font-size:   1.5em;
+    line-height: 1.333333;
+}
+.subtitle {
+    /* 20/24 */
+    font-size:   1.25em;
+    line-height: 1.2;
+}
+small {
+    /* 14/28 */
+    font-size: 0.875em;
+    line-height: 2;
+}
+td {
+    font-family: $font-list-sans;
+    /* 14/24 */
+    font-size:    0.875em;
+    line-height: 1.714285;
+}
+
+%text-is-larger {
+    /* 20/28 */
+    font-size:   1.25em;
+    line-height: 1.4;
+}
+
+
+//* ------------------------------------ extra support
+
+
+.has-text-accent {
+    font-weight: $fontSemibold;
+    /* 24/36 */
+    font-size:   1.5em;
+    line-height: 1.5;
+}
+.has-small-text {
+    /* 14/24 */
+    font-size:   0.875em;
+    line-height: 1.714285;
+}
+.has-sans-text {
+    font-family: $font-list-sans;
+    letter-spacing: .03em;
+    /* 14/24 */
+    font-size:    0.875em;
+    line-height: 1.714285;
+}
+
+
+//* ------------------------------------ extra features
+
+
+* {
+    @supports (hanging-punctuation:first) {
+        hanging-punctuation: first;
+    }
+}
+
+// fonts rendering
+html {
+    -ms-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+}
+body {
+    text-rendering: optimizeLegibility; // best quality
+    -webkit-font-smoothing: antialiased;
+}
+
+
+/* eof typography */

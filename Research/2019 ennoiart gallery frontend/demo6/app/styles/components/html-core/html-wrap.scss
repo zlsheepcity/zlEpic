@@ -1,0 +1,114 @@
+/* ==============================================================
+    html wrap & base markup
+    2019.3.31
+============================================================== */
+
+
+
+/* ------------------------------------ minimal box model */
+
+
+*, *:before, *:after     { box-sizing: inherit;    }
+html                     { box-sizing: border-box; height: 100%; }
+html, body               { margin: 0; padding: 0;  }
+
+
+/* ------------------------------------ basic unit & font sizes */
+
+
+html { font-size: 10px; }
+body { font-size: 16px; line-height: 1.5; }
+
+
+/* ------------------------------------ improve design & UX */
+
+
+html    { cursor: default; }
+body    { overflow-y: scroll; }
+// UX: Single taps are dispatched immediately on clickable elements
+a, area, button, input, label, select, summary, textarea, [tabindex] {
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+}
+
+
+/* ------------------------------------ avoid visual errors */
+
+
+img, svg { max-width: 100%; height: auto; }
+canvas   { display: inline-block; }
+
+
+/* ----------------- use semantic markup without browser`s design */
+
+figure, figcaption, fieldset, legend {
+    display: block;
+    margin:  0;
+    padding: 0;
+    border:  0;
+    white-space: normal;
+}
+article, section, header, footer, main, aside, nav, details { display: block; }
+summary { display: list-item; }
+code    { display: block; }
+nav ul, nav ol, ul.nav, ol.nav {
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+}
+nav a {
+    text-decoration: none;
+}
+
+//* ------------------------------------ html standarts
+
+
+h1, h2, h3, h4, h5, h6, p, blockquote, ul, ol {
+    margin:  0;
+    padding: 0;
+}
+a {
+    color: inherit;
+    background-color: transparent;
+}
+ul, ol {
+    margin-left:  1.5em;
+}
+hr {
+    border: 0;
+    background: transparent;
+    box-shadow: none;
+
+    /* use as visual spacer */
+    display:    block;
+    font-size:  inherit;
+    min-height: 1.5em;
+}
+figure {
+    display: block;
+    padding: 0;
+    margin:  0;
+}
+img {
+    display:  block;
+    border:    none;
+    max-width: 100%;
+}
+svg {
+    display:  block;
+    border:    none;
+    max-width: 100%;
+}
+table {
+    * {
+        text-align:     left;
+        vertical-align: top;
+    }
+    td {
+        padding-top:    0.25em;
+        padding-bottom: 0.25em;
+    }
+}
+[hidden], .hidden { display: none!important; }
+
+/* eof html wrap */

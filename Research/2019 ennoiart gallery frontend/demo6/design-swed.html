@@ -1,0 +1,184 @@
+<!doctype html><!-- app7001-Zapp :: 2019.5.8 -->
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- ========================================= HEAD CONTENT -->
+
+
+    <title>ʕ⊙ᴥ⊙ʔ design template: swed</title>
+
+
+    <!-- ========================================= DESIGN -->
+
+    <style> /* ༼°▽°༽ boot style */
+        body    { width: 100%; height: auto; overflow: hidden; }
+        body    { font-size: 16px; }
+        img,svg { max-width: 100% }
+    </style>
+
+    <link
+        href="https://fonts.googleapis.com/css?family=Vollkorn:400,400i,700&subset=cyrillic"
+        rel="stylesheet">
+    <link
+        href="app/styles/app.css"
+        rel="stylesheet" type="text/css">
+
+    <!-- ========================================= APP HEAD -->
+
+    <script src="app/script/app-core.js"></script>
+    <script>app.log('... Wake Up, App!')</script>
+
+    <!-- ========================================= APP LIBS -->
+
+    <script src="app/script/components/image-zoom.js"></script>
+    <script>app.onload(ActivateImageZoom)</script>
+
+    <script src="app/script/components/class-mutator.js"></script>
+    <script>app.take({name:'mutate', f:el_class_mutator})</script>
+
+    <script src="app/script/components/scroll-follower.js"></script>
+    <script>app.take({name:'wayway', f:queenScrollFollower})</script>
+
+    <script src="app/script/components/scroll-trigger.js"></script>
+    <script>app.take({name:'waydot', f:queenScrollTrigger})</script>
+
+    <script src="app/script/components/svg-transform.js"></script>
+    <script>app.take({name:'morphy', f:ActivatedPathDanceQueen()})</script>
+
+    <!-- ========================================= APP LOADER -->
+
+    <script>
+        function RunInterface () { app.Welcome().log('App, Welcome!') }
+        function Run() { setTimeout(RunInterface,200) }
+        window.onload = Run
+    </script>
+
+    <!-- ========================================= APP CUSTOM -->
+
+    <link
+        href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
+        integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay"
+        crossorigin="anonymous" rel="stylesheet">
+
+    <style>
+        .svg>svg {
+            display: block;
+            width: 100%;
+            height: auto;
+        }
+        .step-next { display: none; }
+    </style>
+
+    <!-- ========================================== ʕ⊙ᴥ⊙ʔ = -->
+    <!-- ========================================= END HEAD -->
+</head>
+<body class="body-wrap design-template--swed">
+
+    <section class="swed-screen">
+        <div style="color:white">
+            <div class="big-title">Yana Dudenic</div>
+            <div class="subtitle">@ennoiart</div>
+        </div>
+        <hr>
+        <div class="swed-group focus-group">
+            <div><div class="swed-button"><span class="title">Gallery</span></div></div>
+            <div><div class="swed-button"><span class="title">Free Downloads</span></div></div>
+            <div><div class="swed-button"><span class="icon"><i class="fab fa-instagram"></i></span></div></div>
+            <div><div class="swed-button"><span class="title">Contacts</span></div></div>
+        </div>
+        <hr>
+        <div class="swed-message">
+            <p>In order to understand how Dudenic works, it is instructive to run through some examples. This is a sample interactive Dudenic session, annotated with comments.</p>
+        </div>
+    </section>
+
+    <section style="background: hsl(212, 34%, 29%); height: 100vh;">
+        <div>
+            <div id="TRIGGA" class="svg">
+                <svg fill="hsl(240, 15%, 12%)" width="1000" height="250" viewBox="0 0 1000 250" xmlns="http://www.w3.org/2000/svg">
+                    <g class="step-0">
+                        <rect width="1000" height="50"/>
+                        <path id="wave-iiru"
+d="M1000,200v-1v-1V2V1V0h-1h-1H2H1H0v1v1v196v1v1c0,0,14.6,0,19.5,0c6.8,0,20.5,0,27.3,0
+c1.2,0,3.7,0,4.9,0c2.6,0,7.9,0,10.5,0c6,0,17.8,0,23.8,0c5.4,0,16.3,0,21.7,0c3.5,0,10.4,0,13.9,0c4.7,0,14.2,0,18.9,0
+c5.9,0,17.5,0,23.4,0c6.6,0,19.9,0,26.5,0c5.5,0,16.4,0,21.9,0c6,0,18.1,0,24.1,0c6.1,0,18.3,0,24.4,0c5.7,0,17.1,0,22.8,0
+c8.3,0,24.9,0,33.2,0c3.7,0,11,0,14.6,0c5.8,0,17.5,0,23.4,0c8.5,0,25.6,0,34.1,0c5.4,0,16.1,0,21.5,0c5.5,0,16.4,0,21.9,0
+c4.4,0,13.2,0,17.6,0c7.7,0,23.1,0,30.8,0c10.4,0,31.1,0,41.5,0c7.8,0,23.5,0,31.4,0c4.3,0,12.8,0,17.1,0c2,0,6.1,0,8.1,0
+c11.1,0,33.3,0,44.4,0c3.7,0,11.1,0,14.8,0c11.8,0,35.3,0,47,0c6,0,18.2,0,24.2,0c6.5,0,19.5,0,26,0c7.3,0,21.8,0,29.1,0
+c12.1,0,36.3,0,48.4,0c2.8,0,8.5,0,11.4,0c15.5,0,46.4,0,61.9,0c6.1,0,18.2,0,24.3,0c3.2,0,9.5,0,12.6,0c8.2,0,24.6,0,32.8,0
+c4.3,0,13,0,17.4,0c3.8,0,11.4,0,15.2,0C991.2,200,1000,200,1000,200z"/>
+                    </g>
+                    <g class="step-next">
+                        <path id="wave-iiru-1"
+d="M1000,200v-1v-1V2V1V0h-1h-1H2H1H0v1v1v196v1v1c0,0,14-16.1,19.5-20.6c7.7-6.3,19.8-12.3,27.3-28.9
+c12.9-28.4,14-46.9,4.9-78.1c-0.8-2.6,7.7-2.1,10.5,0.6c6.9,6.6,15.5,9.6,23.8,13.4c8.5,3.9,16.4,9,21.7,18.1
+c3.6,6.1,10,12.7,13.9,16.2c4.5,4,13.4,12.6,18.9,14.8s15.7,1.2,23.4,2.3c8.9,1.2,17.7,2.8,26.5,4.6c7.6,1.6,14.7,1.6,21.9-2.7
+c7.5-4.5,14.6-10.1,24.1-9.8c8.7,0.2,18.3,4.3,24.4,6.1c5.6,1.7,17,4.5,22.8,4.9c8.5,0.5,22.9-2.1,33.2-8.9
+c6.8-4.5,10.6-11.1,14.6-17.8c5.4-9.2,12.4-13.1,23.4-12.3c12,0.8,25.5,6.2,34.1,8.1c5.3,1.2,16.1,3.1,21.5,2.7
+c6-0.5,15.7-4.7,21.9-10.7c5.2-5,11-6.5,17.6-4c12.7,4.9,21.6-1.6,30.8-9.8c13-11.6,24.3-25.8,41.5-31.5c10.5-3.5,24.1-0.2,31.4,8.7
+c5.9,7.2,12,14.4,17.1,22.3c3.5,5.4,5.3,12.1,8.1,18c8.5,18,25.1,29.5,44.4,16.5c4.8-3.2,11.1-2.9,14.8-2.4
+c11.9,1.9,35.4,7.2,46.9,11.1c6.2,2.1,16.1,7,24.2,10.5c8.7,3.7,17.3,7.4,26,10.9c9.6,3.9,19,4.6,29.1,0.8
+c18.3-6.7,34.6-16.4,48.4-30.7c3.3-3.4,7.2-4.1,11.4-5.2c21-5.1,41.5-0.7,61.9,3.7c8.2,1.8,16.1,4.9,24.3,7c4,1,8.4,1.4,12.6,1
+c11.5-1,24.9-13.3,32.8-10c9.4,3.8,11.6,29.6,17.4,38.3c3,4.5,11,9.2,15.2,14.9C992.8,177.9,1000,200,1000,200z"/>
+                    </g>
+                </svg>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        function RunIiruWave () {
+            const trigga = document.getElementById('TRIGGA')
+            let path = app.morphy.Create('wave-iiru')
+            path.wayway({
+                elem: trigga,
+                from: 'bottom-bottom',
+                to:   'bottom-middle'
+            })
+            
+        }
+        app.onload(RunIiruWave)
+
+            
+    </script>
+
+    <section class="swed-welcome">
+        <section class="main">
+            <div style="color:white">
+                <div class="big-title">Yana Dudenic</div>
+                <div class="subtitle">@ennoiart</div>
+            </div>
+            <hr>
+            <div hidden class="swed-group">
+                <div hidden>
+                    <div class="big-title">Yana Dudenic</div>
+                    <div class="subtitle">artist</div>
+                </div>
+                <div>
+                    <div class="big-title">Iiru</div>
+                    <div class="subtitle">#ennoiiiru</div>
+                </div>
+                <div>
+                    <div class="big-title">Ori</div>
+                    <div class="subtitle">#ennoiori</div>
+                </div>
+            </div>
+            <div class="swed-group focus-group">
+                <div><div class="swed-button"><span class="title">Gallery</span></div></div>
+                <div><div class="swed-button"><span class="title">Free Downloads</span></div></div>
+                <div><div class="swed-button"><span class="icon"><i class="fab fa-instagram"></i></span></div></div>
+                <div><div class="swed-button"><span class="title">Contacts</span></div></div>
+            </div>
+            <hr>
+            <div class="swed-message">
+                <p>In order to understand how Dudenic works, it is instructive to run through some examples. This is a sample interactive Dudenic session, annotated with comments.</p>
+            </div>
+        </section>
+        <section class="side">2</section>
+        <footer  class="foot">4</footer>
+    </section>
+
+</body>
+</html>

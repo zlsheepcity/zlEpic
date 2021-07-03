@@ -1,0 +1,1987 @@
+@charset "UTF-8";
+/*
+    zApp default sass ordnung
+    2019.2.16 → last update 2019.4.17
+*/
+/* ==============================================================
+    required settings app7001
+    2019.4.17
+============================================================== */
+/* eof required settings */
+/* ==============================================================
+    app sass constructor - mixins and/or copy-paste templates
+    2019.2.8
+============================================================== */
+/* eof app scss constructor */
+/* ==============================================================
+    universal markup helpers
+    2019.4.17
+============================================================== */
+/* ------------------------------------------ univeral helpers */
+.is-centered {
+  text-align: center;
+  justify-content: center;
+}
+
+.is-v-centered {
+  align-self: center;
+}
+
+.has-v-centered > * {
+  align-self: center;
+}
+
+.is-v-equal {
+  align-self: stretch;
+}
+
+.has-v-equal > * {
+  align-self: stretch;
+}
+
+.has-v-slices {
+  grid-row-gap: 0;
+}
+
+.is-v-spaced {
+  margin-top: 2.4rem;
+  margin-bottom: 2.4rem;
+}
+
+.is-v-padded {
+  padding-top: 2.4rem;
+  padding-bottom: 2.4rem;
+}
+
+.is-box {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.layer {
+  display: block;
+  grid-column: full;
+}
+.zetka .layer {
+  grid-column: full;
+}
+
+/* ------------------------------------------ compact mode helpers */
+@media (max-width: 600px) {
+  .compact-mode--is-centered {
+    text-align: center;
+    justify-content: center;
+  }
+}
+
+/* eof univeral markup helpers */
+/* ==============================================================
+    html wrap & base markup
+    2019.3.31
+============================================================== */
+/* ------------------------------------ minimal box model */
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+html {
+  box-sizing: border-box;
+  height: 100%;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+/* ------------------------------------ basic unit & font sizes */
+html {
+  font-size: 10px;
+}
+
+body {
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+/* ------------------------------------ improve design & UX */
+html {
+  cursor: default;
+}
+
+body {
+  overflow-y: scroll;
+}
+
+a, area, button, input, label, select, summary, textarea, [tabindex] {
+  -ms-touch-action: manipulation;
+  touch-action: manipulation;
+}
+
+/* ------------------------------------ avoid visual errors */
+img, svg {
+  max-width: 100%;
+  height: auto;
+}
+
+canvas {
+  display: inline-block;
+}
+
+/* ----------------- use semantic markup without browser`s design */
+figure, figcaption, fieldset, legend {
+  display: block;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  white-space: normal;
+}
+
+article, section, header, footer, main, aside, nav, details {
+  display: block;
+}
+
+summary {
+  display: list-item;
+}
+
+code {
+  display: block;
+}
+
+nav ul, nav ol, ul.nav, ol.nav {
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+}
+
+nav a {
+  text-decoration: none;
+}
+
+h1, h2, h3, h4, h5, h6, p, blockquote, ul, ol {
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  color: inherit;
+  background-color: transparent;
+}
+
+ul, ol {
+  margin-left: 1.5em;
+}
+
+hr {
+  border: 0;
+  background: transparent;
+  box-shadow: none;
+  /* use as visual spacer */
+  display: block;
+  font-size: inherit;
+  min-height: 1.5em;
+}
+
+figure {
+  display: block;
+  padding: 0;
+  margin: 0;
+}
+
+img {
+  display: block;
+  border: none;
+  max-width: 100%;
+}
+
+svg {
+  display: block;
+  border: none;
+  max-width: 100%;
+}
+
+table * {
+  text-align: left;
+  vertical-align: top;
+}
+table td {
+  padding-top: 0.25em;
+  padding-bottom: 0.25em;
+}
+
+[hidden], .hidden {
+  display: none !important;
+}
+
+/* eof html wrap */
+/* ==============================================================
+    all about font-sizes and line-heights
+    2019.3.31
+============================================================== */
+/* font source
+@import url('https://fonts.googleapis.com/css?family=Vollkorn:400,400i,700&subset=cyrillic');
+*/
+body {
+  /* 16/28 */
+  font-size: 16px;
+  line-height: 1.5;
+  font-family: Vollkorn, et-book, Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, serif;
+  font-weight: 400;
+}
+
+h1, h2, h3, h4, h5, h6, p, blockquote {
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  font-weight: inherit;
+}
+
+.big-title *,
+.title *,
+.min-title *,
+.subtitle * {
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  font-weight: inherit;
+}
+
+h1, .big-title {
+  /* 40/48 */
+  font-size: 2.5em;
+  line-height: 1.2;
+}
+
+h2, .title {
+  /* 32/40 */
+  font-size: 2em;
+  line-height: 1.25;
+}
+
+h3, .min-title {
+  /* 24/32 */
+  font-size: 1.5em;
+  line-height: 1.333333;
+}
+
+.subtitle {
+  /* 20/24 */
+  font-size: 1.25em;
+  line-height: 1.2;
+}
+
+small {
+  /* 14/28 */
+  font-size: 0.875em;
+  line-height: 2;
+}
+
+td {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  /* 14/24 */
+  font-size: 0.875em;
+  line-height: 1.714285;
+}
+
+.has-text-accent {
+  font-weight: 400;
+  /* 24/36 */
+  font-size: 1.5em;
+  line-height: 1.5;
+}
+
+.has-small-text {
+  /* 14/24 */
+  font-size: 0.875em;
+  line-height: 1.714285;
+}
+
+.has-sans-text, .design-template--swed .subtitle {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  letter-spacing: 0.03em;
+  /* 14/24 */
+  font-size: 0.875em;
+  line-height: 1.714285;
+}
+
+@supports (hanging-punctuation: first) {
+  * {
+    hanging-punctuation: first;
+  }
+}
+
+html {
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* eof typography */
+.form-submit, .form-textarea, .form-item {
+  /* has rows */
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-items: stretch;
+  align-content: center;
+}
+.form-submit > *, .form-textarea > *, .form-item > * {
+  order: 3;
+}
+.form-submit > label, .form-textarea > label, .form-item > label, .form-submit > .label, .form-textarea > .label, .form-item > .label {
+  order: 1;
+}
+.form-submit > input, .form-textarea > input, .form-item > input, .form-submit > .input, .form-textarea > .input, .form-item > .input {
+  order: 2;
+}
+
+label {
+  display: block;
+  padding: 0 0.25em;
+}
+
+input {
+  display: block;
+  width: 100%;
+  padding: 0.25em 0.25em;
+  /* default font */
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  font-weight: inherit;
+}
+
+textarea {
+  display: block;
+  width: 100%;
+  padding: 0.25em;
+  resize: vertical;
+  /* default font */
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  font-weight: inherit;
+}
+
+button, .button, .is-button {
+  display: inline-block;
+  vertical-align: middle;
+  padding: 0.25em 0.25em;
+  /* default font */
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  font-weight: inherit;
+}
+
+/* EOF: minimal form-item */
+@keyframes keyframes--SimpleRotation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(359deg);
+  }
+}
+@keyframes keyframes--TudaSudaRotation {
+  0% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(359deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+.tudasuda {
+  animation: keyframes--TudaSudaRotation 4s infinite ease-out;
+}
+
+/*
+ * source - animate.css, http://daneden.me/animate
+
+2019.4.4
+
+- pulse
+
+
+ */
+.animated {
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+
+.animated.infinite {
+  -webkit-animation-iteration-count: infinite;
+  animation-iteration-count: infinite;
+}
+
+@-webkit-keyframes pulse {
+  from {
+    -webkit-transform: scale3d(1, 1, 1);
+    transform: scale3d(1, 1, 1);
+  }
+  50% {
+    -webkit-transform: scale3d(1.05, 1.05, 1.05);
+    transform: scale3d(1.05, 1.05, 1.05);
+  }
+  to {
+    -webkit-transform: scale3d(1, 1, 1);
+    transform: scale3d(1, 1, 1);
+  }
+}
+@keyframes pulse {
+  from {
+    -webkit-transform: scale3d(1, 1, 1);
+    transform: scale3d(1, 1, 1);
+  }
+  50% {
+    -webkit-transform: scale3d(1.05, 1.05, 1.05);
+    transform: scale3d(1.05, 1.05, 1.05);
+  }
+  to {
+    -webkit-transform: scale3d(1, 1, 1);
+    transform: scale3d(1, 1, 1);
+  }
+}
+.pulse {
+  -webkit-animation-name: pulse;
+  animation-name: pulse;
+}
+
+/* ==============================================================
+    fixed sidebar with visible and hidden states
+    2019.4.13
+============================================================== */
+/* USE CASE
+    <nav class="sidebar is-active">
+        xoxox
+    </nav>
+*/
+.has-active-sidebar, .has-shadow-overlay {
+  overflow: hidden;
+}
+.has-active-sidebar .screen-shadow-overlay, .has-shadow-overlay .screen-shadow-overlay {
+  opacity: 0.8;
+  pointer-events: auto;
+  transition: opacity 400ms ease-in;
+}
+
+.screen-shadow-overlay {
+  background-color: black;
+  position: fixed;
+  z-index: 2;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  pointer-events: none;
+  opacity: 0;
+}
+
+/**/
+.sidebar, .sidebar-westside {
+  background-color: black;
+  /* is screen fixed */
+  position: fixed;
+  z-index: 3;
+  top: 0;
+  bottom: 0;
+  left: 100%;
+  /* has width */
+  width: 100%;
+  /* has unpredictable content */
+  overflow: auto;
+  /* closed state */
+  transform: translateX(0);
+  transition: transform 200ms ease-in;
+  /* open state */
+}
+@media screen and (min-width: 44rem) {
+  .sidebar, .sidebar-westside {
+    max-width: 38rem;
+  }
+}
+.sidebar.is-active, .is-active.sidebar-westside, .has-active-sidebar .sidebar, .has-active-sidebar .sidebar-westside {
+  transition-timing-function: ease-out;
+  transform: translateX(-100%);
+}
+
+.sidebar-westside {
+  left: auto;
+  right: 100%;
+}
+.sidebar-westside.is-active, .has-active-sidebar .sidebar-westside {
+  transform: translateX(100%);
+}
+
+.eastside {
+  background-color: pink;
+  color: black;
+  /* is screen fixed */
+  position: fixed;
+  z-index: 3;
+  top: 0;
+  right: auto;
+  bottom: 0;
+  left: 100%;
+  /* has width */
+  width: 100%;
+  /* has unpredictable content */
+  overflow: auto;
+  /* closed state */
+  transform: translateX(0);
+  /* open state */
+}
+@media screen and (min-width: 44rem) {
+  .eastside {
+    max-width: 38rem;
+  }
+}
+.eastside.is-active {
+  transform: translateX(-100%);
+}
+
+/* eof sidebar */
+/* ==============================================================
+    split fullscreen into parts header/body/footer
+    2019.1.16
+============================================================== */
+/* html template
+
+    <section class="fullscreen">
+        <div class="fullscreen-header"></div>
+        <div class="fullscreen-body"  ></div>
+        <div class="fullscreen-footer"></div>
+    </section>
+
+*/
+.fullscreen {
+  /* is fullscreen box */
+  display: block;
+  width: 100%;
+  min-height: 100vh;
+  /* has illustrated background */
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  /* has rows */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-content: stretch;
+  align-items: stretch;
+  /* contentbox--xy-centered */
+}
+.fullscreen .fullscreen-header {
+  order: 1;
+  flex-grow: 0;
+}
+.fullscreen .fullscreen-body {
+  order: 2;
+  flex-grow: 2;
+}
+.fullscreen .fullscreen-footer {
+  order: 3;
+  flex-grow: 0;
+}
+.fullscreen .fullscreen-header,
+.fullscreen .fullscreen-body,
+.fullscreen .fullscreen-footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+}
+
+/* eof fullscreen */
+/* ==============================================================
+    column solution
+    2018.12.8
+============================================================== */
+.group {
+  /* is horizontal grid */
+  display: grid;
+  grid-template-columns: none;
+  grid-auto-flow: column;
+  grid-auto-rows: 1fr;
+  grid-gap: 2.4rem;
+  /* has overflow fallback */
+  overflow: auto;
+  /* has mobile layout */
+}
+.group > *, .group .is-in-group {
+  grid-column: auto;
+  height: 100%;
+}
+@media (max-width: 600px) {
+  .group {
+    grid-auto-flow: row;
+    grid-auto-rows: unset;
+  }
+}
+
+/* eof sidebar */
+/* ==============================================================
+    data table - Responsive Data Tables
+    2019.1.17
+
+    table
+        .has-data-titles = attr [data-title] will shown on mobile
+        .is-perfect = avoit mobile transformation
+        data-table-type="1str,2num,3txt" = content type for columns
+    td
+        .is-string/.is-number = content type alias
+
+============================================================== */
+/* EXAMPLE:
+
+    <table class="data-table has-data-titles" data-table-type="1str,2num,3txt">
+        <caption>
+            <h2>Has markup for data-title</h2>
+        </caption>
+        <thead>
+            <tr>
+                <th>Provider</th>
+                <th>Games</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th data-title="Provider">
+                    Microgaming
+                </th>
+                <td data-title="Games">
+                    590
+                </td>
+                <td data-title="Description with long value">
+                    The game is devoted to the Mighty Scandinavian god Thor, which gives out different symbols, such as Scatter Ram, to help a player win prizes. The option of additional gambling game is also available.
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+*/
+.data-table {
+  /* table critical css */
+  /* table addon - has compact mobile view */
+  /* table addon -- has Data Titles */
+  /* table addon -- has type of content */
+}
+.data-table th,
+.data-table td {
+  padding-left: 0.5em;
+  padding-right: 0.5em;
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
+  vertical-align: top;
+}
+.data-table caption,
+.data-table th {
+  text-align: left;
+  line-height: 1.25;
+}
+@media all and (min-width: 601px) {
+  .data-table th:first-child,
+.data-table td:first-child {
+    padding-left: 0.125em;
+  }
+  .data-table th:last-child,
+.data-table td:last-child {
+    padding-right: 0.125em;
+  }
+}
+@media all and (max-width: 600px) {
+  .data-table:not(.is-perfect),
+.data-table:not(.is-perfect) caption,
+.data-table:not(.is-perfect) thead,
+.data-table:not(.is-perfect) tbody,
+.data-table:not(.is-perfect) tfooter,
+.data-table:not(.is-perfect) tr {
+    display: block;
+  }
+  .data-table:not(.is-perfect) th,
+.data-table:not(.is-perfect) td {
+    display: block;
+    text-align: left;
+    width: 100%;
+    padding-left: 0;
+    padding-right: 0;
+    border: 0;
+  }
+  .data-table:not(.is-perfect)[data-table-type] table tr > * {
+    text-align: left;
+  }
+  .data-table:not(.is-perfect)[data-table-type] table tr > *:not(th) {
+    font-family: inherit;
+  }
+  .data-table:not(.is-perfect) thead th {
+    text-align: right;
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+  .data-table:not(.is-perfect) tr + tr *:first-child {
+    border-top: 2px dashed rgba(0, 0, 0, 0.15);
+    margin-top: 1em;
+    padding-top: 1em;
+  }
+  .data-table:not(.is-perfect) tr:hover {
+    background-color: transparent;
+  }
+  .data-table:not(.is-perfect)[data-table-type] tr > td, .data-table:not(.is-perfect)[data-table-type] tr > td,
+.data-table:not(.is-perfect) .is-number {
+    text-align: left;
+  }
+}
+@media all and (max-width: 600px) {
+  .data-table.has-data-titles:not(.is-perfect) thead {
+    display: none;
+  }
+  .data-table.has-data-titles:not(.is-perfect) th,
+.data-table.has-data-titles:not(.is-perfect) td {
+    font-size: inherit;
+    line-height: inherit;
+  }
+  .data-table.has-data-titles:not(.is-perfect) th[data-title],
+.data-table.has-data-titles:not(.is-perfect) td[data-title] {
+    position: relative;
+    padding-left: 8em;
+    box-sizing: border-box;
+  }
+  .data-table.has-data-titles:not(.is-perfect) th[data-title]:before,
+.data-table.has-data-titles:not(.is-perfect) td[data-title]:before {
+    content: attr(data-title) ": ";
+    position: absolute;
+    display: block;
+    margin-left: -8em;
+    width: 7.5em;
+  }
+}
+.data-table[data-table-type*="1num"] tr > *:nth-child(1), .data-table[data-table-type*="2num"] tr > *:nth-child(2), .data-table[data-table-type*="3num"] tr > *:nth-child(3), .data-table[data-table-type*="4num"] tr > *:nth-child(4), .data-table[data-table-type*="5num"] tr > *:nth-child(5),
+.data-table .is-number {
+  text-align: right;
+}
+.data-table[data-table-type*="1num"] tr > *:not(th):nth-child(1), .data-table[data-table-type*="2num"] tr > *:not(th):nth-child(2), .data-table[data-table-type*="3num"] tr > *:not(th):nth-child(3), .data-table[data-table-type*="4num"] tr > *:not(th):nth-child(4), .data-table[data-table-type*="5num"] tr > *:not(th):nth-child(5),
+.data-table .is-number:not(th) {
+  font-family: monospace;
+}
+@media all and (min-width: 601px) {
+  .data-table[data-table-type*="1str"] tr > *:not(th):nth-child(1), .data-table[data-table-type*="2str"] tr > *:not(th):nth-child(2), .data-table[data-table-type*="3str"] tr > *:not(th):nth-child(3), .data-table[data-table-type*="4str"] tr > *:not(th):nth-child(4), .data-table[data-table-type*="5str"] tr > *:not(th):nth-child(5),
+.data-table .is-string:not(th) {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+  }
+}
+
+/* eof data table */
+/* --------------------------------------------------------------
+// ZETKA grid settings and formula
+// 2019.1.11
+// → 2019.2.16 36week37
+// --------------------------------------------------------------
+
+# file stricture
+
+--setup
+--constructor
+--layout
+
+// --------------------------------------------------------------
+// ZETKA SETUP
+// -------------------------------------------------------------- */
+/* eof zetka setup */
+/* --------------------------------------------------------------
+// ZETKA grid settings and formula
+// 2019.1.11
+// → 2019.2.16 36week37
+// --------------------------------------------------------------
+
+# file stricture
+
+--setup
+--constructor
+--layout
+
+// --------------------------------------------------------------
+// ZETKA CONSTRUCTOR
+// -------------------------------------------------------------- */
+/*
+
+$zetka-full               -[][menu][][][main][][][side][]-
+$zetka-main                            [main]
+$zetka-main-limitless                 [-main-]
+$zetka-overmain                      [][main][]
+$zetka-overmain-limitless           [][-main-][]
+$zetka-overmain-spaced              -[][main][]-
+$zetka-overmain-spaced-menu         -[][main][]
+$zetka-overmain-spaced-side          [][main][]-
+
+$zetka-side-spaced                             [][side][]-
+$zetka-menu-spaced        -[][menu][]
+
+$zetka-merge               [][menu][][][main][][][side][]
+$zetka-merge-menu                    [][main][][][side][]
+$zetka-merge-side          [][menu][][][main][]
+$zetka-merge-menu-screen             [][main][][][side][]-
+$zetka-merge-side-screen  -[][menu][][][main][]
+
+$zetka-overmain-half-one             [][ma
+$zetka-overmain-half-two                  in][]
+$zetka-overmain-half-screen-one     -[][ma
+$zetka-overmain-half-screen-two           in][]-
+$zetka-half-screen-one    -[][menu][][][ma
+$zetka-half-screen-two                    in][][][side][]-
+
+*/
+/* eof zetka constructor */
+/* --------------------------------------------------------------
+// ZETKA grid settings and formula
+// 2019.1.11
+// → 2019.2.16 36week37
+// --------------------------------------------------------------
+
+# file stricture
+
+--setup
+--constructor
+--layout
+
+// --------------------------------------------------------------
+// ZETKA LAYOUT
+// -------------------------------------------------------------- */
+.zetka-third-merge-tri, .zetka-third-merge-one, .zetka-third-tri, .zetka-third-two, .zetka-third-one, .zetka-half-two, .zetka-half-one, .zetka-overhalf-two, .zetka-overhalf-one, .zetka-half-screen-two, .zetka-half-screen-one, .zetka-merge-side-screen, .zetka-merge-menu-screen, .zetka-side-screen, .zetka-menu-screen, .zetka-merge-side, .zetka-merge-menu, .zetka-merge, .zetka-side, .zetka-menu, .zetka-block, .zetka-overmain, .zetka-layer, .zetka {
+  display: grid;
+  align-items: start;
+  grid-auto-flow: row;
+  grid-auto-rows: min-content;
+  grid-column-gap: 1rem;
+  grid-row-gap: 1rem;
+}
+
+.zetka * {
+  grid-column: main;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.zetka {
+  grid-column: full;
+  grid-template-columns:  [  full-start  ]  minmax(0, 1fr)  [  overmenu-start  ]  1rem  [  menu-start  ]  16vw  [  menu-end  ]  1rem  [  overmenu-end overmain-start  ]  1rem  [  main-start a  ]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [b]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [c]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [d midmenu midpoint midside]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [e]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [f]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [  main-end g  ]  1rem  [  overmain-end overside-start  ]  1rem  [  side-start  ]  16vw  [  side-end  ]  1rem  [  overside-end  ]  minmax(0, 1fr)  [  full-end  ] ;
+}
+
+.zetka-layer {
+  grid-column: full;
+  grid-template-columns:  [  full-start  ]  minmax(0, 1fr)  [  overmenu-start  ]  1rem  [  menu-start  ]  16vw  [  menu-end  ]  1rem  [  overmenu-end overmain-start  ]  1rem  [  main-start a  ]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [b]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [c]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [d midmenu midpoint midside]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [e]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [f]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [  main-end g  ]  1rem  [  overmain-end overside-start  ]  1rem  [  side-start  ]  16vw  [  side-end  ]  1rem  [  overside-end  ]  minmax(0, 1fr)  [  full-end  ] ;
+}
+
+.zetka-overmain {
+  grid-column: overmain;
+  grid-template-columns:  [  full-start overmain-start overmenu-start overside-start  ]  1rem  [  menu-start side-start main-start a  ]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [b]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [c]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [d midmenu midpoint midside]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [e]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [f]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [  main-end g side-end menu-end  ]  1rem  [  overmain-end overmenu-end overside-end full-end  ] ;
+}
+
+.zetka-block {
+  grid-column: overmain;
+  grid-template-columns:  [  full-start overmain-start overmenu-start overside-start  ]  1rem  [  menu-start side-start main-start a  ]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [b]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [c]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [d midmenu midpoint midside]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [e]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [f]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [  main-end g side-end menu-end  ]  1rem  [  overmain-end overmenu-end overside-end full-end  ] ;
+}
+
+.zetka-menu {
+  grid-column: overmenu;
+  grid-template-columns:  [  full-start overmain-start overmenu-start overside-start  ]  1rem  [  menu-start side-start main-start a  ]  1fr  [b]  1fr  [c]  1fr  [d midmenu midpoint midside]  1fr  [e]  1fr  [f]  1fr  [  main-end g side-end menu-end  ]  1rem  [  overmain-end overmenu-end overside-end full-end  ] ;
+}
+
+.zetka-side {
+  grid-column: overside;
+  grid-template-columns:  [  full-start overmain-start overmenu-start overside-start  ]  1rem  [  menu-start side-start main-start a  ]  1fr  [b]  1fr  [c]  1fr  [d midmenu midpoint midside]  1fr  [e]  1fr  [f]  1fr  [  main-end g side-end menu-end  ]  1rem  [  overmain-end overmenu-end overside-end full-end  ] ;
+}
+
+.zetka-merge {
+  grid-column: overmenu-start/overside-end;
+  grid-template-columns:  [  full-start overmenu-start  ]  1rem  [  menu-start  ]  16vw  [  menu-end  ]  1rem  [  overmenu-end overmain-start  ]  1rem  [  main-start a  ]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [b]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [c]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [d midmenu midpoint midside]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [e]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [f]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [  main-end g  ]  1rem  [  overmain-end overside-start  ]  1rem  [  side-start  ]  16vw  [  side-end  ]  1rem  [  overside-end full-end  ] ;
+}
+
+.zetka-merge-menu {
+  grid-column: overmenu-start/overmain-end;
+  grid-template-columns:  [  full-start overmenu-start  ]  1rem  [  menu-start  ]  16vw  [  menu-end  ]  1rem  [  overmenu-end overside-start overmain-start  ]  1rem  [  side-start main-start a  ]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [b]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [c]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [d midmenu midpoint midside]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [e]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [f]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [  main-end g side-end  ]  1rem  [  overmain-end overside-end full-end  ] ;
+}
+
+.zetka-merge-side {
+  grid-column: overmain-start/overside-end;
+  grid-template-columns:  [  full-start overmenu-start overmain-start  ]  1rem  [  menu-start main-start a  ]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [b]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [c]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [d midmenu midpoint midside]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [e]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [f]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [  main-end g menu-end  ]  1rem  [  overmain-end overmenu-end overside-start  ]  1rem  [  side-start  ]  16vw  [  side-end  ]  1rem  [  overside-end full-end  ] ;
+}
+
+.zetka-menu-screen {
+  grid-column: full-start/overmenu-end;
+  grid-template-columns:  [  full-start  ]  minmax(0, 1fr)  [  overmain-start overmenu-start overside-start  ]  1rem  [  menu-start side-start main-start a b c d e f g midmenu midpoint midside  ]  16vw  [  main-end side-end menu-end  ]  1rem  [  overmain-end overmenu-end overside-end full-end  ] ;
+}
+
+.zetka-side-screen {
+  grid-column: overside-start/full-end;
+  grid-template-columns:  [  full-start overmain-start overmenu-start overside-start  ]  1rem  [  menu-start side-start main-start a b c d e f g midmenu midpoint midside  ]  16vw  [  main-end side-end menu-end  ]  1rem  [  overmain-end overmenu-end overside-end  ]  minmax(0, 1fr)  [  full-end  ] ;
+}
+
+.zetka-merge-menu-screen {
+  grid-column: full-start/overmain-end;
+  grid-template-columns:  [  full-start  ]  minmax(0, 1fr)  [  overmenu-start  ]  1rem  [  menu-start  ]  16vw  [  menu-end  ]  1rem  [  overmenu-end overside-start overmain-start  ]  1rem  [  side-start main-start a  ]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [b]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [c]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [d midmenu midpoint midside]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [e]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [f]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [  main-end g side-end  ]  1rem  [  overmain-end overside-end full-end  ] ;
+}
+
+.zetka-merge-side-screen {
+  grid-column: overmain-start/full-end;
+  grid-template-columns:  [  full-start overmenu-start overmain-start  ]  1rem  [  menu-start main-start a  ]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [b]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [c]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [d midmenu midpoint midside]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [e]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [f]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [  main-end g menu-end  ]  1rem  [  overmain-end overmenu-end overside-start  ]  1rem  [  side-start  ]  16vw  [  side-end  ]  1rem  [  overside-end  ]  minmax(0, 1fr)  [  full-end  ] ;
+}
+
+.zetka-half-screen-one {
+  grid-column: full-start/midpoint;
+  grid-template-columns:  [  full-start  ]  minmax(0, 1fr)  [  overmenu-start  ]  1rem  [  menu-start  ]  16vw  [  menu-end  ]  1rem  [  overmenu-end overmain-start overside-start  ]  1rem  [  side-start main-start a  ]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [b]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [c]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [  d midmenu midpoint midside e f g main-end side-end overmain-end overside-end full-end  ] ;
+}
+
+.zetka-half-screen-two {
+  grid-column: d/full-end;
+  grid-template-columns:  [  full-start overmenu-start overmain-start menu-start main-start a b c d midmenu midpoint midside  ]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [e]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [f]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [  g main-end menu-end  ]  1rem  [  overmain-end overmenu-end overside-start  ]  1rem  [  side-start  ]  16vw  [  side-end  ]  1rem  [  overside-end  ]  minmax(0, 1fr)  [  full-end  ] ;
+}
+
+.zetka-overhalf-one {
+  grid-column: overmain-start/midpoint;
+  grid-template-columns:  [  full-start overmenu-start overmain-start overside-start  ]  1rem  [  side-start main-start menu-start a  ]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [b]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [c]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [  d midmenu midpoint midside e f g main-end side-end menu-end overmain-end overside-end overmenu-end full-end  ] ;
+}
+
+.zetka-overhalf-two {
+  grid-column: d/overmain-end;
+  grid-template-columns:  [  full-start overmenu-start overmain-start overside-start menu-start main-start side-start a b c d midmenu midpoint midside  ]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [e]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [f]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [  g main-end menu-end side-end  ]  1rem  [  overmain-end overmenu-end overside-end full-end  ] ;
+}
+
+.zetka-half-one {
+  grid-column: main-start/midpoint;
+  grid-template-columns:  [  full-start overmain-start overside-start overmenu-start menu-start side-start main-start a  ]  1fr  [b]  1fr  [c]  1fr  [d midmenu midpoint midside]  1fr  [e]  1fr  [f]  1fr  [  main-end g menu-end side-end overmain-end overside-end overmenu-end full-end  ] ;
+}
+
+.zetka-half-two {
+  grid-column: d/main-end;
+  grid-template-columns:  [  full-start overmain-start overside-start overmenu-start menu-start side-start main-start a  ]  1fr  [b]  1fr  [c]  1fr  [d midmenu midpoint midside]  1fr  [e]  1fr  [f]  1fr  [  main-end g menu-end side-end overmain-end overside-end overmenu-end full-end  ] ;
+}
+
+.zetka-third-one {
+  grid-column: a/span 2;
+  grid-template-columns:  [  full-start overmain-start overside-start overmenu-start menu-start side-start main-start a  ]  1fr  [b]  1fr  [c]  1fr  [d midmenu midpoint midside]  1fr  [e]  1fr  [f]  1fr  [  main-end g menu-end side-end overmain-end overside-end overmenu-end full-end  ] ;
+}
+
+.zetka-third-two {
+  grid-column: c/span 2;
+  grid-template-columns:  [  full-start overmain-start overside-start overmenu-start menu-start side-start main-start a  ]  1fr  [b]  1fr  [c]  1fr  [d midmenu midpoint midside]  1fr  [e]  1fr  [f]  1fr  [  main-end g menu-end side-end overmain-end overside-end overmenu-end full-end  ] ;
+}
+
+.zetka-third-tri {
+  grid-column: e/span 2;
+  grid-template-columns:  [  full-start overmain-start overside-start overmenu-start menu-start side-start main-start a  ]  1fr  [b]  1fr  [c]  1fr  [d midmenu midpoint midside]  1fr  [e]  1fr  [f]  1fr  [  main-end g menu-end side-end overmain-end overside-end overmenu-end full-end  ] ;
+}
+
+.zetka-third-merge-one {
+  grid-column: a/span 4;
+  grid-template-columns:  [  full-start overmain-start overside-start overmenu-start menu-start side-start main-start a  ]  1fr  [b]  1fr  [c]  1fr  [d midmenu midpoint midside]  1fr  [e]  1fr  [f]  1fr  [  main-end g menu-end side-end overmain-end overside-end overmenu-end full-end  ] ;
+}
+
+.zetka-third-merge-tri {
+  grid-column: c/span 4;
+  grid-template-columns:  [  full-start overmain-start overside-start overmenu-start menu-start side-start main-start a  ]  1fr  [b]  1fr  [c]  1fr  [d midmenu midpoint midside]  1fr  [e]  1fr  [f]  1fr  [  main-end g menu-end side-end overmain-end overside-end overmenu-end full-end  ] ;
+}
+
+@media (max-width: 900px) {
+  .zetka,
+.zetka-layer {
+    grid-template-columns:  [  full-start  ]  minmax(0, 1fr)  [  overmain-start overmenu-start overside-start  ]  1rem  [  menu-start side-start main-start a  ]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [b]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [c]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [d midmenu midpoint midside]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [e]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [f]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [  main-end g side-end menu-end  ]  1rem  [  overmain-end overmenu-end overside-end  ]  minmax(0, 1fr)  [  full-end  ] ;
+  }
+
+  .zetka-merge,
+.zetka-merge-menu,
+.zetka-merge-side {
+    grid-template-columns:  [  full-start overmain-start overmenu-start overside-start  ]  1rem  [  menu-start side-start main-start a  ]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [b]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [c]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [d midmenu midpoint midside]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [e]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [f]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [  main-end g side-end menu-end  ]  1rem  [  overmain-end overmenu-end overside-end full-end  ] ;
+  }
+
+  .zetka-menu-screen,
+.zetka-merge-menu-screen {
+    grid-template-columns:  [  full-start  ]  minmax(0, 1fr)  [  overmain-start overmenu-start overside-start  ]  1rem  [  menu-start side-start main-start a  ]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [b]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [c]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [d midmenu midpoint midside]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [e]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [f]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [  main-end g side-end menu-end  ]  1rem  [  overmain-end overmenu-end overside-end full-end  ] ;
+  }
+
+  .zetka-side-screen,
+.zetka-merge-side-screen {
+    grid-template-columns:  [  full-start overmain-start overmenu-start overside-start  ]  1rem  [  menu-start side-start main-start a  ]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [b]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [c]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [d midmenu midpoint midside]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [e]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [f]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [  main-end g side-end menu-end  ]  1rem  [  overmain-end overmenu-end overside-end full-end  ] ;
+  }
+
+  .zetka-half-screen-one {
+    grid-template-columns:  [  full-start  ]  minmax(0, 1fr)  [  overmenu-start overmain-start overside-start  ]  1rem  [  side-start main-start menu-start a  ]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [b]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [c]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [  d midmenu midpoint midside e f g main-end side-end menu-end overmain-end overside-end overmenu-end full-end  ] ;
+  }
+
+  .zetka-half-screen-two {
+    grid-template-columns:  [  full-start overmenu-start overmain-start overside-start menu-start main-start side-start a b c d midmenu midpoint midside  ]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [e]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [f]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [  g main-end menu-end side-end  ]  1rem  [  overmain-end overmenu-end overside-end  ]  minmax(0, 1fr)  [  full-end  ] ;
+  }
+}
+@media (max-width: 600px) {
+  .zetka,
+.zetka-layer,
+.zetka-merge,
+.zetka-merge-menu,
+.zetka-merge-side,
+.zetka-menu-screen,
+.zetka-side-screen,
+.zetka-merge-menu-screen,
+.zetka-merge-side-screen {
+    grid-template-columns:  [  full-start overmain-start overmenu-start overside-start  ]  1rem  [  menu-start side-start main-start a  ]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [b]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [c]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [d midmenu midpoint midside]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [e]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [f]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [  main-end g side-end menu-end  ]  1rem  [  overmain-end overmenu-end overside-end full-end  ] ;
+  }
+
+  .zetka-half-screen-one {
+    grid-template-columns:  [  full-start overmenu-start overmain-start overside-start  ]  1rem  [  side-start main-start menu-start a  ]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [b]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [c]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [  d midmenu midpoint midside e f g main-end side-end menu-end overmain-end overside-end overmenu-end full-end  ] ;
+  }
+
+  .zetka-half-screen-two {
+    grid-template-columns:  [  full-start overmenu-start overmain-start overside-start menu-start main-start side-start a b c d midmenu midpoint midside  ]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [e]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [f]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [  g main-end menu-end side-end  ]  1rem  [  overmain-end overmenu-end overside-end full-end  ] ;
+  }
+
+  .has-mobile-layout {
+    grid-column: overmain;
+    grid-template-columns:  [  full-start overmain-start overmenu-start overside-start  ]  1rem  [  menu-start side-start main-start a  ]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [b]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [c]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [d midmenu midpoint midside]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [e]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [f]  minmax(0, calc( (700px - (5*1rem)) / 6 ))  [  main-end g side-end menu-end  ]  1rem  [  overmain-end overmenu-end overside-end full-end  ] ;
+  }
+}
+@media (min-width:1px) {
+  .zetka-as-overmain {
+    grid-template-columns:  [  full-start overmain-start overmenu-start overside-start  ]  1rem  [  menu-start side-start main-start a  ]  1fr  [b]  1fr  [c]  1fr  [d midmenu midpoint midside]  1fr  [e]  1fr  [f]  1fr  [  main-end g side-end menu-end  ]  1rem  [  overmain-end overmenu-end overside-end full-end  ] ;
+  }
+
+  .zetka-as-main {
+    grid-template-columns:  [  full-start overmain-start overside-start overmenu-start menu-start side-start main-start a  ]  1fr  [b]  1fr  [c]  1fr  [d midmenu midpoint midside]  1fr  [e]  1fr  [f]  1fr  [  main-end g menu-end side-end overmain-end overside-end overmenu-end full-end  ] ;
+  }
+}
+/* eof zetka layout */
+/*
+    default design for semantic html markup
+    v2019.4.17
+
+    Sakura based: https://github.com/oxalorg/sakura
+
+    Structure:
+    - normalize.css
+    - sakura.css
+    - sakura zl update
+
+    Template:
+    <html sakura>
+*/
+/*! normalize.css v5.0.0 | MIT License | github.com/necolas/normalize.css */
+/**
+ * 1. Change the default font family in all browsers (opinionated).
+ * 2. Correct the line height in all browsers.
+ * 3. Prevent adjustments of font size after orientation changes in
+ *    IE on Windows Phone and in iOS.
+ */
+/* Document
+   ========================================================================== */
+html[sakura], html.sakura {
+  font-family: sans-serif;
+  /* 1 */
+  line-height: 1.15;
+  /* 2 */
+  -ms-text-size-adjust: 100%;
+  /* 3 */
+  -webkit-text-size-adjust: 100%;
+  /* 3 */
+}
+
+/* Sections
+   ========================================================================== */
+[sakura], .sakura {
+  /**
+   * Remove the margin in all browsers (opinionated).
+   */
+  /**
+   * Add the correct display in IE 9-.
+   */
+  /**
+   * Correct the font size and margin on `h1` elements within `section` and
+   * `article` contexts in Chrome, Firefox, and Safari.
+   */
+  /* Grouping content
+     ========================================================================== */
+  /**
+   * Add the correct display in IE 9-.
+   * 1. Add the correct display in IE.
+   */
+  /**
+   * Add the correct margin in IE 8.
+   */
+  /**
+   * 1. Add the correct box sizing in Firefox.
+   * 2. Show the overflow in Edge and IE.
+   */
+  /**
+   * 1. Correct the inheritance and scaling of font size in all browsers.
+   * 2. Correct the odd `em` font sizing in all browsers.
+   */
+  /* Text-level semantics
+     ========================================================================== */
+  /**
+   * 1. Remove the gray background on active links in IE 10.
+   * 2. Remove gaps in links underline in iOS 8+ and Safari 8+.
+   */
+  /**
+   * Remove the outline on focused links when they are also active or hovered
+   * in all browsers (opinionated).
+   */
+  /**
+   * 1. Remove the bottom border in Firefox 39-.
+   * 2. Add the correct text decoration in Chrome, Edge, IE, Opera, and Safari.
+   */
+  /**
+   * Prevent the duplicate application of `bolder` by the next rule in Safari 6.
+   */
+  /**
+   * Add the correct font weight in Chrome, Edge, and Safari.
+   */
+  /**
+   * 1. Correct the inheritance and scaling of font size in all browsers.
+   * 2. Correct the odd `em` font sizing in all browsers.
+   */
+  /**
+   * Add the correct font style in Android 4.3-.
+   */
+  /**
+   * Add the correct background and color in IE 9-.
+   */
+  /**
+   * Add the correct font size in all browsers.
+   */
+  /**
+   * Prevent `sub` and `sup` elements from affecting the line height in
+   * all browsers.
+   */
+  /* Embedded content
+     ========================================================================== */
+  /**
+   * Add the correct display in IE 9-.
+   */
+  /**
+   * Add the correct display in iOS 4-7.
+   */
+  /**
+   * Remove the border on images inside links in IE 10-.
+   */
+  /**
+   * Hide the overflow in IE.
+   */
+  /* Forms
+     ========================================================================== */
+  /**
+   * 1. Change the font styles in all browsers (opinionated).
+   * 2. Remove the margin in Firefox and Safari.
+   */
+  /**
+   * Show the overflow in IE.
+   * 1. Show the overflow in Edge.
+   */
+  /**
+   * Remove the inheritance of text transform in Edge, Firefox, and IE.
+   * 1. Remove the inheritance of text transform in Firefox.
+   */
+  /**
+   * 1. Prevent a WebKit bug where (2) destroys native `audio` and `video`
+   *    controls in Android 4.
+   * 2. Correct the inability to style clickable types in iOS and Safari.
+   */
+  /**
+   * Remove the inner border and padding in Firefox.
+   */
+  /**
+   * Restore the focus styles unset by the previous rule.
+   */
+  /**
+   * Change the border, margin, and padding in all browsers (opinionated).
+   */
+  /**
+   * 1. Correct the text wrapping in Edge and IE.
+   * 2. Correct the color inheritance from `fieldset` elements in IE.
+   * 3. Remove the padding so developers are not caught out when they zero out
+   *    `fieldset` elements in all browsers.
+   */
+  /**
+   * 1. Add the correct display in IE 9-.
+   * 2. Add the correct vertical alignment in Chrome, Firefox, and Opera.
+   */
+  /**
+   * Remove the default vertical scrollbar in IE.
+   */
+  /**
+   * 1. Add the correct box sizing in IE 10-.
+   * 2. Remove the padding in IE 10-.
+   */
+  /**
+   * Correct the cursor style of increment and decrement buttons in Chrome.
+   */
+  /**
+   * 1. Correct the odd appearance in Chrome and Safari.
+   * 2. Correct the outline style in Safari.
+   */
+  /**
+   * Remove the inner padding and cancel buttons in Chrome and Safari on macOS.
+   */
+  /**
+   * 1. Correct the inability to style clickable types in iOS and Safari.
+   * 2. Change font properties to `inherit` in Safari.
+   */
+  /* Interactive
+     ========================================================================== */
+  /*
+   * Add the correct display in IE 9-.
+   * 1. Add the correct display in Edge, IE, and Firefox.
+   */
+  /*
+   * Add the correct display in all browsers.
+   */
+  /* Scripting
+     ========================================================================== */
+  /**
+   * Add the correct display in IE 9-.
+   */
+  /**
+   * Add the correct display in IE.
+   */
+}
+[sakura] body, .sakura body {
+  margin: 0;
+}
+[sakura] article, .sakura article,
+[sakura] aside,
+.sakura aside,
+[sakura] footer,
+.sakura footer,
+[sakura] header,
+.sakura header,
+[sakura] nav,
+.sakura nav,
+[sakura] section,
+.sakura section {
+  display: block;
+}
+[sakura] h1, .sakura h1 {
+  font-size: 2em;
+  margin: 0.67em 0;
+}
+[sakura] figcaption, .sakura figcaption,
+[sakura] figure,
+.sakura figure,
+[sakura] main,
+.sakura main {
+  /* 1 */
+  display: block;
+}
+[sakura] figure, .sakura figure {
+  margin: 1em 40px;
+}
+[sakura] hr, .sakura hr {
+  box-sizing: content-box;
+  /* 1 */
+  height: 0;
+  /* 1 */
+  overflow: visible;
+  /* 2 */
+}
+[sakura] pre, .sakura pre {
+  font-family: monospace, monospace;
+  /* 1 */
+  font-size: 1em;
+  /* 2 */
+}
+[sakura] a, .sakura a {
+  background-color: transparent;
+  /* 1 */
+  -webkit-text-decoration-skip: objects;
+  /* 2 */
+}
+[sakura] a:active, .sakura a:active,
+[sakura] a:hover,
+.sakura a:hover {
+  outline-width: 0;
+}
+[sakura] abbr[title], .sakura abbr[title] {
+  border-bottom: none;
+  /* 1 */
+  text-decoration: underline;
+  /* 2 */
+  text-decoration: underline dotted;
+  /* 2 */
+}
+[sakura] b, .sakura b,
+[sakura] strong,
+.sakura strong {
+  font-weight: inherit;
+}
+[sakura] b, .sakura b,
+[sakura] strong,
+.sakura strong {
+  font-weight: bolder;
+}
+[sakura] code, .sakura code,
+[sakura] kbd,
+.sakura kbd,
+[sakura] samp,
+.sakura samp {
+  font-family: monospace, monospace;
+  /* 1 */
+  font-size: 1em;
+  /* 2 */
+}
+[sakura] dfn, .sakura dfn {
+  font-style: italic;
+}
+[sakura] mark, .sakura mark {
+  background-color: #ff0;
+  color: #000;
+}
+[sakura] small, .sakura small {
+  font-size: 80%;
+}
+[sakura] sub, .sakura sub,
+[sakura] sup,
+.sakura sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+[sakura] sub, .sakura sub {
+  bottom: -0.25em;
+}
+[sakura] sup, .sakura sup {
+  top: -0.5em;
+}
+[sakura] audio, .sakura audio,
+[sakura] video,
+.sakura video {
+  display: inline-block;
+}
+[sakura] audio:not([controls]), .sakura audio:not([controls]) {
+  display: none;
+  height: 0;
+}
+[sakura] img, .sakura img {
+  border-style: none;
+}
+[sakura] svg:not(:root), .sakura svg:not(:root) {
+  overflow: hidden;
+}
+[sakura] button, .sakura button,
+[sakura] input,
+.sakura input,
+[sakura] optgroup,
+.sakura optgroup,
+[sakura] select,
+.sakura select,
+[sakura] textarea,
+.sakura textarea {
+  font-family: sans-serif;
+  /* 1 */
+  font-size: 100%;
+  /* 1 */
+  line-height: 1.15;
+  /* 1 */
+  margin: 0;
+  /* 2 */
+}
+[sakura] button, .sakura button,
+[sakura] input,
+.sakura input {
+  /* 1 */
+  overflow: visible;
+}
+[sakura] button, .sakura button,
+[sakura] select,
+.sakura select {
+  /* 1 */
+  text-transform: none;
+}
+[sakura] button, .sakura button,
+[sakura] html [type=button],
+.sakura html [type=button],
+[sakura] [type=reset],
+.sakura [type=reset],
+[sakura] [type=submit],
+.sakura [type=submit] {
+  -webkit-appearance: button;
+  /* 2 */
+}
+[sakura] button::-moz-focus-inner, .sakura button::-moz-focus-inner,
+[sakura] [type=button]::-moz-focus-inner,
+.sakura [type=button]::-moz-focus-inner,
+[sakura] [type=reset]::-moz-focus-inner,
+.sakura [type=reset]::-moz-focus-inner,
+[sakura] [type=submit]::-moz-focus-inner,
+.sakura [type=submit]::-moz-focus-inner {
+  border-style: none;
+  padding: 0;
+}
+[sakura] button:-moz-focusring, .sakura button:-moz-focusring,
+[sakura] [type=button]:-moz-focusring,
+.sakura [type=button]:-moz-focusring,
+[sakura] [type=reset]:-moz-focusring,
+.sakura [type=reset]:-moz-focusring,
+[sakura] [type=submit]:-moz-focusring,
+.sakura [type=submit]:-moz-focusring {
+  outline: 1px dotted ButtonText;
+}
+[sakura] fieldset, .sakura fieldset {
+  border: 1px solid #c0c0c0;
+  margin: 0 2px;
+  padding: 0.35em 0.625em 0.75em;
+}
+[sakura] legend, .sakura legend {
+  box-sizing: border-box;
+  /* 1 */
+  color: inherit;
+  /* 2 */
+  display: table;
+  /* 1 */
+  max-width: 100%;
+  /* 1 */
+  padding: 0;
+  /* 3 */
+  white-space: normal;
+  /* 1 */
+}
+[sakura] progress, .sakura progress {
+  display: inline-block;
+  /* 1 */
+  vertical-align: baseline;
+  /* 2 */
+}
+[sakura] textarea, .sakura textarea {
+  overflow: auto;
+}
+[sakura] [type=checkbox], .sakura [type=checkbox],
+[sakura] [type=radio],
+.sakura [type=radio] {
+  box-sizing: border-box;
+  /* 1 */
+  padding: 0;
+  /* 2 */
+}
+[sakura] [type=number]::-webkit-inner-spin-button, .sakura [type=number]::-webkit-inner-spin-button,
+[sakura] [type=number]::-webkit-outer-spin-button,
+.sakura [type=number]::-webkit-outer-spin-button {
+  height: auto;
+}
+[sakura] [type=search], .sakura [type=search] {
+  -webkit-appearance: textfield;
+  /* 1 */
+  outline-offset: -2px;
+  /* 2 */
+}
+[sakura] [type=search]::-webkit-search-cancel-button, .sakura [type=search]::-webkit-search-cancel-button,
+[sakura] [type=search]::-webkit-search-decoration,
+.sakura [type=search]::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+[sakura] ::-webkit-file-upload-button, .sakura ::-webkit-file-upload-button {
+  -webkit-appearance: button;
+  /* 1 */
+  font: inherit;
+  /* 2 */
+}
+[sakura] details, .sakura details,
+[sakura] menu,
+.sakura menu {
+  display: block;
+}
+[sakura] summary, .sakura summary {
+  display: list-item;
+}
+[sakura] canvas, .sakura canvas {
+  display: inline-block;
+}
+[sakura] template, .sakura template {
+  display: none;
+}
+
+/* Hidden
+   ========================================================================== */
+/**
+ * Add the correct display in IE 10-.
+ */
+[hidden] {
+  display: none;
+}
+
+/* Sakura.css v1.0.0
+ * ================
+ * Minimal css theme.
+ * Project: https://github.com/oxalorg/sakura
+ */
+/* Body */
+html[sakura], html.sakura {
+  font-size: 62.5%;
+  font-family: serif;
+}
+
+[sakura], .sakura {
+  /* Pre and Code */
+  /* Tables */
+  /* Buttons, forms and input */
+}
+[sakura] body, .sakura body {
+  font-size: 1.8rem;
+  line-height: 1.618;
+  max-width: 38em;
+  margin: auto;
+  color: #4a4a4a;
+  background-color: #f9f9f9;
+  padding: 13px;
+}
+@media (max-width: 684px) {
+  [sakura] body, .sakura body {
+    font-size: 1.53rem;
+  }
+}
+@media (max-width: 382px) {
+  [sakura] body, .sakura body {
+    font-size: 1.35rem;
+  }
+}
+[sakura] h1, .sakura h1, [sakura] h2, .sakura h2, [sakura] h3, .sakura h3, [sakura] h4, .sakura h4, [sakura] h5, .sakura h5, [sakura] h6, .sakura h6 {
+  line-height: 1.1;
+  font-family: Verdana, Geneva, sans-serif;
+  font-weight: 700;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  -ms-word-break: break-all;
+  word-break: break-word;
+  -ms-hyphens: auto;
+  -moz-hyphens: auto;
+  -webkit-hyphens: auto;
+  hyphens: auto;
+}
+[sakura] h1, .sakura h1 {
+  font-size: 2.35em;
+}
+[sakura] h2, .sakura h2 {
+  font-size: 2em;
+}
+[sakura] h3, .sakura h3 {
+  font-size: 1.75em;
+}
+[sakura] h4, .sakura h4 {
+  font-size: 1.5em;
+}
+[sakura] h5, .sakura h5 {
+  font-size: 1.25em;
+}
+[sakura] h6, .sakura h6 {
+  font-size: 1em;
+}
+[sakura] small, .sakura small, [sakura] sub, .sakura sub, [sakura] sup, .sakura sup {
+  font-size: 75%;
+}
+[sakura] hr, .sakura hr {
+  border-color: #2c8898;
+}
+[sakura] a, .sakura a {
+  text-decoration: none;
+  color: #2c8898;
+}
+[sakura] a:hover, .sakura a:hover {
+  color: #982c61;
+  border-bottom: 2px solid #4a4a4a;
+}
+[sakura] ul, .sakura ul {
+  padding-left: 1.4em;
+}
+[sakura] li, .sakura li {
+  margin-bottom: 0.4em;
+}
+[sakura] blockquote, .sakura blockquote {
+  font-style: italic;
+  margin-left: 1.5em;
+  padding-left: 1em;
+  border-left: 3px solid #2c8898;
+}
+[sakura] img, .sakura img {
+  max-width: 100%;
+}
+[sakura] pre, .sakura pre {
+  background-color: #f1f1f1;
+  display: block;
+  padding: 1em;
+  overflow-x: auto;
+}
+[sakura] code, .sakura code {
+  font-size: 0.9em;
+  padding: 0 0.5em;
+  background-color: #f1f1f1;
+  white-space: pre-wrap;
+}
+[sakura] pre > code, .sakura pre > code {
+  padding: 0;
+  background-color: transparent;
+  white-space: pre;
+}
+[sakura] table, .sakura table {
+  text-align: justify;
+  width: 100%;
+  border-collapse: collapse;
+}
+[sakura] td, .sakura td, [sakura] th, .sakura th {
+  padding: 0.5em;
+  border-bottom: 1px solid #f1f1f1;
+}
+[sakura] input, .sakura input, [sakura] textarea, .sakura textarea {
+  border: 1px solid #4a4a4a;
+}
+[sakura] input:focus, .sakura input:focus, [sakura] textarea:focus, .sakura textarea:focus {
+  border: 1px solid #2c8898;
+}
+[sakura] textarea, .sakura textarea {
+  width: 100%;
+}
+[sakura] .button, .sakura .button, [sakura] button, .sakura button, [sakura] input[type=submit], .sakura input[type=submit], [sakura] input[type=reset], .sakura input[type=reset], [sakura] input[type=button], .sakura input[type=button] {
+  display: inline-block;
+  padding: 5px 10px;
+  text-align: center;
+  text-decoration: none;
+  white-space: nowrap;
+  background-color: #2c8898;
+  color: #f9f9f9;
+  border-radius: 1px;
+  border: 1px solid #2c8898;
+  cursor: pointer;
+  box-sizing: border-box;
+}
+[sakura] .button[disabled], .sakura .button[disabled], [sakura] button[disabled], .sakura button[disabled], [sakura] input[type=submit][disabled], .sakura input[type=submit][disabled], [sakura] input[type=reset][disabled], .sakura input[type=reset][disabled], [sakura] input[type=button][disabled], .sakura input[type=button][disabled] {
+  cursor: default;
+  opacity: 0.5;
+}
+[sakura] .button:focus, .sakura .button:focus, [sakura] .button:hover, .sakura .button:hover, [sakura] button:focus, .sakura button:focus, [sakura] button:hover, .sakura button:hover, [sakura] input[type=submit]:focus, .sakura input[type=submit]:focus, [sakura] input[type=submit]:hover, .sakura input[type=submit]:hover, [sakura] input[type=reset]:focus, .sakura input[type=reset]:focus, [sakura] input[type=reset]:hover, .sakura input[type=reset]:hover, [sakura] input[type=button]:focus, .sakura input[type=button]:focus, [sakura] input[type=button]:hover, .sakura input[type=button]:hover {
+  background-color: #982c61;
+  border-color: #982c61;
+  color: #f9f9f9;
+  outline: 0;
+}
+[sakura] textarea, .sakura textarea, [sakura] select, .sakura select, [sakura] input[type], .sakura input[type] {
+  color: #4a4a4a;
+  padding: 6px 10px;
+  /* The 6px vertically centers text on FF, ignored by Webkit */
+  margin-bottom: 10px;
+  background-color: #f1f1f1;
+  border: 1px solid #f1f1f1;
+  border-radius: 4px;
+  box-shadow: none;
+  box-sizing: border-box;
+}
+[sakura] textarea:focus, .sakura textarea:focus, [sakura] select:focus, .sakura select:focus, [sakura] input[type]:focus, .sakura input[type]:focus {
+  border: 1px solid #2c8898;
+  outline: 0;
+}
+[sakura] input[type=checkbox]:focus, .sakura input[type=checkbox]:focus {
+  outline: 1px dotted #2c8898;
+}
+[sakura] label, .sakura label, [sakura] legend, .sakura legend, [sakura] fieldset, .sakura fieldset {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+}
+
+/*  -----------------------------------------------------
+    zl append sakura
+    v2018.8.26
+*/
+html[sakura], html.sakura {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+*, *::before, *::after {
+  box-sizing: inherit;
+}
+
+[sakura] body, .sakura body {
+  margin: 0;
+  padding: 0;
+  max-width: 100%;
+}
+[sakura] img, .sakura img, [sakura] svg, .sakura svg {
+  max-width: 100%;
+}
+[sakura] figure, .sakura figure {
+  margin-left: 0;
+  margin-right: 0;
+}
+[sakura] p, .sakura p {
+  margin: 1em 0;
+}
+
+/*
+    MOD: Centered content column
+*/
+.sakura-content, [sakura-content] {
+  display: grid;
+  grid-template-columns: [full-start] minmax(1rem, 1fr) [main-start] minmax(0, 38em) [main-end] minmax(1rem, 1fr) [full-end];
+}
+
+.sakura-content > *, [sakura-content] > * {
+  grid-column: main;
+}
+
+.sakura-content > .layer, [sakura-content] > .layer {
+  grid-column: full;
+}
+
+/* ==============================================================
+    box model for HTML & BODY
+    2018.12.7
+============================================================== */
+.body-wrap {
+  min-height: 100%;
+  margin-top: 0;
+  margin-bottom: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.body-wrap-header {
+  background-color: white;
+  position: sticky;
+  top: 0;
+}
+
+.body-wrap-footer {
+  margin-top: auto;
+}
+
+/* eof body wrap */
+/* ==============================================================
+    contact form compact theme
+    2019.2.7
+
+    required short labels
+
+============================================================== */
+.extra-compact-form {
+  padding: 0.5em 1em;
+  padding-bottom: 2em;
+}
+.extra-compact-form .form-item {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.25);
+  padding: 0.5em;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.extra-compact-form .form-item input {
+  border: 0;
+  background-color: transparent;
+  color: inherit;
+}
+.extra-compact-form .form-textarea label {
+  padding: 0.5em;
+  padding-top: 1em;
+}
+.extra-compact-form .form-textarea textarea {
+  background-color: transparent;
+  color: inherit;
+  padding: 0.25em 0.5em;
+  border-color: rgba(0, 0, 0, 0.25);
+}
+.extra-compact-form .form-submit {
+  padding: 0.5em;
+}
+
+/* eof base html markup */
+.design-template--swed {
+  background-color: #1a1a23;
+  color: rgba(255, 255, 255, 0.75);
+}
+.design-template--swed .big-title {
+  display: block;
+  text-align: center;
+  font-size: 2em;
+}
+.design-template--swed .title {
+  display: block;
+  text-align: center;
+  font-size: 1.5em;
+}
+.design-template--swed .subtitle {
+  text-align: center;
+}
+
+.swed-screen {
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+}
+
+.swed-welcome {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: auto minmax(32vw, min-content);
+  grid-template-rows: minmax(75vh, max-content) auto;
+  grid-template-areas: "w e" "s s";
+}
+.swed-welcome > .main {
+  grid-area: w;
+}
+.swed-welcome > .side {
+  grid-area: e;
+}
+.swed-welcome > .foot {
+  grid-area: s;
+}
+@media (max-width: 600px) {
+  .swed-welcome {
+    grid-template-columns: auto;
+    grid-template-rows: auto;
+    grid-template-areas: "w" "e" "s";
+  }
+}
+.swed-welcome .head, .swed-welcome .foot, .swed-welcome .main, .swed-welcome .side {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+}
+.swed-welcome .head {
+  background-color: #7391a5;
+}
+.swed-welcome .foot {
+  background-color: #2a2e3c;
+}
+.swed-welcome .side {
+  background-color: #314863;
+}
+
+.swed-button {
+  display: block;
+  background-color: white;
+  color: black;
+  /* hover effect */
+  position: relative;
+  will-change: transform;
+  transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+.swed-button .title {
+  line-height: 1;
+  padding: 0.75em 2em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.swed-button .icon {
+  display: block;
+  font-size: 1.5em;
+  padding: 0.75em;
+  line-height: 1;
+}
+.swed-button .icon > * {
+  display: block;
+  transform: scale(2);
+}
+.swed-button::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+.swed-button:hover {
+  transform: scale(1.25, 1.25);
+}
+.swed-button:hover::after {
+  opacity: 1;
+}
+
+.swed-group {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+}
+.swed-group, .swed-group > * {
+  margin: 0.5rem;
+}
+
+.focus-group > * {
+  transition: opacity 320ms ease-out;
+}
+.focus-group:hover > * {
+  opacity: 0.25;
+}
+.focus-group:hover > *:hover {
+  opacity: 1;
+  z-index: 1;
+  transition-duration: 120ms;
+}
+
+.swed-message {
+  font-size: 1.5em;
+  max-width: 28em;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.box {
+  position: relative;
+  display: inline-block;
+  width: 100px;
+  height: 100px;
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  -webkit-transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+  transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.box::after {
+  content: "";
+  border-radius: 5px;
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  opacity: 0;
+  -webkit-transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+  transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.box:hover {
+  -webkit-transform: scale(1.25, 1.25);
+  transform: scale(1.25, 1.25);
+}
+
+.box:hover::after {
+  opacity: 1;
+}
+
+/* EOF sass ordnung */
