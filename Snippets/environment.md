@@ -35,15 +35,24 @@ window.focusedelement; setInterval(function(){ if(window.focusedElement != docum
 # GIT
 ------------------------------------------------------
 
+User
+
 ```bash
-git config --global user.name "King Kong"
-git config --global user.email "king-kong@gmail.com"
 git config --list
 >>> user.name=King Kong
 >>> user.email=king-kong@gmail.com
 
-git merge --no-commit --squash develop
+git config --global user.name "King Kong"
+git config --global user.email "king-kong@gmail.com"
 
+git config user.name "your username"
+git config user.password "your password"
+```
+
+Examples
+
+```
+git merge --no-commit --squash develop
 git commit --amend -m "update last commit message"
 ```
 
