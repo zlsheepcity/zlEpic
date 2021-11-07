@@ -1,0 +1,117 @@
+/** design-winglebase
+ *  templates
+ *  v2020.3.6
+ */
+
+/* -------------------------------- Universal Templates */
+
+.action-button {
+  --background-color: var(--action-color);
+    background-color: var(--background-color);
+  --color:            var(--action-color--text);
+    color:            var(--color);
+
+ /* center-box */
+    display: inline-flex;
+    justify-content:  center;
+    align-items:      center;
+    align-content:    center;
+
+    min-height: 3.2rem;
+    padding: 0.25rem 2rem;
+
+    cursor:           pointer;
+    text-decoration:  none;
+}
+.action-button .label {
+    font-size:   1.25rem;
+    line-height: 1;
+}
+
+/* promo message with action */
+
+.el-deal {
+    font-size:  2rem;
+    text-align: left;
+}
+.el-deal .logo {
+    opacity:    0.42;
+}
+.el-deal .message {
+    padding:    2rem 0;
+    font-size:  1.25em;
+}
+.el-deal .action {
+    
+}
+
+/*
+    <section class="el-deal">
+        <div class="logo"></div>
+        <div class="message"></div>
+        <div class="action"></div>
+    </section>
+*/
+
+/* display stats */
+
+.el-chart {
+    padding: 1rem;
+}
+
+/*
+    <section class="el-chart">
+        <div class="illustration"></div>
+        <div class="description"></div>
+    </section>
+*/
+
+
+/* -------------------------------- Page Sections */
+
+.Welcome-Portinari {
+    /*
+  --min-height:       60vh;
+    min-height:       var(--min-height); */
+    padding:      20vh 0 10vh 0;
+
+  --background-color: var(--brand-color);
+    background-color: var(--background-color);
+  --color:            var(--brand-color--text);
+    color:            var(--color);
+
+    align-content:    stretch;
+    align-items:      stretch;
+
+    background-image: url(../art/illustrations/promo-si.png);
+    background-size:  cover;
+    background-position: bottom center;
+}
+
+.Welcome-Portinari .illustration {
+
+ /* center-box *
+    display: flex;
+    justify-content:  center;
+    align-items:      center;
+    align-content:    center;
+    */
+}
+
+.Welcome-Portinari .introduction {
+    align-items:      center;
+    align-content:    center;
+}
+
+.Janja-Stats {
+    
+}
+.Janja-Stats .chart-area {
+    margin:  0 auto;
+}
+
+.API-Product {
+}
+
+
+/** EOF design-templates */

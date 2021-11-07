@@ -1,0 +1,62 @@
+/** component-grid
+ *  v2020.3.6
+ */
+
+/* -------------------------------- CSS Structure */
+
+.ms-Grid {
+ /* Greed Seed */
+
+    display:     grid;
+
+    grid-auto-flow:  row;
+    grid-auto-rows:  min-content;
+
+    grid-column-gap: 0;
+    grid-row-gap:    var(--sy, 1.5rem);
+
+    grid-template-columns: var(--grid-template-columns);
+    grid-template-rows:    var(--grid-template-rows);
+    grid-template-areas:   var(--grid-template-areas);
+}
+
+.ms-Grid>header {
+    grid-column: 1 / -1;
+}
+
+/* -------------------------------- Templates */
+
+.Welcome-Portinari.ms-Grid {
+  --Beatrice-Portinari--c: 3fr [IL] max-content 1fr [IN] max-content 3fr;
+  --Beatrice-Portinari--r: var(--menu-icon-size) 1fr;
+  --grid-template-columns: var(--Beatrice-Portinari--c);
+  --grid-template-rows:    var(--Beatrice-Portinari--r);
+  --grid-template-areas:
+      'HD HD HD HD HD'
+      '.  IL .  IN . '
+      ;
+}
+.Welcome-Portinari.ms-Grid .header-space { grid-area: HD; }
+.Welcome-Portinari.ms-Grid .illustration { grid-area: IL; }
+.Welcome-Portinari.ms-Grid .introduction { grid-area: IN; }
+
+/*
+<article class="Welcome-Portinari ms-Grid">
+    <div class="header-space"></div>
+    <div class="illustration"></div>
+    <div class="introduction"></div>
+</article>
+*/
+
+/* -------------------------------- Header  */
+
+nav.Logo {
+    
+}
+
+nav.User {
+    
+}
+
+
+/* EOF component-grid  */

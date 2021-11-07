@@ -1,0 +1,297 @@
+
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width = device-width, initial-scale = 1.0">
+  <title> demo5 </title>
+
+    <!-- lazy loader -->
+    <script src="https://polyfill.io/v2/polyfill.min.js?features=IntersectionObserver"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lozad/dist/lozad.min.js"></script>
+    <script>
+        const lazyloader = lozad('.lazyload');
+        //lazyloader.observe();
+    </script>
+
+    <!-- dom worker -->
+    <script
+      src="https://code.jquery.com/jquery-3.4.1.min.js"
+      integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+      crossorigin="anonymous"></script>
+
+
+    <style>
+        body{
+          margin: 0;
+          overflow-x: hidden;
+            background-color: #000;
+            color: #fff;
+        }
+
+        .gallery-jane {
+            display:   flex;
+            flex-wrap: wrap;
+            margin: 2px;
+        }
+        .gallery-jane > div {
+            margin: 2px;
+            background-color: violet;
+            position: relative;
+            overflow: hidden;
+        }
+        .gallery-jane > div > i {
+            display: block;
+            background-color: lightblue;
+        }
+        .gallery-jane > div > img {
+            position: absolute;
+            vertical-align: bottom;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 200ms ease-in;
+        }
+        .gallery-jane > div:hover > img {
+            transition: transform 400ms ease-out;
+            transform: scale(1.25);
+        }
+        .gallery-jane > .placeholder {
+            flex-grow:  100;
+            flex-basis: 240px;
+            height: 0;
+            margin: 0;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="gallery-jane"></div>
+
+    <!-- images list -->
+    <script>
+        const images = [
+          {
+            "url": "Keep_Quiet_001.jpg",
+            "width": 271,
+            "height": 900
+          },
+          {
+            "url": "Keep_Quiet_002.jpg",
+            "width": 263,
+            "height": 900
+          },
+          {
+            "url": "Samurai-Jane.jpg",
+            "width": 362,
+            "height": 900
+          },
+          {
+            "url": "Dream_Town_panorama_001.jpg",
+            "width": 613,
+            "height": 900
+          },
+          {
+            "url": "Dream_Town_panorama_003.jpg",
+            "width": 612,
+            "height": 900
+          },
+          {
+            "url": "Dream_Town_panorama_004.jpg",
+            "width": 613,
+            "height": 900
+          },
+          {
+            "url": "fb_blue.jpg",
+            "width": 1004,
+            "height": 505
+          },
+          {
+            "url": "Hold_My_Head.jpg",
+            "width": 637,
+            "height": 900
+          },
+          {
+            "url": "Kaboom.jpg",
+            "width": 635,
+            "height": 900
+          },
+          {
+            "url": "Bridge.jpg",
+            "width": 800,
+            "height": 600
+          },
+          {
+            "url": "Keep_Quiet_001.jpg",
+            "width": 271,
+            "height": 900
+          },
+          {
+            "url": "Keep_Quiet_002.jpg",
+            "width": 263,
+            "height": 900
+          },
+          {
+            "url": "Samurai-Jane.jpg",
+            "width": 362,
+            "height": 900
+          },
+          {
+            "url": "Dream_Town_panorama_001.jpg",
+            "width": 613,
+            "height": 900
+          },
+          {
+            "url": "Dream_Town_panorama_003.jpg",
+            "width": 612,
+            "height": 900
+          },
+          {
+            "url": "Dream_Town_panorama_004.jpg",
+            "width": 613,
+            "height": 900
+          },
+          {
+            "url": "fb_blue.jpg",
+            "width": 1004,
+            "height": 505
+          },
+          {
+            "url": "Hold_My_Head.jpg",
+            "width": 637,
+            "height": 900
+          },
+          {
+            "url": "Kaboom.jpg",
+            "width": 635,
+            "height": 900
+          },
+          {
+            "url": "Bridge.jpg",
+            "width": 800,
+            "height": 600
+          },
+          {
+            "url": "Keep_Quiet_001.jpg",
+            "width": 271,
+            "height": 900
+          },
+          {
+            "url": "Keep_Quiet_002.jpg",
+            "width": 263,
+            "height": 900
+          },
+          {
+            "url": "Samurai-Jane.jpg",
+            "width": 362,
+            "height": 900
+          },
+          {
+            "url": "Dream_Town_panorama_001.jpg",
+            "width": 613,
+            "height": 900
+          },
+          {
+            "url": "Dream_Town_panorama_003.jpg",
+            "width": 612,
+            "height": 900
+          },
+          {
+            "url": "Dream_Town_panorama_004.jpg",
+            "width": 613,
+            "height": 900
+          },
+          {
+            "url": "Hold_My_Head.jpg",
+            "width": 637,
+            "height": 900
+          },
+          {
+            "url": "Kaboom.jpg",
+            "width": 635,
+            "height": 900
+          },
+          {
+            "url": "Bridge.jpg",
+            "width": 800,
+            "height": 600
+          },
+          {
+            "url": "Dream_Town_panorama_001.jpg",
+            "width": 613,
+            "height": 900
+          },
+          {
+            "url": "Dream_Town_panorama_003.jpg",
+            "width": 612,
+            "height": 900
+          },
+          {
+            "url": "Dream_Town_panorama_004.jpg",
+            "width": 613,
+            "height": 900
+          },
+          {
+            "url": "Keep_Quiet_001.jpg",
+            "width": 271,
+            "height": 900
+          },
+          {
+            "url": "Keep_Quiet_002.jpg",
+            "width": 263,
+            "height": 900
+          },
+          {
+            "url": "Samurai-Jane.jpg",
+            "width": 362,
+            "height": 900
+          },
+          {
+            "url": "Hold_My_Head.jpg",
+            "width": 637,
+            "height": 900
+          },
+          {
+            "url": "Kaboom.jpg",
+            "width": 635,
+            "height": 900
+          },
+          {
+            "url": "Bridge.jpg",
+            "width": 800,
+            "height": 600
+          }
+        ]
+    </script>
+
+    <!-- update dom -->
+    <script>
+        function FillGalleryDom (dna={}) {
+            const gallery = document.querySelector('.gallery-jane')
+                  gallery.innerHTML = null
+            const imgPath = '../demo1/img/'
+            const ROW     = dna.ROW || 240
+            const ImageInGallery = function CreateChildNode (img) {
+                let child = document.createElement('div')
+                    child.style.flexGrow  = String(img.width*100/img.height)
+                    child.style.flexBasis = String(img.width*ROW/img.height) +'px'
+                let sizer = document.createElement('i')
+                    sizer.style.paddingBottom = String(img.height/img.width*100) +'%'
+                let image = document.createElement('img')
+                    image.setAttribute('alt', 'text')
+                    image.setAttribute('data-src', imgPath+img.url)
+                    image.classList.add('lazyload')
+                child.appendChild(image)
+                child.appendChild(sizer)
+                return child
+            }
+            for ( i in images.sort(()=>0.5-Math.random()) ) gallery.appendChild(ImageInGallery(images[i]))
+            lazyloader.observe();
+        }
+        $(FillGalleryDom)
+    </script>
+
+</body>
+</html>

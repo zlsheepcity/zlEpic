@@ -1,0 +1,56 @@
+/* ORANGE */
+/*
+a {color:#55F;}
+
+div#header h1 a {color:#000;}
+div#header a {color:#999;}
+div#header a:hover {color:#F90;}
+div#header ul li.s a {color:#000;}
+
+
+div.text_list h1 a,
+div.text_list h2 a {color:#F90;}
+div.text_list h1 a:hover,
+div.text_list h2 a:hover {color:#66F;}
+
+div.text_list ul.lnk li {color:#F90;}
+div.text_list ul.lnk li span {color:#666;}
+
+div.text_list ul.titles_list li {color:#F90;}
+div.text_list ul.titles_list li.t a {color:#F90;}
+div.text_list ul.titles_list li.t a:hover {color:#66F;}
+
+
+
+ul#sitemenu li {color:#F90;}
+ul#sitemenu li span {color:#666;}
+*/
+
+
+/* DARKRED */
+/*  */
+a {color:#55F;}
+
+ul.df_ul li {color:#900;}
+
+div#header h1 a {color:#000;}
+div#header a {color:#999;}
+div#header a:hover {color:#900;}
+div#header ul li.s a {color:#000;}
+
+
+div.text_list h1 a,
+div.text_list h2 a {color:#900;}
+div.text_list h1 a:hover,
+div.text_list h2 a:hover {color:#66F;}
+
+div.text_list ul.lnk li {color:#900;}
+div.text_list ul.lnk li span {color:#666;}
+
+div.text_list ul.titles_list li {color:#900;}
+div.text_list ul.titles_list li.t a {color:#900;}
+div.text_list ul.titles_list li.t a:hover {color:#66F;}
+
+ul#sitemenu li {color:#900;}
+ul#sitemenu li span {color:#666;}
+/*  */

@@ -1,0 +1,49 @@
+/* ==============================================================
+    app sass constructor - mixins and/or copy-paste templates
+    2019.2.8
+============================================================== */
+
+
+@mixin contentbox--xy-centered {
+    /* contentbox: xy-centered */
+    display: flex;
+    justify-content: center;
+    align-items:     center;
+    align-content:   center;
+}
+@mixin contentbox--y-centered {
+    /* contentbox: y-centered */
+    display: flex;
+    justify-content: flex-start;
+    align-items:     center;
+    align-content:   center;
+}
+@mixin has-illustrated-background {
+    /* has illustrated background */
+    background-size:     cover;
+    background-repeat:   no-repeat;
+    background-position: center center;
+}
+@mixin has-disabled-text-selection {
+    /* has disabled text selection */
+    -webkit-user-select: none;  /* Chrome all / Safari all */
+    -moz-user-select: none;     /* Firefox all */
+    -ms-user-select: none;      /* IE 10+ */
+    user-select: none;          /* Likely future */
+}
+@mixin text-design-is-inherited {
+    /* text design is inherited */
+    font-family: inherit;
+    font-size:   inherit;
+    line-height: inherit;
+    font-weight: inherit;
+}
+@mixin text-is-visually-hidden {
+    /* text is visually hidden */
+    text-indent: 100%;
+    white-space: nowrap;
+    overflow:    hidden;
+}
+
+
+/* eof app scss constructor */

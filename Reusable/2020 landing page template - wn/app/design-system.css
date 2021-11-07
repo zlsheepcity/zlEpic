@@ -1,0 +1,46 @@
+/** design-winglebase
+ *  v2020.3.6
+ */
+
+/* -------------------------------- Layoyt */
+
+.root {
+  --menu-icon-size:     6rem;
+}
+
+/* -------------------------------- Colors */
+
+.root {
+  --logo-color:          hsl(213, 85%, 55%);
+  --brand-color:         hsl(212, 34%, 29%);
+  --brand-color--text:   hsl(226, 27%, 90%);
+  --action-color:        hsl(359, 59%, 43%);
+  --action-color--text:  hsl(226, 27%, 90%);
+}
+
+/* -------------------------------- Design System */
+
+.root {
+
+ /* space units */
+
+  --sx: 1.5rem;                /* Horizontal */
+  --sy: 1.5rem;                /* Vertical */
+  --s1: 2.5rem;                /* Bigger 1 */
+  --s2:   4rem;                /* Bigger 2 */
+  --ss: var(--sx) var(--sy);   /* Combo Shortcode */
+}
+
+/* layout */
+
+html { padding: 0; }
+
+/* typography */
+
+body {
+    font-family: sans-serif;
+}
+
+
+
+/** EOF design-winglebase */

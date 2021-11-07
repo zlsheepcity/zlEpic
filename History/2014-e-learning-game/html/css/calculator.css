@@ -1,0 +1,47 @@
+.ExerciseCalculator .CurrentContent
+{
+	padding: 22px 240px 0 240px;
+	min-height:552px;
+	background:url(../img/calculator_background.png) 0 0 no-repeat;
+}
+.ExerciseCalculator .CurrentContent input
+{
+	width:80px;
+}
+
+.ExerciseCalculator .Button
+{
+	position:absolute;
+	bottom:20px;
+	left:800px;	
+}
+.ExerciseCalculator .Button .y-button { min-width:140px; }
+
+.ExerciseCalculator .Timer { left:800px; }
+
+.ExerciseCalculator .ScoreBar
+{
+	position:absolute;
+	top:345px;
+	left:800px;
+	max-width:480px;
+}
+
+.ExerciseCalculator .EndOfCall
+{
+	position:static;
+	width:auto;
+	margin:0 50px;
+}
+
+.DefaultEndOfCall { display: none; }
+
+.ExerciseCalculator .CurrentContent .DefaultEndOfCall { display:block; }
+
+.ExerciseCalculator .NotaBene { 
+	position:absolute;
+	bottom:20px;
+	left:20px;
+	display:block;
+	font-size: 0.8em;
+}

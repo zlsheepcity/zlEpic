@@ -1,0 +1,107 @@
+/** All about css animation
+ *  easing functions, default keyframes, etc
+ *  2019.12.13
+ *
+ *  CSS
+ *
+ */
+
+
+/** -------------------------------- Easing */
+
+
+:root,
+.root {
+
+  --timing-function--focusZoom: cubic-bezier(0.165,  0.84,  0.44,  1);
+  --timing-function--openJump:  cubic-bezier(0.175,  0.885, 0.320, 1.275);
+  --timing-function--closeJump: cubic-bezier(0.600, -0.280, 0.735, 0.045);
+  --timing-function--Welcome:   cubic-bezier(0.6,    0.04,  0.98,  0.335);
+
+
+}
+
+
+/** -------------------------------- Basic Animations */
+
+
+@keyframes SimpleRotation {
+    from {transform: rotate(0deg);}
+    to   {transform: rotate(359deg);}
+}
+
+@keyframes SimpleDancer {
+      0% { transform: rotate( 13deg) scale(2); }
+     25% { transform: rotate(  0deg);          }
+     50% { transform: rotate(-13deg) scale(2); }
+     75% { transform: rotate(  0deg);          }
+    100% { transform: rotate( 13deg) scale(2); }
+}
+.dance-like-happy {
+  animation: SimpleDancer 800ms linear infinite;
+  transform: rotate(0);
+  transform-origin: bottom center;
+}
+
+@keyframes ShakeLikeRefuse {
+  10%, 90%      { transform: translate3d(-1px, 0, 0); }
+  20%, 80%      { transform: translate3d( 2px, 0, 0); }
+  30%, 50%, 70% { transform: translate3d(-4px, 0, 0); }
+  40%, 60%      { transform: translate3d( 4px, 0, 0); }
+}
+.shake-like-refuse:hover {
+  animation: ShakeLikeRefuse 0.82s cubic-bezier(.36,.07,.19,.97) both;
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+
+
+
+/** Constructor
+             animation-name: my-animation;
+  animation-timing-function: cubic-bezier(0.4,0,0.2,1);
+         animation-duration: 1s;
+  animation-iteration-count: 1;
+        animation-fill-mode: forwards;
+        animation-direction: normal;
+            animation-delay: 2s;
+       animation-play-state: initial;
+ */
+
+
+/** -------------------------------- animate.css */
+
+/*  Based on: animate.css, http://daneden.me/animate */
+
+
+.animated {
+  animation-duration: 1s;
+  animation-fill-mode: both;
+}
+.animated.infinite {
+  animation-iteration-count: infinite;
+}
+
+.pulse {
+  animation-name: pulse;
+}
+@keyframes pulse {
+  from { transform: scale3d(1, 1, 1); }
+  50%  { transform: scale3d(1.05, 1.05, 1.05); }
+  to   { transform: scale3d(1, 1, 1); }
+}
+
+
+/** -------------------------------- Snippets */
+
+
+@media screen and (prefers-reduced-motion: reduce) {
+    /* do less animations */
+}
+@media screen and (prefers-reduced-motion: no-preference) {
+    /* do animations */
+}
+
+
+/*  EOF Required animations */

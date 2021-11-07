@@ -1,0 +1,921 @@
+<!doctype html>
+<html>
+<head>
+  <title>TKS:5.Anketa</title>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="html/css/all.css" media="all">
+  <link rel="stylesheet" href="html/css/anketa.css" media="all">
+</head>
+<body>
+
+<div class="SERVER"></div>
+
+	<div class="blPopup welcomePopup" id="WelcomePopupV2">
+		<h6>Добро пожаловать в тренажер</h6>
+		<dl class="options">			
+			<dt>Твой рекорд:</dt>
+			<dd>
+				<b>%PercentCurrent%%</b>
+			</dd>
+			
+			<dt>Задачи:</dt>
+			<dd class="strikeArea">
+				<div class="strikeOnlyIf isUnlocked">1. Правильно ответить на все вопросы за две попытки</div>
+				<div class="strikeOnlyIf isComplete">2. Правильно ответить на все вопросы с первой попытки</div>
+				<div class="showOnlyIf isComplete">Максимальный результат достигнут!</div>
+			</dd>
+			
+			<dt class="showOnlyIf isNotComplete">Награда:</dt>
+			<dd class="showOnlyIf isNotComplete"><b>%MoneyToGo%</b> <span class="t-coin"></span><span class="t-coin-space"></span></dd>
+		</dl>
+		<div style="padding:8px 0 0 0;text-align:center;">
+			<span class="y-button b-close">Играть</span>
+			&nbsp;
+			<span class="y-button jsCL-next">Пропустить</span>
+		</div>
+	</div>
+
+<div class="WRAP">
+
+	<div class="ExerciseAnketa">
+		<div class="AnketaImage"></div>
+		<div class="Anketa AnketaDialog"></div>
+		<div class="AnketaOptions"></div>
+		<div class="Timer">0:00</div>
+		<div class="Progress"><span class="c">0</span>/<span class="t">0</span></div>
+	</div>
+	
+	
+</div>	
+
+<div class="DefaultEndOfCall EndOfCall correct" style="color:green">
+	<span class="smile happy" style="display:none;"></span> 
+	<span style="font-size:1.3em">Правильно!</span><br><br>
+</div>
+
+<div class="DefaultEndOfCall EndOfCall incorrect" style="color:red">
+	<span class="smile sad" style="display:none;"></span> 
+	<span style="font-size:1.3em">Неправильно!</span><br><br>
+</div>
+
+<div class="blPopup" id="HalftimePopup">
+	<div class="content">
+		Правильных ответов: %CA%<br>
+		Попробуй ответить на те вопросы, где ты ошибся, ещё раз. Не забудь внимательно читать подсказки в анкете!<br><br>
+		<span class="y-button b-close">Начать вторую попытку</span>
+	</div>	
+</div>
+<!--
+<div class="blPopup" id="FinalPopup">
+	<div class="content">
+		<h6 class="ifTimeout">Время истекло!</h6>
+		<h6 class="ifTaskover">Упражнение завершено!</h6>
+		<div class="ifReward">
+			Заработано: <span class="reward">0</span> р.
+		</div>		
+		<div style="padding:8px 0;text-align:center;"><a href="5_anketa.html" class="y-button">Играть ещё раз</a></div>
+	</div>
+</div>
+
+    <div class="blPopup GameFeedback" id="GameFeedback-v2">
+      <h6 class="caption">
+        <span class="ifTimeout">Время истекло!</span>
+        <span class="ifTaskover">Упражнение завершено!</span>
+      </h6>
+      <div class="content">
+        Правильных ответов: %CurResult% из %MaxResult%<br>
+        Упражнение выполнено на %CurResultProcent%<br>
+        Предыдущий рекорд: %PrevResultProcent%<br><br>
+        <span class="ifThisIsMaster">
+          Поздравляем! Максимальный результат снова достигнут!
+        </span>
+        <span class="ifResultIsNotImproved">
+          Чтобы заработать больше денег на тренажере,<br>
+          улучши свой результат.
+        </span>
+        <span class="ifResultIsImproved">
+          За улучшение результата с %PrevResultProcent% до %CurResultProcent%,<br>
+          ты зарабатываешь %MoneyEarned% монет.
+        </span>
+      </div>
+      <div class="buttonContainer"><a href="5_anketa.html" class="y-button">Играть ещё раз</a></div>
+    </div>
+	-->
+	
+	<div class="blPopup welcomePopup GameFeedback" id="GameFeedback-v2">
+		<h6 class="caption">
+		  <span class="ifTimeout">Время истекло!</span>
+		  <span class="ifTaskover">Упражнение завершено!</span>
+		</h6>
+		<dl class="options">
+			<dt>Результат:</dt>
+			<!-- <dd><b>%CurResult%</b> из <b>%MaxResult%</b> (<b>%CurResultProcent%</b>)</dd> -->
+			<dd><b>%CurResultProcent%</b></dd>
+			<dt>Предыдущий рекорд:</dt>
+			<dd><b>%PrevResultProcent%</b></dd>
+		</dl>
+		
+		<div class="content">
+			<span class="ifResultIsImproved">
+			За улучшение результата с <b>%PrevResultProcent%</b> до <b>%CurResultProcent%</b>, ты зарабатываешь:<br>
+			<div style="line-height:34px;"><b>%MoneyEarned%</b> <span class="t-coin-easy"></span></div>
+			</span>
+			<span class="ifResultIsNotImproved">
+			Чтобы заработать больше денег на тренажере,<br>улучши свой результат.
+			</span>
+			<span class="ifThisIsMaster">
+			Поздравляем! Максимальный результат снова достигнут.
+			</span>
+			<span class="ifThisIsMasterNow">
+			Поздравляем! Максимальный результат на тренажере достигнут!
+			</span>
+			<span class="ifResultIsWorst">
+			Упражнение не выполнено!<br>
+			Необходимо набрать не менее 50%.
+			</span>
+		</div>
+		
+		<div class="buttonContainer"><a href="5_anketa.html" class="y-button">Играть ещё раз</a></div>
+	</div>
+
+<div class="blPopup" id="ScreenUnlock">
+	<h6>Минимальный результат достигнут!</h6>
+	Теперь можно продолжить курс или попытаться выполнить больше заданий в тренажёре.
+	<div style="padding:8px 0;text-align:center;">
+		<span class="y-button b-close">Вернуться</span>
+	</div>
+</div>
+
+
+<!-- begin QUESTIONS -->
+<div class="DB DB-Anketas">
+	<div caption="Anketa1">	
+		<div class="placeAnketa" anketa="FIO"></div>		
+		<div class="blPhoneDialog">
+			<blockquote class="operator">
+				– Назовите, пожалуйста, свои фамилию, имя и отчество целиком.
+			</blockquote>			
+			<blockquote class="client">
+				– Я ведь уже представлялся!
+			</blockquote>			
+		</div>		
+		<div class="taskAnketa">
+		Как ты будешь реагировать?
+		</div>		
+		<div class="PlayerOptions">
+			<ul>
+				<li class="correct">Тем не менее прошу Вас представиться, таковы правила.</li>
+				<li>Простите, Иван Иванович, давайте перейдем к следующему пункту анкеты.</li>
+				<li>Тогда мы не сможем продолжить заполнение анкеты.</li>
+			</ul>
+		</div>		
+	</div>	
+	<div caption="Anketa3">	
+		<div class="placeAnketa" anketa="FIO2"></div>		
+		<div class="blPhoneDialog">
+			<blockquote class="operator">
+				– Назовите свои фамилию, имя и отчество.
+			</blockquote>			
+			<blockquote class="client">
+				– Иван Иванович Иванов. 
+			</blockquote>			
+		</div>		
+		<div class="taskAnketa">
+		Как ты продолжишь разговор с клиентом?
+		</div>		
+		<div class="PlayerOptions">
+			<ul>
+				<li class="correct">Назовите, пожалуйста, номер Вашего мобильного телефона.</li>
+				<li>Ваш номер - 8-895-574-44-22, верно?</li>
+				<li>Ваш номер заканчивается на цифры 44-22?</li>
+			</ul>
+		</div>		
+	</div>
+	<div caption="Anketa4">	
+		<div class="placeAnketa" anketa="FIO2"></div>
+		<div class="blPhoneDialog">
+			<blockquote class="operator">
+				– Назовите, пожалуйста, номер Вашего мобильного телефона.
+			</blockquote>			
+			<blockquote class="client">
+				– Мой телефон остался прежним – вы на него звоните.
+			</blockquote>			
+		</div>	
+		<div class="taskAnketa">
+		Что ты ответишь клиенту?
+		</div>		
+		<div class="PlayerOptions">
+			<ul>
+				<li class="correct">Не могли бы все-таки его продиктовать?</li>
+				<li>То есть номер Вашего мобильного телефона 8-895-574-44-22?</li>
+				<li>Хорошо, спасибо.</li>
+			</ul>
+		</div>		
+	</div>
+	<div caption="Anketa5">	
+		<div class="placeAnketa" anketa="FIO2"></div>
+		<div class="blPhoneDialog">
+			<blockquote class="operator">
+				– Назовите, пожалуйста, номер Вашего мобильного телефона.
+			</blockquote>			
+			<blockquote class="client">
+				– У меня нет мобильного. Запишите мобильный номер моего внука – 8-900-676-99-82.
+			</blockquote>			
+		</div>	
+		<div class="taskAnketa">
+		Твои действия:
+		</div>		
+		<div class="PlayerOptions">
+			<ul>
+				<li class="correct">Объясню клиенту, что в этом поле нельзя указывать телефоны друзей и знакомых.</li>
+				<li>Введу в анкету названный номер и отмечу, что мобильный верифицирован.</li>
+				<li>Введу в анкету названный номер и не буду отмечать, что мобильный верифицирован.</li>
+			</ul>
+		</div>		
+	</div>
+	<div caption="Anketa6">	
+		<div class="placeAnketa" anketa="FIO2"></div>
+		<div class="blPhoneDialog">
+			<blockquote class="operator">
+				– Назовите, пожалуйста, номер Вашего мобильного телефона.
+			</blockquote>			
+			<blockquote class="client">
+				– У меня новый, только что подключил: 8-900-476-88-82.
+			</blockquote>			
+		</div>	
+		<div class="taskAnketa">
+		Номер телефона поменялся. Как ты поступишь?
+		</div>		
+		<div class="PlayerOptions">
+			<ul>
+				<li class="correct">Введу продиктованный номер в анкету и НЕ поставлю галочку «Верифицирован».</li>
+				<li>Введу продиктованный номер в анкету и поставлю галочку «Верифицирован».</li>
+				<li>Так как номер не совпадает с анкетой, не буду заполнять анкету и попрощаюсь с клиентом.</li>
+			</ul>
+		</div>		
+	</div>
+	<div caption="Anketa7">	
+		<div class="placeAnketa" anketa="FIO2"></div>
+		<div class="blPhoneDialog">
+			<blockquote class="operator">
+				– Продиктуйте, пожалуйста, стационарный телефон по месту проживания или регистрации.
+			</blockquote>			
+			<blockquote class="client">
+				– 763-65-99. Код города не помню.
+			</blockquote>			
+		</div>	
+		<div class="taskAnketa">
+		Заявитель сообщил стационарный телефон без кода города. Твои действия:
+		</div>		
+		<div class="PlayerOptions">
+			<ul>
+				<li class="correct">Вежливо попрошу клиента подождать и найду код города на сайте http://www.btk-online.ru.</li>
+				<li>Объясню клиенту, что мы не можем продолжить заполнение анкеты, пока он не назовет код города.</li>
+				<li>Введу телефон без кода города.</li>
+			</ul>
+		</div>		
+	</div>
+	<div caption="Anketa8">	
+		<div class="placeAnketa" anketa="FIO2"></div>
+		<div class="blPhoneDialog">
+			<blockquote class="operator">
+				– Назовите, пожалуйста, стационарный телефон по месту проживания или регистрации.
+			</blockquote>			
+			<blockquote class="client">
+				– У меня нет стационарного телефона.
+			</blockquote>			
+		</div>	
+		<div class="taskAnketa">
+		Твои действия:
+		</div>		
+		<div class="PlayerOptions">
+			<ul>
+				<li class="correct">Спрошу, есть ли стационарный телефон у друзей или родственников.</li>
+				<li>Впишу номер мобильного телефона.</li>
+				<li>Оставлю поле пустым.</li>
+			</ul>
+		</div>		
+	</div>
+	<div caption="Anketa9">	
+		<div class="placeAnketa" anketa="FIO3"></div>
+		<div class="blPhoneDialog">
+			<blockquote class="operator">
+				– Назовите, пожалуйста, стационарный телефон по месту проживания или регистрации.
+			</blockquote>			
+			<blockquote class="client">
+				– У меня нет стационарного телефона, но Вы можете передавать для меня информацию по этому номеру: +7-495-123456789.
+			</blockquote>			
+		</div>	
+		<div class="taskAnketa">
+		Твои действия:
+		</div>		
+		<div class="PlayerOptions">
+			<ul>
+				<li class="correct">Уточню, чей это номер и кем его владелец приходится клиенту, после чего отмечу «Нет стационарного телефона» и внесу указанный телефон в анкету с комментарием. </li>
+				<li>Впишу этот номер в поле «Стационарный телефон по месту регистрации и проживания».</li>
+				<li>Объясню клиенту, что для заполнения анкеты нужен именно его личный стационарный телефон. Без этого продолжить заполнение нельзя.</li>
+			</ul>
+		</div>		
+	</div>
+	<div caption="Anketa10">	
+		<div class="placeAnketa" anketa="FIO3"></div>
+		<div class="blPhoneDialog">
+			<blockquote class="operator">
+				– Вы пользуетесь электронной почтой?
+			</blockquote>			
+			<blockquote class="client">
+				– Да, пользуюсь.
+			</blockquote>			
+		</div>	
+		<div class="taskAnketa">
+		Твои действия:
+		</div>		
+		<div class="PlayerOptions">
+			<ul>
+				<li class="correct">Попрошу продиктовать адрес электронной почты по буквам.</li>
+				<li>Попрошу назвать адрес электронной почты.</li>
+				<li>Попрошу написать письмо со своей электронной почты на адрес credit@tcsbank.ru.</li>
+			</ul>
+		</div>		
+	</div>
+	<div caption="Anketa11">	
+		<div class="placeAnketa" anketa="FIO4"></div>
+		<div class="blPhoneDialog">
+			<blockquote class="operator">
+				– Продиктуйте, пожалуйста, кем выдан Ваш паспорт, точно как указано в паспорте, со всеми сокращениями.
+			</blockquote>			
+			<blockquote class="client">
+				– Щукинский УФМС, город Москва.
+			</blockquote>			
+		</div>	
+		<div class="taskAnketa">
+		Твои действия:
+		</div>		
+		<div class="PlayerOptions">
+			<ul>
+				<li class="correct">Попрошу продиктовать место выдачи по буквам с учетом всех сокращений.</li>
+				<li>Впишу данные в анкету так, как назвал их клиент: «Щукинский УФМС, город Москва».</li>
+				<li>Впишу данные в поле «Кем выдан», используя стандартные паспортные сокращения: «УФМС Щукинского р-на, г. Москва».</li>
+			</ul>
+		</div>		
+	</div>
+	<div caption="Anketa12">	
+		<div class="placeAnketa" anketa="FIO5"></div>
+		<div class="blPhoneDialog">
+			<blockquote class="operator">
+				– Пожалуйста, назовите место рождения, точно как указано в паспорте, со всеми сокращениями.
+			</blockquote>			
+			<blockquote class="client">
+				– Поселок Крюково, Чеховский район, Московская область.
+			</blockquote>			
+		</div>	
+		<div class="taskAnketa">
+		Твои действия:
+		</div>		
+		<div class="PlayerOptions">
+			<ul>
+				<li class="correct">Попрошу продиктовать место рождения по буквам, точно как в паспорте, с учетом всех сокращений</li>
+				<li>Впишу данные в анкету так, как продиктовал их клиент: «Поселок Крюково, Чеховский район, Московская область».</li>
+				<li>Впишу данные анкету, используя привычные паспортные сокращения: «Поселок Крюково, Чеховский р-он, Московская обл.».</li>
+			</ul>
+		</div>		
+	</div>
+	<div caption="Anketa13">	
+		<div class="placeAnketa" anketa="FIO6"></div>
+		<div class="blPhoneDialog">
+			<blockquote class="operator">
+				– Назовите полностью адрес по месту Вашей постоянной регистрации, начиная с индекса.
+			</blockquote>			
+			<blockquote class="client">
+				– К сожалению, я не помню своего почтового индекса.
+			</blockquote>			
+		</div>	
+		<div class="taskAnketa">
+		Твои действия:
+		</div>		
+		<div class="PlayerOptions">
+			<ul>
+				<li class="correct">Отмечу в анкете, что клиент не помнит свой индекс, и перейду к следующему вопросу.</li>
+				<li>Вежливо попрошу клиента подождать и найду индекс в интернете.</li>
+				<li>Вежливо попрошу клиента подождать и найду почтовый индекс на сайте http://www.btk-online.ru.</li>
+			</ul>
+		</div>		
+	</div>
+	<div caption="Anketa14">	
+		<div class="placeAnketa" anketa="FIO7"></div>
+		<div class="blPhoneDialog">
+			<blockquote class="operator">
+				– Назовите полностью адрес по месту Вашей постоянной регистрации, начиная с индекса.
+			</blockquote>			
+			<blockquote class="client">
+				– 3346874, Ростовская область, Неклиновский район, поселок Новоприморский, ул. Строителей, 25.
+			</blockquote>			
+		</div>	
+		<div class="taskAnketa">
+		В выпадающем списке нет поселка и улицы, которые назвал клиент. Твои действия:
+		</div>		
+		<div class="PlayerOptions">
+			<ul>
+				<li class="correct">Внесу данные в формате: обл Ростовская, р-н Неклиновский, п Новоприморский, ул Строителей.</li>
+				<li>Внесу данные именно так, как их продиктовал клиент: «Ростовская область, Неклиновский район, поселок Новоприморский, ул. Строителей, 25».</li>
+				<li>Оставлю поле пустым.</li>
+			</ul>
+		</div>		
+	</div>
+	<div caption="Anketa15">	
+		<div class="placeAnketa" anketa="FIO8"></div>
+		<div class="blPhoneDialog">
+			<blockquote class="operator">
+				– Назовите полностью адрес по месту Вашей постоянной регистрации, начиная с индекса.
+			</blockquote>			
+			<blockquote class="client">
+				– 654038, Ростовская область, поселок Снегири, дом 12
+			</blockquote>			
+		</div>	
+		<div class="taskAnketa">
+		В адресе нет улицы. Твои действия:
+		</div>		
+		<div class="PlayerOptions">
+			<ul>
+				<li class="correct">Впишу «НЕТ» в поле «Улица».</li>
+				<li>Оставлю поле «Улица» пустым.</li>
+				<li>Впишу «БУ» (без улицы) в поле «Улица».</li>
+			</ul>
+		</div>		
+	</div>
+	<div caption="Anketa16">	
+		<div class="placeAnketa" anketa="FIO8"></div>
+		<div class="blPhoneDialog">
+			<blockquote class="operator">
+				– Назовите полностью адрес по месту Вашей постоянной регистрации, начиная с индекса.
+			</blockquote>			
+			<blockquote class="client">
+				– Москва, Зеленоград, улица Октябрьская, корпус 5, квартира 2, а номера у моего дома нет.
+			</blockquote>			
+		</div>	
+		<div class="taskAnketa">
+		Твои действия:
+		</div>		
+		<div class="PlayerOptions">
+			<ul>
+				<li class="correct">Впишу «БН» (без номера) в поле «Дом».</li>
+				<li>Оставлю поле «Дом» пустым.</li>
+				<li>Впишу «НЕТ» в поле «Дом».</li>
+			</ul>
+		</div>		
+	</div>
+	<div caption="Anketa17">	
+		<div class="placeAnketa" anketa="FIO9"></div>
+		<div class="blPhoneDialog">
+			<blockquote class="client">
+				– Официально я нигде не работаю. 
+			</blockquote>	
+			<blockquote class="operator">
+				– А есть ли у Вас какой-то источник дохода?
+			</blockquote>			
+			<blockquote class="client">
+				– Да, занимаюсь перевозками — у меня своё такси, но официально это дело не оформлял.
+			</blockquote>			
+		</div>	
+		<div class="taskAnketa">
+		Твои действия:
+		</div>		
+		<div class="PlayerOptions">
+			<ul>
+				<li class="correct">Выберу тип занятости «Собственный бизнес».</li>
+				<li>Объясню клиенту, что в таком случае заявка не может быть оформлена.</li>
+				<li>Выберу тип занятости «Не работаю» – «Другое», впишу в поле сведения о занятости клиента и продолжу оформление анкеты.</li>
+			</ul>
+		</div>		
+	</div>
+	<!-- <div caption="Anketa18">	
+		<div class="placeAnketa" anketa="FIO"></div>
+		<div class="blPhoneDialog">
+			<blockquote class="operator">
+				– Иван Иванович, Вы не работаете, а есть ли у Вас какой-то источник дохода?
+			</blockquote>			
+			<blockquote class="client">
+				– К сожалению, никаких доходов. Уже давно безработный.
+			</blockquote>			
+		</div>	
+		<div class="taskAnketa">
+		Твои действия:
+		</div>		
+		<div class="PlayerOptions">
+			<ul>
+				<li class="correct">Объясню клиенту, что в таком случае заявка не может быть оформлена.</li>
+				<li>Оставлю поле пустым и продолжу заполнение анкеты.</li>
+				<li>Выберу тип занятости «Не работаю» – «Ищу работу» и продолжу заполнение анкеты.</li>
+			</ul>
+		</div>		
+	</div> -->
+	<div caption="Anketa19">	
+		<div class="placeAnketa" anketa="FIO10"></div>
+		<div class="blPhoneDialog">
+			<blockquote class="operator">
+				– Светлана Петровна, официально Вы безработная, а есть ли у Вас какой-то источник дохода?
+			</blockquote>			
+			<blockquote class="client">
+				– Нет, но мой муж хорошо зарабатывает. Нам хватает.
+			</blockquote>			
+		</div>	
+		<div class="taskAnketa">
+		Твои действия:
+		</div>		
+		<div class="PlayerOptions">
+			<ul>
+				<li class="correct">Выберу тип занятости «Не работаю» – «Содержит муж/жена».</li>
+				<li>Объясню клиенту, что в таком случае заявка не может быть оформлена.</li>
+				<li>Выберу тип занятости «Не работаю» – «Ищу работу».</li>
+			</ul>
+		</div>		
+	</div>
+	<div caption="Anketa20">	
+		<div class="placeAnketa" anketa="FIO11"></div>
+		<div class="blPhoneDialog">
+			<blockquote class="operator">
+				– Назовите, пожалуйста, Ваш рабочий телефон.
+			</blockquote>			
+			<blockquote class="client">
+				– У меня своего рабочего нет, вот номер телефона секретаря: +7 555 222 111.
+			</blockquote>			
+		</div>	
+		<div class="taskAnketa">
+		Твои действия:
+		</div>		
+		<div class="PlayerOptions">
+			<ul>
+				<li class="correct">Впишу указанный номер в анкету.</li>
+				<li>Поставлю галку «Нет стационарного рабочего телефона».</li>
+				<li>Оставлю поле пустым. </li>
+			</ul>
+		</div>		
+	</div>
+	<div caption="Anketa21">	
+		<div class="placeAnketa" anketa="FIO11"></div>
+		<div class="blPhoneDialog">
+			<blockquote class="operator">
+				– Сергей Сергеевич, назовите, пожалуйста, Ваш рабочий телефон.
+			</blockquote>			
+			<blockquote class="client">
+				– У нас в компании вообще нет телефонов. Впишите мой мобильный.
+			</blockquote>			
+		</div>	
+		<div class="taskAnketa">
+		Твои действия:
+		</div>		
+		<div class="PlayerOptions">
+			<ul>
+				<li class="correct">Отмечу в анкете, что стационарного рабочего телефона нет, и попрошу клиента назвать мобильный телефон начальника. </li>
+				<li>Укажу контактный мобильный телефон клиента.</li>
+				<li>Поищу телефон компании на интернет-сайте http://www.btk-online.ru.</li>
+			</ul>
+		</div>		
+	</div>
+	<div caption="Anketa22">	
+		<div class="placeAnketa" anketa="FIO12"></div>
+		<div class="blPhoneDialog">
+			<blockquote class="operator">
+				– Назовите, пожалуйста, Ваш рабочий адрес. 
+			</blockquote>			
+			<blockquote class="client">
+				– А какой адрес Вам нужен? Наш офис находится в Москве по адресу ул. Строителей, 11, к.2. Но зарегистрирована фирма по другому адресу.
+			</blockquote>			
+		</div>	
+		<div class="taskAnketa">
+		Твои действия: 
+		</div>		
+		<div class="PlayerOptions">
+			<ul>
+				<li class="correct">Укажу фактический адрес.</li>
+				<li>Укажу тот, куда клиенту удобнее получать корреспонденцию.</li>
+				<li>Укажу юридический адрес. </li>
+			</ul>
+		</div>		
+	</div>
+	<div caption="Anketa23">	
+		<div class="placeAnketa" anketa="FIO11b"></div>
+		<div class="blPhoneDialog">
+			<blockquote class="operator">
+				– Иван Петрович, как давно Вы работаете в этой компании?
+			</blockquote>			
+			<blockquote class="client">
+				– Вот только устроился. Всего 3 недели.  
+			</blockquote>			
+		</div>	
+		<div class="taskAnketa">
+		Твои действия:
+		</div>		
+		<div class="PlayerOptions">
+			<ul>
+				<li class="correct">В поле «лет» поставлю цифру 0, а в поле «месяцев» – 1. </li>
+				<li>В поле «лет» поставлю цифру 0, а в поле «месяцев» – 0. </li>
+				<li>Оставлю поля пустыми и перейду к следующему вопросу.  </li>
+			</ul>
+		</div>		
+	</div>
+	<div caption="Anketa24">	
+		<div class="placeAnketa" anketa="FIO13"></div>
+		<div class="blPhoneDialog">
+			<blockquote class="operator">
+				– Скажите, пожалуйста, сколько у Вас детей.
+			</blockquote>			
+			<blockquote class="client">
+				– Двое. Сыну 17 лет, дочери уже 19.
+			</blockquote>			
+		</div>	
+		<div class="taskAnketa">
+		Твои действия:
+		</div>		
+		<div class="PlayerOptions">
+			<ul>
+				<li class="correct">Укажу в анкете, что у клиента один ребенок.</li>
+				<li>Укажу в анкете, что у клента двое детей.</li>
+				<li>Укажу в анкете, что детей нет.</li>
+			</ul>
+		</div>		
+	</div>
+	<div caption="Anketa25">	
+		<div class="placeAnketa" anketa="FIO13"></div>
+		<div class="blPhoneDialog">
+			<blockquote class="operator">
+				– Скажите, пожалуйста, какое у Вас образование?
+			</blockquote>			
+			<blockquote class="client">
+				– Среднее специальное.
+			</blockquote>			
+		</div>	
+		<div class="taskAnketa">
+		Твои действия:
+		</div>		
+		<div class="PlayerOptions">
+			<ul>
+				<li class="correct">Укажу в анкете «Начальное, среднее».</li>
+				<li>Укажу в анкете «Неполное, высшее».</li>
+				<li>Оставлю поле пустым и перейду к следующему вопросу.</li>
+			</ul>
+		</div>		
+	</div>
+	<div caption="Anketa26">	
+		<div class="placeAnketa" anketa="FIO13"></div>
+		<div class="blPhoneDialog">
+			<blockquote class="operator">
+				– Скажите, пожалуйста, у Вас есть автомобиль?
+			</blockquote>			
+			<blockquote class="client">
+				– Да, как раз недавно с женой приобрели машину. 
+			</blockquote>			
+		</div>	
+		<div class="taskAnketa">
+		Твои действия:
+		</div>		
+		<div class="PlayerOptions">
+			<ul>
+				<li class="correct">Уточню, оформлен ли автомобиль на клиента.</li>
+				<li>Спрошу у клиента, это отечественный автомобиль или иномарка и выберу соответсвующий вариант в анкете.</li>
+				<li>Выясню у клиента марку и модель автомобиля.</li>
+			</ul>
+		</div>		
+	</div>
+	<div caption="Anketa27">	
+		<div class="placeAnketa" anketa="FIO13"></div>
+		<div class="blPhoneDialog">
+			<blockquote class="operator">
+				– Скажите, пожалуйста, у Вас есть автомобиль?
+			</blockquote>			
+			<blockquote class="client">
+				– Да, «Мерседес», но он оформлен на жену.
+			</blockquote>			
+		</div>	
+		<div class="taskAnketa">
+		Твои действия:
+		</div>		
+		<div class="PlayerOptions">
+			<ul>
+				<li class="correct">Отмечу в анкете, что у клиента нет автомобиля.</li>
+				<li>Отмечу в анкете, что у клиента есть отечественный автомобиль.</li>
+				<li>Отмечу в анкете, что у клиента есть иномарка.</li>
+			</ul>
+		</div>		
+	</div>
+	<div caption="Anketa28">	
+		<div class="placeAnketa" anketa="FIO13"></div>
+		<div class="blPhoneDialog">
+			<blockquote class="operator">
+				– Назовите, пожалуйста, номер Вашего автомобиля.
+			</blockquote>			
+			<blockquote class="client">
+				– У меня их два. Оба называть?
+			</blockquote>			
+		</div>	
+		<div class="taskAnketa">
+		Твои действия:
+		</div>		
+		<div class="PlayerOptions">
+			<ul>
+				<li class="correct">Попрошу клиента назвать один номер.</li>
+				<li>Попрошу клиента назвать оба номера.</li>
+				<li>Оставлю поле пустым.</li>
+			</ul>
+		</div>		
+	</div>
+	<div caption="Anketa29">	
+		<div class="placeAnketa" anketa="FIO14"></div>
+		<div class="blPhoneDialog">
+			<blockquote class="operator">
+				– Назовите, пожалуйста, Ваш ежемесячный доход, учитывая официальную зарплату и дополнительный доход.
+			</blockquote>			
+			<blockquote class="client">
+				– Каждый месяц по-разному. Обычно на руки получаю от 20 000 до 30 000 рублей. С зарплатой мужа получается 70 000. 
+			</blockquote>			
+		</div>	
+		<div class="taskAnketa">
+		Твои действия:
+		</div>		
+		<div class="PlayerOptions">
+			<ul>
+				<li class="correct">Введу в анкету 20 000 рублей.</li>
+				<li>Внесу в анкету 30 000 рублей.</li>
+				<li>Внесу в анкету 70 000 рублей.</li>
+			</ul>
+		</div>		
+	</div>
+	<div caption="Anketa30">	
+		<div class="placeAnketa" anketa="FIO14"></div>
+		<div class="blPhoneDialog">
+			<blockquote class="operator">
+				– Назовите, пожалуйста, Ваш ежемесячный доход, учитывая официальную зарплату и дополнительный доход.
+			</blockquote>			
+			<blockquote class="client">
+				– 40 000 рублей – это моя официальная зарплата. С подработкой ежемесячно получается 50 000 рублей. В особо удачные месяцы – 55 000.
+			</blockquote>			
+		</div>	
+		<div class="taskAnketa">
+		Твои действия:
+		</div>		
+		<div class="PlayerOptions">
+			<ul>
+				<li class="correct">Введу в анкету 50 000 рублей.</li>
+				<li>Внесу в анкету 40 000 рублей.</li>
+				<li>Внесу в анкету 55 000 рублей.</li>
+			</ul>
+		</div>		
+	</div>
+	<div caption="Anketa31">	
+		<div class="placeAnketa" anketa="FIO14"></div>
+		<div class="blPhoneDialog">
+			<blockquote class="operator">
+				– Петр Иванович, Вы арендуете жилье. А какую сумму Вы ежемесячно отдаете за аренду?
+			</blockquote>			
+			<blockquote class="client">
+				– 15 000 рублей. Со всеми коммунальными платежами получается 18 000.
+			</blockquote>			
+		</div>	
+		<div class="taskAnketa">
+		Твои действия:
+		</div>		
+		<div class="PlayerOptions">
+			<ul>
+				<li class="correct">Укажу в анкете 15 000 рублей.</li>
+				<li>Укажу в анкете 18 000 рублей. </li>
+				<li>Укажу в анкете 33 000 рублей.</li>
+			</ul>
+		</div>		
+	</div>
+	<div caption="Anketa32">	
+		<div class="placeAnketa" anketa="FIO14"></div>
+		<div class="blPhoneDialog">
+			<blockquote class="operator">
+				– Иван Иванович, Вы сказали, что у Вас уже есть кредит в другом банке. А какую сумму Вы ежемесячно отдаете за кредит?
+			</blockquote>			
+			<blockquote class="client">
+				– Кредит есть, но оформлен он на жену. Платим ежемесячно по 5 000 рублей. 
+			</blockquote>			
+		</div>	
+		<div class="taskAnketa">
+		Твои действия:
+		</div>		
+		<div class="PlayerOptions">
+			<ul>
+				<li class="correct">Оставлю поле пустым.</li>
+				<li>Укажу в анкете 5 000 рублей.</li>
+				<li>Укажу в анкете 2 500 рублей.</li>
+			</ul>
+		</div>		
+	</div>
+	<div caption="Anketa33">	
+		<div class="placeAnketa" anketa="FIO15"></div>
+		<div class="blPhoneDialog">
+			<blockquote class="Message">
+				Итак, все все поля анкеты заполнены. Что дальше?
+			</blockquote>						
+		</div>	
+		<div class="taskAnketa">
+		Твои действия:
+		</div>		
+		<div class="PlayerOptions">
+			<ul>
+				<li class="correct">Нажму кнопку «Оформить» и, если анкета не выдаст предупреждений об ошибке, попрощаюсь с клиентом. </li>
+				<li>Попрощаюсь с клиентом и сразу после этого нажму кнопку «Оформить».</li>
+				<li>Попрощаюсь с клиентом, после чего еще раз проверю, все ли поля анкеты заполнены корректно, а потом нажму кнопку «Оформить».</li>
+			</ul>
+		</div>		
+	</div>
+	
+</div>
+<!-- end QUESTIONS -->
+
+<!-- begin ANKETAS -->
+<div class="DB DB-Anketa-Types">
+	<div class="blAnketa" id="FIO">
+		<img src="html/anketas/anketa1.png">
+		<p style="top:35px;left:656px;"><span>Необходимо обязательно сверять ФИО со слов Заявителя.
+Если данные в ФИО поменялись, внесите новые данные, убедившись, что их диктует именно Заявитель.</span></p>
+	</div>	
+	<div class="blAnketa" id="FIO2">
+		<img src="html/anketas/anketa2.png">
+		<p style="top:13px;left:293px;"><span>Необходимо обязательно сверять номер мобильного со слов Заявителя.
+Вносите только личный контактный мобильный телефон Заявителя.</span></p>
+		<p style="top:13px;left:729px;"><span>Поставьте галку, если номер Заявителя совпадает с указанным в анкете. Если мобильный изменился, внесите новый номер и галку НЕ ставьте.</span></p>
+		<p style="top:113px;left:697px;"><span>Если Заявитель не помнит телефонный код города, уточните его на сайте  http://www.btk-online.ru. Если у Заявителя нет стационарного телефона, поставьте галку «Нет стационарного телефона».</span></p>
+	</div>		
+	<div class="blAnketa" id="FIO3">
+		<img src="html/anketas/anketa3.png">
+		<p style="top:16px;left:696px;"><span>Если Заявитель не помнит телефонный код города, уточните его на сайте  http://www.btk-online.ru. Если у Заявителя нет стационарного телефона, поставьте галку «Нет стационарного телефона».</span></p>
+		<p style="top:76px;left:621px;"><span>Если у родственников, друзей или знакомых нет стационарного телефона, укажите их мобильный телефон. В поле Комментарий – кем приходится человек заявителю.</span></p>
+		<p style="top:127px;left:656px;"><span>Адрес электронной почты необходимо сверять по буквам</span></p>
+	</div>
+	<div class="blAnketa" id="FIO4">
+		<img src="html/anketas/anketa4.png">
+		<p style="top:69px;left:656px;"><span>Данные вносятся точно, как написано в паспорте. Необходимо соблюдать все сокращения в написании слов, подробно уточняя их у Заявителя.</span></p>
+	</div>
+	<div class="blAnketa" id="FIO5">
+		<img src="html/anketas/anketa5.png">
+		<p style="top:56px;left:656px;"><span>Данные вносятся точно, как написано в паспорте. Необходимо соблюдать все сокращения в написании слов, подробно уточняя их у Заявителя.</span></p>
+	</div>
+	<div class="blAnketa" id="FIO6">
+		<img src="html/anketas/anketa6.png">
+		<p style="top:10px;left:550px;"><span>Если Заявитель не помнит индекс, поставьте галку «Не помню». Самостоятельный поиск индекса не допускается.</span></p>
+	</div>
+	<div class="blAnketa" id="FIO7">
+		<img src="html/anketas/anketa7.png">
+		<p style="top:60px;left:657px;"><span>Если нужного названия в выпадающем списке нет, внесите данные в формате: обл ростовская; р-н ростовский; п ростов; ул ростовская.</span></p>
+	</div>
+	<div class="blAnketa" id="FIO8">
+		<img src="html/anketas/anketa8.png">
+		<p style="top:8px;left:656px;"><span>Если в адресе нет улицы, поставьте «НЕТ».</span></p>
+		<p style="top:57px;left:656px;"><span>Если дом не имеет номера, поставьте «БН».</span></p>
+	</div>
+	<div class="blAnketa" id="FIO9">
+		<img src="html/anketas/anketa9.png">
+		<p style="top:17px;left:603px;"><span>Если Заявитель не работает, но у него есть другие источники дохода, выбрать «Собственный бизнес» и продолжить оформление заявки.</span></p>
+		<p style="top:173px;left:655px;"><span>Стационарный телефон отдела кадров, бухгалтерии, ресепшена или начальника. Если нет стационарного телефона – мобильный номер начальника или коллеги.</span></p>
+	</div>
+	<div class="blAnketa" id="FIO10">
+		<img src="html/anketas/anketa10.png">
+		<p style="top:15px;left:601px;"><span>Если Заявитель не работает, но у него есть другие источники дохода, выбрать «Собственный бизнес» и продолжить оформление заявки.</span></p>
+	</div>
+	<div class="blAnketa" id="FIO11">
+		<img src="html/anketas/anketa11.png">
+		<p style="top:12px;left:602px;"><span>Если Заявитель не работает, но у него есть другие источники дохода, выбрать «Собственный бизнес» и продолжить оформление заявки.</span></p>
+		<p style="top:57px;left:534px;"><span>Укажите род деятельности заявителя (перевозки, и т.д.). Если бизнес не зарегистрирован юридически, поставьте галку «Не официальный».</span></p>
+		<p style="top:167px;left:655px;"><span>Стационарный телефон отдела кадров, бухгалтерии, ресепшена или начальника. Если нет стационарного телефона – мобильный номер начальника или коллеги.</span></p>
+	</div>
+	<div class="blAnketa" id="FIO11b">
+		<img src="html/anketas/anketa11b.png">
+		<p style="top:58px;left:642px;"><span>Если заявитель работает 11 месяцев и меньше – в поле «лет» поставьте 0. Если заявитель работает меньше месяца – округлите до 1 месяца.</span></p>
+	</div>
+	<div class="blAnketa" id="FIO12">
+		<img src="html/anketas/anketa12.png">
+		<p style="top:128px;left:656px;"><span>Если фактический рабочий адрес отличается от юридического, укажите фактический адрес.</span></p>
+	</div>
+	<div class="blAnketa" id="FIO13">
+		<img src="html/anketas/anketa13.png">
+		<p style="top:12px;left:603px;"><span>Учитывать детей в возрасте до 18 лет.</span></p>
+		<p style="top:106px;left:603px;"><span>Среднее специальное образование указывается как «Начальное, среднее».</span></p>
+		<p style="top:155px;left:603px;"><span>Автомобиль должен быть оформлен только на Заявителя, иначе выберите НЕТ. Если у Заявителя два автомобиля, указывается  госномер любого из них.</span></p>
+	</div>
+	<div class="blAnketa" id="FIO14">
+		<img src="html/anketas/anketa14.png">
+		<p style="top:12px;left:535px;"><span>Совокупный ежемесячный доход самого Заявителя после вычета подоходного налога. Учитываются личные премии, подработки и т.п. Не учитывается зарплата членов семьи. Если Заявитель называет диапазон сумм, то внесите меньшую из них (например, «25-30 тысяч» - внесите «25»)</span></p>
+		<p style="top:62px;left:535px;"><span>Коммунальные платежи не учитываются.</span></p>
+		<p style="top:118px;left:535px;"><span>Учитываются кредиты, оформленные на Заявителя.</span></p>
+	</div>
+	<div class="blAnketa" id="FIO15">
+		<img src="html/anketas/anketa15.png">
+		<p style="top:9px;left:458px;"><span>Это Ваш личный код. Обязательно проверяйте его при оформлении каждой заявки.</span></p>
+		<p style="top:151px;left:631px;"><span>Обязательно нажмите кнопку до завершения диалога с клиентом, чтобы тут же, не перезванивая, уточнить у него информацию в случае необходимости.</span></p>
+	</div>
+</div>	
+
+<!-- end ANKETAS -->
+
+
+
+
+<script src="html/js/lib_jquery.js"></script>
+<script src="html/js/lib_jquery.bpopup.js"></script>
+<script src="html/js/all.js"></script>
+<script src="html/js/anketa.js"></script>
+</body>
+</html>

@@ -1,0 +1,147 @@
+<!doctype html>
+<html>
+<head>
+  <title>Interactive Dialogues</title>
+  <meta charset="utf-8" test="щ"/>
+
+  <script src="js/jquery.js"></script>
+  <script src="js/pageEngine.js"></script>
+  <script src="js/creationOfScheme.js"></script>
+  <script src="js/interface.js"></script>
+  <script src="js/interface_visualEffects.js"></script>
+  <script src="js/interface_events.js"></script>
+  <script src="js/builderForVisuals.js"></script>
+  <script src="js/canvas.js"></script>
+  <script src="js/player.js"></script>
+  <script src="js/demoData.js"></script>
+  <script src="js/onload.js"></script>
+
+  <link rel="stylesheet" href="css/pageEngine.css" media="screen" />
+  <link rel="stylesheet" href="css/global.css" media="screen" />  
+  <link rel="stylesheet" href="css/screenIcons.css" media="screen" />
+  <link rel="stylesheet" href="css/screenEdit.css" media="screen" />
+  <link rel="stylesheet" href="css/player.css" media="screen" />
+  <link rel="stylesheet" href="css/builder.css" media="screen" />
+  <link rel="stylesheet" href="css/projectManager.css" media="screen" />
+
+</head>
+<body class="blackboard">
+
+<div class="tabControlBar" id="DivTabControlBar">
+  <ul class="tabSwitcher">
+	<li><a href="#home">home</a></li>
+	<li><a href="#introduction">manage</a></li>
+    <li><a href="#constructor">create</a></li>
+    <li><a href="#decorations">design</a></li>
+    <li><a href="#textPlayer" id="btnDebugRun">debug</a></li>
+    <li><a href="#visualPlayer" id="btnSlideShowRun">play</a></li>
+    <li><a href="#export" id="btnExportTab">export</a></li>
+  </ul>
+</div>
+
+<div class="tabOfThisTool" id="tabOfThisTool-home">
+  <a name="#home"></a>
+  <div class="textContentForTabOfThisTool">
+		<div id="maket" style="margin-top:30px; ">
+		  <div id="picleft" style="float:left"><img src="./css/images/postit1.png"></div>
+		<div id="sloganright" style="float:left;margin-top:30px;"><img src="./css/images/slogan.png"></div>
+		<div id="textbottom" style="letter-spacing:3px;float:left; clear:both;font-family:Schoolbell,tahoma,sans serif;font-size:3em; color:#ddd; text-shadow: 0px 0px 2px #eee; margin-left:30px;margin-top:60px">
+		CREATE -  - - > DESIGN - - - > DELIVER</div>
+		<div id="postit2" style="position:absolute;top:290px;left:700px"><img src="./css/images/postit2.png"></div>
+	  </div>
+  </div>
+</div>
+
+<div class="tabOfThisTool" id="tabOfThisTool-introduction">
+  <a name="#introduction"></a>
+  <div class="textContentForTabOfThisTool" style="padding:70px 0px 0px 150px">
+  <h1 class="project-list">Available projects:</h1>
+    <ul class="project-list">
+      <li data-objectname='testProject_A'>Sample project</li>
+      <li data-objectname='testProject_B'>Phone upgrade situation</li>
+      <li data-objectname='testProject_C'>You are fired!</li>
+	  <li data-objectname='testProject_D'>Phone problem</li>
+	<ul>
+  </div>
+</div>
+
+<div class="tabOfThisTool" id="tabOfThisTool-constructor">
+    <a name="#constructor"></a>
+    
+    <!-- This is a code for constructor -->
+    <div class="mainWorkAreaDecorations ">
+		<div id="arrowsUnderWorkArea">
+		</div>
+	  <div id="mainWorkArea">
+        <canvas id="mainWorkCanvas">Fallback content, in case the browser does not support Canvas.</canvas>
+        <div id="spiritScreen" class="screenIconOnMainWorkArea"></div>
+      </div>
+      <div id="mainWorkScreens"></div>   
+    </div>    
+    <!-- / -->
+    
+</div>
+
+<div class="tabOfThisTool" id="tabOfThisTool-decorations">
+  <a name="#decorations"></a>
+  <div class="textContentForTabOfThisTool">
+
+<div class="constructorContainer">
+	<div class="preview">
+		<div id="back" class="preview-component">
+		</div>
+		<div id="char" class="preview-component">
+		</div>
+		<div id="front" class="preview-component">
+		</div>
+	</div>
+	<div class="palette" id="palette">
+		<!--palette is created procedurally based on JSON -->
+	</div>
+</div>  
+  
+  </div>
+</div>
+
+<div class="tabOfThisTool" id="tabOfThisTool-textPlayer">
+  <a name="#textPlayer"></a>
+  <div class="textContentForTabOfThisTool">
+    
+    <!-- This is a code for textPlayer -->
+    <div id="PlayerArea"></div>    
+    <!-- / -->
+    
+  </div>
+</div>
+
+<div class="tabOfThisTool" id="tabOfThisTool-visualPlayer">
+  <a name="#visualPlayer"></a>
+  <div class="textContentForTabOfThisTool ">
+    <div class="constructorContainer">
+      <div class="preview" id="slideShowArea" style="position:relative;">
+        <div id="back" class="preview-component"></div>
+        <div id="char" class="preview-component"></div>
+        <div id="front" class="preview-component"></div>
+      </div>
+    </div>  
+  </div>
+</div>
+
+
+<div class="tabOfThisTool" id="tabOfThisTool-export">
+  <a name="#export"></a>
+  <div class="textContentForTabOfThisTool ">
+    <textarea id="textareaForJsonExport" style="background-color: #333; color: #eee" rows="3" cols="110" readonly="readonly">Nothing to export!</textarea>
+    <div id="maket" style="margin-top:10px; ">
+      <div id="iphoneleft" style="background-image:url('./css/images/iphone.png');background-position:center center;background-repeat:no-repeat;width:200px;height:400px;float:left;font-family:Schoolbell,tahoma,sans serif;font-size:1.6em; color:#eee; text-shadow: 0px 0px 2px #eee; margin:10px 170px 10px 40px;text-align:center;"><br><br><br>SHARE<br>A LINK<br>FOR<br>WEB<br>ACCESS</div>
+      <div id="pcright" style="background-image:url('./css/images/computer.png');;background-position:center center;background-repeat:no-repeat;width:450px;height:400px;float:left;font-family:Schoolbell,tahoma,sans serif;font-size:2.0em; color:#eee; text-shadow: 0px 0px 2px #eee; margin:10px 10px 10px 10px;text-align:center;"><br><br>EXPORT TO<br>POPULAR<br>AUTHORING<br>TOOLS</div>
+      <div id="logos" style="width:280px;margin-left:50px;float:left; clear:left;"><a href=http://www.adobe.com/products/captivate.html><img src='./css/images/adobe_logo.png'></a></div>
+      <div id="logos" style="width:200px;margin-left:0px;float:left;"><a href=http://www.articulate.com><img src='./css/images/arti_logo.png'></a></div>
+      <div id="logos" style="width:280px;margin-left:100px;float:left;"><a href=http://www.trivantis.com><img style="margin:auto" src='./css/images/lect_logo.png'></a></div>
+    </div>
+  </div>
+  </div>
+</div>
+
+</body>
+</html>

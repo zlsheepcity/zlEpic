@@ -1,0 +1,47 @@
+/* ==============================================================
+    universal markup helpers
+    2019.4.17
+============================================================== */
+
+/* ------------------------------------------ univeral helpers */
+
+
+.is-centered     { text-align: center; justify-content: center; }
+
+.is-v-centered      { align-self: center; }
+.has-v-centered>*   { align-self: center; }
+
+.is-v-equal         { align-self: stretch; }
+.has-v-equal>*      { align-self: stretch; }
+
+.has-v-slices       { grid-row-gap: 0; }
+
+.is-v-spaced {
+    margin-top:     $margin-def;
+    margin-bottom:  $margin-def;
+}
+.is-v-padded {
+    padding-top:    $margin-def;
+    padding-bottom: $margin-def;
+}
+
+.is-box {
+    padding-top:    $margin-less;
+    padding-bottom: $margin-less;
+    background-color: rgba(0,0,0,0.1);
+}
+
+.layer {
+    display: block;
+    grid-column: full;
+    .zetka & { grid-column: full; }
+}
+
+/* ------------------------------------------ compact mode helpers */
+
+
+.compact-mode--is-centered {
+    @media ($screenForMobile) { text-align: center; justify-content: center; }
+}
+
+/* eof univeral markup helpers */

@@ -1,0 +1,102 @@
+body, html
+{
+  margin:0;
+  padding:0;
+  width:100%;
+  height:100%;
+  font-family:tahoma, sans-serif;
+}
+
+/* TAB CONTROL BAR WITH BUTTONS */
+
+.tabControlBar
+{
+  display:block;
+  position:absolute;
+  top:0;
+  left:0;
+  height:40px;
+  width:100%;
+}
+
+.tabControlBar > .tabSwitcher
+{
+  display:inline-block;
+  margin:0;
+  padding:0 0 0 24px;
+  list-style:none;
+}
+
+.tabControlBar > .tabSwitcher > li
+{
+  display:inline-block;
+}
+
+.tabControlBar > .tabSwitcher > li > a
+{
+  display:block;
+  float:left;
+  padding:0 0 0 30px;
+  width:100px;  
+  height:40px;
+
+  background:url(images/bookmarks/pink.png) 0 -10px no-repeat;
+  color:#006;  
+  white-space:nowrap;
+  text-decoration:none;
+  font-family:Schoolbell, tahoma, sans-serif;
+  font-size:18px;
+  text-shadow: 0px 0px 1px #333; 
+  text-align:left;
+}
+.tabControlBar > .tabSwitcher > li:nth-child(1)  > a  { background-image:url(images/bookmarks/pink.png); }
+.tabControlBar > .tabSwitcher > li:nth-child(2)  > a  { background-image:url(images/bookmarks/green.png); }
+.tabControlBar > .tabSwitcher > li:nth-child(3)  > a  { background-image:url(images/bookmarks/orange.png); }
+.tabControlBar > .tabSwitcher > li:nth-child(4)  > a  { background-image:url(images/bookmarks/blue.png); }
+.tabControlBar > .tabSwitcher > li:nth-child(5)  > a  { background-image:url(images/bookmarks/yellow.png); }
+.tabControlBar > .tabSwitcher > li:nth-child(6)  > a  { background-image:url(images/bookmarks/violet.png); }
+.tabControlBar > .tabSwitcher > li:nth-child(7)  > a  { background-image:url(images/bookmarks/red.png); }
+
+.tabControlBar > .tabSwitcher > li > a:hover
+{
+  background-position:0 0;
+  height:30px;
+  padding-top:10px;
+}
+
+.tabControlBar > .tabSwitcher > li > a.active
+{
+  background-position:0 0;
+  height:30px;
+  padding-top:10px;  
+/*  text-decoration:underline;*/
+}
+
+
+/* TABS */
+
+.tabOfThisTool
+{
+  display:block;
+  background:transparent;
+  min-height:100%;
+  width:100%;
+}
+
+.textContentForTabOfThisTool
+{
+  padding:60px 20px 0 20px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+

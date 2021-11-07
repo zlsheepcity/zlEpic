@@ -1,0 +1,491 @@
+
+
+
+.CurrentOrdnung {
+  min-height:101vh;
+  /*max-width:1300px;*/
+  margin:0 auto;
+}
+.CurrentOrdnung:after {
+  content:'';
+  display:block;
+  clear:both;
+}
+
+
+/* =================================================================== */
+
+.OrdnungHeader h1 {
+  font-size:21px;
+  line-height:24px;
+  font-weight:600;
+  margin:0;
+  padding:20px 0 8px 36px;
+  background:#24303A;
+}
+
+
+/* =================================================================== */
+
+.OrdnungToolbar {
+  border-top: 36px solid #1E2730;
+  border-top: 36px solid rgba(0,0,0,.15);
+  border-top: 36px solid #0E1720;
+  min-width:1080px;
+  width:100%;
+  /*max-width:1300px;*/
+  position:absolute;
+  z-index:200;
+}
+.OrdnungToolbarPlaceholder {
+  border-top: 36px solid transparent;
+}
+.OrdnungToolbarPlaceholder-withoutTimeline {
+  height:36px;
+}
+#jsOrdnungToolbarCanvas {
+  position:absolute;
+  z-index:100;
+}
+#jsOrdnungToolbarHoverCanvas {
+  position:absolute;
+  z-index:100;
+}
+
+.OrdnungToolbarItems {
+  padding-left:40px;
+  text-align:left;
+  margin-top:-36px;
+  box-sizing: border-box;
+}
+#CurrentOrdnung[data-currentscreen="overview"] .OrdnungToolbarItems {   min-height:180px; }
+.OrdnungToolbarItems:after {
+  content:'';
+  display:block;
+  clear:left;
+}
+
+.OrdnungToolbarItem {
+  display:block;
+  float:left;
+  min-width:17%;
+}
+
+
+/* =================================================================== */
+
+.OrdnungToolbarNextOrder {
+  display:block;
+  position:absolute;
+  z-index:151;
+  right:0;
+}
+.OrdnungToolbarNextOrder-content {
+  background:#2E3D4A;
+  background:rgba(255,255,255,.1);
+  margin:0;
+  padding:12px 20px 12px 16px;
+  border-radius: 20px 0 0 20px;  
+  
+}
+.OrdnungToolbarNextOrder-content > span {
+  display:inline-block;
+  font-size:18px;
+  line-height:22px;
+  padding:0 4px;
+  color:#22C1EA;
+  border-bottom:1px solid transparent;
+}
+.OrdnungToolbarNextOrder-content > span:hover {
+  border-bottom-color:white;
+}
+.OrdnungToolbarNextOrder .bulka {
+  position:absolute;
+  margin-left:6px;
+  margin-top:20px;
+
+}
+.OrdnungToolbarNextOrder .bulka .xypoint {
+  position:absolute;
+  top:3px;
+  left:3px;
+  width:1px;
+  height:1px;
+}
+.OrdnungToolbarNextOrder .bulka .bull {
+  display:block;
+  box-sizing: border-box;
+  width:6px;
+  height:6px;
+  border:1px solid white;
+  border-radius:50%;
+  background:#E6781E;
+}
+
+
+
+/* =================================================================== */
+
+.OrdnungToolbarItem-Header {
+  display:block;
+  min-height:36px;
+  white-space:nowrap;  
+  padding:0 20px 0 0;
+  /*margin:-36px 0 0 0;*/
+  text-align:left;
+}
+.OrdnungToolbarItem-Header a,
+.OrdnungToolbarItem-Header .OrdnungToolbarItem-Link {
+  font-size:18px;
+  line-height:36px;  
+}
+.OrdnungToolbarItem-Header .OrdnungToolbarItem-Link span,
+.OrdnungToolbarItem-Header a span {
+  display:inline-block;
+  font-size:inherit;
+  line-height:20px;
+  padding:0 4px;
+  color:#22C1EA;
+  border-bottom:1px solid transparent;
+}
+.OrdnungToolbarItem.active .OrdnungToolbarItem-Header .OrdnungToolbarItem-Link span,
+.OrdnungToolbarItem.active .OrdnungToolbarItem-Header a span {
+  color:white;
+  border-bottom:1px solid #60869A;
+}
+.OrdnungToolbarItem-Header .OrdnungToolbarItem-Link:hover span,
+.OrdnungToolbarItem-Header a:hover span {
+  border-bottom-color:white;
+}
+
+/* =================================================================== */
+
+.OrdnungToolbarItem-Status {
+  font-size:12px;
+  line-height:20px;
+  padding:12px 8px 4px 0px;
+  min-height:28px;
+  text-align:left;
+  box-sizing: border-box;
+}
+
+
+.OrdnungToolbarItem-GlobalStatus {
+  background:#2E3D4A;
+  background:rgba(255,255,255,.1);
+  margin:0 20px 0 -40px;
+  padding:12px 8px 20px 44px;
+  border-radius: 0 0 20px 0;
+}
+.OrdnungToolbarItem-GlobalStatus .label {
+  font-size:12px;
+  line-height:20px;
+}
+.OrdnungToolbarItem-GlobalStatus .status {
+  font-size:18px;
+  line-height:22px;
+}
+
+
+/* =================================================================== */
+
+.OrdnungToolbarItem-Events {
+  list-style:none;
+  margin:0 0 0 0px;
+  padding:0 8px 0 0;
+}
+.OrdnungToolbarItem-Event {
+  font-size:14px;
+  line-height:18px;  
+  white-space:nowrap;
+}
+.OrdnungToolbarItem-EventContent {
+  display:inline-block;
+  padding:0 4px 0 16px;
+  border-radius:4px;
+}
+/*
+.OrdnungToolbarItem-EventContent:hover {
+  box-shadow:2px 2px 1px rgba(0,0,0,.5);
+  background:rgba(255,255,255,.1);
+}
+*/
+.OrdnungToolbarItem-Event .bulka {
+  position:absolute;
+  margin-left:-12px;
+  margin-top:7px;
+
+}
+.OrdnungToolbarItem-Event .bulka .xypoint {
+  position:absolute;
+  top:3px;
+  left:3px;
+  width:1px;
+  height:1px;
+}
+.OrdnungToolbarItem-Event .bulka .bull {
+  display:block;
+  box-sizing: border-box;
+  width:6px;
+  height:6px;
+  border:1px solid white;
+  border-radius:50%;
+}
+.OrdnungToolbarItem-Event .bulka.connected-false .bull {
+  border-color:#60869A;
+  background:#60869A;
+}
+
+
+/* deadline event */
+.OrdnungToolbarItem-Event.deathclock .OrdnungToolbarItem-EventContent {
+  margin-top:12px;
+  min-width:80px;
+  padding:0;
+  border:1px solid #EF6670;
+  border:1px solid transparent;
+  border-radius:4px;
+  position:relative;
+  color:#EF6670;
+  text-align:center;
+}
+.OrdnungToolbarItem-Event.deathclock .bulka {
+  margin:0;
+  bottom:-3px;
+  left:48%;
+}
+.OrdnungToolbarItem-Event.deathclock .caption {
+  display:block;
+  font-size:12px;
+  line-height:12px;
+  color:#60869A;;
+}
+.OrdnungToolbarItem-Event.deathclock .days {
+  display:block;
+  font-size:18px;
+}
+.OrdnungToolbarItem-Event.deathclock .hours {
+  display:block;
+  font-size:18px;
+  padding-bottom:4px;
+}
+
+
+
+
+
+/* =================================================================== */
+
+.OrdnungTimeline {
+  padding:20px 40px 60px 40px;
+}
+
+.OrdnungTimeline-Line {
+  width:100%;
+  height:4px;
+  background:#99CC66;
+  position:relative;
+}
+
+.OrdnungTimeline-Line .future-symbol {
+  position:absolute;
+  height:4px;
+  top:0;
+  right:12px;
+  width:40px;
+  background:#99CC66;
+  box-sizing: border-box;
+  border-left:4px solid #24303A;
+  border-right:4px solid #24303A;
+}
+.OrdnungTimeline-Line .future-symbol > div { 
+  position:absolute;
+  height:4px;
+  width:16px;
+  top:0;
+  left:8px;
+  background:#99CC66;
+  box-sizing: border-box;
+  border-left:4px solid #24303A;
+  border-right:4px solid #24303A;
+}
+
+
+.OrdnungTimeline-Line .bulka {
+  position:absolute;
+  z-index:200;
+  top:0;
+  left:0;
+}
+.OrdnungTimeline-Line .bulka .xypoint {
+  position:absolute;
+  top:2px;
+  left:0;
+}
+.OrdnungTimeline-Line .bulka .bull {
+  position:absolute;
+  z-index:240;
+  top:-2px;
+  left:-4px;
+  display:block;
+  box-sizing: border-box;
+  width:8px;
+  height:8px;
+  border:1px solid white;
+  border-radius:50%;
+}
+.OrdnungTimeline-Line .bulka .datetime {
+  position:absolute;
+  z-index:236;
+  display:none;
+  top:4px;  
+  box-sizing: border-box;
+  padding:8px 0;
+  width:48px;
+  margin-left:-22px;
+  text-align:center;
+  font-size:12px;
+  color:white;
+  text-transform:uppercase;
+  border-radius:8px;
+  background:rgba(36,48,58,.75);
+}
+.OrdnungTimeline-Line .bulka .datetime .date {
+  display:block;
+  white-space:nowrap;
+}
+.OrdnungTimeline-Line .bulka .datetime .time {
+  display:block;
+  white-space:nowrap;
+  color:#CCC;
+}
+
+
+.OrdnungTimeline-Line .bulka .today {
+  position:absolute;
+  background:red;
+  display:block;
+  color:white;
+  text-transform:uppercase;
+  margin-top:-30px;
+}
+
+/* keytime */
+.OrdnungTimeline-Line .bulka.keytime .datetime { display:block; }
+
+
+/* riska */
+.OrdnungTimeline-Line .bulka.midnight .riska {
+  position:absolute;
+  z-index:211;
+  top:0;
+  left:0;
+  width:1px;
+  height:8px;
+  background:#99CC66;
+  
+}
+.OrdnungTimeline-Line .bulka.midnight .riska2 {
+  position:absolute;
+  z-index:211;
+  top:0;
+  left:0;
+  width:1px;
+  height:8px;
+  background:#99CC66;
+  
+}
+.OrdnungTimeline-Line .bulka.midnight .datetime {
+  display:block;
+  z-index:210;
+  background:transparent;
+}
+.OrdnungTimeline-Line .bulka.midnight .datetime .date {
+  display:block;
+  white-space:nowrap;
+  color:#64707A;
+}
+.OrdnungTimeline-Line .bulka.midnight .datetime .time {
+  display:block;
+  white-space:nowrap;
+  color:#64707A;
+}
+.OrdnungTimeline-Line .bulka.midnight:nth-child(2n) .datetime { display:none; }
+
+
+/* cow */
+.OrdnungTimeline-Line .bulka.contact .cow {
+  position:absolute;
+  
+  transform: rotate(-45deg);
+  width:6px;
+  height:6px;
+  border:6px solid #1693A7;
+  border-top-color:transparent;
+  border-right-color:transparent;
+  box-sizing: border-box;
+  
+  
+  left:-6px;
+  top:-14px;
+  z-index:218;
+
+}
+
+
+
+
+
+
+
+/* hover */
+.OrdnungTimeline-Line .bulka.event:hover,
+.OrdnungTimeline-Line .bulka.contact:hover {
+  z-index:300;
+}
+.OrdnungTimeline-Line .bulka.event:hover .bull {
+  box-shadow: 0 0 4px white;
+  z-index:340;
+}
+.OrdnungTimeline-Line .bulka.event:hover .datetime,
+.OrdnungTimeline-Line .bulka.contact:hover .datetime {
+  display:block;
+  background-color:#3E5263;
+  z-index:336;
+}
+
+
+
+
+
+/* =================================================================== */
+
+
+
+.cssOTIE-EventContent {
+  box-shadow:2px 2px 1px rgba(0,0,0,.5);
+  background:rgba(255,255,255,.1);
+  color:#A0C6DA;
+}  
+.OrdnungTimeline-Line .cssOTIE-timebull {
+  z-index:400;
+}
+.OrdnungTimeline-Line .cssOTIE-timebull .bull {
+  box-shadow: 0 0 4px white;
+  z-index:440;
+}
+.OrdnungTimeline-Line .cssOTIE-timebull .datetime {
+  display:block;
+  background-color:#3E5263;
+  z-index:436;
+}
+
+
+
+
+
+
+/* =================================================================== */
+/* =================================================================== */
+/* =================================================================== */
+

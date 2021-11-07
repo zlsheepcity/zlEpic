@@ -1,0 +1,162 @@
+/** html-markup
+ *  2019.12.16
+ *
+ *  low level html markup
+ *  normalize
+ *
+ *  CSS
+ *
+ */
+
+
+/** -------------------------------- minimal box model */
+
+
+*, *:before, *:after { box-sizing: border-box; }
+html                 { height: 100%; }
+html, body           { margin: 0; padding: 0; }
+
+
+/** full-height 2019
+    https://css-tricks.com/some-things-you-oughta-know-when-working-with-viewport-units/
+*/  body {
+        min-height:  100vh;
+        min-height: -webkit-fill-available;
+        min-height: -moz-available;
+        min-height:  available;
+        min-height: -webkit-stretch;
+        min-height: -moz-stretch;
+        min-height:  stretch;
+    }
+
+
+/** -------------------------------- improve design & UX */
+
+
+html    { scroll-behavior: smooth; cursor: default; }
+body    { overflow-y: scroll; }
+
+/* Single taps are dispatched immediately on clickable elements */
+a, area, button, input, label, select, summary, textarea, [tabindex] {
+   -ms-touch-action: manipulation;
+    touch-action:    manipulation;
+}
+
+
+/** -------------------------------- semantic markup without design */
+
+
+figure, figcaption, fieldset, legend {
+    display: block;
+    margin:  0;
+    padding: 0;
+    border:  0;
+    white-space: normal;
+}
+main, article, section, aside, header, footer, nav {
+    display: block;
+}
+pre, code {
+    display: block;
+}
+h1, h2, h3, h4, h5, h6 {
+    margin:  0;
+    padding: 0;
+    font-family: inherit;
+    font-size:   inherit;
+    line-height: inherit;
+    font-weight: inherit;
+}
+p, blockquote {
+    margin:  0;
+    padding: 0;
+    font:    inherit;
+}
+button {
+    padding:    0.25rem 1.5rem;
+    border:     0;
+    font:       inherit;
+  --background-color: var(--back-color-accent, transparent);
+    background-color: var(--background-color);
+  --color:            var(--text-color, inherit);
+    color:            var(--color);
+}
+
+
+/** -------------------------------- images and media as illustrations */
+
+
+img, svg, canvas {
+    display:   block;
+    max-width: 100%;
+    margin:    0;
+    padding:   0;
+    border:    0;
+}
+figure, figcaption {
+    display:   block;
+    max-width: 100%;
+    margin:    0;
+    padding:   0;
+    border:    0;
+}
+iframe, embed, object {
+    display:   block;
+    max-width: 100%;
+    margin:    0;
+    padding:   0;
+    border:    0;
+}
+
+
+/** -------------------------------- default content */
+
+
+a { color: inherit; }
+
+ul, ol {
+    padding:  0;
+    margin:   0;
+    margin-left: var(--col-space, 1.5rem);
+}
+
+hr {
+    background: transparent;
+    box-shadow: none;
+    border:  0;
+    margin:  0;
+
+ /* used as empty space */
+    display:    block;
+    font-size:  inherit;
+    height:     var(--mid-space, 2.5rem);
+}
+
+td, th {
+    text-align:     left;
+    vertical-align: top;
+    padding-top:    0.25em;
+    padding-bottom: 0.25em;
+
+ /* Table data default font settings: sans, 13/16 */
+    font-family: var(--font-family-interface, sans-serif);
+  --font-size:   var(--dec-font-size, calc(13/16*1em));
+    font-size:   var(--font-size);
+  --line-height: var(--dec-line-height, calc(16/13));
+    line-height: var(--line-height);
+}
+
+
+/** -------------------------------- markup workers */
+
+
+[hidden], .hidden { display: none!important; }
+[markup], .markup {
+    padding: 0;
+    margin:  0;
+    list-style:      none;
+    text-decoration: none;
+}
+
+
+/*  EOF html wrap */

@@ -1,0 +1,595 @@
+/*  ------------------------------------------------------ Native font stack 2018 */
+
+:root {
+  --font-family--native-sans:
+       -apple-system,        /* Safari for macOS and iOS (San Francisco) */
+        system-ui,           /* macOS Chrome, Windows Chrome */
+        BlinkMacSystemFont,  /* Chrome < 56 for macOS (San Francisco) */
+       "Segoe UI",           /* Windows */
+        Roboto,              /* Android */
+        Oxygen,              /* KDE */
+        Ubuntu,              /* Ubuntu */
+        Cantarell,           /* GNOME */
+       "Fira Sans",          /* Firefox OS */
+       "Helvetica Neue",     /* old macOS */
+        Arial,               /* Basic web fallback */
+        sans-serif,
+       "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"; /* Emoji */
+}
+
+
+/*  ------------------------------------------------------ Define design system */
+
+
+*, *:before, *:after { box-sizing: border-box; }
+
+html {
+    height:  100%;
+    margin:  0;
+    padding: 0;
+}
+body {
+    width:   100%;
+    height:  auto;
+    margin:  0;
+    padding: 0;
+
+    background-color: hsl(226, 15%, 12%);
+    color:            hsl(226, 27%, 90%);
+
+    font-family: var(--font-family--native-sans);
+    line-height: 1.5;
+    font-weight: 400;
+
+    overflow: hidden;
+  --menu-size: 10vw;
+}
+
+.box {
+    display: flex;
+    justify-content: center;
+    align-content:   center;
+    align-items:     center;
+
+    font-size: 2rem;
+    padding:   1rem;
+}
+
+.text-color-accent {
+    color: hsl(204, 22%, 55%);
+    color: hsl(184, 61%, 24%);
+    font-weight: bolder;
+}
+
+
+/*  ------------------------------------------------------ Nav menu */
+
+
+.el-menu {
+    position: fixed;
+    z-index:  2;
+    top:  2rem;
+    left: 1rem;
+    right: 1rem;
+
+    display: flex;
+    justify-content: flex-start;
+}
+.el-menu.is-hidden { display: none; }
+.el-menu.hide-help .menu-button.help { opacity: 0; }
+
+.menu-button {
+    width:    var(--menu-size);
+    height:   var(--menu-size);
+    position: relative;
+    z-index:  0;
+
+    background-repeat: no-repeat;
+    background-size:   contain;
+    transform-origin:  center center;
+    transition:        transform 240ms;
+    transition-timing-function: cubic-bezier(0.175,  0.885, 0.320, 1.275);
+}
+.menu-button::before,
+.menu-button::after {
+    content: '';
+    position: absolute;
+    z-index:  1;
+    top:      0;
+    right:    0;
+    bottom:   0;
+    left:     0;
+
+    background-repeat: no-repeat;
+    background-size:   contain;
+}
+.menu-button::before { display: none;  }
+.menu-button::after  { display: block; }
+
+.menu-button.back         { background-image: url(../art/eye-1.svg); }
+.menu-button.back::before { background-image: url(../art/eye-ball-1.svg); }
+.menu-button.back::after  { background-image: url(../art/back.svg); }
+.menu-button.help         { background-image: url(../art/eye-2.svg); }
+.menu-button.help::before { background-image: url(../art/eye-ball-2.svg); }
+.menu-button.help::after  { background-image: url(../art/help.svg); }
+
+.menu-button.stop {
+    background-image: url(../art/eye-3.svg);
+    display: none;
+}
+.menu-button.stop::after  { background-image: url(../art/stopit.svg); }
+.menu-button.good {
+    background-image: url(../art/eye-3.svg);
+    margin-left: auto;
+    display: none;
+}
+.menu-button.good::after  { background-image: url(../art/good.svg); }
+
+.saved-icon {
+    display: inline-block;
+    vertical-align: middle;
+    width: 1em;
+    height: 1em;
+    margin-left: 0.5em;
+    transform: scale(3);
+    background-repeat: no-repeat;
+    background-size:   contain;
+    background-image: url(../art/good.svg);
+}
+
+.el-menu.close-only .menu-button.back { display: none;  }
+.el-menu.close-only .menu-button.help { display: none;  }
+.el-menu.close-only .menu-button.stop { display: block; }
+/*.el-menu.close-only .menu-button.good { display: block; }*/
+
+/*  Intro buttons */
+
+.el-menu.is-intro .menu-button.back {
+    transform: translate(100%, 100%) scale(2);
+}
+.el-menu.is-intro .menu-button.help {
+    transform: translate(125%, 100%) scale(2);
+}
+.el-menu.is-intro .menu-button.back::before,
+.el-menu.is-intro .menu-button.help::before {
+    display: block;
+    animation: ShakeLikeRefuse 2.82s cubic-bezier(.36,.07,.19,.97) infinite;
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+.el-menu.is-intro .menu-button.back::after,
+.el-menu.is-intro .menu-button.help::after {
+    display: none;
+}
+@keyframes ShakeLikeRefuse {
+  10%, 90%      { transform: translate3d(-1px, 0, 0); }
+  20%, 80%      { transform: translate3d( 2px, 0, 0); }
+  30%, 50%, 70% { transform: translate3d(-4px, 0, 0); }
+  40%, 60%      { transform: translate3d( 4px, 0, 0); }
+}
+
+
+/* remove smile
+
+.el-menu.is-intro::after {
+    content: '';
+    position: absolute;
+    z-index:  1;
+    top:      0;
+    right:    0;
+    bottom:   0;
+    left:     0;
+
+    background-repeat: no-repeat;
+    background-size:   contain;
+    background-image: url(../art/smile.svg);
+
+    width:    var(--menu-size);
+    height:   var(--menu-size);
+    transform: translate(150%, 300%) scale(2);
+    opacity: 0.15;
+}
+*/
+
+
+/*  ------------------------------------------------------ Screens */
+
+
+.screen {
+    height:   100vh;
+    width:    100%;
+    overflow: hidden;
+    position: fixed;
+    z-index:  1;
+
+    padding:   calc( 1*var(--menu-size) + 3rem) 1rem 1rem 1rem;
+}
+.screen:not(.is-active) {
+    transform: translateX(100%);
+}
+
+
+/*  ------------------------------------------------------ Intro */
+
+
+#Intro {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr min-content;
+    grid-template-areas: 'logo text' 'logo entrance';
+    align-content: stretch;
+    padding-top: 1rem;
+}
+.el-intro-message {
+    grid-area: text;
+    font-size:3rem;
+}
+
+.el-intro-button {
+    grid-area: entrance;
+    background-color: hsl(359, 54%, 53%);
+    font-size: 4rem;
+}
+
+.el-welcome-logo {
+    width: 8rem;
+    height: auto;
+}
+.el-welcome-robot .title {
+    color: hsl(184, 61%, 24%);
+    font-size: 6rem;
+    font-weight: bolder;
+    text-shadow: -1px -1px 0 black, -1px 1px 0 black, 1px -1px 0 black, 1px 1px 0 black, -2px -2px 0 black, 2px 2px 0 black, 2px -2px 0 black, -2px 2px 0 black;
+}
+.el-ready-app {
+    background-color: hsl(184, 61%, 24%);
+    font-size: 2rem;
+    max-width: 24rem;
+    margin: 0 auto;
+    margin-bottom: 2rem;
+    padding: 0.5rem 2rem;
+}
+.el-launch-app {
+    background-color: hsl(359, 54%, 53%);
+    font-size: 2rem;
+    max-width: 24rem;
+    margin: 0 auto;
+    padding: 0.5rem 2rem;
+}
+
+#Launch:not(.is-ready) .el-launch-app {
+    opacity: 0;
+}
+#Launch.is-ready .el-launch-app {
+    opacity: 1;
+}
+#Launch.is-ready .el-ready-app {
+    display: none;
+}
+
+
+/*  ------------------------------------------------------ Products */
+
+
+#Products {
+    display:  grid;
+    grid-gap: 1rem;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows:    1fr 1fr;
+    align-content: stretch;
+}
+#Products .box {
+    position:   relative;
+    z-index:    1;
+    border:     0.25rem solid black;
+    font-size:  3rem;
+    text-align: center;
+
+  --instock: 1;
+  --color: firebrick;
+}
+#Products .box.is-empty {
+    opacity: 0.25;
+}
+#Products .box.is-empty::before {
+    background-repeat: no-repeat;
+    background-size:   contain;
+    background-image:  url(../art/stopit.svg);
+}
+
+#Products .box:nth-child(1) { --color: hsl(202, 81%, 23%); }
+#Products .box:nth-child(2) { --color: hsl(187, 39%, 40%); }
+#Products .box:nth-child(3) { --color: hsl(355, 23%, 48%); }
+#Products .box:nth-child(4) { --color: hsl(212, 34%, 29%); }
+#Products .box:nth-child(5) { --color: hsl(184, 60%, 24%); }
+#Products .box:nth-child(6) { --color: hsl(179, 60%, 35%); }
+
+#Products .box::before,
+#Products .box::after {
+    content: '';
+    position: absolute;
+    z-index: -2;
+    top:      0;
+    right:    0;
+    bottom:   0;
+    left:     0;
+}
+#Products .box::before {
+    background-color: var(--color);
+}
+#Products .box::after {
+    background-color: hsla(0,0%,0%,0.15);
+    transform: scaleY(0);
+    transform-origin: center bottom;
+    transition: transform 640ms cubic-bezier(0.165,  0.84,  0.44,  1);
+}
+#Products.is-active .box::after {
+    transform: scaleY(var(--instock));
+}
+
+
+/*  ------------------------------------------------------ Setup */
+
+
+#Setup {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows:    1fr;
+    grid-gap: 1rem;
+    align-content: stretch;
+}
+#Setup .box {
+    position: relative;
+    z-index:  1;
+
+    border:       0.25rem solid black;
+    font-size:    4rem;
+    text-align:   center;
+    align-items: flex-end;
+}
+#Setup .box::before,
+#Setup .box::after {
+    content: '';
+    position: absolute;
+    z-index: -2;
+    top:      0;
+    right:    0;
+    bottom:   0;
+    left:     0;
+}
+#Setup .box::before {
+  --color: hsl(184, 60%, 24%);
+    background-color: var(--color);
+}
+#Setup .box::after {
+    background-repeat: no-repeat;
+    background-size:   contain;
+    opacity: 0.15;
+}
+
+.box.size-s::after { background-image: url(../art/size-s.svg); }
+.box.size-m::after { background-image: url(../art/size-m.svg); }
+.box.size-l::after { background-image: url(../art/size-l.svg); }
+
+/*  ------------------------------------------------------ Prepare */
+
+#Prepare {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows:    1fr min-content;
+    grid-template-areas:  'text text' 'x button'
+}
+.el-confirm-your-choice { grid-column: text;   }
+.el-confirmation-button { grid-column: button; }
+
+.el-confirm-your-choice {
+    font-size: 3rem;
+}
+.el-confirm-your-choice .title {
+    font-size: 4rem;
+}
+.el-confirmation-button {
+    background-color: hsl(359, 54%, 53%);
+    font-size: 3rem;
+    padding:   1rem;
+}
+
+/*  ------------------------------------------------------ Action */
+
+#Action {
+    display: grid;
+    grid-template-columns: 3fr 2fr;
+    grid-template-rows:    1fr min-content;
+    grid-template-areas:  'text text' 'x button'
+}
+.el-hold-the-button { grid-column: text;   }
+.el-finish-pump     { grid-column: button; }
+
+.el-finish-pump {
+    background-color: hsl(359, 54%, 53%);
+    font-size: 3rem;
+    padding:   1rem;
+}
+.el-hold-the-button {
+    font-size: 4rem;
+    align-content: flex-start;
+    align-items:   flex-start;
+}
+.el-stop-the-button {
+    margin: var(--menu-size) auto 0 auto;
+    transform: scale(2);
+}
+.menu-button.el-stop-the-button         { background-image: url(../art/eye-3.svg);  }
+.menu-button.el-stop-the-button::after  { background-image: url(../art/stopit.svg); }
+
+
+/*  ------------------------------------------------------ Thanks */
+
+.el-thank-you {
+    font-size: 4rem;
+}
+.el-feedback {
+    background-color: hsl(359, 54%, 53%);
+    font-size: 4rem;
+    width: 16rem;
+    margin: 0 auto;
+    margin-top: 2rem;
+    padding: 1rem 2rem;
+}
+
+
+/*  ------------------------------------------------------ Help */
+
+.el-help-text {
+    font-size: 4rem;
+}
+.el-about-illustration img {
+    max-width: 100%;
+    max-height: 40vh;
+}
+
+/*  ------------------------------------------------------ Pump Action */
+
+#Pump {
+    padding-top: 1rem;
+
+    display: flex;
+    justify-content: center;
+    align-content:   flex-start;
+    align-items:     flex-start;
+}
+.el-machine {
+  --size: 0.7;
+    margin: 0 auto;
+    width:  calc( 100vw * var(--size));
+    height: calc( 64vw * var(--size) );
+    background-repeat: no-repeat;
+    background-size:   contain;
+    background-image: url(../art/action.svg);
+    position: relative;
+    z-index:  0;
+}
+.el-pump {
+    position: absolute;
+    z-index:  1;
+    top:    calc( 11.000vw * var(--size) );
+    left:   calc( 70.000vw * var(--size) );
+    width:  calc( 15.372vw * var(--size) );
+    height: calc( 15.046vw * var(--size) );
+    background-repeat: no-repeat;
+    background-size:   contain;
+    background-image:  url(../art/action-pump.svg);
+    animation: SimpleRotation 1800ms linear infinite;
+    transform-origin: center center;
+    
+}
+@keyframes SimpleRotation {
+    from {transform: rotate(0deg);}
+    to   {transform: rotate(359deg);}
+}
+.el-bubbles {
+    position: absolute;
+    z-index:  1;
+    top:    calc( 30vw * var(--size) );
+    left:   calc( 25vw * var(--size) );
+    width:  calc(  5vw * var(--size) );
+    height: calc(  5vw * var(--size) );
+
+    background-repeat: no-repeat;
+    background-size:   contain;
+    background-image:  url(../art/eye-1.svg);
+    transform: translateX(0%) translateY(0%);
+    opacity: 0.4;
+    animation: BubbleIt 1800ms cubic-bezier(0.6,    0.04,  0.98,  0.335) infinite;
+}
+.el-bubbles::before {
+    content: '';
+    position: absolute;
+    z-index:  1;
+    top:      0;
+    right:    0;
+    bottom:   0;
+    left:     0;
+    opacity: 0.8;
+    transform: translate(-50%,-100%) scale(0.5);
+    background-repeat: no-repeat;
+    background-size:   contain;
+    background-image:  url(../art/eye-2.svg);
+}
+.el-bubbles::after {
+    content: '';
+    position: absolute;
+    z-index:  1;
+    top:      0;
+    right:    0;
+    bottom:   0;
+    left:     0;
+    opacity: 0.6;
+    transform: translate(50%,50%) scale(0.32);
+    background-repeat: no-repeat;
+    background-size:   contain;
+    background-image:  url(../art/eye-3.svg);
+}
+@keyframes BubbleIt {
+    0% {
+        transform: translateX(0%) translateY(0%);
+        opacity: 0.4;
+    }
+    20% {
+        transform: translateX(-25%) translateY(-50%);
+        opacity: 0.3;
+    }
+    60% {
+        transform: translateX(25%) translateY(-200%);
+        opacity: 0.2;
+    }
+    100% {
+        transform: translateX(5%) translateY(-300%);
+        opacity: 0.1;
+    }
+}
+
+#PumpCounter {
+    pointer-events: none;
+}
+.el-gas-numbers {
+    position: absolute;
+    z-index:  1;
+    bottom:   12%;
+    left:     10vw;
+    color:    hsl( 42, 79%, 53%);
+    font-weight: bolder;
+    font-size: 15vw;
+    min-width: 30vw;
+    max-width: 80vw;
+    overflow: hidden;
+    white-space: nowrap;
+    line-height:  1;
+    text-align: right;
+    text-shadow: -1px -1px 0 black, 1px 1px 0 black, -2px -2px 0 black, 2px 2px 0 black;
+}
+.el-gas-numbers .ml {
+    font-size: 0.32em;
+    min-width: 6rem;
+    display: inline-block;
+    text-align: left;
+}
+
+
+#Connection.screen.is-visible {
+    position: fixed;
+    z-index:  3;
+    background-color: hsl(226, 15%, 12%);
+    color:            hsl(226, 27%, 90%);
+    transform: translateX(0);
+}
+.el-server-connection {
+    font-size: 3em;
+}
+.el-server-fallback {
+    opacity: 0.25;
+}
+
+
+/*  EOF styles */

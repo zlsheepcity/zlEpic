@@ -1,0 +1,27 @@
+div#collumn_right div.collumn_padding {margin:0 0 0 24px;}
+div#collumn_right div.divider {margin-right:0;margin-left:0;}
+
+form#qsearch {margin:0;padding:8px 0 8px 0;}
+
+ul#sitemenu {margin:0 32px;padding:0;font-family:'georgia',serif;font-size:.9em;line-height:1.5em;}
+ul#sitemenu li {margin:0;padding:0;color:#F90;}
+ul#sitemenu li span {color:#666;}
+ul#sitemenu ul {margin:0 16px;padding:0;list-style:circle;}
+ul#sitemenu a {text-decoration:none;}
+ul#sitemenu a:hover {text-decoration:underline;}
+
+div#collumn_right ul.df_ul {font-size:.9em;}
+
+
+form#signup {margin:0;padding:0;background:#FCE;}
+form#signup fieldset {border:0;margin:0;padding:8px;padding-left:80px;}
+form#signup legend {font-family:arial,tahoma,sans-serif;color:#888;font-weight:bold;font-size:.8em;margin:0;padding:0;}
+form#signup label {position:absolute;margin-left:-60px;font-family:arial,tahoma,sans-serif;font-size:.7em;}
+form#signup ul {font-size:.8em;color:#888;margin:0 0 0 36px;padding:0 0 8px 0;}
+form#signup ul li {margin:0;padding:0;}
+
+
+div#form_signup {padding-left:16px;}
+div#form_signup form {margin:0 0 12px 0;padding:0;}
+div#form_signup label {display:block;color:#666;font-size:9px;font-family:arial,tahoma,sans-serif;}
+

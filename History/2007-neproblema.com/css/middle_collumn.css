@@ -1,0 +1,22 @@
+div#collumn_middle div.collumn_padding {margin:0 0 0 24px;}
+div#collumn_middle div.divider {margin-right:0;margin-left:0;}
+
+div#site_intro {font-family:'times new roman',times,georgia,serif;font-size:.75em;padding:4px 0 0 0;}
+div#site_intro div.subs {text-align:right;font-style:italic;}
+
+div.short_list {padding-left:0;}
+div.short_list h3 {padding:0;margin:0;margin-top:1em;font-size:.9em;font-weight:bold;color:#000;font-family:arial,tahoma,sans-serif;}
+div.short_list h3.theme {padding:0;margin:0;margin-top:1em;font-size:1em;font-weight:normal;color:#000;
+	border-bottom:0px solid #666;text-transform:uppercase;font-family:'georgia',serif;}
+
+div.short_list h3.theme a {color:#000;text-decoration:none;}	
+div.short_list h3.theme a:hover {text-decoration:underline;}
+
+div.short_list div.subtitle {font-size:.7em;line-height:1em;font-family:arial,tahoma,sans-serif;}
+
+div.short_list div.item {padding:8px 0;font-size:.9em;}
+div.short_list div.item a {text-decoration:none;}
+div.short_list div.item a:hover {text-decoration:underline;}
+
+
+div.book_preview {border:0px #CCC solid;padding:8px;text-align:center;font-family:arial,tahoma,sans-serif;font-size:.9em;}

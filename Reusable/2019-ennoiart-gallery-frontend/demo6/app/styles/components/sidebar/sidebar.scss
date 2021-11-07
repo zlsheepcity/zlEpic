@@ -1,0 +1,140 @@
+/* ==============================================================
+    fixed sidebar with visible and hidden states
+    2019.4.13
+============================================================== */
+
+/* USE CASE
+    <nav class="sidebar is-active">
+        xoxox
+    </nav>
+*/
+
+//* ------------------------------------ universal shadow overlay
+
+$z-index-shadowOverlay: 2;
+
+// container
+
+%screen-has-shadow-overlay {
+    overflow: hidden;
+    .screen-shadow-overlay {
+        opacity:0.8;
+        pointer-events: auto;
+        transition: opacity 400ms ease-in;
+    }
+}
+.has-shadow-overlay { @extend %screen-has-shadow-overlay; }
+
+// overlay
+
+.screen-shadow-overlay {
+    background-color: black;
+    position: fixed;
+    z-index: $z-index-shadowOverlay;
+    top:    0;
+    bottom: 0;
+    right:  0;
+    left:   0;
+    pointer-events: none;
+    opacity: 0;
+}
+/**/
+
+.has-active-sidebar { @extend %screen-has-shadow-overlay; }
+
+
+
+
+
+//* ------------------------------------ sidebar settings
+
+$z-index-sidebar: 3;
+$sidebar__width-limit:               38rem;
+$sidebar__remaining-space-limit:     6rem;
+
+
+//* ------------------------------------ formulas
+
+$a: $sidebar__width-limit;
+$b: $sidebar__remaining-space-limit;
+$screenNotFullscreenSidebar: 'min-width: #{ $a + $b }';
+
+
+
+//* ------------------------------------ sidebar component
+
+
+.sidebar {
+    background-color: black;
+
+    /* is screen fixed */
+    position: fixed;
+    z-index:  $z-index-sidebar;
+    top:    0;
+    bottom: 0;
+    left:   100%;
+
+    /* has width */
+    width:  100%;
+    @media screen and ($screenNotFullscreenSidebar) {
+        max-width: $sidebar__width-limit;
+    };
+
+    /* has unpredictable content */
+    overflow: auto;
+
+    /* closed state */
+    transform: translateX(0);
+    transition: transform 200ms ease-in;
+
+    /* open state */
+    &.is-active,
+    .has-active-sidebar & {
+        transition-timing-function: ease-out;
+        transform: translateX(-100%);
+    }
+
+}
+.sidebar-westside {
+    @extend .sidebar;
+    left:  auto;
+    right: 100%;
+    &.is-active,
+    .has-active-sidebar & {
+        transform: translateX(100%);
+    }
+}
+
+.eastside {
+
+    background-color: pink;
+    color: black;
+
+    /* is screen fixed */
+    position: fixed;
+    z-index:  3;
+    top:      0;
+    right:    auto;
+    bottom:   0;
+    left:     100%;
+
+    /* has width */
+    width:  100%;
+    @media screen and ($screenNotFullscreenSidebar) {
+        max-width: $sidebar__width-limit;
+    };
+
+    /* has unpredictable content */
+    overflow: auto;
+
+    /* closed state */
+    transform: translateX(0);
+
+    /* open state */
+    &.is-active {
+        transform: translateX(-100%);
+    }
+
+}
+
+/* eof sidebar */

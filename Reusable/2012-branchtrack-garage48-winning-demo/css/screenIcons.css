@@ -1,0 +1,168 @@
+.screenIconOnMainWorkArea
+{
+  border: none;
+  background:#e8db7d;
+  width:77px;
+  height:77px;
+  position:absolute;
+  z-index:20;
+  cursor:pointer;
+  box-shadow: 2px 2px 10px black;
+}
+
+.screenIconOnMainWorkArea.justCreated
+{
+  z-index:23;
+}
+
+.screenIconOnMainWorkArea.focusedScreen
+{
+  box-shadow:0 0 4px rgba(0,0,0,.5);
+  z-index:24;
+}
+
+.screenIconOnMainWorkArea.linkFrom
+{
+  box-shadow:none;
+  background:#3ff;
+  z-index:24;  
+}
+
+.screenIconOnMainWorkArea:hover
+{
+  outline: solid #e8db7d 2px;
+  box-shadow: 5px 5px 10px black;
+  z-index:25;
+}
+
+/* TEXT LABELS ON SCREEN */
+.screenIconOnMainWorkArea:before,
+.screenIconOnMainWorkArea:after
+{
+  position:absolute;
+  text-align:center;
+  padding-top:50%;
+  margin-top:-0.6em;
+  height:100%;
+  width:100%;
+  font-size: 2em;
+  color: #777;
+  font-family: 'Patrick Hand', cursive;
+  content: '#' attr(data-number);
+}
+
+.screenIconOnMainWorkArea:hover:before { content:"open"; }
+.screenIconOnMainWorkArea:hover:after   { content:""; }
+
+
+.screenIconOnMainWorkArea.focusedScreen:hover:before { content:"close"; }
+
+
+.screenIconOnMainWorkArea.linkTo
+{
+  background:#3ff;
+  z-index:25;
+}
+
+#spiritScreen
+{
+  background:rgba(255,255,255,.4);
+  border-color:rgba(255,255,255,.5);
+  display:none;
+  box-shadow:none;
+  z-index:31;
+  outline:0;
+}
+#spiritScreen:before,
+#spiritScreen:after
+{
+  content:'';
+}
+
+/* details */
+
+.screenIconOnMainWorkArea .details
+{
+  position:absolute;
+  display:none;
+  width:400px;
+  min-height:200px;
+  background:#fff;
+  border:2px #ccc solid;
+  border-radius:8px;
+  box-shadow:0 0 4px rgba(0,0,0,.5);
+  z-index:40;
+  padding-bottom:1.4em;
+}
+.screenIconOnMainWorkArea .details .btnClose
+{
+  cursor:pointer;
+  text-align:center;
+}
+
+.screenIconOnMainWorkArea .details .btnDelete
+{
+  cursor:pointer;
+  position:absolute;
+  bottom:0;
+  line-height:1.4em;
+  padding:0 4px;
+}
+.screenIconOnMainWorkArea .details .btnNewLink
+{
+  cursor:pointer;
+  padding:0 4px;
+  text-align:center;
+  color:#00f;
+}
+.screenIconOnMainWorkArea .details .btnClose:hover,
+.screenIconOnMainWorkArea .details .btnNewLink:hover
+{
+  background:#ccc;
+}
+.screenIconOnMainWorkArea .details .btnDelete:hover
+{
+  background:#F00;
+}
+.screenIconOnMainWorkArea .details .linkList
+{
+  padding:0 4px;
+}
+.screenIconOnMainWorkArea .details .linkList .delete:hover
+{
+  color:#c00;
+  cursor:pointer;
+}
+.screenIconOnMainWorkArea .details .linkList .linked
+{
+  margin-left:40px;
+}
+.screenIconOnMainWorkArea .details .linkList .makeLink:hover
+{
+  color:#00c;
+  cursor:pointer;
+}
+
+.screenIconOnMainWorkArea .details .linkList .link:hover
+{
+  background:#ddd;
+}
+
+.screenIconOnMainWorkArea .details .caption
+{
+  padding:3px 4px 3px 4px;
+  border-bottom:#ccc 1px solid;
+  margin-bottom:3px;
+  text-align:center;
+}
+
+.screenIconOnMainWorkArea .details .text
+{
+  text-align:center;
+}
+
+.screenIconOnMainWorkArea .details .text  textarea
+{
+  width:386px;
+  height:40px;
+}

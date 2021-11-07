@@ -1,0 +1,50 @@
+.navLink { cursor:pointer; }
+
+/* MAIN MENU */
+#CurrentOrdnung[data-currentscreen="overview"]    .OrdnungToolbarItem-Header .navLink-overview span, 
+#CurrentOrdnung[data-currentscreen="orderform"]   .OrdnungToolbarItem-Header .navLink-orderform span,
+#CurrentOrdnung[data-currentscreen="payments"]    .OrdnungToolbarItem-Header .navLink-payments span,
+#CurrentOrdnung[data-currentscreen="vas"]         .OrdnungToolbarItem-Header .navLink-vas span,
+#CurrentOrdnung[data-currentscreen="process"]     .OrdnungToolbarItem-Header .navLink-process span,
+#CurrentOrdnung[data-currentscreen="client"]     .OrdnungToolbarItem-Header .navLink-client span,
+#CurrentOrdnung[data-currentscreen="result"]      .OrdnungToolbarItem-Header .navLink-result span,
+#CurrentOrdnung[data-currentscreen="events"]      .OrdnungToolbarItem-Header .navLink-events span
+{
+  color:white;
+  border-bottom:1px solid #60869A;  
+}
+
+
+/* TIMELINE */
+.OrdnungToolbar .OrdnungToolbarItem-Details,
+.OrdnungToolbar .OrdnungTimeline,
+.OrdnungToolbarPlaceholder
+{ display:none;}
+
+#CurrentOrdnung[data-currentscreen="overview"] .OrdnungToolbar .OrdnungToolbarItem-Details,
+#CurrentOrdnung[data-currentscreen="overview"] .OrdnungToolbar .OrdnungTimeline,
+#CurrentOrdnung[data-currentscreen="overview"] .OrdnungToolbarPlaceholder
+{ display:block;}
+#CurrentOrdnung[data-currentscreen="overview"] .OrdnungToolbarPlaceholder-withoutTimeline { display:none; }
+#CurrentOrdnung[data-currentscreen="overview"] .OrdnungToolbarItems { padding-bottom:40px; }
+
+
+
+
+/* MAIN SCREENS */
+#navOrderScreens .navOrderScreen { display:none; }
+
+#CurrentOrdnung[data-currentscreen="overview"]    #navOrderScreens .navOrderScreen-overview,
+#CurrentOrdnung[data-currentscreen="orderform"]   #navOrderScreens .navOrderScreen-orderform,
+#CurrentOrdnung[data-currentscreen="payments"]    #navOrderScreens .navOrderScreen-payments,
+#CurrentOrdnung[data-currentscreen="vas"]         #navOrderScreens .navOrderScreen-vas,
+#CurrentOrdnung[data-currentscreen="process"]     #navOrderScreens .navOrderScreen-process,
+#CurrentOrdnung[data-currentscreen="result"]      #navOrderScreens .navOrderScreen-result,
+#CurrentOrdnung[data-currentscreen="client"]      #navOrderScreens .navOrderScreen-client,
+#CurrentOrdnung[data-currentscreen="events"]      #navOrderScreens .navOrderScreen-events,
+#CurrentOrdnung[data-currentscreen="design"]      #navOrderScreens .navOrderScreen-design
+{
+  display:block;
+}
+
+

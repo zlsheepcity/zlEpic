@@ -1,0 +1,155 @@
+
+
+.ExerciseInterface .CurrentContent
+{
+	position:absolute;
+	top:0;
+	left:0;
+	right:0;
+	bottom:0;
+	background:url(../img/interface_background.png) 0 0 no-repeat;
+}
+.ExerciseInterface .blPhoneDialog
+{
+	position:absolute;
+	top:25px;
+	left:104px;
+	width:395px;
+}
+
+
+.ExerciseInterface .blInterfaceOption
+{
+	position:absolute;
+	right:0;
+	top:0;
+	bottom:0;
+	width:420px;
+	background:#cdc9c8;
+}
+
+
+
+
+.blInterfaceOption h4
+{
+	font-size:18px;
+	font-weight:normal;
+	padding:20px;
+	margin:12px 12px 12px 12px;
+	text-align:center;
+}
+.blInterfaceOption fieldset
+{
+	margin:12px;
+}
+.blInterfaceOption label
+{
+	display:block;
+	font-size:13px;
+	padding-bottom:2px;
+}
+.blInterfaceOption label input
+{
+	display:inline-block;
+	margin-right:8px;
+}
+.blInterfaceOption label.level1
+{
+	font-weight:bold;
+}
+/* .blInterfaceOption label input[disabled] { visibility:hidden; } */
+
+.blInterfaceOption .thisIsAnswer.error { background:red; }
+.blInterfaceOption .thisIsAnswer.correct { background:green; }
+
+
+.ExerciseInterface .Timer
+{
+	left:12px;
+	top:520px;
+}
+
+.ExerciseInterface .ScoreBar
+{
+	position:absolute;
+	bottom:4px;
+	left:116px;
+}
+
+
+.ExerciseInterface .EndOfCall
+{
+	position:static;
+	width:auto;
+	margin:0 50px;
+}
+
+.DefaultEndOfCall { display: none; }
+.EndOfCall input, .EndOfCall .d { display:none; }
+
+/* BATON IMITATOR */
+
+.intStyle-Button
+{
+	display:block;
+	height:28px;
+	width:300px;
+	margin:5px auto;
+	background:url(../img/intStyleButton-bgr.png) 50% 0 repeat-x;
+	font: normal 14px/28px tahoma, arial, sans-serif;
+	text-align:center;
+	border:#b3b3b3 1px solid;
+	border-top-color:#ddd;
+	border-left-color:#ddd;
+	border-radius: 10px;
+	cursor:pointer;
+}
+.intStyle-Button.green { background-image:url(../img/intStyleButton-bgrGrn.png); }
+.intStyle-Button:hover { 
+	color:#fdb813; 
+}
+
+
+.intStyle-OptGroup
+{
+	display:none;
+	width:300px;
+	margin:2px auto 12px auto;
+}
+
+.correctAnswerCaption {
+	margin-top:10px;
+}
+
+
+
+
+.blInterfaceOption .hint
+{
+	position:absolute;
+	display:inline-block;
+	right:30px;
+	margin-top:2px;
+}
+.blInterfaceOption .hint img { width:14px; height:14px; }
+.blInterfaceOption .hint span /* this is the tooltip itself */
+{
+	display:none;
+	position:absolute;
+	background:white;
+	color:black;
+	border: 1px solid #ccc;
+	border-radius: 8px;
+	padding:10px;
+	width: 300px;
+	font-size: 12px;
+	top:22px;
+	right:-8px;
+	z-index: 9999;
+	line-height:1.2em;
+	text-align:left;
+}
+.blInterfaceOption .hint:hover span { display:block; }
+
+.EndOfCall .hint { display:none; }

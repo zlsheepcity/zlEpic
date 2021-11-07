@@ -1,0 +1,243 @@
+/* DEPRECATED 2019.2.16 */
+
+// ------------------------------------------ settings
+
+$zetka--column-gap: $zetka--column-gap; // 1rem
+$zetka--row-gap:    $zetka--row-gap;    // 1rem
+
+$screenForCompactZetka: $screenForCompactZetka;
+$screenNotCompactZetka: $screenNotCompactZetka;
+$screenForReducedZetka: $screenForReducedZetka;
+$screenNotReducedZetka: $screenNotReducedZetka;
+$screenForClassicZetka: $screenForClassicZetka;
+$screenNotClassicZetka: $screenNotClassicZetka;
+$screenForAlways:       'min-width:1px';
+
+// --------------------------------------------------------------
+// EXTENDERS
+// --------------------------------------------------------------
+
+%zetka-dna {
+
+    // grid setup
+    display:         grid;
+    align-items:     start;
+    grid-auto-flow:  row;
+    grid-auto-rows:  min-content;
+    grid-column-gap: 1*$zetka--column-gap;
+    grid-row-gap:    1*$zetka--row-gap;
+
+}
+%zetka-child-dna {
+
+    // universal column for kids
+    grid-column: main;
+
+    // grid gap replaces margins
+    margin-top:    0;
+    margin-bottom: 0;
+
+}
+
+
+// --------------------------------------------------------------
+// components
+// --------------------------------------------------------------
+
+.zetka {
+    grid-column: full;
+    @extend %zetka-dna;
+    grid-template-columns: $zetka-full;
+    * { @extend %zetka-child-dna; }
+}
+.zetka-layer {
+    grid-column: full;
+    @extend %zetka-dna;
+    grid-template-columns: $zetka-full;
+}
+.zetka-overmain {
+    grid-column: overmain;
+    @extend %zetka-dna;
+    grid-template-columns: $zetka-overmain;
+}
+.zetka-block {
+    grid-column: overmain;
+    @extend %zetka-dna;
+    grid-template-columns: $zetka-overmain;
+}
+
+.zetka-menu {
+    grid-column: overmenu;
+    @extend %zetka-dna;
+    grid-template-columns: $zetka-overmain-limitless;
+}
+.zetka-side {
+    grid-column: overside;
+    @extend %zetka-dna;
+    grid-template-columns: $zetka-overmain-limitless;
+}
+
+// merge content
+
+.zetka-merge {
+    grid-column: overmenu-start / overside-end;
+    @extend %zetka-dna;
+    grid-template-columns: $zetka-merge;
+}
+.zetka-merge-menu {
+    grid-column: overmenu-start / overmain-end;
+    @extend %zetka-dna;
+    grid-template-columns: $zetka-merge-menu;
+}
+.zetka-merge-side {
+    grid-column: overmain-start / overside-end;
+    @extend %zetka-dna;
+    grid-template-columns: $zetka-merge-side;
+}
+
+// screen borders
+
+.zetka-menu-screen {
+    grid-column: full-start / overmenu-end;
+    @extend %zetka-dna;
+    grid-template-columns: $zetka-menu-spaced;
+}
+.zetka-side-screen {
+    grid-column: overside-start / full-end;
+    @extend %zetka-dna;
+    grid-template-columns: $zetka-side-spaced;
+}
+.zetka-merge-menu-screen {
+    grid-column: full-start / overmain-end;
+    @extend %zetka-dna;
+    grid-template-columns: $zetka-merge-menu-screen;
+}
+.zetka-merge-side-screen {
+    grid-column: overmain-start / full-end;
+    @extend %zetka-dna;
+    grid-template-columns: $zetka-merge-side-screen;
+}
+.zetka-half-screen-one {
+    grid-column: full-start / midpoint;
+    @extend %zetka-dna;
+    grid-template-columns: $zetka-half-screen-one;
+}
+.zetka-half-screen-two {
+    grid-column: d / full-end;
+    @extend %zetka-dna;
+    grid-template-columns: $zetka-half-screen-two;
+}
+
+// dividers
+
+.zetka-overhalf-one {
+    grid-column: overmain-start / midpoint;
+    @extend %zetka-dna;
+    grid-template-columns: $zetka-overmain-half-one;
+}
+.zetka-overhalf-two {
+    grid-column: d / overmain-end;
+    @extend %zetka-dna;
+    grid-template-columns: $zetka-overmain-half-two;
+}
+
+.zetka-half-one {
+    grid-column: main-start / midpoint;
+    @extend %zetka-dna;
+    grid-template-columns: $zetka-main-limitless;
+}
+.zetka-half-two {
+    grid-column: d / main-end;
+    @extend %zetka-dna;
+    grid-template-columns: $zetka-main-limitless;
+}
+.zetka-third-one {
+    grid-column: a / span 2;
+    @extend %zetka-dna;
+    grid-template-columns: $zetka-main-limitless;
+}
+.zetka-third-two {
+    grid-column: c / span 2;
+    @extend %zetka-dna;
+    grid-template-columns: $zetka-main-limitless;
+}
+.zetka-third-tri {
+    grid-column: e / span 2;
+    @extend %zetka-dna;
+    grid-template-columns: $zetka-main-limitless;
+}
+.zetka-third-merge-one {
+    grid-column: a / span 4;
+    @extend %zetka-dna;
+    grid-template-columns: $zetka-main-limitless;
+}
+.zetka-third-merge-tri {
+    grid-column: c / span 4;
+    @extend %zetka-dna;
+    grid-template-columns: $zetka-main-limitless;
+}
+
+
+
+// --------------------------------------------------------------
+// responsive changes
+// --------------------------------------------------------------
+
+
+@media ($screenForReducedZetka) {
+
+    .zetka,
+    .zetka-layer
+    { grid-template-columns: $zetka-overmain-spaced; }
+
+    .zetka-merge,
+    .zetka-merge-menu,
+    .zetka-merge-side
+    { grid-template-columns: $zetka-overmain; }
+
+    .zetka-menu-screen,
+    .zetka-merge-menu-screen
+    { grid-template-columns: $zetka-overmain-spaced-menu; }
+
+    .zetka-side-screen,
+    .zetka-merge-side-screen
+    { grid-template-columns: $zetka-overmain-spaced-side; }
+
+    .zetka-half-screen-one { grid-template-columns: $zetka-overmain-half-screen-one; }
+    .zetka-half-screen-two { grid-template-columns: $zetka-overmain-half-screen-two; }
+
+}
+@media ($screenForCompactZetka) {
+
+    .zetka,
+    .zetka-layer,
+    .zetka-merge,
+    .zetka-merge-menu,
+    .zetka-merge-side,
+    .zetka-menu-screen,
+    .zetka-side-screen,
+    .zetka-merge-menu-screen,
+    .zetka-merge-side-screen
+    { grid-template-columns: $zetka-overmain; }
+
+    .zetka-half-screen-one { grid-template-columns: $zetka-overmain-half-one; }
+    .zetka-half-screen-two { grid-template-columns: $zetka-overmain-half-two; }
+
+    .has-mobile-layout {
+        grid-column: overmain;
+        grid-template-columns: $zetka-overmain;
+    }
+
+}
+
+// --------------------------------------------------------------
+// grid break
+// --------------------------------------------------------------
+
+
+@media ($screenForAlways) {
+    .zetka-as-overmain { grid-template-columns: $zetka-overmain-limitless; }
+    .zetka-as-main     { grid-template-columns: $zetka-main-limitless; }
+}
+
+/* EOF zetka columns */

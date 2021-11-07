@@ -1,0 +1,147 @@
+<!doctype html>
+<html>
+<head>
+  <title>TKS:RoomService v3.2</title>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="html/css/all.css" media="all">
+  <link rel="stylesheet" href="html/css/room.css" media="all">
+</head>
+<body>
+
+<!--
+<div class="DB DB-loadedItems">
+  <i itemid="shelf_l_old"></i>
+  <i itemid="shelf_c_old"></i>
+  <i itemid="tv_old"></i>
+  <i itemid="kreslo_old"></i>
+  <i itemid="table_old"></i>
+  <i itemid="headset_old"></i>
+  <i itemid="keyboard_old"></i>
+  <i itemid="monik_old"></i>
+  <i itemid="chair_old"></i>
+  <i itemid="mouse_old"></i>
+</div>
+<div class="DB DB-loadedBalance" balance="10000"></div>
+-->
+
+<div class="SERVER">
+
+<div class="DB DB-serverIsEnabled" status="<%
+Response.Write('true');
+%>"></div>
+
+<!-- load user id -->
+<%
+currentUserId = Session.cur_user_id;
+%>
+
+<!-- create room service for new user -->
+<div class="DB DB-createNewUser" status="<%
+if ( ArrayCount( XQuery('for $elem in cc_intea_roomservices where $elem/userid="'+currentUserId+'" return $elem') ) < 1 ) 
+{
+  RoomService_row = OpenNewDoc( 'x-local://udt/udt_cc_intea_roomservice.xmd' );
+  RoomService_row.BindToDb( DefaultDb );  
+  RoomService_row.TopElem.userid = currentUserId;
+  RoomService_row.TopElem.balance = '0';
+  RoomService_row.TopElem.roomservice = 'i01,i02,i03,i04,i05,i06,i07,i08,i09,i10,';
+  RoomService_row.TopElem.coursedata = 'tests,n,n,0,0,0,0,0,';
+  RoomService_row.Save();
+  Response.Write('true" userid="'+currentUserId);
+}
+else Response.Write('false');
+%>"></div>
+
+<!-- load room service -->
+<%
+currentRoomService = ArrayFirstElem( XQuery('for $elem in cc_intea_roomservices where $elem/userid="'+currentUserId+'" return $elem') );
+%>
+
+<!-- load items -->
+<div class="DB DB-loadedItems">
+<%
+userItems = String(currentRoomService.roomservice);
+
+checkingString = ''
+if (userItems) for( t=0; t < userItems.length; t++ )
+{
+  if ( userItems.charAt(t)==',' )
+  {
+    Response.Write('<');
+    Response.Write('i itemid="'+checkingString+'"></i>\n');
+    checkingString = '';
+  }
+  else checkingString += userItems.charAt(t);
+}
+%>
+</div>
+<div class="DB DB-loadedItems-withoutServer">
+  <i itemid="i01"></i>
+  <i itemid="i02"></i>
+  <i itemid="i03"></i>
+  <i itemid="i04"></i>
+  <i itemid="i05"></i>
+  <i itemid="i06"></i>
+  <i itemid="i07"></i>
+  <i itemid="i08"></i>
+  <i itemid="i09"></i>
+  <i itemid="i10"></i>
+</div>
+
+<!-- load ballance -->
+<div class="DB DB-loadedBalance" balance="<% 
+Response.Write(currentRoomService.balance); 
+%>"></div>
+
+</div>
+
+
+
+
+
+
+<div class="WRAP">
+  <div class="RoomBackground"></div>
+  <div class="RoomItems"></div>
+  <div class="RoomShopping"></div>  
+  <div class="RoomInterface">
+    <div class="BalanceBar blClientInfo">На счету <span class="js-balance"></span> монет</div>    
+	<div class="ShopButton y-button js-shopMode"><span class="currentIsRoom">Зайти в магазин</span><span class="currentIsShop">Вернуться в комнату</span></div>
+  </div>
+  <div class="ItemTooltip">
+    Подсказка
+  </div>
+</div>
+
+<div class="blPopup" id="WarningOfHousewarming">
+	<h6>Первый тренажёр успешно пройден!</h6>
+	<br>За успешное прохождение тренажёров, тебе начисляются игровые очки. Ты можешь использовать их для улучшения своего <b>виртуального рабочего кабинета</b>. <br><br>Первым делом предлагаем тебе обновить в кабинете мебель. Нажми "Зайти в магазин" и приобрети новый стол и другие предметы!<br><br>
+	<div style="padding:8px 0;text-align:center;">
+		<span class="y-button b-close">Продолжить</span>
+	</div>
+</div>
+
+<div class="blPopup" id="WelcomeScreen">
+	<h6>Добро пожаловать!</h6>
+	Твой виртуальный рабочий кабинет в твоем распоряжении. Можешь приобрести новые предметы. Чтобы заработать больше очков, нужно пройти все тренажёры с безупречным результатом.
+	<div style="padding:8px 0;text-align:center;">
+		<span class="y-button b-close">Продолжить</span>
+	</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+<script src="html/js/lib_jquery.js"></script>
+<script src="html/js/lib_jquery.bpopup.js"></script>
+<script src="room_items.js"></script>
+<script src="html/js/all.js"></script>
+<script src="html/js/room.js"></script>
+</body>
+</html>

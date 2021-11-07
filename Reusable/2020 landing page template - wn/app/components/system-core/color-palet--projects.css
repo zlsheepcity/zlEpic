@@ -1,0 +1,138 @@
+/** Some Project Paletes
+ *  zl, 2019.8.18
+ *
+ */
+
+/** ------------------------------------- skup palettes */
+
+
+/* EG 2019 */
+
+:root,
+.color-model {
+    --HSL-sgBrand:               171, 55%, 71%;
+    --HSL-sgBrandDarken:         170, 45%, 41%;
+    --HSL-sgMinor:               201, 22%, 46%;
+    --HSL-sgAction:                0, 62%, 37%;
+    --HSL-sgActionDarken:          0, 67%, 27%;
+    --HSL-sgHighlight:           176, 53%, 94%;
+    --HSL-sgBlack:                 0,  0%,  1%;
+
+    --HSL-egDark:                220, 56%, 24%;
+    --HSL-egLight:               207, 57%, 75%;
+    --HSL-egAccent:               11, 86%, 63%;
+    --HSL-egHoverAccent:          11, 90%, 43%;
+    --HSL-egReaccent:            207, 57%, 51%;
+    --HSL-egHoverReaccent:       207, 61%, 41%;
+    --HSL-egLightReaccent:       207, 56%, 88%;
+    --HSL-egBlack:               240, 15%, 12%;
+    --HSL-egHighlight:           206, 57%, 95%;
+}
+
+
+/** ------------------------------------- color themes */
+
+
+.colors--EG-root {
+  --back-color:         white;
+  --back-color-accent:  hsl(var(--HSL-egLightReaccent));
+  --back-color-descent: hsl(var(--HSL-egHighlight));
+
+  --text-color:         hsl(var(--HSL-egBlack));
+  --text-color-accent:  hsl(var(--HSL-egHoverAccent));
+  --text-color-descent: hsl(var(--HSL-egDark));
+
+  --link-color:         hsl(var(--HSL-egReaccent));
+  --link-color-accent:  hsl(var(--HSL-egHoverReaccent));
+  --link-color-descent: hsl(var(--HSL-egAccent));
+
+  --shadow-color: var(--shadow-color--for-light-base);
+  --light-shadow: var(--light-shadow--for-light-base);
+}
+
+.colors--EG-brand {
+  --back-color:         hsl(var(--HSL-egDark));
+  --back-color-accent:  hsl(var(--HSL-egBlack));
+  --back-color-descent: var(--light-shadow);
+
+  --text-color:         white;
+  --text-color-accent:  hsl(var(--HSL-egAccent));
+  --text-color-descent: hsl(var(--HSL-egHighlight));
+
+  --link-color:         hsl(var(--HSL-egReaccent));
+  --link-color-accent:  hsl(var(--HSL-egReaccent));
+  --link-color-descent: hsl(199, 100%, 33%);
+
+  --shadow-color: var(--shadow-color--for-dark-base);
+  --light-shadow: var(--light-shadow--for-dark-base);
+}
+
+.colors--SG-root {
+  --back-color:         white;
+  --back-color-accent:  hsl(var(--HSL-sgHighlight));
+  --back-color-descent: var(--light-shadow);
+
+  --text-color:         hsl(var(--HSL-sgBlack));
+  --text-color-accent:  hsl(var(--HSL-sgMinor));
+  --text-color-descent: hsl(0, 0%, 62%);
+
+  --link-color:         hsl(var(--HSL-sgBrandDarken));
+  --link-color-accent:  hsl(var(--HSL-sgBrandDarken));
+  --link-color-descent: var(--link-color);
+
+  --shadow-color: var(--shadow-color--for-light-base);
+  --light-shadow: var(--light-shadow--for-light-base);
+}
+
+.colors--SG-brand {
+  --back-color:         hsl(var(--HSL-sgBrand));
+  --back-color-accent:  var(--light-shadow);
+  --back-color-descent: var(--light-shadow);
+
+  --text-color:         hsl(var(--HSL-sgBlack));
+  --text-color-accent:  hsl(var(--HSL-sgAction));
+  --text-color-descent: hsl(var(--HSL-sgMinor));
+
+  --link-color:         hsl(var(--HSL-sgBlack));
+  --link-color-accent:  var(--link-color);
+  --link-color-descent: white;
+
+  --shadow-color: var(--shadow-color--for-light-base);
+  --light-shadow: var(--light-shadow--for-light-base);
+}
+
+.colors--SG-minor {
+  --back-color:         hsl(var(--HSL-sgMinor));
+  --back-color-accent:  var(--light-shadow);
+  --back-color-descent: var(--light-shadow);
+
+  --text-color:         white;
+  --text-color-accent:  hsl(var(--HSL-sgAction));
+  --text-color-descent: hsl(176, 20%, 80%);
+
+  --link-color:         hsl(var(--HSL-sgBrand));
+  --link-color-accent:  hsl(var(--HSL-sgBrandDarken));
+  --link-color-descent: var(--link-color);
+
+  --shadow-color: var(--shadow-color--for-light-base);
+  --light-shadow: var(--light-shadow--for-light-base);
+}
+
+.colors--SG-action {
+  --back-color:         hsl(var(--HSL-sgAction));
+  --back-color-accent:  hsl(var(--HSL-sgActionDarken));
+  --back-color-descent: var(--light-shadow);
+
+  --text-color:         white;
+  --text-color-accent:  hsl(var(--HSL-sgHighlight));
+  --text-color-descent: hsl(var(--HSL-sgHighlight));
+
+  --link-color:         white;
+  --link-color-accent:  var(--link-color);
+  --link-color-descent: var(--link-color);
+
+  --shadow-color: var(--shadow-color--for-light-base);
+  --light-shadow: var(--light-shadow--for-light-base);
+}
+
+/*  EOF Project Paletes */

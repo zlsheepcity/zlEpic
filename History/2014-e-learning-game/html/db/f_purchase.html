@@ -1,0 +1,74 @@
+<!doctype html>
+<html>
+<head>
+  <title>f_purchase</title>
+  <meta charset="utf-8"/>
+  <link rel="stylesheet" href="../css/all.css" media="all">
+  <link rel="stylesheet" href="../css/room.css" media="all">
+</head>
+<body>
+
+<div class="WRAP">
+  <div class="RoomBackground"></div>
+</div>
+
+<%
+currentUserId = Session.cur_user_id;
+itemid    = String(Request.QueryString.i);
+itemprice = Int(Request.QueryString.p);
+nexturl   = String(Request.QueryString.n);
+currentRoomService_row = ArrayFirstElem( XQuery('for $elem in cc_intea_roomservices where $elem/userid="'+currentUserId+'" return $elem') );
+currentRoomService = OpenDoc(UrlFromDocID(currentRoomService_row.id));
+%>
+
+
+<%
+// check user have this item //////////////////////////////////////////////////////////////////////////////
+userHaveThisItem = false;
+userItems = String(currentRoomService.TopElem.roomservice);
+
+checkingString = ''
+if (userItems) for( t=0; t < userItems.length; t++ )
+{
+  if ( userItems.charAt(t)==',' )
+  {
+    if ( checkingString == itemid ) userHaveThisItem = true;
+    checkingString = '';
+  }
+  else
+  {
+    checkingString += userItems.charAt(t);
+  }
+}
+%>
+
+<%
+// save item to user //////////////////////////////////////////////////////////////////////////////
+if ( !userHaveThisItem )
+{
+  userBalance = Int(currentRoomService.TopElem.balance);
+  if ( userBalance >= itemprice )
+  {
+    userBalance -= itemprice;
+    currentRoomService.TopElem.balance = String(userBalance);
+    currentRoomService.TopElem.roomservice = userItems + itemid + ',';
+    currentRoomService.Save();
+  }
+}
+%>
+
+<%
+// define redirect page
+Response.Write('<div id="redirect" page="'+nexturl+'"></div>');
+%>
+
+
+<script src="../js/lib_jquery.js"></script>
+<script>
+$(document).ready(function(){
+  //window.location.href=$('#redirect').attr('page') +'.html'; 
+  window.location.href='../../2_room.html#fback'; 
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,214 @@
+<html>
+<head>
+	<title>Neproblema 0.2</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=windows-1251" />
+	<style type="text/css">
+		@import "css/main.css";
+		@import "css/layout.css";
+		@import "css/header.css";
+		@import "css/text_list.css";
+		@import "css/middle_collumn.css";
+		@import "css/right_collumn.css";
+		@import "css/footer.css";
+		@import "css/comments.css";
+		@import "css/user_forms.css";
+		
+		@import "css/color.css";
+		@import "css/img.css";
+	</style> 	
+</head>
+<body>
+
+	<div id="header">
+		<h1><a href="">neproblema.com</a></h1>
+		<div class="q"><a href="">?</a></div>		
+		<ul>
+			<li><a href="">статьи</a></li>
+			<li><a href="">люди говорят</a></li>			
+			<li><a href="">рассылки</a></li>
+			<li><a href="">семинары</a></li>
+		</ul>
+		<div class="blockend"></div>
+	</div>
+
+	<div id="body" class="twocollumns">
+		
+		<div id="collumn_left">
+			<div id="collumn_leftleft">
+			<br/>
+			<div class="text_list">
+				
+				<h1>Регистрация нового участника</h1>
+				<h3 class="theme">Зачем нужна регистрация на нашем сайте?</h3>
+				<div class="txt">
+					Любой посетитель «непроблемы», независимо от того зарегистрирован он или нет, может читать любые статьи и другие материалы сайта.<br/><br/>
+					Если же Вам есть что сказать в ответ, или быть может у Вас скопились вопросы ко мне и другим участникам — зарегистрируйтесь и Вы сможете публиковать комментарии и собственные статьи.<br/><br/>
+					К тому же, некоторые удобства в чтении сайта (такие как «закладки» или «список всех непрочитанных статей») технически мы можем сделать только для неанонимных посетителей.
+				</div>
+				
+				<div class="divider"></div>
+				
+				<table class="userform">
+					<tr>
+						<td></td>
+						<td class="f"><div class="note">(все поля в форме обязательны к заполнению)</div></td>
+					</tr>
+					<tr>
+						<td class="l"><label for="name">логин</label></td>
+						<td class="f">
+							<input type="text" name="name" id="name" />
+							<input type="button" title="Проверить доступность логина для регистрации" onclick="CheckLogin(); return false;"  value="Проверить имя"><div id='result-registration'></div>
+						</td>
+					</tr>
+					<tr>
+						<td class="l"><label for="password1">пароль</label></td>
+						<td class="f"><input type="password" name="password1" /> не менее 6 символов</td>
+					</tr>	
+					<tr>
+						<td class="l"><label for="password2">пароль (еще раз, для верности)</label></td>
+						<td class="f"><input type="password" name="password2" /></td>
+					</tr>		
+					<tr>
+						<td class="l"><label for="email">Ваш E-Mail</label></td>
+						<td class="f"><input type="text" name="email" /></td>
+					</tr>
+					<tr>
+						<td></td>
+						<td class="f"><br/>###<br/>код безопасности</td>
+					</tr>
+					<tr>
+						<td class="l"><label for="sec_code">введите код</label></td>
+						<td class="f"><input type="text" name="sec_code" /></td>
+					</tr>
+	                <tr>
+						<td></td>
+						<td><br/><input name="image" type="submit" value="Зарегистрироваться"/></td>
+	                </tr>					
+				</table>
+				
+
+				<h3 class="theme">Регистрация прошла успешно</h3>
+				<div class="txt">
+					При желании, Вы можете ввести информацию о себе. Другие посетители сайта смогут узнать Вас немного ближе.<br/>Вы можете пропустить эту форму и ввести информацию о себе в любое другое время (или изменить).
+				</div>	
+
+				<div class="divider"></div>
+				
+				<table class="userform">
+					<tr>
+						<td class="l"><label for="fullname">Ваше имя</label></td>
+						<td class="f"><input type="text" name="fullname" id="fullname" /></td>
+					</tr>
+					<tr>
+						<td class="l"><label for="land">место жительства</label></td>
+						<td class="f"><input type="password" name="land" /></td>
+					</tr>	
+					<tr>
+						<td class="l"><label for="land">текст о себе</label></td>
+						<td class="f"><textarea name="info" style="width:320px; height:70px;"></textarea></td>
+					</tr>	
+	                <tr>
+						<td></td>
+						<td><br/><input name="image" type="submit" value="Сохранить данные"/></td>
+	                </tr>					
+				</table>				
+	
+				
+			</div>
+			</div>
+
+			<div class="blockend"></div>
+		</div>
+		
+		<div id="collumn_middle">
+		<div class="collumn_padding">
+			
+		</div>
+		</div>
+		
+		<div id="collumn_right">	
+		<div class="collumn_padding">
+			<form id="qsearch">
+				<input type="text" value=""/>
+				<input type="submit" value="Искать"/>
+			</form>
+			<div class="divider" style="padding-top:0;"></div>
+			<ul id="sitemenu">
+				<li><a href="">Статьи</a></li>
+				<li><a href="">Люди говорят</a></li>
+				<li>
+					<a href="">Рассылки</a>
+					<ul>
+						<li><a href="">Ник Шестаков</a></li>
+						<li><a href="">Джон Пижон</a></li>
+						<li><a href="">Анфас Профиль</a></li>
+					</ul>
+				</li>
+				<li>
+					<a href="">Семинары и треннинги</a>
+					<ul>
+						<li><a href="">Расписание</a></li>
+						<li><a href="">Отчеты</a></li>
+						<li><a href="">Договориться о семинаре</a></li>
+					</ul>
+					<br/>
+				</li>
+				<li><a href="">О сайте и авторе</a></li>
+				<li><a href="">RSS</a></li>
+			</ul>
+			<div class="divider"></div>
+			
+			<h3 class="theme">Привет, <b class="nocase">Папа Зураб!</b></h3>
+			
+			<ul class="df_ul">
+				<li><a href="">Что нового на сайте?</a></li>
+				<li><a href="">Избранное</a></li>
+				<li><a href="">Напишите свою историю!</a></li>
+			</ul>
+			<br/>
+			<ul class="df_ul">
+				<li><a href="">Информация и настройки</a></li>
+				<li><a href="">Выйти</a></li>
+			</ul>	
+
+			<div class="divider"></div>
+			
+			<h3 class="theme">Участникам сайта<br/><div class="subtitle">&nbsp;</div></h3>
+			
+			
+			<div id="form_signup">
+				<form method="post" onsubmit="javascript:showBusyLayer()" action=''>
+					<label for="login_name">логин:</label>
+					<input name="login_name" tabindex="1" class="t" type="text"/><br/>
+					<label for="login_password">пароль:</label>
+					<input name="login_password" tabindex="2" class="t" type="password"/><br/>
+					<label>&nbsp;</label>
+					<input type="submit" tabindex="3" class="b" value="войти"/><br/>
+					<input name="login" type="hidden" id="login" value="submit" />
+				</form>	
+			</div>
+
+			<ul class="df_ul">
+				<li><a href="{$link_regist}">регистрация</a></li>
+				<li><a href="{$link_regist}">зачем становиться участником?</a></li>
+				<li><a href="{$link_lost}">забыли пароль?</a></li>
+			</ul>
+			
+
+		</div>
+		</div>
+
+		<div class="blockend"></div>
+	</div>	
+
+	<div id="footer">
+		<div class="lnk">
+			<a href="">about this site</a> |
+			<a href="">nick shestakov</a> |
+			<a href="">rss feed</a>
+		</div>
+		&copy; 2004-2008 WWW.NEPROBLEMA.COM
+	</div>
+	
+</body>
+</html>	

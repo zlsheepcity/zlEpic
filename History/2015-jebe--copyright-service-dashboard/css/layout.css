@@ -1,0 +1,101 @@
+.layout-collumn-left {
+  width:30%;
+  float:left;
+}
+.layout-collumn-main {
+  width:40%;
+  float:left;
+}
+.layout-collumn-right {
+  width:30%;
+  float:left;
+}
+
+.layout-collumn-content {
+  width:70%;
+  float:left;
+}
+
+
+
+.CurrentOrder {
+  position:relative;
+}
+
+.CurrentOrder.sideLogIsOpen {
+  padding-right:240px;
+}
+
+
+
+
+.CurrentOrder > nav {
+  text-align:center;
+}
+
+.CurrentOrder > nav a {
+  display:inline-block;
+  padding:2px 4px;
+  margin-right:20px;
+  border-bottom:1px dashed #22C1EA;
+}
+.CurrentOrder > nav a.current {
+  color:white;
+  border-bottom-color:transparent;
+}
+.CurrentOrder > nav a:hover {
+  background-color:#1E2730;
+  border-bottom-color:transparent;
+}
+
+
+
+
+
+.CurrentOrder-Timeline-placeholder {
+  text-align:center;
+  margin:20px 0;
+  padding:120px;
+  background:url(../img/order-timeline-001t.png) 50% 50% no-repeat;
+  background-size: auto 100%;
+}
+
+
+
+
+
+
+.CurrentOrder-Overview:after {
+  content:'';
+  display:block;
+  clear:both;
+}
+.CurrentOrder-Overview > .collumn {
+  width:50%;
+  float:left;
+}
+
+.CurrentOrder-Overview h3 {
+  margin:0;
+  padding:0 0 0 70px;
+  font-size:27px;
+  font-weight:400;
+}
+
+
+
+
+
+
+.CurrentOrder > aside {
+  position:fixed;
+  top:0;
+  bottom:0;
+  right:0;
+  width:239px;
+  border-left: 1px solid #60869A;
+}
+
+
+
+

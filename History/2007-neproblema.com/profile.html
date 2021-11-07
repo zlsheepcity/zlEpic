@@ -1,0 +1,178 @@
+<html>
+<head>
+	<title>Neproblema 0.2</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=windows-1251" />
+	<style type="text/css">
+		@import "css/main.css";
+		@import "css/layout.css";
+		@import "css/header.css";
+		@import "css/text_list.css";
+		@import "css/middle_collumn.css";
+		@import "css/right_collumn.css";
+		@import "css/footer.css";
+		@import "css/comments.css";
+		@import "css/user_forms.css";
+		
+		@import "css/color.css";
+		@import "css/img.css";
+	</style> 	
+</head>
+<body>
+
+	<div id="header">
+		<h1><a href="">neproblema.com</a></h1>
+		<div class="q"><a href="">?</a></div>		
+		<ul>
+			<li><a href="">статьи</a></li>
+			<li><a href="">люди говорят</a></li>			
+			<li><a href="">рассылки</a></li>
+			<li><a href="">семинары</a></li>
+		</ul>
+		<div class="blockend"></div>
+	</div>
+
+	<div id="body" class="twocollumns">
+		
+		<div id="collumn_left">
+			<div id="collumn_leftleft">
+			<br/>
+			<div class="text_list">
+				
+				<h1>Об участнике</h1>
+				<h3 class="theme"><span class="nocase">Папа Зураб</span></h3>
+				
+				<table class="userform">
+					<tr>
+						<td class="l">зарегистрирован</td>
+						<td class="d">12 феб 2008</td>
+					</tr>
+					<tr>
+						<td class="l">последнее посещение</td>
+						<td class="d">12 феб 2008</td>
+					</tr>	
+				</table>
+				
+				<div class="divider"></div>
+
+				<table class="userform">
+					<tr>
+						<td class="l">полное имя</td>
+						<td class="d">Зураб Тсиклеури</td>
+					</tr>
+					<tr>
+						<td class="l">место жительства</td>
+						<td class="d">Канзас, Ямайка</td>
+					</tr>
+					<tr>
+						<td class="l" style="vertical-align:top"><br/>текст о себе</td>
+						<td class="d">При желании, Вы можете ввести информацию о себе. Другие посетители сайта смогут узнать Вас немного ближе.<br/>Вы можете пропустить эту форму и ввести информацию о себе в любое другое время (или изменить).<br/><br/><br/></td>
+					</tr>						
+					<tr>
+						<td class="l">публикаций</td>
+						<td class="d">1 (<a href="">список публикаций</a>)</td>
+					</tr>
+					<tr>
+						<td class="l">комментариев</td>
+						<td class="d">12 (<a href="">список комментариев</a>)</td>
+					</tr>	
+				</table>				
+
+				
+			</div>
+			</div>
+
+			<div class="blockend"></div>
+		</div>
+		
+		<div id="collumn_middle">
+		<div class="collumn_padding">
+			
+		</div>
+		</div>
+		
+		<div id="collumn_right">	
+		<div class="collumn_padding">
+			<form id="qsearch">
+				<input type="text" value=""/>
+				<input type="submit" value="Искать"/>
+			</form>
+			<div class="divider" style="padding-top:0;"></div>
+			<ul id="sitemenu">
+				<li><a href="">Статьи</a></li>
+				<li><a href="">Люди говорят</a></li>
+				<li>
+					<a href="">Рассылки</a>
+					<ul>
+						<li><a href="">Ник Шестаков</a></li>
+						<li><a href="">Джон Пижон</a></li>
+						<li><a href="">Анфас Профиль</a></li>
+					</ul>
+				</li>
+				<li>
+					<a href="">Семинары и треннинги</a>
+					<ul>
+						<li><a href="">Расписание</a></li>
+						<li><a href="">Отчеты</a></li>
+						<li><a href="">Договориться о семинаре</a></li>
+					</ul>
+					<br/>
+				</li>
+				<li><a href="">О сайте и авторе</a></li>
+				<li><a href="">RSS</a></li>
+			</ul>
+			<div class="divider"></div>
+			
+			<h3 class="theme">Привет, <b class="nocase">Папа Зураб!</b></h3>
+			
+			<ul class="df_ul">
+				<li><a href="">Что нового на сайте?</a></li>
+				<li><a href="">Избранное</a></li>
+				<li><a href="">Напишите свою историю!</a></li>
+			</ul>
+			<br/>
+			<ul class="df_ul">
+				<li><a href="">Информация и настройки</a></li>
+				<li><a href="">Выйти</a></li>
+			</ul>	
+
+			<div class="divider"></div>
+			
+			<h3 class="theme">Участникам сайта<br/><div class="subtitle">&nbsp;</div></h3>
+			
+			
+			<div id="form_signup">
+				<form method="post" onsubmit="javascript:showBusyLayer()" action=''>
+					<label for="login_name">логин:</label>
+					<input name="login_name" tabindex="1" class="t" type="text"/><br/>
+					<label for="login_password">пароль:</label>
+					<input name="login_password" tabindex="2" class="t" type="password"/><br/>
+					<label>&nbsp;</label>
+					<input type="submit" tabindex="3" class="b" value="войти"/><br/>
+					<input name="login" type="hidden" id="login" value="submit" />
+				</form>	
+			</div>
+
+			<ul class="df_ul">
+				<li><a href="{$link_regist}">регистрация</a></li>
+				<li><a href="{$link_regist}">зачем становиться участником?</a></li>
+				<li><a href="{$link_lost}">забыли пароль?</a></li>
+			</ul>
+			
+
+		</div>
+		</div>
+
+		<div class="blockend"></div>
+	</div>	
+
+	<div id="footer">
+		<div class="lnk">
+			<a href="">about this site</a> |
+			<a href="">nick shestakov</a> |
+			<a href="">rss feed</a>
+		</div>
+		&copy; 2004-2008 WWW.NEPROBLEMA.COM
+	</div>
+	
+</body>
+</html>	

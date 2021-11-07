@@ -1,0 +1,62 @@
+//* ------------------------------------ minimal form-item
+
+$form-space-vertical-padding:   0.25em;
+$form-space-horizontal-padding: 0.25em;
+
+
+%form-item {
+    /* has rows */
+    display:         flex;
+    flex-direction:  column;
+    flex-wrap:       nowrap;
+    justify-content: flex-start;
+    align-items:     stretch;
+    align-content:   center;
+    &>*               { order: 3 }
+    &>label, &>.label { order: 1 }
+    &>input, &>.input { order: 2 }
+}
+.form-item     { @extend %form-item; }
+.form-textarea { @extend %form-item; }
+.form-submit   { @extend %form-item; }
+
+label {
+    display: block;
+    padding: 0 $form-space-horizontal-padding;
+}
+input {
+    display: block;
+    width:   100%;
+    padding: $form-space-vertical-padding $form-space-horizontal-padding;
+
+    /* default font */
+    font-family: inherit;
+    font-size:   inherit;
+    line-height: inherit;
+    font-weight: inherit;
+}
+textarea {
+    display: block;
+    width:   100%;
+    padding: $form-space-horizontal-padding;
+    resize:  vertical;
+
+    /* default font */
+    font-family: inherit;
+    font-size:   inherit;
+    line-height: inherit;
+    font-weight: inherit;
+}
+button, .button, .is-button {
+    display:  inline-block;
+    vertical-align: middle;
+    padding: $form-space-vertical-padding $form-space-horizontal-padding;
+
+    /* default font */
+    font-family: inherit;
+    font-size:   inherit;
+    line-height: inherit;
+    font-weight: inherit;
+}
+
+/* EOF: minimal form-item */

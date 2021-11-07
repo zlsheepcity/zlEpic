@@ -1,0 +1,51 @@
+.palette	{	
+	margin-top: 50px;
+	border: gray dotted 1px;
+	display: inline-block;
+	padding:10px;
+	margin:10px;
+	float:left;
+	height:520px;
+}
+
+.palette-section	{	
+	display: inline-block;
+	float:left;
+	width: 70px;
+}
+.palette-component	{	
+	margin: 3px;
+	background-color: #999999;
+	background-size: cover;
+	border: #333 solid 1px;
+	border-radius: 5px;
+	width:65px;
+	height:65px;
+	display: inline-block;
+	float:left;
+	cursor:pointer;
+}
+.palette-component:hover	{	
+	border: red solid 1px;
+	box-shadow: 2px 2px 5px #111111;
+}
+.preview	{	
+	width:700px;
+	height:480px;
+	border: none;
+	float:left;
+	display: inline-block;
+	background-size: cover;
+	background-image:url('images/bg_tablet.png');
+}
+
+.preview-component	{	
+	margin-top:55px;
+	margin-left:53px;
+	border: none;
+	width:600px;
+	height:370px;
+	position:absolute;
+	background-repeat: no-repeat;
+	background-size: cover;
+}

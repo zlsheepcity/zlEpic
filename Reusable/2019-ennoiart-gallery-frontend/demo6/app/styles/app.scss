@@ -1,0 +1,45 @@
+@charset "UTF-8";
+/*
+    zApp default sass ordnung
+    2019.2.16 → last update 2019.4.17
+*/
+
+
+// -------------------------------------------- Core
+
+    @import "components/html-core/_settings";
+    @import "components/html-core/sass-workers";
+    @import "components/html-core/css-workers";
+
+// -------------------------------------------- HTML Setup
+
+    @import "components/html-core/html-wrap";
+    @import "components/html-core/html-typography";
+    @import "components/html-core/form-minimal";
+
+
+// -------------------------------------------- Components
+
+    @import "components/animate-css/required-animations";
+    @import "components/sidebar/sidebar";
+    @import "components/layout-fullscreen/layout-fullscreen";
+    @import "components/group/group";
+    @import "components/data-table/data-table";
+
+    @import "components/zetka/zetka--settings";
+    @import "components/zetka/zetka--constructor";
+    @import "components/zetka/zetka--layout";
+
+    @import "components/design-sakura/design-sakura";
+
+
+// -------------------------------------------- Rare Components
+
+    @import "rare-components/layout-body-wrap/layout-body-wrap";
+    @import "rare-components/extra-compact-form/extra-compact-form";
+
+// -------------------------------------------- Pending
+
+    @import "components/swed-design/swed-design";
+
+/* EOF sass ordnung */

@@ -1,0 +1,29 @@
+/* ==============================================================
+    box model for HTML & BODY
+    2018.12.7
+============================================================== */
+
+
+//* ------------------------------------ required
+
+$color_main_back: $color_main_back; // white
+
+//* ------------------------------------ body box model
+
+.body-wrap {
+    min-height:    100%;
+    margin-top:    0;
+    margin-bottom: 0;
+    display: flex;
+    flex-direction: column;
+}
+.body-wrap-header {
+    background-color: $color_main_back;
+    position: sticky;
+    top: 0;
+}
+.body-wrap-footer {
+    margin-top: auto;
+}
+
+/* eof body wrap */

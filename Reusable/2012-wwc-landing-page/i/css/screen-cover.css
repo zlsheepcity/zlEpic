@@ -1,0 +1,221 @@
+/* COVER IMAGE */
+
+#CoverImage
+{
+  background:url(earth.png) 0 0 no-repeat;
+  min-height:254px;
+  margin-bottom:4em;
+  margin-top:2em;
+  position:relative;
+}
+#CoverImage h1
+{
+  background:url(worldwidecommunications.png) 0 0 no-repeat;
+  width:374px;
+  height:133px;
+  position:absolute;
+  top:0;
+  left:366px;
+  margin:0;
+  padding:0;
+  text-indent: 100%;
+  white-space: nowrap;
+  overflow: hidden;  
+}
+#CoverImage blockquote
+{
+  margin:0;
+  padding:8px;
+  position:absolute;
+  top:150px;
+  left:440px;
+  background:#EEFFFF;
+  color:#362F2D;
+  font-size:18px;
+}
+#CoverImage .contacts
+{
+  background:url(covcnt.png) 0 0 no-repeat;
+  width:126px;
+  height:71px;
+  position:absolute;
+  top:4px;
+  left:9px;
+}
+#CoverImage .contacts a
+{
+  display:block;
+  font-family:tahoma,arial,sans-serif;
+  font-size:29px;
+  line-height:19px;
+  font-weight:bold;
+  color:#fff;
+  text-shadow:1px 1px 1px #555; 
+  text-decoration:none;
+  padding:12px 0 0 33px;
+  width:93px;
+  height:59px;
+}
+#CoverImage .contacts a:hover { color:#fc0; }
+
+
+/* THREE BIG THEMES */
+
+#CoverBigThemes
+{
+  margin-bottom:3em;
+}
+#CoverBigThemes h3
+{
+  background:0 0 no-repeat;
+  height:80px;
+  margin-bottom:0;
+  font-family:tahoma,arial,sans-serif;
+  font-size:21px;
+  line-height:19px;
+  font-weight:bold;
+  color:#fff;
+  text-shadow:1px 1px 1px #555;   
+}
+#CoverBigThemes h3 a 
+{
+  color:#fff;
+  text-decoration:none;
+  display:block;
+  padding:20px 12px 0 25px;
+  height:60px;
+}
+#CoverBigThemes h3 a:hover { color:#Fc0; }
+#CoverBigThemes .CallCenter h3 { background-image:url(h1call.png); }
+#CoverBigThemes .Platinote h3 { background-image:url(h1plat.png); }
+#CoverBigThemes .SoftwareHouse h3 { background-image:url(h1dev.png); }
+
+#CoverBigThemes li > p 
+{
+  padding: .3em 12px .3em 25px;
+  margin:0;
+  font-size:.9em;
+}
+ul#CoverBigThemes.u-3bricks  > li
+{
+  width:32.333%;
+  padding:15px .5% 2% .5%;  
+}
+
+
+/* COVER SCHOOL */
+
+#CoverSchool
+{
+  margin-top: -9px;
+  padding-top:0;
+  position:relative;
+}
+#CoverSchool .theme-block
+{
+  background:#BCEDFF url(pashacov.png) 100% 100% no-repeat;
+  margin:76px 0 2em 16px;
+  padding:78px 16px 204px 16px;
+}
+#CoverSchool h3 
+{
+  position:absolute;
+  top:0;
+  left:0;
+  background:url(h1schcov.png) 0 0 no-repeat;
+  height:150px;
+  margin-bottom:0;
+  font-family:tahoma,arial,sans-serif;
+  font-size:21px;
+  line-height:19px;
+  font-weight:bold;
+  color:#fff;
+  text-shadow:1px 1px 1px #555;  
+}
+#CoverSchool h3 a
+{
+  color:#fff;
+  text-decoration:none;  
+  display:block;
+  padding:44px 20px 0 32px;
+  height:106px;
+  max-width:212px;
+}
+#CoverSchool h3 a:hover { color:#Fc0; }
+#CoverSchool .txt
+{
+  font-size:.8em;
+}
+
+
+/* HEADER MENUS */
+#HeaderRow
+{
+  background:url(hdrshdw.png) 50% 100% no-repeat;
+  padding-bottom:19px;
+}
+#HeaderRow .block
+{
+  background:#BCEDFF;
+  overflow:hidden;
+  padding-top:.7em;
+  line-height:1.5em;
+}
+#OfficeMenu
+{
+  font-size:.9em;
+}
+#OfficeMenu > li
+{
+  display:inline-block;
+  margin-right:.5em;
+}
+#OfficeMenu  li > a,
+#OfficeMenu  li > span
+{
+  display:inline-block;
+  color:#0077A5;
+  text-decoration:none;
+  padding:2px 4px;
+}  
+#OfficeMenu  li > span { cursor:default; }
+#OfficeMenu li > a:hover,
+#OfficeMenu li:hover > span
+{
+  background:#00B9FF;
+  color:#fff;  
+}    
+
+#OfficeMenu > li > ul
+{
+  display:none;
+  position:absolute;
+  background:#00B9FF;
+  z-index:100;
+  list-style:none;
+  padding:2px 0 6px 0;
+  margin-left:0px;
+  box-shadow: 3px 3px 3px #ccc;
+}    
+#OfficeMenu > li > ul a
+{
+  color:#fff;
+}
+#OfficeMenu > li > ul a:hover
+{
+  background:#BCEDFF;
+  color:#0077A5;
+}
+#OfficeMenu > li:hover > ul
+{
+  display:block;
+}  
+#OfficeMenu > li > ul  > li > *
+{
+  display:block;
+}
+#LanguageMenu
+{
+  padding-left:16px;
+  font-size:.9em;
+}  

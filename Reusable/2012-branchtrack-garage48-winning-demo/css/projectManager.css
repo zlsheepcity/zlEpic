@@ -1,0 +1,11 @@
+/*  CSS for 'manage' tab*/
+.project-list {
+	color:white;
+	font-family:Schoolbell,tahoma,sans-serif;
+	font-size:2em;
+}
+
+.project-list li:hover {
+	color:red;
+	cursor:pointer;
+}

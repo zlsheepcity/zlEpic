@@ -1,0 +1,264 @@
+/** Color Model 3x3+2
+ *  System based on nine color values and two shadows
+ *  zl, 2019.8.14
+ *
+ *  CSS
+ *
+ */
+
+
+/** -------------------------------- base */
+
+
+:root,
+.root,
+.color-model,
+.colors--root {
+  --back-color:         white;
+  --back-color-accent:  snow;
+  --back-color-descent: whitesmoke;
+
+  --text-color:         black;
+  --text-color-accent:  darkslategray;
+  --text-color-descent: lightslategray;
+
+  --link-color:         firebrick;
+  --link-color-accent:  darkred;
+  --link-color-descent: lightsteelblue;
+
+  --shadow-color: var(--shadow-color--for-light-base);
+  --light-shadow: var(--light-shadow--for-light-base);
+}
+
+:root,
+.root,
+.color-model {
+  --shadow-color--for-light-base: hsla(  0,  0%,   0%, 0.3 );
+  --light-shadow--for-light-base: hsla(  0,  0%,   0%, 0.05);
+  --shadow-color--for-dark-base:  hsla(  0,  0%, 100%, 0.2 );
+  --light-shadow--for-dark-base:  hsla(  0,  0%, 100%, 0.05);
+}
+
+
+/** -------------------------------- autorun */
+
+
+body {
+    background-color: var(--back-color);
+               color: var(--text-color);
+}
+
+
+/** -------------------------------- atom classes */
+
+
+.use-colors {
+    background-color: var(--back-color);
+               color: var(--text-color);
+}
+
+
+.text-color  {
+               color: var(--text-color);
+}
+.text-color-accent  {
+               color: var(--text-color-accent);
+}
+.text-color-descent {
+               color: var(--text-color-descent);
+}
+
+.back-color  {
+    background-color: var(--back-color);
+}
+.back-color-accent  {
+    background-color: var(--back-color-accent);
+}
+.back-color-descent {
+    background-color: var(--back-color-descent);
+}
+
+.link-color  {
+               color: var(--link-color);
+}
+.link-color-accent  {
+               color: var(--link-color-accent);
+}
+.link-color-descent {
+               color: var(--link-color-descent);
+}
+
+
+.back-color-transparent  {
+  --back-color: transparent;
+    background-color: var(--back-color);
+}
+.back-color-hover:hover {
+  --back-color-hover: var(--back-color-accent);
+    background-color: var(--back-color-hover);
+}
+.text-color-hover:hover {
+  --text-color-hover: var(--text-color-accent);
+               color: var(--text-color-hover);
+}
+.link-color-hover:hover {
+  --link-color-hover: var(--link-color-accent);
+               color: var(--link-color-hover);
+}
+
+
+/** === ༼°▽°༽ === Color Model Presets
+ *
+ *  zl, 2019.8.14
+ *
+ */
+
+
+/** -------------------------------- skup palettes */
+
+
+/* noble-age 2020 */
+
+:root,
+.root,
+.color-model {
+    /* Noble Palette */
+  --c--NobleBlack:            hsl(226, 15%, 12%);
+  --c--NobleWhite:            hsl(226, 27%, 90%);
+  --c--NobleNight:            hsl(226, 17%, 20%);
+  --c--NobleDay:              hsl(226, 32%, 75%);
+  --c--NobleSky:              hsl(204, 22%, 55%);
+  --c--NobleSea:              hsl(212, 34%, 29%);
+  --c--NobleSunset:           hsl(359, 28%, 82%);
+  --c--NobleAccent:           hsl(359, 54%, 53%);
+  --c--NobleAction:           hsl(359, 59%, 43%);
+    /* Ivory Palette */
+  --c--Ivory:                 hsl( 53, 66%, 80%);
+  --c--IvoryAccent:           hsl( 53, 70%, 76%);
+  --c--IvoryDark:             hsl(204,  4%, 22%);
+  --c--IvoryGray:             hsl(204,  8%, 38%);
+}
+
+:root,
+.root,
+.color-model {
+    /* App Palette */
+  --c--AppBlue:               hsl(202, 81%, 23%);
+  --c--AppGreen:              hsl(155, 31%, 62%);
+  --c--AppGold:               hsl( 42, 79%, 53%);
+  --c--AppRed:                hsl( 15, 75%, 30%);
+  --c--AppBrown:              hsl( 34, 20%, 33%);
+}
+
+
+/** -------------------------------- color themes */
+
+
+.colors--template {
+  --back-color:         white;
+  --back-color-accent:  var(--back-color);
+  --back-color-descent: var(--light-shadow);
+
+  --text-color:         black;
+  --text-color-accent:  var(--text-color);
+  --text-color-descent: var(--text-color);
+
+  --link-color:         firebrick;
+  --link-color-accent:  var(--link-color);
+  --link-color-descent: var(--link-color);
+
+/* Dark Base*/
+  --shadow-color: var(--shadow-color--for-dark-base);
+  --light-shadow: var(--light-shadow--for-dark-base);
+
+/* Light Base*/
+  --shadow-color: var(--shadow-color--for-light-base);
+  --light-shadow: var(--light-shadow--for-light-base);
+
+}
+
+.colors--primary,
+.colors--swed {
+  --back-color:         var(--c--NobleBlack);
+  --back-color-accent:  var(--c--NobleNight);
+  --back-color-descent: var(--light-shadow);
+
+  --text-color:         var(--c--NobleWhite);
+  --text-color-accent:  var(--c--NobleAccent);
+  --text-color-descent: var(--c--NobleDay);
+
+  --link-color:         var(--c--NobleAccent);
+  --link-color-accent:  var(--c--NobleAction);
+  --link-color-descent: var(--c--NobleAction);
+
+  --shadow-color: var(--shadow-color--for-dark-base);
+  --light-shadow: var(--light-shadow--for-dark-base);
+}
+.colors--secondary,
+.colors--swed-secondary {
+  --back-color:         var(--c--NobleSea);
+  --back-color-accent:  var(--light-shadow);
+  --back-color-descent: var(--light-shadow);
+
+  --text-color:         var(--c--NobleWhite);
+  --text-color-accent:  var(--c--NobleAccent);
+  --text-color-descent: var(--c--NobleDay);
+
+  --link-color:         var(--c--NobleAccent);
+  --link-color-accent:  var(--c--NobleAction);
+  --link-color-descent: var(--c--NobleAction);
+
+  --shadow-color: var(--shadow-color--for-light-base);
+  --light-shadow: var(--light-shadow--for-light-base);
+}
+.colors--swed-third {
+  --back-color:         var(--c--NobleSky);
+  --back-color-accent:  var(--light-shadow);
+  --back-color-descent: var(--light-shadow);
+
+  --text-color:         var(--c--NobleBlack);
+  --text-color-accent:  var(--c--NobleNight);
+  --text-color-descent: var(--c--NobleNight);
+
+  --link-color:         var(--c--NobleWhite);
+  --link-color-accent:  var(--c--NobleDay);
+  --link-color-descent: var(--c--NobleDay);
+
+  --shadow-color: var(--shadow-color--for-light-base);
+  --light-shadow: var(--light-shadow--for-light-base);
+}
+.colors--action {
+  --back-color:         var(--c--NobleAccent);
+  --back-color-accent:  var(--c--NobleAction);
+  --back-color-descent: var(--light-shadow);
+
+  --text-color:         var(--c--NobleWhite);
+  --text-color-accent:  var(--c--NobleSunset);
+  --text-color-descent: var(--c--NobleSunset);
+
+  --link-color:         var(--c--NobleWhite);
+  --link-color-accent:  var(--c--NobleSunset);
+  --link-color-descent: var(--c--NobleSunset);
+
+  --shadow-color: var(--shadow-color--for-light-base);
+  --light-shadow: var(--light-shadow--for-light-base);
+}
+.colors--ivory {
+  --back-color:         var(--c--Ivory);
+  --back-color-accent:  var(--c--IvoryAccent);
+  --back-color-descent: var(--light-shadow);
+
+  --text-color:         var(--c--IvoryDark);
+  --text-color-accent:  var(--c--NobleAction);
+  --text-color-descent: var(--c--IvoryGray);
+
+  --link-color:         var(--c--NobleAccent);
+  --link-color-accent:  var(--c--NobleAction);
+  --link-color-descent: var(--c--NobleAction);
+
+  --shadow-color: var(--shadow-color--for-light-base);
+  --light-shadow: var(--light-shadow--for-light-base);
+}
+
+
+/*  EOF color model */

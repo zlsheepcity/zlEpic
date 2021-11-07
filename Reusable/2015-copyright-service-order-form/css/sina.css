@@ -1,0 +1,168 @@
+/* SINA */
+
+
+
+h1, .h1 {
+    font-size: 21px;
+}
+
+
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+
+    color: #444;
+}
+
+
+
+.ratnarai-sidebar {
+    border: 5px solid #f8f8f8;
+    background: white;
+    border-radius: 0px;
+    margin-bottom: 32px;
+}
+
+
+
+.panel-default > .panel-heading {
+    color: #333;
+    background-color: white;
+    border-color: #ddd;
+}
+
+
+
+.panel-heading {
+    border: 1px solid #ddd;
+    padding: 10px 15px;
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+}
+
+
+
+.panel-body {
+    border: 1px solid #ddd;
+    padding: 15px;
+}
+
+
+/*
+input[type="text"] {
+    border: 1px solid #ddd;
+    font-family: "Lato", Helvetica, Arial, sans-serif;
+    height: 32px;
+    border-radius: 0;
+    box-shadow: none;
+    transition: border 0.25s linear, color 0.25s linear, background-color 0.25s linear;
+}
+*/
+
+
+
+.ratnarai-stepBar {
+    padding-top: 20px;
+    padding-bottom: 10px;
+    margin-bottom: 30px;
+    border-bottom: 1px solid #ddd;
+    padding-left: 0;
+}
+
+
+/*
+input[type="text"] {
+    border: 1px solid #ddd;
+    font-family: "Lato", Helvetica, Arial, sans-serif;
+    height: 32px;
+    border-radius: 0;
+    box-shadow: none;
+    transition: border 0.25s linear, color 0.25s linear, background-color 0.25s linear;
+    padding: 4px 12px 4px 12px;
+}
+*/
+
+
+.btn-success {
+    background: #0cc160;
+    border-color: #0cc160;
+    color: white;
+    border-radius: 2px;
+}
+
+
+/*
+.form-control, .select2-search input[type="text"] {
+    border: 1px solid #ddd;
+    font-family: "Lato", Helvetica, Arial, sans-serif;
+    height: 32px;
+    border-radius: 0;
+    box-shadow: none;
+    transition: border 0.25s linear, color 0.25s linear, background-color 0.25s linear;
+}
+*/
+
+/*
+.chosen-container-active.chosen-with-drop .chosen-single {
+    border: 1px solid #ddd;
+    background: #fff;
+    color: #444;
+}
+
+
+
+.chosen-container-single .chosen-drop {
+    margin-top: -2px;
+    border-width: 1px;
+    border-color: #ccc;
+}
+
+
+
+.chosen-container-single .chosen-drop {
+    margin-top: -1px;
+    border-radius: 0 0 0 0;
+    background-clip: padding-box;
+}
+
+
+
+.chosen-container-single .chosen-single {
+    height: 34px;
+    line-height: 32px;
+    font-size: 21px;
+    box-shadow: none;
+    color: black;
+    border: 1px solid #ddd;
+    background: #fff;
+    padding-left: 12px;
+}
+
+
+
+.chosen-container-single .chosen-single {
+    position: relative;
+    display: block;
+    overflow: hidden;
+    padding: 0 0 0 8px;
+    border-radius: 0;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+*/
+
+.btn-lg, .btn-group-lg > .btn {
+    padding: 10px 19px;
+    font-size: 17px;
+    line-height: 1.471;
+    border-radius: 2px;
+}
+
+
+
+.btn-success {
+    color: #ffffff;
+    background-color: #0cc160;
+}
+
+
+

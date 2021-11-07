@@ -1,0 +1,7 @@
+div.comment_item {margin:0 24px 24px 24px;}
+div.comment_item h4 {font-weight:normal;font-size:1em;margin:0;padding:0;color:#666;}
+div.comment_item div.txt {margin:0;padding:0;}
+
+div.comment_form { margin:0 0 24px 24px; }
+div.comment_form h3.theme {padding:12px 0;margin:0 0 4px 0;font-weight:normal;font-size:1em;
+	text-transform:uppercase;font-family:'georgia',serif;color:#000;}

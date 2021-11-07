@@ -1,0 +1,94 @@
+<!-- load user id -->
+<%
+currentUserId = Session.cur_user_id;
+%>
+
+<!-- create room service for new user -->
+<div class="DB DB-createNewUser" status="<%
+if ( ArrayCount( XQuery('for $elem in cc_intea_roomservices where $elem/userid="'+currentUserId+'" return $elem') ) < 1 ) 
+{
+  RoomService_row = OpenNewDoc( 'x-local://udt/udt_cc_intea_roomservice.xmd' );
+  RoomService_row.BindToDb( DefaultDb );  
+  RoomService_row.TopElem.userid = currentUserId;
+  RoomService_row.TopElem.balance = '0';
+  RoomService_row.TopElem.roomservice = 'i01,i02,i03,i04,i05,i06,i07,i08,i09,i10,';
+  RoomService_row.TopElem.coursedata = 'tests,n,n,0,0,0,0,0,';
+  RoomService_row.Save();
+  Response.Write('true" userid="'+currentUserId);
+}
+else Response.Write('false');
+%>"></div>
+
+<!-- load room service -->
+<%
+currentRoomServiceReadonly = ArrayFirstElem( XQuery('for $elem in cc_intea_roomservices where $elem/userid="'+currentUserId+'" return $elem') );
+%>
+
+
+<!-- parse course data -->
+<%
+userCoursedata = String(currentRoomServiceReadonly.coursedata);
+curseDataArray = [];
+checkingString = '';
+checkingIndex = 0;
+if (userCoursedata) for( t=0; t < userCoursedata.length; t++ )
+{
+	if ( userCoursedata.charAt(t)==',' )
+	{
+		curseDataArray[checkingIndex] = checkingString;
+		checkingString = '';
+		checkingIndex++;
+	}
+	else checkingString += userCoursedata.charAt(t);
+}
+%>
+
+<!-- load balance -->
+<%
+userBalance = Int(currentRoomServiceReadonly.balance);
+%>
+
+<!-- get request params: gameName -->
+<%
+currentGame    		= String(Request.QueryString.g);
+currentGameIndex 	= 0;
+if ( currentGame == "dialog" ) 		currentGameIndex = 3;
+if ( currentGame == "interface" )	currentGameIndex = 4;
+if ( currentGame == "anketa" ) 		currentGameIndex = 5;
+if ( currentGame == "calculator" )	currentGameIndex = 6;
+if ( currentGame == "objections" )	currentGameIndex = 7;
+%>
+
+<!-- get request params: currentScore -->
+<%
+currentScore   		= String(Request.QueryString.s);
+%>
+
+<!-- get request params: moneyBonus -->
+<%
+moneyBonus   		= Int(Request.QueryString.m);
+%>
+
+<!-- compile course data -->
+<%
+curseDataArray[currentGameIndex] = currentScore;
+toSave_coursedata = curseDataArray[0]+","+curseDataArray[1]+","+curseDataArray[2]+","+curseDataArray[3]+","+curseDataArray[4]+","+curseDataArray[5]+","+curseDataArray[6]+","+curseDataArray[7]+",";
+%>
+
+<!-- compile balance -->
+<%
+toSave_userBalance = userBalance +  moneyBonus;
+%>
+
+<!-- open doc -->
+<%
+currentRoomService_row = ArrayFirstElem( XQuery('for $elem in cc_intea_roomservices where $elem/userid="'+currentUserId+'" return $elem') );
+currentRoomService = OpenDoc(UrlFromDocID(currentRoomService_row.id));
+%>
+
+<!-- save -->
+<%
+currentRoomService.TopElem.coursedata 	= toSave_coursedata;
+currentRoomService.TopElem.balance 		= toSave_userBalance;
+currentRoomService.Save();
+%>

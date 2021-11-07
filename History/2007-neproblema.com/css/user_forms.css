@@ -1,0 +1,5 @@
+table.userform {width:100%;border:0px;border-collapse:collapse;}
+table.userform td {padding:2px;font-size:.7em;color:#666;font-family:arial,tahoma,sans-serif;}
+table.userform td.l {padding-right:32px;text-align:right;}
+table.userform td.d {color:#000;font-size:.9em;font-family:'georgia',serif;}
+table.userform div.note {color:#C00;padding-bottom:8px;}

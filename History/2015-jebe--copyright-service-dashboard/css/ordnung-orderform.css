@@ -1,0 +1,117 @@
+.ratnarai-fieldset .btn { display:none; }
+
+.Orderform-OrderSummary {
+/*
+  padding:0 20px 40px 40px;
+  background-color:#12342E;
+  border-top:2px solid #02241E;
+  */
+}
+
+
+/* =================================================================== */
+.Orderform-OrderSummary-Header {
+  padding-bottom:40px;
+}
+
+.Orderform-OrderSummary-Header h2 {
+  margin:0;
+  padding:18px 0 0 0;
+  line-height:1em;
+  font-size:21px;
+  font-weight:400;
+}
+.Orderform-OrderSummary-Header-Description {
+  font-size:14px;
+}
+
+
+/* =================================================================== */
+
+.ratnarai-fieldset .ratnarai-label {
+  font-size:18px;
+  padding:4px 4px 4px 20px;
+  margin:0 0 12px -20px;
+  background:#02241E;
+}
+
+.ratnarai-fieldset .ratnarai-field {
+  padding-bottom:20px;
+}
+
+.ratnarai-fieldset .ratnarai-field p {
+  margin:0;
+  padding:0 0 12px 0;
+}
+
+.ratnarai-fieldset .ratnarai-field p small {
+  display:block;
+}
+.ratnarai-fieldset .ratnarai-field p b {
+  color:#A0C6DA;
+}
+
+
+
+
+/* =================================================================== */
+
+.OrderformListHeader {
+  padding:20px 20px 20px 40px;
+  font-size:21px;
+  line-height:1em;
+}
+
+.OrderformList {
+  padding-left:40px;
+}
+
+.OrderformListItem {
+  padding:8px 0 8px 12px;
+  margin-left:-12px;
+}
+.OrderformListItem:hover {
+  color:#A0C6DA;
+}
+
+.OrderformListItem.jsOrderformLink { cursor:pointer; }
+
+.OrderformListItem.active {
+  background-color:#12342E;
+  color:#A0C6DA;
+  border-right:2px solid #02241E;
+  position:relative;
+}
+.OrderformListItem.active:after {
+  content:'\203A';
+  font-family:sans-serif;
+  display:block;
+  position:absolute;
+  right:4px;
+  top:0;
+  font-size:36px;
+}
+
+.OrderformListItem .time {
+  font-size:12px;
+  line-height:13px;
+  padding-top:4px;
+  float:left;
+}
+.OrderformListItem .event {
+  font-size:18px;
+  line-height:20px;
+  margin-left:40px;
+  margin-right:40px;
+}
+.OrderformListItem .details {
+  font-size:12px;
+  line-height:14px;
+  margin-left:40px;
+  margin-right:40px;
+}
+
+.OrderformListItem.summary .event {
+  line-height:34px;
+  font-weight:600;
+}

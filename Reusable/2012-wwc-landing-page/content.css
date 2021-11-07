@@ -1,0 +1,199 @@
+.bloga
+{
+  margin:4em 2% 4em 2%;
+  padding:2%;
+  background:#eee;
+}
+.imaga
+{
+  width:100%;
+  height:10em;
+  margin:1em 0;
+  background:#444;
+}
+.schoolintro
+{
+  margin-top:-1.5em;
+}
+.trileft
+{
+  width:55%;
+  margin:5%;
+  margin-right:0;
+  float:left;
+}
+.triright
+{
+  width:30%;
+  margin:5%;
+  float:right;
+}
+.bigfour
+{
+  margin:0;
+  padding:0;
+  list-style:none;
+  overflow:hidden;
+  text-align:center;
+}
+.bigfour > li 
+{
+  display:inline-block;
+  text-align:left;
+  vertical-align:top;
+  width:25%;
+  margin:0 2%;
+  padding:2%;
+  height:10em;
+  background:#ccc;
+}
+.bloga .bigfour > li  
+{
+  height:auto;
+}
+.shashki 
+{
+  margin:0;
+  margin-bottom:2em;
+  padding:0;
+  list-style:none;
+  overflow:hidden;
+  font-size:.8em;
+}
+.shashki li 
+{
+  display:block;
+  float:left;
+  width:42%;
+  margin:4% 2%;
+  padding:2%;
+  height:5em;
+  background:#fc8;
+}
+.shashki > .smitla
+{
+  font-weight:bold;
+}
+.comeon
+{
+  margin:8%;
+  padding:2%;
+  background:#eee;
+}
+.contacts
+{
+  color:indigo;
+  font-size:1.2em;
+  text-align:center;
+  margin-bottom:2em;
+}
+.contalist
+{
+  color:indigo;
+  font-size:1.2em;
+  margin-top:2em;
+}
+.goal
+{
+  padding:4%;
+  background:#eee;
+  margin-bottom:2em;
+}
+.goal.titla {
+  padding-bottom:0;
+  margin-bottom:0;
+}
+.linka 
+{
+  background:#99c;
+}
+span.linka  
+{
+  display:inline-block;
+  padding:0 4px;
+  margin-left:-4px;
+}
+.texta
+{
+  padding-bottom:2em;
+}
+.komiks
+{
+  padding:4%;
+  background:#eee;
+  border:6px #888 solid;
+  margin-bottom:3em;
+}
+.titla 
+{
+  font-size:2em;
+}
+.smitla 
+{
+  font-size:1.6em;
+}
+.subtitla
+{
+  /* */
+}
+.intro
+{
+  margin:5%;
+}     
+.quote
+{
+
+  padding:5%;
+  background:#eee;        
+}     
+.author
+{
+  text-align:right;
+  direction:rtl;
+  margin-bottom:3em;
+}     
+.foto 
+{
+  width:80px;
+  height:80px;
+  background:indigo;
+  line-height:80px;
+  text-align:center;
+  color:#fff;
+}
+.name 
+{
+  width:50%;
+}
+
+/* ------------------------------------------------------------------ */
+
+.left, .right 
+{
+  width:40%;
+  margin:5%;
+}
+.left { float:left; }
+.right { float:right; } 
+.double
+{
+  width:90%;
+  margin:5%;
+  clear:both;
+}     
+.contento
+{
+  width:100%;
+  height:auto;
+  clear:both;
+}
+.head .trileft, .head .triright { margin-top:0; margin-bottom:0; }
+.head
+{
+  background:#eee;
+  overflow:hidden;
+  padding:.5em 0;
+}
+
+/* ------------------------------------------------------------------ */
+body, html { margin:0; padding:0; }
