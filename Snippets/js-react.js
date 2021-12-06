@@ -20,6 +20,7 @@ let me: Human = {
 // ---------------------------------------------- typescript
 
 type myCallback = (error: Error|null, results: string) => void;
+
 function myMainFN2(callback: myCallback) {
   let date = new Date();
   //your logic here...
@@ -31,6 +32,15 @@ function myMainFN2(callback: myCallback) {
   //callback(date, "random string", 131412); - invalid because `date` is the wrong type and it also has 1 extra parameter
   //let i = callback("this other string"); - invalid because it's missing the first parameter
   //console.log(i, date, callback(123125091)) - invalid because we're calling it with the wrong parameter
+}
+
+export interface CourseOverviewModalProps {
+  modalShow: boolean;
+  closeModal: () => void;
+  course: Course;
+  courseAdded: boolean;
+  addCourse: () => void;
+  startCourse: () => void;
 }
 
 // ---------------------------------------------- AbortController
