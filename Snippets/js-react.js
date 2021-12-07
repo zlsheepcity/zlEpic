@@ -18,21 +18,64 @@ let me: Human = {
 }
 
 // ---------------------------------------------- typescript
+// explained cheatsheet
+// https://blog.bitsrc.io/react-with-typescript-cheatsheet-9dd891dc5bfe
 
-type myCallback = (error: Error|null, results: string) => void;
-
-function myMainFN2(callback: myCallback) {
-  let date = new Date();
-  //your logic here...
-  if(error) { //valid uses of callback
-    callback(new Error("Something went terribly wrong, abort, abort!"), "");
-  } else {
-    callback(null, "This is fine");
-  }
-  //callback(date, "random string", 131412); - invalid because `date` is the wrong type and it also has 1 extra parameter
-  //let i = callback("this other string"); - invalid because it's missing the first parameter
-  //console.log(i, date, callback(123125091)) - invalid because we're calling it with the wrong parameter
+type MyType = {
+  somePrimitive: number,
+  someArray: string[],
+  someObject: {
+    value: string,
+    loaded: boolean
+  },
+  someObjectArray: {
+    value: string
+  }[],
+  someOptions: "high" | "normal" | "low",
+  someOptions2: 5 | 9 | 10,
+  children: React.ReactNode,
+  onChange: (target: string) => boolean, // accepts a parameter and has return type
+  onClick: () => void, // function that returns nothing
+  handleSubmit: (event: React.FormEvent<HTMLFormElement>) => void, // function that takes an event
+  handleChange: (event: React.FormEvent<HTMLInputElement>) => void // function that takes an event
 }
+
+const App = ({ title, score }: MyType) => (
+  <h1>{title} = {score}</h1>
+)
+const onChange = (e: React.FormEvent<HTMLInputElement>): void => {
+  // e.currentTarget.value
+}
+const App = ({ children }: { children: React.ReactNode }) => {
+  return <div>{children}</div>
+}
+
+// combo 1
+
+type Props = {
+  title: string
+}
+const App: React.FC<Props> = ({title}) => {
+  return (
+      <h1>{title}</h1>
+  )
+}
+// Because of TypeScript’s inferred type feature, there’s no need for you to type React function components at all.
+const App = ({ title }: Props) => <div>{title}</div>
+
+// title is string or null
+const [title, setTitle] = useState<string | null>(null)
+// score is number or undefined
+const [score, setScore] = useState<number | undefined>(undefined)
+
+// return value
+
+function useCustomHook() {
+  return ["Hello", false] as const
+} // Without the as const assertion, TypeScript will infer the returned values as (string | boolean)[] instead of [string, boolean]
+
+// interface
+// When you’re not sure which one to use, always go with interface until you see a reason to use type .
 
 export interface CourseOverviewModalProps {
   modalShow: boolean;
@@ -41,6 +84,66 @@ export interface CourseOverviewModalProps {
   courseAdded: boolean;
   addCourse: () => void;
   startCourse: () => void;
+}
+
+// ---------------------------------------------- Controls
+
+type ButtonProps = {
+  children: React.ReactNode
+  onClick: () => void
+}
+const Button = ({ children, onClick }: ButtonProps) => {
+  return <button onClick={onClick}>{children}</button>
+}
+
+
+type ImgProps = React.ComponentPropsWithoutRef<"img">
+type ButtonProps = React.ComponentPropsWithoutRef<"button">
+interface MyImgProps extends React.ComponentPropsWithoutRef<"img"> {
+  customProp: "primary" | "secondary";
+}
+
+const Img = ({ src, loading }: ImgProps) => {
+  return <img src={src} loading={loading} />
+}
+const Button = ({ children, onClick, type }: ButtonProps) => {
+  return (
+    <button onClick={onClick} type={type}>
+      {children}
+    </button>
+  )
+}
+
+
+// ---------------------------------------------- Submit Form
+
+const App = () => {
+  const [email, setEmail] = useState("")
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault()
+    // handle submission here...
+    alert(`email value: ${email}`)
+  }
+
+  return (
+    <form onSubmit={handleSubmit}>
+      <div>
+        <label>
+          Email:
+          <input
+            type="email"
+            name="email"
+            onChange={(e) => setEmail(e.currentTarget.value)}
+            // ^^^ onChange inferred as React.ChangeEvent
+          />
+        </label>
+      </div>
+      <div>
+        <input type="Submit" value="Submit" />
+      </div>
+    </form>
+  )
 }
 
 // ---------------------------------------------- AbortController

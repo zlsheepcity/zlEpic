@@ -55,6 +55,12 @@
 <link media="none" onload="if(media!="all") media="all"" rel="stylesheet" type="text/css", href= main.css>
 */
 
+/*Create a line break while maintaining inline status*/
+.inline-element::after {
+  content: '\A';
+  white-space: pre;
+}
+
 
 /* ======================================================== SCROLL UX */
 
