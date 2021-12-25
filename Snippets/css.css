@@ -146,6 +146,16 @@ section {
 }
 
 
+.reserve-scrollbar-space {
+    scrollbar-gutter: stable;
+}
+
+/* avoid scroll for document */
+.modal {
+    overflow: auto;
+    overscroll-behavior-y: contain;
+}
+
 /* ======================================================== LAYOUT */
 
 html {
