@@ -20,8 +20,17 @@
             'HCP3NOKrdOc':'Vice City FM [GTA] #pop',
             'ed1oIgcjlNc':'G-Funk / Hip Hop [GTA] #pop',
             'YYIBtojKDSc':'Los Santos Rock Radio [GTA] #pop',
+         // '1EgzvciFQ2I':'Pop songs to sing in the car #pop',
+
+            'DyY9Wpfajqo':'Mojave Radio [Fallout] #happy',
+            'FHF6q1mBiFs':'Appalachia Radio [Fallout] #happy',
             'nUp_34Vs000':'11 hours of Soft Rock #pop',
-            '1EgzvciFQ2I':'Pop songs to sing in the car #pop',
+
+            'techno-skip-1':'#skip', //////////////////
+            'nkb_zdbHMBw':'Giolì & Assia @Etna Volcano #techno',
+            'KOOaIea7lPE':'Nicola Cruz Boiler Room Tulum #techno',
+            '3q8nGnls1Ow':'Journey Into Abstract Hip-Hop #relax',
+            'ZSzMNRM81V8':'Acid Arab #techno',
 
             'o8zi46NPIrY':'Workout Hip Hop 1 #energy',
             'EIEiEqKbdZ4':'Workout Hip Hop 2 #energy',
@@ -29,28 +38,19 @@
          // 'bPqbTuI1Xpc':'Workout Pop #pop',
             '82uTuWxTJS4':'Iron Maiden, Greatest hits #energy',
             '5DjaCFdLWj8':'Wagakki 和楽器バンド #happy',
+            'workout-skip-1':'#skip', //////////////////
 
-            'nkb_zdbHMBw':'Giolì & Assia @Etna Volcano #techno',
-            'KOOaIea7lPE':'Nicola Cruz Boiler Room Tulum #techno',
-            'b5H3b_Hh0Lw':'Mose ft. Suyana DeepBeats #techno',
-            'ZSzMNRM81V8':'Acid Arab #techno',
-            //////////
-            //////////
-
-
-            'DyY9Wpfajqo':'Mojave Radio [Fallout] #happy',
-            'FHF6q1mBiFs':'Appalachia Radio [Fallout] #happy',
-
-            '6uddGul0oAc':'TOKYO Cafe: Relaxing Jazz Piano #relax',
             '5qap5aO4i9A':'Lofi beats to relax/study #relax',
+            '6uddGul0oAc':'TOKYO Cafe: Relaxing Jazz Piano #relax',
 
             'hcLwG6kHEcA':'Andrea Bocelli #relax',
             'IxJQ8VKc4k4':'Edith Piaf #happy',
-            'g5wlBqWSgxk':'Высоцкий, студийные записи #happy',
             'nz3I6OFXIIg':'Marilyn Manson, The Pale Emperor #happy',
+            'g5wlBqWSgxk':'Высоцкий, студийные записи #happy',
             //////////
             //////////
 
+            'concert-skip-1':'#skip', //////////////////
             'h1BsKIP4uYM':'Heilung, Castlefest 2017 #energy',
             'I5AOg8rTGHU':'Parov Stelar, Sziget 2018 #pop',
             '3DihvVQtIZ0':'Aurora, Glastonbury 2019 #happy',
@@ -67,7 +67,7 @@
 
             'W0CBzKfvA80':'Thievery Corporation, Saudade #relax',
             'T_Ne2Zs5754':'Smoke city, Underwater love #relax',
-            '3q8nGnls1Ow':'Journey Into Abstract Hip-Hop #relax',
+            'b5H3b_Hh0Lw':'Mose ft. Suyana DeepBeats #techno',
             'HASSwtB1TR0':'Mountain Dub #relax',
             'eaOX-3yhYkk':'Hinkstep, The First Steps #relax',
             'bRzRUfPipmg':'Dimmat, Karma #relax',
@@ -83,10 +83,18 @@
     </script>
 
     <style>
+        body {
+            background-color: hsl(204, 8%, 38%);
+            background-color: hsl(226, 15%, 12%);
+            color: hsl( 66, 61%, 88%);
+        }
         .grid {
             display: grid;
+            padding: 0.5em;
+            padding-bottom: 4em;
+            grid-gap: 0.5em;
             grid-template-columns: repeat(6, 1fr);
-          --item-height-ratio:     calc(5/8);
+          --item-height-ratio:     calc(9/16);
           --image-hover-scale:     1.2;
           --image-hover-action:    transform 240ms ease-out;
           --overlay-opacity: 0.64;
@@ -98,6 +106,19 @@
         .grid-item {
             display:  grid;
             overflow: hidden;
+            clip-path: polygon(
+                0 0,
+                0 100%,
+                calc(100% - 1.5em) 100%,
+                100% calc(100% - 1.5em),
+                100% 0);
+            clip-path: polygon(
+                0 1em,
+                0 100%,
+                calc(100% - 1em) 100%,
+                100% calc(100% - 1em),
+                100% 0,
+                1em 0);
         }
         .grid-item::before, .grid-item > * { grid-area: 1/1; }
         .grid-item::before {
@@ -108,7 +129,7 @@
         .grid-item-caption {
             z-index: 1;
             display: grid;
-            place-items: end;
+            align-items: end;
             padding: 1em;
             text-decoration: none;
 
@@ -119,7 +140,6 @@
         }
 
         .grid-item-image {
-            background-color: green;
             position: relative;
             z-index: 0;
             transition: var(--image-hover-action);
@@ -175,9 +195,12 @@
             elImageWrap.classList.add('grid-item-image');
             elImageWrap.appendChild(elImageTag);
 
-            elItemCard.classList.add('grid-item');
-            elItemCard.appendChild(elImageWrap);
-            elItemCard.appendChild(elUtubLink);
+            if (item.genre !== 'skip') {
+                elItemCard.classList.add('grid-item');
+                elItemCard.appendChild(elImageWrap);
+                elItemCard.appendChild(elUtubLink);
+            }
+
             domGrid.appendChild(elItemCard);
         };
     </script>
