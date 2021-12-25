@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Utub Music</title>
+    <title>ZL Utub Music</title>
     <style>
         *, *:before, *:after {
             box-sizing: border-box;
@@ -14,13 +14,82 @@
 </head>
 <body>
 
+    <script>
+        const UtubMusicList = {
+            '0j1To_VTc2U':'Non-Stop-Pop FM [GTA] #pop',
+            'HCP3NOKrdOc':'Vice City FM [GTA] #pop',
+            'ed1oIgcjlNc':'G-Funk / Hip Hop [GTA] #pop',
+            'YYIBtojKDSc':'Los Santos Rock Radio [GTA] #pop',
+            'nUp_34Vs000':'11 hours of Soft Rock #pop',
+            '1EgzvciFQ2I':'Pop songs to sing in the car #pop',
+
+            'o8zi46NPIrY':'Workout Hip Hop 1 #energy',
+            'EIEiEqKbdZ4':'Workout Hip Hop 2 #energy',
+            'uNqwoMZz7uk':'Workout Rock #energy',
+         // 'bPqbTuI1Xpc':'Workout Pop #pop',
+            '82uTuWxTJS4':'Iron Maiden, Greatest hits #energy',
+            '5DjaCFdLWj8':'Wagakki 和楽器バンド #happy',
+
+            'nkb_zdbHMBw':'Giolì & Assia @Etna Volcano #techno',
+            'KOOaIea7lPE':'Nicola Cruz Boiler Room Tulum #techno',
+            'b5H3b_Hh0Lw':'Mose ft. Suyana DeepBeats #techno',
+            'ZSzMNRM81V8':'Acid Arab #techno',
+            //////////
+            //////////
+
+
+            'DyY9Wpfajqo':'Mojave Radio [Fallout] #happy',
+            'FHF6q1mBiFs':'Appalachia Radio [Fallout] #happy',
+
+            '6uddGul0oAc':'TOKYO Cafe: Relaxing Jazz Piano #relax',
+            '5qap5aO4i9A':'Lofi beats to relax/study #relax',
+
+            'hcLwG6kHEcA':'Andrea Bocelli #relax',
+            'IxJQ8VKc4k4':'Edith Piaf #happy',
+            'g5wlBqWSgxk':'Высоцкий, студийные записи #happy',
+            'nz3I6OFXIIg':'Marilyn Manson, The Pale Emperor #happy',
+            //////////
+            //////////
+
+            'h1BsKIP4uYM':'Heilung, Castlefest 2017 #energy',
+            'I5AOg8rTGHU':'Parov Stelar, Sziget 2018 #pop',
+            '3DihvVQtIZ0':'Aurora, Glastonbury 2019 #happy',
+            'XXVwFvkNTEg':'Aurora, Nidarosdomen 2017 #happy',
+            'ZYowY7tvBbY':'Shpongle, London 2013 #happy',
+            //////////
+
+            'f3wOS11SP9I':'Japanese Trap & Bass DENSETSU #techno',
+            'ALw5Zdm7BVc':'Japanese Trap & Bass KUCHIKI #energy',
+            'thd6h-ZZIfo':'Art of Techno Deep Radio #energy',
+            'kHCn5h4_dh0':'Programming music vol.1 #relax',
+            '1-_tyTJHgB8':'Programming music vol.15 #energy',
+            'hqVJpfFkJ9k':'Hard Neurofunk Drum & Bass #energy',
+
+            'W0CBzKfvA80':'Thievery Corporation, Saudade #relax',
+            'T_Ne2Zs5754':'Smoke city, Underwater love #relax',
+            '3q8nGnls1Ow':'Journey Into Abstract Hip-Hop #relax',
+            'HASSwtB1TR0':'Mountain Dub #relax',
+            'eaOX-3yhYkk':'Hinkstep, The First Steps #relax',
+            'bRzRUfPipmg':'Dimmat, Karma #relax',
+            
+        };
+        /*
+        pop
+        happy
+        relax
+        energy
+        techno
+        */
+    </script>
+
     <style>
         .grid {
             display: grid;
             grid-template-columns: repeat(6, 1fr);
-          --item-height-ratio:     calc(3/7);
+          --item-height-ratio:     calc(5/8);
           --image-hover-scale:     1.2;
           --image-hover-action:    transform 240ms ease-out;
+          --overlay-opacity: 0.64;
         }
         .grid-item:hover {
           --image-scale: var(--image-hover-scale);
@@ -39,14 +108,14 @@
         .grid-item-caption {
             z-index: 1;
             display: grid;
-            place-items: center;
+            place-items: end;
             padding: 1em;
             text-decoration: none;
 
             color: white;
-            background-color: hsla(var(--hue,0), 80%, 16%, 0.8);
+            background-color: hsla(var(--hue,0), 80%, 16%, var(--overlay-opacity, 0.5));
             font-family: sans-serif;
-            font-size:   clamp(0.75rem, 1.25vw, 1.5rem);
+            font-size:   clamp(0.75rem, 0.8vw, 1.5rem);
         }
 
         .grid-item-image {
@@ -78,14 +147,6 @@
         </figure>
     -->
     </main>
-
-    <script>
-        const UtubMusicList = {
-            'YYIBtojKDSc':'Los Santos Rock Radio [GTA] #rock',
-            '0j1To_VTc2U':'Non-Stop-Pop FM [GTA] #pop',
-            'ed1oIgcjlNc':'G-Funk / Hip Hop [GTA] #pop',
-        };
-    </script>
 
     <script>
         const itemImage = id => ['utub-images/', id, '.png'].join('');
