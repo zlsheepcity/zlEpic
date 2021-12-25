@@ -37,7 +37,7 @@
             'uNqwoMZz7uk':'Workout Rock #energy',
          // 'bPqbTuI1Xpc':'Workout Pop #pop',
             '82uTuWxTJS4':'Iron Maiden, Greatest hits #energy',
-            '5DjaCFdLWj8':'Wagakki 和楽器バンド #happy',
+            '5DjaCFdLWj8':'Wagakki 和楽器バンド #energy',
             'workout-skip-1':'#skip', //////////////////
 
             '5qap5aO4i9A':'Lofi beats to relax/study #relax',
@@ -55,12 +55,12 @@
             'I5AOg8rTGHU':'Parov Stelar, Sziget 2018 #pop',
             '3DihvVQtIZ0':'Aurora, Glastonbury 2019 #happy',
             'XXVwFvkNTEg':'Aurora, Nidarosdomen 2017 #happy',
-            'ZYowY7tvBbY':'Shpongle, London 2013 #happy',
+            'ZYowY7tvBbY':'Shpongle, London 2013 #techno',
             //////////
 
             'f3wOS11SP9I':'Japanese Trap & Bass DENSETSU #techno',
-            'ALw5Zdm7BVc':'Japanese Trap & Bass KUCHIKI #energy',
-            'thd6h-ZZIfo':'Art of Techno Deep Radio #energy',
+            'ALw5Zdm7BVc':'Japanese Trap & Bass KUCHIKI #techno',
+            'thd6h-ZZIfo':'Art of Techno Deep Radio #techno',
             'kHCn5h4_dh0':'Programming music vol.1 #relax',
             '1-_tyTJHgB8':'Programming music vol.15 #energy',
             'hqVJpfFkJ9k':'Hard Neurofunk Drum & Bass #energy',
@@ -70,7 +70,7 @@
             'b5H3b_Hh0Lw':'Mose ft. Suyana DeepBeats #techno',
             'HASSwtB1TR0':'Mountain Dub #relax',
             'eaOX-3yhYkk':'Hinkstep, The First Steps #relax',
-            'bRzRUfPipmg':'Dimmat, Karma #relax',
+            'bRzRUfPipmg':'Dimmat, Karma #techno',
             
         };
         /*
@@ -83,6 +83,12 @@
     </script>
 
     <style>
+        .genre-pop     { --hue: 32; }
+        .genre-happy   { --hue: 122; }
+        .genre-relax   { --hue: 202; }
+        .genre-energy  { --hue: 322; }
+        .genre-techno  { --hue: 262; }
+
         body {
             background-color: hsl(204, 8%, 38%);
             background-color: hsl(226, 15%, 12%);
@@ -113,12 +119,22 @@
                 100% calc(100% - 1.5em),
                 100% 0);
             clip-path: polygon(
-                0 1em,
-                0 100%,
-                calc(100% - 1em) 100%,
-                100% calc(100% - 1em),
-                100% 0,
-                1em 0);
+               -1px 1em,
+               -1px 101%,
+                calc(101% - 1em) 101%,
+                101% calc(101% - 1em),
+                101% -1px,
+                1em  -1px);
+/*
+            clip-path: polygon(
+                -1px 1em,
+                -1px calc(101% - 0.5em),
+                1em 101%,
+                calc(101% - 1em) 101%,
+                101% calc(101% - 1em),
+                101% -1px,
+                1em -1px);
+*/
         }
         .grid-item::before, .grid-item > * { grid-area: 1/1; }
         .grid-item::before {
@@ -130,13 +146,22 @@
             z-index: 1;
             display: grid;
             align-items: end;
-            padding: 1em;
+            padding: 0.5em;
+            padding-bottom: 0;
             text-decoration: none;
 
             color: white;
             background-color: hsla(var(--hue,0), 80%, 16%, var(--overlay-opacity, 0.5));
+
+            background: linear-gradient(
+                0deg,
+                hsla(var(--hue,0), 80%, 16%, 1),
+                hsla(var(--hue,0), 80%, 16%, 0.5) 42% );
+
             font-family: sans-serif;
             font-size:   clamp(0.75rem, 0.8vw, 1.5rem);
+
+            border-bottom: 0.5em solid hsla(var(--hue,0), 80%, 16%, 1);
         }
 
         .grid-item-image {
@@ -153,6 +178,7 @@
             height: 100%;
             object-fit: cover;
         }
+
     </style>
 
     <main class="grid">
@@ -176,27 +202,30 @@
             caption: (UtubMusicList[id] || 'caption#genre').split('#')[0].trim(),
             genre:   (UtubMusicList[id] || 'caption#genre').split('#')[1],
         });
+        const genreClassName = key => ['genre-', key].join('');
 
         const domGrid = document.querySelector('.grid');
 
         for (id in UtubMusicList) {
             const item = itemData(id);
-            const elItemCard  = document.createElement('figure');
-            const elImageWrap = document.createElement('div');
-            const elImageTag  = document.createElement('img');
-            const elUtubLink  = document.createElement('a');
-
-            elUtubLink.classList.add('grid-item-caption');
-            elUtubLink.href = itemLink(item.id);
-            elUtubLink.innerHTML = item.caption;
-
-            elImageTag.src = itemImage(item.id);
-            elImageTag.alt = '';
-            elImageWrap.classList.add('grid-item-image');
-            elImageWrap.appendChild(elImageTag);
+            let elItemCard  = document.createElement('figure');
 
             if (item.genre !== 'skip') {
+                const elImageWrap = document.createElement('div');
+                const elImageTag  = document.createElement('img');
+                const elUtubLink  = document.createElement('a');
+
+                elUtubLink.classList.add('grid-item-caption');
+                elUtubLink.href = itemLink(item.id);
+                elUtubLink.innerHTML = item.caption;
+
+                elImageTag.src = itemImage(item.id);
+                elImageTag.alt = '';
+                elImageWrap.classList.add('grid-item-image');
+                elImageWrap.appendChild(elImageTag);
+
                 elItemCard.classList.add('grid-item');
+                elItemCard.classList.add( genreClassName(item.genre) );
                 elItemCard.appendChild(elImageWrap);
                 elItemCard.appendChild(elUtubLink);
             }
