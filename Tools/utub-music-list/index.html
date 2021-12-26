@@ -11,7 +11,8 @@
             border:  0;
         }
     </style>
-
+    <meta name="theme-color" content="#314159">
+    <link rel="icon" href="../../favicon.svg">
     <!-- ## MICRODATA -->
     <meta property="og:url"
      content="https://zlsheepcity.github.io/zlEpic/Tools/utub-music-list/" />
@@ -24,9 +25,6 @@
     <meta property="og:title"        content="ZL Utub Music List" />
     <meta property="og:description"  content="Bookmarks for music that I listen to a lot" />
     <meta property="og:author"       content="zl, 2022" />
-
-    <meta name="theme-color" content="#314159">
-    <link rel="icon" href="../../favicon.svg">
 </head>
 <body>
 
@@ -152,7 +150,7 @@
             padding-bottom: 0;
 
             font-family: sans-serif;
-            font-size:   clamp(0.5rem, 0.8vw, 1.5rem);
+            font-size:   clamp(0.75rem, 0.8vw, 1.5rem);
             line-height: 1.1;
             text-decoration: none;
 
@@ -248,20 +246,20 @@
             font-family: sans-serif;
             line-height: 1.5;
         }
-        h2 {
+        body>footer h2 {
             font-size: clamp(1rem, 1.5vw, 2rem);
         }
-        mark {
-            background-color: transparent;
+        body>footer a {
             color: var(--color-mark, currentColor);
+            font-weight: bolder;
+        }
+        mark {
+            color: var(--color-mark, currentColor);
+            background-color: transparent;
         }
         p {
             padding-bottom: 1em;
             max-width: 42em;
-        }
-        a {
-            color: var(--color-mark, currentColor);
-            font-weight: bolder;
         }
     </style>
 
@@ -272,7 +270,8 @@
             The main idea is to make it easy to maintain new or outdated links.
         </p>
         <p>
-            Check the source code.
+            Check the source code: <br>
+            <a href="https://github.com/zlsheepcity/zlEpic/tree/master/Tools/utub-music-list">github.com/zlsheepcity/ ... /utub-music-list</a>
         </p>
         <p>zl, 2022</p>
     </footer>
