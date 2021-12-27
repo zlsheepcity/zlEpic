@@ -83,31 +83,17 @@
         [data-genre="energy"] { --hue: 342; }
 
         [data-filter] [data-genre]
-        { --is-filtered-genre: 0; --is-current-filter: 0; }
+        { --is-filtered-genre:0; --is-current-filter:0; }
+
+        [data-filter="pop"]    [data-genre="pop"],
+        [data-filter="happy"]  [data-genre="happy"],
+        [data-filter="relax"]  [data-genre="relax"],
+        [data-filter="techno"] [data-genre="techno"],
+        [data-filter="energy"] [data-genre="energy"]
+        { --is-filtered-genre:1; --is-current-filter:1; }
 
         [data-filter="all"] [data-genre]
-        { --is-filtered-genre: 1; }
-
-        [data-filter="pop"]    [data-genre="pop"],
-        [data-filter="happy"]  [data-genre="happy"],
-        [data-filter="relax"]  [data-genre="relax"],
-        [data-filter="techno"] [data-genre="techno"],
-        [data-filter="energy"] [data-genre="energy"]
-        { --is-filtered-genre: 1; --is-current-filter: 1; }
-
-/*
-        [data-filter]       [data-genre] { opacity: 0.25; }
-        [data-filter="all"] [data-genre] { opacity: 1; }
-*/
-
-/*
-        [data-filter="pop"]    [data-genre="pop"],
-        [data-filter="happy"]  [data-genre="happy"],
-        [data-filter="relax"]  [data-genre="relax"],
-        [data-filter="techno"] [data-genre="techno"],
-        [data-filter="energy"] [data-genre="energy"]
-        { opacity: 1; --is-current: 1; }
-*/
+        { --is-filtered-genre:1; }
 
         :root {
           --color-back: hsl(226, 15%, 12%);
@@ -161,7 +147,7 @@
                 );
             clip-path: var(--item-clip-path);
 
-            opacity: calc( 0.25 + 0.75*var(--is-filtered-genre, 0) );
+            opacity: calc( 0.2 + 0.8 * var(--is-filtered-genre,0) );
         }
         .grid-item::before, .grid-item > * { grid-area: 1/1; }
         .grid-item::before {
@@ -195,7 +181,7 @@
             position: relative;
             z-index: 0;
             transition: var(--image-hover-action);
-            transform:  scale( var(--image-scale, 1) );
+            transform:  scale( var(--image-scale,1) );
         }
         .grid-item-image img {
             position: absolute;
@@ -249,32 +235,44 @@
             background-color: transparent;
             color: currentColor;
             font-size: inherit;
-            line-height: 2;
             display: grid;
             align-items: center;
+          --bullet-opacity: var(--is-current-filter,0);
+        }
+        .filter-button:hover {
+          --bullet-opacity: 1;
         }
         .filter-button::before, .filter-button::after, .filter-button>* { grid-area: 1/1; }
+
         .filter-button::before {
             content: '';
+            z-index:-1;
             display: block;
             background-color: hsl( var(--hue), 75%, 25% );
             border: 0.2em solid currentColor;
-          --size: 2em;
-            border-radius: var(--size);
-            min-width:  var(--size);
-            width: calc( 100%*var(--is-current-filter, 0) );
-            height: var(--size);
-            transform: scale( calc( 0.5 + 0.5*var(--is-current-filter, 0) ) );
+            border-radius: 2em;
+            height:        2em;
+            min-width:     2em;
+            width: calc( 100% * var(--is-current-filter,0) );
+            transform: scale( calc( 0.5 + 0.5 * var(--is-current-filter,0) ) );
             transform-origin: left center;
-            transition: all 120ms ease-out;
+            transition: all 60ms ease-in;
         }
         .filter-button::after {
-            
+            content: '';
+            display: block;
+            background-color: currentColor;
+            border-radius: 50%;
+            width:  0.5em;
+            height: 0.5em;
+            margin-left: calc( 0.25em + 0.25em * var(--is-current-filter,0) );
+            transition:  margin 60ms ease-in;
+            opacity: var(--bullet-opacity);
         }
+
         .filter-button-caption {
-            padding-left: 1.5em;
-            padding-right: 1em;
-            z-index: 1;
+            padding-left:  1.50em;
+            padding-right: 0.75em;
         }
     </style>
     <section class="filter-panel">
