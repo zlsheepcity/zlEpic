@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>ZL Utub</title>
+    <title>ZLUtub</title>
     <style>
         *, *:before, *:after {
             box-sizing: border-box;
@@ -13,18 +13,6 @@
     </style>
     <meta name="theme-color" content="#314159">
     <link rel="icon" href="../../favicon.svg">
-    <!-- ## MICRODATA -->
-    <meta property="og:url"
-     content="https://zlsheepcity.github.io/zlEpic/Tools/utub-music-list/" />
-    <meta property="og:image"
-     content="https://zlsheepcity.github.io/zlEpic/Tools/utub-music-list/utub-music-list-2022.jpg" />
-    <meta property="og:image:width"  content="1280" />
-    <meta property="og:image:height" content="698" />
-    <meta property="og:type"         content="website" />
-    <meta property="og:locale"       content="en_US" />
-    <meta property="og:title"        content="ZL Utub Music List" />
-    <meta property="og:description"  content="Bookmarks for music that I listen to a lot" />
-    <meta property="og:author"       content="zl, 2022" />
 </head>
 <body>
 
@@ -42,7 +30,7 @@
 
           '----skip-tch1':'#skip',
             'nkb_zdbHMBw':'Giolì & Assia @Etna Volcano   #techno',
-            'KOOaIea7lPE':'Nicola Cruz Boiler Room Tulum #techno',
+            'KOOaIea7lPE':'Nicola Cruz Boiler Room Tulum #relax',
             '3q8nGnls1Ow':'Journey Into Abstract Hip-Hop #relax',
             'ZSzMNRM81V8':'Acid Arab                     #techno',
 
@@ -77,7 +65,7 @@
 
             'W0CBzKfvA80':'Thievery Corporation, Saudade #relax',
             'T_Ne2Zs5754':'Smoke city, Underwater love   #relax',
-            'b5H3b_Hh0Lw':'Mose ft. Suyana DeepBeats     #techno',
+            'b5H3b_Hh0Lw':'Mose ft. Suyana DeepBeats     #relax',
             'HASSwtB1TR0':'Mountain Dub                  #relax',
             'eaOX-3yhYkk':'Hinkstep, The First Steps     #relax',
             'bRzRUfPipmg':'Dimmat, Karma                 #techno',
@@ -85,31 +73,69 @@
         };
     </script>
 
+    <!-- ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ Design -->
+
     <style>
-        .genre-pop     { --hue:  32; }
-        .genre-happy   { --hue: 122; }
-        .genre-relax   { --hue: 202; }
-        .genre-techno  { --hue: 262; }
-        .genre-energy  { --hue: 342; }
+        [data-genre="pop"]    { --hue:  32; }
+        [data-genre="happy"]  { --hue: 122; }
+        [data-genre="relax"]  { --hue: 202; }
+        [data-genre="techno"] { --hue: 262; }
+        [data-genre="energy"] { --hue: 342; }
+
+        [data-filter] [data-genre]
+        { --is-filtered-genre: 0; --is-current-filter: 0; }
+
+        [data-filter="all"] [data-genre]
+        { --is-filtered-genre: 1; }
+
+        [data-filter="pop"]    [data-genre="pop"],
+        [data-filter="happy"]  [data-genre="happy"],
+        [data-filter="relax"]  [data-genre="relax"],
+        [data-filter="techno"] [data-genre="techno"],
+        [data-filter="energy"] [data-genre="energy"]
+        { --is-filtered-genre: 1; --is-current-filter: 1; }
+
+/*
+        [data-filter]       [data-genre] { opacity: 0.25; }
+        [data-filter="all"] [data-genre] { opacity: 1; }
+*/
+
+/*
+        [data-filter="pop"]    [data-genre="pop"],
+        [data-filter="happy"]  [data-genre="happy"],
+        [data-filter="relax"]  [data-genre="relax"],
+        [data-filter="techno"] [data-genre="techno"],
+        [data-filter="energy"] [data-genre="energy"]
+        { opacity: 1; --is-current: 1; }
+*/
 
         :root {
           --color-back: hsl(226, 15%, 12%);
           --color-text: hsl( 66, 61%, 88%);
           --color-mark: hsl(359, 28%, 82%);
           --color-mark: hsl(359, 54%, 53%);
-            
+
+          --space: 0.5em;
+          --double-space: calc( 2*var(--space) );
         }
 
         body {
             background-color: var(--color-back, black);
             color:            var(--color-text, white);
+            font-family:      sans-serif;
         }
+    </style>
+
+    <!-- ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ Content -->
+
+    <main id="Content" data-filter="all">
+
+    <style>
 
         .grid {
-          --space: 0.5em;
-          --double-space: calc( 2*var(--space) );
             grid-gap: var(--space);
             padding:  var(--space);
+            padding-bottom: var(--double-space);
 
             display: grid;
 
@@ -134,6 +160,8 @@
                 var(--double-space) -1px
                 );
             clip-path: var(--item-clip-path);
+
+            opacity: calc( 0.25 + 0.75*var(--is-filtered-genre, 0) );
         }
         .grid-item::before, .grid-item > * { grid-area: 1/1; }
         .grid-item::before {
@@ -149,7 +177,6 @@
             padding: var(--space);
             padding-bottom: 0;
 
-            font-family: sans-serif;
             font-size:   clamp(0.75rem, 0.8vw, 1.5rem);
             line-height: 1.1;
             text-decoration: none;
@@ -180,8 +207,7 @@
         }
 
     </style>
-
-    <main class="grid">
+    <section class="grid">
     <!--
         <figure class="grid-item genre-pop">
             <div class="grid-item-image">
@@ -192,7 +218,87 @@
             </a>
         </figure>
     -->
+    </section>
+
+    <style>
+
+        .filter-panel {
+            position: sticky;
+            z-index:  1;
+            bottom:      0;
+            padding:  0 var(--double-space);
+            background-color: hsl(212, 34%, 29%);
+            background-color: var(--color-back, black);
+
+            display:     flex;
+            flex-wrap:   wrap;
+            justify-content: center;
+            align-items: center;
+            gap: 0 var(--space);
+        }
+        .filter-panel h4 {
+            font-weight:    normal;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            font-size: 0.75em;
+            margin-right: var(--space);
+            opacity: 0.5;
+        }
+
+        .filter-button {
+            background-color: transparent;
+            color: currentColor;
+            font-size: inherit;
+            line-height: 2;
+            display: grid;
+            align-items: center;
+        }
+        .filter-button::before, .filter-button::after, .filter-button>* { grid-area: 1/1; }
+        .filter-button::before {
+            content: '';
+            display: block;
+            background-color: hsl( var(--hue), 75%, 25% );
+            border: 0.2em solid currentColor;
+          --size: 2em;
+            border-radius: var(--size);
+            min-width:  var(--size);
+            width: calc( 100%*var(--is-current-filter, 0) );
+            height: var(--size);
+            transform: scale( calc( 0.5 + 0.5*var(--is-current-filter, 0) ) );
+            transform-origin: left center;
+            transition: all 120ms ease-out;
+        }
+        .filter-button::after {
+            
+        }
+        .filter-button-caption {
+            padding-left: 1.5em;
+            padding-right: 1em;
+            z-index: 1;
+        }
+    </style>
+    <section class="filter-panel">
+        <h4>Filter</h4>
+        <button class="filter-button" data-genre="pop">
+            <span class="filter-button-caption">Fun & Popular</span>
+        </button>
+        <button class="filter-button" data-genre="relax">
+            <span class="filter-button-caption">Relax</span>
+        </button>
+        <button class="filter-button" data-genre="techno">
+            <span class="filter-button-caption">Activity</span>
+        </button>
+        <button class="filter-button" data-genre="energy">
+            <span class="filter-button-caption">Power Energy</span>
+        </button>
+        <button class="filter-button" data-genre="happy">
+            <span class="filter-button-caption">Happy Stories</span>
+        </button>
+    </section>
+
     </main>
+
+    <!-- ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ Actions -->
 
     <script>
         const genreClassName = key => ['genre-', key].join('');
@@ -219,14 +325,17 @@
             elImageWrap.appendChild(elImageTag);
 
             elCard.classList.add('grid-item');
-            elCard.classList.add( genreClassName(item.genre) );
+            elCard.dataset.genre = item.genre;
             elCard.appendChild(elImageWrap);
             elCard.appendChild(elUtubLink);
         };
 
         // RUN
 
-        const DOMGrid = document.querySelector('.grid');
+        const DOMContent = document.querySelector('#Content');
+        const DOMGrid    = document.querySelector('.grid');
+        const DOMFilters = document.querySelectorAll('.filter-button');
+
         for (id in UtubMusicList) {
             const item = itemData(id);
             const elem = document.createElement('figure');
@@ -234,20 +343,26 @@
             DOMGrid.appendChild(elem);
         };
 
+        const SetContentFilter = genre => {
+            const reset = genre === DOMContent.dataset.filter;
+            DOMContent.dataset.filter = reset ? 'all' : genre;
+        }
+        DOMFilters.forEach(el => {
+           el.addEventListener('click', ev => SetContentFilter(ev.currentTarget.dataset.genre));
+        });
+
     </script>
 
     <!-- ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ FOOTER -->
 
     <style>
         body>footer {
-            padding: 1em;
+            padding: var(--double-space);
             padding-top: 8em;
-
-            font-family: sans-serif;
-            line-height: 1.5;
         }
         body>footer h2 {
             font-size: clamp(1rem, 1.5vw, 2rem);
+            line-height: 1.5;
         }
         body>footer a {
             color: var(--color-mark, currentColor);
@@ -260,6 +375,7 @@
         p {
             padding-bottom: 1em;
             max-width: 42em;
+            line-height: 1.5;
         }
     </style>
 
