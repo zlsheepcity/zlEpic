@@ -2,6 +2,17 @@
 // appName 123.0002
 
 
+// ---------------------------------------------- Page Visibility
+
+console.log(document.visibilityState + ': ' + Date())
+document.onvisibilitychange =
+    () => console.log(document.visibilityState + ': ' + Date())
+
+// OUTPUT when switch browser tab
+// hidden: Mon Jan 03 2022 13:22:20
+// visible: Mon Jan 03 2022 13:22:21
+
+
 // ---------------------------------------------- // programming
 // ---------------------------------------------- // programming
 // ---------------------------------------------- // programming
