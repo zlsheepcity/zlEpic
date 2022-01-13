@@ -165,6 +165,12 @@ html {
     box-sizing: inherit;
 }
 
+html{
+  -moz-text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  text-size-adjust: none;
+  }
+
 /* full-height 2019
    https://css-tricks.com/some-things-you-oughta-know-when-working-with-viewport-units/ */
 
