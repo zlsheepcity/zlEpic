@@ -1,6 +1,10 @@
 "use strict"
-// appName 123.0002
 
+JSON.stringify(data, null, 0)
+JSON.stringify(data, null, 2)
+
+
+// ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ Section
 
 // ---------------------------------------------- Page Visibility
 
@@ -47,14 +51,14 @@ const compose = (...fns) => x => fns.reduce((acc, fn) => fn(acc), x);
 // ---------------------------------------------- PROMISE syntax
 
 
-    let result = function DemoPromise (resolve, reject) {
-        reject(data)
-        try {
-            /*timeout...*/resolve({token:'xToken'})
-        }
-        catch(err) { reject(err) }
+let result = function DemoPromise (resolve, reject) {
+    reject(data)
+    try {
+        /*timeout...*/resolve({token:'xToken'})
     }
-    return new Promise(result)
+    catch(err) { reject(err) }
+}
+return new Promise(result)
 	
 	// ...
 	
