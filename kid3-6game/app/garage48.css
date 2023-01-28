@@ -111,6 +111,10 @@
         background-color: var(--background-color);
         color:            var(--color);
     }
+    .use-colors a {
+      --color:            var(--link-color);
+        color:            var(--color);
+    }
 
     .colors--base {
       --back-color:       white;
@@ -133,6 +137,19 @@
       --text-color:       hsl(226, 27%, 90%); /* NobleWhite */
       --text-color-more:  hsl(226, 32%, 75%); /* NobleDay */
       --text-color-less:  hsl(226, 32%, 66%);
+
+      --link-color:       hsl(359, 54%, 53%); /* NobleAccent */
+      --link-color-more:  hsl(359, 59%, 43%); /* NobleAction */
+      --link-color-text:  white;
+    }
+    .colors--ivory {
+      --back-color:       hsl( 53, 66%, 80%); /* Ivory */
+      --back-color-more:  hsl( 53, 70%, 70%);
+      --back-color-less:  hsl( 53, 70%, 76%); 
+
+      --text-color:       hsl(204,  4%, 22%); /* IvoryDark */
+      --text-color-more:  hsl(204,  8%, 38%); /* IvoryGray */
+      --text-color-less:  hsl(204,  8%, 38%); /* IvoryGray */
 
       --link-color:       hsl(359, 54%, 53%); /* NobleAccent */
       --link-color-more:  hsl(359, 59%, 43%); /* NobleAction */
@@ -165,6 +182,28 @@ body {
     line-height: var(--line-height, 1.5);
     font-family: var(--font-family, sans-serif);
     font-weight: var(--font-weight, normal);
+}
+
+
+/** ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ components */
+
+    .screen {
+        display: block;
+        width: 100%;
+        min-height: 100vh;
+    }
+
+/** ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ decorations */
+
+a {
+    text-decoration: none;
+}
+
+.title {
+    text-align: center;
+    justify-content: center;
+    color: var(--text-color-more);
+    background-color: var(--back-color-more);
 }
 
 
