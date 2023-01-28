@@ -12,34 +12,87 @@ const PlateItems = [
     {
         display_name: 'Item',
         picture: 'cartoons/item1.png',
-        plate_area: '--x:-15; --y:+10;',
+        plate_area: '--x:-15; --y:10;',
         features: {
             A: 50,
             B: 40,
             C: 30,
         },
     },
-    {...PlateItemExample, plate_area: '--x:15; --y:-10;'},
+    {
+        display_name: 'Item',
+        picture: 'cartoons/item6.png',
+        plate_area: '--x:15; --y:-10;',
+        features: {
+            A: 50,
+            B: 40,
+            C: 30,
+        },
+    },
+    {
+        display_name: 'Item',
+        picture: 'cartoons/item4.png',
+        plate_area: '--x:10; --y:10;',
+        features: {
+            A: 50,
+            B: 40,
+            C: 30,
+        },
+    },
+    {
+        display_name: 'Item',
+        picture: 'cartoons/item3.png',
+        plate_area: '--x:-5; --y:20;',
+        features: {
+            A: 50,
+            B: 40,
+            C: 30,
+        },
+    },
+    {
+        display_name: 'Item',
+        picture: 'cartoons/item7.png',
+        plate_area: '--x:-15; --y:-15;',
+        features: {
+            A: 50,
+            B: 40,
+            C: 30,
+        },
+    },
     {
         display_name: 'Item',
         picture: 'cartoons/item2.png',
-        plate_area: '--x:-5; --y:+20;',
+        plate_area: '--x:-5; --y:-20;',
+        features: {
+            A: -20,
+            B: 50,
+            C: 30,
+        },
+    },
+    {
+        display_name: 'Item',
+        picture: 'cartoons/item5.png',
+        plate_area: '--x:3; --y:-10;',
         features: {
             A: 50,
             B: 40,
             C: 30,
         },
     },
-    //{...PlateItemExample, picture: 'cartoons/item2.png', plate_area: '--x:-5; --y:+20;'},
-    {...PlateItemExample, plate_area: '--x:10; --y:10;'},
-    {...PlateItemExample, picture: 'cartoons/item3.png', plate_area: '--x:-15; --y:-15;'},
-    {...PlateItemExample, plate_area: '--x:-5; --y:-20;'},
-    {...PlateItemExample, plate_area: '--x:3; --y:-10;'},
-    {...PlateItemExample, plate_area: '--x:0; --y:5;'},
+    {
+        display_name: 'Item',
+        picture: 'cartoons/item8.png',
+        plate_area: '--x:0; --y:5;',
+        features: {
+            A: 50,
+            B: 40,
+            C: 30,
+        },
+    },
 ];
 const PlateState = {
     features: {
-        A: 0,
+        A: 50,
         B: 0,
         C: 0,
     },
@@ -47,7 +100,7 @@ const PlateState = {
 const RunFeatures = () => {
     PlateState.features.A = PlateItems.reduce(
         (sum,o) => 1*sum + ( o.selected ? o.features.A : 0),
-        0
+        50
     )
     PlateState.features.B = PlateItems.reduce(
         (sum,o) => 1*sum + ( o.selected ? o.features.B : 0),
@@ -74,9 +127,9 @@ const domPlateWrap = document.querySelector(".PlateWrap")
 const domItemWrapA = document.querySelector(".itemsA")
 const domItemWrapB = document.querySelector(".itemsB")
 const domPlateItems = document.querySelector(".plateA .items")
-const domFeatureValueA = document.querySelector(".FeatureValueA")
-const domFeatureValueB = document.querySelector(".FeatureValueB")
-const domFeatureValueC = document.querySelector(".FeatureValueC")
+const domFeatureValueA = document.querySelector(".featureA")
+const domFeatureValueB = document.querySelector(".featureB")
+const domFeatureValueC = document.querySelector(".featureC")
 
 const renderItem = (item, keyIndex) => {
     const elFIGURE = document.createElement('figure')
@@ -90,6 +143,7 @@ const renderItem = (item, keyIndex) => {
     elFIGURE.classList.add('box')
     elFIGURE.append(elIMG)
     elFIGURE.addEventListener('click', (ev) => PlateItemSelect(item))
+    elIMP.addEventListener('click', (ev) => PlateItemSelect(item))
     item.el = elFIGURE
     item.elp = elIMP
     const domParent = keyIndex % 2 ? domItemWrapB : domItemWrapA
@@ -104,11 +158,12 @@ const renderPlateItems = () => {
     );
 };
 const renderFeatures = () => {
-    domFeatureValueA.style.width = `${PlateState.features.A}px`
-    domFeatureValueB.style.width = `${PlateState.features.B}px`
-    domFeatureValueC.style.width = `${PlateState.features.C}px`
+    domFeatureValueA.style = `--value: ${PlateState.features.A};`
+    domFeatureValueB.style = `--value: ${PlateState.features.B};`
+    domFeatureValueC.style = `--value: ${PlateState.features.C};`
 }
 
 // Run
 
 renderPlateItems()
+renderFeatures()

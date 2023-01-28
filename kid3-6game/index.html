@@ -71,6 +71,84 @@
 </head>
 <body class="use-colors colors--swed">
 
+
+<!-- ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ COVER -->
+
+<div class="screen use-colors colors--swed-secondary" id="Cover">
+    <header class="box title">
+        <h1>KIDO</h1>
+    </header>
+    <div class="box" style="text-align:center">
+        <h2>Play an learn <br>why avoid <br>burgers and candies</h2>
+    </div>
+    <div class="box" style="display:flex; justify-content:center; gap:2em;">
+        <a href="#Plate" class="button green">PLAY</a>
+        <a href="../" class="button">HOME PAGE</a>
+    </div>
+</div>
+
+<!-- ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ PLATE -->
+
+<div class="screen use-colors colors--ivory" id="Plate">
+    <div class="PlateWrap">
+        <section class="itemsA"></section>
+        <section class="itemsB"></section>
+        <section class="plateA">
+            <img src="./art/Plate_new.png" alt="">
+            <div class="items"></div>
+        </section>
+        <section class="plateB">
+           <div class="box">
+           <div class="features">
+              <div class="featureA">
+                  <h4>BALANCE:</h4>
+                  <div class="f-bar">
+                      <div class="f-bar-current"></div>
+                      <div class="f-bar-target"></div>
+                  </div>
+              </div>
+              <div class="featureB">
+                  <h4>PROTEIN:</h4>
+                  <div class="f-bar">
+                      <div class="f-bar-current"></div>
+                      <div class="f-bar-target"></div>
+                  </div>
+              </div>
+              <div class="featureC">
+                  <h4>SUGAR:</h4>
+                  <div class="f-bar">
+                      <div class="f-bar-current"></div>
+                      <div class="f-bar-target"></div>
+                  </div>
+              </div>
+           </div>
+           <div class="box">
+               <div>
+                 <a href="#Feedback" class="button">EAT!</a>              
+               </div>
+           </div>
+           </div>
+        </section>
+    </div>
+</div>
+<!-- itemsA/itemsB template
+            <figure class="box"><img src="./art/plate-item.svg" alt="plate item picture"></figure>
+-->
+
+<script src="./app/plate.js"></script>
+
+<!-- ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ FEEDBACK -->
+
+<div class="screen use-colors colors--swed" id="Feedback">
+    <header class="box title">
+        <h2>Feedback</h2>
+    </header>
+
+</div>
+
+
+<!-- ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ THE END -->
+
     <header class="box">
         <h1>Nutrient</h1>
         <div>kido3-6game</div>
@@ -93,50 +171,5 @@
         </section>
     </div>
 
-<!-- ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ COVER -->
-
-<div class="screen" id="Cover">
-    <h2>Cover</h2>
-</div>
-
-<!-- ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ PLATE -->
-
-<div class="screen use-colors colors--ivory" id="Plate">
-    <div class="PlateWrap">
-        <header class="box title">
-            <div>Kido</div>
-        </header>
-        <footer class="box title">
-<!--            <h4>footer</h4>-->
-        </footer>
-        <section class="box itemsA">
-<!--
-            <figure class="box"><img src="./art/plate-item.svg" alt="plate item picture"></figure>
--->
-        </section>
-        <section class="box itemsB"></section>
-        <section class="plateA">
-            <img src="./art/Plate_new.png" alt="">
-            <div class="items"></div>
-        </section>
-        <section class="plateB">
-           <div class="box title">
-           <div class="features">
-              <div><h4>BALANCE:</h4> <div class="FeatureValue FeatureValueA"></div></div>
-              <div><h4>PROTEIN:</h4> <div class="FeatureValue FeatureValueB"></div></div>
-              <div><h4>SUGAR:</h4> <div class="FeatureValue FeatureValueC"></div></div>
-           </div>
-           <div class="button">EAT!</div>
-           </div>
-        </section>
-    </div>
-</div>
-
-<script src="./app/plate.js"></script>
-<script>
-    
-</script>
-
-<!-- ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ THE END -->
 </body>
 </html>
