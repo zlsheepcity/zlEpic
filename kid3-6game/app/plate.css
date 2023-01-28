@@ -79,8 +79,18 @@
 
 .FeatureValue {
   --VALUE: 0;
+  --background-color: var(--link-color);
     height: 1rem;
     width: calc( 10px * var(--VALUE) );
-    background-color: var(--link-color);
+    background-color: var(--background-color);
     border-radius: 4px;
+}
+.FeatureValue.FeatureValueA {
+  --background-color: hsl(202, 36%, 60%);
+}
+.FeatureValue.FeatureValueB {
+  --background-color: hsl( 13, 61%, 54%);
+}
+.FeatureValue.FeatureValueC {
+  --background-color: hsl(179, 60%, 35%);
 }
