@@ -1,6 +1,6 @@
 :root {
   --side-size: 24vh;
-  --plate-size: 60vh;
+  --plate-size: 70vh;
 }
 .PlateWrap {
     width: 100%;
@@ -104,7 +104,7 @@
   --background-color: hsl(179, 60%, 35%);
 }
 
-.featureA { --feature-color: hsl(202, 36%, 60%); --feature-value: 75; }
+.featureA { --feature-color: hsl(202, 36%, 60%); --feature-value: 100; }
 .featureB { --feature-color: hsl( 13, 61%, 54%); --feature-value: 60; }
 .featureC { --feature-color: hsl(179, 60%, 35%); --feature-value: 20; }
 .featureA { --feature-color2: hsla(202, 36%, 60%, 0.15); }

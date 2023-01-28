@@ -1,95 +1,3 @@
-const PlateItemExample = {
-    display_name: 'Item',
-    picture: 'plate-item.svg',
-    plate_area: '--x:-15; --y:+10;',
-    features: {
-        A: 50,
-        B: 40,
-        C: 30,
-    },
-};
-const PlateItems = [
-    {
-        display_name: 'Item',
-        picture: 'cartoons/item1.png',
-        plate_area: '--x:-15; --y:10;',
-        features: {
-            A: 50,
-            B: 40,
-            C: 30,
-        },
-    },
-    {
-        display_name: 'Item',
-        picture: 'cartoons/item6.png',
-        plate_area: '--x:15; --y:-10;',
-        features: {
-            A: 50,
-            B: 40,
-            C: 30,
-        },
-    },
-    {
-        display_name: 'Item',
-        picture: 'cartoons/item4.png',
-        plate_area: '--x:10; --y:10;',
-        features: {
-            A: 50,
-            B: 40,
-            C: 30,
-        },
-    },
-    {
-        display_name: 'Item',
-        picture: 'cartoons/item3.png',
-        plate_area: '--x:-5; --y:20;',
-        features: {
-            A: 50,
-            B: 40,
-            C: 30,
-        },
-    },
-    {
-        display_name: 'Item',
-        picture: 'cartoons/item7.png',
-        plate_area: '--x:-15; --y:-15;',
-        features: {
-            A: 50,
-            B: 40,
-            C: 30,
-        },
-    },
-    {
-        display_name: 'Item',
-        picture: 'cartoons/item2.png',
-        plate_area: '--x:-5; --y:-20;',
-        features: {
-            A: -20,
-            B: 50,
-            C: 30,
-        },
-    },
-    {
-        display_name: 'Item',
-        picture: 'cartoons/item5.png',
-        plate_area: '--x:3; --y:-10;',
-        features: {
-            A: 50,
-            B: 40,
-            C: 30,
-        },
-    },
-    {
-        display_name: 'Item',
-        picture: 'cartoons/item8.png',
-        plate_area: '--x:0; --y:5;',
-        features: {
-            A: 50,
-            B: 40,
-            C: 30,
-        },
-    },
-];
 const PlateState = {
     features: {
         A: 50,
@@ -139,7 +47,7 @@ const renderItem = (item, keyIndex) => {
     elIMP.src = `./art/${item.picture}`
     elIMG.alt = item.display_name
     elIMP.alt = item.display_name
-    elIMP.style = item.plate_area
+    elIMP.style = `--x:${item?.platePosition?.x};--y:${item?.platePosition?.y};`
     elFIGURE.classList.add('box')
     elFIGURE.append(elIMG)
     elFIGURE.addEventListener('click', (ev) => PlateItemSelect(item))
