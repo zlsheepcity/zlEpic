@@ -15,8 +15,8 @@ const PlateItems = [
     {...PlateItemExample, plate_area: '--x:10; --y:10;'},
     {...PlateItemExample, plate_area: '--x:-15; --y:-15;'},
     {...PlateItemExample, plate_area: '--x:-5; --y:-15;'},
-    {...PlateItemExample, plate_area: '--x:5; --y:-10;'},
-    {...PlateItemExample, plate_area: '--x:-5; --y:+10;'},
+    //{...PlateItemExample, plate_area: '--x:5; --y:-10;'},
+    //{...PlateItemExample, plate_area: '--x:-5; --y:+10;'},
 ];
 const PlateState = {
     features: {
