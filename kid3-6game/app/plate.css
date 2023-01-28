@@ -1,5 +1,5 @@
 :root {
-  --side-size: 20vh;
+  --side-size: 24vh;
   --plate-size: 60vh;
 }
 .PlateWrap {
@@ -29,6 +29,12 @@
 .PlateWrap >.plateA { grid-area: plateA; }
 .PlateWrap >.plateB { grid-area: plateB; }
 
+.PlateWrap .plateA .items img,
+.PlateWrap figure img {
+    border-radius: 50%;
+    border: 8px solid var(--link-color);
+}
+
 .PlateWrap figure.selected {
     opacity: 0.25;
 }
@@ -45,10 +51,11 @@
 .PlateWrap .plateA .items>* {
   --x:0;
   --y:0;
+  --radius:5vh;
     position: absolute;
-    top:calc(50% - 4vh);
-    left:calc(50% - 4vh);
-    width: 8vh;
+    top:calc(50% - var(--radius));
+    left:calc(50% - var(--radius));
+    width: calc(2*var(--radius));
 
     opacity: 0;
     transition: opacity 400ms var(--timing-function--openJump);
@@ -76,7 +83,9 @@
     align-content: center;
     align-items: center;
 }
-
+.PlateWrap .features h4 {
+    width: 7.5rem;
+}
 .FeatureValue {
   --VALUE: 0;
   --background-color: var(--link-color);

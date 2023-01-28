@@ -9,14 +9,33 @@ const PlateItemExample = {
     },
 };
 const PlateItems = [
-    {...PlateItemExample, plate_area: '--x:-15; --y:+10;'},
+    {
+        display_name: 'Item',
+        picture: 'cartoons/item1.png',
+        plate_area: '--x:-15; --y:+10;',
+        features: {
+            A: 50,
+            B: 40,
+            C: 30,
+        },
+    },
     {...PlateItemExample, plate_area: '--x:15; --y:-10;'},
-    {...PlateItemExample, plate_area: '--x:-5; --y:+20;'},
+    {
+        display_name: 'Item',
+        picture: 'cartoons/item2.png',
+        plate_area: '--x:-5; --y:+20;',
+        features: {
+            A: 50,
+            B: 40,
+            C: 30,
+        },
+    },
+    //{...PlateItemExample, picture: 'cartoons/item2.png', plate_area: '--x:-5; --y:+20;'},
     {...PlateItemExample, plate_area: '--x:10; --y:10;'},
-    {...PlateItemExample, plate_area: '--x:-15; --y:-15;'},
-    {...PlateItemExample, plate_area: '--x:-5; --y:-15;'},
-    //{...PlateItemExample, plate_area: '--x:5; --y:-10;'},
-    //{...PlateItemExample, plate_area: '--x:-5; --y:+10;'},
+    {...PlateItemExample, picture: 'cartoons/item3.png', plate_area: '--x:-15; --y:-15;'},
+    {...PlateItemExample, plate_area: '--x:-5; --y:-20;'},
+    {...PlateItemExample, plate_area: '--x:3; --y:-10;'},
+    {...PlateItemExample, plate_area: '--x:0; --y:5;'},
 ];
 const PlateState = {
     features: {
