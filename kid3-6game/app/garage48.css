@@ -206,6 +206,16 @@ a {
     background-color: var(--back-color-more);
 }
 
+.button {
+    display: inline-block;
+    border-radius: 0.25em;
+    padding: 0.25rem 2em;
+    cursor: pointer;
+    font-size: 2rem;
+    color: var(--link-color-text);
+    background-color: var(--link-color);
+}
+
 
 /** ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ */
 

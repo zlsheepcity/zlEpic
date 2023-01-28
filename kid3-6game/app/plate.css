@@ -39,8 +39,27 @@
 .PlateWrap figure:hover img {
     transform: scale(1.2)
 }
-.PlateWrap .itemsA {
-    grid-area: itemsA;
+.PlateWrap .plateA {
+    position: relative;
+}
+.PlateWrap .plateA .items>* {
+  --x:0;
+  --y:0;
+    position: absolute;
+    top:calc(50% - 4vh);
+    left:calc(50% - 4vh);
+    width: 8vh;
+
+    opacity: 0;
+    transition: opacity 400ms var(--timing-function--openJump);
+    transform:
+        translate(
+            calc( var(--x)*1vh ),
+            calc( var(--y)*1vh )
+        )
+}
+.PlateWrap .plateA .items>*.selected {
+    opacity: 1;
 }
 
 .PlateWrap .plateA>img {
@@ -59,8 +78,9 @@
 }
 
 .FeatureValue {
-  --VALUE: 10;
+  --VALUE: 0;
     height: 1rem;
     width: calc( 10px * var(--VALUE) );
     background-color: var(--link-color);
+    border-radius: 4px;
 }
