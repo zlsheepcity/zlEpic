@@ -65,12 +65,7 @@
         rel="stylesheet" type="text/css">
 
 </head>
-<body class="box use-colors colors--swed-third">
-
-    <header class="box">
-        <h1>SUHENU FOCO</h1>
-    </header>
-
+<body class="use-colors colors--swed">
 
 <!-- ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ SCREEN -->
     
@@ -86,17 +81,61 @@
         background-color: var(--back-color-less);
         color:            var(--text-color);
     }
-
+    .span {
+        --display: inline-block;
+        --padding: 0.2em 0.5em;
+        --background-color: var(--back-color-less);
+        color:            var(--link-color);
+    }
 </style>
 
 <div class="screen" id="Cover">
-    <section class="section">
-    <h2>Components</h2>
-    <ul>
-        <li>Data, mocked examples</li>
-        <li>Cover, design screens</li>
-    </ul>
-    </section>
+    <header>
+        <section class="section" style="display:flex; justify-content:space-between; gap:2rem; ">
+            <h1>
+                <span style="color:var(--link-color)">SU</span> sustainable<br>
+                <span style="color:var(--link-color)">HE</span> healthy<br>
+                <span style="color:var(--link-color)">NU</span> nutrition<br>
+            </h1>
+            <h1>
+                <span style="color:var(--link-color)">FO</span> for 
+                <span style="color:var(--link-color)">CO</span> cooks<br>
+            </h1>
+        </section>
+    </header>
+
+    <div class="box" style="padding:4em;">
+       <div class="box"><h2>School cooks can access <span class="span">recipes</span> and <span class="span">education</span></h2></div>
+       <div class="box"><h2>Sustainable and healthy <span class="span">nutrition</span></h2></div>
+       <div class="box">
+           <h3><a href="#WebApp" style="color:var(--link-color)">Next</a></h3>
+       </div>
+    </div>
+
+</div>
+
+<div class="screen" id="WebApp">
+    <header>
+        <section class="section" style="display:flex; justify-content:space-between; gap:2rem; ">
+            <h1>Web App</h1>
+        </section>
+    </header>
+    <div class="box" style="padding:4em;">
+       <div class="box"><h2>Recipes from various cuisines</h2></div>
+       <div class="box"><h2>National dietary guidelines</h2></div>
+       <div class="box"><h2>Different age group and quantity</h2></div>
+       <div class="box"><h2>
+       </h2></div>
+        <div class="box" style="display:flex;gap:2rem;">
+            <a href="https://www.figma.com/proto/se0h14ZCPiEapA9oSo0YMO/SUHENU-FOCO?node-id=1%3A2&scaling=scale-down&page-id=0%3A1&starting-point-node-id=1%3A2" style="color:var(--text-color)">
+            <img src="./art/Figma-prototype.png" style="width:50vh;" alt=""></a>
+            <h4>Pic. 1 Figma prototype</h4>
+        </div>
+       <div class="box" style="display:flex;gap:2rem;">
+           <h3><a href="#Cover" style="color:var(--link-color)">Back</a></h3>
+           <h3><a href="#WebApp" style="color:var(--link-color)">Next</a></h3>
+       </div>
+    </div>
 </div>
 
 

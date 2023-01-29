@@ -138,6 +138,33 @@
       --link-color-more:  hsl(359, 59%, 43%); /* NobleAction */
       --link-color-text:  white;
     }
+    .colors--swed {
+      --back-color:       hsl(226, 15%, 12%); /* NobleBlack */
+      --back-color-more:  hsl(212, 34%, 29%); /* NobleSea */
+      --back-color-less:  hsl(226, 17%, 20%); /* NobleNight */
+
+      --text-color:       hsl(226, 27%, 90%); /* NobleWhite */
+      --text-color-more:  hsl(226, 32%, 75%); /* NobleDay */
+      --text-color-less:  hsl(226, 32%, 66%);
+
+      --link-color:       hsl(359, 54%, 53%); /* NobleAccent */
+      --link-color-more:  hsl(359, 59%, 43%); /* NobleAction */
+      --link-color-text:  white;
+    }
+    .colors--ivory {
+      --back-color:       hsl( 53, 66%, 80%); /* Ivory */
+      --back-color-more:  hsl( 53, 70%, 70%);
+      --back-color-less:  hsl( 53, 70%, 76%); 
+
+      --text-color:       hsl(204,  4%, 22%); /* IvoryDark */
+      --text-color-more:  hsl(204,  8%, 38%); /* IvoryGray */
+      --text-color-less:  hsl(204,  8%, 38%); /* IvoryGray */
+
+      --link-color:       hsl(359, 54%, 53%); /* NobleAccent */
+      --link-color-more:  hsl(359, 59%, 43%); /* NobleAction */
+      --link-color-text:  white;
+    }
+
 
 /** ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~  Typography */
 
