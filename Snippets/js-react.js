@@ -21,6 +21,12 @@ let me: Human = {
 // explained cheatsheet
 // https://blog.bitsrc.io/react-with-typescript-cheatsheet-9dd891dc5bfe
 
+React.ChangeEvent<HTMLInputElement>
+React.ChangeEvent<HTMLTextAreaElement>
+React.ChangeEvent<HTMLSelectElement>
+React.FormEvent<HTMLFormElement>
+HTMLElement
+
 type MyType = {
   somePrimitive: number,
   someArray: string[],
