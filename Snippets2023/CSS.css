@@ -1,0 +1,296 @@
+/* ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ */
+/* ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ Common combos */
+
+
+.flexbox {
+    display:         flex;
+    flex-direction:  column;
+    justify-content: center;
+    align-items:     center;
+    align-content:   center;
+}
+
+.centered {
+    display: grid;
+    place-items: center;
+}
+
+
+/* ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ Layout */
+
+
+/** Line break while maintaining inline status */
+.inline-element::after {
+    content: '\A';
+    white-space: pre;
+}
+
+/** Full-height including mobile devices 2019
+    https://css-tricks.com/some-things-you-oughta-know-when-working-with-viewport-units/
+    */
+body {
+    min-height: 100vh; /* or min-height: calc(100vh - 80px); - depending on your preferences */
+    min-height: -webkit-fill-available;
+    min-height: -moz-available;
+    min-height: available; /* not sure if exist in any browser */
+    min-height: -webkit-stretch; /* not sure if exist in any browser */
+    min-height: -moz-stretch; /* not sure if exist in any browser */
+    min-height: stretch;
+}
+
+
+/* ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ Link */
+
+
+a {
+    text-decoration-color: #EA215A;
+    text-decoration-thickness: 0.125em;
+    text-underline-offset: 1.5px;
+}
+
+/* focus border */
+a:focus {
+    outline: 1px solid;
+    outline-offset: 0.15em;
+}
+
+
+/* ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ Form input */
+
+
+.validated-form-control:invalid:not(:placeholder-shown) {
+    color: red;
+}
+.validated-form-control:valid:not(:placeholder-shown) {
+    color: green;
+}
+
+
+/* ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ Image */
+
+
+img.blend-with-color {
+    background: rgb(244, 65, 106);
+    mix-blend-mode: multiply;
+}
+
+.background-blend-mixer {
+    background:
+        url(image1.png),
+        url(image2.png),
+        linear-gradient(
+            45deg,
+            rgba(65, 68,244, 1),
+            rgba(203, 66, 244, 0.5)
+        ),
+        rgba(244, 65, 106, 1);
+    background-size: cover;
+    background-blend-mode: screen, multiply;
+}/* => Blends together the background layers of the element we’re targeting. Our element could have background images, colours and gradients, and they would all be blended with each other without affecting the foreground content. We can specify multiple values for background-blend-mode, one for each background layer. */
+
+
+.x-close1 {
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="black"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/><path d="M0 0h24v24H0z" fill="none"/></svg>');
+    background-size:  cover;
+}
+.x-close2 {
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='black'><path d='M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z'/><path d='M0 0h24v24H0z' fill='none'/></svg>");
+    background-size: cover;
+}
+/** SVG→CSS encoder
+    https://yoksel.github.io/url-encoder/
+    */
+.x-close3 {
+    background-image: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="black"%3E%3Cpath d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/%3E%3Cpath d="M0 0h24v24H0z" fill="none"/%3E%3C/svg%3E');
+    background-size: cover;
+}
+
+
+/* ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ Typography */
+
+
+/** Text combine
+    https://developer.mozilla.org/en-US/docs/Web/CSS/text-combine-upright
+    */
+.component {
+    text-combine-upright: none;
+    text-combine-upright: all;
+}
+
+
+/* ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ Scroll / Scrollbar */
+
+
+html {
+    scroll-behavior: smooth;
+}
+
+.reserve-scrollbar-space {
+    scrollbar-gutter: stable;
+}
+
+.modal-without-parent-scroll {
+    overscroll-behavior-y: contain;
+    overflow: auto;
+}
+
+.hidden-scrollbar {
+    scrollbar-width: none;
+   -ms-overflow-style: none;
+}.hidden-scrollbar::-webkit-scrollbar {
+    display: none;
+}
+
+
+/** Scroll snap */
+
+body {
+    scroll-snap-type: y mandatory;
+}
+section {
+    scroll-snap-align: start;
+}
+
+/** Horizontal slider snap */
+.SnapSliderContainer {
+  --slide-step-size: 300px;
+    scroll-snap-points-x: repeat(var(--slide-step-size));
+    scroll-snap-type: mandatory;
+}
+
+/** Custom scrollbar */
+
+/** The emerging W3C standard
+    2022 Firefox-only */
+* {
+    scrollbar-width: thin;
+    scrollbar-color: blue orange;
+}
+
+/* Works on Chrome/Edge/Safari */
+*::-webkit-scrollbar {
+    width: 12px;
+}
+*::-webkit-scrollbar-track {
+    background: orange;
+}
+*::-webkit-scrollbar-thumb {
+    background-color: blue;
+    border-radius: 20px;
+    border: 3px solid orange;
+}
+
+
+/* ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ Media */
+
+
+@media screen and (prefers-reduced-motion: no-preference) {} /* do animations */
+@media screen and (prefers-reduced-motion: reduce) {}        /* do less animations */
+@media screen and (prefers-reduced-motion: reduce) {
+    * {
+        transition: none !important;
+    }
+}
+
+@media only screen and (min-device-width: 400px) {}
+@media (min-width: 600px) and (max-width: 800px) {} /* AND statement */
+@media (max-width: 600px), (min-width: 800px) {} /* OR statement */
+@media (min-width: 768px) and (min-device-pixel-ratio: 1.5) {} /* retina screen */
+@media screen and (min-aspect-ratio: 16/10) {}
+
+@media (hover:hover) {}
+@media (any-hover:hover) {}
+/*
+    hover: hover
+        if the primary input mechanism can hover elements;
+    hover: none
+        if the primary input mechanism can’t hover elements, or there is no primary pointing input mechanism.
+*/
+
+@media (pointer:hover) {}
+@media (any-pointer:hover) {}
+/*
+    pointer: coarse
+        if the primary input mechanism includes a pointing device of limited accuracy;
+    pointer: fine
+        if the primary input mechanism includes an accurate pointing device;
+    pointer: none
+        if the primary input mechanism does not include a pointing device.
+*/
+
+
+/* ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ Media: Print */
+
+
+.PrintPageContainer {
+    break-inside: avoid;
+}
+
+.PrintPageBreak {
+  page-break-after  : auto | always | avoid | left | right
+  page-break-before : auto | always | avoid | left | right
+  page-break-inside : auto | avoid
+}
+
+/** CSS Paged Media Module
+    https://drafts.csswg.org/css-page-3/
+    */
+@media print {
+    @page {
+        margin: .5cm;
+    }
+    @page :left {
+          margin-right: 2in;
+    }
+    @page :right {
+          margin-left: 2in;
+    }
+    @page NamedPage {
+        margin:  20mm 30mm;
+        background: yellow;
+    }
+    .component {
+          page: NamedPage;
+    }
+}
+
+/* ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ Config */
+
+
+@charset "utf-8";
+@import url("part.css");
+
+/* html async css-link
+<link href="CSS.css" rel="stylesheet" type="text/css"
+      media="none" onload="if(media!='all') media='all'"/>
+*/
+
+
+/* ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ Components */
+
+
+/* Box placeholder with striped fill */
+.boxer {
+    background-image: repeating-linear-gradient(
+        135deg,
+        var(--c1),
+        var(--c1) 0.75rem,
+        var(--c2) 0.75rem,
+        var(--c2) 1.50rem);
+  --c1: hsla( 222 44% 44% / 0.125 );
+  --c2: hsla( 222 44% 44% / 0.0125 );
+}.boxer {
+  --width:   100%;
+  --height:  30vh;
+    border:  0;
+    margin:  0;
+    width:   var(--width);
+    height:  var(--height);
+    display: grid;
+    place-items: center;
+}.boxer {
+    font-size: 1rem;
+    font-family: monospace;
+    color: var(--c1, currentColor);
+}
+/*.*/
