@@ -47,3 +47,38 @@ $DB_charset = mysql_query("SET NAMES 'utf8'");
 
 ?>
 
+<?php
+
+// Create connection
+$cadasterDB_host = "localhost";
+$cadasterDB_user = "username";
+$cadasterDB_pass = "password";
+$cadasterDB_name = "myDB";
+$cadasterDB_port = "";
+$conn = new mysqli(
+    $cadasterDB_host,
+    $cadasterDB_user,
+    $cadasterDB_pass,
+    $cadasterDB_name,
+    $cadasterDB_port
+);
+
+// Check connection
+if ($conn->connect_error) {
+  die("Connection failed: " . $conn->connect_error);
+}
+
+$sql = "SELECT id, firstname, lastname FROM MyGuests";
+$result = $conn->query($sql);
+
+if ($result->num_rows > 0) {
+  // output data of each row
+  while($row = $result->fetch_assoc()) {
+    echo "id: " . $row["id"]. " - Name: " . $row["firstname"]. " " . $row["lastname"]. "<br>";
+  }
+} else {
+  echo "0 results";
+}
+$conn->close();
+?>
+
