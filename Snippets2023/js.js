@@ -1,3 +1,25 @@
+//~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ common snippets
+
+const fAsync = new Promise(
+    function PromiseTemplate (resolve, reject) {
+        try {
+            resolve({});
+        } catch(err) {
+            reject(err);
+        };
+    }
+);
+let result = function DemoPromise (resolve, reject) {
+    try {
+        resolve({})
+    } catch(err) {
+        reject(err)
+    };
+};
+return new Promise(result)
+
+
+//~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
 // before 23.9.5
 
 "use strict"
