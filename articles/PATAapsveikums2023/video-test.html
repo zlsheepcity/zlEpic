@@ -64,12 +64,168 @@
         href="app/css.21xComponents.css"
         type="text/css" rel="stylesheet" media="all">
 
+    <style>
+        .layoutScreenFixed {
+            position: fixed;
+            z-index: -1;
+            top:    0;
+            left:   0;
+            width:  100%;
+            height: 100vh;
+            overflow: hidden;
+            pointer-events: none;
+
+            display: grid;
+            grid-template-columns: 1fr;
+            grid-template-rows: 1fr;
+            place-items: center;
+
+            background-color: pink;
+        }
+        .layoutScreenFixed>* {
+            grid-area: 1/1 / 2/2;
+        }
+        .layoutScreenFixed>video {
+            min-width:  100%;
+            min-height: 100%;
+        }
+
+        .videoList {
+            display: grid;
+            grid-template-columns: 1fr;
+            grid-gap: 1rem;
+            margin-bottom: 6rem;
+        }
+        .videoList video {
+            width: 200px;
+            outline: 0.25rem solid skyblue;
+        }
+        .videoList video.selected {
+            outline-color: hotpink;
+        }
+    </style>
+
 
     <!-- ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ -->
 </head>
 <body class="">
 
-    video-test
+    <section class="layoutScreenFixed" id="Grounds">
+        <video muted loop autoplay --hidden class="horizontal" id="Example1">
+            <source
+                src="art/video-example1.mov"
+                type="video/mp4" />
+        </video>
+        <video muted loop autoplay hidden  class="horizontal" id="Example2">
+            <source
+                src="art/video-example2.mov"
+                type="video/mp4" />
+        </video>
+        <video muted loop autoplay hidden class="horizontal" id="Example3">
+            <source
+                src="art/video-example3.mp4"
+                type="video/mp4" />
+        </video>
+        <video muted loop autoplay hidden class="vertical" id="Example4">
+            <source
+                src="art/video-exampleV.mp4"
+                type="video/mp4" />
+        </video>
+    </section>
+
+    <article class="layoutBook">
+        <header>
+            <h1 class="h3">video-test</h1>
+            <p>Select video for background:</p>
+        </header>
+
+        <section class="videoList" id="Selection">
+            <video muted loop autoplay data-ref="Example1" class="selected">
+                <source
+                    src="art/video-example1.mov"
+                    type="video/mp4" />
+            </video>
+            <video muted loop autoplay data-ref="Example2">
+                <source
+                    src="art/video-example2.mov"
+                    type="video/mp4" />
+            </video>
+            <video muted loop autoplay data-ref="Example3">
+                <source
+                    src="art/video-example3.mp4"
+                    type="video/mp4" />
+            </video>
+            <video muted loop autoplay data-ref="Example4">
+                <source
+                    src="art/video-exampleV.mp4"
+                    type="video/mp4" />
+            </video>
+        </section>
+
+        <script>
+            const activateSelection = f => {
+                const elVideos = [...document.querySelectorAll('#Selection video')]
+                const elGrouns = [...document.querySelectorAll('#Grounds video')]
+                elVideos.forEach(
+                    elvid => {
+                        elvid.addEventListener('click', e => {
+                            const tID = elvid.dataset.ref;
+                            const elB = document.getElementById(tID);
+                            elGrouns.forEach( G => { G.hidden = true; } );
+                            elVideos.forEach( G => { G.classList.remove('selected'); } );
+                            elB.hidden = false;
+                            elvid.classList.add('selected');
+                        })
+                    }
+                );
+            };
+            activateSelection();
+        </script>
+
+    </article>
+
+    <article class="layoutBook">
+        <header>
+            <h2>
+                Page-scroll and text-visibility tests
+            </h2>
+            <p>v2023.10.24</p>
+        </header>
+        <section>
+            <p mock>
+                Quantum field theory emerged from the work of generations of theoretical physicists spanning much of the 20th century. Its development began in the 1920s with the description of interactions between light and electrons, culminating in the first quantum field theory —quantum electrodynamics. A major theoretical obstacle soon followed with the appearance and persistence of various infinities in perturbative calculations, a problem only resolved in the 1950s with the invention of the renormalization procedure. A second major barrier came with QFT's apparent inability to describe the weak and strong interactions, to the point where some theorists called for the abandonment of the field theoretic approach. The development of gauge theory and the completion of the Standard Model in the 1970s led to a renaissance of quantum field theory.
+            </p>
+        </section>
+        <blockquote>
+            <p mock>
+                Main article: History of quantum field theory
+            </p>
+        </blockquote>
+
+        <h3>
+            Theoretical background
+        </h3>
+        <section>
+            <p mock>
+                Quantum field theory results from the combination of classical field theory, quantum mechanics, and special relativity. [1]  A brief overview of these theoretical precursors follows.
+            </p>
+            <p mock>
+                The earliest successful classical field theory is one that emerged from Newton's law of universal gravitation, despite the complete absence of the concept of fields from his 1687 treatise Philosophiæ Naturalis Principia Mathematica. The force of gravity as described by Newton is an "action at a distance"—its effects on faraway objects are instantaneous, no matter the distance. In an exchange of letters with Richard Bentley, however, Newton stated that "it is inconceivable that inanimate brute matter should, without the mediation of something else which is not material, operate upon and affect other matter without mutual contact." [2]  It was not until the 18th century that mathematical physicists discovered a convenient description of gravity based on fields—a numerical quantity (a vector in the case of gravitational field) assigned to every point in space indicating the action of gravity on any particle at that point. However, this was considered merely a mathematical trick. [3]
+            </p>
+        </section>
+        <blockquote>
+            <p mock>
+                [1] [2] [3]
+            </p>
+        </blockquote>
+
+        <footer>
+            <p mock>
+                Fields began to take on an existence of their own with the development of electromagnetism in the 19th century. Michael Faraday coined the English term "field" in 1845. He introduced fields as properties of space (even when it is devoid of matter) having physical effects. He argued against "action at a distance", and proposed that interactions between objects occur via space-filling "lines of force". This description of fields remains to this day.
+            </p>
+        </footer>
+    </article>
+
 
     <!-- ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ END -->
 </body>
