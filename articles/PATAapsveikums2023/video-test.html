@@ -111,7 +111,7 @@
 <body class="">
 
     <section class="layoutScreenFixed" id="Grounds">
-        <video muted loop autoplay --hidden class="horizontal" id="Example1">
+        <video muted loop autoplay hidden class="horizontal" id="Example1">
             <source
                 src="art/video-example1.mov"
                 type="video/mp4" />
@@ -121,7 +121,7 @@
                 src="art/video-example2.mov"
                 type="video/mp4" />
         </video>
-        <video muted loop autoplay hidden class="horizontal" id="Example3">
+        <video muted loop autoplay --hidden class="horizontal" id="Example3">
             <source
                 src="art/video-example3.mp4"
                 type="video/mp4" />
@@ -140,7 +140,7 @@
         </header>
 
         <section class="videoList" id="Selection">
-            <video muted loop autoplay data-ref="Example1" class="selected">
+            <video muted loop autoplay data-ref="Example1">
                 <source
                     src="art/video-example1.mov"
                     type="video/mp4" />
@@ -150,7 +150,7 @@
                     src="art/video-example2.mov"
                     type="video/mp4" />
             </video>
-            <video muted loop autoplay data-ref="Example3">
+            <video muted loop autoplay data-ref="Example3" class="selected">
                 <source
                     src="art/video-example3.mp4"
                     type="video/mp4" />
