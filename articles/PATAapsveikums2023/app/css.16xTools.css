@@ -1,0 +1,42 @@
+/** 16xTools
+ *  decorations and layouts
+ *  v2023.10.20 keiko
+ *  zl
+ */
+
+/** ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ bg mixers */
+
+
+.background-blend-mixer {
+/** Blends together the background layers
+  * without affecting the foreground content */
+  --background:
+    /** Could have: */
+
+        url(image1.png),        /* images */
+        url(image2.png),
+        rgba(244, 65, 106, 1),  /* colors */
+        linear-gradient(        /* gradients */
+            45deg,
+            rgba(65, 68,244, 1),
+            rgba(203, 66, 244, 0.5)
+        )
+        ;
+
+/** We can specify multiple values for background-blend-mode
+  * one for each background layer */
+  --background-blend-mode: screen, multiply;
+
+    background-size: cover;
+    background-blend-mode: var(--background-blend-mode);
+    background: var(--background);
+}
+
+img.blend-with-color,
+   .blend-with-color {
+  --background-color: hsl(204, 22%, 55%); /*NobleSky*/
+    background-color: var(--background-color);
+    mix-blend-mode: multiply;
+}
+
+/** END OF Tools */
