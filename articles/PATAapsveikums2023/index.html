@@ -30,6 +30,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
 
+    <!-- ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ JS LIBS -->
+    <script src="app/DateTime.js"></script>
+
     <!-- ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ DESIGN -->
     <link
         href="app/css.11xBase.css"
@@ -73,7 +76,10 @@
             grid-template-rows: 1fr;
             place-items: center;
 
+            background: url(art/chair-static.jpg);
             background-color: #4f4f23;
+            background-size: cover;
+            background-position: 50% 50%;
         }
         .layoutScreenFixed>* {
             grid-area: 1/1 / 2/2;
@@ -134,9 +140,8 @@
         }
 
         .boxDigit {
-            background-color: hsla(0, 0%,  12%, 0.95);
+            background-color: transparent;
                        color: hsla(0, 0%, 100%, 1);
-            border-radius: 1rem;
 
             display: grid;
             place-items: center;
@@ -145,6 +150,30 @@
             font-size:  6rem;
             line-height: 1.25;
             padding: 0 0.25rem;
+
+            position: relative;
+            z-index: 1;
+        }
+        .boxDigit::before,
+        .boxDigit::after {
+            content: '';
+            background-color: hsla(0, 0%,  12%, 0.95);
+                       color: hsla(0, 0%, 100%, 1);
+            display: block;
+            position: absolute;
+            z-index: -1;
+            left: 0;
+            right: 0;
+        }
+        .boxDigit::before {
+            top: 0;
+            bottom: calc(50% + 1px);
+            border-radius: 1rem 1rem 0 0;
+        }
+        .boxDigit::after {
+            top: calc(50% + 1px);
+            bottom: 0;
+            border-radius: 0 0 1rem 1rem;
         }
         .sperator {
             display: grid;
@@ -174,7 +203,6 @@
     <section class="layoutScreenFixed" id="Grounds">
         <video playsinline autoplay muted loop>
             <source src="art/chair-reduce4.webm" type="video/webm" />
-            <source src="art/chair-reduce4.mp4" type="video/mp4" />
         </video>
     </section>
 
@@ -182,14 +210,14 @@
         <div class="componentTimer">
             <h1>Līdz apsveikuma atvēršanai:</h1>
             <div class="componentTimeline">
-                <div class="boxDigit">0</div>
-                <div class="boxDigit">1</div>
+                <div class="boxDigit" id="TimeDigitH1">0</div>
+                <div class="boxDigit" id="TimeDigitH2">0</div>
                 <div class="sperator">:</div>
-                <div class="boxDigit">2</div>
-                <div class="boxDigit">3</div>
+                <div class="boxDigit" id="TimeDigitM1">0</div>
+                <div class="boxDigit" id="TimeDigitM2">0</div>
                 <div class="sperator">:</div>
-                <div class="boxDigit">4</div>
-                <div class="boxDigit">5</div>
+                <div class="boxDigit" id="TimeDigitS1">0</div>
+                <div class="boxDigit" id="TimeDigitS2">0</div>
                 <div class="boxDigitTitle" style="grid-column: 1/3">
                     STUNDAS
                 </div>
@@ -203,6 +231,51 @@
         </div>
     </section>
 
+    <!-- ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ JS -->
+    <script>
+        const dateTargetString = "2023-11-05T00:00:00+08:00";
+        const dateTarget = new DateTime(dateTargetString);
+        const timerDigitsDOM = [
+            document.getElementById('TimeDigitH1'),
+            document.getElementById('TimeDigitH2'),
+            document.getElementById('TimeDigitM1'),
+            document.getElementById('TimeDigitM2'),
+            document.getElementById('TimeDigitS1'),
+            document.getElementById('TimeDigitS2'),
+        ];
+        const renderDigs = digs => {
+            digs.forEach(
+                (d,i) => {
+                    timerDigitsDOM[i].innerText = d;
+                }
+            );
+        };
+        function secondsToDigs(d) {
+            d = Number(d);
+            var h = Math.floor(d / 3600);
+            var m = Math.floor(d % 3600 / 60);
+            var s = Math.floor(d % 3600 % 60);
+            return [
+                Math.floor( (h%100) / 10),
+                h % 10,
+                Math.floor( m / 10),
+                m % 10,
+                Math.floor( s / 10),
+                s % 10,
+            ];
+        };
+        const runTimer = f => {
+            const dateNow = new DateTime();
+            const {seconds} = dateTarget.differenceFrom(dateNow);
+            const digs = secondsToDigs(seconds);
+            renderDigs(digs);
+            setTimeout(runTimer, 1000)
+        };
+
+        // RUN
+        runTimer();
+
+    </script>
     <!-- ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ END -->
 </body>
 </html>
