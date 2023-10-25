@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="lv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <!-- seed 2023.10.20 keiko -->
+
+    <title>Apsveikums 2023</title>
+    <meta name="description" content="Apsveikums">
+    <meta name="author"      content="PATA">
+
+    <!-- ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ MICRODATA -->
+    <meta property="og:url"          content="">
+    <meta property="og:image"        content="">
+    <meta property="og:image:width"  content="1200">
+    <meta property="og:image:height" content="628">
+    <meta property="og:type"         content="article">
+    <meta property="og:locale"       content="en_US">
+
+
+    <!-- ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ FAVICON -->
+    <meta name="theme-color"             content="#314159">
+    <meta name="msapplication-TileColor" content="#314159">
+    <meta name="msapplication-TileImage" content="art/icon512.png">
+    <link rel="icon" type="image/png"       href="art/icon512.png">
+    <link rel="apple-touch-icon"            href="art/icon512.png">
+
+    <!-- ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ GOOGLE FONTS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+
+    <!-- ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ DESIGN -->
+    <link
+        href="app/css.11xBase.css"
+        type="text/css" rel="stylesheet" media="all">
+    <link
+        href="app/css.12xMarkup.css"
+        type="text/css" rel="stylesheet" media="all">
+    <link
+        href="app/css.13xTypography.css"
+        type="text/css" rel="stylesheet" media="all">
+    <link
+        href="app/css.14xColors.css"
+        type="text/css" rel="stylesheet" media="all">
+    <link
+        href="app/css.15xLayouts.css"
+        type="text/css" rel="stylesheet" media="all">
+    <link
+        href="app/css.16xTools.css"
+        type="text/css" rel="stylesheet" media="all">
+
+    <link
+        href="app/css.21xComponents.css"
+        type="text/css" rel="stylesheet" media="all">
+
+    <style>
+        @media all and (max-width:1200px) {
+            html { font-size: calc( 4px + 1vw ); }
+        }
+        .layoutScreenFixed {
+            position: fixed;
+            z-index: -1;
+            top:    0;
+            left:   0;
+            width:  100%;
+            height: 100vh;
+            overflow: hidden;
+            pointer-events: none;
+
+            display: grid;
+            grid-template-columns: 1fr;
+            grid-template-rows: 1fr;
+            place-items: center;
+
+            background-color: olivedrab;
+        }
+        .layoutScreenFixed>* {
+            grid-area: 1/1 / 2/2;
+        }
+        .layoutScreenFixed>video {
+            min-width:  100%;
+            min-height: 100%;
+            height: 100%;
+        }
+
+        .layoutScreenTimer {
+            position: fixed;
+            z-index: 1;
+            top:    0;
+            left:   0;
+            width:  100%;
+            height: 100vh;
+
+            display: grid;
+            grid-template-columns: 1fr;
+            grid-template-rows: 1fr;
+            place-items: center;
+
+            background-color: transparent;
+        }
+        .layoutScreenTimer>* {
+            grid-area: 1/1 / 2/2;
+        }
+
+        .componentTimer {
+            width: max-content;
+            height: max-content;
+            min-height: 10rem;
+            min-width: 20rem;
+
+                       color: hsla(0, 0%,  10%, 1.0);
+            background-color: hsla(0, 0%, 100%, 0.5);
+            border-radius: 1rem;
+            padding: 1rem 1.5rem;
+        }
+        .componentTimer h1 {
+            font-family: 'Source Sans 3', sans-serif;
+            font-weight: 700;
+            font-size:   2.5rem;
+        }
+
+        .boxDigit {
+            background-color: hsla(0, 0%,  12%, 1);
+                       color: hsla(0, 0%, 100%, 1);
+            border-radius: 1rem;
+
+            display: grid;
+            place-items: center;
+            font-family: 'Source Sans 3', sans-serif;
+            font-weight: 600;
+            font-size:  6rem;
+        }
+        .boxDigitTitle {
+            display: grid;
+            place-items: center;
+            font-family: 'Source Sans 3', sans-serif;
+            font-weight:  600;
+            font-size: 1.5rem;
+            text-transform: uppercase;
+        }
+    </style>
+
+
+    <!-- ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ -->
+</head>
+<body class="">
+
+    <section class="layoutScreenFixed" id="Grounds">
+        <video muted loop autoplay>
+            <source src="art/chair-reduce3.mp4" type="video/mp4" />
+        </video>
+    </section>
+
+    <section class="layoutScreenTimer">
+        <div class="componentTimer">
+            <h1>Līdz apsveikuma atvēršanai:</h1>
+            <div>
+                <div class="boxDigit">012345</div>
+                <div class="boxDigitTitle">vēl ir laiks</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ END -->
+</body>
+</html>

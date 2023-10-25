@@ -26,7 +26,9 @@
     <link rel="apple-touch-icon"            href="art/icon512.png">
 
     <!-- ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ GOOGLE FONTS 2023 -->
-    <link rel="preconnect" href="//fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
     <link
         media="none" onload="if(media!='all')media='all'"
         href="https://fonts.googleapis.com/css?family=Vollkorn:400,400i,700&subset=cyrillic"
@@ -65,6 +67,13 @@
         type="text/css" rel="stylesheet" media="all">
 
     <style>
+        .sectionTimer {
+            color: hsla(0, 0%, 10%, 1);
+            background-color: hsla(0, 0%, 100%, 0.5);
+        }
+    </style>
+
+    <style>
         .layoutScreenFixed {
             position: fixed;
             z-index: -1;
@@ -88,6 +97,7 @@
         .layoutScreenFixed>video {
             min-width:  100%;
             min-height: 100%;
+            height: 100%;
         }
 
         .videoList {
@@ -111,6 +121,11 @@
 <body class="">
 
     <section class="layoutScreenFixed" id="Grounds">
+        <video muted loop autoplay --hidden class="horizontal" id="Example0">
+            <source
+                src="art/chair-reduce3.mp4"
+                type="video/mp4" />
+        </video>
         <video muted loop autoplay hidden class="horizontal" id="Example1">
             <source
                 src="art/video-example1.mov"
@@ -121,7 +136,7 @@
                 src="art/video-example2.mov"
                 type="video/mp4" />
         </video>
-        <video muted loop autoplay --hidden class="horizontal" id="Example3">
+        <video muted loop autoplay hidden class="horizontal" id="Example3">
             <source
                 src="art/video-example3.mp4"
                 type="video/mp4" />
@@ -140,6 +155,11 @@
         </header>
 
         <section class="videoList" id="Selection">
+        <video muted loop autoplay data-ref="Example0" class="selected">
+            <source
+                src="art/chair-reduce3.mp4"
+                type="video/mp4" />
+        </video>
             <video muted loop autoplay data-ref="Example1">
                 <source
                     src="art/video-example1.mov"
@@ -150,7 +170,7 @@
                     src="art/video-example2.mov"
                     type="video/mp4" />
             </video>
-            <video muted loop autoplay data-ref="Example3" class="selected">
+            <video muted loop autoplay data-ref="Example3">
                 <source
                     src="art/video-example3.mp4"
                     type="video/mp4" />
