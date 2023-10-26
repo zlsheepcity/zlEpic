@@ -76,7 +76,7 @@
             grid-template-rows: 1fr;
             place-items: center;
 
-            background: url(art/chair-static.jpg);
+            background: url(art/chair-static2.jpg);
             background-color: hsl(60, 54%, 13%);
             background-size: cover;
             background-position: 50% 50%;
@@ -194,6 +194,7 @@
             font-size: 1.5rem;
             text-transform: uppercase;
         }
+
         .layoutScreenContent {
             position: absolute;
             z-index: 1;
@@ -202,7 +203,7 @@
             width:  100%;
             min-height: 100vh;
 
-            background: url(art/open-background.jpg);
+            background: url(art/open-background2.jpg);
             background-color: hsl(60, 54%, 13%);
             background-size: cover;
             background-position: 50% 50%;
@@ -249,8 +250,13 @@
         }
         .wrapMovie {
             grid-column:  1/3;
-            aspect-ratio: 16/9;
+/*            aspect-ratio: 16/9;*/
             background-color: hsl(60, 54%, 13%);
+        }
+        .wrapMovie video {
+            display: block;
+            width: 100%;
+            height: auto;
         }
         @media all and (max-width:600px) {
             .wrapContentLayout {
@@ -286,6 +292,27 @@
             position: absolute;
             transform: translateX(-0.20rem);
         }
+
+        .layoutScreenContent {
+            transition: opacity 1s ease-out;
+        }
+        .layoutScreenContent.isHidden {
+            opacity: 0;
+            pointer-events: none;
+            height: 100vh;
+            overflow: hidden;
+        }
+        .layoutScreenContent.isVisible {
+            opacity: 1;
+        }
+        .layoutScreenTimer {
+            transition: transform 1s ease-out, opacity 1s ease-out;
+        }
+        .layoutScreenTimer.isHidden {
+            opacity: 0;
+            pointer-events: none;
+            transform: translateY(-50vh);
+        }
     </style>
     <!-- ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ -->
 </head>
@@ -297,9 +324,13 @@
         </video>
     </section>
 
-    <section class="layoutScreenContent">
+    <section class="layoutScreenContent isHidden" id="SectionContent">
         <article class="wrapContentLayout wrapContentTypography">
-            <div class="wrapMovie"></div>
+            <div class="wrapMovie">
+                <video controls>
+                    <source src="art/chair-reduce4.mp4" type="video/mp4" />
+                </video>
+            </div>
             <div id="QuoteW1">
                 <h2>
                     <span class="qw">“</span>
@@ -332,7 +363,7 @@
         </article>
     </section>
 
-    <section class="layoutScreenTimer" style="opacity:0;pointer-events:none;">
+    <section class="layoutScreenTimer isVisible"  id="SectionTimer">
         <div class="componentTimer">
             <h1>Līdz apsveikuma atvēršanai:</h1>
             <div class="componentTimeline">
@@ -359,7 +390,8 @@
 
     <!-- ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ JS -->
     <script>
-        const dateTargetString = "2023-11-05T00:00:00+08:00";
+//        const dateTargetString = "2023-11-05T00:00:00+08:00";
+        const dateTargetString = "2022-11-05T00:00:00+08:00";
         const dateTarget = new DateTime(dateTargetString);
         const timerDigitsDOM = [
             document.getElementById('TimeDigitH1'),
@@ -369,6 +401,14 @@
             document.getElementById('TimeDigitS1'),
             document.getElementById('TimeDigitS2'),
         ];
+        const renderContent = f => {
+            const elC = document.getElementById('SectionContent');
+            const elT = document.getElementById('SectionTimer');
+            elT.classList.remove('isVisible');
+            elT.classList.add('isHidden');
+            elC.classList.remove('isHidden');
+            elC.classList.add('isVisible');
+        };
         const renderDigs = digs => {
             digs.forEach(
                 (d,i) => {
@@ -393,13 +433,19 @@
         const runTimer = f => {
             const dateNow = new DateTime();
             const {seconds} = dateTarget.differenceFrom(dateNow);
-            const digs = secondsToDigs(seconds);
-            renderDigs(digs);
-            setTimeout(runTimer, 1000)
+            if (seconds>0) {
+                const digs = secondsToDigs(seconds);
+                renderDigs(digs);
+                setTimeout(runTimer, 1000);
+            } else {
+                renderContent();
+            }
         };
 
         // RUN
-        runTimer();
+        window.onload = function() {
+            runTimer();
+        };
 
     </script>
     <!-- ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ END -->
