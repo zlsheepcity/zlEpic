@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="lv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <!-- seed 2023.10.20 keiko -->
+
+    <title>Apsveikums 2023</title>
+    <meta name="description" content="Apsveikums">
+    <meta name="author"      content="PATA">
+
+    <!-- ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ MICRODATA -->
+    <meta property="og:url"          content="">
+    <meta property="og:image"        content="">
+    <meta property="og:image:width"  content="1200">
+    <meta property="og:image:height" content="628">
+    <meta property="og:type"         content="article">
+    <meta property="og:locale"       content="en_US">
+
+
+    <!-- ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ FAVICON -->
+    <meta name="theme-color"             content="#314159">
+    <meta name="msapplication-TileColor" content="#314159">
+    <meta name="msapplication-TileImage" content="art/icon512.png">
+    <link rel="icon" type="image/png"       href="art/icon512.png">
+    <link rel="apple-touch-icon"            href="art/icon512.png">
+
+    <!-- ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ GOOGLE FONTS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+
+    <!-- ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ JS LIBS -->
+    <script src="app/DateTime.js"></script>
+
+    <!-- ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ DESIGN -->
+    <link
+        href="app/css.11xBase.css"
+        type="text/css" rel="stylesheet" media="all">
+    <link
+        href="app/css.12xMarkup.css"
+        type="text/css" rel="stylesheet" media="all">
+    <link
+        href="app/css.13xTypography.css"
+        type="text/css" rel="stylesheet" media="all">
+    <link
+        href="app/css.14xColors.css"
+        type="text/css" rel="stylesheet" media="all">
+    <link
+        href="app/css.15xLayouts.css"
+        type="text/css" rel="stylesheet" media="all">
+    <link
+        href="app/css.16xTools.css"
+        type="text/css" rel="stylesheet" media="all">
+
+    <link
+        href="app/css.21xComponents.css"
+        type="text/css" rel="stylesheet" media="all">
+
+    <style>
+        @media all and (max-width:1200px) {
+            html { font-size: calc( 4px + 1vw ); }
+        }
+        .layoutScreenFixed {
+            position: fixed;
+            z-index: -1;
+            top:    0;
+            left:   0;
+            width:  100%;
+            height: 100vh;
+            overflow: hidden;
+            pointer-events: none;
+
+            display: grid;
+            grid-template-columns: 1fr;
+            grid-template-rows: 1fr;
+            place-items: center;
+
+            background: url(art/chair-static2.jpg);
+            background-color: hsl(60, 54%, 13%);
+            background-size: cover;
+            background-position: 50% 50%;
+        }
+        .layoutScreenFixed>* {
+            grid-area: 1/1 / 2/2;
+        }
+        .layoutScreenFixed>video {
+            min-width:  100%;
+            min-height: 100%;
+            height: 100%;
+        }
+        @media all and (min-aspect-ratio: 3840/2160) {
+            .layoutScreenFixed>video {
+                width:  100%;
+                height: auto;
+            }
+        }
+
+        .layoutScreenTimer {
+            position: fixed;
+            z-index: 1;
+            top:    0;
+            left:   0;
+            width:  100%;
+            height: 100vh;
+
+            display: grid;
+            grid-template-columns: 1fr;
+            grid-template-rows: 1fr;
+            place-items: center;
+
+            background-color: transparent;
+        }
+        .layoutScreenTimer>* {
+            grid-area: 1/1 / 2/2;
+        }
+
+        .componentTimer {
+            width: max-content;
+            height: max-content;
+            min-height: 10rem;
+            min-width: 20rem;
+
+                       color: hsla(0, 0%,  10%, 1.0);
+            background-color: hsla(0, 0%, 100%, 0.5);
+            border-radius: 1rem;
+            padding: 1rem 1.5rem;
+        }
+        .componentTimer h1 {
+            font-family: 'Source Sans 3', sans-serif;
+            font-weight: 700;
+            font-size:   2.5rem;
+            margin-bottom: 0.5rem;
+        }
+        .componentTimeline {
+            display:grid;
+            grid-gap: 0.25rem;
+            grid-template-columns:
+                1fr 1fr min-content 1fr 1fr min-content 1fr 1fr;
+        }
+
+        .boxDigit {
+            background-color: transparent;
+                       color: hsla(0, 0%, 100%, 1);
+
+            display: grid;
+            place-items: center;
+            font-family: 'Source Sans 3', sans-serif;
+            font-weight: 600;
+            font-size:  6rem;
+            line-height: 1.25;
+            text-shadow: 2px 2px hsla(0, 0%,  10%, 1.0), -2px -2px hsla(0, 0%,  10%, 1.0);
+            padding: 0 0.25rem;
+
+            position: relative;
+            z-index: 1;
+        }
+        .boxDigit::before,
+        .boxDigit::after {
+            content: '';
+            background-color: hsla(0, 0%,  12%, 0.95);
+                       color: hsla(0, 0%, 100%, 1);
+            display: block;
+            position: absolute;
+            z-index: -1;
+            left: 0;
+            right: 0;
+        }
+        .boxDigit::before {
+            top: 0;
+            bottom: calc(50% + 1px);
+            border-radius: 1rem 1rem 0 0;
+        }
+        .boxDigit::after {
+            top: calc(50% + 1px);
+            bottom: 0;
+            border-radius: 0 0 1rem 1rem;
+        }
+        .sperator {
+            display: grid;
+            place-items: center;
+            align-self: center;
+            font-family: 'Source Sans 3', sans-serif;
+            font-weight: 600;
+            font-size:  6rem;
+            line-height: 1.25;
+            padding: 0 0.25rem;
+        }
+        .boxDigitTitle {
+            display: grid;
+            place-items: center;
+            font-family: 'Source Sans 3', sans-serif;
+            font-weight:  600;
+            font-size: 1.5rem;
+            text-transform: uppercase;
+        }
+
+        .layoutScreenContent {
+            position: absolute;
+            z-index: 1;
+            top:    0;
+            left:   0;
+            width:  100%;
+            min-height: 100vh;
+
+            background: url(art/open-background2.jpg);
+            background-color: hsl(60, 54%, 13%);
+            background-size: cover;
+            background-position: 50% 50%;
+            background-attachment: fixed;
+
+            display: grid;
+            grid-template-columns: 1fr;
+            grid-template-rows: 1fr;
+            place-items: center;
+        }
+        .layoutScreenContent>* {
+            grid-area: 1/1 / 2/2;
+        }
+
+        .wrapContentTypography {
+            color: hsla(0, 0%, 96%, 1);
+            font-family: 'Source Sans 3', sans-serif;
+            font-weight:  400;
+            font-size: 1.5rem;
+            line-height: 1.25;
+        }
+        .wrapContentTypography p {
+            max-width: 24em;
+        }
+        .wrapContentTypography h4 {
+            font-weight: 700;
+            font-size: 1.5rem;
+            line-height: 1.25;
+        }
+        .wrapContentTypography h2 {
+            font-size:  3.75rem;
+            font-weight: 700;
+        }
+
+        .wrapContentLayout {
+            width:   100%;
+            padding: 2rem 3rem;
+            max-width: 66rem;
+
+            display:  grid;
+            grid-gap: 2rem 3rem;
+            grid-template-columns: 480fr 375fr;
+            align-items: center;
+        }
+        .wrapMovie {
+            grid-column:  1/3;
+/*            aspect-ratio: 16/9;*/
+            background-color: hsl(60, 54%, 13%);
+        }
+        .wrapMovie video {
+            display: block;
+            width: 100%;
+            height: auto;
+        }
+        @media all and (max-width:600px) {
+            .wrapContentLayout {
+                grid-template-columns: 1fr;
+            }
+            .wrapMovie {
+                grid-column:  1/2;
+            }
+            #QuoteW1 {
+                grid-row: 1/2;
+            }
+        }
+
+        .qw {
+            display: none;
+            position: absolute;
+            transform: translateX(-2.25rem);
+        }
+        .qe {
+            display: none;
+            position: absolute;
+            transform: translateX(-0.20rem);
+        }
+
+        #QuoteW1, #QuoteW6 { position: relative; }
+        h2:before {
+            content: '“';
+            position: absolute;
+            transform: translateX(-2.25rem);
+        }
+        h2:after {
+            content: '”';
+            position: absolute;
+            transform: translateX(-0.20rem);
+        }
+
+        .layoutScreenContent {
+            transition: opacity 1s ease-out;
+        }
+        .layoutScreenContent.isHidden {
+            opacity: 0;
+            pointer-events: none;
+            height: 100vh;
+            overflow: hidden;
+        }
+        .layoutScreenContent.isVisible {
+            opacity: 1;
+        }
+        .layoutScreenTimer {
+            transition: transform 1s ease-out, opacity 1s ease-out;
+        }
+        .layoutScreenTimer.isHidden {
+            opacity: 0;
+            pointer-events: none;
+            transform: translateY(-50vh);
+        }
+    </style>
+    <!-- ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ -->
+</head>
+<body class="">
+
+    <section class="layoutScreenFixed" id="Grounds">
+        <video playsinline autoplay muted loop>
+            <source src="art/chair-reduce4.webm" type="video/webm" />
+        </video>
+    </section>
+
+    <section class="layoutScreenContent isHidden" id="SectionContent">
+        <article class="wrapContentLayout wrapContentTypography">
+            <div class="wrapMovie">
+                <iframe style="width: 100%;aspect-ratio: 560/315;" data-width="560" data-height="315" src="https://www.youtube-nocookie.com/embed/VgfAqc6dkmg?si=R2GKIiJzainACcyX" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            </div>
+            <div id="QuoteW1">
+                <h2>
+                    <span class="qw">“</span>
+                    Enerģijas avots. Atomreaktors.
+                    <span class="qe">”</span>
+                </h2>
+            </div>
+            <div id="QuoteW4">
+                <h4>Vilcējspēks.</h4>
+                <p>Nav jādomā simts iemesli, kāpēc nedarīt, bet gan kā izdarīt un pēc iespējas labāk.</p>
+            </div>
+            <div id="QuoteW3">
+                <p>Bez rakstura stingrības izaugsme nav iespējama. Ar&nbsp;tādu attieksmi, kā darītu priekš sevis.</p>
+                <h4>Tik rūpīgi un atbildīgi.</h4>
+            </div>
+            <div id="QuoteW2">
+                <h4>Tik liela iedziļināšanās savā darbā.</h4>
+                <p>Vairāk nekā tikai darbs vai bizness.</p>
+            </div>
+            <div id="QuoteW5">
+                <p>Nepārtraukta attīstība.</p>
+                <h4>Tā, lai katru dienu ir interesanti!</h4>
+            </div>
+            <div id="QuoteW6">
+                <h2>
+                <span class="qw">“</span>
+                    Nebaidīties kļūdīties.
+                </h2>
+            </div>
+        </article>
+    </section>
+
+    <section class="layoutScreenTimer isVisible"  id="SectionTimer">
+        <div class="componentTimer">
+            <h1>Līdz apsveikuma atvēršanai:</h1>
+            <div class="componentTimeline">
+                <div class="boxDigit" id="TimeDigitH1">0</div>
+                <div class="boxDigit" id="TimeDigitH2">0</div>
+                <div class="sperator" >:</div>
+                <div class="boxDigit" id="TimeDigitM1">0</div>
+                <div class="boxDigit" id="TimeDigitM2">0</div>
+                <div class="sperator" >:</div>
+                <div class="boxDigit" id="TimeDigitS1">0</div>
+                <div class="boxDigit" id="TimeDigitS2">0</div>
+                <div class="boxDigitTitle" style="grid-column: 1/3">
+                    STUNDAS
+                </div>
+                <div class="boxDigitTitle" style="grid-column: 4/6">
+                    MINŪTES
+                </div>
+                <div class="boxDigitTitle" style="grid-column: 7/9">
+                    SEKUNDES
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ JS -->
+    <script>
+//        const dateTargetString = "2023-11-05T00:00:00+08:00";
+        const dateTargetString = "2022-11-05T00:00:00+08:00";
+        const dateTarget = new DateTime(dateTargetString);
+        const timerDigitsDOM = [
+            document.getElementById('TimeDigitH1'),
+            document.getElementById('TimeDigitH2'),
+            document.getElementById('TimeDigitM1'),
+            document.getElementById('TimeDigitM2'),
+            document.getElementById('TimeDigitS1'),
+            document.getElementById('TimeDigitS2'),
+        ];
+        const renderContent = f => {
+            const elC = document.getElementById('SectionContent');
+            const elT = document.getElementById('SectionTimer');
+            elT.classList.remove('isVisible');
+            elT.classList.add('isHidden');
+            elC.classList.remove('isHidden');
+            elC.classList.add('isVisible');
+        };
+        const renderDigs = digs => {
+            digs.forEach(
+                (d,i) => {
+                    timerDigitsDOM[i].innerText = d;
+                }
+            );
+        };
+        function secondsToDigs(d) {
+            d = Number(d);
+            var h = Math.floor(d / 3600);
+            var m = Math.floor(d % 3600 / 60);
+            var s = Math.floor(d % 3600 % 60);
+            return [
+                Math.floor( (h%100) / 10),
+                h % 10,
+                Math.floor( m / 10),
+                m % 10,
+                Math.floor( s / 10),
+                s % 10,
+            ];
+        };
+        const runTimer = f => {
+            const dateNow = new DateTime();
+            const {seconds} = dateTarget.differenceFrom(dateNow);
+            if (seconds>0) {
+                const digs = secondsToDigs(seconds);
+                renderDigs(digs);
+                setTimeout(runTimer, 1000);
+            } else {
+                renderContent();
+            }
+        };
+
+        // RUN
+        window.onload = function() {
+            runTimer();
+        };
+
+    </script>
+    <!-- ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ END -->
+</body>
+</html>
