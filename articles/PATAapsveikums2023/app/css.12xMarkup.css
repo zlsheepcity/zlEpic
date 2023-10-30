@@ -21,6 +21,10 @@
         outline:     0;
     }
 
+/** ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ HTML attributes */
+
+    [hidden] { display: none; }
+
 /** ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ Semantic Markup Reset */
 
 

@@ -61,7 +61,18 @@
         @media all and (max-width:1200px) {
             html { font-size: calc( 4px + 1vw ); }
         }
-        .layoutScreenFixed {
+        [hidden] { display: none; }
+
+        body {
+            background-image: linear-gradient(
+                0deg,
+                #BEC78F 10%,
+                #7F734B 40%,
+                #343434 95%
+            );
+        }
+
+        .layoutScreenLoading {
             position: fixed;
             z-index: -1;
             top:    0;
@@ -69,251 +80,60 @@
             width:  100%;
             height: 100vh;
             overflow: hidden;
+
+            display: grid;
+            grid-template-columns: 1fr;
+            grid-template-rows: 1fr;
+            place-items: center;
+        }
+        .layoutScreenLoading>* {
+            grid-area: 1/1 / 2/2;
+        }
+
+        .layoutScreenLoading {
+            transition: opacity 100ms ease-out;
+        }
+        .layoutScreenLoading.isHidden {
+            opacity: 0;
             pointer-events: none;
-
-            display: grid;
-            grid-template-columns: 1fr;
-            grid-template-rows: 1fr;
-            place-items: center;
-
-            background: url(art/chair-static2.jpg);
-            background-color: hsl(60, 54%, 13%);
-            background-size: cover;
-            background-position: 50% 50%;
         }
-        .layoutScreenFixed>* {
-            grid-area: 1/1 / 2/2;
-        }
-        .layoutScreenFixed>video {
-            min-width:  100%;
-            min-height: 100%;
-            height: 100%;
-        }
-        @media all and (min-aspect-ratio: 3840/2160) {
-            .layoutScreenFixed>video {
-                width:  100%;
-                height: auto;
-            }
+        .layoutScreenLoading.isVisible {
+            opacity: 1;
         }
 
-        .layoutScreenTimer {
-            position: fixed;
-            z-index: 1;
-            top:    0;
-            left:   0;
-            width:  100%;
-            height: 100vh;
 
-            display: grid;
-            grid-template-columns: 1fr;
-            grid-template-rows: 1fr;
-            place-items: center;
-
-            background-color: transparent;
-        }
-        .layoutScreenTimer>* {
-            grid-area: 1/1 / 2/2;
-        }
-
-        .componentTimer {
+        .cardLoading {
             width: max-content;
             height: max-content;
-            min-height: 10rem;
-            min-width: 20rem;
+            max-width: calc( 100% - 2rem );
 
                        color: hsla(0, 0%,  10%, 1.0);
             background-color: hsla(0, 0%, 100%, 0.5);
             border-radius: 1rem;
             padding: 1rem 1.5rem;
-        }
-        .componentTimer h1 {
-            font-family: 'Source Sans 3', sans-serif;
-            font-weight: 700;
-            font-size:   2.5rem;
-            margin-bottom: 0.5rem;
-        }
-        .componentTimeline {
-            display:grid;
-            grid-gap: 0.25rem;
-            grid-template-columns:
-                1fr 1fr min-content 1fr 1fr min-content 1fr 1fr;
-        }
-
-        .boxDigit {
-            background-color: transparent;
-                       color: hsla(0, 0%, 100%, 1);
 
             display: grid;
             place-items: center;
-            font-family: 'Source Sans 3', sans-serif;
-            font-weight: 600;
-            font-size:  6rem;
-            line-height: 1.25;
-            text-shadow: 2px 2px hsla(0, 0%,  10%, 1.0), -2px -2px hsla(0, 0%,  10%, 1.0);
-            padding: 0 0.25rem;
 
-            position: relative;
-            z-index: 1;
-        }
-        .boxDigit::before,
-        .boxDigit::after {
-            content: '';
-            background-color: hsla(0, 0%,  12%, 0.95);
-                       color: hsla(0, 0%, 100%, 1);
-            display: block;
-            position: absolute;
-            z-index: -1;
-            left: 0;
-            right: 0;
-        }
-        .boxDigit::before {
-            top: 0;
-            bottom: calc(50% + 1px);
-            border-radius: 1rem 1rem 0 0;
-        }
-        .boxDigit::after {
-            top: calc(50% + 1px);
-            bottom: 0;
-            border-radius: 0 0 1rem 1rem;
-        }
-        .sperator {
-            display: grid;
-            place-items: center;
-            align-self: center;
-            font-family: 'Source Sans 3', sans-serif;
-            font-weight: 600;
-            font-size:  6rem;
-            line-height: 1.25;
-            padding: 0 0.25rem;
-        }
-        .boxDigitTitle {
-            display: grid;
-            place-items: center;
-            font-family: 'Source Sans 3', sans-serif;
-            font-weight:  600;
-            font-size: 1.5rem;
-            text-transform: uppercase;
-        }
-
-        .layoutScreenContent {
-            position: absolute;
-            z-index: 1;
-            top:    0;
-            left:   0;
-            width:  100%;
-            min-height: 100vh;
-
-            background: url(art/open-background2.jpg);
-            background-color: hsl(60, 54%, 13%);
-            background-size: cover;
-            background-position: 50% 50%;
-            background-attachment: fixed;
-
-            display: grid;
-            grid-template-columns: 1fr;
-            grid-template-rows: 1fr;
-            place-items: center;
-        }
-        .layoutScreenContent>* {
-            grid-area: 1/1 / 2/2;
-        }
-
-        .wrapContentTypography {
-            color: hsla(0, 0%, 96%, 1);
             font-family: 'Source Sans 3', sans-serif;
             font-weight:  400;
             font-size: 1.5rem;
             line-height: 1.25;
         }
-        .wrapContentTypography p {
-            max-width: 24em;
+        .animated-pulse {
+          animation-duration: 1s;
+          animation-fill-mode: both;
+          animation-iteration-count: infinite;
+          animation-name: pulse;
         }
-        .wrapContentTypography h4 {
-            font-weight: 700;
-            font-size: 1.5rem;
-            line-height: 1.25;
-        }
-        .wrapContentTypography h2 {
-            font-size:  3.75rem;
-            font-weight: 700;
-        }
-
-        .wrapContentLayout {
-            width:   100%;
-            padding: 2rem 3rem;
-            max-width: 66rem;
-
-            display:  grid;
-            grid-gap: 2rem 3rem;
-            grid-template-columns: 480fr 375fr;
-            align-items: center;
-        }
-        .wrapMovie {
-            grid-column:  1/3;
-/*            aspect-ratio: 16/9;*/
-            background-color: hsl(60, 54%, 13%);
-        }
-        .wrapMovie video {
-            display: block;
-            width: 100%;
-            height: auto;
-        }
-        @media all and (max-width:600px) {
-            .wrapContentLayout {
-                grid-template-columns: 1fr;
-            }
-            .wrapMovie {
-                grid-column:  1/2;
-            }
-            #QuoteW1 {
-                grid-row: 1/2;
-            }
+        @keyframes pulse {
+          from { transform: scale3d(1, 1, 1); }
+          50%  { transform: scale3d(1.05, 1.05, 1.05); }
+          to   { transform: scale3d(1, 1, 1); }
         }
 
-        .qw {
-            display: none;
-            position: absolute;
-            transform: translateX(-2.25rem);
-        }
-        .qe {
-            display: none;
-            position: absolute;
-            transform: translateX(-0.20rem);
-        }
-
-        #QuoteW1, #QuoteW6 { position: relative; }
-        h2:before {
-            content: '“';
-            position: absolute;
-            transform: translateX(-2.25rem);
-        }
-        h2:after {
-            content: '”';
-            position: absolute;
-            transform: translateX(-0.20rem);
-        }
-
-        .layoutScreenContent {
-            transition: opacity 1s ease-out;
-        }
-        .layoutScreenContent.isHidden {
-            opacity: 0;
-            pointer-events: none;
-            height: 100vh;
-            overflow: hidden;
-        }
-        .layoutScreenContent.isVisible {
-            opacity: 1;
-        }
-        .layoutScreenTimer {
-            transition: transform 1s ease-out, opacity 1s ease-out;
-        }
-        .layoutScreenTimer.isHidden {
-            opacity: 0;
-            pointer-events: none;
-            transform: translateY(-50vh);
-        }
     </style>
+
     <!-- ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ -->
 </head>
 <body class="">
@@ -324,12 +144,16 @@
         </video>
     </section>
 
+    <section class="layoutScreenLoading" id="SectionLoading">
+        <div class="cardLoading animated-pulse">
+            <span>Notiek ielāde...</span>
+        </div>
+    </section>
+
     <section class="layoutScreenContent isHidden" id="SectionContent">
         <article class="wrapContentLayout wrapContentTypography">
             <div class="wrapMovie">
-                <video controls>
-                    <source src="art/chair-reduce5.mp4" type="video/mp4" />
-                </video>
+                <iframe style="width: 100%;aspect-ratio: 560/315;" data-width="560" data-height="315" src="https://www.youtube-nocookie.com/embed/VgfAqc6dkmg?si=R2GKIiJzainACcyX" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
             </div>
             <div id="QuoteW1">
                 <h2>
@@ -363,7 +187,7 @@
         </article>
     </section>
 
-    <section class="layoutScreenTimer isVisible"  id="SectionTimer">
+    <section class="layoutScreenTimer isHidden" id="SectionTimer">
         <div class="componentTimer">
             <h1>Līdz apsveikuma atvēršanai:</h1>
             <div class="componentTimeline">
@@ -409,6 +233,7 @@
             elC.classList.remove('isHidden');
             elC.classList.add('isVisible');
         };
+
         const renderDigs = digs => {
             digs.forEach(
                 (d,i) => {
@@ -438,13 +263,23 @@
                 renderDigs(digs);
                 setTimeout(runTimer, 1000);
             } else {
-                renderContent();
+                setTimeout(renderContent, 200);
             }
         };
 
+        const renderTimer = f => {
+            const elL = document.getElementById('SectionLoading');
+            const elT = document.getElementById('SectionTimer');
+            elL.classList.remove('isVisible');
+            elL.classList.add('isHidden');
+            elT.classList.remove('isHidden');
+            elT.classList.add('isVisible');
+            runTimer();
+        }
+
         // RUN
         window.onload = function() {
-            runTimer();
+            setTimeout(renderTimer, 100);
         };
 
     </script>
