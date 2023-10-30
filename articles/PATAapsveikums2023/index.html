@@ -165,10 +165,37 @@
                 grid-template-areas:
                     'head head'
                     'vids vids'
-                    'west east'
-                    'west east'
+                    'east east'
+                    'west west'
                     'foot foot'
                     ;
+            }
+            .cardGreetings footer {
+                width: min-content;
+                justify-self: end;
+            }
+            .cardGreetings >header,
+            .cardGreetings >footer,
+            .cardGreetings >.ceast,
+            .cardGreetings >.cwest {
+                padding: 0 2rem;
+            }
+            .cardGreetings >.ceast {
+            }
+            .cardGreetings >.ceast {
+                padding-top: 0.5rem;
+                display: grid;
+                grid-gap: 2rem;
+                grid-template-columns: 540fr 320fr;
+            }
+            .cardGreetings >.cwest {
+                display: grid;
+                grid-gap: 2rem;
+                
+                grid-template-columns: 280fr 740fr;
+            }
+            .cardGreetings .quote+.quote {
+                padding-top: 0rem;
             }
         }
     </style>
