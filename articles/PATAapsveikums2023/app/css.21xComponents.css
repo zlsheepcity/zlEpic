@@ -160,12 +160,11 @@
         .wrapContentTypography h2:before {
             content: '“';
             position: absolute;
-            transform: translateX(-2.25rem);
+            transform: translateX(-100%);
         }
         .wrapContentTypography h2:after {
             content: '”';
             position: absolute;
-            transform: translateX(-0.20rem);
         }
 
 /* ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ content components */
