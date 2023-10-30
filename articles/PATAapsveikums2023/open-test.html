@@ -133,6 +133,44 @@
           to   { transform: scale3d(1, 1, 1); }
         }
 
+        .cardGreetings {
+            width:   100%;
+            padding: 2rem 3rem;
+            max-width: 54rem;
+
+            display:  grid;
+            grid-gap: 2rem 3rem;
+            grid-template-columns: 540fr 320fr;
+            grid-template-areas:
+                'vids vids'
+                'head east'
+                'west east'
+                'west foot'
+                ;
+        }
+        .cardGreetings header {grid-area:head;}
+        .cardGreetings footer {grid-area:foot;}
+        .cardGreetings .video {grid-area:vids;}
+        .cardGreetings .cwest {grid-area:west;}
+        .cardGreetings .ceast {grid-area:east;}
+        .cardGreetings .quote+.quote {
+            padding-top: 2rem;
+        }
+        .cardGreetings .ceast {
+            align-self: center;
+            height: max-content;
+        }
+        @media all and (max-width:600px) {
+            .cardGreetings {
+                grid-template-areas:
+                    'head head'
+                    'vids vids'
+                    'west east'
+                    'west east'
+                    'foot foot'
+                    ;
+            }
+        }
     </style>
 
     <!-- ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ -->
@@ -152,39 +190,40 @@
     </section>
 
     <section class="layoutScreenContent isHidden" id="SectionContent">
-        <article class="wrapContentLayout wrapContentTypography">
-            <div class="wrapMovie">
+        <article class="cardGreetings wrapContentTypography">
+            <section class="video">
                 <iframe style="width: 100%;aspect-ratio: 560/315;" data-width="560" data-height="315" src="https://www.youtube-nocookie.com/embed/VgfAqc6dkmg?si=R2GKIiJzainACcyX" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-            </div>
-            <div id="QuoteW1">
+            </section>
+            <header>
                 <h2>
-                    <span class="qw">“</span>
                     Enerģijas avots. Atomreaktors.
-                    <span class="qe">”</span>
                 </h2>
-            </div>
-            <div id="QuoteW4">
-                <h4>Vilcējspēks.</h4>
-                <p>Nav jādomā simts iemesli, kāpēc nedarīt, bet gan kā izdarīt un pēc iespējas labāk.</p>
-            </div>
-            <div id="QuoteW3">
-                <p>Bez rakstura stingrības izaugsme nav iespējama. Ar&nbsp;tādu attieksmi, kā darītu priekš sevis.</p>
-                <h4>Tik rūpīgi un atbildīgi.</h4>
-            </div>
-            <div id="QuoteW2">
-                <h4>Tik liela iedziļināšanās savā darbā.</h4>
-                <p>Vairāk nekā tikai darbs vai bizness.</p>
-            </div>
-            <div id="QuoteW5">
-                <p>Nepārtraukta attīstība.</p>
-                <h4>Tā, lai katru dienu ir interesanti!</h4>
-            </div>
-            <div id="QuoteW6">
+            </header>
+            <footer>
                 <h2>
-                <span class="qw">“</span>
                     Nebaidīties kļūdīties.
                 </h2>
-            </div>
+            </footer>
+            <section class="cwest">
+                <div class="quote">
+                    <h4>Tik liela iedziļināšanās savā darbā.</h4>
+                    <p>Vairāk nekā tikai darbs vai bizness.</p>
+                </div>
+                <div class="quote">
+                    <p>Bez rakstura stingrības izaugsme nav iespējama. Ar&nbsp;tādu attieksmi, kā darītu priekš sevis.</p>
+                    <h4>Tik rūpīgi un atbildīgi.</h4>
+                </div>
+            </section>
+            <section class="ceast">
+                <div class="quote">
+                    <h4>Vilcējspēks.</h4>
+                    <p>Nav jādomā simts iemesli, kāpēc nedarīt, bet gan kā izdarīt un pēc iespējas labāk.</p>
+                </div>
+                <div class="quote">
+                    <p>Nepārtraukta attīstība.</p>
+                    <h4>Tā, lai katru dienu ir interesanti!</h4>
+                </div>
+            </section>
         </article>
     </section>
 
