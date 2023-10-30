@@ -10,12 +10,12 @@
     <meta name="author"      content="PATA">
 
     <!-- ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ MICRODATA -->
-    <meta property="og:url"          content="">
-    <meta property="og:image"        content="">
-    <meta property="og:image:width"  content="1200">
-    <meta property="og:image:height" content="628">
+    <meta property="og:url"          content="https://zlsheepcity.github.io/zlEpic/articles/PATAapsveikums2023/">
+    <meta property="og:image"        content="https://zlsheepcity.github.io/zlEpic/articles/PATAapsveikums2023/art/chair-static2">
+    <meta property="og:image:width"  content="1920">
+    <meta property="og:image:height" content="1080">
     <meta property="og:type"         content="article">
-    <meta property="og:locale"       content="en_US">
+    <meta property="og:locale"       content="lv_LV">
 
 
     <!-- ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ FAVICON -->
@@ -64,6 +64,7 @@
         [hidden] { display: none; }
 
         body {
+            font-family: 'Source Sans 3', sans-serif;
             background-image: linear-gradient(
                 0deg,
                 #BEC78F 10%,
@@ -228,8 +229,11 @@
         const renderContent = f => {
             const elC = document.getElementById('SectionContent');
             const elT = document.getElementById('SectionTimer');
+            const elG = document.getElementById('Grounds');
             elT.classList.remove('isVisible');
             elT.classList.add('isHidden');
+            elG.classList.remove('isVisible');
+            elG.classList.add('isHidden');
             elC.classList.remove('isHidden');
             elC.classList.add('isVisible');
         };

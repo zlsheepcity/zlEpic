@@ -34,6 +34,11 @@
             }
         }
 
+        .layoutScreenFixed.isHidden {
+            transition: opacity 1s ease-out;
+            opacity: 0;
+        }
+
 /* ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ layoutScreenContent */
 
         .layoutScreenContent {
@@ -121,12 +126,6 @@
 
         /*transition*/
 
-        .layoutScreenTimer {
-          --transition: transform 1s ease-out, opacity 1s ease-out;
-        }
-        .layoutScreenContent.isVisible {
-          --transition: opacity 200ms ease-out;
-        }
         .layoutScreenTimer.isHidden {
             transition: transform 1s ease-out, opacity 1s ease-out;
             opacity: 0;
